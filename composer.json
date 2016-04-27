@@ -1,0 +1,26 @@
+{
+    "name": "spoje.net/flexipeehp",
+    "description": "PHP Based Library for easy interaction with czech accounting system Flexibee.",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "vitex@arachne.cz"
+        }
+    ],
+    "require": {
+        "php": ">= 5.5.9",
+        "vitexsoftware/ease-framework": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlexiPeeHP\\": "src/FlexiPeeHP/",
+            "Test\\FlexiPeeHP\\": "testing/src/FlexiPeeHP/"
+        }
+    },
+    "require-dev": {
+        "phpunit/php-token-stream": "~1.2",
+        "robmorgan/phinx": "dev-master",
+        "phpunit/phpunit": "5.3.*",
+        "phpunit/phpunit-skeleton-generator": "*"
+    }
+}
