@@ -177,10 +177,16 @@ class FlexiBee extends \Ease\Brick
     /**
      * Funkce, která provede I/O operaci a vyhodnotí výsledek.
      *
-     * @param $urlSuffix část URL za identifikátorem firmy.
+     * @param string $urlSuffix část URL za identifikátorem firmy.
+     * @param string $method HTTP/REST metoda
+     * @param string $format Requested format
      */
-    public function performRequest($urlSuffix, $method = 'GET', $format = 'json')
+    public function performRequest($urlSuffix = null, $method = 'GET',
+                                   $format = 'json')
     {
+        if (is_null($urlSuffix)) {
+            $urlSuffix = $this->agenda.'.'.$format;
+        }
         $url = $this->url.'/c/'.$this->company.'/'.$urlSuffix;
         curl_setopt($this->curl, CURLOPT_URL, $url);
 // Nastavení samotné operace
@@ -626,7 +632,9 @@ class FlexiBee extends \Ease\Brick
                 }
             }
         }
-        $this->logger->flush(get_class($this));
+        if (is_object($this->logger)) {
+            $this->logger->flush(get_class($this));
+        }
     }
 
     /**
