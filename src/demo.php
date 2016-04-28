@@ -2,18 +2,18 @@
 
 namespace FlexiPeeHP;
 
-require_once './bootstrap.php';
+require_once '../testing/bootstrap.php';
 
 $oPage     = new \Ease\TWB\WebPage('FlexiPeeHP');
 $container = $oPage->addItem(new \Ease\TWB\Container(new \Ease\Html\H1Tag(_('FlexiBee Connection Test'))));
 
 $nastaveni = new Nastaveni();
 
-$info = $nastaveni->performRequest();
+$info = $nastaveni->getFlexiRow(1);
 
-if (isset($info['nastaveni']) && count($info['nastaveni'])) {
+if (isset($info) && count($info)) {
     $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL'),
-        $info['nastaveni'][0]['nazFirmy'], 'success');
+        $info['nazFirmy'], 'success');
 } else {
     $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL'),
         _('Chyba komunikace'), 'danger');

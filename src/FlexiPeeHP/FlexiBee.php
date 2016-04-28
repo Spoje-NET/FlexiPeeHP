@@ -289,7 +289,9 @@ class FlexiBee extends \Ease\Brick
      */
     public function disconnect()
     {
-        curl_close($this->curl);
+        if (is_resource($this->curl)) {
+            curl_close($this->curl);
+        }
     }
 
     public function __destruct()
@@ -305,6 +307,22 @@ class FlexiBee extends \Ease\Brick
     public function loadFlexiData($suffix = null)
     {
         $this->setListingData($this->getFlexiData($suffix));
+    }
+
+    /**
+     * Načte řádek dat z FlexiBee
+     *
+     * @param int $recordID
+     * @return array
+     */
+    public function getFlexiRow($recordID)
+    {
+        $record   = null;
+        $response = $this->performRequest($this->agenda.'/'.$recordID.'.json');
+        if (isset($response[$this->agenda])) {
+            $record = $response[$this->agenda][0];
+        }
+        return $record;
     }
 
     /**

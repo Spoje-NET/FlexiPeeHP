@@ -34,38 +34,33 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::setAgenda
-     * @todo   Implement testSetAgenda().
      */
     public function testSetAgenda()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setAgenda('nastaveni');
+        $this->assertEquals('nastaveni', $this->object->agenda);
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBee::object2array
-     * @todo   Implement testObject2array().
      */
     public function testObject2array()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals([], $this->object->object2array(new \stdClass()));
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBee::performRequest
-     * @todo   Implement testPerformRequest().
      */
     public function testPerformRequest()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        if ($this->object->agenda != 'test') {
+            $json = $this->object->performRequest($this->object->agenda.'.json');
+
+            $this->assertArrayHasKey($json, 'success');
+        } else {
+            $this->markTestSkipped('Agenda not set');
+        }
     }
 
     /**
@@ -166,14 +161,11 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::jsonizeData
-     * @todo   Implement testJsonizeData().
      */
     public function testJsonizeData()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals('{"winstrom":{"@version":"1.0","'.$this->object->agenda.'":{"key":"value"}}}',
+            $this->object->jsonizeData(['key' => 'value']));
     }
 
     /**
@@ -262,13 +254,12 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::flexiUrl
-     * @todo   Implement testFlexiUrl().
      */
     public function testFlexiUrl()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals("a = 1 and b = 'foo'",
+            $this->object->flexiUrl(['a' => 1, 'b' => 'foo'], 'and'));
+        $this->assertEquals("a = 1 or b = 'bar'",
+            $this->object->flexiUrl(['a' => 1, 'b' => 'bar'], 'or'));
     }
 }
