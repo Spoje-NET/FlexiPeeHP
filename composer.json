@@ -1,6 +1,7 @@
 {
     "name": "spoje.net/flexipeehp",
     "description": "PHP Based Library for easy interaction with czech accounting system Flexibee.",
+    "license": "GPL-2.0",
     "authors": [
         {
             "name": "Vítězslav Dvořák",
