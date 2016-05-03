@@ -9,7 +9,7 @@
 
 namespace FlexiPeeHP;
 
-class Pokladna extends FlexiBee
+class SkladovyPohyb extends FlexiBee
 {
     public $agenda = 'skladovy-pohyb';
 
