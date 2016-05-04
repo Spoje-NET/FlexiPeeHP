@@ -7,13 +7,20 @@ require_once '../testing/bootstrap.php';
 $oPage     = new \Ease\TWB\WebPage('FlexiPeeHP');
 $container = $oPage->addItem(new \Ease\TWB\Container(new \Ease\Html\H1Tag(_('FlexiBee Connection Test'))));
 
-$nastaveni = new Nastaveni();
-
-$info = $nastaveni->getFlexiRow(1);
+$company = new Company();
+$info    = $company->getAllFromFlexibee();
 
 if (isset($info) && count($info)) {
-    $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL'),
-        $info['nazFirmy'], 'success');
+    if (isset($info['company']) && count($info['company']) && array_key_exists(0,
+            $info['company'])) {
+        foreach ($info['company'] as $companyInfo) {
+            $return[] = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL').'/c/'.$companyInfo['dbNazev'],
+                $companyInfo['nazev'], 'success');
+        }
+    } else { //Vrácena pouze jedna firma
+        $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL').'/c/'.$info['company']['dbNazev'],
+            $info['company']['nazev'], 'success');
+    }
 } else {
     $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL'),
         _('Chyba komunikace'), 'danger');

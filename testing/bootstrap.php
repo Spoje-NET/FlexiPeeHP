@@ -18,44 +18,47 @@ if (file_exists('../vendor/autoload.php')) {
  */
 define('LOG_NAME', 'FlexiPeeHP');
 
-//////
-////// Config for official test server
-//////
+$officialServer = true;
+
+if ($officialServer) {
+////
+//// Config for official test server
+////
+
+    /*
+     * URL Flexibee API
+     */
+    define('FLEXIBEE_URL', 'https://demo.flexibee.eu');
+    /*
+     * Uživatel FlexiBee API
+     */
+    define('FLEXIBEE_LOGIN', 'winstrom');
+    /*
+     * Heslo FlexiBee API
+     */
+    define('FLEXIBEE_PASSWORD', 'winstrom');
+    /*
+     * Společnost v FlexiBee
+     */
+    define('FLEXIBEE_COMPANY', 'demo');
 //
-///*
-// * URL Flexibee API
-// */
-//define('FLEXIBEE_URL', 'https://demo.flexibee.eu');
-///*
-// * Uživatel FlexiBee API
-// */
-//define('FLEXIBEE_LOGIN', 'winstrom');
-///*
-// * Heslo FlexiBee API
-// */
-//define('FLEXIBEE_PASSWORD', 'winstrom');
-///*
-// * Společnost v FlexiBee
-// */
-//define('FLEXIBEE_COMPANY', 'demo');
-////
-//// Config for Spoje.Net
-////
-
-/*
- * URL Flexibee API
- */
-define('FLEXIBEE_URL', 'https://flexibee-dev.spoje.net:5434');
-/*
- * Uživatel FlexiBee API
- */
-define('FLEXIBEE_LOGIN', 'test');
-/*
- * Heslo FlexiBee API
- */
-define('FLEXIBEE_PASSWORD', 'testing');
-/*
- * Společnost v FlexiBee
- */
-define('FLEXIBEE_COMPANY', 'test');
-
+// Config for Spoje.Net
+//
+} else {
+    /*
+     * URL Flexibee API
+     */
+    define('FLEXIBEE_URL', 'https://flexibee-dev.spoje.net:5434');
+    /*
+     * Uživatel FlexiBee API
+     */
+    define('FLEXIBEE_LOGIN', 'test');
+    /*
+     * Heslo FlexiBee API
+     */
+    define('FLEXIBEE_PASSWORD', 'testing');
+    /*
+     * Společnost v FlexiBee
+     */
+    define('FLEXIBEE_COMPANY', 'test');
+}

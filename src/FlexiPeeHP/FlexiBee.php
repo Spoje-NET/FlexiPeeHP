@@ -12,11 +12,20 @@ class FlexiBee extends \Ease\Brick
 {
     /**
      * Základní namespace pro komunikaci s FlexiBEE.
+     * @var string Jmený prostor datového bloku odpovědi
      */
     public $nameSpace = 'winstrom';
 
     /**
+     * Datový blok v poli odpovědi
+     *
+     * @var string
+     */
+    public $resultField = 'results';
+
+    /**
      * Verze protokolu použitého pro komunikaci.
+     * @var string Verze použitého API
      */
     public $protoVersion = '1.0';
 
@@ -125,6 +134,12 @@ class FlexiBee extends \Ease\Brick
     public $lastInsertedID = null;
 
     /**
+     * Default Line Prefix
+     * @var string
+     */
+    public $prefix = '/c/';
+
+    /**
      * Třída pro práci s FlexiBee.
      *
      * @param string $init výchozí selektor dat
@@ -182,12 +197,15 @@ class FlexiBee extends \Ease\Brick
      * @param string $format Requested format
      */
     public function performRequest($urlSuffix = null, $method = 'GET',
-                                   $format = 'json')
+                                   $format = null)
     {
+        if (is_null($format)) {
+            $format = $this->format;
+        }
         if (is_null($urlSuffix)) {
             $urlSuffix = $this->agenda.'.'.$format;
         }
-        $url = $this->url.'/c/'.$this->company.'/'.$urlSuffix;
+        $url = $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
         curl_setopt($this->curl, CURLOPT_URL, $url);
 // Nastavení samotné operace
         curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $method);
@@ -229,8 +247,8 @@ class FlexiBee extends \Ease\Brick
         switch ($format) {
             case 'json':
                 $decoded = json_decode($response, true, 10);
-                if (isset($decoded['winstrom']['results'][0]['id'])) {
-                    $this->lastInsertedID = $decoded['winstrom']['results'][0]['id'];
+                if (isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
+                    $this->lastInsertedID = $decoded[$this->nameSpace][$this->resultField][0]['id'];
                 } else {
                     $this->lastInsertedID = null;
                 }
@@ -245,8 +263,8 @@ class FlexiBee extends \Ease\Brick
         }
 
         // Get response body root automatically
-        if (isset($decoded['winstrom'])) {
-            $decoded = $decoded['winstrom'];
+        if (isset($decoded[$this->nameSpace])) {
+            $decoded = $decoded[$this->nameSpace];
         }
 
         return $decoded;
@@ -340,15 +358,19 @@ class FlexiBee extends \Ease\Brick
         } else {
             $conditions = '';
         }
-        if (is_null($suffix)) {
-            $transactions = $this->performRequest($this->agenda.$conditions.'.json',
+        if ($suffix) {
+            $transactions = $this->performRequest($this->agenda.$conditions.'.'.$this->format.'?'.$suffix,
                 'GET');
         } else {
-            $transactions = $this->performRequest($this->agenda.$conditions.'.json?'.$suffix,
+            $transactions = $this->performRequest($this->agenda.$conditions.'.'.$this->format,
                 'GET');
         }
-
-        return $transactions[$this->agenda];
+        if (isset($transactions[$this->agenda])) {
+            $result = $transactions[$this->agenda];
+        } else {
+            $result = $transactions;
+        }
+        return $result;
     }
 
     /**
@@ -453,6 +475,38 @@ class FlexiBee extends \Ease\Brick
         $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
             self::flexiUrl($data));
         return $res;
+    }
+
+    /**
+     * Vrací z FlexiBee sloupečky podle podmínek.
+     *
+     * @param array|int|string $conditions  pole podmínek nebo ID záznamu
+     * @param array|string     $orderBy     třídit dle
+     * @param string           $indexBy     klice vysledku naplnit hodnotou ze
+     *                                      sloupečku
+     * @param int              $limit       maximální počet vrácených záznamů
+     *
+     * @return array
+     */
+    public function getAllFromFlexibee($conditions = null, $orderBy = null,
+                                       $indexBy = null, $limit = null)
+    {
+
+        if (is_int($conditions)) {
+            $conditions = [$this->getmyKeyColumn() => $conditions];
+        }
+
+        $flexiData = $this->getFlexiData('', $conditions);
+
+        if ($indexBy) {
+            $flexiData2 = [];
+            foreach ($flexiData as $dataID => $data) {
+                $flexiData2[$data[$indexBy]] = $data;
+            }
+            $flexiData = $flexiData2;
+        }
+
+        return $flexiData;
     }
 
     /**
