@@ -76,7 +76,6 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testObject2array()
     {
-        $this->assertEquals('X', $this->object->object2array('X'));
         $this->assertEquals([], $this->object->object2array(new \stdClass()));
     }
 

@@ -184,9 +184,6 @@ class FlexiBee extends \Ease\Brick
      */
     public static function object2array($data)
     {
-        if (!is_object($data) && !is_array($data)) {
-            return $data;
-        }
         if (is_object($data)) {
             $data = get_object_vars($data);
         }
