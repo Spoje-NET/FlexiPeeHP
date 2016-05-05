@@ -1,17 +1,17 @@
 <?php
-
 /**
  * System.Spoje.Net - Objekt adresáře.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
  */
+
 namespace FlexiPeeHP;
 
 class FakturaVydana extends FlexiBee
 {
-    public $keyword = 'faktura';
-    public $agenda = 'faktura-vydana';
+    public $keyword     = 'faktura';
+    public $agenda      = 'faktura-vydana';
     public $useKeywords = [
         'id' => 'INT',
         'lastUpdate' => 'FLEXIDATETIME',
@@ -59,5 +59,6 @@ class FakturaVydana extends FlexiBee
 
     public function getValue()
     {
+
     }
 }

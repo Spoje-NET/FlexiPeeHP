@@ -17,6 +17,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
+     * @covers FlexiPeeHP\FlexiBee::__construct
      */
     protected function setUp()
     {
@@ -29,7 +30,36 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     protected function tearDown()
     {
+        
+    }
 
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->setMethods(array('curlInit'))
+            ->getMockForAbstractClass();
+
+        // set expectations for constructor calls
+        $mock->expects($this->once())
+            ->method('curlInit')
+            ->with(
+                $this->equalTo(4)
+        );
+
+        // now call the constructor
+        $reflectedClass = new \ReflectionClass($classname);
+        $constructor    = $reflectedClass->getConstructor();
+        $constructor->invoke($mock, 4);
+    }
+
+    public function testCurlInit()
+    {
+        $this->object->curlInit();
+        $this->assertTrue(is_resource($this->object->curl));
     }
 
     /**
@@ -46,6 +76,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testObject2array()
     {
+        $this->assertEquals('X', $this->object->object2array('X'));
         $this->assertEquals([], $this->object->object2array(new \stdClass()));
     }
 

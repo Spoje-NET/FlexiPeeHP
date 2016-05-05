@@ -149,6 +149,11 @@ class FlexiBee extends \Ease\Brick
         $this->init = $init;
 
         parent::__construct();
+        $this->curlInit();
+    }
+
+    public function curlInit()
+    {
         $this->curl = \curl_init(); // create curl resource
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true); // return content as a string from curl_exec
         curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true); // follow redirects (compatibility for future changes in FlexiBee)
