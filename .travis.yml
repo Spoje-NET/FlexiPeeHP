@@ -12,10 +12,11 @@ before_script:
   - travis_retry composer install --no-interaction --prefer-source
   
 script:
-  - ./vendor/bin/parallel-lint src tests
+  - ./vendor/bin/parallel-lint src testing
   - ./vendor/bin/phpunit --coverage-text --coverage-clover clover --bootstrap testing/bootstrap.php
+  - composer require "squizlabs/php_codesniffer=*"
   - ./vendor/bin/phpcs src --standard=psr2 -sp
 
 after_script:
-  - php vendor/bin/coveralls
+  - ./vendor/bin/coveralls
 
