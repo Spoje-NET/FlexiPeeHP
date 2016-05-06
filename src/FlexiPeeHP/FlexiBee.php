@@ -178,17 +178,22 @@ class FlexiBee extends \Ease\Brick
     /**
      * Převede rekurzivně Objekt na pole.
      *
-     * @param object $data
+     * @param object|array $object
      *
      * @return array
      */
-    public static function object2array($data)
+    public static function object2array($object)
     {
-        if (is_object($data)) {
-            $data = get_object_vars($data);
+        $result = null;
+        if (is_object($object)) {
+            $objectData = get_object_vars($object);
+            if (is_array($objectData) && count($objectData)) {
+                $result = array_map('self::object2array', $objectData);
+            }
+        } else {
+            $result = $object;
         }
-
-        return array_map('self::object2array', $data);
+        return $result;
     }
 
     /**
@@ -249,7 +254,7 @@ class FlexiBee extends \Ease\Brick
         switch ($format) {
             case 'json':
                 $decoded = json_decode($response, true, 10);
-                if (isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
+                if (($method == 'post') && isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $decoded[$this->nameSpace][$this->resultField][0]['id'];
                 } else {
                     $this->lastInsertedID = null;
@@ -408,7 +413,7 @@ class FlexiBee extends \Ease\Brick
 
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.json', 'PUT');
+        return $this->performRequest($this->agenda.'.'.$this->format, 'PUT');
     }
 
     /**
@@ -445,7 +450,7 @@ class FlexiBee extends \Ease\Brick
         $jsonizedData = $this->jsonizeData($data);
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.json', 'PUT');
+        return $this->performRequest($this->agenda.'.'.$this->format, 'PUT');
     }
 
     /**
