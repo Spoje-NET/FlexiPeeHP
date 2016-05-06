@@ -56,7 +56,7 @@ class Searcher extends FlexiBee
      */
     public function registerClass($className)
     {
-        $newClass                             = new $className();
+        $newClass = new $className();
         $this->sysClasses[$newClass->keyword] = clone $newClass;
     }
 

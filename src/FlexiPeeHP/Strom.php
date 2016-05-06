@@ -13,5 +13,4 @@ class Strom extends FlexiBee
 {
     public $agenda = 'strom';
     public $nameColumn = 'nazev';
-
 }

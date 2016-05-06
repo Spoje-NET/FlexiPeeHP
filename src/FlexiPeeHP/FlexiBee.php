@@ -12,12 +12,13 @@ class FlexiBee extends \Ease\Brick
 {
     /**
      * Základní namespace pro komunikaci s FlexiBEE.
+     *
      * @var string Jmený prostor datového bloku odpovědi
      */
     public $nameSpace = 'winstrom';
 
     /**
-     * Datový blok v poli odpovědi
+     * Datový blok v poli odpovědi.
      *
      * @var string
      */
@@ -25,6 +26,7 @@ class FlexiBee extends \Ease\Brick
 
     /**
      * Verze protokolu použitého pro komunikaci.
+     *
      * @var string Verze použitého API
      */
     public $protoVersion = '1.0';
@@ -122,19 +124,22 @@ class FlexiBee extends \Ease\Brick
     public $error;
 
     /**
-     * Used codes storage
+     * Used codes storage.
+     *
      * @var array
      */
     public $codes = null;
 
     /**
-     * Last Inserted ID
+     * Last Inserted ID.
+     *
      * @var int
      */
     public $lastInsertedID = null;
 
     /**
-     * Default Line Prefix
+     * Default Line Prefix.
+     *
      * @var string
      */
     public $prefix = '/c/';
@@ -193,6 +198,7 @@ class FlexiBee extends \Ease\Brick
         } else {
             $result = $object;
         }
+
         return $result;
     }
 
@@ -200,8 +206,8 @@ class FlexiBee extends \Ease\Brick
      * Funkce, která provede I/O operaci a vyhodnotí výsledek.
      *
      * @param string $urlSuffix část URL za identifikátorem firmy.
-     * @param string $method HTTP/REST metoda
-     * @param string $format Requested format
+     * @param string $method    HTTP/REST metoda
+     * @param string $format    Requested format
      */
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
@@ -226,7 +232,7 @@ class FlexiBee extends \Ease\Brick
 
         if ($responseCode != 200 && $responseCode != 201) {
             $this->error = curl_error($this->curl);
-            $response    = (json_encode(json_decode($response, true, 10),
+            $response = (json_encode(json_decode($response, true, 10),
                     JSON_PRETTY_PRINT));
 
             $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
@@ -278,11 +284,11 @@ class FlexiBee extends \Ease\Brick
     }
 
     /**
-     * Give you last inserted record ID
+     * Give you last inserted record ID.
      * 
      * @return int
      */
-    function getLastImportId()
+    public function getLastImportId()
     {
         return $this->lastInsertedID;
     }
@@ -335,18 +341,20 @@ class FlexiBee extends \Ease\Brick
     }
 
     /**
-     * Načte řádek dat z FlexiBee
+     * Načte řádek dat z FlexiBee.
      *
      * @param int $recordID
+     *
      * @return array
      */
     public function getFlexiRow($recordID)
     {
-        $record   = null;
+        $record = null;
         $response = $this->performRequest($this->agenda.'/'.$recordID.'.json');
         if (isset($response[$this->agenda])) {
             $record = $response[$this->agenda][0];
         }
+
         return $record;
     }
 
@@ -377,6 +385,7 @@ class FlexiBee extends \Ease\Brick
         } else {
             $result = $transactions;
         }
+
         return $result;
     }
 
@@ -454,26 +463,27 @@ class FlexiBee extends \Ease\Brick
     }
 
     /**
-     * Test if given record ID exists in FlexiBee
+     * Test if given record ID exists in FlexiBee.
      *
      * @param string|int $identifer
      */
-    function idExists($identifer = null)
+    public function idExists($identifer = null)
     {
         if (is_null($identifer)) {
             $identifer = $this->getMyKey();
         }
         $flexiData = $this->getFlexiData(
             'detail=custom:'.$this->getmyKeyColumn(), $identifer);
+
         return $flexiData;
     }
 
     /**
-     * Test if given record exists in FlexiBee
+     * Test if given record exists in FlexiBee.
      *
      * @param array $data
      */
-    function recordExists($data = null)
+    public function recordExists($data = null)
     {
         if (is_null($data)) {
             $data = $this->getData();
@@ -481,24 +491,24 @@ class FlexiBee extends \Ease\Brick
 
         $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
             self::flexiUrl($data));
+
         return $res;
     }
 
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param array|int|string $conditions  pole podmínek nebo ID záznamu
-     * @param array|string     $orderBy     třídit dle
-     * @param string           $indexBy     klice vysledku naplnit hodnotou ze
-     *                                      sloupečku
-     * @param int              $limit       maximální počet vrácených záznamů
+     * @param array|int|string $conditions pole podmínek nebo ID záznamu
+     * @param array|string     $orderBy    třídit dle
+     * @param string           $indexBy    klice vysledku naplnit hodnotou ze
+     *                                     sloupečku
+     * @param int              $limit      maximální počet vrácených záznamů
      *
      * @return array
      */
     public function getAllFromFlexibee($conditions = null, $orderBy = null,
                                        $indexBy = null, $limit = null)
     {
-
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
         }
@@ -519,7 +529,7 @@ class FlexiBee extends \Ease\Brick
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param string[]            $columnsList seznam položek
+     * @param string[]         $columnsList seznam položek
      * @param array|int|string $conditions  pole podmínek nebo ID záznamu
      * @param array|string     $orderBy     třídit dle
      * @param string           $indexBy     klice vysledku naplnit hodnotou ze
@@ -565,6 +575,7 @@ class FlexiBee extends \Ease\Brick
      * Vrací kód záznamu.
      *
      * @param array $data
+     *
      * @todo papat i string
      *
      * @return string
@@ -604,7 +615,7 @@ class FlexiBee extends \Ease\Brick
                         echo 'Error';
                     }
                     if (strstr($codesearch, $kodfinal)) {
-                        $counter++;
+                        ++$counter;
                     }
                 }
             }
@@ -614,6 +625,7 @@ class FlexiBee extends \Ease\Brick
 
             $this->codes[$kodfinal] = $kod;
         }
+
         return strtoupper($kodfinal);
     }
 
@@ -626,8 +638,8 @@ class FlexiBee extends \Ease\Brick
      */
     public function searchString($what)
     {
-        $results   = [];
-        $conds     = [];
+        $results = [];
+        $conds = [];
         $columns[] = $this->myKeyColumn;
         foreach ($this->useKeywords as $keyword => $keywordInfo) {
             if (isset($this->keywordsInfo[$keyword]['virtual']) && ($this->keywordsInfo[$keyword]['virtual']
@@ -641,14 +653,14 @@ class FlexiBee extends \Ease\Brick
                 case 'INT':
                 case 'FLOAT':
                     if (is_numeric($what)) {
-                        $conds[]   = "($keyword = ".$what.')';
+                        $conds[] = "($keyword = ".$what.')';
                         $columns[] = "$keyword";
                     }
                     break;
                 case 'TEXT':
                 case 'STRING':
                     if (is_string($what)) {
-                        $conds[]   = "( $keyword like '".$what."')";
+                        $conds[] = "( $keyword like '".$what."')";
                         $columns[] = "$keyword";
                     }
                     break;
@@ -672,7 +684,7 @@ class FlexiBee extends \Ease\Brick
                 }
             }
             $results[$result[$this->myKeyColumn]] = [$this->nameColumn => $result[$this->nameColumn],
-                'what' => $occurences];
+                'what' => $occurences, ];
         }
 
         return $results;
@@ -681,8 +693,8 @@ class FlexiBee extends \Ease\Brick
     /**
      * Write Operation Result.
      * 
-     * @param array $resultData
-     * @param string $url URL
+     * @param array  $resultData
+     * @param string $url        URL
      */
     public function logResult($resultData, $url = null)
     {
@@ -717,17 +729,19 @@ class FlexiBee extends \Ease\Brick
     }
 
     /**
-     * Generuje fragment url pro filtrování
+     * Generuje fragment url pro filtrování.
      *
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
-     * @param array $data
+     *
+     * @param array  $data
      * @param string $operator and/or
+     *
      * @return string
      */
-    static function flexiUrl($data, $operator = 'and')
+    public static function flexiUrl($data, $operator = 'and')
     {
         $flexiUrl = '';
-        $parts    = [];
+        $parts = [];
 
         foreach ($data as $column => $value) {
             if (is_numeric($data[$column])) {
@@ -738,6 +752,7 @@ class FlexiBee extends \Ease\Brick
         }
 
         $flexiUrl = implode(' '.$operator.' ', $parts);
+
         return $flexiUrl;
     }
 }

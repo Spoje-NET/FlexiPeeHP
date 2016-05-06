@@ -27,9 +27,9 @@ class RadaPokladniPohyb extends FlexiBee
             $crID = $code;
         }
 
-        $cr                = $this->performRequest($this->agenda.'/'.$crID.'.json');
+        $cr = $this->performRequest($this->agenda.'/'.$crID.'.json');
         $radaPokladniPohyb = current($cr[$this->agenda]);
-        $crInfo            = end($radaPokladniPohyb['polozkyRady']);
+        $crInfo = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;
         if ($crInfo['zobrazNuly'] == 'true') {
@@ -47,15 +47,15 @@ class RadaPokladniPohyb extends FlexiBee
         }
 
         if (is_string($code)) {
-            $sro  = $this->performRequest($this->agenda.'/(kod=\''.$code.'\').json');
+            $sro = $this->performRequest($this->agenda.'/(kod=\''.$code.'\').json');
             $crID = current(current($sro[$this->agenda]));
         } else {
             $crID = $code;
         }
 
-        $cr                = $this->performRequest($this->agenda.'/'.$crID.'.json');
+        $cr = $this->performRequest($this->agenda.'/'.$crID.'.json');
         $radaPokladniPohyb = current($cr[$this->agenda]);
-        $crInfo            = end($radaPokladniPohyb['polozkyRady']);
+        $crInfo = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;
     }

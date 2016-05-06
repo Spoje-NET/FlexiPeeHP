@@ -12,5 +12,4 @@ namespace FlexiPeeHP;
 class StromCenik extends FlexiBee
 {
     public $agenda = 'strom-cenik';
-
 }

@@ -12,5 +12,4 @@ namespace FlexiPeeHP;
 class Stitek extends FlexiBee
 {
     public $agenda = 'stitek';
-
 }

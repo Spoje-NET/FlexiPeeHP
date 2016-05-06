@@ -10,8 +10,8 @@ namespace FlexiPeeHP;
 
 class FakturaVydana extends FlexiBee
 {
-    public $keyword     = 'faktura';
-    public $agenda      = 'faktura-vydana';
+    public $keyword = 'faktura';
+    public $agenda = 'faktura-vydana';
     public $useKeywords = [
         'id' => 'INT',
         'lastUpdate' => 'FLEXIDATETIME',
@@ -59,6 +59,5 @@ class FakturaVydana extends FlexiBee
 
     public function getValue()
     {
-
     }
 }

@@ -12,26 +12,29 @@ class Company extends FlexiBee
 {
     /**
      * Základní namespace pro komunikaci s FlexiBEE.
+     *
      * @var string Jmený prostor datového bloku odpovědi
      */
     public $nameSpace = 'companies';
 
     /**
-     * Default Line Prefix
+     * Default Line Prefix.
+     *
      * @var string
      */
     public $prefix = '';
 
     /**
-     * Company
+     * Company.
+     *
      * @var string
      */
-    public $agenda  = 'c';
+    public $agenda = 'c';
 
     /**
-     * Tato třída nepracuje sezvolenou firmou
-     * @var string 
+     * Tato třída nepracuje sezvolenou firmou.
+     *
+     * @var string
      */
     public $company = '';
-
 }
