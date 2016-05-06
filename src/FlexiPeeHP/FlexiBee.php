@@ -519,7 +519,7 @@ class FlexiBee extends \Ease\Brick
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param array            $columnsList seznam položek
+     * @param string[]            $columnsList seznam položek
      * @param array|int|string $conditions  pole podmínek nebo ID záznamu
      * @param array|string     $orderBy     třídit dle
      * @param string           $indexBy     klice vysledku naplnit hodnotou ze
