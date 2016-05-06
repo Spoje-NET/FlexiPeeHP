@@ -337,7 +337,7 @@ class FlexiBee extends \Ease\Brick
      */
     public function loadFlexiData($suffix = null)
     {
-        $this->setListingData($this->getFlexiData($suffix));
+        return $this->takeData($this->getFlexiData($suffix));
     }
 
     /**

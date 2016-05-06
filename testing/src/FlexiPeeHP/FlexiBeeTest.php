@@ -190,14 +190,20 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::getFlexiData
-     * @todo   Implement testGetFlexiData().
      */
     public function testGetFlexiData()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        if (is_null($this->object->agenda) || $this->object->agenda != 'test') {
+            $this->object->agenda    = 'c';
+            $this->object->prefix    = '';
+            $this->object->company   = '';
+            $this->object->nameSpace = 'companies';
+            $flexidata               = $this->object->getFlexiData();
+            $this->assertArrayHasKey('company', $flexidata);
+        } else {
+            $flexidata = $this->object->getFlexiData();
+            $this->assertArrayHasKey($this->object->agenda, $flexidata);
+        }
     }
 
     /**
