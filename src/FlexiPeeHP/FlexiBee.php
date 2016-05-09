@@ -196,7 +196,13 @@ class FlexiBee extends \Ease\Brick
                 $result = array_map('self::object2array', $objectData);
             }
         } else {
-            $result = $object;
+            if (is_array($object)) {
+                foreach ($object as $item => $value) {
+                    $result[$item] = self::object2array($value);
+                }
+            } else {
+                $result = $object;
+            }
         }
 
         return $result;
@@ -232,7 +238,7 @@ class FlexiBee extends \Ease\Brick
 
         if ($responseCode != 200 && $responseCode != 201) {
             $this->error = curl_error($this->curl);
-            $response = (json_encode(json_decode($response, true, 10),
+            $response    = (json_encode(json_decode($response, true, 10),
                     JSON_PRETTY_PRINT));
 
             $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
@@ -270,8 +276,7 @@ class FlexiBee extends \Ease\Brick
 
                 break;
             case 'xml':
-                $decoded = simplexml_load_string($response);
-                $decoded = self::xml2array($decoded);
+                $decoded = self::xml2array($response);
                 break;
         }
 
@@ -288,7 +293,7 @@ class FlexiBee extends \Ease\Brick
      * 
      * @return int
      */
-    public function getLastImportId()
+    public function getLastInsertedId()
     {
         return $this->lastInsertedID;
     }
@@ -303,6 +308,11 @@ class FlexiBee extends \Ease\Brick
     public static function xml2array($xml)
     {
         $arr = [];
+
+        if (is_string($xml)) {
+            $xml = simplexml_load_string($xml);
+        }
+
         foreach ($xml->children() as $r) {
             $t = [];
             if (count($r->children()) == 0) {
@@ -323,6 +333,7 @@ class FlexiBee extends \Ease\Brick
         if (is_resource($this->curl)) {
             curl_close($this->curl);
         }
+        $this->curl = null;
     }
 
     public function __destruct()
@@ -343,13 +354,13 @@ class FlexiBee extends \Ease\Brick
     /**
      * Načte řádek dat z FlexiBee.
      *
-     * @param int $recordID
+     * @param int $recordID id požadovaného záznamu
      *
      * @return array
      */
     public function getFlexiRow($recordID)
     {
-        $record = null;
+        $record   = null;
         $response = $this->performRequest($this->agenda.'/'.$recordID.'.json');
         if (isset($response[$this->agenda])) {
             $record = $response[$this->agenda][0];
@@ -399,7 +410,7 @@ class FlexiBee extends \Ease\Brick
     public function loadFromFlexiBee($id = null)
     {
         if (is_null($id)) {
-            $id = $this->getId();
+            $id = $this->getMyKey();
         }
 
         return $this->takeData($this->getFlexiData('/'.$id));
@@ -638,8 +649,8 @@ class FlexiBee extends \Ease\Brick
      */
     public function searchString($what)
     {
-        $results = [];
-        $conds = [];
+        $results   = [];
+        $conds     = [];
         $columns[] = $this->myKeyColumn;
         foreach ($this->useKeywords as $keyword => $keywordInfo) {
             if (isset($this->keywordsInfo[$keyword]['virtual']) && ($this->keywordsInfo[$keyword]['virtual']
@@ -653,14 +664,14 @@ class FlexiBee extends \Ease\Brick
                 case 'INT':
                 case 'FLOAT':
                     if (is_numeric($what)) {
-                        $conds[] = "($keyword = ".$what.')';
+                        $conds[]   = "($keyword = ".$what.')';
                         $columns[] = "$keyword";
                     }
                     break;
                 case 'TEXT':
                 case 'STRING':
                     if (is_string($what)) {
-                        $conds[] = "( $keyword like '".$what."')";
+                        $conds[]   = "( $keyword like '".$what."')";
                         $columns[] = "$keyword";
                     }
                     break;
@@ -684,7 +695,7 @@ class FlexiBee extends \Ease\Brick
                 }
             }
             $results[$result[$this->myKeyColumn]] = [$this->nameColumn => $result[$this->nameColumn],
-                'what' => $occurences, ];
+                'what' => $occurences,];
         }
 
         return $results;
@@ -741,7 +752,7 @@ class FlexiBee extends \Ease\Brick
     public static function flexiUrl($data, $operator = 'and')
     {
         $flexiUrl = '';
-        $parts = [];
+        $parts    = [];
 
         foreach ($data as $column => $value) {
             if (is_numeric($data[$column])) {

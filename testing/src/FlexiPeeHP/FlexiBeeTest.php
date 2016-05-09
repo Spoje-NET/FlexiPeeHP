@@ -117,51 +117,62 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBee::getLastImportId
-     * @todo   Implement testGetLastImportId().
+     * @covers FlexiPeeHP\FlexiBee::getLastInsertedId
+     * @depends testInsertToFlexiBee
      */
-    public function testGetLastImportId()
+    public function testGetLastInsertedId()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertNotEmpty($this->object->getLastInsertedId());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBee::xml2array
-     * @todo   Implement testXml2array().
      */
     public function testXml2array()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $xml = '<card xmlns="http://businesscard.org">
+   <name>John Doe</name>
+   <title>CEO, Widget Inc.</title>
+   <email>john.doe@widget.com</email>
+   <phone>(202) 456-1414</phone>
+   <logo url="widget.gif"/>
+ </card>';
+
+        $data = ['name' => 'John Doe', 'title' => 'CEO, Widget Inc.', 'email' => 'john.doe@widget.com',
+            'phone' => '(202) 456-1414', 'logo' => ''];
+
+
+        $this->assertEquals($data, $this->object->xml2array($xml));
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBee::disconnect
-     * @todo   Implement testDisconnect().
+     *
+     * @depends testPerformRequest
+     * @depends testLoadFlexiData
+     * @depends testGetFlexiRow
+     * @depends testGetFlexiData
+     * @depends testLoadFromFlexiBee
+     * @depends testSaveToFlexiBee
+     * @depends testInsertToFlexiBee
+     * @depends testIdExists
+     * @depends testRecordExists
+     * @depends testGetColumnsFromFlexibee
+     * @depends testSearchString
      */
     public function testDisconnect()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->disconnect();
+        $this->assertNull($this->object->curl);
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBee::__destruct
-     * @todo   Implement test__destruct().
+     * @depends testDisconnect
      */
     public function test__destruct()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->markTestSkipped();
     }
 
     /**
@@ -178,14 +189,11 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::getFlexiRow
-     * @todo   Implement testGetFlexiRow().
      */
     public function testGetFlexiRow()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->getFlexiRow(0);
+        $this->object->getFlexiRow(1);
     }
 
     /**
@@ -208,14 +216,11 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::loadFromFlexiBee
-     * @todo   Implement testLoadFromFlexiBee().
      */
     public function testLoadFromFlexiBee()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->loadFromFlexiBee();
+        $this->object->loadFromFlexiBee(222);
     }
 
     /**
