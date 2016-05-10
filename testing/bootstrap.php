@@ -13,6 +13,19 @@ if (file_exists('../vendor/autoload.php')) {
     }
 }
 
+if (!function_exists('_')) {
+
+    /**
+     * Maketa Gettextu pro HHVM
+     * @param string $a
+     * @return string
+     */
+    function _($a)
+    {
+        return $a;
+    }
+}
+
 /**
  * Write logs as:
  */
