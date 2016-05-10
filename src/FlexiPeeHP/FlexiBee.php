@@ -250,7 +250,7 @@ class FlexiBee extends \Ease\Brick
             if ($responseCode == 400) {
                 $this->logResult(self::object2array(current(json_decode($response))));
             } else {
-                $this->addStatusMessage(sprintf(_('Při operaci nastala chyba (HTTP %d): <pre>%s</pre> %s'),
+                $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
                         curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
                         stripslashes($response), $this->error), 'error');
                 $this->addStatusMessage($url);
