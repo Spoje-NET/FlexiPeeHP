@@ -114,6 +114,10 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
             $xml = $this->object->performRequest(null, null, 'xml');
             $this->assertArrayHasKey('company', $xml);
         }
+
+        $err = $this->object->performRequest('error.json');
+        $this->assertArrayHasKey('success', $err);
+        $this->assertEquals('false', $err['success']);
     }
 
     /**
@@ -136,10 +140,11 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
    <email>john.doe@widget.com</email>
    <phone>(202) 456-1414</phone>
    <logo url="widget.gif"/>
+   <a><b>c</b></a>
  </card>';
 
         $data = ['name' => 'John Doe', 'title' => 'CEO, Widget Inc.', 'email' => 'john.doe@widget.com',
-            'phone' => '(202) 456-1414', 'logo' => ''];
+            'phone' => '(202) 456-1414', 'logo' => '', 'a' => [['b' => 'c']]];
 
 
         $this->assertEquals($data, $this->object->xml2array($xml));
@@ -201,7 +206,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testGetFlexiData()
     {
-        if (is_null($this->object->agenda) || $this->object->agenda != 'test') {
+        if (is_null($this->object->agenda) || ($this->object->agenda == 'test')) {
             $this->object->agenda    = 'c';
             $this->object->prefix    = '';
             $this->object->company   = '';
@@ -210,7 +215,12 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
             $this->assertArrayHasKey('company', $flexidata);
         } else {
             $flexidata = $this->object->getFlexiData();
-            $this->assertArrayHasKey($this->object->agenda, $flexidata);
+            $this->assertArrayHasKey(0, $flexidata);
+            $this->assertArrayHasKey('id', $flexidata[0]);
+            $filtrered = $this->object->getFlexiData(null,
+                key($flexidata[0])." = ".current($flexidata[0]));
+            $this->assertArrayHasKey(0, $filtrered);
+            $this->assertArrayHasKey('id', $filtrered[0]);
         }
     }
 
@@ -270,14 +280,11 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::recordExists
-     * @todo   Implement testRecordExists().
      */
     public function testRecordExists()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+//        $this->assertTrue($this->object->recordExists([]));
+//        $this->assertFalse($this->object->recordExists([]));
     }
 
     /**

@@ -31,4 +31,22 @@ class NastaveniTest extends FlexiBeeTest
     {
 
     }
+
+    /**
+     * @covers FlexiPeeHP\Nastaveni::getFlexiData
+     */
+    public function testGetFlexiData()
+    {
+        if ($this->object->url == 'https://demo.flexibee.eu') {
+            $this->markTestSkipped('Public demo site does not allow read here');
+        } else {
+            $flexidata = $this->object->getFlexiData();
+            $this->assertArrayHasKey(0, $flexidata);
+            $this->assertArrayHasKey('id', $flexidata[0]);
+            $filtrered = $this->object->getFlexiData(null,
+                key($flexidata[0])." = ".current($flexidata[0]));
+            $this->assertArrayHasKey(0, $filtrered);
+            $this->assertArrayHasKey('id', $filtrered[0]);
+        }
+    }
 }

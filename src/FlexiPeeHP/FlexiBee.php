@@ -266,7 +266,7 @@ class FlexiBee extends \Ease\Brick
         switch ($format) {
             case 'json':
                 $decoded = json_decode($response, true, 10);
-                if (($method == 'post') && isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
+                if (($method == 'PUT') && isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $decoded[$this->nameSpace][$this->resultField][0]['id'];
                 } else {
                     $this->lastInsertedID = null;
@@ -749,7 +749,7 @@ class FlexiBee extends \Ease\Brick
      *
      * @return string
      */
-    public static function flexiUrl($data, $operator = 'and')
+    public static function flexiUrl(array $data, $operator = 'and')
     {
         $flexiUrl = '';
         $parts    = [];
