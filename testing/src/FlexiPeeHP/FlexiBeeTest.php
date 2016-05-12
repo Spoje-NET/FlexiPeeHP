@@ -301,14 +301,32 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBee::getKod
-     * @todo   Implement testGetKod().
      */
     public function testGetKod()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+
+        $this->assertEquals('CODE',
+            $this->object->getKod([$this->object->myKeyColumn => 'code']));
+
+        $testString[$this->object->nameColumn] = 'Fish clamp -  Úchytka pro instalaci samonosných kabelů '
+            .'(3.5 mm)';
+        $code0                                 = $this->object->getKod($testString);
+        $this->assertEquals('FISHCLAMPUCHYTKAPR', $code0);
+        $code1                                 = $this->object->getKod($testString,
+            false);
+        $this->assertEquals('FISHCLAMPUCHYTKAPR', $code1);
+        $code2                                 = $this->object->getKod($testString);
+        $this->assertEquals('FISHCLAMPUCHYTKAPR1', $code2);
+        $this->object->setData($testString);
+        $code3                                 = $this->object->getKod();
+        $this->assertEquals('FISHCLAMPUCHYTKAPR2', $code3);
+
+        $this->assertEquals('TEST',
+            $this->object->getKod([$this->object->nameColumn => 'test']));
+
+        $this->assertEquals('TEST1', $this->object->getKod('test'));
+
+        $this->assertEquals('test', $this->object->getKod(['kod' => 'test']));
     }
 
     /**

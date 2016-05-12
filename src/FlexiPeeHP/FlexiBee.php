@@ -585,7 +585,7 @@ class FlexiBee extends \Ease\Brick
     /**
      * Vrací kód záznamu.
      *
-     * @param array $data
+     * @param mixed $data
      *
      * @todo papat i string
      *
@@ -599,8 +599,12 @@ class FlexiBee extends \Ease\Brick
             $data = $this->getData();
         }
 
+        if (is_string($data)) {
+            $data = [$this->nameColumn => $data];
+        }
+
         if (isset($data['kod'])) {
-            $kod = $data['kod'];
+            return $data['kod'];
         } else {
             if (isset($data[$this->nameColumn])) {
                 $kod = preg_replace('/[^a-zA-Z0-9]/', '',
@@ -613,15 +617,15 @@ class FlexiBee extends \Ease\Brick
         }
 
         if (strlen($kod) > 18) {
-            $kodfinal = substr($kod, 0, 18);
+            $kodfinal = strtoupper(substr($kod, 0, 18));
         } else {
-            $kodfinal = $kod;
+            $kodfinal = strtoupper($kod);
         }
 
         if ($unique) {
             $counter = 0;
             if ($this->codes) {
-                foreach ($this->codes as $codesearch) {
+                foreach ($this->codes as $codesearch => $keystring) {
                     if (!strlen($codesearch)) {
                         echo 'Error';
                     }
@@ -637,7 +641,7 @@ class FlexiBee extends \Ease\Brick
             $this->codes[$kodfinal] = $kod;
         }
 
-        return strtoupper($kodfinal);
+        return $kodfinal;
     }
 
     /**
