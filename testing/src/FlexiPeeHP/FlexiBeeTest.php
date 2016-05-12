@@ -327,6 +327,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
         $this->assertEquals('TEST1', $this->object->getKod('test'));
 
         $this->assertEquals('test', $this->object->getKod(['kod' => 'test']));
+        $this->assertEquals('NOTSET', $this->object->getKod(['kod' => '']));
     }
 
     /**

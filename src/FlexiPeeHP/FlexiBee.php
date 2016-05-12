@@ -604,7 +604,7 @@ class FlexiBee extends \Ease\Brick
         }
 
         if (isset($data['kod'])) {
-            return $data['kod'];
+            $kod = $data['kod'];
         } else {
             if (isset($data[$this->nameColumn])) {
                 $kod = preg_replace('/[^a-zA-Z0-9]/', '',
@@ -614,6 +614,10 @@ class FlexiBee extends \Ease\Brick
                     $kod = \Ease\Sand::rip($data[$this->myKeyColumn]);
                 }
             }
+        }
+
+        if (!strlen($kod)) {
+            $kod = 'NOTSET';
         }
 
         if (strlen($kod) > 18) {
@@ -626,9 +630,6 @@ class FlexiBee extends \Ease\Brick
             $counter = 0;
             if ($this->codes) {
                 foreach ($this->codes as $codesearch => $keystring) {
-                    if (!strlen($codesearch)) {
-                        echo 'Error';
-                    }
                     if (strstr($codesearch, $kodfinal)) {
                         ++$counter;
                     }
