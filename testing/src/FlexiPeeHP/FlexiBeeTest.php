@@ -104,7 +104,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
                 $this->assertArrayHasKey($this->object->evidence, $json);
             }
         } else {
-            $this->object->evidence    = 'c';
+            $this->object->evidence  = 'c';
             $this->object->prefix    = '';
             $this->object->company   = '';
             $this->object->nameSpace = 'companies';
@@ -207,7 +207,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     public function testGetFlexiData()
     {
         if (is_null($this->object->evidence) || ($this->object->evidence == 'test')) {
-            $this->object->evidence    = 'c';
+            $this->object->evidence  = 'c';
             $this->object->prefix    = '';
             $this->object->company   = '';
             $this->object->nameSpace = 'companies';
@@ -250,7 +250,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testJsonizeData()
     {
-        $this->assertEquals('{"winstrom":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
+        $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
     }
 

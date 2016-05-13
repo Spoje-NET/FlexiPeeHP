@@ -1,6 +1,6 @@
 <?php
 /**
- * System.Spoje.Net - Objekt adresáře.
+ * FlexiPeeHP - Objekt vydané faktury.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -11,6 +11,12 @@ namespace FlexiPeeHP;
 class FakturaVydana extends FlexiBee
 {
     public $keyword = 'faktura';
+
+    /**
+     * Evidence užitá objektem.
+     *
+     * @var string
+     */
     public $evidence = 'faktura-vydana';
     public $useKeywords = [
         'id' => 'INT',
@@ -26,11 +32,7 @@ class FakturaVydana extends FlexiBee
         'zbyvaUhraditMen' => 'FLOAT',
         'zbyvaUhradit' => 'FLOAT',
         'mena' => 'REF',
-//                'mena@showAs'=> 'CZK=> Česká koruna',
-//                'mena@ref'=> '/c/spoje_net_s_r_o_/mena/31.json',
         'firma' => 'REF',
-//                'firma@showAs'=> '1092=>  1T S. R. O.',
-//                'firma@ref'=> '/c/spoje_net_s_r_o_/adresar/1662.json',
         'popis' => 'STRING',
     ];
 

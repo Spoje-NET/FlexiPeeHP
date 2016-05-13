@@ -1,6 +1,6 @@
 <?php
 /**
- * System.Spoje.Net - Objekt řady pokladního pohybu.
+ * FlexiPeeHP - Objekt řady pokladního pohybu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -10,8 +10,19 @@ namespace FlexiPeeHP;
 
 class RadaPokladniPohyb extends FlexiBee
 {
+    /**
+     * Evidence užitá objektem.
+     *
+     * @var string
+     */
     public $evidence = 'rada-pokladni-pohyb';
 
+    /**
+     * Obtain code for new Record
+     *
+     * @param string $code
+     * @return string
+     */
     public function getNextRecordCode($code = null)
     {
         if (is_null($code)) {

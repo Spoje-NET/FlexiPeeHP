@@ -1,6 +1,6 @@
 <?php
 /**
- * System.Spoje.Net - Objekt účetního období.
+ * FlexiPeeHP - Objekt účetního období.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -9,7 +9,7 @@
 namespace FlexiPeeHP;
 
 /**
- * Description of UsetniObdobi.
+ * Class for Accounting period handling.
  *
  * @link https://demo.flexibee.eu/c/demo/ucetni-obdobi/properties Dokumentace
  * @author vitex
@@ -23,6 +23,7 @@ class UcetniObdobi extends FlexiBee
     public $evidence = 'ucetni-obdobi';
 
     /**
+     * Create requested Accounting period
      *
      * @param type $startYear
      * @param type $endYear
