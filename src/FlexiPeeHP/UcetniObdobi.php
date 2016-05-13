@@ -25,8 +25,10 @@ class UcetniObdobi extends FlexiBee
     /**
      * Create requested Accounting period
      *
-     * @param type $startYear
-     * @param type $endYear
+     * @param int $startYear first year to create
+     * @param int $endYear   last yar to create - default is current year
+     *
+     * @return array Results
      */
     public function createYearsFrom($startYear, $endYear = null)
     {
@@ -40,8 +42,9 @@ class UcetniObdobi extends FlexiBee
                 'platiDoData' => $year.'-12-31T23:59:59',
             ];
             $this->setData($obdobi);
-            $result = $this->insertToFlexibee();
+            $result[] = $this->insertToFlexibee();
             $this->addStatusMessage(print_r($result, 1));
         }
+        return $result;
     }
 }

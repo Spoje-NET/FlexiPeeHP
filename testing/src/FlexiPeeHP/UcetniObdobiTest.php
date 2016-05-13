@@ -71,5 +71,10 @@ class UcetniObdobiTest extends FlexiBeeTest
         //Byly požadované roky založeny ?
         $this->assertArrayHasKey($testyear, $newyears);
         $this->assertArrayHasKey($testyear + 1, $newyears);
+
+        //Zkusit založit již existující období
+        $wrong = $this->object->createYearsFrom(date('Y'));
+        $this->assertEquals('false', $wrong[0]['success'],
+            'current year does not exist ?');
     }
 }
