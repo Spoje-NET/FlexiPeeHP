@@ -1,4 +1,10 @@
 <?php
+/**
+ * FlexiPeeHP - Objekt účetního období.
+ *
+ * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @copyright  (C) 2015,2016 Spoje.Net
+ */
 
 namespace Test\FlexiPeeHP;
 
@@ -34,13 +40,36 @@ class UcetniObdobiTest extends FlexiBeeTest
 
     /**
      * @covers FlexiPeeHP\UcetniObdobi::createYearsFrom
-     * @todo   Implement testCreateYearsFrom().
      */
     public function testCreateYearsFrom()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        //Načíst stávající roky
+        $fbyears = $this->object->getColumnsFromFlexibee(['kod'], null, 'kod');
+        $years   = [];
+        foreach ($fbyears as $fbyear) {
+            if (is_numeric($fbyear['kod'])) {
+                $years[] = $fbyear['kod'];
+            }
+        }
+        asort($years);
+        $firstyear = current($years);
+        $testyear  = $firstyear - 2;
+
+
+        //Založit další dva předcházející roky
+        $this->object->createYearsFrom($testyear, $testyear + 1);
+
+        //Znovu přečíst roky z FlexiBee
+        $newfbyears = $this->object->getColumnsFromFlexibee(['kod'], null, 'kod');
+        $newyears   = [];
+        foreach ($newfbyears as $newfbyear) {
+            if (is_numeric($newfbyear['kod'])) {
+                $newyears[$newfbyear['kod']] = $newfbyear['kod'];
+            }
+        }
+
+        //Byly požadované roky založeny ?
+        $this->assertArrayHasKey($testyear, $newyears);
+        $this->assertArrayHasKey($testyear + 1, $newyears);
     }
 }
