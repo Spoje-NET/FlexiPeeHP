@@ -29,7 +29,7 @@ class Company extends FlexiBee
      *
      * @var string
      */
-    public $agenda = 'c';
+    public $evidence = 'c';
 
     /**
      * Tato třída nepracuje sezvolenou firmou.

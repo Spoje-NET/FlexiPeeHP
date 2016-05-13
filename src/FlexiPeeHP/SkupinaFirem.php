@@ -11,5 +11,5 @@ namespace FlexiPeeHP;
 
 class SkupinaFirem extends Importer\Importer
 {
-    public $agenda = 'skupina-firem';
+    public $evidence = 'skupina-firem';
 }

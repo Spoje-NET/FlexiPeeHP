@@ -10,5 +10,5 @@ namespace FlexiPeeHP;
 
 class VyrobniCislo extends FlexiBee
 {
-    public $agenda = 'vyrobni-cislo';
+    public $evidence = 'vyrobni-cislo';
 }

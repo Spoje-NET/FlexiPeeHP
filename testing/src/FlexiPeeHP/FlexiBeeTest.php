@@ -68,12 +68,12 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBee::setAgenda
+     * @covers FlexiPeeHP\FlexiBee::setEvidence
      */
-    public function testSetAgenda()
+    public function testSetEvidence()
     {
-        $this->object->setAgenda('nastaveni');
-        $this->assertEquals('nastaveni', $this->object->agenda);
+        $this->object->setEvidence('nastaveni');
+        $this->assertEquals('nastaveni', $this->object->evidence);
     }
 
     /**
@@ -96,15 +96,15 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     public function testPerformRequest()
     {
 
-        if (!is_null($this->object->agenda) && $this->object->agenda != 'test') {
-            $json = $this->object->performRequest($this->object->agenda.'.json');
+        if (!is_null($this->object->evidence) && $this->object->evidence != 'test') {
+            $json = $this->object->performRequest($this->object->evidence.'.json');
             if (array_key_exists('message', $json)) {
                 $this->assertArrayHasKey('@version', $json);
             } else {
-                $this->assertArrayHasKey($this->object->agenda, $json);
+                $this->assertArrayHasKey($this->object->evidence, $json);
             }
         } else {
-            $this->object->agenda    = 'c';
+            $this->object->evidence    = 'c';
             $this->object->prefix    = '';
             $this->object->company   = '';
             $this->object->nameSpace = 'companies';
@@ -206,8 +206,8 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testGetFlexiData()
     {
-        if (is_null($this->object->agenda) || ($this->object->agenda == 'test')) {
-            $this->object->agenda    = 'c';
+        if (is_null($this->object->evidence) || ($this->object->evidence == 'test')) {
+            $this->object->evidence    = 'c';
             $this->object->prefix    = '';
             $this->object->company   = '';
             $this->object->nameSpace = 'companies';
@@ -250,7 +250,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      */
     public function testJsonizeData()
     {
-        $this->assertEquals('{"winstrom":{"@version":"1.0","'.$this->object->agenda.'":{"key":"value"}}}',
+        $this->assertEquals('{"winstrom":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
     }
 

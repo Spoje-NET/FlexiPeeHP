@@ -11,6 +11,6 @@ namespace FlexiPeeHP;
 
 class Strom extends FlexiBee
 {
-    public $agenda = 'strom';
+    public $evidence = 'strom';
     public $nameColumn = 'nazev';
 }

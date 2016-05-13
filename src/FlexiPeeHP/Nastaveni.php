@@ -12,5 +12,5 @@ namespace FlexiPeeHP;
 class Nastaveni extends FlexiBee
 {
     public $keyword = 'nastaveni';
-    public $agenda = 'nastaveni';
+    public $evidence = 'nastaveni';
 }

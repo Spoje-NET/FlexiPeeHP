@@ -11,5 +11,5 @@ namespace FlexiPeeHP;
 
 class SkladovyPohybPolozka extends FlexiBee
 {
-    public $agenda = 'skladovy-pohyb-polozka';
+    public $evidence = 'skladovy-pohyb-polozka';
 }

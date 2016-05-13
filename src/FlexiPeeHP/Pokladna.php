@@ -11,5 +11,5 @@ namespace FlexiPeeHP;
 
 class Pokladna extends FlexiBee
 {
-    public $agenda = 'pokladna';
+    public $evidence = 'pokladna';
 }

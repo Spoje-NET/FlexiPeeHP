@@ -10,7 +10,7 @@ namespace FlexiPeeHP;
 
 class RadaPokladniPohyb extends FlexiBee
 {
-    public $agenda = 'rada-pokladni-pohyb';
+    public $evidence = 'rada-pokladni-pohyb';
 
     public function getNextRecordCode($code = null)
     {
@@ -19,16 +19,16 @@ class RadaPokladniPohyb extends FlexiBee
         }
         $crID = null;
         if (is_string($code)) {
-            $sro = $this->performRequest($this->agenda.'/(kod=\''.$code.'\').json');
-            if (count($sro[$this->agenda])) {
-                $crID = current(current($sro[$this->agenda]));
+            $sro = $this->performRequest($this->evidence.'/(kod=\''.$code.'\').json');
+            if (count($sro[$this->evidence])) {
+                $crID = current(current($sro[$this->evidence]));
             }
         } else {
             $crID = $code;
         }
 
-        $cr = $this->performRequest($this->agenda.'/'.$crID.'.json');
-        $radaPokladniPohyb = current($cr[$this->agenda]);
+        $cr = $this->performRequest($this->evidence.'/'.$crID.'.json');
+        $radaPokladniPohyb = current($cr[$this->evidence]);
         $crInfo = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;
@@ -47,14 +47,14 @@ class RadaPokladniPohyb extends FlexiBee
         }
 
         if (is_string($code)) {
-            $sro = $this->performRequest($this->agenda.'/(kod=\''.$code.'\').json');
-            $crID = current(current($sro[$this->agenda]));
+            $sro = $this->performRequest($this->evidence.'/(kod=\''.$code.'\').json');
+            $crID = current(current($sro[$this->evidence]));
         } else {
             $crID = $code;
         }
 
-        $cr = $this->performRequest($this->agenda.'/'.$crID.'.json');
-        $radaPokladniPohyb = current($cr[$this->agenda]);
+        $cr = $this->performRequest($this->evidence.'/'.$crID.'.json');
+        $radaPokladniPohyb = current($cr[$this->evidence]);
         $crInfo = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;

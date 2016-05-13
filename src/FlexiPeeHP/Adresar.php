@@ -12,7 +12,7 @@ namespace FlexiPeeHP;
 class Adresar extends FlexiBee
 {
     public $keyword = 'klient';
-    public $agenda = 'adresar';
+    public $evidence = 'adresar';
     public $useKeywords = [
         'id' => 'STRING',
         'lastUpdate' => 'DATETIME',

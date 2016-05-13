@@ -32,11 +32,11 @@ class FlexiBee extends \Ease\Brick
     public $protoVersion = '1.0';
 
     /**
-     * Agenda užitá objektem.
+     * Evidence užitá objektem.
      *
      * @var string
      */
-    public $agenda = null;
+    public $evidence = null;
 
     /**
      * Výchozí formát pro komunikaci.
@@ -173,11 +173,11 @@ class FlexiBee extends \Ease\Brick
     /**
      * Nastaví Agendu pro Komunikaci.
      *
-     * @param string $agenda
+     * @param string $evidence
      */
-    public function setAgenda($agenda)
+    public function setEvidence($evidence)
     {
-        $this->agenda = $agenda;
+        $this->evidence = $evidence;
     }
 
     /**
@@ -222,7 +222,7 @@ class FlexiBee extends \Ease\Brick
             $format = $this->format;
         }
         if (is_null($urlSuffix)) {
-            $urlSuffix = $this->agenda.'.'.$format;
+            $urlSuffix = $this->evidence.'.'.$format;
         }
         $url = $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
         curl_setopt($this->curl, CURLOPT_URL, $url);
@@ -361,9 +361,9 @@ class FlexiBee extends \Ease\Brick
     public function getFlexiRow($recordID)
     {
         $record   = null;
-        $response = $this->performRequest($this->agenda.'/'.$recordID.'.json');
-        if (isset($response[$this->agenda])) {
-            $record = $response[$this->agenda][0];
+        $response = $this->performRequest($this->evidence.'/'.$recordID.'.json');
+        if (isset($response[$this->evidence])) {
+            $record = $response[$this->evidence][0];
         }
 
         return $record;
@@ -385,14 +385,14 @@ class FlexiBee extends \Ease\Brick
             $conditions = '';
         }
         if ($suffix) {
-            $transactions = $this->performRequest($this->agenda.$conditions.'.'.$this->format.'?'.$suffix,
+            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix,
                 'GET');
         } else {
-            $transactions = $this->performRequest($this->agenda.$conditions.'.'.$this->format,
+            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format,
                 'GET');
         }
-        if (isset($transactions[$this->agenda])) {
-            $result = $transactions[$this->agenda];
+        if (isset($transactions[$this->evidence])) {
+            $result = $transactions[$this->evidence];
         } else {
             $result = $transactions;
         }
@@ -433,7 +433,7 @@ class FlexiBee extends \Ease\Brick
 
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.'.$this->format, 'PUT');
+        return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
     }
 
     /**
@@ -448,7 +448,7 @@ class FlexiBee extends \Ease\Brick
         $jsonize = [
             $this->nameSpace => [
                 '@version' => $this->protoVersion,
-                $this->agenda => $data,
+                $this->evidence => $data,
             ],
         ];
 
@@ -470,7 +470,7 @@ class FlexiBee extends \Ease\Brick
         $jsonizedData = $this->jsonizeData($data);
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.'.$this->format, 'PUT');
+        return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
     }
 
     /**

@@ -11,12 +11,22 @@ namespace FlexiPeeHP;
 /**
  * Description of UsetniObdobi.
  *
+ * @link https://demo.flexibee.eu/c/demo/ucetni-obdobi/properties Dokumentace
  * @author vitex
  */
 class UcetniObdobi extends FlexiBee
 {
-    public $agenda = 'ucetni-obdobi';
+    /**
+     * Evidence FlexiBee
+     * @var string
+     */
+    public $evidence = 'ucetni-obdobi';
 
+    /**
+     *
+     * @param type $startYear
+     * @param type $endYear
+     */
     public function createYearsFrom($startYear, $endYear = null)
     {
         if (is_null($endYear)) {

@@ -12,5 +12,5 @@ namespace FlexiPeeHP;
 class Kontakt extends FlexiBee
 {
     public $keyword = 'kontakt';
-    public $agenda = 'kontakt';
+    public $evidence = 'kontakt';
 }

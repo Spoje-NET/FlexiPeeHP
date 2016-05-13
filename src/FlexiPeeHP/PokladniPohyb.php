@@ -14,11 +14,11 @@ class PokladniPohyb extends FlexiBee
     public $keyword = 'transaction';
 
     /**
-     * Agenda FlexiBee.
+     * Evidence FlexiBee.
      *
      * @var string
      */
-    public $agenda = 'pokladni-pohyb';
+    public $evidence = 'pokladni-pohyb';
     public $useKeywords = [
         'lastUpdate' => 'STRING',
         'kod' => 'STRING',
@@ -65,7 +65,7 @@ class PokladniPohyb extends FlexiBee
 
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.json', 'PUT');
+        return $this->performRequest($this->evidence.'.json', 'PUT');
     }
 
     public function htmlizeRow($row)

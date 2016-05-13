@@ -11,7 +11,7 @@ namespace FlexiPeeHP;
 class FakturaVydana extends FlexiBee
 {
     public $keyword = 'faktura';
-    public $agenda = 'faktura-vydana';
+    public $evidence = 'faktura-vydana';
     public $useKeywords = [
         'id' => 'INT',
         'lastUpdate' => 'FLEXIDATETIME',
@@ -54,7 +54,7 @@ class FakturaVydana extends FlexiBee
 
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
 
-        return $this->performRequest($this->agenda.'.json', 'PUT');
+        return $this->performRequest($this->evidence.'.json', 'PUT');
     }
 
     public function getValue()
