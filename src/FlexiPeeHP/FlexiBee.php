@@ -733,7 +733,14 @@ class FlexiBee extends \Ease\Brick
                 }
                 if (isset($result['errors'])) {
                     foreach ($result['errors'] as $error) {
-                        $this->logger->addStatusMessage($rid.': '.$error['message'],
+                        $message = $error['message'];
+                        if (isset($error['for'])) {
+                            $message.=' for: '.$error['for'].' value:'.$error['value'];
+                        }
+                        if (isset($error['code'])) {
+                            $message.=' code:'.$error['code'];
+                        }
+                        $this->logger->addStatusMessage($rid.': '.$message,
                             $status);
                     }
                 }
