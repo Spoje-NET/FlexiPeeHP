@@ -23,13 +23,23 @@ class Hooks extends FlexiBee
      *
      * @param string $url URL skript přímající WebHook
      * @param string $format json|xml formát přenášených dat
-     * @return string výsledek požadavku
+     * @return boolean výsledek požadavku
      */
     public function register($url, $format = 'json')
     {
         $this->setDataValue('url', $url);
-        $this->setDataValue('format', $format);
-        return $this->insertToFlexiBee();
+        $this->setDataValue('format', strtoupper($format));
+
+        $hooks = $this->getAllFromFlexibee();
+        foreach ($hooks as $hook) {
+            if ($hook['url'] == $url) {
+                $this->addStatusMessage(_('Url allready registered'), 'warning');
+                return false;
+            }
+        }
+
+        return $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
+                'PUT', 'xml');
     }
 
     /**

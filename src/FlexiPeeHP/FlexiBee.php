@@ -260,17 +260,26 @@ class FlexiBee extends \Ease\Brick
                     break;
             }
 
+            if (is_array($response)) {
+                $result = http_build_query($response);
+            } else {
+                $result = http_build_query(self::object2array(current(json_decode($response))));
+            }
 
             if ($this->lastResponseCode == 400) {
-                $this->logResult(self::object2array(current(json_decode($response))));
+                $this->logResult($result);
             } else {
                 $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
-                        curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
-                        http_build_query($response), $this->error), 'error');
+                        curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
+                        $this->error), 'error');
                 $this->addStatusMessage($url);
             }
             if ($response == 'null') {
-                $response = null;
+                if ($this->lastResponseCode == 200) {
+                    $response = true;
+                } else {
+                    $response = null;
+                }
             } else {
                 if (is_string($response)) {
                     $response = self::object2array(current(json_decode($response)));
@@ -810,6 +819,7 @@ class FlexiBee extends \Ease\Brick
      */
     public function deleteFromFlexiBee($id)
     {
-        $this->performRequest($this->evidence.'/'.$id.'.'.$this->format);
+        $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
+            'DELETE');
     }
 }
