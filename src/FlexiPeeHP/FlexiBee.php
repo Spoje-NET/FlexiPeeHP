@@ -145,6 +145,13 @@ class FlexiBee extends \Ease\Brick
     public $prefix = '/c/';
 
     /**
+     * HTTP Response code of last request
+     * 
+     * @var int
+     */
+    public $lastResponseCode = null;
+
+    /**
      * Třída pro práci s FlexiBee.
      *
      * @param string $init výchozí selektor dat
@@ -234,32 +241,42 @@ class FlexiBee extends \Ease\Brick
 
         $this->info = curl_getinfo($this->curl);
 
-        $responseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
 
-        if ($responseCode != 200 && $responseCode != 201) {
+        if ($this->lastResponseCode != 200 && $this->lastResponseCode != 201) {
             $this->error = curl_error($this->curl);
-            $response    = (json_encode(json_decode($response, true, 10),
-                    JSON_PRETTY_PRINT));
+            switch ($format) {
+                case 'json':
+                    $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
+                        function ($match) {
+                        return mb_convert_encoding(pack('H*', $match[1]),
+                            'UTF-8', 'UCS-2BE');
+                    }, $response);
+                    $response = (json_encode(json_decode($response, true, 10),
+                            JSON_PRETTY_PRINT));
+                    break;
+                case 'xml':
+                    $response = self::xml2array($response);
+                    break;
+            }
 
-            $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
-                function ($match) {
-                return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8',
-                    'UCS-2BE');
-            }, $response);
 
-            if ($responseCode == 400) {
+            if ($this->lastResponseCode == 400) {
                 $this->logResult(self::object2array(current(json_decode($response))));
             } else {
                 $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
                         curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
-                        stripslashes($response), $this->error), 'error');
+                        http_build_query($response), $this->error), 'error');
                 $this->addStatusMessage($url);
             }
             if ($response == 'null') {
-                return;
+                $response = null;
+            } else {
+                if (is_string($response)) {
+                    $response = self::object2array(current(json_decode($response)));
+                }
             }
-
-            return self::object2array(current(json_decode($response)));
+            return $response;
         }
 
         // Parse response
@@ -276,7 +293,11 @@ class FlexiBee extends \Ease\Brick
 
                 break;
             case 'xml':
-                $decoded = self::xml2array($response);
+                if (strlen($response)) {
+                    $decoded = self::xml2array($response);
+                } else {
+                    $decoded = null;
+                }
                 break;
         }
 
@@ -735,7 +756,10 @@ class FlexiBee extends \Ease\Brick
                     foreach ($result['errors'] as $error) {
                         $message = $error['message'];
                         if (isset($error['for'])) {
-                            $message.=' for: '.$error['for'].' value:'.$error['value'];
+                            $message.=' for: '.$error['for'];
+                        }
+                        if (isset($error['value'])) {
+                            $message.=' value:'.$error['value'];
                         }
                         if (isset($error['code'])) {
                             $message.=' code:'.$error['code'];
@@ -777,5 +801,15 @@ class FlexiBee extends \Ease\Brick
         $flexiUrl = implode(' '.$operator.' ', $parts);
 
         return $flexiUrl;
+    }
+
+    /**
+     * Smaže záznam
+     *
+     * @param int|string $id identifikátor záznamu
+     */
+    public function deleteFromFlexiBee($id)
+    {
+        $this->performRequest($this->evidence.'/'.$id.'.'.$this->format);
     }
 }

@@ -37,5 +37,17 @@ if (isset($info['message'])) {
     }
 }
 
+$hooker    = new Hooks();
+$chEnabled = $hooker->enableChanges();
+
+if ($hooker->getChangesStatus()) {
+    $hooker->addStatusMessage(_('ChangesApi Povoleno'));
+    $oPage->container->addItem(new \Ease\TWB\Label('success',
+        _('ChangesAPI povoleno')));
+} else {
+    $oPage->container->addItem(new \Ease\TWB\Label('warning',
+        _('ChangesAPI zakázáno')));
+}
+
 
 $oPage->draw();
