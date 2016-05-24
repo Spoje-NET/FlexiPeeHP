@@ -27,9 +27,7 @@ class HooksTest extends FlexiBeeTest
      */
     protected function setUp()
     {
-        $this->object  = new Hooks;
-        $this->changes = new Changes();
-        $this->changes->enable();
+        $this->object = new Hooks;
     }
 
     /**
@@ -37,9 +35,12 @@ class HooksTest extends FlexiBeeTest
      */
     public function testRegister()
     {
+        $this->changes = new Changes();
+        $this->changes->enable();
         $this->object->setDataValue('skipUrlTest', 'true');
-        $result = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
+        $result        = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
         $this->assertEmpty($result);
+        $result        = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
     }
 
     /**
@@ -72,6 +73,5 @@ class HooksTest extends FlexiBeeTest
      */
     protected function tearDown()
     {
-        $this->changes->disable();
     }
 }

@@ -52,7 +52,7 @@ class ChangesTest extends FlexiBeeTest
     }
 
     /**
-     * @covers FlexiPeeHP\Changes::getChangesStatus
+     * @covers FlexiPeeHP\Changes::getStatus
      */
     public function testGetStatus()
     {
