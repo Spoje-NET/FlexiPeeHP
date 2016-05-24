@@ -40,7 +40,7 @@ class HooksTest extends FlexiBeeTest
         $this->object->setDataValue('skipUrlTest', 'true');
         $result        = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
         $this->assertEmpty($result);
-        $result        = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
+        $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
     }
 
     /**

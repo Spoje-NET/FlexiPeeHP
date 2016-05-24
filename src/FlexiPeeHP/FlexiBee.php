@@ -274,8 +274,10 @@ class FlexiBee extends \Ease\Brick
 
             if (is_array($response)) {
                 $result = http_build_query($response);
-            } else {
+            } elseif (strlen($response) && ($response != 'null')) {
                 $result = http_build_query(self::object2array(current(json_decode($response))));
+            } else {
+                $result = null;
             }
 
             if ($this->lastResponseCode == 400) {
