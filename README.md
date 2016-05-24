@@ -1,9 +1,11 @@
 # FlexiPeeHP
-PHP Based Library for easy interaction with Czech accounting system Flexibee.
+!(https://github.com/Spoje-NET/FlexiPeeHP/raw/master/project_logo.png "Project Logo")
+
+PHP Based Library for easy interaction with Czech accounting system FlexiBee.
 
 To test basic functionality please try to run testing/demo.php
 
-PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee](https://www.flexibee.eu/)
+CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee](https://www.flexibee.eu/)
 
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/FlexiPeeHP-blue.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP)
 [![Latest Version](https://img.shields.io/github/release/Spoje-NET/FlexiPeeHP.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP/releases)

@@ -50,7 +50,7 @@ class CompanyTest extends FlexiBeeTest
         $json                    = $this->object->performRequest();
         $this->assertArrayHasKey('company', $json);
 
-        $xml = $this->object->performRequest(null, null, 'xml');
+        $xml = $this->object->performRequest(null, 'GET', 'xml');
         $this->assertArrayHasKey('company', $xml);
 
         $err = $this->object->performRequest('error.json');

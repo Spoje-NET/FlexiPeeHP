@@ -152,6 +152,13 @@ class FlexiBee extends \Ease\Brick
     public $lastResponseCode = null;
 
     /**
+     * Array of fields for next curl POST operation
+     * 
+     * @var array
+     */
+    protected $postFields = [];
+
+    /**
      * Třída pro práci s FlexiBee.
      *
      * @param string $init výchozí selektor dat
@@ -235,6 +242,9 @@ class FlexiBee extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_URL, $url);
 // Nastavení samotné operace
         curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $method);
+//Vždy nastavíme byť i prázná postdata jako ochranu před chybou 411
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->postFields);
+
 
 // Proveď samotnou operaci
         $response = curl_exec($this->curl);
@@ -256,7 +266,9 @@ class FlexiBee extends \Ease\Brick
                             JSON_PRETTY_PRINT));
                     break;
                 case 'xml':
-                    $response = self::xml2array($response);
+                    if (strlen($response)) {
+                        $response = self::xml2array($response);
+                    }
                     break;
             }
 
@@ -497,9 +509,7 @@ class FlexiBee extends \Ease\Brick
         if (is_null($data)) {
             $data = $this->getData();
         }
-        $jsonizedData = $this->jsonizeData($data);
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
-
+        $this->postFields = $this->jsonizeData($data);
         return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
     }
 
@@ -816,10 +826,12 @@ class FlexiBee extends \Ease\Brick
      * Smaže záznam
      *
      * @param int|string $id identifikátor záznamu
+     * @return boolean Response code is 200 ?
      */
     public function deleteFromFlexiBee($id)
     {
         $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
             'DELETE');
+        return $this->lastResponseCode == 200;
     }
 }

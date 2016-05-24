@@ -111,7 +111,7 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
             $json                    = $this->object->performRequest();
             $this->assertArrayHasKey('company', $json);
 
-            $xml = $this->object->performRequest(null, null, 'xml');
+            $xml = $this->object->performRequest(null, 'GET', 'xml');
             $this->assertArrayHasKey('company', $xml);
         }
 
