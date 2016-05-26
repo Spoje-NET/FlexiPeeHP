@@ -286,7 +286,8 @@ class FlexiBee extends \Ease\Brick
                 $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
                         curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
                         $this->error), 'error');
-                $this->addStatusMessage($url);
+                $this->addStatusMessage($url, 'info');
+                $this->addStatusMessage($this->postFields, 'debug');
             }
             if ($response == 'null') {
                 if ($this->lastResponseCode == 200) {
