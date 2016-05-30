@@ -9,7 +9,12 @@
 
 namespace FlexiPeeHP;
 
-class SkupinaFirem extends Importer\Importer
+/**
+ * Skupina Firem
+ *
+ * @link https://demo.flexibee.eu/c/demo/skupina-firem/properties
+ */
+class SkupinaFirem extends FlexiBee
 {
     /**
      * Evidence užitá objektem.

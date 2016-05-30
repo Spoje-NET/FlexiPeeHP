@@ -8,7 +8,11 @@
  */
 
 namespace FlexiPeeHP;
-
+/**
+ * Obecný Strom
+ *
+ * @link https://demo.flexibee.eu/c/demo/strom/properties vlastnosti evidence
+ */
 class Strom extends FlexiBee
 {
     /**
@@ -16,6 +20,12 @@ class Strom extends FlexiBee
      *
      * @var string
      */
-    public $evidence = 'strom';
+    public $evidence   = 'strom';
+
+    /**
+     * Sloupeček se jménem záznamu
+     *
+     * @var string
+     */
     public $nameColumn = 'nazev';
 }

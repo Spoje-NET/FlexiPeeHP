@@ -9,27 +9,17 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Adresář
+ *
+ * @link https://demo.flexibee.eu/c/demo/adresar/properties položky evidence
+ */
 class Adresar extends FlexiBee
 {
-    public $keyword     = 'klient';
-
     /**
      * Evidence užitá objektem.
      *
      * @var string
      */
     public $evidence    = 'adresar';
-    public $useKeywords = [
-        'id' => 'STRING',
-        'lastUpdate' => 'DATETIME',
-        'kod' => 'STRING',
-        'nazev' => 'STRING',
-        'poznam' => 'STRING',
-        'email' => 'STRING',
-        'ic' => 'STRING',
-        'dic' => 'STRING',
-        'faUlice' => 'STRING',
-        'faMesto' => 'STRING',
-        'faPsc' => 'STRING',
-    ];
 }

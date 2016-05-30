@@ -9,6 +9,12 @@
 
 namespace FlexiPeeHP;
 
+
+/**
+ * Skladového pohyb
+ *
+ * @link https://demo.flexibee.eu/c/demo/skladovy-pohyb/properties
+ */
 class SkladovyPohyb extends FlexiBee
 {
     /**

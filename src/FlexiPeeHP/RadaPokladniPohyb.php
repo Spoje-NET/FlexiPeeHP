@@ -38,9 +38,9 @@ class RadaPokladniPohyb extends FlexiBee
             $crID = $code;
         }
 
-        $cr = $this->performRequest($this->evidence.'/'.$crID.'.json');
+        $cr                = $this->performRequest($this->evidence.'/'.$crID.'.json');
         $radaPokladniPohyb = current($cr[$this->evidence]);
-        $crInfo = end($radaPokladniPohyb['polozkyRady']);
+        $crInfo            = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;
         if ($crInfo['zobrazNuly'] == 'true') {
@@ -51,6 +51,12 @@ class RadaPokladniPohyb extends FlexiBee
         }
     }
 
+    /**
+     * Zvedne číslo dokladu
+     *
+     * @param string $code
+     * @return int číslo nového dokladu
+     */
     public function incrementNextRecordCode($code = null)
     {
         if (is_null($code)) {
@@ -58,16 +64,17 @@ class RadaPokladniPohyb extends FlexiBee
         }
 
         if (is_string($code)) {
-            $sro = $this->performRequest($this->evidence.'/(kod=\''.$code.'\').json');
+            $sro  = $this->performRequest($this->evidence.'/(kod=\''.$code.'\').json');
             $crID = current(current($sro[$this->evidence]));
         } else {
             $crID = $code;
         }
 
-        $cr = $this->performRequest($this->evidence.'/'.$crID.'.json');
+        $cr                = $this->performRequest($this->evidence.'/'.$crID.'.json');
         $radaPokladniPohyb = current($cr[$this->evidence]);
-        $crInfo = end($radaPokladniPohyb['polozkyRady']);
+        $crInfo            = end($radaPokladniPohyb['polozkyRady']);
 
         $cislo = $crInfo['cisAkt'] + 1;
+        return $cislo;
     }
 }

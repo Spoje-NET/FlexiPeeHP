@@ -31,28 +31,4 @@ class PokladniPohybTest extends FlexiBeeTest
     {
 
     }
-
-    /**
-     * @covers FlexiPeeHP\PokladniPohyb::insertToFlexiBee
-     * @todo   Implement testInsertToFlexiBee().
-     */
-    public function testInsertToFlexiBee()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers FlexiPeeHP\PokladniPohyb::htmlizeRow
-     * @todo   Implement testHtmlizeRow().
-     */
-    public function testHtmlizeRow()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
 }

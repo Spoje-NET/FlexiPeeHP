@@ -8,7 +8,11 @@
  */
 
 namespace FlexiPeeHP;
-
+/**
+ * Strom Položek ceníku
+ *
+ * @link https://demo.flexibee.eu/c/demo/strom-cenik/properties Vlastnosti evidence
+ */
 class StromCenik extends FlexiBee
 {
     /**

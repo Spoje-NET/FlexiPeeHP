@@ -158,7 +158,6 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
      * @depends testGetFlexiRow
      * @depends testGetFlexiData
      * @depends testLoadFromFlexiBee
-     * @depends testSaveToFlexiBee
      * @depends testInsertToFlexiBee
      * @depends testIdExists
      * @depends testRecordExists
@@ -231,18 +230,6 @@ class FlexiBeeTest extends \Test\Ease\BrickTest
     {
         $this->object->loadFromFlexiBee();
         $this->object->loadFromFlexiBee(222);
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBee::saveToFlexiBee
-     * @todo   Implement testSaveToFlexiBee().
-     */
-    public function testSaveToFlexiBee()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 
     /**

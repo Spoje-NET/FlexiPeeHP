@@ -8,6 +8,11 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Výrobní číslo
+ *
+ * @link https://demo.flexibee.eu/c/demo/vyrobni-cislo/properties položky evidence
+ */
 class VyrobniCislo extends FlexiBee
 {
     /**

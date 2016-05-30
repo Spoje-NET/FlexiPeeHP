@@ -8,34 +8,19 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Faktura vydaná
+ *
+ * @link https://demo.flexibee.eu/c/demo/faktura-vydana/properties položky evidence
+ */
 class FakturaVydana extends FlexiBee
 {
-    public $keyword = 'faktura';
-
     /**
      * Evidence užitá objektem.
      *
      * @var string
      */
     public $evidence = 'faktura-vydana';
-    public $useKeywords = [
-        'id' => 'INT',
-        'lastUpdate' => 'FLEXIDATETIME',
-        'kod' => 'STRING',
-        'stavUhrK' => '',
-        'datVyst' => 'FLEXIDATE',
-        'datSplat' => 'FLEXIDATE',
-        'sumCelkem' => 'FLOAT',
-        'sumZalohy' => 'FLOAT',
-        'sumZalohyMen' => 'FLOAT',
-        'sumCelkemMen' => 'FLOAT',
-        'zbyvaUhraditMen' => 'FLOAT',
-        'zbyvaUhradit' => 'FLOAT',
-        'mena' => 'REF',
-        'firma' => 'REF',
-        'popis' => 'STRING',
-    ];
-
     /**
      * Zaplatí fakturu.
      *

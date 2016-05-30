@@ -462,26 +462,6 @@ class FlexiBee extends \Ease\Brick
     }
 
     /**
-     * Uloží data do FlexiBee.
-     *
-     * @param array $data
-     *
-     * @return array výsledek
-     */
-    public function saveToFlexiBee($data = null)
-    {
-        if (is_null($data)) {
-            $data = $this->getData();
-        }
-
-        $jsonizedData = $this->jsonizeData($data);
-
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $jsonizedData);
-
-        return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
-    }
-
-    /**
      * Převede data do Json formátu pro FlexiBee.
      *
      * @param array $data

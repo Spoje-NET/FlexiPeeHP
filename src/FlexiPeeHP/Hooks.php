@@ -9,6 +9,11 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Hooky pro ChangesAPI
+ *
+ * @note Tato položka nemá dostupné položky evidence
+ */
 class Hooks extends FlexiBee
 {
     /**

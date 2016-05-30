@@ -9,9 +9,14 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Nastavení firmy
+ *
+ * @note Tato položka nemá dostupné položky evidence
+ * @note Tato evidence není veřejně dostupná na demo.flexibee.eu
+ */
 class Nastaveni extends FlexiBee
 {
-    public $keyword = 'nastaveni';
     /**
      * Evidence užitá objektem.
      *

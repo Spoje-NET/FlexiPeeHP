@@ -9,6 +9,11 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Pokladna
+ *
+ * @link https://demo.flexibee.eu/c/demo/pokladna/properties
+ */
 class Pokladna extends FlexiBee
 {
     /**

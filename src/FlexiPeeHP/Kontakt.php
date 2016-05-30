@@ -8,10 +8,13 @@
  */
 
 namespace FlexiPeeHP;
-
+/**
+ * Kontakt adresáře
+ *
+ * @link https://demo.flexibee.eu/c/demo/kontakt/properties
+ */
 class Kontakt extends FlexiBee
 {
-    public $keyword = 'kontakt';
     /**
      * Evidence užitá objektem.
      *

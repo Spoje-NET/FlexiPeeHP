@@ -8,6 +8,11 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Log změn v evidencích
+ *
+ * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api/ Dokumentace
+ */
 class Changes extends FlexiBee
 {
     /**

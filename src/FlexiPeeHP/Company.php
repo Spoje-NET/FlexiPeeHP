@@ -7,7 +7,11 @@
  */
 
 namespace FlexiPeeHP;
-
+/**
+ * Firmy/účetní jednotky
+ *
+ * @note Tato položka nemá dostupné položky evidence
+ */
 class Company extends FlexiBee
 {
     /**
