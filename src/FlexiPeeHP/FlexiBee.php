@@ -34,6 +34,7 @@ class FlexiBee extends \Ease\Brick
     /**
      * Evidence užitá objektem.
      *
+     * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
      * @var string
      */
     public $evidence = null;
