@@ -14,7 +14,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/pokladni-pohyb/properties položky evidence
  */
-class PokladniPohyb extends FlexiBee
+class PokladniPohyb extends FlexiBeeRW
 {
     /**
      * Evidence FlexiBee.

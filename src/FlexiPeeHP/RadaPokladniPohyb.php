@@ -8,7 +8,7 @@
 
 namespace FlexiPeeHP;
 
-class RadaPokladniPohyb extends FlexiBee
+class RadaPokladniPohyb extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

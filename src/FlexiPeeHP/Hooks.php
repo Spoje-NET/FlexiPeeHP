@@ -14,7 +14,7 @@ namespace FlexiPeeHP;
  *
  * @note Tato položka nemá dostupné položky evidence
  */
-class Hooks extends FlexiBee
+class Hooks extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

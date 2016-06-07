@@ -15,7 +15,7 @@ namespace FlexiPeeHP;
  * @note Tato položka nemá dostupné položky evidence
  * @note Tato evidence není veřejně dostupná na demo.flexibee.eu
  */
-class Nastaveni extends FlexiBee
+class Nastaveni extends FlexiBeeRO
 {
     /**
      * Evidence užitá objektem.

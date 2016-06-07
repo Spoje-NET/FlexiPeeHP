@@ -1,6 +1,6 @@
 <?php
 /**
- * FlexiPeeHP - Třída pro práci s FlexiBee.
+ * FlexiPeeHP - Třída pro čtení z FlexiBee.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -8,7 +8,7 @@
 
 namespace FlexiPeeHP;
 
-class FlexiBee extends \Ease\Brick
+class FlexiBeeRO extends \Ease\Brick
 {
     /**
      * Základní namespace pro komunikaci s FlexiBEE.
@@ -274,9 +274,9 @@ class FlexiBee extends \Ease\Brick
             }
 
             if (is_array($response)) {
-                $result = http_build_query($response);
+                $result = urldecode(http_build_query($response));
             } elseif (strlen($response) && ($response != 'null')) {
-                $result = http_build_query(self::object2array(current(json_decode($response))));
+                $result = urldecode(http_build_query(self::object2array(current(json_decode($response)))));
             } else {
                 $result = null;
             }
@@ -288,7 +288,8 @@ class FlexiBee extends \Ease\Brick
                         curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
                         $this->error), 'error');
                 $this->addStatusMessage($url, 'info');
-                $this->addStatusMessage($this->postFields, 'debug');
+                $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                    'debug');
             }
             if ($response == 'null') {
                 if ($this->lastResponseCode == 200) {
@@ -332,16 +333,6 @@ class FlexiBee extends \Ease\Brick
         }
 
         return $decoded;
-    }
-
-    /**
-     * Give you last inserted record ID.
-     * 
-     * @return int
-     */
-    public function getLastInsertedId()
-    {
-        return $this->lastInsertedID;
     }
 
     /**
@@ -479,22 +470,6 @@ class FlexiBee extends \Ease\Brick
         ];
 
         return json_encode($jsonize);
-    }
-
-    /**
-     * Uloží záznam.
-     *
-     * @param array $data
-     *
-     * @return array odpověď
-     */
-    public function insertToFlexiBee($data = null)
-    {
-        if (is_null($data)) {
-            $data = $this->getData();
-        }
-        $this->postFields = $this->jsonizeData($data);
-        return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
     }
 
     /**
@@ -804,18 +779,5 @@ class FlexiBee extends \Ease\Brick
         $flexiUrl = implode(' '.$operator.' ', $parts);
 
         return $flexiUrl;
-    }
-
-    /**
-     * Smaže záznam
-     *
-     * @param int|string $id identifikátor záznamu
-     * @return boolean Response code is 200 ?
-     */
-    public function deleteFromFlexiBee($id)
-    {
-        $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
-            'DELETE');
-        return $this->lastResponseCode == 200;
     }
 }

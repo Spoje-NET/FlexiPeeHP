@@ -14,7 +14,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/skupina-firem/properties
  */
-class SkupinaFirem extends FlexiBee
+class SkupinaFirem extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

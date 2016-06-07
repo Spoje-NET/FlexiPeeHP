@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/kontakt/properties
  */
-class Kontakt extends FlexiBee
+class Kontakt extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

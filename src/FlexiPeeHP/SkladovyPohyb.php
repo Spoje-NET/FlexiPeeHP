@@ -15,7 +15,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/skladovy-pohyb/properties
  */
-class SkladovyPohyb extends FlexiBee
+class SkladovyPohyb extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

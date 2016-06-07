@@ -12,7 +12,7 @@ namespace FlexiPeeHP;
  *
  * @note Tato položka nemá dostupné položky evidence
  */
-class Company extends FlexiBee
+class Company extends FlexiBeeRO
 {
     /**
      * Základní namespace pro komunikaci s FlexiBEE.

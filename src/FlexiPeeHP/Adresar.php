@@ -14,7 +14,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/adresar/properties položky evidence
  */
-class Adresar extends FlexiBee
+class Adresar extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

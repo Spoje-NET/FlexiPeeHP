@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/strom-cenik/properties Vlastnosti evidence
  */
-class StromCenik extends FlexiBee
+class StromCenik extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

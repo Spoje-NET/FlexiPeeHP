@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/vyrobni-cislo/properties položky evidence
  */
-class VyrobniCislo extends FlexiBee
+class VyrobniCislo extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

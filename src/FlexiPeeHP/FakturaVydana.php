@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @link https://demo.flexibee.eu/c/demo/faktura-vydana/properties položky evidence
  */
-class FakturaVydana extends FlexiBee
+class FakturaVydana extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

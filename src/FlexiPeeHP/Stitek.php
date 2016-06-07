@@ -12,7 +12,7 @@ namespace FlexiPeeHP;
 /**
  * @link https://demo.flexibee.eu/c/demo/stitek/properties Vlastnosti evidence
  */
-class Stitek extends FlexiBee
+class Stitek extends FlexiBeeRW
 {
     /**
      * Evidence užitá objektem.

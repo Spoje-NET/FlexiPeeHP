@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api/ Dokumentace
  */
-class Changes extends FlexiBee
+class Changes extends FlexiBeeRO
 {
     /**
      * Evidence užitá objektem.
