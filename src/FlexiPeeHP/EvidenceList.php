@@ -12,7 +12,7 @@ namespace FlexiPeeHP;
 /**
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
  */
-class Stitek extends FlexiBeeRO
+class EvidenceList extends FlexiBeeRO
 {
     /**
      * Evidence užitá objektem.

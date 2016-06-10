@@ -76,6 +76,11 @@ class FlexiBeeRO extends \Ease\Brick
     public $password = FLEXIBEE_PASSWORD;
 
     /**
+     * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
+     */
+    public $defaultHttpHeaders = ['User-Agent: FlexiPeeHP'];
+
+    /**
      * Identifikační řetězec.
      *
      * @var string
@@ -147,17 +152,24 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * HTTP Response code of last request
-     * 
+     *
      * @var int
      */
     public $lastResponseCode = null;
 
     /**
      * Array of fields for next curl POST operation
-     * 
+     *
      * @var array
      */
     protected $postFields = [];
+
+    /**
+     * Last operation result data or message(s)
+     *
+     * @var array
+     */
+    public $lastResult = null;
 
     /**
      * Třída pro práci s FlexiBee.
@@ -246,6 +258,20 @@ class FlexiBeeRO extends \Ease\Brick
 //Vždy nastavíme byť i prázná postdata jako ochranu před chybou 411
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->postFields);
 
+        $httpHeaders = $this->defaultHttpHeaders;
+        switch ($format) {
+            case 'json':
+                $httpHeaders[] = 'Accept: application/json';
+                break;
+            case 'xml':
+                $httpHeaders[] = 'Accept: application/xml';
+                break;
+
+            default:
+                break;
+        }
+
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeaders);
 
 // Proveď samotnou operaci
         $response = curl_exec($this->curl);
@@ -281,16 +307,6 @@ class FlexiBeeRO extends \Ease\Brick
                 $result = null;
             }
 
-            if ($this->lastResponseCode == 400) {
-                $this->logResult($result);
-            } else {
-                $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
-                        curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
-                        $this->error), 'error');
-                $this->addStatusMessage($url, 'info');
-                $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                    'debug');
-            }
             if ($response == 'null') {
                 if ($this->lastResponseCode == 200) {
                     $response = true;
@@ -302,6 +318,21 @@ class FlexiBeeRO extends \Ease\Brick
                     $response = self::object2array(current(json_decode($response)));
                 }
             }
+
+            if ($this->lastResponseCode == 400) {
+                $this->logResult($response);
+            } else {
+                $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
+                        curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
+                        $this->error), 'error');
+                $this->addStatusMessage($url, 'info');
+                if ($this->postFields) {
+                    $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                        'debug');
+                }
+            }
+
+
             return $response;
         }
 
@@ -332,12 +363,18 @@ class FlexiBeeRO extends \Ease\Brick
             $decoded = $decoded[$this->nameSpace];
         }
 
+        $this->lastResult = $decoded;
         return $decoded;
+    }
+
+    public function processRequest()
+    {
+
     }
 
     /**
      * Convert XML to array.
-     * 
+     *
      * @param string $xml
      *
      * @return array
@@ -701,18 +738,20 @@ class FlexiBeeRO extends \Ease\Brick
             $results[$result[$this->myKeyColumn]] = [$this->nameColumn => $result[$this->nameColumn],
                 'what' => $occurences,];
         }
-
         return $results;
     }
 
     /**
      * Write Operation Result.
-     * 
+     *
      * @param array  $resultData
      * @param string $url        URL
      */
-    public function logResult($resultData, $url = null)
+    public function logResult($resultData = null, $url = null)
     {
+        if (is_null($resultData)) {
+            $resultData = $this->lastResult;
+        }
         if ($url) {
             $this->logger->addStatusMessage($url);
         }
@@ -734,13 +773,13 @@ class FlexiBeeRO extends \Ease\Brick
                     foreach ($result['errors'] as $error) {
                         $message = $error['message'];
                         if (isset($error['for'])) {
-                            $message.=' for: '.$error['for'];
+                            $message .= ' for: '.$error['for'];
                         }
                         if (isset($error['value'])) {
-                            $message.=' value:'.$error['value'];
+                            $message .= ' value:'.$error['value'];
                         }
                         if (isset($error['code'])) {
-                            $message.=' code:'.$error['code'];
+                            $message .= ' code:'.$error['code'];
                         }
                         $this->logger->addStatusMessage($rid.': '.$message,
                             $status);

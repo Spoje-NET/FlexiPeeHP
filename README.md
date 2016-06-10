@@ -54,7 +54,7 @@ Mandatory configuration Directives
 Jak to celé funguje ?
 ---------------------
 
-Ústřední komponentou celé knihovny je Třída FlexiBee, která je schopna pomocí 
+Ústřední komponentou celé knihovny je Třída FlexiBeeRO, která je schopna pomocí 
 PHP rozšíření curl komunikovat s REST Api FlexiBee.
 
 Z ní jsou pak odvozeny třídy pro jednotlivé evidence, obsahující metody pro 
@@ -83,4 +83,22 @@ A poté je již snadné si vypsat měrné jednotky na 2 řádky:
     $jednotky = new MernaJednotka();
     print_r( $jednotky->getAllFromFlexiBee );
 
+Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
+ovodit od předka FlexiBeeRW.
 
+Testování
+---------
+
+Unit testy se nachází ve složce **testing**.
+
+Zde je ukázkový skript pro zobrazení výsledků testů na webové stránce a odeslání 
+mailem:
+
+    cd $PROJECTDIR
+    AUTHOR=`git log | head -n 2 | tail -n 1 | awk -F':' '{print $2}'`
+    SUBJECT=`git log -1 --pretty=%B | head -n 1`
+    RESULTS='/var/www/html/flexipeehp-testing.html'
+    cd testing
+    RESULT=`phpunit --colors --bootstrap $SITEDIR/testing/bootstrap.php /usr/share/php/PHPUnit/Extensions/NetBeansSuite.php --run=$SITEDIR/testing |  awk '{ sub(/$/,"\r"); print }' | aha`
+    echo $RESULT >  $RESULTS
+    cat $RESULTS | awk '{ sub(/$/,"\n"); print }' | mail "$AUTHOR" -s "$SUBJECT"  -a 'Content-Type: text/html'
