@@ -19,6 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Test\\Ease\\": "vendor/vitexsoftware/ease-framework/tests/src/Ease",
             "Test\\FlexiPeeHP\\": "testing/src/FlexiPeeHP/"
         }
     },
