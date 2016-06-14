@@ -23,11 +23,11 @@ class FakturaVydana extends FlexiBeeRW
     public $evidence = 'faktura-vydana';
 
     /**
-     * Provede spárování platby
+     * Provede spárování platby s dokladem
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Párování plateb
-     * @param $doklad Banka|PokladniPohyb|InterniDoklad $doklad
-     * @param string $zbytek ne|zauctovat|ignorovat|castecnaUhrada|castecnaUhradaNeboZauctovat|castecnaUhradaNeboIgnorovat
+     * @param $doklad Banka|PokladniPohyb|InterniDoklad S jakým dokladem spárovat ?
+     * @param $zbytek string ne|zauctovat|ignorovat|castecnaUhrada|castecnaUhradaNeboZauctovat|castecnaUhradaNeboIgnorovat
      */
     public function sparujPlatbu($doklad, $zbytek = 'ignorovat')
     {
@@ -46,9 +46,8 @@ class FakturaVydana extends FlexiBeeRW
      * @link https://demo.flexibee.eu/c/demo/pokladna Pokladny
      * @link https://demo.flexibee.eu/c/demo/typ-pokladni-pohyb Typy dokladů
      * @param float $value částka k úhradě
-     * @param array $uhrada Vlastnosti úhrady je pole nepoviných vlastností
-     *                      úhrady s těmito možnými položkami:
-     *        string  'pokladna' identifikátor pokladny
+     * @param array $uhrada pole nepoviných vlastností úhrady s těmito možnými položkami:
+     *        string|Pokladna  'pokladna' identifikátor pokladny
      *        string  'typDokl' kod typu pokladniho dokladu
      *        boolean 'kurzKDatuUhrady'
      *        string  'uhrazujiciDokl' Pokud uvedeno není, vždy se vytvoří nový

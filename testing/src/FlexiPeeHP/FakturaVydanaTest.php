@@ -39,7 +39,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     {
         $this->makeInvoice();
         $this->object->unsetDataValue('kod');
-        $result = $this->object->hotovostniUhrada($this->object->getDataValue('sumCelkZakl'));
+        $this->object->hotovostniUhrada($this->object->getDataValue('sumCelkZakl'));
         $this->assertEquals(201, $this->object->lastResponseCode,
             _('Invoice settle error'));
     }
@@ -49,7 +49,30 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      */
     public function testsparujPlatbu()
     {
-
+        $this->makeInvoice();
+        $doklad     = new \FlexiPeeHP\PokladniPohyb();
+        $value      = $this->object->getDataValue('sumCelkZakl');
+        $dataPohybu = [
+            'kod' => 'FP'.time(),
+            'typDokl' => 'code:STANDARD',
+            'typPohybuK' => 'typPohybu.prijem',
+            'datVyst' => date("Y-m-d", time() - 60 * 60 * 24),
+            'jakUhrK' => 'jakUhrazeno.rucne1',
+            'pokladna' => 'code:POKLADNA KČ',
+            'generovatSkl' => false,
+            'zdrojProSkl' => false,
+            'firma' => $this->object->getDataValue('firma'),
+            'bezPolozek' => true,
+            'poznam' => $this->poznam,
+            'primUcet' => 'code:013001',
+            'sumZklCelkem' => $value
+        ];
+        $doklad->takeData($dataPohybu);
+        $doklad->insertToFlexiBee();
+        $doklad->unsetDataValue('kod');
+        $this->object->sparujPlatbu($doklad);
+        $this->assertEquals(201, $doklad->lastResponseCode,
+            _('Invoice match error'));
     }
 
     /**
@@ -84,7 +107,8 @@ class FakturaVydanaTest extends FlexiBeeRWTest
 
         if (!isset($invoiceData['sumCelkZakl'])) {
             $scale                      = pow(1000, 2);
-            $invoiceData['sumCelkZakl'] = mt_rand(10 * $scale, 9000 * $scale) / $scale;
+            $invoiceData['sumCelkZakl'] = round(mt_rand(10 * $scale,
+                    9000 * $scale) / $scale, 2);
         }
 
         if (!isset($invoiceData['firma'])) {
@@ -96,6 +120,10 @@ class FakturaVydanaTest extends FlexiBeeRWTest
             $dodavatel = $adresy[array_rand($adresy)];
 
             $invoiceData['firma'] = 'code:'.$dodavatel['kod'];
+        }
+
+        if (!isset($ivoiceData['poznam'])) {
+            $invoiceData['poznam'] = $this->poznam;
         }
 
         $this->object->takeData($invoiceData);

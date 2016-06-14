@@ -10,6 +10,12 @@ use FlexiPeeHP\FlexiBeeRW;
 class FlexiBeeRWTest extends FlexiBeeROTest
 {
     /**
+     * Poznámka vkládaná do záznamů vytvářených během testů
+     * @var strig 
+     */
+    public $poznam = 'Generováno UnitTestem PHP Knihovny https://github.com/Spoje-NET/FlexiPeeHP';
+
+    /**
      * @var FlexiBeeRO
      */
     protected $object;
