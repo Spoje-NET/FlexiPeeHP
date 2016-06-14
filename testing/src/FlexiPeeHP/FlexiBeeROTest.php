@@ -346,9 +346,41 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testFlexiUrl()
     {
-        $this->assertEquals("a = 1 and b = 'foo'",
+        $this->assertEquals("a eq 1 and b eq 'foo'",
             $this->object->flexiUrl(['a' => 1, 'b' => 'foo'], 'and'));
-        $this->assertEquals("a = 1 or b = 'bar'",
+        $this->assertEquals("a eq 1 or b eq 'bar'",
             $this->object->flexiUrl(['a' => 1, 'b' => 'bar'], 'or'));
+        $this->assertEquals("a eq true or b eq false",
+            $this->object->flexiUrl(['a' => true, 'b' => false], 'or'));
+        $this->assertEquals("a is null and b is not null",
+            $this->object->flexiUrl(['a' => null, 'b' => '!null'], 'and'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::__toString
+     * @expectedException \Exception
+     */
+    public function test__toString()
+    {
+
+        $identifer = 'ext:test:123';
+        $this->object->setDataValue('id', $identifer);
+        $this->assertEquals($identifer, (string) $this->object);
+
+        $code = 'test';
+        $this->object->setDataValue('kod', $code);
+        $this->assertEquals('code:'.$code, (string) $this->object);
+
+        $this->object->dataReset();
+        $this->object->__toString();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::draw
+     */
+    public function testDraw()
+    {
+        $this->object->setDataValue('kod', 'test');
+        $this->assertEquals('code:test', $this->object->draw());
     }
 }

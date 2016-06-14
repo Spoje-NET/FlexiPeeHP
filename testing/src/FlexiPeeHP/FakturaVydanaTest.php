@@ -20,7 +20,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      */
     protected function setUp()
     {
-        $this->object = new FakturaVydana;
+        $this->object = new FakturaVydana();
     }
 
     /**
@@ -33,26 +33,76 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     }
 
     /**
-     * @covers FlexiPeeHP\FakturaVydana::settle
-     * @todo   Implement testSettle().
+     * @covers FlexiPeeHP\FakturaVydana::hotovostniUhrada
      */
-    public function testSettle()
+    public function testhotovostniUhrada()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->makeInvoice();
+        $this->object->unsetDataValue('kod');
+        $result = $this->object->hotovostniUhrada($this->object->getDataValue('sumCelkZakl'));
+        $this->assertEquals(201, $this->object->lastResponseCode,
+            _('Invoice settle error'));
     }
 
     /**
-     * @covers FlexiPeeHP\FakturaVydana::getValue
-     * @todo   Implement testGetValue().
+     * @covers FlexiPeeHP\FakturaVydana::sparujPlatbu
      */
-    public function testGetValue()
+    public function testsparujPlatbu()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+
+    }
+
+    /**
+     * Crerate testing invoice
+     * 
+     * @param array $invoiceData
+     */
+    public function makeInvoice($invoiceData = [])
+    {
+        if (!isset($invoiceData['kod'])) {
+            $invoiceData['kod'] = 'PeeHP'.time();
+        }
+        if (!isset($invoiceData['varSym'])) {
+            $invoiceData['varSym'] = \Ease\Sand::randomNumber(1000, 99999);
+        }
+        if (!isset($invoiceData['datVyst'])) {
+            $invoiceData['datVyst'] = date("Y-m-d", time() - 60 * 60 * 24);
+        }
+        if (!isset($invoiceData['typDokl'])) {
+            $invoiceData['typDokl'] = 'code:FAKTURA';
+        }
+        if (!isset($invoiceData['zdrojProSkl'])) {
+            $invoiceData['zdrojProSkl'] = false;
+        }
+        if (!isset($invoiceData['dobropisovano'])) {
+            $invoiceData['dobropisovano'] = false;
+        }
+
+        if (!isset($invoiceData['polozky'])) {
+            $invoiceData['bezPolozek'] = true;
+        }
+
+        if (!isset($invoiceData['sumCelkZakl'])) {
+            $scale                      = pow(1000, 2);
+            $invoiceData['sumCelkZakl'] = mt_rand(10 * $scale, 9000 * $scale) / $scale;
+        }
+
+        if (!isset($invoiceData['firma'])) {
+            $adresar = new \FlexiPeeHP\Adresar();
+
+            $adresy = $adresar->getFlexiData(null,
+                ['typVztahuK' => 'typVztahu.odberatel']);
+
+            $dodavatel = $adresy[array_rand($adresy)];
+
+            $invoiceData['firma'] = 'code:'.$dodavatel['kod'];
+        }
+
+        $this->object->takeData($invoiceData);
+        $result = $this->object->insertToFlexiBee();
+
+        $id = $this->object->getLastInsertedId();
+        $this->object->setDataValue('id', $id);
+        return $id;
     }
 }

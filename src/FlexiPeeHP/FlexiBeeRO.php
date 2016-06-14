@@ -81,6 +81,15 @@ class FlexiBeeRO extends \Ease\Brick
     public $defaultHttpHeaders = ['User-Agent: FlexiPeeHP'];
 
     /**
+     * Default additional request url parameters after question mark
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls   Common params
+     * @link https://www.flexibee.eu/api/dokumentace/ref/paging Paging params
+     * @var array
+     */
+    public $defaultUrlParams = ['limit' => 0];
+
+    /**
      * Identifikační řetězec.
      *
      * @var string
@@ -236,11 +245,37 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Převede rekurzivně Objekt na pole.
+     *
+     * @param object|array $object
+     *
+     * @return array
+     */
+    public static function objectToID($object)
+    {
+        $result = null;
+        if (is_object($object)) {
+            $result = $object->__toString();
+        } else {
+            if (is_array($object)) {
+                foreach ($object as $item => $value) {
+                    $result[$item] = self::objectToID($value);
+                }
+            } else {
+                $result = $object;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Funkce, která provede I/O operaci a vyhodnotí výsledek.
      *
      * @param string $urlSuffix část URL za identifikátorem firmy.
      * @param string $method    HTTP/REST metoda
      * @param string $format    Requested format
+     * @return array Výsledek operace
      */
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
@@ -367,6 +402,9 @@ class FlexiBeeRO extends \Ease\Brick
         return $decoded;
     }
 
+    /**
+     * Todo: Sem vyčlenit zpracování výsledku requestu
+     */
     public function processRequest()
     {
 
@@ -447,11 +485,33 @@ class FlexiBeeRO extends \Ease\Brick
      * Načte data z FlexiBee.
      *
      * @param string $suffix     dotaz
-     * @param string $conditions Volitelný filtrovací výraz
+     * @param string|array $conditions Volitelný filtrovací výraz
      */
     public function getFlexiData($suffix = null, $conditions = null)
     {
+        $urlParams = $this->defaultUrlParams;
         if (!is_null($conditions)) {
+            if (is_array($conditions)) {
+
+                if (isset($conditions['sort'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams, 'sort');
+                }
+                if (isset($conditions['order'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams, 'order');
+                }
+                if (isset($conditions['limit'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams, 'limit');
+                }
+                if (isset($conditions['start'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams, 'start');
+                }
+                if (isset($conditions['add-row-count'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams,
+                        'add-row-count');
+                }
+
+                $conditions = $this->flexiUrl($conditions);
+            }
             if ($conditions[0] != '/') {
                 $conditions = '/'.rawurlencode('('.($conditions).')');
             }
@@ -459,10 +519,10 @@ class FlexiBeeRO extends \Ease\Brick
             $conditions = '';
         }
         if ($suffix) {
-            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix,
+            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
                 'GET');
         } else {
-            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format,
+            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.http_build_query($urlParams),
                 'GET');
         }
         if (isset($transactions[$this->evidence])) {
@@ -502,7 +562,7 @@ class FlexiBeeRO extends \Ease\Brick
         $jsonize = [
             $this->nameSpace => [
                 '@version' => $this->protoVersion,
-                $this->evidence => $data,
+                $this->evidence => $this->objectToID($data),
             ],
         ];
 
@@ -549,12 +609,10 @@ class FlexiBeeRO extends \Ease\Brick
      * @param array|string     $orderBy    třídit dle
      * @param string           $indexBy    klice vysledku naplnit hodnotou ze
      *                                     sloupečku
-     * @param int              $limit      maximální počet vrácených záznamů
-     *
      * @return array
      */
     public function getAllFromFlexibee($conditions = null, $orderBy = null,
-                                       $indexBy = null, $limit = null)
+                                       $indexBy = null)
     {
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
@@ -798,7 +856,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
      *
      * @param array  $data
-     * @param string $operator and/or
+     * @param string $operator default and/or
      *
      * @return string
      */
@@ -808,15 +866,42 @@ class FlexiBeeRO extends \Ease\Brick
         $parts    = [];
 
         foreach ($data as $column => $value) {
-            if (is_numeric($data[$column])) {
-                $parts[$column] = $column.' = '.$data[$column];
+            if (is_integer($data[$column]) || is_float($data[$column])) {
+                $parts[$column] = $column.' eq '.$data[$column];
+            } elseif (is_bool($data[$column])) {
+                $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
+            } elseif (is_null($data[$column])) {
+                $parts[$column] = $column." is null";
+            } elseif ($value == '!null') {
+                $parts[$column] = $column." is not null";
             } else {
-                $parts[$column] = $column." = '".$data[$column]."'";
+                $parts[$column] = $column." eq '".$data[$column]."'";
             }
         }
 
         $flexiUrl = implode(' '.$operator.' ', $parts);
 
         return $flexiUrl;
+    }
+
+    /**
+     * Vrací identifikátor objektu code: nebo id:
+     *
+     * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     * @return string indentifikátor záznamu reprezentovaného objektem
+     * @throws Exception data objektu neobsahují kód nebo id
+     */
+    public function __toString()
+    {
+        $myCode = $this->getDataValue('kod');
+        if ($myCode) {
+            $id = 'code:'.$myCode;
+        } else {
+            $id = $this->getDataValue('id');
+            if (!$id) {
+                throw new \Exception(_('invoice without loaded code: or id: cannot match with statement!'));
+            }
+        }
+        return $id;
     }
 }
