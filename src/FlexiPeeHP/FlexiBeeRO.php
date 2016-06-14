@@ -183,7 +183,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Třída pro práci s FlexiBee.
      *
-     * @param string $init výchozí selektor dat
+     * @param mixed $init výchozí selektor dat
      */
     public function __construct($init = null)
     {
@@ -191,8 +191,14 @@ class FlexiBeeRO extends \Ease\Brick
 
         parent::__construct();
         $this->curlInit();
+        if ($init) {
+            $this->processInit($init);
+        }
     }
 
+    /**
+     * Inicializace CURL
+     */
     public function curlInit()
     {
         $this->curl = \curl_init(); // create curl resource
@@ -204,6 +210,20 @@ class FlexiBeeRO extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_VERBOSE, true); // For debugging
         curl_setopt($this->curl, CURLOPT_USERPWD,
             $this->user.':'.$this->password); // set username and password
+    }
+
+    /**
+     * Zinicializuje objekt dle daných dat
+     * 
+     * @param mixed $init
+     */
+    public function processInit($init)
+    {
+        if (is_integer($init)) {
+            $this->loadFromFlexiBee($init);
+        } elseif (is_array($init)) {
+            $this->takeData($init);
+        }
     }
 
     /**

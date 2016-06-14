@@ -14,7 +14,11 @@
     },
     "autoload": {
         "psr-4": {
-            "FlexiPeeHP\\": "src/FlexiPeeHP/",
+            "FlexiPeeHP\\": "src/FlexiPeeHP/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Test\\FlexiPeeHP\\": "testing/src/FlexiPeeHP/"
         }
     },
