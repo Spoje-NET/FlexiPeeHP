@@ -32,6 +32,7 @@ class UcetniObdobi extends FlexiBeeRW
      */
     public function createYearsFrom($startYear, $endYear = null)
     {
+        $result = [];
         if (is_null($endYear)) {
             $endYear = date('Y');
         }

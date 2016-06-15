@@ -122,12 +122,12 @@ class FakturaVydanaTest extends FlexiBeeRWTest
             $invoiceData['firma'] = 'code:'.$dodavatel['kod'];
         }
 
-        if (!isset($ivoiceData['poznam'])) {
+        if (!isset($invoiceData['poznam'])) {
             $invoiceData['poznam'] = $this->poznam;
         }
 
         $this->object->takeData($invoiceData);
-        $result = $this->object->insertToFlexiBee();
+        $this->object->insertToFlexiBee();
 
         $id = $this->object->getLastInsertedId();
         $this->object->setDataValue('id', $id);

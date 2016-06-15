@@ -34,9 +34,9 @@ class FlexiBeeRW extends FlexiBeeRO
     /**
      * Array of fields for next curl POST operation
      * 
-     * @var array
+     * @var string
      */
-    protected $postFields = [];
+    protected $postFields = null;
 
     /**
      * Uloží záznam.

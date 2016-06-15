@@ -25,7 +25,7 @@ class Banka extends FlexiBeeRW
      *
      * @return boolean
      */
-    function stahnoutVypisyOnline()
+    public function stahnoutVypisyOnline()
     {
         $this->performRequest('banka/nacteni-vypisu-online', 'PUT');
         return $this->lastResponseCode == 200;
@@ -37,7 +37,7 @@ class Banka extends FlexiBeeRW
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Interní dokumentace
      * @return boolean
      */
-    function automatickeParovani()
+    public function automatickeParovani()
     {
         $this->performRequest('banka/automaticke-parovani', 'PUT');
         return $this->lastResponseCode == 200;

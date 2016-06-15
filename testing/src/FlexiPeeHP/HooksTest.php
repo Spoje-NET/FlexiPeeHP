@@ -44,22 +44,6 @@ class HooksTest extends FlexiBeeRWTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBee::getFlexiData
-     */
-    public function testGetFlexiData()
-    {
-        $flexidata = $this->object->getFlexiData();
-        $this->assertArrayHasKey(0, $flexidata);
-        $this->assertArrayHasKey('id', $flexidata[0]);
-        /* Zde nefunguje vyhledávání ? 
-          $filtrered = $this->object->getFlexiData(null,
-          key($flexidata[0])." = ".current($flexidata[0]));
-          $this->assertArrayHasKey(0, $filtrered);
-          $this->assertArrayHasKey('id', $filtrered[0]);
-         */
-    }
-
-    /**
      * @covers FlexiPeeHP\Hooks::unregister
      */
     public function testUnregister()

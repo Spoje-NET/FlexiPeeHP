@@ -26,7 +26,7 @@ class RadaPokladniPohyb extends FlexiBeeRW
     public function getNextRecordCode($code = null)
     {
         if (is_null($code)) {
-            $code = $this->getId();
+            $code = $this->getMyKey();
         }
         $crID = null;
         if (is_string($code)) {
@@ -60,7 +60,7 @@ class RadaPokladniPohyb extends FlexiBeeRW
     public function incrementNextRecordCode($code = null)
     {
         if (is_null($code)) {
-            $code = $this->getId();
+            $code = $this->getMyKey();
         }
 
         if (is_string($code)) {
