@@ -127,16 +127,16 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Informace o posledním HTTP requestu.
      *
-     * @var array
+     * @var *
      */
     public $info;
 
     /**
      * Informace o poslední HTTP chybě.
      *
-     * @var array
+     * @var string
      */
-    public $error;
+    public $lastCurlError = null;
 
     /**
      * Used codes storage.
@@ -265,7 +265,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Převede rekurzivně Objekt na pole.
+     * Převede rekurzivně v poli všechny objekty na jejich identifikátory.
      *
      * @param object|array $object
      *
@@ -281,7 +281,7 @@ class FlexiBeeRO extends \Ease\Brick
                 foreach ($object as $item => $value) {
                     $result[$item] = self::objectToID($value);
                 }
-            } else {
+            } else { //String
                 $result = $object;
             }
         }
@@ -295,7 +295,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @param string $urlSuffix část URL za identifikátorem firmy.
      * @param string $method    HTTP/REST metoda
      * @param string $format    Requested format
-     * @return array Výsledek operace
+     * @return array|boolean Výsledek operace
      */
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
@@ -321,9 +321,6 @@ class FlexiBeeRO extends \Ease\Brick
             case 'xml':
                 $httpHeaders[] = 'Accept: application/xml';
                 break;
-
-            default:
-                break;
         }
 
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeaders);
@@ -336,7 +333,7 @@ class FlexiBeeRO extends \Ease\Brick
         $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
 
         if ($this->lastResponseCode != 200 && $this->lastResponseCode != 201) {
-            $this->error = curl_error($this->curl);
+            $this->lastCurlError = curl_error($this->curl);
             switch ($format) {
                 case 'json':
                     $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
@@ -379,7 +376,7 @@ class FlexiBeeRO extends \Ease\Brick
             } else {
                 $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
                         curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
-                        $this->error), 'error');
+                        $this->lastCurlError), 'error');
                 $this->addStatusMessage($url, 'info');
                 if (count($this->postFields)) {
                     $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
@@ -394,33 +391,33 @@ class FlexiBeeRO extends \Ease\Brick
         // Parse response
         switch ($format) {
             case 'json':
-                $decoded = json_decode($response, true, 10);
-                if (($method == 'PUT') && isset($decoded[$this->nameSpace][$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $decoded[$this->nameSpace][$this->resultField][0]['id'];
+                $responseDecoded = json_decode($curlResponse, true, 10);
+                if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
+                    $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
                 } else {
                     $this->lastInsertedID = null;
                 }
                 $decodeError = json_last_error_msg();
-                if ($decodeError) {
+                if ($decodeError != 'No error') {
                     $this->addStatusMessage($decodeError, 'error');
                 }
                 break;
             case 'xml':
-                if (strlen($response)) {
-                    $decoded = self::xml2array($response);
+                if (strlen($curlResponse)) {
+                    $responseDecoded = self::xml2array($curlResponse);
                 } else {
-                    $decoded = null;
+                    $responseDecoded = null;
                 }
                 break;
         }
 
         // Get response body root automatically
-        if (isset($decoded[$this->nameSpace])) {
-            $decoded = $decoded[$this->nameSpace];
+        if (isset($responseDecoded[$this->nameSpace])) {
+            $responseDecoded = $responseDecoded[$this->nameSpace];
         }
 
-        $this->lastResult = $decoded;
-        return $decoded;
+        $this->lastResult = $responseDecoded;
+        return $responseDecoded;
     }
 
     /**
@@ -532,7 +529,8 @@ class FlexiBeeRO extends \Ease\Brick
 
                 $conditions = $this->flexiUrl($conditions);
             }
-            if ($conditions[0] != '/') {
+
+            if (strlen($conditions) && ($conditions[0] != '/')) {
                 $conditions = '/'.rawurlencode('('.($conditions).')');
             }
         } else {
@@ -563,11 +561,16 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function loadFromFlexiBee($id = null)
     {
+        $data = [];
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
 
-        return $this->takeData($this->getFlexiData('/'.$id));
+        $flexidata = $this->getFlexiData(null, '/'.$id);
+        if (count($flexidata) == 1) {
+            $data = current($flexidata);
+        }
+        return $this->takeData($data);
     }
 
     /**
@@ -626,13 +629,11 @@ class FlexiBeeRO extends \Ease\Brick
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
      * @param array|int|string $conditions pole podmínek nebo ID záznamu
-     * @param array|string     $orderBy    třídit dle
      * @param string           $indexBy    klice vysledku naplnit hodnotou ze
      *                                     sloupečku
      * @return array
      */
-    public function getAllFromFlexibee($conditions = null, $orderBy = null,
-                                       $indexBy = null)
+    public function getAllFromFlexibee($conditions = null, $indexBy = null)
     {
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
@@ -641,11 +642,7 @@ class FlexiBeeRO extends \Ease\Brick
         $flexiData = $this->getFlexiData('', $conditions);
 
         if ($indexBy) {
-            $flexiData2 = [];
-            foreach ($flexiData as $dataID => $data) {
-                $flexiData2[$data[$indexBy]] = $data;
-            }
-            $flexiData = $flexiData2;
+            $flexiData = $this->reindexArrayBy($flexiData);
         }
 
         return $flexiData;
@@ -654,12 +651,14 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param string[]         $columnsList seznam položek
-     * @param array $conditions  pole podmínek nebo ID záznamu
+     * @param string[] $columnsList seznam položek
+     * @param array    $conditions  pole podmínek nebo ID záznamu
+     * @param string   $indexBy     Sloupeček podle kterého indexovat záznamy
      *
      * @return array
      */
-    public function getColumnsFromFlexibee($columnsList, $conditions = null)
+    public function getColumnsFromFlexibee($columnsList, $conditions = null,
+                                           $indexBy = null)
     {
         if (($columnsList != '*') && !count($columnsList)) {
             $this->error('getColumnsFromFlexiBee: Missing ColumnList');
@@ -680,11 +679,7 @@ class FlexiBeeRO extends \Ease\Brick
         $flexiData = $this->getFlexiData('detail=custom:'.$columns, $conditions);
 
         if ($indexBy) {
-            $flexiData2 = [];
-            foreach ($flexiData as $dataID => $data) {
-                $flexiData2[$data[$indexBy]] = $data;
-            }
-            $flexiData = $flexiData2;
+            $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
         return $flexiData;

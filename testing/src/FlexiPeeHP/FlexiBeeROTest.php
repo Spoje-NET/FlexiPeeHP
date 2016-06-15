@@ -49,7 +49,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     protected function setUp()
     {
-        $this->object = new FlexiBeeRO();
+        $this->object            = new FlexiBeeRO();
+        $this->object->evidence  = 'c';
+        $this->object->prefix    = '';
+        $this->object->company   = '';
+        $this->object->nameSpace = 'companies';
     }
 
     /**
@@ -61,10 +65,28 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         
     }
 
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::curlInit
+     */
     public function testCurlInit()
     {
         $this->object->curlInit();
         $this->assertTrue(is_resource($this->object->curl));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::processInit
+     */
+    public function testProcessInit()
+    {
+        $this->object->processInit(['id' => 1]);
+        $this->assertEquals(1, $this->object->getDataValue('id'));
+        if (!is_null($this->object->evidence) && $this->object->evidence != 'test') {
+            $firstID = $this->object->getColumnsFromFlexibee('id',
+                ['limit' => 1]);
+            $this->object->processInit((int) current($firstID));
+            $this->assertNotEmpty((string) $this->object);
+        }
     }
 
     /**
@@ -88,6 +110,20 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'arrItem' => ['a', 'b' => 'c']
             ]
             , $this->object->object2array(new objTest()));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::objectToID
+     */
+    public function testObjectToID()
+    {
+        $id = \Ease\Sand::randomNumber(1, 9999);
+        $this->object->setMyKey($id);
+        $this->assertEquals($id, $this->object->objectToID([$this->object]));
+
+        $this->object->setDataValue('kod', 'TEST');
+        $this->assertEquals('code:TEST',
+            $this->object->objectToID($this->object));
     }
 
     /**
