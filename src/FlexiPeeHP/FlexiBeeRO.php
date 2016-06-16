@@ -56,21 +56,25 @@ class FlexiBeeRO extends \Ease\Brick
     public $curl = null;
 
     /**
-     * @var type
+     * @link https://demo.flexibee.eu/devdoc/company-identifier Identifikátor firmy
+     * @var string
      */
     public $company = FLEXIBEE_COMPANY;
 
     /**
+     * Server[:port]
      * @var string
      */
     public $url = FLEXIBEE_URL;
 
     /**
+     * REST API Username
      * @var string
      */
     public $user = FLEXIBEE_LOGIN;
 
     /**
+     * REST API Password
      * @var string
      */
     public $password = FLEXIBEE_PASSWORD;
@@ -345,7 +349,7 @@ class FlexiBeeRO extends \Ease\Brick
                             JSON_PRETTY_PRINT));
                     break;
                 case 'xml':
-                    if (strlen($response)) {
+                    if (strlen($curlResponse)) {
                         $response = self::xml2array($curlResponse);
                     }
                     break;
@@ -371,7 +375,7 @@ class FlexiBeeRO extends \Ease\Brick
                 }
             }
 
-            if ($this->lastResponseCode == 400) {
+            if (is_array($response) && ($this->lastResponseCode == 400)) {
                 $this->logResult($response);
             } else {
                 $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
@@ -383,12 +387,10 @@ class FlexiBeeRO extends \Ease\Brick
                         'debug');
                 }
             }
-
-
             return $response;
         }
-
         // Parse response
+        $responseDecoded = [];
         switch ($format) {
             case 'json':
                 $responseDecoded = json_decode($curlResponse, true, 10);
@@ -536,7 +538,7 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $conditions = '';
         }
-        if ($suffix) {
+        if (strlen($suffix)) {
             $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
                 'GET');
         } else {
@@ -641,7 +643,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $flexiData = $this->getFlexiData('', $conditions);
 
-        if ($indexBy) {
+        if (!is_null($indexBy)) {
             $flexiData = $this->reindexArrayBy($flexiData);
         }
 
@@ -678,7 +680,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $flexiData = $this->getFlexiData('detail=custom:'.$columns, $conditions);
 
-        if ($indexBy) {
+        if (!is_null($indexBy)) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
@@ -746,66 +748,6 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         return $kodfinal;
-    }
-
-    /**
-     * Vyhledavani v záznamech objektu FlexiBee.
-     *
-     * @param string $what hledaný výraz
-     *
-     * @return array pole výsledků
-     */
-    public function searchString($what)
-    {
-        $results   = [];
-        $conds     = [];
-        $columns[] = $this->myKeyColumn;
-        foreach ($this->useKeywords as $keyword => $keywordInfo) {
-            if (isset($this->keywordsInfo[$keyword]['virtual']) && ($this->keywordsInfo[$keyword]['virtual']
-                == true)) {
-                if ($keyword == $this->nameColumn) {
-                    $this->nameColumn = $this->myKeyColumn;
-                }
-                continue;
-            }
-            switch ($keywordInfo) {
-                case 'INT':
-                case 'FLOAT':
-                    if (is_numeric($what)) {
-                        $conds[]   = "($keyword = ".$what.')';
-                        $columns[] = "$keyword";
-                    }
-                    break;
-                case 'TEXT':
-                case 'STRING':
-                    if (is_string($what)) {
-                        $conds[]   = "( $keyword like '".$what."')";
-                        $columns[] = "$keyword";
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-//        $res = \Ease\Shared::db()->queryToArray('SELECT ' . implode(',', $columns) . ',' . $this->nameColumn . ' FROM ' . $this->myTable . ' WHERE ' . implode(' OR ', $conds) . ' ORDER BY ' . $this->nameColumn, $this->myKeyColumn);
-
-        $res = $this->getColumnsFromFlexibee($columns, implode(' or ', $conds));
-
-        foreach ($res as $result) {
-            $occurences = '';
-            foreach ($result as $key => $value) {
-                if (is_array($value)) {
-                    continue;
-                }
-                if (mb_stristr($value, $what)) {
-                    $occurences .= '('.$key.': '.$value.')';
-                }
-            }
-            $results[$result[$this->myKeyColumn]] = [$this->nameColumn => $result[$this->nameColumn],
-                'what' => $occurences,];
-        }
-        return $results;
     }
 
     /**
