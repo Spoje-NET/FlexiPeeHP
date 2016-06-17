@@ -31,7 +31,6 @@ class FakturaVydana extends FlexiBeeRW
      */
     public function sparujPlatbu($doklad, $zbytek = 'ignorovat')
     {
-
         $sparovani                       = ['uhrazovanaFak' => $this];
         $sparovani['uhrazovanaFak@type'] = $this->evidence;
         $sparovani['zbytek']             = $zbytek;
@@ -78,6 +77,37 @@ class FakturaVydana extends FlexiBeeRW
         $uhrada['castka'] = $value;
 
         $this->setDataValue('hotovostni-uhrada', $uhrada);
+        return $this->insertToFlexiBee();
+    }
+
+    /**
+     * Odpočet zálohy
+     * 
+     * @link https://demo.flexibee.eu/devdoc/odpocet-zaloh Odpočet záloh a ZDD
+     * @param FakturaVydana $invoice zálohová faktura
+     * @param array $odpocet Vlastnosti odpočtu
+     * @return array
+     */
+    public function odpoctyZaloh($invoice, $odpocet = [])
+    {
+        if (!isset($odpocet['castkaZaklMen'])) {
+            $odpocet['castkaZaklMen'] = $invoice->getDataValue('sumZklZakl');
+        }
+        if (!isset($odpocet['castkaSnizMen'])) {
+            $odpocet['castkaSnizMen'] = $invoice->getDataValue('sumZklSniz');
+        }
+        if (!isset($odpocet['castkaSniz2Men'])) {
+            $odpocet['castkaSniz2Men'] = $invoice->getDataValue('sumZklSniz2');
+        }
+        if (!isset($odpocet['castkaOsvMen'])) {
+            $odpocet['castkaOsvMen'] = $invoice->getDataValue('sumOsv');
+        }
+        if (!isset($odpocet['id'])) {
+            $odpocet['id'] = 'ext:odpocet1';
+        }
+        $odpocet['doklad'] = $invoice;
+
+        $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
         return $this->insertToFlexiBee();
     }
 }

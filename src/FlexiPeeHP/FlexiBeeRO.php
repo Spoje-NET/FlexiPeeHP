@@ -82,7 +82,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent: FlexiPeeHP'];
+    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP'];
 
     /**
      * Default additional request url parameters after question mark
@@ -183,6 +183,19 @@ class FlexiBeeRO extends \Ease\Brick
      * @var array
      */
     public $lastResult = null;
+
+    /**
+     * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
+     * @var string
+     */
+    protected $action;
+
+    /**
+     * Pole akcí které podporuje ta která evidence
+     * @link https://demo.flexibee.eu/c/demo/faktura-vydana/actions.json Např. Akce faktury
+     * @var array
+     */
+    private $actionsAvailable = null;
 
     /**
      * Třída pro práci s FlexiBee.
@@ -320,14 +333,21 @@ class FlexiBeeRO extends \Ease\Brick
         $httpHeaders = $this->defaultHttpHeaders;
         switch ($format) {
             case 'json':
-                $httpHeaders[] = 'Accept: application/json';
+                $httpHeaders['Accept']       = 'application/json';
+                $httpHeaders['Content-Type'] = 'application/json';
+
                 break;
             case 'xml':
-                $httpHeaders[] = 'Accept: application/xml';
+                $httpHeaders['Accept']       = 'application/xml';
+                $httpHeaders['Content-Type'] = 'application/xml';
                 break;
         }
 
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeaders);
+        foreach ($httpHeaders as $key => $value) {
+            $httpHeadersFinal[] = $key.': '.$value;
+        }
+
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeadersFinal);
 
 // Proveď samotnou operaci
         $curlResponse = curl_exec($this->curl);
@@ -428,6 +448,28 @@ class FlexiBeeRO extends \Ease\Brick
     public function processRequest()
     {
 
+    }
+
+    /**
+     * Nastaví druh prováděné akce.
+     *
+     * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
+     * @param string $action
+     * @return boolean
+     */
+    public function setAction($action)
+    {
+        $result = false;
+        if (is_null($this->actionsAvailable)) {
+            $this->action = $action;
+            $result       = true;
+        } else {
+            if (array_search($action, $this->actionsAvailable)) {
+                $this->action = $action;
+                $result       = true;
+            }
+        }
+        return $result;
     }
 
     /**
@@ -590,6 +632,11 @@ class FlexiBeeRO extends \Ease\Brick
                 $this->evidence => $this->objectToID($data),
             ],
         ];
+
+        if (!is_null($this->action)) {
+            $jsonize[$this->nameSpace.'@action'] = $this->action;
+            $this->action                        = null;
+        }
 
         return json_encode($jsonize);
     }

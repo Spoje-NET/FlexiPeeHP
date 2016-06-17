@@ -157,6 +157,19 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setAction
+     */
+    public function testSetAction()
+    {
+        $this->assertTrue($this->object->setAction('none'));
+        $this->object->actionsAvailable = [];
+        $this->assertFalse($this->object->setAction('none'));
+        $this->object->actionsAvailable = ['copy'];
+        $this->assertFalse($this->object->setAction('none'));
+        $this->assertTrue($this->object->setAction('copy'));
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getLastInsertedId
      * @depends testInsertToFlexiBee
      */
@@ -275,6 +288,9 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
+        $this->object->setAction('copy');
+        $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}},"companies@action":"copy"}',
+            $this->object->jsonizeData(['key' => 'value']));
     }
 
     /**
@@ -339,18 +355,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
         $this->assertEquals('TEST2', $this->object->getKod(['kod' => 'test']));
         $this->assertEquals('NOTSET', $this->object->getKod(['kod' => '']));
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRO::searchString
-     * @todo   Implement testSearchString().
-     */
-    public function testSearchString()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 
     /**
