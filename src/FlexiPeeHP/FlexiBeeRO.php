@@ -343,6 +343,7 @@ class FlexiBeeRO extends \Ease\Brick
                 break;
         }
 
+        $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
             $httpHeadersFinal[] = $key.': '.$value;
         }
@@ -634,8 +635,8 @@ class FlexiBeeRO extends \Ease\Brick
         ];
 
         if (!is_null($this->action)) {
-            $jsonize[$this->nameSpace.'@action'] = $this->action;
-            $this->action                        = null;
+            $jsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
+            $this->action                                                          = null;
         }
 
         return json_encode($jsonize);

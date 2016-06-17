@@ -289,7 +289,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
         $this->object->setAction('copy');
-        $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}},"companies@action":"copy"}',
+        $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
             $this->object->jsonizeData(['key' => 'value']));
     }
 
