@@ -81,14 +81,36 @@ class FakturaVydana extends FlexiBeeRW
     }
 
     /**
-     * Odpočet zálohy
+     * Odpočet zálohy (vystavení daňového dokladu k platbě)
      * 
      * @link https://demo.flexibee.eu/devdoc/odpocet-zaloh Odpočet záloh a ZDD
      * @param FakturaVydana $invoice zálohová faktura
      * @param array $odpocet Vlastnosti odpočtu
      * @return array
      */
-    public function odpoctyZaloh($invoice, $odpocet = [])
+    public function odpocetZalohy($invoice, $odpocet = [])
+    {
+        if (!isset($odpocet['castkaMen'])) {
+            $odpocet['castkaMen'] = $invoice->getDataValue('sumCelkem');
+        }
+//        if (!isset($odpocet['id'])) {
+//            $odpocet['id'] = 'ext:odp:'.time();
+//        }
+        $odpocet['doklad'] = $invoice;
+
+        $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
+        return $this->insertToFlexiBee();
+    }
+
+    /**
+     * Odpočet ZDD
+     *
+     * @link https://demo.flexibee.eu/devdoc/odpocet-zaloh Odpočet záloh a ZDD
+     * @param FakturaVydana $invoice zálohová faktura
+     * @param array $odpocet Vlastnosti odpočtu
+     * @return array
+     */
+    public function odpocetZDD($invoice, $odpocet = [])
     {
         if (!isset($odpocet['castkaZaklMen'])) {
             $odpocet['castkaZaklMen'] = $invoice->getDataValue('sumZklZakl');

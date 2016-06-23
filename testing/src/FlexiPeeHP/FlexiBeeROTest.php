@@ -85,7 +85,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             $firstID = $this->object->getColumnsFromFlexibee('id',
                 ['limit' => 1]);
             $this->object->processInit((int) current($firstID));
-            $this->assertNotEmpty((string) $this->object);
+            $this->assertNotEmpty($this->object->__toString());
         }
     }
 
@@ -119,7 +119,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $id = \Ease\Sand::randomNumber(1, 9999);
         $this->object->setMyKey($id);
-        $this->assertEquals($id, $this->object->objectToID([$this->object]));
+        $this->assertEquals([$id], $this->object->objectToID([$this->object]));
 
         $this->object->setDataValue('kod', 'TEST');
         $this->assertEquals('code:TEST',
@@ -137,7 +137,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             if (array_key_exists('message', $json)) {
                 $this->assertArrayHasKey('@version', $json);
             } else {
-                $this->assertArrayHasKey($this->object->evidence, $json);
+                $this->assertArrayHasKey('company', $json);
             }
         } else {
             $this->object->evidence  = 'c';
@@ -418,7 +418,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::draw
      */
-    public function testDraw()
+    public function testDraw($whatWant = NULL)
     {
         $this->object->setDataValue('kod', 'test');
         $this->assertEquals('code:test', $this->object->draw());

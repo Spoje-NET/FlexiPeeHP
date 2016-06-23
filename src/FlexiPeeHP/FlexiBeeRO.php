@@ -59,25 +59,25 @@ class FlexiBeeRO extends \Ease\Brick
      * @link https://demo.flexibee.eu/devdoc/company-identifier Identifikátor firmy
      * @var string
      */
-    public $company = FLEXIBEE_COMPANY;
+    public $company = null;
 
     /**
      * Server[:port]
      * @var string
      */
-    public $url = FLEXIBEE_URL;
+    public $url = null;
 
     /**
      * REST API Username
      * @var string
      */
-    public $user = FLEXIBEE_LOGIN;
+    public $user = null;
 
     /**
      * REST API Password
      * @var string
      */
-    public $password = FLEXIBEE_PASSWORD;
+    public $password = null;
 
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
@@ -164,6 +164,13 @@ class FlexiBeeRO extends \Ease\Brick
     public $prefix = '/c/';
 
     /**
+     * Raw Content of last curl response
+     * 
+     * @var string
+     */
+    public $lastCurlResponse;
+
+    /**
      * HTTP Response code of last request
      *
      * @var int
@@ -195,7 +202,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @link https://demo.flexibee.eu/c/demo/faktura-vydana/actions.json Např. Akce faktury
      * @var array
      */
-    private $actionsAvailable = null;
+    public $actionsAvailable = null;
 
     /**
      * Třída pro práci s FlexiBee.
@@ -207,9 +214,31 @@ class FlexiBeeRO extends \Ease\Brick
         $this->init = $init;
 
         parent::__construct();
+        $this->setUp();
         $this->curlInit();
         if ($init) {
             $this->processInit($init);
+        }
+    }
+
+    /**
+     * SetUp Object to be ready for connect
+     */
+    public function setUp()
+    {
+        if (is_null($this->company) && defined('FLEXIBEE_COMPANY')) {
+            $this->company = constant('FLEXIBEE_COMPANY');
+        }
+        if (is_null($this->url) && defined('FLEXIBEE_URL')) {
+            $this->url = constant('FLEXIBEE_URL');
+        }
+
+        if (is_null($this->user) && defined('FLEXIBEE_LOGIN')) {
+            $this->user = constant('FLEXIBEE_LOGIN');
+        }
+
+        if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
+            $this->password = constant('FLEXIBEE_PASSWORD');
         }
     }
 
@@ -244,13 +273,23 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Nastaví Agendu pro Komunikaci.
+     * Nastaví Evidenci pro Komunikaci.
      *
      * @param string $evidence
      */
     public function setEvidence($evidence)
     {
         $this->evidence = $evidence;
+    }
+
+    /**
+     * Vrací právě používanou evidenci pro komunikaci
+     * 
+     * @return string
+     */
+    public function getEvidence()
+    {
+        return $this->evidence;
     }
 
     /**
@@ -324,38 +363,8 @@ class FlexiBeeRO extends \Ease\Brick
             $urlSuffix = $this->evidence.'.'.$format;
         }
         $url = $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
-        curl_setopt($this->curl, CURLOPT_URL, $url);
-// Nastavení samotné operace
-        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $method);
-//Vždy nastavíme byť i prázná postdata jako ochranu před chybou 411
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->postFields);
 
-        $httpHeaders = $this->defaultHttpHeaders;
-        switch ($format) {
-            case 'json':
-                $httpHeaders['Accept']       = 'application/json';
-                $httpHeaders['Content-Type'] = 'application/json';
-
-                break;
-            case 'xml':
-                $httpHeaders['Accept']       = 'application/xml';
-                $httpHeaders['Content-Type'] = 'application/xml';
-                break;
-        }
-
-        $httpHeadersFinal = [];
-        foreach ($httpHeaders as $key => $value) {
-            $httpHeadersFinal[] = $key.': '.$value;
-        }
-
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeadersFinal);
-
-// Proveď samotnou operaci
-        $curlResponse = curl_exec($this->curl);
-
-        $this->info = curl_getinfo($this->curl);
-
-        $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $this->doCurlRequest($url, $method, $format);
 
         if ($this->lastResponseCode != 200 && $this->lastResponseCode != 201) {
             $this->lastCurlError = curl_error($this->curl);
@@ -365,13 +374,13 @@ class FlexiBeeRO extends \Ease\Brick
                         function ($match) {
                         return mb_convert_encoding(pack('H*', $match[1]),
                             'UTF-8', 'UCS-2BE');
-                    }, $curlResponse);
+                    }, $this->lastCurlResponse);
                     $response = (json_encode(json_decode($response, true, 10),
                             JSON_PRETTY_PRINT));
                     break;
                 case 'xml':
-                    if (strlen($curlResponse)) {
-                        $response = self::xml2array($curlResponse);
+                    if (strlen($this->lastCurlResponse)) {
+                        $response = self::xml2array($this->lastCurlResponse);
                     }
                     break;
             }
@@ -414,7 +423,7 @@ class FlexiBeeRO extends \Ease\Brick
         $responseDecoded = [];
         switch ($format) {
             case 'json':
-                $responseDecoded = json_decode($curlResponse, true, 10);
+                $responseDecoded = json_decode($this->lastCurlResponse, true, 10);
                 if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
                 } else {
@@ -426,8 +435,8 @@ class FlexiBeeRO extends \Ease\Brick
                 }
                 break;
             case 'xml':
-                if (strlen($curlResponse)) {
-                    $responseDecoded = self::xml2array($curlResponse);
+                if (strlen($this->lastCurlResponse)) {
+                    $responseDecoded = self::xml2array($this->lastCurlResponse);
                 } else {
                     $responseDecoded = null;
                 }
@@ -441,6 +450,50 @@ class FlexiBeeRO extends \Ease\Brick
 
         $this->lastResult = $responseDecoded;
         return $responseDecoded;
+    }
+
+    /**
+     * Vykonej HTTP požadavek
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @param string $url URL požadavku
+     * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
+     * @param string $format
+     */
+    public function doCurlRequest($url, $method, $format)
+    {
+        curl_setopt($this->curl, CURLOPT_URL, $url);
+// Nastavení samotné operace
+        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
+//Vždy nastavíme byť i prázná postdata jako ochranu před chybou 411
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->postFields);
+
+        $httpHeaders = $this->defaultHttpHeaders;
+        switch ($format) {
+            case 'json':
+                $httpHeaders['Accept']       = 'application/json';
+                $httpHeaders['Content-Type'] = 'application/json';
+
+                break;
+            case 'xml':
+                $httpHeaders['Accept']       = 'application/xml';
+                $httpHeaders['Content-Type'] = 'application/xml';
+                break;
+        }
+
+        $httpHeadersFinal = [];
+        foreach ($httpHeaders as $key => $value) {
+            $httpHeadersFinal[] = $key.': '.$value;
+        }
+
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeadersFinal);
+
+// Proveď samotnou operaci
+        $this->lastCurlResponse = curl_exec($this->curl);
+
+        $this->info = curl_getinfo($this->curl);
+
+        $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
     }
 
     /**
@@ -555,6 +608,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (!is_null($conditions)) {
             if (is_array($conditions)) {
 
+                if (isset($conditions['detail'])) {
+                    \Ease\Sand::divDataArray($conditions, $urlParams, 'detail');
+                }
                 if (isset($conditions['sort'])) {
                     \Ease\Sand::divDataArray($conditions, $urlParams, 'sort');
                 }
@@ -636,7 +692,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (!is_null($this->action)) {
             $jsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
-            $this->action                                                          = null;
+            $this->action                                         = null;
         }
 
         return json_encode($jsonize);
@@ -847,6 +903,28 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_object($this->logger)) {
             $this->logger->flush(get_class($this));
         }
+    }
+
+    /**
+     * Save RAW Curl Request & Response to files in Temp directory
+     */
+    public function saveDebugFiles()
+    {
+        $tmpdir = sys_get_temp_dir();
+        file_put_contents($tmpdir.'/request-'.$this->evidence.'-'.microtime().'.'.$this->format,
+            $this->postFields);
+        file_put_contents($tmpdir.'/response-'.$this->evidence.'-'.microtime().'.'.$this->format,
+            $this->lastCurlResponse);
+    }
+
+    /**
+     * Připraví data pro odeslání do FlexiBee
+     * 
+     * @param string $data
+     */
+    public function setPostFields($data)
+    {
+        $this->postFields = $data;
     }
 
     /**
