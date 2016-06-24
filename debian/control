@@ -1,0 +1,16 @@
+Source: flexipeehp
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Uploaders: Vitex <vitex@hippy.cz>
+Priority: optional
+Homepage: https://github.com/Spoje-NET/FlexiPeeHP
+
+Package: flexipeehp
+Depends: ${misc:Depends},php5-curl,ease-framework
+Architecture: all
+Section: web
+Priority: optional
+Description: FlexiBee RestAPI/Json developer's tool
+ Tool for exploring Czech accounting system FlexiBee.
+ Tool for performing custom requests trough the RestAPI

@@ -205,6 +205,45 @@ class FlexiBeeRO extends \Ease\Brick
     public $actionsAvailable = null;
 
     /**
+     * Parmetry pro URL
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Všechny podporované parametry
+     * @var array
+     */
+    public $urlParams = [
+        'dry-run',
+        'fail-on-warning',
+        'report-name',
+        'report-lang',
+        'report-sign',
+        'detail',
+        'mode',
+        'limit',
+        'start',
+        'order',
+        'sort',
+        'add-row-count',
+        'relations',
+        'includes',
+        'use-ext-id',
+        'use-internal-id',
+        'stitky-as-ids',
+        'only-ext-ids',
+        'no-ext-ids',
+        'no-ids',
+        'code-as-id',
+        'no-http-errors',
+        'export-settings',
+        'as-gui',
+        'code-in-response',
+        'add-global-version',
+        'encoding',
+        'delimeter',
+        'format',
+        'auth',
+        'skupina-stitku',
+    ];
+
+    /**
      * Třída pro práci s FlexiBee.
      *
      * @param mixed $init výchozí selektor dat
@@ -346,6 +385,20 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Vrací základní URL pro užitou evidenci
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @param string $urlSuffix
+     */
+    public function getEvidenceURL($urlSuffix = null)
+    {
+        if (is_null($urlSuffix)) {
+            $urlSuffix = $this->evidence;
+        }
+        return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
+    }
+
+    /**
      * Funkce, která provede I/O operaci a vyhodnotí výsledek.
      *
      * @param string $urlSuffix část URL za identifikátorem firmy.
@@ -356,112 +409,126 @@ class FlexiBeeRO extends \Ease\Brick
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
     {
+
+        $url = $this->getEvidenceURL($urlSuffix);
+
+        $responseCode = $this->doCurlRequest($url, $method, $format);
+
         if (is_null($format)) {
             $format = $this->format;
         }
-        if (is_null($urlSuffix)) {
-            $urlSuffix = $this->evidence.'.'.$format;
-        }
-        $url = $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
 
-        $this->doCurlRequest($url, $method, $format);
+        switch ($responseCode) {
+            case 200:
+            case 201:
+                // Parse response
+                $responseDecoded = [];
 
-        if ($this->lastResponseCode != 200 && $this->lastResponseCode != 201) {
-            $this->lastCurlError = curl_error($this->curl);
-            switch ($format) {
-                case 'json':
-                    $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
-                        function ($match) {
-                        return mb_convert_encoding(pack('H*', $match[1]),
-                            'UTF-8', 'UCS-2BE');
-                    }, $this->lastCurlResponse);
-                    $response = (json_encode(json_decode($response, true, 10),
-                            JSON_PRETTY_PRINT));
-                    break;
-                case 'xml':
-                    if (strlen($this->lastCurlResponse)) {
-                        $response = self::xml2array($this->lastCurlResponse);
+                switch ($format) {
+                    case 'json':
+                        $responseDecoded = json_decode($this->lastCurlResponse,
+                            true, 10);
+                        if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
+                            $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
+                        } else {
+                            $this->lastInsertedID = null;
+                        }
+                        $decodeError = json_last_error_msg();
+                        if ($decodeError != 'No error') {
+                            $this->addStatusMessage($decodeError, 'error');
+                        }
+                        break;
+                    case 'xml':
+                        if (strlen($this->lastCurlResponse)) {
+                            $responseDecoded = self::xml2array($this->lastCurlResponse);
+                        } else {
+                            $responseDecoded = null;
+                        }
+                        break;
+                }
+
+                // Get response body root automatically
+                if (isset($responseDecoded[$this->nameSpace])) {
+                    $responseDecoded = $responseDecoded[$this->nameSpace];
+                }
+
+                $this->lastResult = $responseDecoded;
+                $response         = $responseDecoded;
+
+                break;
+
+            default: //Some goes wrong
+                $this->lastCurlError = curl_error($this->curl);
+                switch ($format) {
+                    case 'json':
+                        $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
+                            function ($match) {
+                            return mb_convert_encoding(pack('H*', $match[1]),
+                                'UTF-8', 'UCS-2BE');
+                        }, $this->lastCurlResponse);
+                        $response = (json_encode(json_decode($response, true, 10),
+                                JSON_PRETTY_PRINT));
+                        break;
+                    case 'xml':
+                        if (strlen($this->lastCurlResponse)) {
+                            $response = self::xml2array($this->lastCurlResponse);
+                        }
+                        break;
+                }
+
+                if (is_array($response)) {
+                    $result = urldecode(http_build_query($response));
+                } elseif (strlen($response) && ($response != 'null')) {
+                    $result = urldecode(http_build_query(self::object2array(current(json_decode($response)))));
+                } else {
+                    $result = null;
+                }
+
+                if ($response == 'null') {
+                    if ($this->lastResponseCode == 200) {
+                        $response = true;
+                    } else {
+                        $response = null;
                     }
-                    break;
-            }
-
-            if (is_array($response)) {
-                $result = urldecode(http_build_query($response));
-            } elseif (strlen($response) && ($response != 'null')) {
-                $result = urldecode(http_build_query(self::object2array(current(json_decode($response)))));
-            } else {
-                $result = null;
-            }
-
-            if ($response == 'null') {
-                if ($this->lastResponseCode == 200) {
-                    $response = true;
                 } else {
-                    $response = null;
+                    if (is_string($response)) {
+                        $response = self::object2array(current(json_decode($response)));
+                    }
                 }
-            } else {
-                if (is_string($response)) {
-                    $response = self::object2array(current(json_decode($response)));
-                }
-            }
 
-            if (is_array($response) && ($this->lastResponseCode == 400)) {
-                $this->logResult($response);
-            } else {
-                $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
-                        curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result,
-                        $this->lastCurlError), 'error');
-                $this->addStatusMessage($url, 'info');
-                if (count($this->postFields)) {
-                    $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                        'debug');
-                }
-            }
-            return $response;
-        }
-        // Parse response
-        $responseDecoded = [];
-        switch ($format) {
-            case 'json':
-                $responseDecoded = json_decode($this->lastCurlResponse, true, 10);
-                if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
+                if (is_array($response) && ($this->lastResponseCode == 400)) {
+                    $this->logResult($response);
                 } else {
-                    $this->lastInsertedID = null;
+                    $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
+                            curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
+                            $result, $this->lastCurlError), 'error');
+                    $this->addStatusMessage($url, 'info');
+                    if (count($this->postFields)) {
+                        $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                            'debug');
+                    }
                 }
-                $decodeError = json_last_error_msg();
-                if ($decodeError != 'No error') {
-                    $this->addStatusMessage($decodeError, 'error');
-                }
-                break;
-            case 'xml':
-                if (strlen($this->lastCurlResponse)) {
-                    $responseDecoded = self::xml2array($this->lastCurlResponse);
-                } else {
-                    $responseDecoded = null;
-                }
+
+
                 break;
         }
-
-        // Get response body root automatically
-        if (isset($responseDecoded[$this->nameSpace])) {
-            $responseDecoded = $responseDecoded[$this->nameSpace];
-        }
-
-        $this->lastResult = $responseDecoded;
-        return $responseDecoded;
+        return $response;
     }
 
     /**
      * Vykonej HTTP požadavek
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
-     * @param string $url URL požadavku
+     * @param string $url    URL požadavku
      * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
-     * @param string $format
+     * @param string $format požadovaný formát komunikace
+     * @return int HTTP Response CODE
      */
-    public function doCurlRequest($url, $method, $format)
+    public function doCurlRequest($url, $method, $format = null)
     {
+        if (is_null($format)) {
+            $format = $this->format;
+        }
         curl_setopt($this->curl, CURLOPT_URL, $url);
 // Nastavení samotné operace
         curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, strtoupper($method));
@@ -494,14 +561,7 @@ class FlexiBeeRO extends \Ease\Brick
         $this->info = curl_getinfo($this->curl);
 
         $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
-    }
-
-    /**
-     * Todo: Sem vyčlenit zpracování výsledku requestu
-     */
-    public function processRequest()
-    {
-
+        return $this->lastResponseCode;
     }
 
     /**
@@ -597,6 +657,22 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Oddělí z pole podmínek ty jenž patří za ? v URL požadavku
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @param array $conditions pole podmínek   - rendrují se do ()
+     * @param array $urlParams  pole parametrů  - rendrují za ?
+     */
+    public function extractUrlParams(&$conditions, &$urlParams)
+    {
+        foreach ($this->urlParams as $urlParam) {
+            if (isset($conditions[$urlParam])) {
+                \Ease\Sand::divDataArray($conditions, $urlParams, $urlParam);
+            }
+        }
+    }
+
+    /**
      * Načte data z FlexiBee.
      *
      * @param string $suffix     dotaz
@@ -607,27 +683,7 @@ class FlexiBeeRO extends \Ease\Brick
         $urlParams = $this->defaultUrlParams;
         if (!is_null($conditions)) {
             if (is_array($conditions)) {
-
-                if (isset($conditions['detail'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams, 'detail');
-                }
-                if (isset($conditions['sort'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams, 'sort');
-                }
-                if (isset($conditions['order'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams, 'order');
-                }
-                if (isset($conditions['limit'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams, 'limit');
-                }
-                if (isset($conditions['start'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams, 'start');
-                }
-                if (isset($conditions['add-row-count'])) {
-                    \Ease\Sand::divDataArray($conditions, $urlParams,
-                        'add-row-count');
-                }
-
+                $this->extractUrlParams($conditions, $urlParams);
                 $conditions = $this->flexiUrl($conditions);
             }
 

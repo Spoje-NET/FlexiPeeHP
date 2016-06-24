@@ -124,6 +124,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->setDataValue('kod', 'TEST');
         $this->assertEquals('code:TEST',
             $this->object->objectToID($this->object));
+
+        $this->assertEquals('TEST', $this->object->objectToID('TEST'));
     }
 
     /**

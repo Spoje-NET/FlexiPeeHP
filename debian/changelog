@@ -1,0 +1,10 @@
+flexipeehp (0.1-2) UNRELEASED; urgency=low
+
+  [ Vítězslav Vitex Dvořák ]
+  * Debianized
+
+  [ Cybervitexus ]
+  * Změna odpočtů z faktury Oddelení základního curl požadavku od
+    zpracování výsledků
+
+ -- Cybervitexus <vitex@novolen.jinonice.czf>  Sat, 25 Jun 2016 00:04:14 +0200
