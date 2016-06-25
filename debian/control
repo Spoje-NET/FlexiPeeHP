@@ -8,9 +8,9 @@ Homepage: https://github.com/Spoje-NET/FlexiPeeHP
 
 Package: flexipeehp
 Depends: ${misc:Depends},php5-curl,ease-framework
+Suggests: composer
 Architecture: all
 Section: web
 Priority: optional
-Description: FlexiBee RestAPI/Json developer's tool
- Tool for exploring Czech accounting system FlexiBee.
- Tool for performing custom requests trough the RestAPI
+Description: PHP Based FlexiBee RestAPI/Json library
+ Allow you read and write operations on czech accounting system FlexiBee
