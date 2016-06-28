@@ -3,8 +3,6 @@
 
 PHP Based Library for easy interaction with Czech accounting system FlexiBee.
 
-To test basic functionality please try to run testing/demo.php
-
 CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee](https://www.flexibee.eu/)
 
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/FlexiPeeHP-blue.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP)
@@ -61,7 +59,14 @@ Z ní jsou pak odvozeny třídy pro jednotlivé evidence, obsahující metody pr
 často používané operace, například "Zaplať" v případě přijatých faktur.
 
 Nová odvozená třída vzniká tak že jméno třídy je název evidence avšak bez 
-pomlček. Ty jsou ve jméně nahrazeny velkým písmenem. Tzn. Pokud chceme odvodit 
+pomlček. Ty jsou ve jméně nahrazeny velkým písmenem. 
+
+    function evidenceToClass($evidence)
+    {
+        return str_replace(' ', '', ucfirst(str_replace('-', ' ', $evidence)));
+    }
+
+Tzn. Pokud chceme odvodit 
 novou třídu pro evidenci "Měrné jednotky" bude vypadat takto:
 
     <?php
@@ -102,3 +107,8 @@ mailem:
     RESULT=`phpunit --colors --bootstrap $SITEDIR/testing/bootstrap.php /usr/share/php/PHPUnit/Extensions/NetBeansSuite.php --run=$SITEDIR/testing |  awk '{ sub(/$/,"\r"); print }' | aha`
     echo $RESULT >  $RESULTS
     cat $RESULTS | awk '{ sub(/$/,"\n"); print }' | mail "$AUTHOR" -s "$SUBJECT"  -a 'Content-Type: text/html'
+
+Ukázka
+------
+
+Příkldem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)

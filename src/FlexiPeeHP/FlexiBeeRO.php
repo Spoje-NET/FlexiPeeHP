@@ -241,6 +241,7 @@ class FlexiBeeRO extends \Ease\Brick
         'format',
         'auth',
         'skupina-stitku',
+        'dir'
     ];
 
     /**
