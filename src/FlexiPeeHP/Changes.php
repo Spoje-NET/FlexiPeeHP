@@ -50,6 +50,6 @@ class Changes extends FlexiBeeRO
     public function getStatus()
     {
         $status = $this->performRequest('changes/status.xml', 'GET', 'xml');
-        return (($this->lastResponseCode == 200) && ($status['success'] == 'true'));
+        return (($this->lastResponseCode == 200) && ($status['success'] === 'true'));
     }
 }

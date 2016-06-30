@@ -7,6 +7,7 @@
  */
 
 namespace FlexiPeeHP;
+
 /**
  * Firmy/účetní jednotky
  *
@@ -41,4 +42,23 @@ class Company extends FlexiBeeRO
      * @var string
      */
     public $company = '';
+
+    /**
+     * Vrací základní URL pro užitou evidenci
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @param string $urlSuffix
+     */
+    public function getEvidenceURL($urlSuffix = null)
+    {
+        if (is_null($urlSuffix)) {
+            $urlSuffix = $this->evidence;
+        }
+
+        $url = $this->url.$this->prefix;
+        if (!is_null($urlSuffix)) {
+            $url .= '/'.$urlSuffix;
+        }
+        return $url;
+    }
 }

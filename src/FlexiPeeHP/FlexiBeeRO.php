@@ -256,7 +256,7 @@ class FlexiBeeRO extends \Ease\Brick
         parent::__construct();
         $this->setUp();
         $this->curlInit();
-        if ($init) {
+        if (!is_null($init)) {
             $this->processInit($init);
         }
     }
@@ -309,6 +309,8 @@ class FlexiBeeRO extends \Ease\Brick
             $this->loadFromFlexiBee($init);
         } elseif (is_array($init)) {
             $this->takeData($init);
+        } elseif (strstr($init, 'code:')) {
+            $this->loadFromFlexiBee($init);
         }
     }
 
@@ -1037,5 +1039,57 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
         return $id;
+    }
+
+    /**
+     * Gives you FlexiPeeHP class name for Given Evidence
+     *
+     * @param string $evidence
+     * @return string Class name
+     */
+    static public function evidenceToClassName($evidence)
+    {
+        return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
+    }
+
+    /**
+     * Vrací hodnotu daného externího ID
+     *
+     * @param string $want
+     * @return string
+     */
+    public function getExternalID($want)
+    {
+        $extid = null;
+        $ids   = $this->getDataValue('external-ids');
+        if (!is_null($ids)) {
+            foreach ($ids as $id) {
+                if (strstr($id, 'ext:'.$want)) {
+                    $extid = str_replace('ext:'.$want.':', '', $id);
+                }
+            }
+        }
+        return $extid;
+    }
+
+    /**
+     * Vrací aktuální globální verzi změn
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api#globalVersion Globální Verze
+     * @return type
+     */
+    public function getGlobalVersion()
+    {
+        $globalVersion = null;
+        if (!count($this->lastResult) || !isset($this->lastResult['@globalVersion'])) {
+            $this->getFlexiData(null,
+                ['add-global-version' => 'true', 'limit' => 1]);
+        }
+
+        if (isset($this->lastResult['@globalVersion'])) {
+            $globalVersion = intval($this->lastResult['@globalVersion']);
+        }
+
+        return $globalVersion;
     }
 }

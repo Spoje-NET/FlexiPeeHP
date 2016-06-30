@@ -43,8 +43,10 @@ class Hooks extends FlexiBeeRW
             }
         }
 
-        return $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
-                'PUT', 'xml');
+        $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
+            'PUT', 'xml');
+
+        return $this->lastResponseCode === 200;
     }
 
     /**

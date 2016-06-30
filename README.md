@@ -63,7 +63,7 @@ pomlček. Ty jsou ve jméně nahrazeny velkým písmenem.
 
     function evidenceToClass($evidence)
     {
-        return str_replace(' ', '', ucfirst(str_replace('-', ' ', $evidence)));
+        return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
 
 Tzn. Pokud chceme odvodit 
