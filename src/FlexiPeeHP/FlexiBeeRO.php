@@ -500,7 +500,7 @@ class FlexiBeeRO extends \Ease\Brick
                 }
 
                 if (is_array($response) && ($this->lastResponseCode == 400)) {
-                    $this->logResult($response);
+                    $this->logResult($response, $url);
                 } else {
                     $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
                             curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
@@ -921,11 +921,19 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function logResult($resultData = null, $url = null)
     {
+        if (isset($resultData['success']) && ($resultData['success'] == 'false')) {
+            if (isset($resultData['message'])) {
+                $this->addStatusMessage($resultData['message'], 'warning');
+            }
+            $this->addStatusMessage('Error '.$this->lastResponseCode.': '.urldecode($url),
+                'warning');
+            unset($url);
+        }
         if (is_null($resultData)) {
             $resultData = $this->lastResult;
         }
-        if ($url) {
-            $this->logger->addStatusMessage($url);
+        if (isset($url)) {
+            $this->logger->addStatusMessage(urldecode($url));
         }
 
         if (isset($resultData['results'])) {
@@ -953,12 +961,12 @@ class FlexiBeeRO extends \Ease\Brick
                         if (isset($error['code'])) {
                             $message .= ' code:'.$error['code'];
                         }
-                        $this->logger->addStatusMessage($rid.': '.$message,
-                            $status);
+                        $this->addStatusMessage($rid.': '.$message, $status);
                     }
                 }
             }
         }
+
         if (is_object($this->logger)) {
             $this->logger->flush(get_class($this));
         }
@@ -1035,7 +1043,7 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $id = $this->getDataValue('id');
             if (!$id) {
-                throw new \Exception(_('invoice without loaded code: or id: cannot match with statement!'));
+                throw new \Exception(_('Object Data does not contain code: or id: cannot match with statement!'));
             }
         }
         return $id;

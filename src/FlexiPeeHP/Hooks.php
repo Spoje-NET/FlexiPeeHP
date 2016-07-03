@@ -36,13 +36,15 @@ class Hooks extends FlexiBeeRW
         $this->setDataValue('format', strtoupper($format));
 
         $hooks = $this->getAllFromFlexibee();
-        foreach ($hooks as $hook) {
-            if ($hook['url'] == $url) {
-                $this->addStatusMessage(_('Url allready registered'), 'warning');
-                return false;
+        if (count($hooks)) {
+            foreach ($hooks as $hook) {
+                if ($hook['url'] == $url) {
+                    $this->addStatusMessage(_('Url allready registered'),
+                        'warning');
+                    return false;
+                }
             }
         }
-
         $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
             'PUT', 'xml');
 

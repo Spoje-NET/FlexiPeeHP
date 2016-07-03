@@ -1,4 +1,4 @@
-flexipeehp (0.1-2) UNRELEASED; urgency=low
+flexipeehp (0.1-4) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -6,5 +6,9 @@ flexipeehp (0.1-2) UNRELEASED; urgency=low
   * Debian package build update
   * Přidán další parametr adresní řádky pro směr řazení výpisu Přidána
     třída pro cenník
+  * Doplněna funkce pro získání GlobalVersion Přidána třída položky
+    faktury vydané
+  * Doplněna funkce pro získání GlobalVersion Přidána třída položky
+    faktury vydané
 
- -- Cybervitexus <vitex@novolen.jinonice.czf>  Tue, 28 Jun 2016 06:57:13 +0200
+ -- Cybervitexus <vitex@novolen.jinonice.czf>  Thu, 30 Jun 2016 12:40:26 +0200
