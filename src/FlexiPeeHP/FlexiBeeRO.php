@@ -397,6 +397,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         if (is_null($urlSuffix)) {
             $urlSuffix = $this->evidence;
+        } elseif ($urlSuffix[0] == ';') {
+            $urlSuffix = $this->evidence.$urlSuffix;
         }
         return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
     }
