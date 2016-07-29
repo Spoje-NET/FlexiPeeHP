@@ -26,7 +26,7 @@ class AdresarTest extends FlexiBeeRWTest
      */
     protected function setUp()
     {
-        $this->object = new Adresar;
+        $this->object = new Adresar();
     }
 
     /**
