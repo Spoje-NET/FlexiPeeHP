@@ -60,4 +60,5 @@ class Hooks extends FlexiBeeRW
     {
         return $this->deleteFromFlexiBee($id);
     }
+
 }

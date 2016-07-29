@@ -28,6 +28,7 @@ class Banka extends FlexiBeeRW
     public function stahnoutVypisyOnline()
     {
         $this->performRequest('banka/nacteni-vypisu-online', 'PUT');
+        //TODO: Wait PlainText response, not JSON ($this->lastCurlResponse)
         return $this->lastResponseCode == 200;
     }
 
@@ -42,4 +43,5 @@ class Banka extends FlexiBeeRW
         $this->performRequest('banka/automaticke-parovani', 'PUT');
         return $this->lastResponseCode == 200;
     }
+
 }

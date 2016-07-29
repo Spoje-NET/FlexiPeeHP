@@ -30,6 +30,7 @@ class objTest extends \stdClass
     {
         return true;
     }
+
 }
 
 /**
@@ -425,4 +426,5 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->setDataValue('kod', 'test');
         $this->assertEquals('code:test', $this->object->draw());
     }
+
 }

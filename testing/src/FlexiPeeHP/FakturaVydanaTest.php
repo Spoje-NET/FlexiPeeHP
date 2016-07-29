@@ -133,4 +133,5 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $this->object->setDataValue('id', $id);
         return $id;
     }
+
 }

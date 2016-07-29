@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt adresáře.
  *
@@ -21,5 +20,6 @@ class Adresar extends FlexiBeeRW
      *
      * @var string
      */
-    public $evidence    = 'adresar';
+    public $evidence = 'adresar';
+
 }

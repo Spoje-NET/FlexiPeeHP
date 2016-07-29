@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt skupiny firem.
  *
@@ -22,4 +21,5 @@ class SkupinaFirem extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'skupina-firem';
+
 }

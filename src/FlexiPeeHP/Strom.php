@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt stromu.
  *
@@ -8,6 +7,7 @@
  */
 
 namespace FlexiPeeHP;
+
 /**
  * Obecný Strom
  *
@@ -20,7 +20,7 @@ class Strom extends FlexiBeeRW
      *
      * @var string
      */
-    public $evidence   = 'strom';
+    public $evidence = 'strom';
 
     /**
      * Sloupeček se jménem záznamu
@@ -28,4 +28,5 @@ class Strom extends FlexiBeeRW
      * @var string
      */
     public $nameColumn = 'nazev';
+
 }

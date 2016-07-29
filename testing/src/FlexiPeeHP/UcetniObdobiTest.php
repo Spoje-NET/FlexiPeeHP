@@ -77,4 +77,5 @@ class UcetniObdobiTest extends FlexiBeeRWTest
         $this->assertEquals('false', $wrong[0]['success'],
             'current year does not exist ?');
     }
+
 }

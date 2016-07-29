@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt kontaktu.
  *
@@ -8,6 +7,7 @@
  */
 
 namespace FlexiPeeHP;
+
 /**
  * Kontakt adresáře
  *

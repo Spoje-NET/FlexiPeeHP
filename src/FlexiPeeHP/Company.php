@@ -61,4 +61,5 @@ class Company extends FlexiBeeRO
         }
         return $url;
     }
+
 }

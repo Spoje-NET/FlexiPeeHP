@@ -66,6 +66,7 @@ class ChangesTest extends FlexiBeeROTest
      */
     protected function tearDown()
     {
-
+        
     }
+
 }

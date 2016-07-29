@@ -112,3 +112,5 @@ Ukázka
 ------
 
 Příkldem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)

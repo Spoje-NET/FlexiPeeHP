@@ -1102,4 +1102,5 @@ class FlexiBeeRO extends \Ease\Brick
 
         return $globalVersion;
     }
+
 }

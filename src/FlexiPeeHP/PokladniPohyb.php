@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt Pokladního pohybu.
  *
@@ -22,4 +21,5 @@ class PokladniPohyb extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'pokladni-pohyb';
+
 }

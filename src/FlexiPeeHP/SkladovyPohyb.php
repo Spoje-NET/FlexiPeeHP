@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt skladového pohybu.
  *
@@ -8,7 +7,6 @@
  */
 
 namespace FlexiPeeHP;
-
 
 /**
  * Skladového pohyb
@@ -23,4 +21,5 @@ class SkladovyPohyb extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'skladovy-pohyb';
+
 }

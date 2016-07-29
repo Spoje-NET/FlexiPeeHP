@@ -57,5 +57,7 @@ class HooksTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
+        
     }
+
 }
