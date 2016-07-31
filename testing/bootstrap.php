@@ -12,13 +12,11 @@ if (file_exists('../vendor/autoload.php')) {
         include_once 'vendor/autoload.php';
     }
 }
-
-require_once 'objTest.php';
-
 /**
  * Write logs as:
  */
 define('LOG_NAME', 'FlexiPeeHPtest');
+define('LOG_TYPE', 'syslog');
 
 $testServer = 'official';
 switch ($testServer) {
@@ -91,7 +89,7 @@ switch ($testServer) {
         /*
          * Společnost v FlexiBee
          */
-        define('FLEXIBEE_COMPANY', 'spoje_net_s_r_o_');
+        define('FLEXIBEE_COMPANY', 'testing_s_r_o_');
 
         break;
 }

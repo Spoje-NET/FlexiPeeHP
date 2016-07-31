@@ -1,8 +1,10 @@
 <?php
+namespace Test;
+
 /**
  * Class used to test Object To Array Conversion
  */
-class objTest extends \stdClass
+class ObjectForTesting extends \stdClass
 {
     /**
      * Simple Item

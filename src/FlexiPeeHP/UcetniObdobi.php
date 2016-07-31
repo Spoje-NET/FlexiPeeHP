@@ -44,6 +44,7 @@ class UcetniObdobi extends FlexiBeeRW
             ];
             $this->setData($obdobi);
             $result[] = $this->insertToFlexibee();
+            $this->dataReset();
         }
         return $result;
     }

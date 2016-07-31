@@ -116,10 +116,21 @@ class FakturaVydanaTest extends FlexiBeeRWTest
 
             $adresy = $adresar->getFlexiData(null,
                 ['typVztahuK' => 'typVztahu.odberatel']);
+            if (count($adresy)) {
+                $dodavatel = $adresy[array_rand($adresy)];
 
-            $dodavatel = $adresy[array_rand($adresy)];
-
-            $invoiceData['firma'] = 'code:'.$dodavatel['kod'];
+                $invoiceData['firma'] = 'code:'.$dodavatel['kod'];
+            } else {
+                /**
+                 * Make Some Address First ...
+                 */
+                $address = new \FlexiPeeHP\Adresar();
+                $address->setDataValue('nazev', \Ease\Sand::randomString());
+                $address->setDataValue('poznam', 'Generated Unit Test Customrt');
+                $address->setDataValue('typVztahuK', 'typVztahu.odberatel');
+                $address->insertToFlexiBee();
+                $invoiceData['firma'] = $address;
+            }
         }
 
         if (!isset($invoiceData['poznam'])) {

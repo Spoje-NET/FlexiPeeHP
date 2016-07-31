@@ -81,7 +81,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'item' => 1,
             'arrItem' => ['a', 'b' => 'c']
             ]
-            , $this->object->object2array(new \objTest()));
+            , $this->object->object2array(new \Test\ObjectForTesting()));
     }
 
     /**
@@ -105,25 +105,33 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testPerformRequest()
     {
-
-        if (!is_null($this->object->evidence) && $this->object->evidence != 'test') {
-            $json = $this->object->performRequest($this->object->evidence.'.json');
-            if (array_key_exists('message', $json)) {
-                $this->assertArrayHasKey('@version', $json);
-            } else {
+        $evidence = $this->object->getEvidence();
+        switch ($evidence) {
+            case null:
+            case '':
+            case 'test':
+            case 'c':
+                $this->object->evidence  = 'c';
+                $this->object->prefix    = '';
+                $this->object->company   = '';
+                $this->object->nameSpace = 'companies';
+                $json                    = $this->object->performRequest();
                 $this->assertArrayHasKey('company', $json);
-            }
-        } else {
-            $this->object->evidence  = 'c';
-            $this->object->prefix    = '';
-            $this->object->company   = '';
-            $this->object->nameSpace = 'companies';
-            $json                    = $this->object->performRequest();
-            $this->assertArrayHasKey('company', $json);
 
-            $xml = $this->object->performRequest(null, 'GET', 'xml');
-            $this->assertArrayHasKey('company', $xml);
+                $xml = $this->object->performRequest(null, 'GET', 'xml');
+                $this->assertArrayHasKey('company', $xml);
+                break;
+
+            default:
+                $json = $this->object->performRequest($evidence.'.json');
+                if (array_key_exists('message', $json)) {
+                    $this->assertArrayHasKey('@version', $json);
+                } else {
+                    $this->assertArrayHasKey($evidence, $json);
+                }
+                break;
         }
+
 
         $err = $this->object->performRequest('error.json');
         $this->assertArrayHasKey('success', $err);
@@ -196,7 +204,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      * @covers FlexiPeeHP\FlexiBeeRO::__destruct
      * @depends testDisconnect
      */
-    public function test__destruct()
+    public function testdestruct()
     {
         $this->markTestSkipped();
     }
@@ -227,22 +235,34 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetFlexiData()
     {
-        if (is_null($this->object->evidence) || ($this->object->evidence == 'test')
-            || ($this->object->evidence == 'c')) {
-            $this->object->evidence  = 'c';
-            $this->object->prefix    = '';
-            $this->object->company   = '';
-            $this->object->nameSpace = 'companies';
-            $flexidata               = $this->object->getFlexiData();
-            $this->assertArrayHasKey('company', $flexidata);
-        } else {
-            $flexidata = $this->object->getFlexiData();
-            $this->assertArrayHasKey(0, $flexidata);
-            $this->assertArrayHasKey('id', $flexidata[0]);
-            $filtrered = $this->object->getFlexiData(null,
-                key($flexidata[0])." = ".current($flexidata[0]));
-            $this->assertArrayHasKey(0, $filtrered);
-            $this->assertArrayHasKey('id', $filtrered[0]);
+        $evidence = $this->object->getEvidence();
+
+        switch ($evidence) {
+            case null:
+                $this->markTestSkipped('Unsupported evidence');
+                break;
+            case 'c':
+                $this->object->evidence  = 'c';
+                $this->object->prefix    = '';
+                $this->object->company   = '';
+                $this->object->nameSpace = 'companies';
+                $flexidata               = $this->object->getFlexiData();
+                $this->assertArrayHasKey('company', $flexidata);
+                break;
+
+            default:
+                $flexidata = $this->object->getFlexiData();
+                if (is_array($flexidata) && !count($flexidata)) {
+                    $this->markTestSkipped('Empty evidence');
+                } else {
+                    $this->assertArrayHasKey(0, $flexidata);
+                    $this->assertArrayHasKey('id', $flexidata[0]);
+                    $filtrered = $this->object->getFlexiData(null,
+                        key($flexidata[0])." = ".current($flexidata[0]));
+                    $this->assertArrayHasKey(0, $filtrered);
+                    $this->assertArrayHasKey('id', $filtrered[0]);
+                }
+                break;
         }
     }
 
@@ -285,13 +305,25 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     public function testRecordExists()
     {
         $evidence = $this->object->getEvidence();
-        if ($evidence == 'c') {
-            $this->markTestSkipped('Evidence is c');
+
+        switch ($evidence) {
+            case null:
+            case 'c':
+                $this->markTestSkipped('Unsupported evidence');
+                break;
+
+            default:
+                $flexidata = $this->object->getFlexiData(null, ['limit' => 1]);
+                if (is_array($flexidata) && !count($flexidata)) {
+                    $this->markTestSkipped('Empty evidence');
+                } else {
+                    $this->object->setData(['id' => (int) $flexidata[0]['id']]);
+                    $this->assertTrue($this->object->recordExists());
+                    $this->assertFalse($this->object->recordExists(['id' => 0]));
+                    $this->assertFalse($this->object->recordExists(['unexistent' => 1]));
+                }
+                break;
         }
-        $flexidata = $this->object->getFlexiData(null, ['limit' => 1]);
-        $this->object->setData(['id' => (int) $flexidata[$evidence][0]['id']]);
-        $this->assertTrue($this->object->recordExists());
-        $this->assertFalse($this->object->recordExists(['unexistent' => 1]));
     }
 
     /**
@@ -352,11 +384,12 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
         $this->assertArrayHasKey('info', $this->object->getStatusMessages(true));
 
-        $error = json_decode('{"winstrom":{"@version":"1.0","success":"false",'
+        $error                          = json_decode('{"winstrom":{"@version":"1.0","success":"false",'
             .'"stats":{"created":"0","updated":"0","deleted":"0","skipped":"0"'
             .',"failed":"0"},"results":[{"errors":[{"message":"cz.winstrom.'
             .'service.WSBusinessException: Zadaný kód není unikátní.\nZadaný'
             .' kód není unikátní."}]}]}}');
+        $this->object->lastResponseCode = 500;
         $this->object->logResult(current($this->object->object2array($error)));
         $this->assertArrayHasKey('error', $this->object->getStatusMessages(true));
     }
@@ -378,9 +411,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::__toString
-     * @expectedException \Exception
      */
-    public function test__toString()
+    public function testtoString()
     {
 
         $identifer = 'ext:test:123';
@@ -392,7 +424,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals('code:'.$code, (string) $this->object);
 
         $this->object->dataReset();
-        $this->object->__toString();
+        $this->assertNull($this->object->__toString());
     }
 
     /**

@@ -20,7 +20,7 @@ class ChangesTest extends FlexiBeeROTest
      */
     protected function setUp()
     {
-        $this->object = new Changes;
+        $this->object = new Changes();
     }
 
     /**
@@ -37,9 +37,36 @@ class ChangesTest extends FlexiBeeROTest
      */
     public function testGetFlexiData()
     {
+        /**
+         * Make Some Changes First ...
+         */
+        $address = new \FlexiPeeHP\Adresar();
+        $address->setDataValue('nazev', \Ease\Sand::randomString());
+        $address->setDataValue('poznam', 'Unit Test Random Record');
+        $address->insertToFlexiBee();
+
         $flexidata = $this->object->getFlexiData();
-        $this->assertArrayHasKey(0, $flexidata);
-        $this->assertArrayHasKey('id', $flexidata[0]);
+
+        if (isset($flexidata['message']) && ($flexidata['message'] == 'Changelog is not enabled')) {
+            $this->markTestSkipped('Changelog is not enabled');
+        } else {
+            if (count($flexidata)) {
+                $this->assertArrayHasKey(0, $flexidata);
+                $this->assertArrayHasKey('id', $flexidata[0]);
+            } else {
+                $this->markTestSkipped('Changelog is empty ?');
+            }
+        }
+
+        $address->deleteFromFlexiBee();
+    }
+
+    /**
+     * @covers FlexiPeeHP\Changes::recordExists
+     */
+    public function testRecordExists()
+    {
+        $this->assertNull($this->object->recordExists());
     }
 
     /**
