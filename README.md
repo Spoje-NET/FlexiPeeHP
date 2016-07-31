@@ -18,7 +18,15 @@ Vznik této knihovny by nebyl možný bez laskavé podpory společnosti [Spoje.N
 která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu.
 
 U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny do vašich projektů. 
+knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
+
+  * Příjmání a zpracování WebHooks
+  * Konverze a import dat z SQL databáze
+  * Obousměrná synchronizace s externím systém
+  * Párování dokladů dle specifického symbolu
+
+**Dále chci poděkovat technické podpoře společnosti [FlexiBee](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
+při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
