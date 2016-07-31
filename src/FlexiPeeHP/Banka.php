@@ -28,7 +28,7 @@ class Banka extends FlexiBeeRW
     public function stahnoutVypisyOnline()
     {
         $this->performRequest('banka/nacteni-vypisu-online', 'PUT');
-        //TODO: Wait PlainText response, not JSON ($this->lastCurlResponse)
+        //Dodělat: Wait PlainText response, not JSON ($this->lastCurlResponse)
         return $this->lastResponseCode == 200;
     }
 

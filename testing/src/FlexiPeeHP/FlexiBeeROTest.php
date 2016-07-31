@@ -210,18 +210,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRO::loadFlexiData
-     * @todo   Implement testLoadFlexiData().
-     */
-    public function testLoadFlexiData()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getFlexiRow
      */
     public function testGetFlexiRow()
@@ -289,7 +277,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::idExists
-     * @todo   Implement testIdExists().
      */
     public function testIdExists()
     {
@@ -328,7 +315,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getColumnsFromFlexibee
-     * @todo   Implement testGetColumnsFromFlexibee().
      */
     public function testGetColumnsFromFlexibee()
     {

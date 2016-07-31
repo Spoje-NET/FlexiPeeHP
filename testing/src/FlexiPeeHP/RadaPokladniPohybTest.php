@@ -34,7 +34,6 @@ class RadaPokladniPohybTest extends FlexiBeeRWTest
 
     /**
      * @covers FlexiPeeHP\RadaPokladniPohyb::getNextRecordCode
-     * @todo   Implement testGetNextRecordCode().
      */
     public function testGetNextRecordCode()
     {
@@ -46,7 +45,6 @@ class RadaPokladniPohybTest extends FlexiBeeRWTest
 
     /**
      * @covers FlexiPeeHP\RadaPokladniPohyb::incrementNextRecordCode
-     * @todo   Implement testIncrementNextRecordCode().
      */
     public function testIncrementNextRecordCode()
     {

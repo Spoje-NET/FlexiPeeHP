@@ -634,16 +634,6 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Načte data z FlexiBee.
-     *
-     * @param string $suffix dotaz
-     */
-    public function loadFlexiData($suffix = null)
-    {
-        return $this->takeData($this->getFlexiData($suffix));
-    }
-
-    /**
      * Načte řádek dat z FlexiBee.
      *
      * @param int $recordID id požadovaného záznamu
@@ -863,8 +853,6 @@ class FlexiBeeRO extends \Ease\Brick
      * Vrací kód záznamu.
      *
      * @param mixed $data
-     *
-     * @todo papat i string
      *
      * @return string
      */
