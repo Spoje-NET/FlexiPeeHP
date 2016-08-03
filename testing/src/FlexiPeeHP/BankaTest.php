@@ -49,4 +49,5 @@ class BankaTest extends FlexiBeeRWTest
         $this->assertInternalType('boolean',
             $this->object->automatickeParovani());
     }
+
 }

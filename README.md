@@ -12,25 +12,76 @@ CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee]
 [![Coverage Status](https://img.shields.io/coveralls/Spoje-NET/FlexiPeeHP/master.svg?style=flat-square)](https://coveralls.io/r/Spoje-NET/FlexiPeeHP?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)
 
 #Poděkování
 Vznik této knihovny by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
 která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu.
 
-U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny do vašich projektů. 
-
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
-Installation
-------------
+U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
+knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
+
+  * Příjmání a zpracování WebHooks
+  * Konverze a import dat z SQL databáze
+  * Obousměrná synchronizace s externím systém
+  * Párování dokladů dle specifického symbolu
+
+**Dále chci poděkovat technické podpoře společnosti [FlexiBee](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
+při reakcích na mé ne vždy bystré otázky a bugreporty.**
+
+Instalace
+---------
 
     composer require spoje.net/flexipeehp
 
+Pro Debian prosím použijte repo:
 
-Mandatory configuration Directives
-----------------------------------
+    wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
+    echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/ease.list
+    aptitude update
+    aptitude install flexipeehp
 
+V tomto případě je potřeba do souboru composer.json vaší aplikace přidat:
+
+    "require": {
+        "flexipeehp": "*",
+        "ease-framework": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/usr/share/php/FlexiPeeHP",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+
+Takže při instalaci závislostí bude vypadat nějak takto:
+
+    Loading composer repositories with package information
+    Installing dependencies from lock file
+      - Installing ease-framework (1.1.3.3)
+        Symlinked from /usr/share/php/Ease
+
+      - Installing flexipeehp (0.2.1)
+        Symlinked from /usr/share/php/FlexiPeeHP
+
+A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
+
+Konfigurace
+-----------
+
+Konfigurace se provádí nastavením následujících konstant:
 
     /*
     * URL Flexibee API
@@ -86,7 +137,7 @@ novou třídu pro evidenci "Měrné jednotky" bude vypadat takto:
 A poté je již snadné si vypsat měrné jednotky na 2 řádky:
     
     $jednotky = new MernaJednotka();
-    print_r( $jednotky->getAllFromFlexiBee );
+    print_r( $jednotky->getAllFromFlexiBee() );
 
 Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
 ovodit od předka FlexiBeeRW.
@@ -94,21 +145,22 @@ ovodit od předka FlexiBeeRW.
 Testování
 ---------
 
-Unit testy se nachází ve složce **testing**.
+PHPUnit testy se nachází ve složce **testing**. Pokud chcete testovat proti jinému
+serveru než je oficální http://demo.flexibee.eu/ , je třeba změnit nastavení v 
+souboru **bootstrap.php**. 
 
-Zde je ukázkový skript pro zobrazení výsledků testů na webové stránce a odeslání 
-mailem:
+Obsah proměnné $testServer určuje která z předvolených nastavení budou použita.
+A samozřejmě si můžete nadefinovat i vlastní. Jako příklad je zde uveden testovací
+server spoje.net.
 
-    cd $PROJECTDIR
-    AUTHOR=`git log | head -n 2 | tail -n 1 | awk -F':' '{print $2}'`
-    SUBJECT=`git log -1 --pretty=%B | head -n 1`
-    RESULTS='/var/www/html/flexipeehp-testing.html'
-    cd testing
-    RESULT=`phpunit --colors --bootstrap $SITEDIR/testing/bootstrap.php /usr/share/php/PHPUnit/Extensions/NetBeansSuite.php --run=$SITEDIR/testing |  awk '{ sub(/$/,"\r"); print }' | aha`
-    echo $RESULT >  $RESULTS
-    cat $RESULTS | awk '{ sub(/$/,"\n"); print }' | mail "$AUTHOR" -s "$SUBJECT"  -a 'Content-Type: text/html'
+Pro testování vytvořte prosím nejprve testovací firmu TESTING s.r.o. a nastavte
+přístupové údaje uživatele s oprávněním používat REST API. (Což je uživatel 
+administrátora zadaný při instalaci FlexiBee.)
+
+Upozornění: testování proti firmě s množstvím faktur a připojenou bankou může 
+trvat nějakou dobu, jelikož se testuje i zavolání automatického párování dokladů.
 
 Ukázka
 ------
 
-Příkldem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+Příkladem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)

@@ -38,13 +38,15 @@ class UcetniObdobi extends FlexiBeeRW
         }
 
         for ($year = $startYear; $year <= $endYear; ++$year) {
-            $obdobi = ['kod' => $year,
+            $obdobi   = ['kod' => $year,
                 'platiOdData' => $year.'-01-01T00:00:00',
                 'platiDoData' => $year.'-12-31T23:59:59',
             ];
             $this->setData($obdobi);
             $result[] = $this->insertToFlexibee();
+            $this->dataReset();
         }
         return $result;
     }
+
 }

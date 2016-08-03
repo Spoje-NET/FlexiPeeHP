@@ -76,4 +76,5 @@ class FlexiBeeRW extends FlexiBeeRO
             'DELETE');
         return $this->lastResponseCode == 200;
     }
+
 }

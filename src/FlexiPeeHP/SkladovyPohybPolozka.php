@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt pokladny.
  *
@@ -22,4 +21,5 @@ class SkladovyPohybPolozka extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'skladovy-pohyb-polozka';
+
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt štítku.
  *
@@ -20,4 +19,5 @@ class Stitek extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'stitek';
+
 }

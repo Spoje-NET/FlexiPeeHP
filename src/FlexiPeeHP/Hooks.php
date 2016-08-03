@@ -73,4 +73,16 @@ class Hooks extends FlexiBeeRW
     {
         return $this->deleteFromFlexiBee($id);
     }
+
+    /**
+     * Test if given record exists in FlexiBee.
+     *
+     * @param array $data
+     * @return null Unsupported evidence
+     */
+    public function recordExists($data = null)
+    {
+        return null;
+    }
+
 }

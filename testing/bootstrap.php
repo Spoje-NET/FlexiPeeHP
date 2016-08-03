@@ -12,24 +12,11 @@ if (file_exists('../vendor/autoload.php')) {
         include_once 'vendor/autoload.php';
     }
 }
-
-if (!function_exists('_')) {
-
-    /**
-     * Maketa Gettextu pro HHVM
-     * @param string $a
-     * @return string
-     */
-    function _($a)
-    {
-        return $a;
-    }
-}
-
 /**
  * Write logs as:
  */
-define('LOG_NAME', 'FlexiPeeHP');
+define('LOG_NAME', 'FlexiPeeHPtest');
+define('LOG_TYPE', 'syslog');
 
 $testServer = 'official';
 switch ($testServer) {
@@ -102,7 +89,7 @@ switch ($testServer) {
         /*
          * Společnost v FlexiBee
          */
-        define('FLEXIBEE_COMPANY', 'spoje_net_s_r_o_1');
+        define('FLEXIBEE_COMPANY', 'testing_s_r_o_');
 
         break;
 }

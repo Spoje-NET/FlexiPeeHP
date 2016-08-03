@@ -1,8 +1,8 @@
 #!/bin/bash
 cd ..
 
-PACKAGE=`cat composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}' | awk -F'/' '{print $2}'`
-VERSION=`cat composer.json | grep version | awk -F'"' '{print $4}'`
+PACKAGE=`cat debian/composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}' | awk -F'/' '{print $2}'`
+VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`
 REVISION=`cat debian/revison | perl -ne 'chomp; print join(".", splice(@{[split/\./,$_]}, 0, -1), map {++$_} pop @{[split/\./,$_]}), "\n";'`
 CHANGES=`git log -n 1 | tail -n+5`
 dch -b -v $VERSION-$REVISION --package $PACKAGE $CHANGES

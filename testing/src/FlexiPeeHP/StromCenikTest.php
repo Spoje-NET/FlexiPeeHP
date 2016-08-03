@@ -20,7 +20,7 @@ class StromCenikTest extends FlexiBeeRWTest
      */
     protected function setUp()
     {
-        $this->object = new StromCenik;
+        $this->object = new StromCenik();
     }
 
     /**
@@ -29,6 +29,7 @@ class StromCenikTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
+
 }
