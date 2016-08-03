@@ -36,7 +36,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * 
      * @var string
      */
-    protected $postFields = null;
+    public $postFields = null;
 
     /**
      * Uloží záznam.

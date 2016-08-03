@@ -38,16 +38,29 @@ class Hooks extends FlexiBeeRW
         $hooks = $this->getAllFromFlexibee();
         if (count($hooks)) {
             foreach ($hooks as $hook) {
-                if ($hook['url'] == $url) {
-                    $this->addStatusMessage(_('Url allready registered'),
-                        'warning');
-                    return false;
+                if (is_array($hook) && array_key_exists('url', $hook)) {
+                    if ($hook['url'] == $url) {
+                        $this->addStatusMessage(_('Url allready registered'),
+                            'warning');
+                        return false;
+                    }
                 }
             }
         }
         $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
             'PUT', 'xml');
 
+        return $this->lastResponseCode === 200;
+    }
+
+    /**
+     * Aktualizuje WebHook (penalty = 0)
+     * 
+     * @param int $id
+     */
+    public function refresh($id)
+    {
+        $this->performRequest('hooks/'.$id.'/retry', 'PUT');
         return $this->lastResponseCode === 200;
     }
 
