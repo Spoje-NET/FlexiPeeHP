@@ -1,4 +1,4 @@
-flexipeehp (0.1-4) UNRELEASED; urgency=low
+flexipeehp (0.2.1-5) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -11,4 +11,7 @@ flexipeehp (0.1-4) UNRELEASED; urgency=low
   * Doplněna funkce pro získání GlobalVersion Přidána třída položky
     faktury vydané
 
- -- Cybervitexus <vitex@novolen.jinonice.czf>  Thu, 30 Jun 2016 12:40:26 +0200
+  [ vitex ]
+  * TODOs
+
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 21:27:01 +0200

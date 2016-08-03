@@ -65,6 +65,16 @@ class HooksTest extends FlexiBeeRWTest
     }
 
     /**
+     * @covers FlexiPeeHP\Hooks::refresh
+     * @depends testRegister
+     */
+    public function testRefresh()
+    {
+        $hooks = $this->object->getAllFromFlexibee();
+        $this->assertTrue($this->object->refresh(current(end($hooks))));
+    }
+
+    /**
      * @covers FlexiPeeHP\Hooks::unregister
      * @depends testRegister
      */
