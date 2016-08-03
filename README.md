@@ -12,10 +12,13 @@ CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee]
 [![Coverage Status](https://img.shields.io/coveralls/Spoje-NET/FlexiPeeHP/master.svg?style=flat-square)](https://coveralls.io/r/Spoje-NET/FlexiPeeHP?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)
 
 #Poděkování
 Vznik této knihovny by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
 která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu.
+
+![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
 U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
 knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
@@ -28,24 +31,23 @@ knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
 **Dále chci poděkovat technické podpoře společnosti [FlexiBee](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
 při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
-![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
-
 Instalace
 ---------
 
     composer require spoje.net/flexipeehp
 
-For Debian please use repo:
+Pro Debian prosím použijte repo:
 
     wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
     echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/ease.list
     aptitude update
     aptitude install flexipeehp
 
-In this case please add this to your app composer.json:
+V tomto případě je potřeba do souboru composer.json vaší aplikace přidat:
 
     "require": {
-        "spoje.net/flexipeehp": "1.0",
+        "flexipeehp": "*",
+        "ease-framework": "*"
     },
     "repositories": [
         {
@@ -54,8 +56,27 @@ In this case please add this to your app composer.json:
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
         }
     ]
+
+Takže při instalaci závislostí bude vypadat nějak takto:
+
+    Loading composer repositories with package information
+    Installing dependencies from lock file
+      - Installing ease-framework (1.1.3.3)
+        Symlinked from /usr/share/php/Ease
+
+      - Installing flexipeehp (0.2.1)
+        Symlinked from /usr/share/php/FlexiPeeHP
+
+A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
 
 Konfigurace
 -----------
@@ -143,5 +164,3 @@ Ukázka
 ------
 
 Příkladem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)
