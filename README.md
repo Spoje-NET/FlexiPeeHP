@@ -36,53 +36,12 @@ Instalace
 
     composer require spoje.net/flexipeehp
 
-Pro Debian prosím použijte repo:
-
-    wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
-    echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/ease.list
-    aptitude update
-    aptitude install flexipeehp
-
-V tomto případě je potřeba do souboru composer.json vaší aplikace přidat:
-
-    "require": {
-        "flexipeehp": "*",
-        "ease-framework": "*"
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/usr/share/php/FlexiPeeHP",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "/usr/share/php/Ease",
-            "options": {
-                "symlink": true
-            }
-        }
-    ]
-
-Takže při instalaci závislostí bude vypadat nějak takto:
-
-    Loading composer repositories with package information
-    Installing dependencies from lock file
-      - Installing ease-framework (1.1.3.3)
-        Symlinked from /usr/share/php/Ease
-
-      - Installing flexipeehp (0.2.1)
-        Symlinked from /usr/share/php/FlexiPeeHP
-
-A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
-
 Konfigurace
 -----------
 
 Konfigurace se provádí nastavením následujících konstant:
 
+```php
     /*
     * URL Flexibee API
     */
@@ -99,6 +58,7 @@ Konfigurace se provádí nastavením následujících konstant:
      * Společnost v FlexiBee
     */
     define('FLEXIBEE_COMPANY', 'test');
+```
 
 Jak to celé funguje ?
 ---------------------
@@ -112,14 +72,17 @@ Z ní jsou pak odvozeny třídy pro jednotlivé evidence, obsahující metody pr
 Nová odvozená třída vzniká tak že jméno třídy je název evidence avšak bez 
 pomlček. Ty jsou ve jméně nahrazeny velkým písmenem. 
 
+```php
     function evidenceToClass($evidence)
     {
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
+```
 
 Tzn. Pokud chceme odvodit 
 novou třídu pro evidenci "Měrné jednotky" bude vypadat takto:
 
+```php
     <?php
     /**
      * @link https://demo.flexibee.eu/c/demo/merna-jednotka/properties Vlastnosti evidence
@@ -133,11 +96,14 @@ novou třídu pro evidenci "Měrné jednotky" bude vypadat takto:
          */
         public $evidence = 'merna-jednotka';
     }
+```
 
 A poté je již snadné si vypsat měrné jednotky na 2 řádky:
     
+```php
     $jednotky = new MernaJednotka();
     print_r( $jednotky->getAllFromFlexiBee() );
+```
 
 Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
 ovodit od předka FlexiBeeRW.
@@ -164,3 +130,52 @@ Ukázka
 ------
 
 Příkladem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+
+
+Debian/Ubuntu
+-------------
+
+Pro Linux jsou k dispozici .deb balíčky. Prosím použijte repo:
+
+    wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
+    echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/ease.list
+    aptitude update
+    aptitude install flexipeehp
+
+V tomto případě je potřeba do souboru composer.json vaší aplikace přidat:
+
+```json
+    "require": {
+        "flexipeehp": "*",
+        "ease-framework": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/usr/share/php/FlexiPeeHP",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+```
+
+Takže při instalaci závislostí bude vypadat nějak takto:
+
+    Loading composer repositories with package information
+    Installing dependencies from lock file
+      - Installing ease-framework (1.1.3.3)
+        Symlinked from /usr/share/php/Ease
+
+      - Installing flexipeehp (0.2.1)
+        Symlinked from /usr/share/php/FlexiPeeHP
+
+A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
+
