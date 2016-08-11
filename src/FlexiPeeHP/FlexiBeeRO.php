@@ -241,7 +241,10 @@ class FlexiBeeRO extends \Ease\Brick
         'format',
         'auth',
         'skupina-stitku',
-        'dir'
+        'dir',
+        'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
+        'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
+        'inDesktopApp' // Note: Undocumented function (html only)
     ];
 
     /**
@@ -510,8 +513,13 @@ class FlexiBeeRO extends \Ease\Brick
                             $result, $this->lastCurlError), 'error');
                     $this->addStatusMessage($url, 'info');
                     if (count($this->postFields)) {
-                        $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                        if (is_array($result)) {
+                            $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
                             'debug');
+                        } else {
+                            $this->addStatusMessage(urldecode(http_build_query($this->getData())),
+                                'debug');
+                        }
                     }
                 }
 

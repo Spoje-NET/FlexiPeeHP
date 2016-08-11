@@ -1,4 +1,4 @@
-flexipeehp (0.2.1-5) UNRELEASED; urgency=low
+flexipeehp (0.2.2-1) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -13,5 +13,7 @@ flexipeehp (0.2.1-5) UNRELEASED; urgency=low
 
   [ vitex ]
   * TODOs
+  * Debian package buld update
+  * Debian package buld update
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 21:27:01 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 23:47:49 +0200

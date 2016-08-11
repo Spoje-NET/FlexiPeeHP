@@ -101,14 +101,17 @@ class FakturaVydanaTest extends FlexiBeeRWTest
             $invoiceData['dobropisovano'] = false;
         }
 
-        if (!isset($invoiceData['polozky'])) {
+        if (!isset($invoiceData['polozky']) && !$invoiceData['bezPolozek']) {
             $invoiceData['bezPolozek'] = true;
-        }
-
-        if (!isset($invoiceData['sumCelkZakl'])) {
-            $scale                      = pow(1000, 2);
-            $invoiceData['sumCelkZakl'] = round(mt_rand(10 * $scale,
-                    9000 * $scale) / $scale, 2);
+            if (!array_key_exists('sumCelkZakl', $invoiceData)) {
+                $scale                      = pow(1000, 2);
+                $invoiceData['sumCelkZakl'] = round(mt_rand(10 * $scale,
+                        9000 * $scale) / $scale, 2);
+                $invoiceData['castkaMen']   = 0;
+                $invoiceData['sumCelkem']   = $invoiceData['sumCelkZakl'];
+            }
+        } else {
+            $invoiceData['bezPolozek'] = false;
         }
 
         if (!isset($invoiceData['firma'])) {
@@ -124,9 +127,9 @@ class FakturaVydanaTest extends FlexiBeeRWTest
                 /**
                  * Make Some Address First ...
                  */
-                $address = new \FlexiPeeHP\Adresar();
+                $address              = new \FlexiPeeHP\Adresar();
                 $address->setDataValue('nazev', \Ease\Sand::randomString());
-                $address->setDataValue('poznam', 'Generated Unit Test Customrt');
+                $address->setDataValue('poznam', 'Generated Unit Test Customer');
                 $address->setDataValue('typVztahuK', 'typVztahu.odberatel');
                 $address->insertToFlexiBee();
                 $invoiceData['firma'] = $address;
@@ -141,8 +144,103 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $this->object->insertToFlexiBee();
 
         $id = $this->object->getLastInsertedId();
+        $this->object->loadFromFlexiBee((int) $id);
         $this->object->setDataValue('id', $id);
         return $id;
+    }
+
+    /**
+     * Provizorní zkopírování faktury
+     *
+     * @link https://www.flexibee.eu/podpora/Tickets/Ticket/View/28848 Chyba při Provádění akcí přes REST API JSON
+     * @param \FlexiPeeHP\FakturaVydana $invoice
+     * @param array $overide Hodnoty přepisující výchozí v kopii faktury
+     * @return \FlexiPeeHP\FakturaVydana
+     */
+    function invoiceCopy($invoice, $override = [])
+    {
+        $invoice2        = new \FlexiPeeHP\FakturaVydana($invoice->getData());
+        $invoice2->debug = 1;
+        $invoice2->unsetDataValue('id');
+        $invoice2->unsetDataValue('kod');
+        $polozky         = $invoice2->getDataValue('polozkyFaktury');
+        if (!is_null($polozky)) {
+            foreach ($polozky as $pid => $polozka) {
+                unset($polozky[$pid]['id']);
+                unset($polozky[$pid]['doklFak']);
+                unset($polozky[$pid]['doklFak@showAs']);
+                unset($polozky[$pid]['doklFak@ref']);
+            }
+            $invoice2->setDataValue('polozkyFaktury', $polozky);
+        }
+        if (is_null($invoice2->getDataValue('typDokl'))) {
+            $invoice2->setDataValue('typDokl', 'code:FAKTURA');
+        }
+        $invoice2->unsetDataValue('external-ids');
+
+        $today = date('Y-m-d');
+
+        $invoice2->setDataValue('duzpPuv', $today);
+        $invoice2->setDataValue('duzpUcto', $today);
+        $invoice2->setDataValue('datUcto', $today);
+        $invoice2->takeData($override);
+        $invoice2->insertToFlexiBee();
+
+        return $invoice2;
+    }
+
+    /**
+     * @covers FlexiPeeHP\FakturaVydana::odpocetZDD
+     */
+    public function testodpocetZDD()
+    {
+        $this->markTestIncomplete('TODO: Write Test');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FakturaVydana::odpocetZalohy
+     */
+    public function testodpocetZalohy()
+    {
+        $itemName = \Ease\Sand::randomString();
+
+        $polozka = [
+            "typCenyDphK" => "typCeny.bezDph",
+            "typSzbDphK" => "typSzbDph.dphZakl",
+            "kopClenKonVykDph" => "true",
+            "typPolozkyK" => "typPolozky.obecny",
+            'zdrojProSkl' => false,
+            'zaloha' => true,
+            'nazev' => $itemName,
+            'szbDph' => 19.0,
+            'cenaMj' => 123,
+            "mnozMj" => "1.0",
+            'poznam' => $this->poznam,
+        ];
+
+        $this->makeInvoice(
+            [
+                'typDokl' => 'code:ZÁLOHA',
+                'polozky' => $polozka,
+                'bezPolozek' => false
+            ]
+        );
+
+
+        $this->object->hotovostniUhrada($this->object->getDataValue('sumCelkem'));
+
+        $invoice2 = $this->invoiceCopy($this->object,
+            ['typDokl' => 'code:FAKTURA']);
+        $id       = (int) $invoice2->getLastInsertedId();
+        $invoice2->loadFromFlexiBee($id);
+        $kod      = $invoice2->getDataValue('kod');
+        $invoice2->dataReset();
+        $invoice2->setDataValue('id', 'code:'.$kod);
+
+        $result = $invoice2->odpocetZalohy($this->object);
+
+        $this->assertArrayHasKey('success', $result);
+        $this->assertEquals('true', $result['success'], 'Matching Error');
     }
 
 }
