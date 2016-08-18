@@ -100,6 +100,9 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         if (!isset($invoiceData['dobropisovano'])) {
             $invoiceData['dobropisovano'] = false;
         }
+        if (!isset($invoiceData['bezPolozek'])) {
+            $invoiceData['bezPolozek'] = false;
+        }
 
         if (!isset($invoiceData['polozky']) && !$invoiceData['bezPolozek']) {
             $invoiceData['bezPolozek'] = true;

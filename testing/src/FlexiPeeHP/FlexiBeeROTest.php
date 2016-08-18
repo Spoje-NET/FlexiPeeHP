@@ -151,6 +151,24 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getEvidence
+     */
+    public function testGetEvidence()
+    {
+        $this->assertEquals($this->object->evidence,
+            $this->object->getEvidence());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getResponseEvidence
+     */
+    public function testGetResponseEvidence()
+    {
+        $this->assertEquals($this->object->getEvidence(),
+            $this->object->getResponseEvidence());
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getLastInsertedId
      * @depends testInsertToFlexiBee
      */
@@ -246,7 +264,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                     $this->assertArrayHasKey(0, $flexidata);
                     $this->assertArrayHasKey('id', $flexidata[0]);
                     $filtrered = $this->object->getFlexiData(null,
-                        key($flexidata[0])." = ".current($flexidata[0]));
+                        "id = ".$flexidata[0]['id']);
                     $this->assertArrayHasKey(0, $filtrered);
                     $this->assertArrayHasKey('id', $filtrered[0]);
                 }
@@ -304,10 +322,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 if (is_array($flexidata) && !count($flexidata)) {
                     $this->markTestSkipped('Empty evidence');
                 } else {
-                    $this->object->setData(['id' => (int) $flexidata[0]['id']]);
-                    $this->assertTrue($this->object->recordExists());
-                    $this->assertFalse($this->object->recordExists(['id' => 0]));
-                    $this->assertFalse($this->object->recordExists(['unexistent' => 1]));
+                    if (isset($flexidata['success']) && ($flexidata['success'] == 'false')) {
+                        $this->markTestSkipped($flexidata['message']);
+                    } else {
+                        $this->object->setData(['id' => (int) $flexidata[0]['id']]);
+                        $this->assertTrue($this->object->recordExists());
+                        $this->assertFalse($this->object->recordExists(['id' => 0]));
+                        $this->assertFalse($this->object->recordExists(['unexistent' => 1]));
+                    }
                 }
                 break;
         }
@@ -393,6 +415,48 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             $this->object->flexiUrl(['a' => true, 'b' => false], 'or'));
         $this->assertEquals("a is null and b is not null",
             $this->object->flexiUrl(['a' => null, 'b' => '!null'], 'and'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::unifyResponseFormat
+     */
+    public function testunifyResponseFormat()
+    {
+        $this->assertNull($this->object->unifyResponseFormat(null));
+        //One Row Test
+        $test1raw = [$this->object->nameSpace =>
+            [$this->object->getResponseEvidence() =>
+                ['id' => 1, 'name' => 'value']
+            ]
+        ];
+
+        $test1expected = [$this->object->getResponseEvidence() =>
+            [
+                ['id' => 1, 'name' => 'value']
+            ]
+        ];
+
+        $this->assertEquals($test1expected,
+            $this->object->unifyResponseFormat($test1raw));
+
+        //Two Row Test
+        $test2Raw      = [$this->object->nameSpace =>
+            [$this->object->getResponseEvidence() =>
+                [
+                    ['id' => 1, 'name' => 'value'],
+                    ['id' => 2, 'name' => 'value2']
+                ]
+            ]
+        ];
+        $test2expected = [$this->object->getResponseEvidence() =>
+            [
+                ['id' => 1, 'name' => 'value'],
+                ['id' => 2, 'name' => 'value2']
+            ]
+        ];
+
+        $this->assertEquals($test2expected,
+            $this->object->unifyResponseFormat($test2Raw));
     }
 
     /**

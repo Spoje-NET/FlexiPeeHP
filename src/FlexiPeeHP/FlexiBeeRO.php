@@ -338,6 +338,24 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Vrací název evidence použité v odpovědích z FlexiBee
+     *
+     * @return string
+     */
+    public function getResponseEvidence()
+    {
+        switch ($this->evidence) {
+            case 'c':
+                $evidence = 'companies';
+                break;
+            default:
+                $evidence = $this->getEvidence();
+                break;
+        }
+        return $evidence;
+    }
+
+    /**
      * Převede rekurzivně Objekt na pole.
      *
      * @param object|array $object
@@ -456,13 +474,8 @@ class FlexiBeeRO extends \Ease\Brick
                         break;
                 }
 
-                // Get response body root automatically
-                if (isset($responseDecoded[$this->nameSpace])) {
-                    $responseDecoded = $responseDecoded[$this->nameSpace];
-                }
 
-                $this->lastResult = $responseDecoded;
-                $response         = $responseDecoded;
+                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
 
                 break;
 
@@ -515,7 +528,7 @@ class FlexiBeeRO extends \Ease\Brick
                     if (count($this->postFields)) {
                         if (is_array($result)) {
                             $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                            'debug');
+                                'debug');
                         } else {
                             $this->addStatusMessage(urldecode(http_build_query($this->getData())),
                                 'debug');
@@ -789,7 +802,8 @@ class FlexiBeeRO extends \Ease\Brick
         $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
             self::flexiUrl($data));
 
-        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))) {
+        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
+            || !count($res[0])) {
             $found = false;
         } else {
             $found = true;
@@ -1113,6 +1127,36 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         return $globalVersion;
+    }
+
+    /**
+     * Return the same response format for one and multiplete results
+     * 
+     * @param array $responseRaw
+     * @return array
+     */
+    public function unifyResponseFormat($responseRaw)
+    {
+        $response = null;
+        if (is_array($responseRaw)) {
+            // Get response body root automatically
+            if (array_key_exists($this->nameSpace, $responseRaw)) { //Unifi response format
+                $responseBody = $responseRaw[$this->nameSpace];
+                if (array_key_exists($this->evidence, $responseBody)) {
+                    $evidenceContent = $responseBody[$this->evidence];
+                    if (array_key_exists(0, $evidenceContent)) {
+                        $response[$this->evidence] = $evidenceContent; //Multiplete Results
+                    } else {
+                        $response[$this->evidence][0] = $evidenceContent; //One result
+                    }
+                } else {
+                    $response = $responseBody;
+                }
+            } else {
+                $response = $responseRaw;
+            }
+        }
+        return $response;
     }
 
 }

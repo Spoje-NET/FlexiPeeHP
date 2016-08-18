@@ -68,4 +68,12 @@ class CompanyTest extends FlexiBeeROTest
         $this->assertArrayHasKey('id', $flexidata['company'][0]);
     }
 
+    /**
+     * @covers FlexiPeeHP\Compny::getResponseEvidence
+     */
+    public function testGetResponseEvidence()
+    {
+        $this->assertEquals('companies', $this->object->getResponseEvidence());
+    }
+
 }
