@@ -50,7 +50,6 @@ class FlexiBeeRWTest extends FlexiBeeROTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::insertToFlexiBee
-     * @todo   Implement testInsertToFlexiBee().
      */
     public function testInsertToFlexiBee()
     {
@@ -62,7 +61,6 @@ class FlexiBeeRWTest extends FlexiBeeROTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRWRW::deleteFromFlexiBee
-     * @todo   Implement test
      */
     public function testDeleteFromFlexiBee()
     {
@@ -71,4 +69,5 @@ class FlexiBeeRWTest extends FlexiBeeROTest
             'This test has not been implemented yet.'
         );
     }
+
 }

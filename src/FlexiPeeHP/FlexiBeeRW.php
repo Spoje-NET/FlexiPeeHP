@@ -36,7 +36,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * 
      * @var string
      */
-    protected $postFields = null;
+    public $postFields = null;
 
     /**
      * Uloží záznam.
@@ -76,4 +76,5 @@ class FlexiBeeRW extends FlexiBeeRO
             'DELETE');
         return $this->lastResponseCode == 200;
     }
+
 }

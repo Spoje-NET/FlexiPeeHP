@@ -93,9 +93,6 @@ class FakturaVydana extends FlexiBeeRW
         if (!isset($odpocet['castkaMen'])) {
             $odpocet['castkaMen'] = $invoice->getDataValue('sumCelkem');
         }
-//        if (!isset($odpocet['id'])) {
-//            $odpocet['id'] = 'ext:odp:'.time();
-//        }
         $odpocet['doklad'] = $invoice;
 
         $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
@@ -132,4 +129,5 @@ class FakturaVydana extends FlexiBeeRW
         $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
         return $this->insertToFlexiBee();
     }
+
 }

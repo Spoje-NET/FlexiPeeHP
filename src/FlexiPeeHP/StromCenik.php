@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt přiřazení položek ceníku ku stromu.
  *
@@ -8,6 +7,7 @@
  */
 
 namespace FlexiPeeHP;
+
 /**
  * Strom Položek ceníku
  *
@@ -21,4 +21,5 @@ class StromCenik extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'strom-cenik';
+
 }

@@ -21,4 +21,5 @@ class VyrobniCislo extends FlexiBeeRW
      * @var string
      */
     public $evidence = 'vyrobni-cislo';
+
 }

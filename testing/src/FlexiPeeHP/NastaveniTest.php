@@ -49,4 +49,5 @@ class NastaveniTest extends FlexiBeeROTest
             $this->assertArrayHasKey('id', $filtrered[0]);
         }
     }
+
 }

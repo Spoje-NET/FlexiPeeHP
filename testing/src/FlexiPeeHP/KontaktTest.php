@@ -29,6 +29,7 @@ class KontaktTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
+
 }

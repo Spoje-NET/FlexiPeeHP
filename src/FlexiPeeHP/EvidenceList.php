@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt štítku.
  *

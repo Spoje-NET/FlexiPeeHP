@@ -241,7 +241,10 @@ class FlexiBeeRO extends \Ease\Brick
         'format',
         'auth',
         'skupina-stitku',
-        'dir'
+        'dir',
+        'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
+        'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
+        'inDesktopApp' // Note: Undocumented function (html only)
     ];
 
     /**
@@ -350,6 +353,24 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Vrací název evidence použité v odpovědích z FlexiBee
+     *
+     * @return string
+     */
+    public function getResponseEvidence()
+    {
+        switch ($this->evidence) {
+            case 'c':
+                $evidence = 'companies';
+                break;
+            default:
+                $evidence = $this->getEvidence();
+                break;
+        }
+        return $evidence;
+    }
+
+    /**
      * Převede rekurzivně Objekt na pole.
      *
      * @param object|array $object
@@ -450,6 +471,7 @@ class FlexiBeeRO extends \Ease\Brick
                             true, 10);
                         if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
                             $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
+                            $this->setMyKey($this->lastInsertedID);
                         } else {
                             $this->lastInsertedID = null;
                         }
@@ -467,13 +489,8 @@ class FlexiBeeRO extends \Ease\Brick
                         break;
                 }
 
-                // Get response body root automatically
-                if (isset($responseDecoded[$this->nameSpace])) {
-                    $responseDecoded = $responseDecoded[$this->nameSpace];
-                }
 
-                $this->lastResult = $responseDecoded;
-                $response         = $responseDecoded;
+                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
 
                 break;
 
@@ -524,11 +541,15 @@ class FlexiBeeRO extends \Ease\Brick
                             $result, $this->lastCurlError), 'error');
                     $this->addStatusMessage($url, 'info');
                     if (count($this->postFields)) {
-                        $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                            'debug');
+                        if (is_array($result)) {
+                            $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                                'debug');
+                        } else {
+                            $this->addStatusMessage(urldecode(http_build_query($this->getData())),
+                                'debug');
+                        }
                     }
                 }
-
 
                 break;
         }
@@ -646,16 +667,6 @@ class FlexiBeeRO extends \Ease\Brick
     public function __destruct()
     {
         $this->disconnect();
-    }
-
-    /**
-     * Načte data z FlexiBee.
-     *
-     * @param string $suffix dotaz
-     */
-    public function loadFlexiData($suffix = null)
-    {
-        return $this->takeData($this->getFlexiData($suffix));
     }
 
     /**
@@ -794,9 +805,11 @@ class FlexiBeeRO extends \Ease\Brick
      * Test if given record exists in FlexiBee.
      *
      * @param array $data
+     * @return boolean Record presence status
      */
     public function recordExists($data = null)
     {
+        $found = null;
         if (is_null($data)) {
             $data = $this->getData();
         }
@@ -804,7 +817,13 @@ class FlexiBeeRO extends \Ease\Brick
         $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
             self::flexiUrl($data));
 
-        return $res;
+        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
+            || !count($res[0])) {
+            $found = false;
+        } else {
+            $found = true;
+        }
+        return $found;
     }
 
     /**
@@ -872,8 +891,6 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param mixed $data
      *
-     * @todo papat i string
-     *
      * @return string
      */
     public function getKod($data = null, $unique = true)
@@ -935,9 +952,11 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param array  $resultData
      * @param string $url        URL
+     * @return boolean Log save success
      */
     public function logResult($resultData = null, $url = null)
     {
+        $logResult = false;
         if (isset($resultData['success']) && ($resultData['success'] == 'false')) {
             if (isset($resultData['message'])) {
                 $this->addStatusMessage($resultData['message'], 'warning');
@@ -985,8 +1004,9 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         if (is_object($this->logger)) {
-            $this->logger->flush(get_class($this));
+            $logResult = $this->logger->flush(get_class($this));
         }
+        return $logResult;
     }
 
     /**
@@ -1050,7 +1070,6 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
      * @return string indentifikátor záznamu reprezentovaného objektem
-     * @throws Exception data objektu neobsahují kód nebo id
      */
     public function __toString()
     {
@@ -1059,8 +1078,9 @@ class FlexiBeeRO extends \Ease\Brick
             $id = 'code:'.$myCode;
         } else {
             $id = $this->getDataValue('id');
-            if (!$id) {
-                throw new \Exception(_('Object Data does not contain code: or id: cannot match with statement!'));
+            if (is_null($id)) {
+                $this->addToLog('Object Data does not contain code: or id: cannot match with statement!',
+                    'warning');
             }
         }
         return $id;
@@ -1080,17 +1100,23 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Vrací hodnotu daného externího ID
      *
-     * @param string $want
+     * @param string $want Which ? If empty,you obtain the first one.
      * @return string
      */
-    public function getExternalID($want)
+    public function getExternalID($want = null)
     {
         $extid = null;
         $ids   = $this->getDataValue('external-ids');
-        if (!is_null($ids)) {
-            foreach ($ids as $id) {
-                if (strstr($id, 'ext:'.$want)) {
-                    $extid = str_replace('ext:'.$want.':', '', $id);
+        if (is_null($want)) {
+            if (count($ids)) {
+                $extid = current($ids);
+            }
+        } else {
+            if (!is_null($ids)) {
+                foreach ($ids as $id) {
+                    if (strstr($id, 'ext:'.$want)) {
+                        $extid = str_replace('ext:'.$want.':', '', $id);
+                    }
                 }
             }
         }
@@ -1117,4 +1143,35 @@ class FlexiBeeRO extends \Ease\Brick
 
         return $globalVersion;
     }
+
+    /**
+     * Return the same response format for one and multiplete results
+     * 
+     * @param array $responseRaw
+     * @return array
+     */
+    public function unifyResponseFormat($responseRaw)
+    {
+        $response = null;
+        if (is_array($responseRaw)) {
+            // Get response body root automatically
+            if (array_key_exists($this->nameSpace, $responseRaw)) { //Unifi response format
+                $responseBody = $responseRaw[$this->nameSpace];
+                if (array_key_exists($this->evidence, $responseBody)) {
+                    $evidenceContent = $responseBody[$this->evidence];
+                    if (array_key_exists(0, $evidenceContent)) {
+                        $response[$this->evidence] = $evidenceContent; //Multiplete Results
+                    } else {
+                        $response[$this->evidence][0] = $evidenceContent; //One result
+                    }
+                } else {
+                    $response = $responseBody;
+                }
+            } else {
+                $response = $responseRaw;
+            }
+        }
+        return $response;
+    }
+
 }

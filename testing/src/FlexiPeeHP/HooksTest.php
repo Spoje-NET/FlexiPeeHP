@@ -38,13 +38,45 @@ class HooksTest extends FlexiBeeRWTest
         $this->changes = new Changes();
         $this->changes->enable();
         $this->object->setDataValue('skipUrlTest', 'true');
-        $result        = $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
-        $this->assertEmpty($result);
-        $this->object->register('http://lms.vyvojar.spoje.net/webhook.php');
+        $result        = $this->object->register('http://localhost/webhook.php');
+        $this->assertTrue($result);
+        $result2       = $this->object->register('http://localhost/webhook.php');
+        $this->assertFalse($result2);
+    }
+
+    /**
+     * @covers FlexiPeeHP\Hooks::getFlexiData
+     * @depends testRegister
+     */
+    public function testGetFlexiData()
+    {
+        $flexidata = $this->object->getFlexiData();
+        $this->assertArrayHasKey(0, $flexidata);
+        $this->assertArrayHasKey('id', $flexidata[0]);
+    }
+
+    /**
+     * @covers FlexiPeeHP\Hooks::recordExists
+     * @depends testRegister
+     */
+    public function testRecordExists()
+    {
+        $this->assertNull($this->object->recordExists());
+    }
+
+    /**
+     * @covers FlexiPeeHP\Hooks::refresh
+     * @depends testRegister
+     */
+    public function testRefresh()
+    {
+        $hooks = $this->object->getAllFromFlexibee();
+        $this->assertTrue($this->object->refresh(current(end($hooks))));
     }
 
     /**
      * @covers FlexiPeeHP\Hooks::unregister
+     * @depends testRegister
      */
     public function testUnregister()
     {
@@ -57,5 +89,7 @@ class HooksTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
+        
     }
+
 }

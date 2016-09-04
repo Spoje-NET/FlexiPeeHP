@@ -52,4 +52,16 @@ class Changes extends FlexiBeeRO
         $status = $this->performRequest('changes/status.xml', 'GET', 'xml');
         return (($this->lastResponseCode == 200) && ($status['success'] === 'true'));
     }
+
+    /**
+     * Test if given record exists in FlexiBee .
+     *
+     * @param array $data
+     * @return null Method is disabled for Changes
+     */
+    public function recordExists($data = null)
+    {
+        return null;
+    }
+
 }
