@@ -60,6 +60,19 @@ Konfigurace se provádí nastavením následujících konstant:
     define('FLEXIBEE_COMPANY', 'test');
 ```
 
+nebo je možné přihlašovací údaje zadávat při vytváření instance třídy.
+
+```php
+    $invoicer = new \FlexiPeeHP\FakturaVydana(null,[
+                'company' => 'Firma_s_r_o_',
+                'url' => 'https://flexibee.firma.cz/',
+                'user' => 'rest',
+                'password' => '-dj3x21xaA_'
+            ]);
+```
+
+Tento způsob nastavení má vyšší prioritu než výše uvedené definovaní konstant.
+
 Jak to celé funguje ?
 ---------------------
 
