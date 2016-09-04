@@ -248,9 +248,10 @@ class FlexiBeeRO extends \Ease\Brick
     ];
 
     /**
-     * Třída pro práci s FlexiBee.
+     * Class for read only interaction with FlexiBee.
      *
-     * @param mixed $init výchozí selektor dat
+     * @param mixed $init default record id or initial data
+     * @param array $options Connection settings override
      */
     public function __construct($init = null, $options = [])
     {
@@ -266,6 +267,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * SetUp Object to be ready for connect
+     *
      * @param array $options Object Options
      */
     public function setUp($options = [])
@@ -278,21 +280,21 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
         if (isset($options['url'])) {
-            $this->company = $options['url'];
+            $this->url = $options['url'];
         } else {
             if (is_null($this->url) && defined('FLEXIBEE_URL')) {
                 $this->url = constant('FLEXIBEE_URL');
             }
         }
         if (isset($options['user'])) {
-            $this->company = $options['user'];
+            $this->user = $options['user'];
         } else {
             if (is_null($this->user) && defined('FLEXIBEE_LOGIN')) {
                 $this->user = constant('FLEXIBEE_LOGIN');
             }
         }
         if (isset($options['password'])) {
-            $this->company = $options['password'];
+            $this->password = $options['password'];
         } else {
             if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
                 $this->password = constant('FLEXIBEE_PASSWORD');

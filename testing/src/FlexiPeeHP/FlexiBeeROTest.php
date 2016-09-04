@@ -62,6 +62,25 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setUp
+     */
+    public function testSetUp()
+    {
+        $this->object->setUp(
+            [
+                'company' => 'cmp',
+                'url' => 'url',
+                'user' => 'usr',
+                'password' => 'pwd'
+            ]
+        );
+        $this->assertEquals('cmp', $this->object->company);
+        $this->assertEquals('url', $this->object->url);
+        $this->assertEquals('usr', $this->object->user);
+        $this->assertEquals('pwd', $this->object->password);
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::setEvidence
      */
     public function testSetEvidence()
@@ -485,5 +504,4 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->setDataValue('kod', 'test');
         $this->assertEquals('code:test', $this->object->draw());
     }
-
 }
