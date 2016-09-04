@@ -249,12 +249,12 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param mixed $init výchozí selektor dat
      */
-    public function __construct($init = null)
+    public function __construct($init = null, $options = [])
     {
         $this->init = $init;
 
         parent::__construct();
-        $this->setUp();
+        $this->setUp($options);
         $this->curlInit();
         if (!is_null($init)) {
             $this->processInit($init);
@@ -263,22 +263,37 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * SetUp Object to be ready for connect
+     * @param array $options Object Options
      */
-    public function setUp()
+    public function setUp($options = [])
     {
-        if (is_null($this->company) && defined('FLEXIBEE_COMPANY')) {
-            $this->company = constant('FLEXIBEE_COMPANY');
+        if (isset($options['company'])) {
+            $this->company = $options['company'];
+        } else {
+            if (is_null($this->company) && defined('FLEXIBEE_COMPANY')) {
+                $this->company = constant('FLEXIBEE_COMPANY');
+            }
         }
-        if (is_null($this->url) && defined('FLEXIBEE_URL')) {
-            $this->url = constant('FLEXIBEE_URL');
+        if (isset($options['url'])) {
+            $this->company = $options['url'];
+        } else {
+            if (is_null($this->url) && defined('FLEXIBEE_URL')) {
+                $this->url = constant('FLEXIBEE_URL');
+            }
         }
-
-        if (is_null($this->user) && defined('FLEXIBEE_LOGIN')) {
-            $this->user = constant('FLEXIBEE_LOGIN');
+        if (isset($options['user'])) {
+            $this->company = $options['user'];
+        } else {
+            if (is_null($this->user) && defined('FLEXIBEE_LOGIN')) {
+                $this->user = constant('FLEXIBEE_LOGIN');
+            }
         }
-
-        if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
-            $this->password = constant('FLEXIBEE_PASSWORD');
+        if (isset($options['password'])) {
+            $this->company = $options['password'];
+        } else {
+            if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
+                $this->password = constant('FLEXIBEE_PASSWORD');
+            }
         }
     }
 
@@ -397,6 +412,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         if (is_null($urlSuffix)) {
             $urlSuffix = $this->evidence;
+        } elseif ($urlSuffix[0] == ';') {
+            $urlSuffix = $this->evidence.$urlSuffix;
         }
         return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
     }
