@@ -426,9 +426,9 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testFlexiUrl()
     {
-        $this->assertEquals("a eq 1 and b eq 'foo'",
+        $this->assertEquals("a eq '1' and b eq 'foo'",
             $this->object->flexiUrl(['a' => 1, 'b' => 'foo'], 'and'));
-        $this->assertEquals("a eq 1 or b eq 'bar'",
+        $this->assertEquals("a eq '1' or b eq 'bar'",
             $this->object->flexiUrl(['a' => 1, 'b' => 'bar'], 'or'));
         $this->assertEquals("a eq true or b eq false",
             $this->object->flexiUrl(['a' => true, 'b' => false], 'or'));

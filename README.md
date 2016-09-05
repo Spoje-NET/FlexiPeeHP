@@ -49,15 +49,15 @@ Konfigurace se provádí nastavením následujících konstant:
     /*
     * Uživatel FlexiBee API
     */
-    define('FLEXIBEE_LOGIN', 'test');
+    define('FLEXIBEE_LOGIN', 'apiuser');
     /*
     * Heslo FlexiBee API
     */
-    define('FLEXIBEE_PASSWORD', 'testing');
+    define('FLEXIBEE_PASSWORD', 'apipass');
     /*
      * Společnost v FlexiBee
     */
-    define('FLEXIBEE_COMPANY', 'test');
+    define('FLEXIBEE_COMPANY', 'test_s_r_o_');
 ```
 
 nebo je možné přihlašovací údaje zadávat při vytváření instance třídy.

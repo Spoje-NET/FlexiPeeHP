@@ -863,23 +863,22 @@ class FlexiBeeRO extends \Ease\Brick
     public function getColumnsFromFlexibee($columnsList, $conditions = null,
                                            $indexBy = null)
     {
-        if (($columnsList != '*') && !count($columnsList)) {
-            $this->error('getColumnsFromFlexiBee: Missing ColumnList');
-
-            return;
-        }
+        $detail = 'full';
 
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
         }
 
-        if (is_array($columnsList)) {
+        if ($columnsList != '*') {
+            if (is_array($columnsList)) {
             $columns = implode(',', array_unique($columnsList));
         } else {
             $columns = $columnsList;
         }
+            $detail = 'custom:'.$columns;
+        }
 
-        $flexiData = $this->getFlexiData('detail=custom:'.$columns, $conditions);
+        $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
 
         if (!is_null($indexBy)) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
@@ -1050,7 +1049,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         foreach ($data as $column => $value) {
             if (is_integer($data[$column]) || is_float($data[$column])) {
-                $parts[$column] = $column.' eq '.$data[$column];
+                $parts[$column] = $column.' eq \''.$data[$column].'\'';
             } elseif (is_bool($data[$column])) {
                 $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
             } elseif (is_null($data[$column])) {

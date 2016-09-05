@@ -1,4 +1,4 @@
-flexipeehp (0.2.2-1) UNRELEASED; urgency=low
+flexipeehp (1.2.0-2) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -15,5 +15,6 @@ flexipeehp (0.2.2-1) UNRELEASED; urgency=low
   * TODOs
   * Debian package buld update
   * Debian package buld update
+  * Debian package version fix Links to other libraries added to Readme
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 23:47:49 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Mon, 05 Sep 2016 13:14:22 +0200
