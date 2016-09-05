@@ -192,3 +192,11 @@ Takže při instalaci závislostí bude vypadat nějak takto:
 
 A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
 
+
+FlexiBee knihovny pro další jazky:
+----------------------------------
+
+ * [Flexipy](https://github.com/JakubJecminek/flexipy)  (Python) [Dokumentace](http://pythonhosted.org/flexipy/index.html)
+ * [Flexibee.rb](https://github.com/danpecher/flexibee.rb) (Ruby)
+
+ 
