@@ -183,8 +183,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetResponseEvidence()
     {
-        $this->assertEquals($this->object->getEvidence(),
-            $this->object->getResponseEvidence());
+        switch ($this->object->getEvidence()) {
+            case 'c':
+                $this->assertEquals('companies',
+                    $this->object->getResponseEvidence());
+                break;
+
+            default:
+                $this->assertEquals($this->object->getEvidence(),
+                    $this->object->getResponseEvidence());
+                break;
+        }
     }
 
     /**
@@ -504,4 +513,5 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->setDataValue('kod', 'test');
         $this->assertEquals('code:test', $this->object->draw());
     }
+
 }

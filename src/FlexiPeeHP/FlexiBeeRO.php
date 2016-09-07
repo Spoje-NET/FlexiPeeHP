@@ -1,6 +1,6 @@
 <?php
 /**
- * FlexiPeeHP - Třída pro čtení z FlexiBee.
+ * FlexiPeeHP - Read Only Access to FlexiBee class.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -1038,11 +1038,12 @@ class FlexiBeeRO extends \Ease\Brick
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
      *
      * @param array  $data
-     * @param string $operator default and/or
+     * @param string $joiner default and/or
+     * @param string $defop  default operator
      *
      * @return string
      */
-    public static function flexiUrl(array $data, $operator = 'and')
+    public static function flexiUrl(array $data, $joiner = 'and', $defop = 'eq')
     {
         $flexiUrl = '';
         $parts    = [];
@@ -1057,11 +1058,11 @@ class FlexiBeeRO extends \Ease\Brick
             } elseif ($value == '!null') {
                 $parts[$column] = $column." is not null";
             } else {
-                $parts[$column] = $column." eq '".$data[$column]."'";
+                $parts[$column] = $column." $defop '".$data[$column]."'";
             }
         }
 
-        $flexiUrl = implode(' '.$operator.' ', $parts);
+        $flexiUrl = implode(' '.$joiner.' ', $parts);
 
         return $flexiUrl;
     }
@@ -1154,16 +1155,17 @@ class FlexiBeeRO extends \Ease\Brick
     public function unifyResponseFormat($responseRaw)
     {
         $response = null;
+        $evidence = $this->getResponseEvidence();
         if (is_array($responseRaw)) {
             // Get response body root automatically
             if (array_key_exists($this->nameSpace, $responseRaw)) { //Unifi response format
                 $responseBody = $responseRaw[$this->nameSpace];
-                if (array_key_exists($this->evidence, $responseBody)) {
-                    $evidenceContent = $responseBody[$this->evidence];
+                if (array_key_exists($evidence, $responseBody)) {
+                    $evidenceContent = $responseBody[$evidence];
                     if (array_key_exists(0, $evidenceContent)) {
-                        $response[$this->evidence] = $evidenceContent; //Multiplete Results
+                        $response[$evidence] = $evidenceContent; //Multiplete Results
                     } else {
-                        $response[$this->evidence][0] = $evidenceContent; //One result
+                        $response[$evidence][0] = $evidenceContent; //One result
                     }
                 } else {
                     $response = $responseBody;
