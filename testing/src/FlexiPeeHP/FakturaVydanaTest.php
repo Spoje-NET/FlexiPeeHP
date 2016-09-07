@@ -160,7 +160,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      * @param array $overide Hodnoty přepisující výchozí v kopii faktury
      * @return \FlexiPeeHP\FakturaVydana
      */
-    function invoiceCopy($invoice, $override = [])
+    public function invoiceCopy($invoice, $override = [])
     {
         $invoice2        = new \FlexiPeeHP\FakturaVydana($invoice->getData());
         $invoice2->debug = 1;

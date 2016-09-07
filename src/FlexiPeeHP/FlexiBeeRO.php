@@ -192,6 +192,12 @@ class FlexiBeeRO extends \Ease\Brick
     public $lastResult = null;
 
     /**
+     * Nuber from  @rowCount
+     * @var int
+     */
+    public $rowCount = null;
+
+    /**
      * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
      * @var string
      */
@@ -426,7 +432,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Vrací základní URL pro užitou evidenci
+     * Return basic URL for used Evidence
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
      * @param string $urlSuffix
@@ -452,8 +458,8 @@ class FlexiBeeRO extends \Ease\Brick
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
     {
-
-        $url = $this->getEvidenceURL($urlSuffix);
+        $this->rowCount = null;
+        $url            = $this->getEvidenceURL($urlSuffix);
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
 
@@ -476,6 +482,9 @@ class FlexiBeeRO extends \Ease\Brick
                             $this->setMyKey($this->lastInsertedID);
                         } else {
                             $this->lastInsertedID = null;
+                            if (isset($responseDecoded[$this->nameSpace]['@rowCount'])) {
+                                $this->rowCount = (int) $responseDecoded[$this->nameSpace]['@rowCount'];
+                            }
                         }
                         $decodeError = json_last_error_msg();
                         if ($decodeError != 'No error') {
