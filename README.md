@@ -119,7 +119,48 @@ A poté je již snadné si vypsat měrné jednotky na 2 řádky:
 ```
 
 Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
-ovodit od předka FlexiBeeRW.
+odvodit od předka FlexiBeeRW.
+
+Struktura Evidencí
+------------------
+
+V některých případech je dobré znát jaká je struktura evidence. Tuto je možno
+získat voláním https://demo.flexibee.eu/c/demo/*/properties.json avšak jedná
+se o relativně časově náročnou operaci. Jelikož se struktura evidencí FlexiBee
+často nemění FlexiPeeHP disponuje mechanizmem který umožní pracovat s nacacheovanou
+strukturou. 
+
+Tato je uložena ve třídě Structure která obsahuje staticky definovaný seznam 
+všech dostupných evidencí a jejich sloupečků.
+
+Na seznam evidencí https://demo.flexibee.eu/c/demo/evidence-list je pak možné 
+kdykoliv snadno ukázat:
+
+```php
+    echo \FlexiPeeHP\Structure::$evidence['faktura-vydana'];
+```
+
+Sturktury jednotlivých evidencí jsou pak uloženy ve statických proměnných.
+Jejich jméno se řídí stejnými pravidly jako jsou pro vytváření jména nové třídy
+jen s tím rozdílem, že první písmeno je malé. Tzn.:
+
+```php
+    lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence))
+```
+
+Celou tuto třídu je pak možné znovu vygenerovat následujícím příkazem:
+
+  ```
+  cd src/ ; php -qf update_structure_class.php > FlexiPeeHP/Structure.php
+  ```
+
+Operace trvá několik minut. Zobrazit průběh můžeme takto:
+
+  ```
+  tail -f /var/log/syslog | grep  FlexiPeeHPtest
+  ```
+
+
 
 Testování
 ---------

@@ -82,7 +82,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP'];
+    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.4'];
 
     /**
      * Default additional request url parameters after question mark
@@ -305,6 +305,9 @@ class FlexiBeeRO extends \Ease\Brick
             if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
                 $this->password = constant('FLEXIBEE_PASSWORD');
             }
+        }
+        if (isset($options['evidence'])) {
+            $this->setEvidence($options['evidence']);
         }
     }
 

@@ -1,4 +1,4 @@
-flexipeehp (1.3.0-1) UNRELEASED; urgency=low
+flexipeehp (1.4.0-2) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -17,5 +17,7 @@ flexipeehp (1.3.0-1) UNRELEASED; urgency=low
   * Debian package buld update
   * Debian package version fix Links to other libraries added to Readme
   * added public $this->rowCount to hold @rowCount value if obtained
+  * Debian package v1.3
+  * Debian package v1.3
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 07 Sep 2016 17:02:15 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 08 Sep 2016 14:20:14 +0200
