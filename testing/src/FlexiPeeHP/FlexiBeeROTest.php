@@ -37,6 +37,25 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         
     }
 
+    public function testConstructor()
+    {
+        $classname = get_class($this->object);
+        $evidence  = $this->object->getEvidence();
+
+        // Get mock, without the constructor being called
+        $mock = $this->getMockBuilder($classname)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+        $mock->__construct('');
+
+        $mock->__construct('',
+            [
+            'company' => 'Firma_s_r_o_',
+            'url' => 'https://flexibee.firma.cz/',
+            'user' => 'rest',
+            'password' => '-dj3x21xaA_', 'evidence' => $evidence]);
+    }
+
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::curlInit
      */
@@ -71,7 +90,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 'company' => 'cmp',
                 'url' => 'url',
                 'user' => 'usr',
-                'password' => 'pwd'
+                'password' => 'pwd',
+                'evidence' => 'smlouva'
             ]
         );
         $this->assertEquals('cmp', $this->object->company);
@@ -87,6 +107,15 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->object->setEvidence('nastaveni');
         $this->assertEquals('nastaveni', $this->object->evidence);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setCompany
+     */
+    public function testSetCompany()
+    {
+        $this->object->setCompany('test_s_r_o_');
+        $this->assertEquals('test_s_r_o_', $this->object->company);
     }
 
     /**
@@ -176,6 +205,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertEquals($this->object->evidence,
             $this->object->getEvidence());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getCompany
+     */
+    public function testGetCompany()
+    {
+        $this->assertEquals($this->object->company, $this->object->getCompany());
     }
 
     /**
@@ -512,6 +549,46 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->object->setDataValue('kod', 'test');
         $this->assertEquals('code:test', $this->object->draw());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getColumnsInfo
+     */
+    public function testgetColumnsInfo()
+    {
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'changes':
+            case 'nastaveni':
+                $this->assertNull($this->object->getColumnsInfo());
+                $this->assertNotEmpty($this->object->getColumnsInfo('faktura-vydana'),
+                    'Cannot obtain structure for na evidence');
+                break;
+            default:
+                $this->assertNotEmpty($this->object->getColumnsInfo(),
+                    'Cannot obtain structure for '.$this->object->getEvidence());
+                break;
+        }
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceUrl
+     */
+    public function testgetEvidenceUrl()
+    {
+        $this->assertNotEmpty($this->object->getEvidenceUrl());
+        $this->assertNotEmpty($this->object->getEvidenceUrl('/properties'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::evidenceToClassName
+     */
+    public function testevidenceToClassName()
+    {
+        $this->assertEquals('FakturaVydana',
+            $this->object->evidenceToClassName('faktura-vydana'));
     }
 
 }

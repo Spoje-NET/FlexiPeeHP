@@ -52,7 +52,6 @@ class ChangesTest extends FlexiBeeROTest
         } else {
             if (count($flexidata)) {
                 $this->assertArrayHasKey(0, $flexidata);
-                $this->assertArrayHasKey('id', $flexidata[0]);
             } else {
                 $this->markTestSkipped('Changelog is empty ?');
             }

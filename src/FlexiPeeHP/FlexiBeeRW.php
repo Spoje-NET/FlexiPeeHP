@@ -70,8 +70,11 @@ class FlexiBeeRW extends FlexiBeeRO
      * @param int|string $id identifikátor záznamu
      * @return boolean Response code is 200 ?
      */
-    public function deleteFromFlexiBee($id)
+    public function deleteFromFlexiBee($id = null)
     {
+        if (is_null($id)) {
+            $id = $this->getMyKey();
+        }
         $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
             'DELETE');
         return $this->lastResponseCode == 200;

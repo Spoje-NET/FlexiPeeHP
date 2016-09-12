@@ -11,7 +11,8 @@ namespace FlexiPeeHP;
 class FlexiBeeRO extends \Ease\Brick
 {
     /**
-     * Základní namespace pro komunikaci s FlexiBEE.
+     * Základní namespace pro komunikaci s FlexiBee.
+     * Basic namespace for communication with FlexiBee
      *
      * @var string Jmený prostor datového bloku odpovědi
      */
@@ -19,6 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Datový blok v poli odpovědi.
+     * Data block in response field.
      *
      * @var string
      */
@@ -26,6 +28,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Verze protokolu použitého pro komunikaci.
+     * Communication protocol version used.
      *
      * @var string Verze použitého API
      */
@@ -33,6 +36,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Evidence užitá objektem.
+     * Evidence used by object
      *
      * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
      * @var string
@@ -41,6 +45,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Výchozí formát pro komunikaci.
+     * Default communication format.
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/format-types Přehled možných formátů
      *
@@ -82,7 +87,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.4'];
+    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.5'];
 
     /**
      * Default additional request url parameters after question mark
@@ -355,12 +360,34 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Vrací právě používanou evidenci pro komunikaci
-     * 
+     *
      * @return string
      */
     public function getEvidence()
     {
         return $this->evidence;
+    }
+
+    /**
+     * Set used company.
+     * Nastaví Firmu.
+     *
+     * @param string $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * Obtain company now used
+     * Vrací právě používanou firmu
+     *
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     /**
@@ -1138,6 +1165,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Obtain actual GlobalVersion
      * Vrací aktuální globální verzi změn
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api#globalVersion Globální Verze
@@ -1187,6 +1215,25 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
         return $response;
+    }
+
+    /**
+     * Obtain structure for given (or default) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getColumnsInfo($evidence = null)
+    {
+        $columnsInfo = null;
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
+        if (isset(\FlexiPeeHP\Structure::$$propsName)) {
+            $columnsInfo = \FlexiPeeHP\Structure::$$propsName;
+        }
+        return $columnsInfo;
     }
 
 }

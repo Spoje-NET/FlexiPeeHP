@@ -22,12 +22,25 @@ class HooksTest extends FlexiBeeRWTest
     protected $changes;
 
     /**
+     * Onetime Hook for tests
+     * @var string 
+     */
+    public $testHookName = null;
+
+    public function __construct($name = null, array $data = array(),
+                                $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->testHookName = 'http://localhost/'.\Ease\Sand::randomString().'webhook.php';
+    }
+
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new Hooks;
+        $this->object = new Hooks();
     }
 
     /**
@@ -38,9 +51,9 @@ class HooksTest extends FlexiBeeRWTest
         $this->changes = new Changes();
         $this->changes->enable();
         $this->object->setDataValue('skipUrlTest', 'true');
-        $result        = $this->object->register('http://localhost/webhook.php');
+        $result        = $this->object->register($this->testHookName);
         $this->assertTrue($result);
-        $result2       = $this->object->register('http://localhost/webhook.php');
+        $result2       = $this->object->register($this->testHookName);
         $this->assertFalse($result2);
     }
 
