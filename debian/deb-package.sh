@@ -1,6 +1,13 @@
 #!/bin/bash
 cd ..
 
+#cd src 
+#echo update Structure class
+#php -qf update_structure_class.php > FlexiPeeHP/Structure.php
+#echo update Actions class
+#php -qf update_actions_class.php > FlexiPeeHP/Actions.php
+#cd ..
+
 PACKAGE=`cat debian/composer.json | grep '"name"' | head -n 1 |  awk -F'"' '{print $4}'`
 VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`
 echo $VERSION > debian/version

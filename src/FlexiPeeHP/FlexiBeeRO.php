@@ -470,9 +470,9 @@ class FlexiBeeRO extends \Ease\Brick
     public function getEvidenceURL($urlSuffix = null)
     {
         if (is_null($urlSuffix)) {
-            $urlSuffix = $this->evidence;
+            $urlSuffix = $this->getEvidence();
         } elseif ($urlSuffix[0] == ';') {
-            $urlSuffix = $this->evidence.$urlSuffix;
+            $urlSuffix = $this->getEvidence().$urlSuffix;
         }
         return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
     }
@@ -910,10 +910,10 @@ class FlexiBeeRO extends \Ease\Brick
 
         if ($columnsList != '*') {
             if (is_array($columnsList)) {
-            $columns = implode(',', array_unique($columnsList));
-        } else {
-            $columns = $columnsList;
-        }
+                $columns = implode(',', array_unique($columnsList));
+            } else {
+                $columns = $columnsList;
+            }
             $detail = 'custom:'.$columns;
         }
 
@@ -1218,7 +1218,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Obtain structure for given (or default) evidence
+     * Obtain structure for given (or current) evidence
      *
      * @param string $evidence
      * @return array Evidence structure
@@ -1234,6 +1234,71 @@ class FlexiBeeRO extends \Ease\Brick
             $columnsInfo = \FlexiPeeHP\Structure::$$propsName;
         }
         return $columnsInfo;
+    }
+
+    /**
+     * Obtain actions for given (or current) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getActionsInfo($evidence = null)
+    {
+        $actionsInfo = null;
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
+        if (isset(\FlexiPeeHP\Actions::$$propsName)) {
+            $actionsInfo = \FlexiPeeHP\Structure::$$propsName;
+        }
+        return $actionsInfo;
+    }
+
+    /**
+     * Perform given action (if availble) on current evidence/record
+     * @url https://demo.flexibee.eu/devdoc/actions
+     * 
+     * @param string $action one of evidence actions
+     * @param string $method ext|int External method call operation in URL.
+     *                               Internal add the @action element to request body
+     */
+    public function performAction($action, $method = 'ext')
+    {
+        $result = null;
+        if (is_null($this->actionsAvailable)) {
+            $this->actionsAvailble = $this->getActionsInfo();
+        }
+
+        if (array_key_exists($action, $this->actionsAvailble)) {
+
+            switch ($this->actionsAvailble[$action]['actionMakesSense']) {
+                case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
+                case 'ONLY_WITH_INSTANCE': //Add instance
+                    $urlSuffix = '/'.$this->__toString().'/'.$action;
+                    break;
+
+                default:
+                    $urlSuffix = '/'.$action;
+                    break;
+            }
+
+            switch ($method) {
+                case 'int':
+                    $this->action = $action;
+                    $result       = $this->performRequest(null, 'POST');
+                    break;
+
+                default:
+                    $result = $this->performRequest($urlSuffix, 'GET');
+                    break;
+            }
+        } else {
+            throw new \Exepetion(sprintf(_('Unsupported action %s for evidence %s'),
+                $action, $this->getEvidence()));
+        }
+
+        return $result;
     }
 
 }

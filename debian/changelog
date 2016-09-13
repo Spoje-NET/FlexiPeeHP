@@ -1,4 +1,4 @@
-flexipeehp (1.4.0-1) UNRELEASED; urgency=low
+flexipeehp (1.4.2-2) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -22,5 +22,11 @@ flexipeehp (1.4.0-1) UNRELEASED; urgency=low
   * Added class Structure that hold structure of all evidencies added
     tool update_structure_clas.php for generating class Structure Added
     class DodavatelskaSmlouva Version grow to 1.4
+  * Added methods for managing used company Unit tests for obtaining
+    evidence structure
+  * Added methods for managing used company Unit tests for obtaining
+    evidence structure
+  * Added methods for managing used company Unit tests for obtaining
+    evidence structure
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 08 Sep 2016 15:24:38 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 13 Sep 2016 11:16:02 +0200

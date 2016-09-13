@@ -574,6 +574,28 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getActionsInfo
+     */
+    public function testgetActionsInfo()
+    {
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'changes':
+            case 'nastaveni':
+                $this->assertNull($this->object->getActionsInfo());
+                $this->assertNotEmpty($this->object->getActionsInfo('faktura-vydana'),
+                    'Cannot obtain actions for na evidence');
+                break;
+            default:
+                $this->assertNotEmpty($this->object->getActionsInfo(),
+                    'Cannot obtain actions for '.$this->object->getEvidence());
+                break;
+        }
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceUrl
      */
     public function testgetEvidenceUrl()

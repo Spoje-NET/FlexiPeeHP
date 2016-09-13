@@ -121,20 +121,22 @@ A poté je již snadné si vypsat měrné jednotky na 2 řádky:
 Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
 odvodit od předka FlexiBeeRW.
 
-Struktura Evidencí
-------------------
+Struktura Evidencí a Akce
+-------------------------
 
-V některých případech je dobré znát jaká je struktura evidence. Tuto je možno
-získat voláním https://demo.flexibee.eu/c/demo/*/properties.json avšak jedná
-se o relativně časově náročnou operaci. Jelikož se struktura evidencí FlexiBee
-často nemění FlexiPeeHP disponuje mechanizmem který umožní pracovat s nacacheovanou
-strukturou. 
+V některých případech je dobré znát jaké můžeme provádět akce, či jáká je 
+struktura evidence. Tyto informace je možno získat voláním 
+https://demo.flexibee.eu/c/demo/*/properties.json 
+respektive https://demo.flexibee.eu/c/demo/*/actions.json 
+avšak jedná se o relativně časově náročné operace. Jelikož se struktura 
+evidencí a Akce FlexiBee často nemění FlexiPeeHP disponuje mechanizmem který 
+umožní pracovat s nacacheovanou strukturou a Akcemi. 
 
-Tato je uložena ve třídě Structure která obsahuje staticky definovaný seznam 
-všech dostupných evidencí a jejich sloupečků.
+Struktura je uložena ve třídě Structure která obsahuje staticky definovaný 
+seznam všech dostupných evidencí a jejich sloupečků.
 
-Na seznam evidencí https://demo.flexibee.eu/c/demo/evidence-list je pak možné 
-kdykoliv snadno ukázat:
+Položku v seznamu evidencí https://demo.flexibee.eu/c/demo/evidence-list je pak 
+možné kdykoliv snadno ukázat:
 
 ```php
     echo \FlexiPeeHP\Structure::$evidence['faktura-vydana'];
@@ -148,10 +150,13 @@ jen s tím rozdílem, že první písmeno je malé. Tzn.:
     lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence))
 ```
 
-Celou tuto třídu je pak možné znovu vygenerovat následujícím příkazem:
+V případě potřeby je možné tyto třídy pak možné vygenerovat s aktuálním obsahem 
+následujícím příkazem:
 
   ```
-  cd src/ ; php -qf update_structure_class.php > FlexiPeeHP/Structure.php
+  cd src/ 
+  php -qf update_structure_class.php > FlexiPeeHP/Structure.php
+  php -qf update_actions_class.php > FlexiPeeHP/Actions.php
   ```
 
 Operace trvá několik minut. Zobrazit průběh můžeme takto:
