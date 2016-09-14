@@ -1250,7 +1250,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
         $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
         if (isset(\FlexiPeeHP\Actions::$$propsName)) {
-            $actionsInfo = \FlexiPeeHP\Structure::$$propsName;
+            $actionsInfo = \FlexiPeeHP\Actions::$$propsName;
         }
         return $actionsInfo;
     }
@@ -1275,7 +1275,7 @@ class FlexiBeeRO extends \Ease\Brick
             switch ($this->actionsAvailble[$action]['actionMakesSense']) {
                 case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
                 case 'ONLY_WITH_INSTANCE': //Add instance
-                    $urlSuffix = '/'.$this->__toString().'/'.$action;
+                    $urlSuffix = '/'.$this->__toString().'/'.$action.'.'.$this->format;
                     break;
 
                 default:
@@ -1285,7 +1285,7 @@ class FlexiBeeRO extends \Ease\Brick
 
             switch ($method) {
                 case 'int':
-                    $this->action = $action;
+                    $this->setAction($action);
                     $result       = $this->performRequest(null, 'POST');
                     break;
 

@@ -5,3 +5,4 @@ composer.lock
 /debian/flexipeehp/
 /debian/flexipeehp.debhelper.log
 /debian/flexipeehp.substvars
+/docs/
