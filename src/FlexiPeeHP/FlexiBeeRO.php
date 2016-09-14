@@ -350,12 +350,21 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Nastaví Evidenci pro Komunikaci.
+     * Set evidence for communication
      *
-     * @param string $evidence
+     * @param string $evidence evidence pathName to use
      */
     public function setEvidence($evidence)
     {
-        $this->evidence = $evidence;
+        $result = null;
+        if (array_key_exists($evidence, Structure::$evidence)) {
+            $this->evidence = $evidence;
+            $result         = true;
+        } else {
+            throw new Exception(sprintf('Try to set unsupported evidence %s',
+                $evidence));
+        }
+        return $result;
     }
 
     /**
@@ -1270,8 +1279,8 @@ class FlexiBeeRO extends \Ease\Brick
             $this->actionsAvailble = $this->getActionsInfo();
         }
 
-        if (array_key_exists($action, $this->actionsAvailble)) {
-
+        if (is_array($this->actionsAvailble) && array_key_exists($action,
+                $this->actionsAvailble)) {
             switch ($this->actionsAvailble[$action]['actionMakesSense']) {
                 case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
                 case 'ONLY_WITH_INSTANCE': //Add instance
@@ -1294,7 +1303,7 @@ class FlexiBeeRO extends \Ease\Brick
                     break;
             }
         } else {
-            throw new \Exepetion(sprintf(_('Unsupported action %s for evidence %s'),
+            throw new Exception(sprintf(_('Unsupported action %s for evidence %s'),
                 $action, $this->getEvidence()));
         }
 
