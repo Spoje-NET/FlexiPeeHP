@@ -1,4 +1,4 @@
-flexipeehp (1.4.2-2) UNRELEASED; urgency=low
+flexipeehp (1.6.0-1) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -28,5 +28,9 @@ flexipeehp (1.4.2-2) UNRELEASED; urgency=low
     evidence structure
   * Added methods for managing used company Unit tests for obtaining
     evidence structure
+  * Fixed support for Evidence Actions
+  * Release 1.6 Evidence names moved from Structure to EvidenceList
+    class Class Structure renamed to Relations Class generating scripts
+    moved to "tools" folder Added generated class Relations
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 13 Sep 2016 11:16:02 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 15 Sep 2016 11:48:55 +0200

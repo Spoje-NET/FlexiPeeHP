@@ -48,4 +48,5 @@ class UcetniObdobi extends FlexiBeeRW
         }
         return $result;
     }
+
 }

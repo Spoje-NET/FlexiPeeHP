@@ -314,6 +314,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
         }
+        if (isset($options['prefix'])) {
+            $this->setPrefix($options['prefix']);
+        }
     }
 
     /**
@@ -349,26 +352,63 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Set URL prefix
+     *
+     * @param string $prefix
+     */
+    public function setPrefix($prefix)
+    {
+        switch ($prefix) {
+            case 'a': //Access
+            case 'c': //Company
+            case 'u': //User
+            case 'g': //License Groups
+            case 'admin':
+            case 'status':
+                $this->prefix = '/'.$prefix.'/';
+                break;
+            case null:
+            case '':
+            case '/':
+                $this->prefix = '';
+                break;
+            default:
+                throw new \Exception(sprintf('Unknown prefix %s', $prefix));
+                break;
+        }
+    }
+
+    /**
      * Nastaví Evidenci pro Komunikaci.
      * Set evidence for communication
      *
      * @param string $evidence evidence pathName to use
+     * @return boolean evidence switching status
      */
     public function setEvidence($evidence)
     {
         $result = null;
-        if (array_key_exists($evidence, Properties::$evidence)) {
-            $this->evidence = $evidence;
-            $result         = true;
-        } else {
-            throw new \Exception(sprintf('Try to set unsupported evidence %s',
-                $evidence));
+        switch ($this->prefix) {
+            case '/c/':
+                if (array_key_exists($evidence, EvidenceList::$name)) {
+                    $this->evidence = $evidence;
+                    $result         = true;
+                } else {
+                    throw new \Exception(sprintf('Try to set unsupported evidence %s',
+                        $evidence));
+                }
+                break;
+            default:
+                $this->evidence = $evidence;
+                $result         = true;
+                break;
         }
         return $result;
     }
 
     /**
      * Vrací právě používanou evidenci pro komunikaci
+     * Obtain current used evidence
      *
      * @return string
      */
@@ -1227,7 +1267,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Obtain structure for given (or current) evidence
+     * Obtain structure for current (or given) evidence
      *
      * @param string $evidence
      * @return array Evidence structure
@@ -1238,15 +1278,15 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
-        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
+        $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
         if (isset(\FlexiPeeHP\Properties::$$propsName)) {
-            $columnsInfo = \FlexiPeeHP\Properties::$$propsName;
+            $columnsInfo = Properties::$$propsName;
         }
         return $columnsInfo;
     }
 
     /**
-     * Obtain actions for given (or current) evidence
+     * Obtain actions for current (or given) evidence
      *
      * @param string $evidence
      * @return array Evidence structure
@@ -1257,11 +1297,47 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
-        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
+        $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
         if (isset(\FlexiPeeHP\Actions::$$propsName)) {
-            $actionsInfo = \FlexiPeeHP\Actions::$$propsName;
+            $actionsInfo = Actions::$$propsName;
         }
         return $actionsInfo;
+    }
+
+    /**
+     * Obtain info for current (or given) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence info
+     */
+    public function getEvidenceInfo($evidence = null)
+    {
+        $evidencesInfo = null;
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        if (isset(EvidenceList::$evidences[$evidence])) {
+            $evidencesInfo = EvidenceList::$evidences[$evidence];
+        }
+        return $evidencesInfo;
+    }
+
+    /**
+     * Obtain name for current (or given) evidence path
+     *
+     * @param string $evidence Evidence Path
+     * @return array Evidence info
+     */
+    public function getEvidenceName($evidence = null)
+    {
+        $evidenceName = null;
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        if (isset(EvidenceList::$name[$evidence])) {
+            $evidenceName = EvidenceList::$name[$evidence];
+        }
+        return $evidenceName;
     }
 
     /**
@@ -1295,7 +1371,7 @@ class FlexiBeeRO extends \Ease\Brick
             switch ($method) {
                 case 'int':
                     $this->setAction($action);
-                    $result       = $this->performRequest(null, 'POST');
+                    $result = $this->performRequest(null, 'POST');
                     break;
 
                 default:

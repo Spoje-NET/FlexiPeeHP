@@ -27,7 +27,7 @@ function getPropertiesInfo($evidence, FlexiBeeRO $syncer)
 }
 echo '<?php
 /**
- * FlexiPeeHP - Struktura evidenci.
+ * FlexiPeeHP - Evidence Properties.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -36,12 +36,12 @@ echo '<?php
 namespace FlexiPeeHP;
 
 /**
- * Struktura Evidencí
+ * Evidence Properties
  *
  * @link https://demo.flexibee.eu/c/demo/evidence-list.json vlastnosti evidence
  */
 
-class Structure
+class Properties
 {
 ';
 

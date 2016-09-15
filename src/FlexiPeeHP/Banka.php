@@ -33,7 +33,8 @@ class Banka extends FlexiBeeRW
     }
 
     /**
-     * Spustí proces automatického pářování plateb. ( trvá delší dobu )
+     * Start invoice authomatic matching process ( it take longer time )
+     * Spustí proces automatického párování plateb. ( trvá delší dobu )
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Interní dokumentace
      * @return boolean
@@ -43,4 +44,5 @@ class Banka extends FlexiBeeRW
         $this->performRequest('banka/automaticke-parovani', 'PUT');
         return $this->lastResponseCode == 200;
     }
+
 }

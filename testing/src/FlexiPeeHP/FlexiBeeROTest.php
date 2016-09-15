@@ -48,12 +48,18 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             ->getMockForAbstractClass();
         $mock->__construct('');
 
+        if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
+            $evidence = 'adresar';
+        }
+
         $mock->__construct('',
             [
             'company' => 'Firma_s_r_o_',
             'url' => 'https://flexibee.firma.cz/',
             'user' => 'rest',
-            'password' => '-dj3x21xaA_', 'evidence' => $evidence]);
+            'password' => '-dj3x21xaA_',
+            'prefix' => 'c',
+            'evidence' => $evidence]);
     }
 
     /**
@@ -91,13 +97,28 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 'url' => 'url',
                 'user' => 'usr',
                 'password' => 'pwd',
+                'prefix' => 'c',
                 'evidence' => 'smlouva'
             ]
         );
         $this->assertEquals('cmp', $this->object->company);
         $this->assertEquals('url', $this->object->url);
         $this->assertEquals('usr', $this->object->user);
+        $this->assertEquals('/c/', $this->object->prefix);
         $this->assertEquals('pwd', $this->object->password);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setPrefix
+     * @expectedException \Exception
+     */
+    public function testSetPrefix()
+    {
+        $this->object->setPrefix('c');
+        $this->assertEquals('/c/', $this->object->prefix);
+        $this->object->setPrefix(null);
+        $this->assertEquals('', $this->object->prefix);
+        $this->object->setPrefix('fail');
     }
 
     /**

@@ -39,14 +39,31 @@ class FlexiBeeRW extends FlexiBeeRO
     public $postFields = null;
 
     /**
-     * Uloží záznam.
+     * Save record (if evidence allow to).
+     * Uloží záznam (pokud to evidence dovoluje)
      *
-     * @param array $data
+     * @param array $data Data to save
+     * @throws Exception Evidence does not support Import
      *
      * @return array odpověď
      */
     public function insertToFlexiBee($data = null)
     {
+        $info = $this->getEvidenceInfo();
+        switch ($info['importStatus']) {
+            case 'NOT_DOCUMENTED':
+                $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
+                        $this->getEvidence()));
+
+                break;
+            case 'DISALLOWED':
+                throw new Exception(sprintf('Inserting data to r/o evidence %s',
+                    $this->getEvidence()));
+            case 'SUPPORTED':
+            default:
+                break;
+        }
+
         if (is_null($data)) {
             $data = $this->getData();
         }
@@ -78,6 +95,26 @@ class FlexiBeeRW extends FlexiBeeRO
         $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
             'DELETE');
         return $this->lastResponseCode == 200;
+    }
+
+    /**
+     * Control for existing column names in evidence and take data
+     *
+     * @param array $data Data to keep
+     * @return int number of records taken
+     * @throws \Exception try to load data to unexistent column
+     */
+    public function takeData($data)
+    {
+        $fbColumns = $this->getColumnsInfo();
+        foreach ($data as $key => $value) {
+            if (!array_key_exists($key, $fbColumns)) {
+                throw new \Exception(sprintf('unknown column %s for evidence %s',
+                    $key, $this->getEvidence()));
+            }
+        }
+
+        return parent::takeData($data);
     }
 
 }
