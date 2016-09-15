@@ -87,7 +87,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.5'];
+    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.6'];
 
     /**
      * Default additional request url parameters after question mark
@@ -357,11 +357,11 @@ class FlexiBeeRO extends \Ease\Brick
     public function setEvidence($evidence)
     {
         $result = null;
-        if (array_key_exists($evidence, Structure::$evidence)) {
+        if (array_key_exists($evidence, Properties::$evidence)) {
             $this->evidence = $evidence;
             $result         = true;
         } else {
-            throw new Exception(sprintf('Try to set unsupported evidence %s',
+            throw new \Exception(sprintf('Try to set unsupported evidence %s',
                 $evidence));
         }
         return $result;
@@ -1239,8 +1239,8 @@ class FlexiBeeRO extends \Ease\Brick
             $evidence = $this->getEvidence();
         }
         $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
-        if (isset(\FlexiPeeHP\Structure::$$propsName)) {
-            $columnsInfo = \FlexiPeeHP\Structure::$$propsName;
+        if (isset(\FlexiPeeHP\Properties::$$propsName)) {
+            $columnsInfo = \FlexiPeeHP\Properties::$$propsName;
         }
         return $columnsInfo;
     }

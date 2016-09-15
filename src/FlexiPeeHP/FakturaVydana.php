@@ -129,5 +129,4 @@ class FakturaVydana extends FlexiBeeRW
         $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
         return $this->insertToFlexiBee();
     }
-
 }
