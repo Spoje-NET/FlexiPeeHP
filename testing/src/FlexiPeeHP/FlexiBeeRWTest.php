@@ -70,4 +70,24 @@ class FlexiBeeRWTest extends FlexiBeeROTest
         );
     }
 
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRWRW::timestampToFlexiDate
+     */
+    public function testTimestampToFlexiDate()
+    {
+        $this->assertNull($this->object->timestampToFlexiDate());
+        $this->assertEquals('2016-09-16',
+            $this->object->timestampToFlexiDate('1474040506'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRWRW::timestampToFlexiDateTime
+     */
+    public function testTimestampToFlexiDateTime()
+    {
+        $this->assertNull($this->object->timestampToFlexiDateTime());
+        $this->assertEquals('2016-09-16UTC15:41:46',
+            $this->object->timestampToFlexiDateTime('1474040506'));
+    }
+
 }

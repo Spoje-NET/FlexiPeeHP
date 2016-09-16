@@ -117,4 +117,40 @@ class FlexiBeeRW extends FlexiBeeRO
         return parent::takeData($data);
     }
 
+    /**
+     * Convert Timestamp to FlexiBee Date format.
+     *
+     * @param int $timpestamp
+     *
+     * @return string FlexiBee Date or NULL
+     */
+    public static function timestampToFlexiDate($timpestamp = null)
+    {
+        $flexiDate = null;
+        if (!is_null($timpestamp)) {
+            $date      = new \DateTime();
+            $date->setTimestamp($timpestamp);
+            $flexiDate = $date->format('Y-m-d');
+        }
+        return $flexiDate;
+    }
+
+    /**
+     * Convert Timestamp to Flexi DateTime format.
+     *
+     * @param int $timpestamp
+     *
+     * @return string FlexiBee DateTime or NULL
+     */
+    public static function timestampToFlexiDateTime($timpestamp = null)
+    {
+        $flexiDateTime = null;
+        if (!is_null($timpestamp)) {
+            $date          = new \DateTime();
+            $date->setTimestamp($timpestamp);
+            $flexiDateTime = $date->format('Y-m-dTH:i:s');
+        }
+        return $flexiDateTime;
+    }
+
 }
