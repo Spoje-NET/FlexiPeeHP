@@ -1144,11 +1144,20 @@ class FlexiBeeRO extends \Ease\Brick
                 $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
             } elseif (is_null($data[$column])) {
                 $parts[$column] = $column." is null";
-            } elseif ($value == '!null') {
-                $parts[$column] = $column." is not null";
             } else {
-                $parts[$column] = $column." $defop '".$data[$column]."'";
-            }
+                switch ($value) {
+                    case '!null':
+                        $parts[$column] = $column." is not null";
+                        break;
+                    case 'is empty':
+                    case 'is not empty':
+                        $parts[$column] = $column.' '.$value;
+                        break;
+                    default:
+                        $parts[$column] = $column." $defop '".$data[$column]."'";
+                        break;
+                }
+        }
         }
 
         $flexiUrl = implode(' '.$joiner.' ', $parts);

@@ -51,14 +51,16 @@ class FlexiBeeRW extends FlexiBeeRO
     {
         $info = $this->getEvidenceInfo();
         switch ($info['importStatus']) {
-            case 'NOT_DOCUMENTED':
-                $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
-                        $this->getEvidence()));
-
-                break;
             case 'DISALLOWED':
                 throw new Exception(sprintf('Inserting data to r/o evidence %s',
                     $this->getEvidence()));
+            case 'NOT_DOCUMENTED':
+                if ($this->debug) {
+                    $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
+                            $this->getEvidence()));
+                }
+
+                break;
             case 'SUPPORTED':
             default:
                 break;
@@ -115,6 +117,31 @@ class FlexiBeeRW extends FlexiBeeRO
         }
 
         return parent::takeData($data);
+    }
+
+    /**
+     * Control data for mandatory columns presence.
+     *
+     * @param array $data
+     * @return array List of missing columns. Empty if all is ok
+     */
+    public function controlMandatoryColumns($data = null)
+    {
+        if (is_null($data)) {
+            $data->getData();
+        }
+
+        $missingMandatoryColumns = [];
+
+        $fbColumns = $this->getColumnsInfo();
+        foreach ($fbColumns as $columnName => $columnInfo) {
+            $mandatory = ($columnInfo['mandatory'] == 'true');
+            if ($mandatory && !array_key_exists($columnName, $data)) {
+                $missingMandatoryColumns[$columnName] = $columnInfo['name'];
+            }
+        }
+
+        return $missingMandatoryColumns;
     }
 
     /**
