@@ -365,6 +365,7 @@ class FlexiBeeRO extends \Ease\Brick
             case 'g': //License Groups
             case 'admin':
             case 'status':
+            case 'login-logout':
                 $this->prefix = '/'.$prefix.'/';
                 break;
             case null:

@@ -22,4 +22,17 @@ class DodavatelskaSmlouva extends FlexiBeeRW
      */
     public $evidence = 'dodavatelska-smlouva';
 
+    /**
+     * Generate invoices from contracts.
+     * Vygeneruje faktury ze smluv.
+     *
+     * @return boolean operation success
+     */
+    public function generateInvoices()
+    {
+        $this->performRequest('dodavatelska-smlouva/generovani-faktur.xml',
+            'PUT', 'xml');
+        return $this->lastResponseCode == 200;
+    }
+
 }
