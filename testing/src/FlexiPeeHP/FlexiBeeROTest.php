@@ -122,12 +122,16 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * We can set only evidence defined in EvidenceList class
+     *
      * @covers FlexiPeeHP\FlexiBeeRO::setEvidence
+     * @expectedException \Exception
      */
     public function testSetEvidence()
     {
-        $this->object->setEvidence('nastaveni');
-        $this->assertEquals('nastaveni', $this->object->evidence);
+        $this->object->setEvidence('adresar');
+        $this->assertEquals('adresar', $this->object->evidence);
+        $this->object->setEvidence('fail');
     }
 
     /**

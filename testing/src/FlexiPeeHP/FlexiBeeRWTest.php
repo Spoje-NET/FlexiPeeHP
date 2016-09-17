@@ -16,7 +16,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public $poznam = 'Generováno UnitTestem PHP Knihovny https://github.com/Spoje-NET/FlexiPeeHP';
 
     /**
-     * @var FlexiBeeRO
+     * @var FlexiBeeRW
      */
     protected $object;
 
@@ -71,7 +71,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRWRW::timestampToFlexiDate
+     * @covers FlexiPeeHP\FlexiBeeRW::timestampToFlexiDate
      */
     public function testTimestampToFlexiDate()
     {
@@ -81,7 +81,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRWRW::timestampToFlexiDateTime
+     * @covers FlexiPeeHP\FlexiBeeRW::timestampToFlexiDateTime
      */
     public function testTimestampToFlexiDateTime()
     {

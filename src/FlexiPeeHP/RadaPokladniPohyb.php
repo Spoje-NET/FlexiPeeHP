@@ -8,6 +8,9 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Číselná řada pokladního pohybu
+ */
 class RadaPokladniPohyb extends FlexiBeeRW
 {
     /**

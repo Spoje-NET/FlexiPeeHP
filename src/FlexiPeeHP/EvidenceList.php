@@ -9,6 +9,8 @@
 namespace FlexiPeeHP;
 
 /**
+ * Seznam evidencí a jejich vlastnosti
+ * 
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
  */
 class EvidenceList extends FlexiBeeRO

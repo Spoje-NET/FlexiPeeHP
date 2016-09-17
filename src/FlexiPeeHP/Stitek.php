@@ -9,6 +9,8 @@
 namespace FlexiPeeHP;
 
 /**
+ * Štítek
+ * 
  * @link https://demo.flexibee.eu/c/demo/stitek/properties Vlastnosti evidence
  */
 class Stitek extends FlexiBeeRW

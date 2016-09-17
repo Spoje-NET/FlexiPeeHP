@@ -38,6 +38,8 @@ echo '<?php
 namespace FlexiPeeHP;
 
 /**
+ * Seznam Evidencí a jejich vlastnosti
+ *
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
  */
 class EvidenceList extends FlexiBeeRO

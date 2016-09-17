@@ -1,6 +1,7 @@
 <?php
 /**
- * FlexiPeeHP - Objekt štítku.
+ * FlexiPeeHP - Bank Class.
+ *              Objekt Banky.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2015,2016 Spoje.Net
@@ -9,6 +10,8 @@
 namespace FlexiPeeHP;
 
 /**
+ * Banka
+ * 
  * @link https://demo.flexibee.eu/c/demo/banka/properties Vlastnosti evidence
  */
 class Banka extends FlexiBeeRW

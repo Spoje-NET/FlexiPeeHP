@@ -8,8 +8,20 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Základní třída pro čtení z FlexiBee
+ *
+ * @url https://demo.flexibee.eu/devdoc/
+ */
 class FlexiBeeRO extends \Ease\Brick
 {
+    /**
+     * Version of FlexiPeeHP library
+     *
+     * @var string
+     */
+    public $libVersion = '1.6';
+
     /**
      * Základní namespace pro komunikaci s FlexiBee.
      * Basic namespace for communication with FlexiBee
@@ -87,7 +99,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP v1.6'];
+    public $defaultHttpHeaders = ['User-Agent' => 'FlexiPeeHP'];
 
     /**
      * Default additional request url parameters after question mark
@@ -682,6 +694,9 @@ class FlexiBeeRO extends \Ease\Brick
 
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
+            if (($key == 'User-Agent') && ($value == 'FlexiPeeHP')) {
+                $value.= ' v'.$this->libVersion;
+            }
             $httpHeadersFinal[] = $key.': '.$value;
         }
 
@@ -1389,7 +1404,7 @@ class FlexiBeeRO extends \Ease\Brick
                     break;
             }
         } else {
-            throw new Exception(sprintf(_('Unsupported action %s for evidence %s'),
+            throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
                 $action, $this->getEvidence()));
         }
 

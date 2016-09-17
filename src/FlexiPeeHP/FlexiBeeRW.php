@@ -8,6 +8,11 @@
 
 namespace FlexiPeeHP;
 
+/**
+ * Základní třída pro zápis do FlexiBee
+ *
+ * @url https://demo.flexibee.eu/devdoc/http-operations
+ */
 class FlexiBeeRW extends FlexiBeeRO
 {
     /**
@@ -52,7 +57,7 @@ class FlexiBeeRW extends FlexiBeeRO
         $info = $this->getEvidenceInfo();
         switch ($info['importStatus']) {
             case 'DISALLOWED':
-                throw new Exception(sprintf('Inserting data to r/o evidence %s',
+                throw new \Exception(sprintf('Inserting data to r/o evidence %s',
                     $this->getEvidence()));
             case 'NOT_DOCUMENTED':
                 if ($this->debug) {
@@ -109,13 +114,14 @@ class FlexiBeeRW extends FlexiBeeRO
     public function takeData($data)
     {
         $fbColumns = $this->getColumnsInfo();
-        foreach ($data as $key => $value) {
-            if (!array_key_exists($key, $fbColumns)) {
-                throw new \Exception(sprintf('unknown column %s for evidence %s',
-                    $key, $this->getEvidence()));
+        if (count($fbColumns)) {
+            foreach ($data as $key => $value) {
+                if (!array_key_exists($key, $fbColumns)) {
+                    throw new \Exception(sprintf('unknown column %s for evidence %s',
+                        $key, $this->getEvidence()));
+                }
             }
         }
-
         return parent::takeData($data);
     }
 
@@ -142,6 +148,31 @@ class FlexiBeeRW extends FlexiBeeRO
         }
 
         return $missingMandatoryColumns;
+    }
+
+    /**
+     * Control data for readonly columns presence.
+     *
+     * @param array $data
+     * @return array List of ReadOnly columns. Empty if all is ok
+     */
+    public function controlReadOnlyColumns($data = null)
+    {
+        if (is_null($data)) {
+            $data->getData();
+        }
+
+        $readonlyColumns = [];
+
+        $fbColumns = $this->getColumnsInfo();
+        foreach ($fbColumns as $columnName => $columnInfo) {
+            $writable = ($columnInfo['isWritable'] == 'true');
+            if (!$writable && !array_key_exists($columnName, $data)) {
+                $readonlyColumns[$columnName] = $columnInfo['name'];
+            }
+        }
+
+        return $readonlyColumns;
     }
 
     /**
@@ -179,5 +210,4 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         return $flexiDateTime;
     }
-
 }
