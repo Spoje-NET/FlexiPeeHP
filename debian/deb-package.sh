@@ -27,6 +27,8 @@ else
     echo $VERSION > debian/lastversion
 fi
 
+rm -rf debian/flexipeehp/
+rm -rf debian/flexipeehp-doc/
 
 cd ..
 ls *.deb

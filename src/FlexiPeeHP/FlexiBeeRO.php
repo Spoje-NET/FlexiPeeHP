@@ -20,7 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    public $libVersion = '1.6';
+    static public $libVersion = '1.6.2.5';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -695,7 +695,7 @@ class FlexiBeeRO extends \Ease\Brick
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
             if (($key == 'User-Agent') && ($value == 'FlexiPeeHP')) {
-                $value.= ' v'.$this->libVersion;
+                $value.= ' v'.self::$libVersion;
             }
             $httpHeadersFinal[] = $key.': '.$value;
         }
