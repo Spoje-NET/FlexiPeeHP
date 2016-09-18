@@ -239,6 +239,9 @@ Takže při instalaci závislostí bude vypadat nějak takto:
 
 A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím apt-get.
 
+Generujeme také balíček **flexipeehp-doc**, obsahující vývojářskou dokumentaci
+generovanou pomcí programu ApiGen. Dokumnentace je online k nahlédnutí na adrese
+http://flexibee-dev.spoje.net/flexipeehp/
 
 FlexiBee knihovny pro další jazky:
 ----------------------------------

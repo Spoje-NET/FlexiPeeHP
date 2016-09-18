@@ -1,4 +1,4 @@
-flexipeehp (1.6.2-5) UNRELEASED; urgency=low
+flexipeehp (1.6.3-6) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -43,5 +43,7 @@ flexipeehp (1.6.2-5) UNRELEASED; urgency=low
   * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
   * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
   * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
+  * Added debian package for ApiGen documentation Static version as
+    FlexiPeeHP::$libVersion
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 17 Sep 2016 23:34:41 +0200
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 18 Sep 2016 00:07:46 +0200
