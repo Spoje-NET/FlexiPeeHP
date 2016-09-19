@@ -342,7 +342,7 @@ class FlexiBeeRO extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_HTTPAUTH, true);       // HTTP authentication
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false); // FlexiBee by default uses Self-Signed certificates
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($this->curl, CURLOPT_VERBOSE, true); // For debugging
+        curl_setopt($this->curl, CURLOPT_VERBOSE, ($this->debug === true)); // For debugging
         curl_setopt($this->curl, CURLOPT_USERPWD,
             $this->user.':'.$this->password); // set username and password
     }
@@ -656,6 +656,11 @@ class FlexiBeeRO extends \Ease\Brick
 
                 break;
         }
+
+        if ($this->debug === true) {
+            $this->saveDebugFiles();
+        }
+
         return $response;
     }
 
@@ -984,7 +989,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
 
-        if (!is_null($indexBy)) {
+        if (!is_null($indexBy) && count($flexiData)) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 

@@ -60,7 +60,7 @@ class FlexiBeeRW extends FlexiBeeRO
                 throw new \Exception(sprintf('Inserting data to r/o evidence %s',
                     $this->getEvidence()));
             case 'NOT_DOCUMENTED':
-                if ($this->debug) {
+                if ($this->debug === true) {
                     $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
                             $this->getEvidence()));
                 }
@@ -73,6 +73,14 @@ class FlexiBeeRW extends FlexiBeeRO
 
         if (is_null($data)) {
             $data = $this->getData();
+        }
+        if ($this->debug === true) {
+            $missingColumns = $this->controlMandatoryColumns();
+            if (count($missingColumns)) {
+                $this->addStatusMessage(sprintf('Given data does not contain requied Columns: %s',
+                        implode(',', $missingColumns))
+                    , 'warning');
+            }
         }
         $this->postFields = $this->jsonizeData($data);
         return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
@@ -90,6 +98,7 @@ class FlexiBeeRW extends FlexiBeeRO
 
     /**
      * Smaže záznam
+     * Delete record in FlexiBee
      *
      * @param int|string $id identifikátor záznamu
      * @return boolean Response code is 200 ?
@@ -109,16 +118,17 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @param array $data Data to keep
      * @return int number of records taken
-     * @throws \Exception try to load data to unexistent column
      */
     public function takeData($data)
     {
-        $fbColumns = $this->getColumnsInfo();
-        if (count($fbColumns)) {
-            foreach ($data as $key => $value) {
-                if (!array_key_exists($key, $fbColumns)) {
-                    throw new \Exception(sprintf('unknown column %s for evidence %s',
-                        $key, $this->getEvidence()));
+        if ($this->debug === true) {
+            $fbColumns = $this->getColumnsInfo();
+            if (count($fbColumns)) {
+                foreach ($data as $key => $value) {
+                    if (!array_key_exists($key, $fbColumns)) {
+                        $this->addStatusMessage(sprintf('unknown column %s for evidence %s',
+                                $key, $this->getEvidence()), 'warning');
+                    }
                 }
             }
         }
@@ -134,7 +144,7 @@ class FlexiBeeRW extends FlexiBeeRO
     public function controlMandatoryColumns($data = null)
     {
         if (is_null($data)) {
-            $data->getData();
+            $data = $this->getData();
         }
 
         $missingMandatoryColumns = [];
@@ -210,4 +220,5 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         return $flexiDateTime;
     }
+
 }
