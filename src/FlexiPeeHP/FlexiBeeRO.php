@@ -980,6 +980,9 @@ class FlexiBeeRO extends \Ease\Brick
 
         if ($columnsList != '*') {
             if (is_array($columnsList)) {
+                if (!array_key_exists($indexBy, $columnsList)) {
+                    $columnsList[] = $indexBy;
+                }
                 $columns = implode(',', array_unique($columnsList));
             } else {
                 $columns = $columnsList;
@@ -989,7 +992,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
 
-        if (!is_null($indexBy) && count($flexiData)) {
+        if (!is_null($indexBy) && count($flexiData) && count(current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
