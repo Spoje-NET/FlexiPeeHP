@@ -191,6 +191,10 @@ Ukázka
 
 Příkladem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
 
+Docker
+------
+
+    docker pull vitexsoftware/flexipeehp
 
 Debian/Ubuntu
 -------------
@@ -242,6 +246,16 @@ A aktualizaci bude možné dělat globálně pro celý systém prostřednictvím
 Generujeme také balíček **flexipeehp-doc**, obsahující vývojářskou dokumentaci
 generovanou pomcí programu ApiGen. Dokumnentace je online k nahlédnutí na adrese
 http://flexibee-dev.spoje.net/flexipeehp/
+
+Sestavení
+---------
+
+Debianí balíček vytvoříme spuštěním debian/deb-package.sh
+
+Obraz pro Docker:
+
+    docker build -t vitexsoftware/easephpframework
+
 
 FlexiBee knihovny pro další jazky:
 ----------------------------------
