@@ -20,7 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    static public $libVersion = '1.6.3.6';
+    static public $libVersion = '1.6.3.8';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
