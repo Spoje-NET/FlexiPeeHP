@@ -69,7 +69,7 @@ class CompanyTest extends FlexiBeeROTest
     }
 
     /**
-     * @covers FlexiPeeHP\Compny::getResponseEvidence
+     * @covers FlexiPeeHP\Company::getResponseEvidence
      */
     public function testGetResponseEvidence()
     {

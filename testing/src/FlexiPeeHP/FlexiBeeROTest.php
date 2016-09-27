@@ -131,6 +131,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->object->setEvidence('adresar');
         $this->assertEquals('adresar', $this->object->evidence);
+        $this->object->setPrefix('c');
         $this->object->setEvidence('fail');
     }
 
@@ -416,9 +417,12 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                         $this->markTestSkipped($flexidata['message']);
                     } else {
                         $this->object->setData(['id' => (int) $flexidata[0]['id']]);
-                        $this->assertTrue($this->object->recordExists());
-                        $this->assertFalse($this->object->recordExists(['id' => 0]));
-                        $this->assertFalse($this->object->recordExists(['unexistent' => 1]));
+                        $this->assertTrue($this->object->recordExists(),
+                            'First record exists test failed');
+                        $this->assertFalse($this->object->recordExists(['id' => 0]),
+                            'Record ID 0 exists');
+                        $this->assertFalse($this->object->recordExists(['unexistent' => 1]),
+                            'Unexistent Record exist ?');
                     }
                 }
                 break;

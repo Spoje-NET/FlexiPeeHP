@@ -920,7 +920,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function recordExists($data = null)
     {
-        $found = null;
+
         if (is_null($data)) {
             $data = $this->getData();
         }
@@ -980,7 +980,8 @@ class FlexiBeeRO extends \Ease\Brick
 
         if ($columnsList != '*') {
             if (is_array($columnsList)) {
-                if (!array_key_exists($indexBy, $columnsList)) {
+                if (!is_null($indexBy) && !array_key_exists($indexBy,
+                        $columnsList)) {
                     $columnsList[] = $indexBy;
                 }
                 $columns = implode(',', array_unique($columnsList));
@@ -1180,7 +1181,7 @@ class FlexiBeeRO extends \Ease\Brick
                         $parts[$column] = $column." $defop '".$data[$column]."'";
                         break;
                 }
-        }
+            }
         }
 
         $flexiUrl = implode(' '.$joiner.' ', $parts);
@@ -1418,5 +1419,4 @@ class FlexiBeeRO extends \Ease\Brick
 
         return $result;
     }
-
 }
