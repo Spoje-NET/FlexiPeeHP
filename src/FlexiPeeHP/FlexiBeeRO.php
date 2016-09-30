@@ -1339,6 +1339,25 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Obtain relations for current (or given) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getRelationsInfo($evidence = null)
+    {
+        $relationsInfo = null;
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
+        if (isset(\FlexiPeeHP\Relations::$$propsName)) {
+            $relationsInfo = Relations::$$propsName;
+        }
+        return $relationsInfo;
+    }
+
+    /**
      * Obtain info for current (or given) evidence
      *
      * @param string $evidence

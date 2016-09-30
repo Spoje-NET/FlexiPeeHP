@@ -625,6 +625,28 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getRelationsInfo
+     */
+    public function testgetRelationsInfo()
+    {
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'changes':
+            case 'nastaveni':
+                $this->assertNull($this->object->getRelationsInfo());
+                $this->assertNotEmpty($this->object->getRelationsInfo('faktura-vydana'),
+                    'Cannot obtain relations for na evidence');
+                break;
+            default:
+                $this->assertNotEmpty($this->object->getRelationsInfo(),
+                    'Cannot obtain relations for '.$this->object->getEvidence());
+                break;
+        }
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceUrl
      */
     public function testgetEvidenceUrl()
