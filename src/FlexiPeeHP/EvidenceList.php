@@ -1958,4 +1958,19 @@ class EvidenceList extends FlexiBeeRO
         ],
     ];
 
+    /**
+     * Return the same response format for one and multiplete results
+     *
+     * @param array $responseRaw
+     * @return array
+     */
+    public function unifyResponseFormat($responseRaw)
+    {
+        $response = parent::unifyResponseFormat($responseRaw);
+        if (isset($response['evidencies']['evidence'])) {
+            $response = $response['evidencies']['evidence'];
+        }
+        return $response;
+    }
+
 }

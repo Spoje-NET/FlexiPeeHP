@@ -59,6 +59,9 @@ class FlexiBeeRW extends FlexiBeeRO
             case 'DISALLOWED':
                 throw new \Exception(sprintf('Inserting data to r/o evidence %s',
                     $this->getEvidence()));
+            case 'NOT_DIRECT':
+                throw new \Exception(sprintf('Inserting data to slave only evidence %s',
+                    $this->getEvidence()));
             case 'NOT_DOCUMENTED':
                 if ($this->debug === true) {
                     $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
@@ -122,12 +125,26 @@ class FlexiBeeRW extends FlexiBeeRO
     public function takeData($data)
     {
         if ($this->debug === true) {
-            $fbColumns = $this->getColumnsInfo();
+            $fbColumns   = $this->getColumnsInfo();
+            foreach ($this->getRelationsInfo() as $relation) {
+                if (is_array($relation) && isset($relation['url'])) {
+                    $fbRelations[$relation['url']] = $relation['url'];
+                }
+            }
+
             if (count($fbColumns)) {
                 foreach ($data as $key => $value) {
                     if (!array_key_exists($key, $fbColumns)) {
-                        $this->addStatusMessage(sprintf('unknown column %s for evidence %s',
-                                $key, $this->getEvidence()), 'warning');
+
+                        if (!array_key_exists($key, $fbRelations)) {
+                            $this->addStatusMessage(sprintf('unknown column %s for evidence %s',
+                                    $key, $this->getEvidence()), 'warning');
+                        } else {
+                            if (!is_array($value)) {
+                                $this->addStatusMessage(sprintf('subevidence %s in evidence %s must bee an array',
+                                        $key, $this->getEvidence()), 'warning');
+                            }
+                        }
                     }
                 }
             }
@@ -149,7 +166,7 @@ class FlexiBeeRW extends FlexiBeeRO
 
         $missingMandatoryColumns = [];
 
-        $fbColumns = $this->getColumnsInfo();
+        $fbColumns   = $this->getColumnsInfo();
         foreach ($fbColumns as $columnName => $columnInfo) {
             $mandatory = ($columnInfo['mandatory'] == 'true');
             if ($mandatory && !array_key_exists($columnName, $data)) {

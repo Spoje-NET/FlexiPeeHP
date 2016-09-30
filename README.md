@@ -166,7 +166,15 @@ Operace trvá několik minut. Zobrazit průběh můžeme takto:
   ```
   tail -f /var/log/syslog | grep  FlexiPeeHPtest
   ```
+Ladicí režim
+------------
 
+Pokud v objektech FlexiPeeHP nastavíte $this->debug na true, budou se před odesláním
+dat do FlexiBee provedeny dodatečné testy. Kontrolují se tyto možné chyby:
+
+ * Existuje vkládané políčko definované pro evidenci ?
+ * Je vkládané políčko Pouze pro čtení ?
+ * Pokud je vkládané políčko vazbou, je i polem ?
 
 
 Testování
