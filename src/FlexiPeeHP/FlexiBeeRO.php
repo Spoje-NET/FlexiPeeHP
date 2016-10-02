@@ -1193,6 +1193,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Obtain record/object identificator code: or id:
      * Vrací identifikátor objektu code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
@@ -1205,12 +1206,12 @@ class FlexiBeeRO extends \Ease\Brick
             $id = 'code:'.$myCode;
         } else {
             $id = $this->getDataValue('id');
-            if (is_null($id)) {
+            if (($this->debug === true) && is_null($id)) {
                 $this->addToLog('Object Data does not contain code: or id: cannot match with statement!',
                     'warning');
             }
         }
-        return $id;
+        return strval($id);
     }
 
     /**
