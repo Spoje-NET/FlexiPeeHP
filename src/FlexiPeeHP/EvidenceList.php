@@ -9,8 +9,8 @@
 namespace FlexiPeeHP;
 
 /**
- * Seznam evidencí a jejich vlastnosti
- * 
+ * Seznam Evidencí a jejich vlastnosti
+ *
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí
  */
 class EvidenceList extends FlexiBeeRO
@@ -82,7 +82,7 @@ class EvidenceList extends FlexiBeeRO
         'banka' => 'Banka',
         'typ-banka' => 'Typy bankovních dokladů',
         'rada-banka' => 'Dokladové řady - bankovní doklady',
-        'banka-polozka' => 'Položky bankovních dokladů',
+        'banka-polozka' => '#banBanZapoctyPol',
         'format-elektronickeho-bankovnictvi' => 'Bankovní formáty',
         'pohledavka' => 'Ostatní pohledávky',
         'pohledavka-polozka' => 'Položky ostatních pohledávek',
@@ -91,7 +91,9 @@ class EvidenceList extends FlexiBeeRO
         'bankovni-ucet' => 'Seznam bankovních účtů',
         'pokladna' => 'Seznam pokladen',
         'prikaz-k-uhrade' => 'Příkaz k úhradě',
+        'prikaz-k-uhrade-polozka' => 'Položka příkazu k úhradě',
         'prikaz-k-inkasu' => 'Příkaz k inkasu',
+        'prikaz-k-inkasu-polozka' => 'Položka inkasa',
         'vzajemny-zapocet' => 'Vzájemné zápočty',
         'typ-vzajemnych-zapoctu' => 'Typy zápočtů',
         'typ-interniho-dokladu' => 'Typy interních dokladů',
@@ -106,8 +108,9 @@ class EvidenceList extends FlexiBeeRO
         'rada-faktury-vydane' => 'Dokladové řady - vydané faktury',
         'prodejka' => 'Prodejní kasa',
         'typ-prodejky' => 'Seznam prodejních kas',
-        'prodejka-platba' => '#favProdPlat',
+        'prodejka-platba' => 'Úhrada',
         'pravo-viditelnosti' => '#uzivPristup',
+        'eet-komunikace' => 'EET komunikace',
         'kurz' => 'Kurzy',
         'ucet' => 'Účtový rozvrh',
         'mena' => 'Měny',
@@ -203,6 +206,7 @@ class EvidenceList extends FlexiBeeRO
         'uzivatelsky-dotaz-vlastnost' => 'Vlastnosti',
         'custom-button' => 'Uživatelské tlačítko',
         'setting-store' => 'Úložiště nastavení',
+        'dashboard-panel' => 'Správa přehledů',
         'dashboard-sharing' => 'Sdílení přehledů',
         'obrat' => 'Obraty',
         'stav-uctu' => 'Stavy účtů',
@@ -717,11 +721,11 @@ class EvidenceList extends FlexiBeeRO
         'banka-polozka' =>
         [
             'evidenceType' => 'BANKA_POLOZKA',
-            'evidenceName' => 'Položky bankovních dokladů',
+            'evidenceName' => '#banBanZapoctyPol',
             'evidencePath' => 'banka-polozka',
             'importStatus' => 'NOT_DIRECT',
             'className' => 'cz.winstrom.vo.dok.PolInt',
-            'formCode' => 'banPol',
+            'formCode' => 'banBanZapoctyPol',
         ],
         'format-elektronickeho-bankovnictvi' =>
         [
@@ -795,6 +799,15 @@ class EvidenceList extends FlexiBeeRO
             'className' => 'cz.winstrom.vo.eban.Prikaz',
             'formCode' => 'elPrikaz',
         ],
+        'prikaz-k-uhrade-polozka' =>
+        [
+            'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
+            'evidenceName' => 'Položka příkazu k úhradě',
+            'evidencePath' => 'prikaz-k-uhrade-polozka',
+            'importStatus' => 'DISALLOWED',
+            'className' => 'cz.winstrom.vo.eban.PolozkaPrikazu',
+            'formCode' => 'elPrikazPol',
+        ],
         'prikaz-k-inkasu' =>
         [
             'evidenceType' => 'PRIKAZ_K_INKASU',
@@ -803,6 +816,15 @@ class EvidenceList extends FlexiBeeRO
             'importStatus' => 'NOT_DOCUMENTED',
             'className' => 'cz.winstrom.vo.eban.Prikaz',
             'formCode' => 'elInkaso',
+        ],
+        'prikaz-k-inkasu-polozka' =>
+        [
+            'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
+            'evidenceName' => 'Položka inkasa',
+            'evidencePath' => 'prikaz-k-inkasu-polozka',
+            'importStatus' => 'DISALLOWED',
+            'className' => 'cz.winstrom.vo.eban.PolozkaPrikazu',
+            'formCode' => 'elInkasoPol',
         ],
         'vzajemny-zapocet' =>
         [
@@ -933,7 +955,7 @@ class EvidenceList extends FlexiBeeRO
         'prodejka-platba' =>
         [
             'evidenceType' => 'PRODEJKA_PLATBA',
-            'evidenceName' => '#favProdPlat',
+            'evidenceName' => 'Úhrada',
             'evidencePath' => 'prodejka-platba',
             'importStatus' => 'NOT_DOCUMENTED',
             'className' => 'cz.winstrom.vo.dok.FormaUhrady',
@@ -947,6 +969,15 @@ class EvidenceList extends FlexiBeeRO
             'importStatus' => 'NOT_DOCUMENTED',
             'className' => 'cz.winstrom.vo.w.DataPrava',
             'formCode' => 'uzivPristup',
+        ],
+        'eet-komunikace' =>
+        [
+            'evidenceType' => 'EET_KOMUNIKACE',
+            'evidenceName' => 'EET komunikace',
+            'evidencePath' => 'eet-komunikace',
+            'importStatus' => 'NOT_DOCUMENTED',
+            'className' => 'cz.winstrom.vo.vyk.EetKomView',
+            'formCode' => 'eetKomView',
         ],
         'kurz' =>
         [
@@ -1803,6 +1834,15 @@ class EvidenceList extends FlexiBeeRO
             'className' => 'cz.winstrom.vo.WSSetting',
             'formCode' => 'settings',
         ],
+        'dashboard-panel' =>
+        [
+            'evidenceType' => 'DASHBOARD_PANEL',
+            'evidenceName' => 'Správa přehledů',
+            'evidencePath' => 'dashboard-panel',
+            'importStatus' => 'NOT_DOCUMENTED',
+            'className' => 'cz.winstrom.vo.w.DashboardPanel',
+            'formCode' => 'dashboardPanel',
+        ],
         'dashboard-sharing' =>
         [
             'evidenceType' => 'DASHBOARD_SHARING',
@@ -1957,20 +1997,5 @@ class EvidenceList extends FlexiBeeRO
             'formCode' => 'zurnal',
         ],
     ];
-
-    /**
-     * Return the same response format for one and multiplete results
-     *
-     * @param array $responseRaw
-     * @return array
-     */
-    public function unifyResponseFormat($responseRaw)
-    {
-        $response = parent::unifyResponseFormat($responseRaw);
-        if (isset($response['evidencies']['evidence'])) {
-            $response = $response['evidencies']['evidence'];
-        }
-        return $response;
-    }
 
 }

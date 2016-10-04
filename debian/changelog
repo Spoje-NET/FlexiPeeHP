@@ -1,4 +1,4 @@
-flexipeehp (1.6.3-8) UNRELEASED; urgency=low
+flexipeehp (1.6.4-1) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -55,4 +55,8 @@ flexipeehp (1.6.3-8) UNRELEASED; urgency=low
   * Merge origin/master
   * Merge origin/master
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 25 Sep 2016 23:43:21 +0200
+  [ vitex ]
+  * Additonal control for relations in debug mode
+  * __ToString returns allways string now
+
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 04 Oct 2016 19:04:51 +0200
