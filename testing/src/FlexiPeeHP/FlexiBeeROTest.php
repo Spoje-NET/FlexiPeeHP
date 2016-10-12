@@ -568,7 +568,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals('code:'.$code, (string) $this->object);
 
         $this->object->dataReset();
-        $this->assertNull($this->object->__toString());
+        $this->assertEquals('', $this->object->__toString());
     }
 
     /**

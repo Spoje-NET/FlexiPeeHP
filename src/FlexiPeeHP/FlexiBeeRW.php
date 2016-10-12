@@ -125,7 +125,7 @@ class FlexiBeeRW extends FlexiBeeRO
     public function takeData($data)
     {
         if ($this->debug === true) {
-            $fbColumns   = $this->getColumnsInfo();
+            $fbColumns = $this->getColumnsInfo();
             foreach ($this->getRelationsInfo() as $relation) {
                 if (is_array($relation) && isset($relation['url'])) {
                     $fbRelations[$relation['url']] = $relation['url'];
@@ -166,7 +166,7 @@ class FlexiBeeRW extends FlexiBeeRO
 
         $missingMandatoryColumns = [];
 
-        $fbColumns   = $this->getColumnsInfo();
+        $fbColumns = $this->getColumnsInfo();
         foreach ($fbColumns as $columnName => $columnInfo) {
             $mandatory = ($columnInfo['mandatory'] == 'true');
             if ($mandatory && !array_key_exists($columnName, $data)) {
@@ -236,6 +236,49 @@ class FlexiBeeRW extends FlexiBeeRO
             $flexiDateTime = $date->format('Y-m-dTH:i:s');
         }
         return $flexiDateTime;
+    }
+
+    /**
+     * Přidá data do větve
+     *
+     * @thanksto Karel Běl
+     * @param array  $data pole dat
+     * @param string $type path evidence pro vkládaná data
+     * @see Relations
+     */
+    public function addArrayToBranch($data, $type)
+    {
+        if (array_key_exists($type, \FlexiPeeHP\EvidenceList::$name)) {
+            $branchPath   = null;
+            $evidenceType = \FlexiPeeHP\EvidenceList::$evidences[$type]['evidenceType'];
+            $relations    = $this->getRelationsInfo();
+            foreach ($relations as $relation) {
+                if (array_key_exists($evidenceType, $relation)) {
+                    $branchPath = $relation['url'];
+                }
+            }
+
+            if (is_null($branchPath)) {
+                throw new Exception("Relation to $type does not exist");
+            } else {
+                $currentBranchData = $this->getDataValue($branchPath);
+                $branchData        = $currentBranchData;
+                $branchData[]      = $data;
+                $this->getDataValue($branchPath, $branchData);
+            }
+        } else {
+            throw new Exception("Evidence $type does not exist");
+        }
+    }
+
+    /**
+     * Vloží do větve data z objektu
+     *
+     * @param FlexiBeeRO $object objekt evidence
+     */
+    public function addObjectToBranch($object)
+    {
+        $this->addArrayToBranch($object->getData(), $object->getEvidence());
     }
 
 }

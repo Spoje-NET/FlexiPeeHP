@@ -41,6 +41,7 @@ function controlData($data, $fbColumns, $fbRelations)
                     $controlResult[$key][] = sprintf('unknown column property %s',
                         $key);
                 }
+                continue;
             }
 
             if (!array_key_exists($key, $fbColumns)) {
