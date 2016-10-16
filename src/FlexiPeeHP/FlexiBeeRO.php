@@ -728,15 +728,12 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setAction($action)
     {
-        $result = false;
-        if (is_null($this->actionsAvailable)) {
+        $result           = false;
+        $actionsAvailable = $this->getActionsInfo();
+        if (array_key_exists($action, $actionsAvailable)) {
+            $actionInfo   = $actionsAvailable[$action];
             $this->action = $action;
             $result       = true;
-        } else {
-            if (array_search($action, $this->actionsAvailable)) {
-                $this->action = $action;
-                $result       = true;
-            }
         }
         return $result;
     }
@@ -1274,6 +1271,21 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Obtain content type of last response
+     *
+     * @return string
+     */
+    public function getResponseFormat()
+    {
+        if (isset($this->info['content_type'])) {
+            $responseFormat = $this->info['content_type'];
+        } else {
+            $responseFormat = null;
+        }
+        return $responseFormat;
+    }
+
+    /**
      * Return the same response format for one and multiplete results
      * 
      * @param array $responseRaw
@@ -1408,13 +1420,12 @@ class FlexiBeeRO extends \Ease\Brick
     public function performAction($action, $method = 'ext')
     {
         $result = null;
-        if (is_null($this->actionsAvailable)) {
-            $this->actionsAvailble = $this->getActionsInfo();
-        }
 
-        if (is_array($this->actionsAvailble) && array_key_exists($action,
-                $this->actionsAvailble)) {
-            switch ($this->actionsAvailble[$action]['actionMakesSense']) {
+        $actionsAvailble = $this->getActionsInfo();
+
+        if (is_array($actionsAvailble) && array_key_exists($action,
+                $actionsAvailble)) {
+            switch ($actionsAvailble[$action]['actionMakesSense']) {
                 case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
                 case 'ONLY_WITH_INSTANCE': //Add instance
                     $urlSuffix = '/'.$this->__toString().'/'.$action.'.'.$this->format;
@@ -1428,6 +1439,7 @@ class FlexiBeeRO extends \Ease\Brick
             switch ($method) {
                 case 'int':
                     $this->setAction($action);
+                    $this->setPostFields($this->jsonizeData($this->getData()));
                     $result = $this->performRequest(null, 'POST');
                     break;
 
