@@ -20,7 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    static public $libVersion = '1.6.4.1';
+    static public $libVersion = '1.6.4.2';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -593,6 +593,10 @@ class FlexiBeeRO extends \Ease\Brick
                             $responseDecoded = null;
                         }
                         break;
+                    case 'txt':
+                    default :
+                        $responseDecoded = $this->lastCurlResponse;
+                        break;
                 }
 
 
@@ -616,6 +620,10 @@ class FlexiBeeRO extends \Ease\Brick
                         if (strlen($this->lastCurlResponse)) {
                             $response = self::xml2array($this->lastCurlResponse);
                         }
+                        break;
+                    case 'txt':
+                    default :
+                        $response = $this->lastCurlResponse;
                         break;
                 }
 
