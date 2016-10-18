@@ -195,11 +195,11 @@ class FlexiBeeRO extends \Ease\Brick
     public $lastResponseCode = null;
 
     /**
-     * Array of fields for next curl POST operation
+     * Body data  for next curl POST operation
      *
-     * @var array
+     * @var string
      */
-    protected $postFields = [];
+    protected $postFields = null;
 
     /**
      * Last operation result data or message(s)
@@ -553,6 +553,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
     {
+        $response       = null;
         $this->rowCount = null;
         $url            = $this->getEvidenceURL($urlSuffix);
 
@@ -739,7 +740,6 @@ class FlexiBeeRO extends \Ease\Brick
         $result           = false;
         $actionsAvailable = $this->getActionsInfo();
         if (array_key_exists($action, $actionsAvailable)) {
-            $actionInfo   = $actionsAvailable[$action];
             $this->action = $action;
             $result       = true;
         }
@@ -1245,7 +1245,7 @@ class FlexiBeeRO extends \Ease\Brick
                 $extid = current($ids);
             }
         } else {
-            if (!is_null($ids)) {
+            if (!is_null($ids) && is_array($ids)) {
                 foreach ($ids as $id) {
                     if (strstr($id, 'ext:'.$want)) {
                         $extid = str_replace('ext:'.$want.':', '', $id);
@@ -1462,4 +1462,5 @@ class FlexiBeeRO extends \Ease\Brick
 
         return $result;
     }
+
 }

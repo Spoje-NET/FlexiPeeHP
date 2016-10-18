@@ -259,15 +259,15 @@ class FlexiBeeRW extends FlexiBeeRO
             }
 
             if (is_null($branchPath)) {
-                throw new Exception("Relation to $type does not exist");
+                throw new \Exception("Relation to $type does not exist");
             } else {
                 $currentBranchData = $this->getDataValue($branchPath);
                 $branchData        = $currentBranchData;
                 $branchData[]      = $data;
-                $this->getDataValue($branchPath, $branchData);
+                $this->setDataValue($branchPath, $branchData);
             }
         } else {
-            throw new Exception("Evidence $type does not exist");
+            throw new \Exception("Evidence $type does not exist");
         }
     }
 
