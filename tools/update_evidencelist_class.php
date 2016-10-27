@@ -53,6 +53,16 @@ class EvidenceList extends FlexiBeeRO
 
 ';
 
+$statuser = new Status();
+echo '    /**
+     * Source FlexiBee server version.
+     *
+     * @var string
+     */
+';
+echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+
+';
 
 $syncer = new EvidenceList();
 

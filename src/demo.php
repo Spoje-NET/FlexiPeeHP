@@ -7,6 +7,18 @@ require_once '../testing/bootstrap.php';
 $oPage     = new \Ease\TWB\WebPage('FlexiPeeHP');
 $container = $oPage->addItem(new \Ease\TWB\Container(new \Ease\Html\H1Tag(_('FlexiBee Connection Test'))));
 
+$statuser = new Status();
+
+$infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+
+foreach ($statuser->getData() as $property => $value) {
+    $infoTable->addRowColumns([$property, $value]);
+}
+
+$container->addItem(new \Ease\TWB\Panel(_('FlexiBee server info'), 'info',
+    $infoTable));
+
+
 $company = new Company();
 $info    = $company->getAllFromFlexibee();
 

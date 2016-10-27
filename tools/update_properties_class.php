@@ -45,6 +45,18 @@ class Properties
 {
 ';
 
+$statuser = new Status();
+echo '    /**
+     * Source FlexiBee server version.
+     *
+     * @var string
+     */
+';
+echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+
+';
+
+
 $syncer = new FlexiBeeRO();
 
 $pos = 0;

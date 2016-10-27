@@ -17,6 +17,13 @@ namespace FlexiPeeHP;
 class Properties
 {
     /**
+     * Source FlexiBee server version.
+     *
+     * @var string
+     */
+ static public $version = '2016.4.1';
+
+    /**
      * Evidence kontakt (Kontakty) structure.
      *
      * @var array
@@ -2472,8 +2479,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -2530,8 +2537,8 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'objednavka-vydana',
-        1 => 'poptavka-vydana',
+        0 => 'poptavka-vydana',
+        1 => 'objednavka-vydana',
         2 => 'poptavka-prijata',
         3 => 'objednavka-prijata',
         4 => 'nabidka-vydana',
@@ -61282,8 +61289,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -62327,8 +62334,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -70839,8 +70846,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -70897,8 +70904,8 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'objednavka-vydana',
-        1 => 'poptavka-vydana',
+        0 => 'poptavka-vydana',
+        1 => 'objednavka-vydana',
         2 => 'poptavka-prijata',
         3 => 'objednavka-prijata',
         4 => 'nabidka-vydana',
@@ -84410,8 +84417,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -84720,12 +84727,12 @@ class Properties
         2 => 
         array (
           '@key' => 'eetMod.ostryTest',
-          '$' => 'Ostrý (testovací)',
+          '$' => 'Neprodukční ostrý (pro vývojáře)',
         ),
         3 => 
         array (
           '@key' => 'eetMod.overovaciTest',
-          '$' => 'Ověřovací (testovací)',
+          '$' => 'Neprodukční ověřovací (pro vývojáře)',
         ),
         4 => 
         array (
@@ -95208,8 +95215,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -95260,8 +95267,8 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'objednavka-vydana',
-        1 => 'poptavka-vydana',
+        0 => 'poptavka-vydana',
+        1 => 'objednavka-vydana',
         2 => 'poptavka-prijata',
         3 => 'objednavka-prijata',
         4 => 'nabidka-vydana',
@@ -102272,10 +102279,10 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'zavazek-polozka',
-        1 => 'pohledavka-polozka',
-        2 => 'faktura-vydana-polozka',
-        3 => 'faktura-prijata-polozka',
+        0 => 'pohledavka-polozka',
+        1 => 'zavazek-polozka',
+        2 => 'faktura-prijata-polozka',
+        3 => 'faktura-vydana-polozka',
       ),
     ),
     'links' => NULL,
@@ -102301,10 +102308,10 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'zavazek-polozka',
-        1 => 'pohledavka-polozka',
-        2 => 'faktura-vydana-polozka',
-        3 => 'faktura-prijata-polozka',
+        0 => 'pohledavka-polozka',
+        1 => 'zavazek-polozka',
+        2 => 'faktura-prijata-polozka',
+        3 => 'faktura-vydana-polozka',
       ),
     ),
     'links' => NULL,
@@ -112519,8 +112526,8 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'objednavka-vydana',
-        1 => 'poptavka-vydana',
+        0 => 'poptavka-vydana',
+        1 => 'objednavka-vydana',
         2 => 'poptavka-prijata',
         3 => 'objednavka-prijata',
         4 => 'nabidka-vydana',
@@ -112551,8 +112558,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -133987,8 +133994,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
