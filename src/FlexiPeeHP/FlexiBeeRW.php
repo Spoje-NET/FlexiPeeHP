@@ -295,7 +295,7 @@ class FlexiBeeRW extends FlexiBeeRO
     {
         if (array_key_exists('stitky', $data)) {
             if (is_array($data['stitky'])) {
-                $data['string'] = implode(',', $data['stitky']);
+                $data['stitky'] = implode(',', $data['stitky']);
             }
         }
         return parent::jsonizeData($data);
