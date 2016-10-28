@@ -35,8 +35,6 @@ class StatusTest extends FlexiBeeROTest
     public function testConstructor()
     {
         $classname = get_class($this->object);
-        $evidence  = $this->object->getEvidence();
-
         // Get mock, without the constructor being called
         $mock = $this->getMockBuilder($classname)
             ->disableOriginalConstructor()
