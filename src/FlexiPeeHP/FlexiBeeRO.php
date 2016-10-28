@@ -882,6 +882,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Převede data do Json formátu pro FlexiBee.
+     * Convert data to FlexiBee like Json format
      *
      * @param array $data
      *

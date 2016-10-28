@@ -281,4 +281,24 @@ class FlexiBeeRW extends FlexiBeeRO
         $this->addArrayToBranch($object->getData(), $object->getEvidence());
     }
 
+    /**
+     * Převede data do Json formátu pro FlexiBee.
+     * Pokud jsou štítky pole, jsou převedeny na seznam oddělený čárkou.
+     * Convert data to FlexiBee like Json format.
+     * Array of Labels is converted to coma separated list
+     *
+     * @param array $data
+     *
+     * @return string
+     */
+    public function jsonizeData($data)
+    {
+        if (array_key_exists('stitky', $data)) {
+            if (is_array($data['stitky'])) {
+                $data['string'] = implode(',', $data['stitky']);
+            }
+        }
+        return parent::jsonizeData($data);
+    }
+
 }
