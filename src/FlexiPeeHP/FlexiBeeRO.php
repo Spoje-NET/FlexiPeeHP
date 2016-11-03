@@ -291,7 +291,8 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * SetUp Object to be ready for connect
      *
-     * @param array $options Object Options
+     * @param array $options Object Options (company,url,user,password,evidence,
+     *                                       prefix,debug)
      */
     public function setUp($options = [])
     {
@@ -328,6 +329,9 @@ class FlexiBeeRO extends \Ease\Brick
         }
         if (isset($options['prefix'])) {
             $this->setPrefix($options['prefix']);
+        }
+        if (isset($options['debug'])) {
+            $this->debug  = $options['debug'];
         }
     }
 
