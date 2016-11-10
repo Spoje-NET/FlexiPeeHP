@@ -27,10 +27,16 @@ function getColumnsInfo($evidence, FlexiBeeRO $syncer)
 }
 
 
+$statuser = new Status();
+
+
 echo '<?php
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
+ * Generated: ' . date(DATE_RFC2822) . ' 
+ * From:      ' . $statuser->url . '
+ *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2016 Spoje.Net
  */
@@ -53,7 +59,6 @@ class EvidenceList extends FlexiBeeRO
 
 ';
 
-$statuser = new Status();
 echo '    /**
      * Source FlexiBee server version.
      *
