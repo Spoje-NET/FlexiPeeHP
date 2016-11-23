@@ -47,7 +47,15 @@ class StatusTest extends FlexiBeeROTest
      */
     public function testGetFlexiData()
     {
-        $this->assertArrayKeyExists('version', $this->object->getFlexiData());
+        $this->assertArrayHasKey('version', $this->object->getFlexiData());
+    }
+
+    /**
+     * @covers FlexiPeeHP\Status::getData
+     */
+    public function testGetData()
+    {
+        $this->assertArrayHasKey('licenseName', $this->object->getData());
     }
 
     /**
