@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Evidence Actions.
  *
@@ -16,13 +15,12 @@ namespace FlexiPeeHP;
  */
 class Actions
 {
-
     /**
      * Source FlexiBee server version.
      *
      * @var string
      */
-    static public $version = '2016.4.1';
+    static public $version = '2016.4.2';
 
     /**
      * Evidence kontakt (Kontakty) Actions.
@@ -30,42 +28,42 @@ class Actions
      * @var array
      */
     static public $kontakt = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -74,42 +72,42 @@ class Actions
      * @var array
      */
     static public $adresar = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -118,42 +116,42 @@ class Actions
      * @var array
      */
     static public $udalost = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -162,42 +160,42 @@ class Actions
      * @var array
      */
     static public $typAktivity = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -206,42 +204,42 @@ class Actions
      * @var array
      */
     static public $typNakladu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -250,42 +248,42 @@ class Actions
      * @var array
      */
     static public $naklad = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -294,42 +292,42 @@ class Actions
      * @var array
      */
     static public $adresarBankovniUcet = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -338,42 +336,42 @@ class Actions
      * @var array
      */
     static public $skupinaFirem = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -382,51 +380,51 @@ class Actions
      * @var array
      */
     static public $smlouva = [
-      'new'               =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'              =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'              =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'            =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'generovani-faktur' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'generovani-faktur' =>
         [
-        'actionId'         => 'generovani-faktur',
-        'actionName'       => 'Vygenerovat faktury',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'WITH_OR_WITHOUT_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'generovani-faktur',
+            'actionName' => 'Vygenerovat faktury',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'WITH_OR_WITHOUT_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -435,51 +433,51 @@ class Actions
      * @var array
      */
     static public $dodavatelskaSmlouva = [
-      'new'               =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'              =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'              =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'            =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'generovani-faktur' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'generovani-faktur' =>
         [
-        'actionId'         => 'generovani-faktur',
-        'actionName'       => 'Vygenerovat faktury',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'WITH_OR_WITHOUT_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'generovani-faktur',
+            'actionName' => 'Vygenerovat faktury',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'WITH_OR_WITHOUT_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -488,42 +486,42 @@ class Actions
      * @var array
      */
     static public $typSmlouvy = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -532,42 +530,42 @@ class Actions
      * @var array
      */
     static public $dodavatelskyTypSmlouvy = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -576,42 +574,42 @@ class Actions
      * @var array
      */
     static public $stavSmlouvy = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -620,42 +618,42 @@ class Actions
      * @var array
      */
     static public $smlouvaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -664,60 +662,60 @@ class Actions
      * @var array
      */
     static public $objednavkaPrijata = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -726,51 +724,51 @@ class Actions
      * @var array
      */
     static public $objednavkaPrijataPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -779,42 +777,42 @@ class Actions
      * @var array
      */
     static public $radaObjednavkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -823,42 +821,42 @@ class Actions
      * @var array
      */
     static public $typObjednavkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -867,60 +865,60 @@ class Actions
      * @var array
      */
     static public $objednavkaVydana = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -929,51 +927,51 @@ class Actions
      * @var array
      */
     static public $objednavkaVydanaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -982,42 +980,42 @@ class Actions
      * @var array
      */
     static public $typObjednavkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1026,42 +1024,42 @@ class Actions
      * @var array
      */
     static public $radaObjednavkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1070,60 +1068,60 @@ class Actions
      * @var array
      */
     static public $poptavkaVydana = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -1132,51 +1130,51 @@ class Actions
      * @var array
      */
     static public $poptavkaVydanaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1185,42 +1183,42 @@ class Actions
      * @var array
      */
     static public $typPoptavkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1229,42 +1227,42 @@ class Actions
      * @var array
      */
     static public $radaPoptavkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1273,60 +1271,60 @@ class Actions
      * @var array
      */
     static public $poptavkaPrijata = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -1335,51 +1333,51 @@ class Actions
      * @var array
      */
     static public $poptavkaPrijataPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1388,42 +1386,42 @@ class Actions
      * @var array
      */
     static public $typPoptavkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1432,42 +1430,42 @@ class Actions
      * @var array
      */
     static public $radaPoptavkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1476,60 +1474,60 @@ class Actions
      * @var array
      */
     static public $nabidkaVydana = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -1538,51 +1536,51 @@ class Actions
      * @var array
      */
     static public $nabidkaVydanaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1591,42 +1589,42 @@ class Actions
      * @var array
      */
     static public $typNabidkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1635,42 +1633,42 @@ class Actions
      * @var array
      */
     static public $radaNabidkyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1679,60 +1677,60 @@ class Actions
      * @var array
      */
     static public $nabidkaPrijata = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -1741,42 +1739,42 @@ class Actions
      * @var array
      */
     static public $typNabidkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1785,51 +1783,51 @@ class Actions
      * @var array
      */
     static public $nabidkaPrijataPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1838,42 +1836,42 @@ class Actions
      * @var array
      */
     static public $radaNabidkyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -1882,69 +1880,69 @@ class Actions
      * @var array
      */
     static public $fakturaPrijata = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'uhrad-zapoctem'  =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'uhrad-zapoctem' =>
         [
-        'actionId'         => 'uhrad-zapoctem',
-        'actionName'       => 'Uhradit vzájemným zápočtem',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'uhrad-zapoctem',
+            'actionName' => 'Uhradit vzájemným zápočtem',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -1953,51 +1951,51 @@ class Actions
      * @var array
      */
     static public $fakturaPrijataPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2006,42 +2004,42 @@ class Actions
      * @var array
      */
     static public $typFakturyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2050,42 +2048,42 @@ class Actions
      * @var array
      */
     static public $radaFakturyPrijate = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2094,42 +2092,42 @@ class Actions
      * @var array
      */
     static public $predpisZauctovani = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2138,42 +2136,42 @@ class Actions
      * @var array
      */
     static public $rada = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2182,42 +2180,42 @@ class Actions
      * @var array
      */
     static public $rocniRada = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2226,42 +2224,42 @@ class Actions
      * @var array
      */
     static public $mistoUrceni = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2270,42 +2268,42 @@ class Actions
      * @var array
      */
     static public $text = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2314,78 +2312,78 @@ class Actions
      * @var array
      */
     static public $pokladniPohyb = [
-      'new'                  =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'                 =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'                 =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'               =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'               =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslat-eet'          =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslat-eet' =>
         [
-        'actionId'         => 'odeslat-eet',
-        'actionName'       => 'Odeslat doklad EET',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem'      =>
+            'actionId' => 'odeslat-eet',
+            'actionName' => 'Odeslat doklad do EET',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'automaticke-parovani' =>
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
+        'automaticke-parovani' =>
         [
-        'actionId'         => 'automaticke-parovani',
-        'actionName'       => 'Automatické párování',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'automaticke-parovani',
+            'actionName' => 'Automatické párování',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2394,51 +2392,51 @@ class Actions
      * @var array
      */
     static public $pokladniPohybPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2447,42 +2445,42 @@ class Actions
      * @var array
      */
     static public $radaPokladniPohyb = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2491,42 +2489,42 @@ class Actions
      * @var array
      */
     static public $typPokladniPohyb = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2535,69 +2533,69 @@ class Actions
      * @var array
      */
     static public $banka = [
-      'new'                  =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'                 =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'                 =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'               =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'               =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem'      =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'automaticke-parovani' =>
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
+        'automaticke-parovani' =>
         [
-        'actionId'         => 'automaticke-parovani',
-        'actionName'       => 'Automatické párování',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'automaticke-parovani',
+            'actionName' => 'Automatické párování',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2606,42 +2604,42 @@ class Actions
      * @var array
      */
     static public $typBanka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2650,42 +2648,42 @@ class Actions
      * @var array
      */
     static public $radaBanka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2694,51 +2692,51 @@ class Actions
      * @var array
      */
     static public $bankaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2747,42 +2745,42 @@ class Actions
      * @var array
      */
     static public $formatElektronickehoBankovnictvi = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2791,69 +2789,69 @@ class Actions
      * @var array
      */
     static public $pohledavka = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'uhrad-zapoctem'  =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'uhrad-zapoctem' =>
         [
-        'actionId'         => 'uhrad-zapoctem',
-        'actionName'       => 'Uhradit vzájemným zápočtem',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'uhrad-zapoctem',
+            'actionName' => 'Uhradit vzájemným zápočtem',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -2862,51 +2860,51 @@ class Actions
      * @var array
      */
     static public $pohledavkaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2915,42 +2913,42 @@ class Actions
      * @var array
      */
     static public $typPohledavky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -2959,42 +2957,42 @@ class Actions
      * @var array
      */
     static public $radaPohledavky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3003,42 +3001,42 @@ class Actions
      * @var array
      */
     static public $bankovniUcet = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3047,42 +3045,42 @@ class Actions
      * @var array
      */
     static public $pokladna = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3091,42 +3089,42 @@ class Actions
      * @var array
      */
     static public $prikazKUhrade = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3135,42 +3133,42 @@ class Actions
      * @var array
      */
     static public $prikazKUhradePolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3179,42 +3177,42 @@ class Actions
      * @var array
      */
     static public $prikazKInkasu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3223,42 +3221,42 @@ class Actions
      * @var array
      */
     static public $prikazKInkasuPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3267,60 +3265,60 @@ class Actions
      * @var array
      */
     static public $vzajemnyZapocet = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -3329,42 +3327,42 @@ class Actions
      * @var array
      */
     static public $typVzajemnychZapoctu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3373,42 +3371,42 @@ class Actions
      * @var array
      */
     static public $typInternihoDokladu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3417,42 +3415,42 @@ class Actions
      * @var array
      */
     static public $radaInternihoDokladu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3461,60 +3459,60 @@ class Actions
      * @var array
      */
     static public $interniDoklad = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -3523,51 +3521,51 @@ class Actions
      * @var array
      */
     static public $interniDokladPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3576,42 +3574,42 @@ class Actions
      * @var array
      */
     static public $vazba = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3620,42 +3618,42 @@ class Actions
      * @var array
      */
     static public $priloha = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3664,87 +3662,87 @@ class Actions
      * @var array
      */
     static public $fakturaVydana = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslat-eet'     =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslat-eet' =>
         [
-        'actionId'         => 'odeslat-eet',
-        'actionName'       => 'Odeslat doklad EET',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'uhrad-preplatky' =>
+            'actionId' => 'odeslat-eet',
+            'actionName' => 'Odeslat doklad do EET',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'uhrad-preplatky' =>
         [
-        'actionId'         => 'uhrad-preplatky',
-        'actionName'       => 'Uhradit z přeplatků v bance a pokladně',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'uhrad-zapoctem'  =>
+            'actionId' => 'uhrad-preplatky',
+            'actionName' => 'Uhradit z přeplatků v bance a pokladně',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'uhrad-zapoctem' =>
         [
-        'actionId'         => 'uhrad-zapoctem',
-        'actionName'       => 'Uhradit vzájemným zápočtem',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'uhrad-zapoctem',
+            'actionName' => 'Uhradit vzájemným zápočtem',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -3753,51 +3751,51 @@ class Actions
      * @var array
      */
     static public $fakturaVydanaPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3806,42 +3804,42 @@ class Actions
      * @var array
      */
     static public $typFakturyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3850,42 +3848,42 @@ class Actions
      * @var array
      */
     static public $radaFakturyVydane = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -3894,60 +3892,60 @@ class Actions
      * @var array
      */
     static public $prodejka = [
-      'delete'          =>
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'odeslat-eet'     =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'odeslat-eet' =>
         [
-        'actionId'         => 'odeslat-eet',
-        'actionName'       => 'Odeslat doklad EET',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'uhrad-preplatky' =>
+            'actionId' => 'odeslat-eet',
+            'actionName' => 'Odeslat doklad do EET',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'uhrad-preplatky' =>
         [
-        'actionId'         => 'uhrad-preplatky',
-        'actionName'       => 'Uhradit z přeplatků v bance a pokladně',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'uhrad-zapoctem'  =>
+            'actionId' => 'uhrad-preplatky',
+            'actionName' => 'Uhradit z přeplatků v bance a pokladně',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'uhrad-zapoctem' =>
         [
-        'actionId'         => 'uhrad-zapoctem',
-        'actionName'       => 'Uhradit vzájemným zápočtem',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'uhrad-zapoctem',
+            'actionName' => 'Uhradit vzájemným zápočtem',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -3956,42 +3954,42 @@ class Actions
      * @var array
      */
     static public $typProdejky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4000,42 +3998,42 @@ class Actions
      * @var array
      */
     static public $prodejkaPlatba = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4044,42 +4042,42 @@ class Actions
      * @var array
      */
     static public $pravoViditelnosti = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4088,24 +4086,24 @@ class Actions
      * @var array
      */
     static public $eetKomunikace = [
-      'edit'   =>
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4114,42 +4112,42 @@ class Actions
      * @var array
      */
     static public $kurz = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4158,42 +4156,42 @@ class Actions
      * @var array
      */
     static public $ucet = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4202,42 +4200,42 @@ class Actions
      * @var array
      */
     static public $mena = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4246,42 +4244,42 @@ class Actions
      * @var array
      */
     static public $stat = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4290,42 +4288,42 @@ class Actions
      * @var array
      */
     static public $cinnost = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4334,42 +4332,42 @@ class Actions
      * @var array
      */
     static public $stredisko = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4378,42 +4376,42 @@ class Actions
      * @var array
      */
     static public $sazbaDph = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4422,42 +4420,42 @@ class Actions
      * @var array
      */
     static public $zakazka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4466,42 +4464,42 @@ class Actions
      * @var array
      */
     static public $typZakazky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4510,42 +4508,42 @@ class Actions
      * @var array
      */
     static public $stavZakazky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4554,42 +4552,42 @@ class Actions
      * @var array
      */
     static public $hodnoceniZakazky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4598,42 +4596,42 @@ class Actions
      * @var array
      */
     static public $konstSymbol = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4642,42 +4640,42 @@ class Actions
      * @var array
      */
     static public $mernaJednotka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4686,42 +4684,42 @@ class Actions
      * @var array
      */
     static public $cleneniKontrolniHlaseni = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4730,42 +4728,42 @@ class Actions
      * @var array
      */
     static public $ucetniObdobi = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4774,42 +4772,42 @@ class Actions
      * @var array
      */
     static public $typOrganizace = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4818,42 +4816,42 @@ class Actions
      * @var array
      */
     static public $kurzProCenotvorbu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4862,42 +4860,42 @@ class Actions
      * @var array
      */
     static public $penezniUstav = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4906,42 +4904,42 @@ class Actions
      * @var array
      */
     static public $stitek = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4950,42 +4948,42 @@ class Actions
      * @var array
      */
     static public $skupinaStitku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -4994,42 +4992,42 @@ class Actions
      * @var array
      */
     static public $preneseniDph = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5038,42 +5036,42 @@ class Actions
      * @var array
      */
     static public $sablonaUpominky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5082,42 +5080,42 @@ class Actions
      * @var array
      */
     static public $formaUhrady = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5126,42 +5124,42 @@ class Actions
      * @var array
      */
     static public $formaUhradyZauctovani = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5170,42 +5168,42 @@ class Actions
      * @var array
      */
     static public $certifikacniAutorita = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5214,42 +5212,42 @@ class Actions
      * @var array
      */
     static public $formaDopravy = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5258,42 +5256,42 @@ class Actions
      * @var array
      */
     static public $cisloBaliku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5302,42 +5300,42 @@ class Actions
      * @var array
      */
     static public $typUzivatelskeVazby = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5346,42 +5344,42 @@ class Actions
      * @var array
      */
     static public $uzivatelskaVazba = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5390,42 +5388,42 @@ class Actions
      * @var array
      */
     static public $intrastatKrajUrceni = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5434,42 +5432,42 @@ class Actions
      * @var array
      */
     static public $intrastatZvlastniPohyb = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5478,42 +5476,42 @@ class Actions
      * @var array
      */
     static public $intrastatObchodniTransakce = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5522,42 +5520,42 @@ class Actions
      * @var array
      */
     static public $intrastatDodaciPodminky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5566,42 +5564,42 @@ class Actions
      * @var array
      */
     static public $intrastatDruhDopravy = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5610,42 +5608,42 @@ class Actions
      * @var array
      */
     static public $intrastatKurz = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5654,42 +5652,42 @@ class Actions
      * @var array
      */
     static public $intrastatMernaJednotka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5698,42 +5696,42 @@ class Actions
      * @var array
      */
     static public $intrastatKodNomenklatury = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5742,42 +5740,42 @@ class Actions
      * @var array
      */
     static public $rezervace = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5786,42 +5784,42 @@ class Actions
      * @var array
      */
     static public $skladovaKarta = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5830,42 +5828,42 @@ class Actions
      * @var array
      */
     static public $cenik = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5874,42 +5872,42 @@ class Actions
      * @var array
      */
     static public $individualniCenik = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5918,42 +5916,42 @@ class Actions
      * @var array
      */
     static public $dodavatel = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -5962,42 +5960,42 @@ class Actions
      * @var array
      */
     static public $odberatel = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6006,42 +6004,42 @@ class Actions
      * @var array
      */
     static public $vyrobniCislo = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6050,42 +6048,42 @@ class Actions
      * @var array
      */
     static public $cenovaUroven = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6094,42 +6092,42 @@ class Actions
      * @var array
      */
     static public $cenikovaSkupina = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6138,42 +6136,42 @@ class Actions
      * @var array
      */
     static public $poplatek = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6182,42 +6180,42 @@ class Actions
      * @var array
      */
     static public $podobneZbozi = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6226,42 +6224,42 @@ class Actions
      * @var array
      */
     static public $sadyAKomplety = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6270,42 +6268,42 @@ class Actions
      * @var array
      */
     static public $kusovnik = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6314,42 +6312,42 @@ class Actions
      * @var array
      */
     static public $skupinaZbozi = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6358,69 +6356,69 @@ class Actions
      * @var array
      */
     static public $skladovyPohyb = [
-      'new'               =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'              =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'              =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'            =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'            =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'dokoncit-prevodku' =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'dokoncit-prevodku' =>
         [
-        'actionId'         => 'dokoncit-prevodku',
-        'actionName'       => 'Vytvořit převodku',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem'   =>
+            'actionId' => 'dokoncit-prevodku',
+            'actionName' => 'Vytvořit převodku',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -6429,51 +6427,51 @@ class Actions
      * @var array
      */
     static public $skladovyPohybPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6482,42 +6480,42 @@ class Actions
      * @var array
      */
     static public $radaSkladovyPohyb = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6526,42 +6524,42 @@ class Actions
      * @var array
      */
     static public $typSkladovyPohyb = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6570,42 +6568,42 @@ class Actions
      * @var array
      */
     static public $sklad = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6614,42 +6612,42 @@ class Actions
      * @var array
      */
     static public $strom = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6658,42 +6656,42 @@ class Actions
      * @var array
      */
     static public $stromKoren = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6702,42 +6700,42 @@ class Actions
      * @var array
      */
     static public $stromCenik = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6746,42 +6744,42 @@ class Actions
      * @var array
      */
     static public $mapovaniSkladu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6790,42 +6788,42 @@ class Actions
      * @var array
      */
     static public $umisteniVeSkladu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6834,42 +6832,42 @@ class Actions
      * @var array
      */
     static public $umisteniVeSkladuRegal = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6878,42 +6876,42 @@ class Actions
      * @var array
      */
     static public $umisteniVeSkladuPolice = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6922,42 +6920,42 @@ class Actions
      * @var array
      */
     static public $umisteniVeSkladuMistnost = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -6966,42 +6964,42 @@ class Actions
      * @var array
      */
     static public $atribut = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7010,42 +7008,42 @@ class Actions
      * @var array
      */
     static public $prislustenstvi = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7054,42 +7052,42 @@ class Actions
      * @var array
      */
     static public $typStavuCeniku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7098,42 +7096,42 @@ class Actions
      * @var array
      */
     static public $stavCeniku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7142,42 +7140,42 @@ class Actions
      * @var array
      */
     static public $typAtributu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7186,42 +7184,42 @@ class Actions
      * @var array
      */
     static public $skupinaAtributu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7230,42 +7228,42 @@ class Actions
      * @var array
      */
     static public $inventura = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7274,42 +7272,42 @@ class Actions
      * @var array
      */
     static public $inventuraPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7318,42 +7316,42 @@ class Actions
      * @var array
      */
     static public $stavSkladuKDatu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7362,42 +7360,42 @@ class Actions
      * @var array
      */
     static public $majetek = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7406,42 +7404,42 @@ class Actions
      * @var array
      */
     static public $leasing = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7450,42 +7448,42 @@ class Actions
      * @var array
      */
     static public $typMajetku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7494,42 +7492,42 @@ class Actions
      * @var array
      */
     static public $typLeasingu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7538,42 +7536,42 @@ class Actions
      * @var array
      */
     static public $umisteni = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7582,42 +7580,42 @@ class Actions
      * @var array
      */
     static public $odpisovaSkupina = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7626,42 +7624,42 @@ class Actions
      * @var array
      */
     static public $majetekUdalost = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7670,42 +7668,42 @@ class Actions
      * @var array
      */
     static public $zapujcka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7714,69 +7712,69 @@ class Actions
      * @var array
      */
     static public $zavazek = [
-      'new'             =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'            =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'            =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete'          =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno'          =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
-      'uhrad-zapoctem'  =>
+            'actionId' => 'storno',
+            'actionName' => 'Storno',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
+        'uhrad-zapoctem' =>
         [
-        'actionId'         => 'uhrad-zapoctem',
-        'actionName'       => 'Uhradit vzájemným zápočtem',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'true',
-        'isService'        => 'YES',
-      ],
-      'odeslani-mailem' =>
+            'actionId' => 'uhrad-zapoctem',
+            'actionName' => 'Uhradit vzájemným zápočtem',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'true',
+            'isService' => 'YES',
+        ],
+        'odeslani-mailem' =>
         [
-        'actionId'         => 'odeslani-mailem',
-        'actionName'       => 'Odeslání dokladu',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'ON_MOBILE',
-      ],
+            'actionId' => 'odeslani-mailem',
+            'actionName' => 'Odeslání dokladu',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'ON_MOBILE',
+        ],
     ];
 
     /**
@@ -7785,51 +7783,51 @@ class Actions
      * @var array
      */
     static public $zavazekPolozka = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'storno' =>
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'storno' =>
         [
-        'actionId'         => 'storno',
-        'actionName'       => 'Storno položky',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'true',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'storno',
+            'actionName' => 'Storno položky',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'true',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7838,42 +7836,42 @@ class Actions
      * @var array
      */
     static public $typZavazku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7882,42 +7880,42 @@ class Actions
      * @var array
      */
     static public $radaZavazku = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7926,42 +7924,42 @@ class Actions
      * @var array
      */
     static public $filtr = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -7970,42 +7968,42 @@ class Actions
      * @var array
      */
     static public $parametr = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8014,42 +8012,42 @@ class Actions
      * @var array
      */
     static public $uzivatelskyDotaz = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8058,42 +8056,42 @@ class Actions
      * @var array
      */
     static public $uzivatelskyDotazParametr = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8102,42 +8100,42 @@ class Actions
      * @var array
      */
     static public $uzivatelskyDotazVlastnost = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8146,42 +8144,42 @@ class Actions
      * @var array
      */
     static public $customButton = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8190,42 +8188,42 @@ class Actions
      * @var array
      */
     static public $settingStore = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8234,42 +8232,42 @@ class Actions
      * @var array
      */
     static public $dashboardSharing = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8278,42 +8276,42 @@ class Actions
      * @var array
      */
     static public $obrat = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8322,42 +8320,42 @@ class Actions
      * @var array
      */
     static public $stavUctu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8366,42 +8364,42 @@ class Actions
      * @var array
      */
     static public $hlavniKniha = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8410,42 +8408,42 @@ class Actions
      * @var array
      */
     static public $obratovaPredvaha = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8454,42 +8452,42 @@ class Actions
      * @var array
      */
     static public $podkladyDph = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8498,42 +8496,42 @@ class Actions
      * @var array
      */
     static public $danovaEvidence = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8542,42 +8540,42 @@ class Actions
      * @var array
      */
     static public $analyzaZakazky = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8586,42 +8584,42 @@ class Actions
      * @var array
      */
     static public $pohybNaUctech = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8630,42 +8628,42 @@ class Actions
      * @var array
      */
     static public $ucetniDenik = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8674,42 +8672,42 @@ class Actions
      * @var array
      */
     static public $saldo = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8718,42 +8716,42 @@ class Actions
      * @var array
      */
     static public $rozvahaPoUctech = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8762,42 +8760,42 @@ class Actions
      * @var array
      */
     static public $cenikovyPohybNakup = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8806,42 +8804,42 @@ class Actions
      * @var array
      */
     static public $cenikovyPohybProdej = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8850,42 +8848,42 @@ class Actions
      * @var array
      */
     static public $vykazHospodareni = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8894,42 +8892,42 @@ class Actions
      * @var array
      */
     static public $saldoKDatu = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
     /**
@@ -8938,42 +8936,42 @@ class Actions
      * @var array
      */
     static public $zurnal = [
-      'new'    =>
+        'new' =>
         [
-        'actionId'         => 'new',
-        'actionName'       => 'Přidat',
-        'needInstance'     => 'false',
-        'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'copy'   =>
+            'actionId' => 'new',
+            'actionName' => 'Přidat',
+            'needInstance' => 'false',
+            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'copy' =>
         [
-        'actionId'         => 'copy',
-        'actionName'       => 'Vytvořit kopii',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'ON_MOBILE',
-      ],
-      'edit'   =>
+            'actionId' => 'copy',
+            'actionName' => 'Vytvořit kopii',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'ON_MOBILE',
+        ],
+        'edit' =>
         [
-        'actionId'         => 'edit',
-        'actionName'       => 'Změnit',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
-      'delete' =>
+            'actionId' => 'edit',
+            'actionName' => 'Změnit',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
+        'delete' =>
         [
-        'actionId'         => 'delete',
-        'actionName'       => 'Smazat',
-        'needInstance'     => 'true',
-        'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-        'isRealAction'     => 'false',
-        'isService'        => 'NO',
-      ],
+            'actionId' => 'delete',
+            'actionName' => 'Smazat',
+            'needInstance' => 'true',
+            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'isRealAction' => 'false',
+            'isService' => 'NO',
+        ],
     ];
 
 }
