@@ -78,10 +78,11 @@ class FlexiBeeRW extends FlexiBeeRO
             $data = $this->getData();
         }
         if ($this->debug === true) {
-            $missingColumns = $this->controlMandatoryColumns();
+            $missingColumns = $this->controlMandatoryColumns($data);
             if (count($missingColumns)) {
                 $this->addStatusMessage(sprintf('Given data does not contain requied Columns: %s',
-                        implode(',', $missingColumns))
+                        '['.implode(',', array_keys($missingColumns)).'] '.implode(',',
+                            $missingColumns))
                     , 'warning');
             }
         }
