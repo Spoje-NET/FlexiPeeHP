@@ -20,7 +20,7 @@ class Actions
      *
      * @var string
      */
-    static public $version = '2016.4.2';
+    static public $version = '2016.4.9';
 
     /**
      * Evidence kontakt (Kontakty) Actions.
@@ -207,7 +207,8 @@ class Actions
         'new' =>
         [
             'actionId' => 'new',
-            'actionName' => 'Přidat',
+            'actionName' =>
+            'Přidat',
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
@@ -252,7 +253,8 @@ class Actions
         [
             'actionId' => 'new',
             'actionName' => 'Přidat',
-            'needInstance' => 'false',
+            'needInstance' =>
+            'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
@@ -341,7 +343,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -539,7 +542,8 @@ class Actions
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
-        'copy' =>
+        'copy'
+        =>
         [
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
@@ -630,7 +634,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName' =>
+            'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -791,7 +796,8 @@ class Actions
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'ON_MOBILE',
         ],
@@ -880,7 +886,8 @@ class Actions
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'ON_MOBILE',
         ],
         'edit' =>
@@ -943,7 +950,8 @@ class Actions
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
-            'isService' => 'ON_MOBILE',
+            'isService' =>
+            'ON_MOBILE',
         ],
         'edit' =>
         [
@@ -1206,7 +1214,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -1250,7 +1259,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -1295,7 +1305,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -1358,7 +1369,8 @@ class Actions
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
-            'isService' => 'NO',
+            'isService' =>
+            'NO',
         ],
         'delete' =>
         [
@@ -1621,7 +1633,8 @@ class Actions
             'actionId' => 'delete',
             'actionName' => 'Smazat',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -2094,7 +2107,8 @@ class Actions
     static public $predpisZauctovani = [
         'new' =>
         [
-            'actionId' => 'new',
+            'actionId' =>
+            'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
@@ -2140,7 +2154,8 @@ class Actions
         [
             'actionId' => 'new',
             'actionName' => 'Přidat',
-            'needInstance' => 'false',
+            'needInstance'
+            => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
@@ -2229,7 +2244,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -2273,7 +2289,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -2318,7 +2335,8 @@ class Actions
             'actionName' => 'Přidat',
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-            'isRealAction' => 'false',
+            'isRealAction'
+            => 'false',
             'isService' => 'NO',
         ],
         'copy' =>
@@ -2706,7 +2724,8 @@ class Actions
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'ON_MOBILE',
         ],
@@ -2750,7 +2769,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -2804,7 +2824,8 @@ class Actions
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'ON_MOBILE',
         ],
         'edit' =>
@@ -2924,7 +2945,8 @@ class Actions
         ],
         'copy' =>
         [
-            'actionId' => 'copy',
+            'actionId' =>
+            'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
@@ -3112,7 +3134,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -3156,7 +3179,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -3400,7 +3424,8 @@ class Actions
         ],
         'delete' =>
         [
-            'actionId' => 'delete',
+            'actionId' =>
+            'delete',
             'actionName' => 'Smazat',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE',
@@ -3598,7 +3623,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -3834,7 +3860,8 @@ class Actions
         'delete' =>
         [
             'actionId' => 'delete',
-            'actionName' => 'Smazat',
+            'actionName' =>
+            'Smazat',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
@@ -3931,7 +3958,8 @@ class Actions
         'uhrad-zapoctem' =>
         [
             'actionId' => 'uhrad-zapoctem',
-            'actionName' => 'Uhradit vzájemným zápočtem',
+            'actionName' =>
+            'Uhradit vzájemným zápočtem',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'true',
@@ -4135,7 +4163,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -4180,7 +4209,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -4207,7 +4237,8 @@ class Actions
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
-            'isService' => 'NO',
+            'isService' =>
+            'NO',
         ],
         'copy' =>
         [
@@ -4299,7 +4330,8 @@ class Actions
         ],
         'copy' =>
         [
-            'actionId' => 'copy',
+            'actionId' =>
+            'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
@@ -4388,7 +4420,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName' =>
+            'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -4610,7 +4643,8 @@ class Actions
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'ON_MOBILE',
         ],
@@ -4698,7 +4732,8 @@ class Actions
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'ON_MOBILE',
         ],
@@ -4743,7 +4778,8 @@ class Actions
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'ON_MOBILE',
         ],
         'edit' =>
@@ -4971,7 +5007,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -5059,7 +5096,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -5104,7 +5142,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -5148,7 +5187,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -5192,7 +5232,8 @@ class Actions
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'delete' =>
@@ -5330,7 +5371,8 @@ class Actions
         'delete' =>
         [
             'actionId' => 'delete',
-            'actionName' => 'Smazat',
+            'actionName'
+            => 'Smazat',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
@@ -5419,7 +5461,8 @@ class Actions
         [
             'actionId' => 'delete',
             'actionName' => 'Smazat',
-            'needInstance' => 'true',
+            'needInstance' =>
+            'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
             'isService' => 'NO',
@@ -5552,7 +5595,8 @@ class Actions
             'actionId' => 'delete',
             'actionName' => 'Smazat',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -5597,7 +5641,8 @@ class Actions
             'actionName' => 'Smazat',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
     ];
@@ -5830,7 +5875,8 @@ class Actions
     static public $cenik = [
         'new' =>
         [
-            'actionId' => 'new',
+            'actionId'
+            => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
@@ -6097,7 +6143,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -6142,7 +6189,8 @@ class Actions
             'actionName' => 'Přidat',
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'NO',
         ],
         'copy' =>
@@ -6187,7 +6235,8 @@ class Actions
             'needInstance' => 'false',
             'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
-            'isService' => 'NO',
+            'isService' =>
+            'NO',
         ],
         'copy' =>
         [
@@ -6280,7 +6329,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName'
+            => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6324,7 +6374,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName' =>
+            'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6368,7 +6419,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName' =>
+            'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6628,7 +6680,8 @@ class Actions
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
-            'isService' => 'ON_MOBILE',
+            'isService' =>
+            'ON_MOBILE',
         ],
         'edit' =>
         [
@@ -6676,7 +6729,8 @@ class Actions
         ],
         'edit' =>
         [
-            'actionId' => 'edit',
+            'actionId' =>
+            'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
@@ -6809,7 +6863,8 @@ class Actions
         'edit' =>
         [
             'actionId' => 'edit',
-            'actionName' => 'Změnit',
+            'actionName'
+            => 'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6853,7 +6908,8 @@ class Actions
         'edit' =>
         [
             'actionId' => 'edit',
-            'actionName' => 'Změnit',
+            'actionName' =>
+            'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6897,7 +6953,8 @@ class Actions
         'edit' =>
         [
             'actionId' => 'edit',
-            'actionName' => 'Změnit',
+            'actionName' =>
+            'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6941,7 +6998,8 @@ class Actions
         'edit' =>
         [
             'actionId' => 'edit',
-            'actionName' => 'Změnit',
+            'actionName' =>
+            'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -6987,7 +7045,8 @@ class Actions
             'actionId' => 'edit',
             'actionName' => 'Změnit',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -7348,7 +7407,8 @@ class Actions
             'actionId' => 'delete',
             'actionName' => 'Smazat',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -8017,7 +8077,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -8061,7 +8122,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -8105,7 +8167,8 @@ class Actions
             'actionId' => 'new',
             'actionName' => 'Přidat',
             'needInstance' => 'false',
-            'actionMakesSense' => 'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
+            'actionMakesSense' =>
+            'ONLY_WITHOUT_INSTANCE_AND_NOT_IN_CREATE',
             'isRealAction' => 'false',
             'isService' => 'NO',
         ],
@@ -8288,7 +8351,8 @@ class Actions
         'copy' =>
         [
             'actionId' => 'copy',
-            'actionName' => 'Vytvořit kopii',
+            'actionName' =>
+            'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -8378,7 +8442,8 @@ class Actions
             'actionId' => 'copy',
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
-            'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
+            'actionMakesSense' =>
+            'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'ON_MOBILE',
         ],
@@ -8467,7 +8532,8 @@ class Actions
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'ON_MOBILE',
         ],
         'edit' =>
@@ -8511,7 +8577,8 @@ class Actions
             'actionName' => 'Vytvořit kopii',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-            'isRealAction' => 'false',
+            'isRealAction' =>
+            'false',
             'isService' => 'ON_MOBILE',
         ],
         'edit' =>
@@ -8600,7 +8667,8 @@ class Actions
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
-            'isService' => 'ON_MOBILE',
+            'isService' =>
+            'ON_MOBILE',
         ],
         'edit' =>
         [
@@ -8738,7 +8806,8 @@ class Actions
         [
             'actionId' => 'edit',
             'actionName' => 'Změnit',
-            'needInstance' => 'true',
+            'needInstance' =>
+            'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
@@ -8782,7 +8851,8 @@ class Actions
         [
             'actionId' => 'edit',
             'actionName' => 'Změnit',
-            'needInstance' => 'true',
+            'needInstance' =>
+            'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',
@@ -8869,7 +8939,8 @@ class Actions
         'edit' =>
         [
             'actionId' => 'edit',
-            'actionName' => 'Změnit',
+            'actionName' =>
+            'Změnit',
             'needInstance' => 'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
@@ -8914,7 +8985,8 @@ class Actions
         [
             'actionId' => 'edit',
             'actionName' => 'Změnit',
-            'needInstance' => 'true',
+            'needInstance' =>
+            'true',
             'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
             'isRealAction' => 'false',
             'isService' => 'NO',

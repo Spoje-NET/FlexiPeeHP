@@ -80,5 +80,4 @@ class RadaPokladniPohyb extends FlexiBeeRW
         $cislo = $crInfo['cisAkt'] + 1;
         return $cislo;
     }
-
 }

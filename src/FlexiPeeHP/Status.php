@@ -37,7 +37,7 @@ class Status extends FlexiBeeRO
      */
     public $prefix = '';
 
-    public function __construct($init = null, $options = array())
+    public function __construct($init = null, $options = [])
     {
         parent::__construct($init, $options);
         $this->takeData($this->getFlexiData());
