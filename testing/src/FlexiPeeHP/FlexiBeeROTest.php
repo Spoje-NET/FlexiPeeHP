@@ -217,7 +217,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testSetAction()
     {
-        $this->assertTrue($this->object->setAction('none'));
+        $this->assertTrue($this->object->setAction('new'));
         $this->object->actionsAvailable = [];
         $this->assertFalse($this->object->setAction('none'));
         $this->object->actionsAvailable = ['copy'];
