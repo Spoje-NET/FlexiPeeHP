@@ -240,35 +240,24 @@ class FlexiBeeRW extends FlexiBeeRO
     }
 
     /**
+     * Add Data to evidence Branch
      * Přidá data do větve
      *
      * @thanksto Karel Běl
      * @param array  $data pole dat
-     * @param string $type path evidence pro vkládaná data
+     * @param string $relationPath path evidence (relation) pro vkládaná data 
      * @see Relations
      */
-    public function addArrayToBranch($data, $type)
+    public function addArrayToBranch($data, $relationPath)
     {
-        if (array_key_exists($type, \FlexiPeeHP\EvidenceList::$name)) {
-            $branchPath   = null;
-            $evidenceType = \FlexiPeeHP\EvidenceList::$evidences[$type]['evidenceType'];
-            $relations    = $this->getRelationsInfo();
-            foreach ($relations as $relation) {
-                if (array_key_exists($evidenceType, $relation)) {
-                    $branchPath = $relation['url'];
-                }
-            }
-
-            if (is_null($branchPath)) {
-                throw new \Exception("Relation to $type does not exist");
-            } else {
-                $currentBranchData = $this->getDataValue($branchPath);
-                $branchData        = $currentBranchData;
-                $branchData[]      = $data;
-                $this->setDataValue($branchPath, $branchData);
-            }
+        $relationsByUrl = \Ease\Sand::reindexArrayBy($this->getRelationsInfo(), 'url');
+        if (array_key_exists($relationPath,$relationsByUrl)) {
+            $currentBranchData = $this->getDataValue($relationPath);
+            $branchData        = $currentBranchData;
+            $branchData[]      = $data;
+            $this->setDataValue($relationPath, $branchData);
         } else {
-            throw new \Exception("Evidence $type does not exist");
+            throw new \Exception("Relation to $relationPath does not exist for evidence " . $this->getEvidence());
         }
     }
 
