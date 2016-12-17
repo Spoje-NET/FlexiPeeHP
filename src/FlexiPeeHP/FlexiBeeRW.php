@@ -250,15 +250,18 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function addArrayToBranch($data, $relationPath)
     {
-        $relationsByUrl = \Ease\Sand::reindexArrayBy($this->getRelationsInfo(), 'url');
-        if (array_key_exists($relationPath,$relationsByUrl)) {
-            $currentBranchData = $this->getDataValue($relationPath);
-            $branchData        = $currentBranchData;
-            $branchData[]      = $data;
-            $this->setDataValue($relationPath, $branchData);
-        } else {
-            throw new \Exception("Relation to $relationPath does not exist for evidence " . $this->getEvidence());
+        if ($this->debug === true) {
+            $relationsByUrl = \Ease\Sand::reindexArrayBy($this->getRelationsInfo(),
+                    'url');
+            if (!array_key_exists($relationPath, $relationsByUrl)) {
+                $this->addStatusMessage("Relation to $relationPath does not exist for evidence ".$this->getEvidence(),
+                    'warning');
+            }
         }
+        $currentBranchData = $this->getDataValue($relationPath);
+        $branchData        = $currentBranchData;
+        $branchData[]      = $data;
+        $this->setDataValue($relationPath, $branchData);
     }
 
     /**
@@ -290,5 +293,4 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         return parent::jsonizeData($data);
     }
-
 }
