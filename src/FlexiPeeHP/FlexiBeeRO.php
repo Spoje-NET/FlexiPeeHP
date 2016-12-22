@@ -1129,10 +1129,6 @@ class FlexiBeeRO extends \Ease\Brick
                 }
             }
         }
-
-        if (is_object($this->logger)) {
-            $logResult = $this->logger->flush(get_class($this));
-        }
         return $logResult;
     }
 
