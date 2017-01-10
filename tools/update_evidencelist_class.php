@@ -38,12 +38,13 @@ echo '<?php
  * From:      ' . $statuser->url . '
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2016 Spoje.Net
+ * @copyright  (C) 2016-2017 Spoje.Net
  */
 
 namespace FlexiPeeHP;
 
 /**
+ * Evidencies listing and its propertied
  * Seznam Evidencí a jejich vlastnosti
  *
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí

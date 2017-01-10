@@ -32,7 +32,7 @@ echo '<?php
  * FlexiPeeHP - Evidence Relations.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015,2016 Spoje.Net
+ * @copyright  (C) 2015-2017 Spoje.Net
  */
 
 namespace FlexiPeeHP;

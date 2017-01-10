@@ -3,7 +3,7 @@
  * FlexiPeeHP - Evidence Properties.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015,2016 Spoje.Net
+ * @copyright  (C) 2015-2017 Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -21,7 +21,7 @@ class Properties
      *
      * @var string
      */
- static public $version = '2016.4.9';
+ static public $version = '2016.4.10';
 
     /**
      * Evidence kontakt (Kontakty) structure.
@@ -607,6 +607,25 @@ class Properties
     'type' => 'string',
     'isVisible' => 'true',
     'isSortable' => 'false',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
     'isHighlight' => 'false',
     'inId' => 'false',
     'inSummary' => 'false',
@@ -1719,6 +1738,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'katastrUzemi' => 
   array (
     'showToUser' => 'true',
@@ -2286,6 +2324,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'processDefinitionId' => 
   array (
     'showToUser' => 'true',
@@ -2479,8 +2536,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -2537,11 +2594,11 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'poptavka-vydana',
-        1 => 'objednavka-vydana',
+        0 => 'objednavka-vydana',
+        1 => 'poptavka-vydana',
         2 => 'poptavka-prijata',
-        3 => 'nabidka-vydana',
-        4 => 'objednavka-prijata',
+        3 => 'objednavka-prijata',
+        4 => 'nabidka-vydana',
         5 => 'nabidka-prijata',
       ),
     ),
@@ -4899,6 +4956,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'katastrUzemi' => 
   array (
     'showToUser' => 'true',
@@ -5925,6 +6001,25 @@ class Properties
     'type' => 'string',
     'isVisible' => 'true',
     'isSortable' => 'false',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
     'isHighlight' => 'false',
     'inId' => 'false',
     'inSummary' => 'false',
@@ -8513,6 +8608,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'cisDosle' => 
   array (
     'showToUser' => 'true',
@@ -10004,6 +10118,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'postovniShodna' => 
   array (
@@ -14938,6 +15071,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'postovniShodna' => 
   array (
     'showToUser' => 'true',
@@ -18818,6 +18970,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'postovniShodna' => 
   array (
     'showToUser' => 'true',
@@ -22506,6 +22677,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'postovniShodna' => 
   array (
@@ -26407,6 +26597,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'postovniShodna' => 
   array (
@@ -30323,6 +30532,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'postovniShodna' => 
   array (
     'showToUser' => 'true',
@@ -34176,6 +34404,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'faNazev2' => 
   array (
@@ -42753,6 +43000,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'bezPolozek' => 
   array (
     'showToUser' => 'true',
@@ -49318,6 +49584,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'buc' => 
   array (
     'showToUser' => 'true',
@@ -54092,6 +54377,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'faNazev2' => 
   array (
@@ -61274,8 +61578,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -62319,8 +62623,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -63452,6 +63756,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'buc' => 
   array (
@@ -67481,6 +67804,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'bezPolozek' => 
   array (
     'showToUser' => 'true',
@@ -70831,8 +71173,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -70889,11 +71231,11 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'poptavka-vydana',
-        1 => 'objednavka-vydana',
+        0 => 'objednavka-vydana',
+        1 => 'poptavka-vydana',
         2 => 'poptavka-prijata',
-        3 => 'nabidka-vydana',
-        4 => 'objednavka-prijata',
+        3 => 'objednavka-prijata',
+        4 => 'nabidka-vydana',
         5 => 'nabidka-prijata',
       ),
     ),
@@ -72492,6 +72834,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'postovniShodna' => 
   array (
@@ -80474,6 +80835,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'postovniShodna' => 
   array (
     'showToUser' => 'true',
@@ -84404,8 +84784,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -87986,6 +88366,25 @@ class Properties
     'mandatory' => 'false',
     'digits' => '19',
     'decimal' => '6',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
     'isWritable' => 'true',
     'isOverWritable' => 'true',
     'isUpperCase' => 'false',
@@ -95349,8 +95748,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -95401,11 +95800,11 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'poptavka-vydana',
-        1 => 'objednavka-vydana',
+        0 => 'objednavka-vydana',
+        1 => 'poptavka-vydana',
         2 => 'poptavka-prijata',
-        3 => 'nabidka-vydana',
-        4 => 'objednavka-prijata',
+        3 => 'objednavka-prijata',
+        4 => 'nabidka-vydana',
         5 => 'nabidka-prijata',
       ),
     ),
@@ -100783,6 +101182,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'exportNaEshop' => 
   array (
     'showToUser' => 'true',
@@ -105914,6 +106332,25 @@ class Properties
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'postovniShodna' => 
   array (
     'showToUser' => 'true',
@@ -110737,6 +111174,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'strom' => 
   array (
     'showToUser' => 'true',
@@ -112681,11 +113137,11 @@ class Properties
     array (
       'evidenceVariant' => 
       array (
-        0 => 'poptavka-vydana',
-        1 => 'objednavka-vydana',
+        0 => 'objednavka-vydana',
+        1 => 'poptavka-vydana',
         2 => 'poptavka-prijata',
-        3 => 'nabidka-vydana',
-        4 => 'objednavka-prijata',
+        3 => 'objednavka-prijata',
+        4 => 'nabidka-vydana',
         5 => 'nabidka-prijata',
       ),
     ),
@@ -112713,8 +113169,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -116081,6 +116537,25 @@ class Properties
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
   'stitky' => 
   array (
     'showToUser' => 'true',
@@ -117237,6 +117712,25 @@ class Properties
         ),
       ),
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'stitky' => 
   array (
@@ -121555,6 +122049,25 @@ class Properties
     array (
       'link' => 'https://support.flexibee.eu/remote/vat-id/${value}',
     ),
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
   ),
   'faNazev2' => 
   array (
@@ -128182,8 +128695,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'true',
     'maxLength' => '20',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'true',
     'links' => NULL,
   ),
@@ -128202,8 +128715,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'true',
     'maxLength' => '255',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128222,8 +128735,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'false',
     'maxLength' => '255',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128242,8 +128755,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'false',
     'maxLength' => '255',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128262,8 +128775,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'false',
     'maxLength' => '255',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128281,8 +128794,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'false',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128300,8 +128813,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'false',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128319,8 +128832,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'false',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128338,8 +128851,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'false',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128357,8 +128870,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'true',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128377,8 +128890,8 @@ class Properties
     'inDetail' => 'true',
     'mandatory' => 'true',
     'maxLength' => '255',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
     'values' => 
@@ -128422,8 +128935,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'true',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'links' => NULL,
   ),
@@ -128462,8 +128975,8 @@ class Properties
     'inSummary' => 'false',
     'inDetail' => 'true',
     'mandatory' => 'false',
-    'isWritable' => 'false',
-    'isOverWritable' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
     'isUpperCase' => 'false',
     'url' => 'uzivatel',
     'links' => NULL,
@@ -134109,8 +134622,8 @@ class Properties
       'evidenceVariant' => 
       array (
         0 => 'zavazek',
-        1 => 'prodejka',
-        2 => 'pohledavka',
+        1 => 'pohledavka',
+        2 => 'prodejka',
         3 => 'faktura-vydana',
         4 => 'faktura-prijata',
       ),
@@ -148598,6 +149111,25 @@ class Properties
     'type' => 'string',
     'isVisible' => 'true',
     'isSortable' => 'false',
+    'isHighlight' => 'false',
+    'inId' => 'false',
+    'inSummary' => 'false',
+    'inDetail' => 'true',
+    'mandatory' => 'false',
+    'isWritable' => 'true',
+    'isOverWritable' => 'true',
+    'isUpperCase' => 'false',
+    'links' => NULL,
+  ),
+  'pocetPriloh' => 
+  array (
+    'showToUser' => 'true',
+    'propertyName' => 'pocetPriloh',
+    'name' => 'Přílohy',
+    'title' => 'Přílohy',
+    'type' => 'integer',
+    'isVisible' => 'true',
+    'isSortable' => 'true',
     'isHighlight' => 'false',
     'inId' => 'false',
     'inSummary' => 'false',
