@@ -1,4 +1,5 @@
 <?php
+
 namespace Test;
 
 /**
@@ -27,5 +28,4 @@ class ObjectForTesting extends \stdClass
     {
         return true;
     }
-
 }

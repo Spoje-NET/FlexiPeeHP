@@ -29,7 +29,7 @@ class BankaTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -49,5 +49,4 @@ class BankaTest extends FlexiBeeRWTest
         $this->assertInternalType('boolean',
             $this->object->automatickeParovani());
     }
-
 }

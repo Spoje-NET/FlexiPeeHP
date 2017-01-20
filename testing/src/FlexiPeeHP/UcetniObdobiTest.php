@@ -35,7 +35,7 @@ class UcetniObdobiTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -84,5 +84,4 @@ class UcetniObdobiTest extends FlexiBeeRWTest
         $this->object->deleteFromFlexiBee('code:'.$testyear);
         $this->object->deleteFromFlexiBee('code:'.$testyear + 1);
     }
-
 }

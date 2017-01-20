@@ -94,5 +94,4 @@ class ChangesTest extends FlexiBeeROTest
     {
         
     }
-
 }

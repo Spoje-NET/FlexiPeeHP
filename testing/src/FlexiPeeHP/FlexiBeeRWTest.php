@@ -89,5 +89,4 @@ class FlexiBeeRWTest extends FlexiBeeROTest
         $this->assertEquals('2016-09-16UTC15:41:46',
             $this->object->timestampToFlexiDateTime('1474040506'));
     }
-
 }

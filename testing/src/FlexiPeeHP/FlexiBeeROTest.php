@@ -663,5 +663,4 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals('FakturaVydana',
             $this->object->evidenceToClassName('faktura-vydana'));
     }
-
 }

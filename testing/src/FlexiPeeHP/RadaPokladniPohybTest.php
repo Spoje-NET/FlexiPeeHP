@@ -29,7 +29,7 @@ class RadaPokladniPohybTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -53,5 +53,4 @@ class RadaPokladniPohybTest extends FlexiBeeRWTest
             'This test has not been implemented yet.'
         );
     }
-
 }

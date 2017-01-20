@@ -25,8 +25,6 @@ function getColumnsInfo($evidence, FlexiBeeRO $syncer)
     }
     return $useKeywords;
 }
-
-
 $statuser = new Status();
 
 
@@ -34,8 +32,8 @@ echo '<?php
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
- * Generated: ' . date(DATE_RFC2822) . ' 
- * From:      ' . $statuser->url . '
+ * Generated: '.date(DATE_RFC2822).' 
+ * From:      '.$statuser->url.'
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2016-2017 Spoje.Net
@@ -44,7 +42,7 @@ echo '<?php
 namespace FlexiPeeHP;
 
 /**
- * Evidencies listing and its propertied
+ * Evidencies listing and its properties
  * Seznam Evidencí a jejich vlastnosti
  *
  * @link https://demo.flexibee.eu/c/demo/evidence-list Přehled evidencí

@@ -104,5 +104,4 @@ class HooksTest extends FlexiBeeRWTest
     {
         
     }
-
 }

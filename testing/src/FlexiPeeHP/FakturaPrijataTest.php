@@ -31,5 +31,4 @@ class FakturaPrijataTest extends FlexiBeeRWTest
     {
         
     }
-
 }

@@ -331,7 +331,7 @@ class FlexiBeeRO extends \Ease\Brick
             $this->setPrefix($options['prefix']);
         }
         if (isset($options['debug'])) {
-            $this->debug  = $options['debug'];
+            $this->debug = $options['debug'];
         }
     }
 
@@ -716,7 +716,7 @@ class FlexiBeeRO extends \Ease\Brick
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
             if (($key == 'User-Agent') && ($value == 'FlexiPeeHP')) {
-                $value.= ' v'.self::$libVersion;
+                $value .= ' v'.self::$libVersion;
             }
             $httpHeadersFinal[] = $key.': '.$value;
         }
@@ -1463,5 +1463,4 @@ class FlexiBeeRO extends \Ease\Brick
 
         return $result;
     }
-
 }

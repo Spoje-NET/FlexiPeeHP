@@ -31,5 +31,4 @@ class StitekTest extends FlexiBeeRWTest
     {
         
     }
-
 }

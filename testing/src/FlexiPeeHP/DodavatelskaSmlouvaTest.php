@@ -31,5 +31,4 @@ class DodavatelskaSmlouvaTest extends FlexiBeeRWTest
     {
         
     }
-
 }

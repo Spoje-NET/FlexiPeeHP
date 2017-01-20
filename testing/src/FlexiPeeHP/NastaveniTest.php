@@ -29,7 +29,7 @@ class NastaveniTest extends FlexiBeeROTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -49,5 +49,4 @@ class NastaveniTest extends FlexiBeeROTest
             $this->assertArrayHasKey('id', $filtrered[0]);
         }
     }
-
 }

@@ -37,5 +37,4 @@ class SkladovaKartaTest extends FlexiBeeRWTest
     {
         
     }
-
 }

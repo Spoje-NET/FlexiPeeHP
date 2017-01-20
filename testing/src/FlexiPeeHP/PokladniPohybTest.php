@@ -31,5 +31,4 @@ class PokladniPohybTest extends FlexiBeeRWTest
     {
         
     }
-
 }

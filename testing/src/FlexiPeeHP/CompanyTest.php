@@ -35,7 +35,7 @@ class CompanyTest extends FlexiBeeROTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -75,5 +75,4 @@ class CompanyTest extends FlexiBeeROTest
     {
         $this->assertEquals('companies', $this->object->getResponseEvidence());
     }
-
 }

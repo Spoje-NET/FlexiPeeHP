@@ -29,7 +29,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      */
     protected function tearDown()
     {
-
+        
     }
 
     /**
@@ -245,5 +245,4 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $this->assertArrayHasKey('success', $result);
         $this->assertEquals('true', $result['success'], 'Matching Error');
     }
-
 }

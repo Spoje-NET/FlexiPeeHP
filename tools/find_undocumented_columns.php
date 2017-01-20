@@ -54,7 +54,6 @@ function controlData($data, $fbColumns, $fbRelations)
     }
     return $controlResult;
 }
-
 $syncer = new EvidenceList();
 
 $evidencies = $syncer->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
