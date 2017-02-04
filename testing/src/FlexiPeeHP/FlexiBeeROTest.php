@@ -217,11 +217,15 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testSetAction()
     {
-        $this->assertTrue($this->object->setAction('new'));
-        $this->object->actionsAvailable = [];
-        $this->assertFalse($this->object->setAction('none'));
-        $this->object->actionsAvailable = ['copy'];
-        $this->assertFalse($this->object->setAction('none'));
+        if (empty($this->object->evidence) || ($this->object->evidence == 'c')) {
+            $this->markTestSkipped('no evidence set');
+        } else {
+            $this->assertTrue($this->object->setAction('new'));
+            $this->object->actionsAvailable = [];
+            $this->assertFalse($this->object->setAction('none'));
+            $this->object->actionsAvailable = ['copy'];
+            $this->assertFalse($this->object->setAction('none'));
+        }
     }
 
     /**
@@ -379,9 +383,12 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
-        $this->object->setAction('copy');
-        $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
-            $this->object->jsonizeData(['key' => 'value']));
+
+        if (!empty($this->object->evidence) && ($this->object->evidence != 'c')) {
+            $this->object->setAction('copy');
+            $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
+                $this->object->jsonizeData(['key' => 'value']));
+        }
     }
 
     /**
@@ -433,6 +440,42 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      * @covers FlexiPeeHP\FlexiBeeRO::getColumnsFromFlexibee
      */
     public function testGetColumnsFromFlexibee()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getExternalID
+     * @todo   Implement testGetExternalID().
+     */
+    public function testGetExternalID()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getGlobalVersion
+     * @todo   Implement testGetGlobalVersion().
+     */
+    public function testGetGlobalVersion()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getResponseFormat
+     * @todo   Implement testGetResponseFormat().
+     */
+    public function testGetResponseFormat()
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
@@ -519,14 +562,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertNull($this->object->unifyResponseFormat(null));
         //One Row Test
         $test1raw = [$this->object->nameSpace =>
-            [$this->object->getResponseEvidence() =>
-                ['id' => 1, 'name' => 'value']
+                [$this->object->getResponseEvidence() =>
+                    ['id' => 1, 'name' => 'value']
             ]
         ];
 
         $test1expected = [$this->object->getResponseEvidence() =>
-            [
-                ['id' => 1, 'name' => 'value']
+                [
+                    ['id' => 1, 'name' => 'value']
             ]
         ];
 
@@ -535,17 +578,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
         //Two Row Test
         $test2Raw      = [$this->object->nameSpace =>
-            [$this->object->getResponseEvidence() =>
-                [
-                    ['id' => 1, 'name' => 'value'],
-                    ['id' => 2, 'name' => 'value2']
+                [$this->object->getResponseEvidence() =>
+                    [
+                        ['id' => 1, 'name' => 'value'],
+                        ['id' => 2, 'name' => 'value2']
                 ]
             ]
         ];
         $test2expected = [$this->object->getResponseEvidence() =>
-            [
-                ['id' => 1, 'name' => 'value'],
-                ['id' => 2, 'name' => 'value2']
+                [
+                    ['id' => 1, 'name' => 'value'],
+                    ['id' => 2, 'name' => 'value2']
             ]
         ];
 
@@ -662,5 +705,40 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertEquals('FakturaVydana',
             $this->object->evidenceToClassName('faktura-vydana'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceInfo
+     * @todo   Implement testGetEvidenceInfo().
+     */
+    public function testGetEvidenceInfo()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceName
+     * @todo   Implement testGetEvidenceName().
+     */
+    public function testGetEvidenceName()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::performAction
+     * @todo   Implement testPerformAction().
+     */
+    public function testPerformAction()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
     }
 }

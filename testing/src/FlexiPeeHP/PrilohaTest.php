@@ -10,7 +10,7 @@ use FlexiPeeHP\Priloha;
 class PrilohaTest extends FlexiBeeRWTest
 {
     /**
-     * @var Kontakt
+     * @var Priloha
      */
     protected $object;
 

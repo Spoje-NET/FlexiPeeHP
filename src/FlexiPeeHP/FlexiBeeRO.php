@@ -599,7 +599,7 @@ class FlexiBeeRO extends \Ease\Brick
                         }
                         break;
                     case 'txt':
-                    default :
+                    default:
                         $responseDecoded = $this->lastCurlResponse;
                         break;
                 }
@@ -627,7 +627,7 @@ class FlexiBeeRO extends \Ease\Brick
                         }
                         break;
                     case 'txt':
-                    default :
+                    default:
                         $response = $this->lastCurlResponse;
                         break;
                 }
