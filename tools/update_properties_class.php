@@ -4,6 +4,12 @@ namespace FlexiPeeHP;
 
 require_once '../testing/bootstrap.php';
 
+define('EASE_APPNAME', 'FlexiPeehUP');
+define('EASE_LOGGER', 'console|syslog');
+
+$outFile = 'Properties.php';
+$ok      = 0;
+
 /**
  * Obtain structure for given evidence
  *
@@ -25,7 +31,7 @@ function getPropertiesInfo($evidence, FlexiBeeRO $syncer)
     }
     return $properties;
 }
-echo '<?php
+$evidenceProps = '<?php
 /**
  * FlexiPeeHP - Evidence Properties.
  *
@@ -46,41 +52,48 @@ class Properties
 ';
 
 $statuser = new Status();
-echo '    /**
+$evidenceProps .= '    /**
      * Source FlexiBee server version.
      *
      * @var string
      */
 ';
-echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+$evidenceProps .= ' static public $version = \''.$statuser->getDataValue('version').'\';
 
 ';
 
 
 $syncer = new FlexiBeeRO();
+$syncer->addStatusMessage('Updating Evidences Properties');
+
 
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
     $structure = getPropertiesInfo($evidencePath, $syncer);
     if (count($structure)) {
-        echo '    /**
+        $evidenceProps .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') structure.
      *
      * @var array
      */
 ';
-        echo ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.str_replace('http://demo.flexibee.eu/c/demo/',
-            '', var_export($structure, true)).';
+        $evidenceProps .= ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.str_replace('http://demo.flexibee.eu/c/demo/',
+                '', var_export($structure, true)).';
 ';
 
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': structure obtained',
             'success');
+        $ok++;
     } else {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': structure problem',
             'error');
     }
 }
 
-echo '}
+$evidenceProps .= '}
 ';
+
+$syncer->addStatusMessage('Updating of '.$ok.' Evidences Properties done',
+    'success');
+file_put_contents($outFile, $evidenceProps);

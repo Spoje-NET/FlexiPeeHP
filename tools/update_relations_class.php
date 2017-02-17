@@ -4,6 +4,12 @@ namespace FlexiPeeHP;
 
 require_once '../testing/bootstrap.php';
 
+define('EASE_APPNAME', 'FlexiPeehUP');
+define('EASE_LOGGER', 'console|syslog');
+
+$outFile = 'Relations.php';
+$ok      = 0;
+
 /**
  * Obtain Relations for given evidence
  *
@@ -27,7 +33,7 @@ function getEvidenceRelations($evidence, FlexiBeeRO $syncer)
     }
     return $relations;
 }
-echo '<?php
+$evidenceRels = '<?php
 /**
  * FlexiPeeHP - Evidence Relations.
  *
@@ -47,41 +53,47 @@ class Relations
 {
 ';
 $statuser = new Status();
-echo '    /**
+$evidenceRels .= '    /**
      * Source FlexiBee server version.
      *
      * @var string
      */
 ';
-echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+$evidenceRels .= ' static public $version = \''.$statuser->getDataValue('version').'\';
 
 ';
 
 
 $syncer = new FlexiBeeRO();
+$syncer->addStatusMessage('Updating Evidences Relations');
 
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
     $structure = getEvidenceRelations($evidencePath, $syncer);
     if (count($structure)) {
-        echo '    /**
+        $evidenceRels .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') Relations.
      *
      * @var array
      */
 ';
-        echo ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.var_export($structure,
-            true).';
+        $evidenceRels .= ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.var_export($structure,
+                true).';
 ';
 
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': relations obtained',
             'success');
+        $ok++;
     } else {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': obtaining relations problem',
             'error');
     }
 }
 
-echo '}
+$evidenceRels .= '}
 ';
+
+$syncer->addStatusMessage('Updating of '.$ok.' Evidences Properties done',
+    'success');
+file_put_contents($outFile, $evidenceRels);

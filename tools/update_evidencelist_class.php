@@ -2,7 +2,14 @@
 
 namespace FlexiPeeHP;
 
+define('EASE_APPNAME', 'FlexiPeehUP');
+define('EASE_LOGGER', 'console|syslog');
+
 require_once '../testing/bootstrap.php';
+
+
+
+$outFile = 'EvidenceList.php';
 
 /**
  * Obtain structure for given evidence
@@ -28,7 +35,7 @@ function getColumnsInfo($evidence, FlexiBeeRO $syncer)
 $statuser = new Status();
 
 
-echo '<?php
+$evidenceList = '<?php
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
@@ -58,17 +65,18 @@ class EvidenceList extends FlexiBeeRO
 
 ';
 
-echo '    /**
+$evidenceList .= '    /**
      * Source FlexiBee server version.
      *
      * @var string
      */
 ';
-echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+$evidenceList .= ' static public $version = \''.$statuser->getDataValue('version').'\';
 
 ';
 
 $syncer = new EvidenceList();
+$syncer->addStatusMessage('Updating Evidences List');
 
 $evidencies = $syncer->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
 
@@ -77,24 +85,28 @@ foreach ($evidencies['evidences']['evidence'] as $evidenceID => $evidence) {
     $evlist[$evidence['evidencePath']]   = $evidence['evidenceName'];
     $fullList[$evidence['evidencePath']] = $evidence;
 }
-echo '    /**
+$evidenceList .= '    /**
      * Evidences Path/Name listing.
      *
      * @var array
      */
 ';
-echo ' static public $name = '.var_export($evlist, true).';
+$evidenceList .= ' static public $name = '.var_export($evlist, true).';
 
 ';
-echo '    /**
+$evidenceList .= '    /**
      * All Evidence\'s all properties listing.
      *
      * @var array
      */
 ';
-echo ' static public $evidences = '.var_export($fullList, true).';
+$evidenceList .= ' static public $evidences = '.var_export($fullList, true).';
 
 ';
 
-echo '}
+$evidenceList .= '}
 ';
+
+$syncer->addStatusMessage('Updating of '.count($fullList).' Evidences Infos done',
+    'success');
+file_put_contents($outFile, $evidenceList);

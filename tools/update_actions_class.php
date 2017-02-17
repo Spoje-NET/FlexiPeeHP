@@ -4,6 +4,12 @@ namespace FlexiPeeHP;
 
 require_once '../testing/bootstrap.php';
 
+define('EASE_APPNAME', 'FlexiPeehUP');
+define('EASE_LOGGER', 'console|syslog');
+
+$outFile = 'Actions.php';
+$ok      = 0;
+
 /**
  * Obtain Actions for given evidence
  *
@@ -28,7 +34,7 @@ function getEvidenceActions($evidence, FlexiBeeRO $syncer)
     }
     return $actions;
 }
-echo '<?php
+$evidenceActions = '<?php
 /**
  * FlexiPeeHP - Evidence Actions.
  *
@@ -49,40 +55,46 @@ class Actions
 ';
 
 $statuser = new Status();
-echo '    /**
+$evidenceActions .= '    /**
      * Source FlexiBee server version.
      *
      * @var string
      */
 ';
-echo ' static public $version = \''.$statuser->getDataValue('version').'\';
+$evidenceActions .= ' static public $version = \''.$statuser->getDataValue('version').'\';
 
 ';
 
 $syncer = new FlexiBeeRO();
+$syncer->addStatusMessage('Updating Evidences Actions');
 
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
     $structure = getEvidenceActions($evidencePath, $syncer);
     if (count($structure)) {
-        echo '    /**
+        $evidenceActions .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') Actions.
      *
      * @var array
      */
 ';
-        echo ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.var_export($structure,
-            true).';
+        $evidenceActions .= ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.var_export($structure,
+                true).';
 ';
 
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': actions obtained',
             'success');
+        $ok++;
     } else {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': obtaining actions problem',
             'error');
     }
 }
 
-echo '}
+$evidenceActions .= '}
 ';
+
+$syncer->addStatusMessage('Updating of '.$ok.' Evidences Actions done',
+    'success');
+file_put_contents($outFile, $evidenceActions);
