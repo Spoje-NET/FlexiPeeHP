@@ -233,6 +233,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @var array
      */
     public $urlParams = [
+        'idUcetniObdobi',
         'dry-run',
         'fail-on-warning',
         'report-name',
