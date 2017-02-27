@@ -466,7 +466,7 @@ class FlexiBeeRO extends \Ease\Brick
     {
         switch ($this->evidence) {
             case 'c':
-                $evidence = 'companies';
+                $evidence = 'company';
                 break;
             case 'evidence-list':
                 $evidence = 'evidences';
