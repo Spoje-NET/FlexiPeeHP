@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.1.3';
+ static public $version = '2017.1.4';
 
     /**
      * Evidence kontakt (Kontakty) Relations.
