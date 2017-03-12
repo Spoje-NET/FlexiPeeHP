@@ -1270,9 +1270,9 @@ class FlexiBeeRO extends \Ease\Brick
      * Vrací identifikátor objektu code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
-     * @return string indentifikátor záznamu reprezentovaného objektem
+     * @return string|int indentifikátor záznamu reprezentovaného objektem
      */
-    public function __toString()
+    public function getRecordID()
     {
         $myCode = $this->getDataValue('kod');
         if ($myCode) {
@@ -1284,7 +1284,19 @@ class FlexiBeeRO extends \Ease\Brick
                     'warning');
             }
         }
-        return strval($id);
+        return is_numeric($id) ? intval($id) : strval($id);
+    }
+
+    /**
+     * Obtain record/object identificator code: or id:
+     * Vrací identifikátor objektu code: nebo id:
+     *
+     * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     * @return string indentifikátor záznamu reprezentovaného objektem
+     */
+    public function __toString()
+    {
+        return strval($this->getRecordID());
     }
 
     /**
@@ -1534,6 +1546,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Save current object to file
+     *
      * @param string $destfile path to file
      */
     public function saveResponseToFile($destfile)
@@ -1543,4 +1556,20 @@ class FlexiBeeRO extends \Ease\Brick
         }
         file_put_contents($destfile, $this->lastCurlResponse);
     }
+
+    /**
+     * Obtain established relations listing
+     *
+     * @return array Null or Relations
+     */
+    public function getVazby()
+    {
+        $vazby = $this->getDataValue('vazby');
+        if (is_null($vazby)) {
+            $vazby = $this->getColumnsFromFlexibee('vazby',
+                ['relations' => 'vazby', 'id' => $this->getRecordID()]);
+        }
+        return $vazby;
+    }
+
 }

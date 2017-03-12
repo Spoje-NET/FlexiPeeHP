@@ -275,6 +275,23 @@ class FlexiBeeRW extends FlexiBeeRO
     }
 
     /**
+     * @see https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-vazby/
+     */
+    public function vazbaAdd()
+    {
+        $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
+            'uzivatelske-vazby');
+    }
+
+    /**
+     * @
+     */
+    public function vazbaDel()
+    {
+        
+    }
+
+    /**
      * Převede data do Json formátu pro FlexiBee.
      * Pokud jsou štítky pole, jsou převedeny na seznam oddělený čárkou.
      * Convert data to FlexiBee like Json format.
