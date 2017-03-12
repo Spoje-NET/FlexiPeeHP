@@ -23,12 +23,52 @@ class FlexiBeeRO extends \Ease\Brick
     static public $libVersion = '1.6.4.2';
 
     /**
+     * Availble Formats.
+     *
+     * @see https://www.flexibee.eu/api/dokumentace/ref/format-types/
+     * @var array formats known to flexibee
+     */
+    static public $formats = [
+        'HTML' => ['desc' => 'HTML stránka pro zobrazení informací na webové stránce.',
+            'suffix' => 'html', 'content-type' => 'text/html', 'import' => false],
+        'XML' => ['desc' => 'Strojově čitelná struktura ve formátu XML.', 'suffix' => 'xml',
+            'content-type' => 'application/xml', 'import' => true],
+        'JSON' => ['desc' => 'Strojově čitelná struktura ve formátu JSON. ', 'suffix' => 'json',
+            'content-type' => 'application/json', 'import' => true],
+        'CSV' => ['desc' => 'Tabulkový výstup do formátu CSV (Column Separated Values).',
+            'suffix' => 'csv', 'content-type' => 'text/csv', 'import' => true],
+        'DBF' => ['desc' => 'Databázový výstup ve formátu DBF (dBase).', 'suffix' => 'dbf',
+            'content-type' => 'application/dbf', 'import' => true],
+        'XLS' => ['desc' => 'Tabulkový výstup ve formátu Excel.', 'suffix' => 'xls',
+            'content-type' => 'application/ms-excel', 'import' => true],
+        'ISDOC' => ['desc' => 'e-faktura ISDOC.', 'suffix' => 'isdoc', 'content-type' => 'application/x-isdoc',
+            'import' => false],
+        'ISDOCx' => ['desc' => 'e-faktura ISDOC s PDF přílohou', 'suffix' => 'isdocx',
+            'content-type' => 'application/x-isdocx',
+            'import' => false],
+        'EDI' => ['desc' => 'Elektronická výměna data (EDI) ve formátu INHOUSE.',
+            'suffix' => 'edi', 'content-type' => 'application/x-edi-inhouse', 'import' => 'objednavka-prijata'],
+        'PDF' => ['desc' => 'Generování tiskového reportu. Jedná se o stejnou funkci která je dostupná v aplikaci. Export do PDF',
+            'suffix' => 'pdf', 'content-type' => 'application/pdf', 'import' => false],
+        'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
+            'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
+        'iCalendar' => ['desc' => '"Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
+            'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
+    ];
+
+    /**
      * Základní namespace pro komunikaci s FlexiBee.
      * Basic namespace for communication with FlexiBee
      *
      * @var string Jmený prostor datového bloku odpovědi
      */
     public $nameSpace = 'winstrom';
+
+    /**
+     * URL of object data in FlexiBee
+     * @var string url
+     */
+    public $apiURL = null;
 
     /**
      * Datový blok v poli odpovědi.
@@ -397,6 +437,17 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Set communication format.
+     * One of html|xml|json|csv|dbf|xls|isdoc|isdocx|edi|pdf|pdf|vcf|ical
+     *
+     * @param string $format
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
+    }
+
+    /**
      * Nastaví Evidenci pro Komunikaci.
      * Set evidence for communication
      *
@@ -421,6 +472,7 @@ class FlexiBeeRO extends \Ease\Brick
                 $result         = true;
                 break;
         }
+        $this->updateApiURL();
         return $result;
     }
 
@@ -548,6 +600,18 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Update $this->apiURL
+     */
+    public function updateApiURL()
+    {
+        $this->apiURL = $this->getEvidenceURL();
+        $id           = $this->__toString();
+        if (!is_null($id)) {
+            $this->apiURL .= '/'.urlencode($id);
+        }
+    }
+
+    /**
      * Funkce, která provede I/O operaci a vyhodnotí výsledek.
      *
      * @param string $urlSuffix část URL za identifikátorem firmy.
@@ -559,6 +623,7 @@ class FlexiBeeRO extends \Ease\Brick
                                    $format = null)
     {
         $response       = null;
+        $result         = null;
         $this->rowCount = null;
         $url            = $this->getEvidenceURL($urlSuffix);
 
@@ -636,7 +701,10 @@ class FlexiBeeRO extends \Ease\Brick
                 if (is_array($response)) {
                     $result = urldecode(http_build_query($response));
                 } elseif (strlen($response) && ($response != 'null')) {
-                    $result = urldecode(http_build_query(self::object2array(current(json_decode($response)))));
+                    $decoded = json_decode($response);
+                    if (is_array($decoded)) {
+                        $result = urldecode(http_build_query(self::object2array(current($decoded))));
+                    }
                 } else {
                     $result = null;
                 }
@@ -649,7 +717,10 @@ class FlexiBeeRO extends \Ease\Brick
                     }
                 } else {
                     if (is_string($response)) {
-                        $response = self::object2array(current(json_decode($response)));
+                        $decoded = json_decode($response);
+                        if (is_array($decoded)) {
+                            $response = self::object2array(current($decoded));
+                        }
                     }
                 }
 
@@ -702,17 +773,11 @@ class FlexiBeeRO extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->postFields);
 
         $httpHeaders = $this->defaultHttpHeaders;
-        switch ($format) {
-            case 'json':
-                $httpHeaders['Accept']       = 'application/json';
-                $httpHeaders['Content-Type'] = 'application/json';
 
-                break;
-            case 'xml':
-                $httpHeaders['Accept']       = 'application/xml';
-                $httpHeaders['Content-Type'] = 'application/xml';
-                break;
-        }
+        $formats = $this->reindexArrayBy(self::$formats, 'suffix');
+
+        $httpHeaders['Accept']       = $formats[$format]['content-type'];
+        $httpHeaders['Content-Type'] = $formats[$format]['content-type'];
 
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
@@ -878,8 +943,9 @@ class FlexiBeeRO extends \Ease\Brick
             $id = $this->getMyKey();
         }
 
-        $flexidata = $this->getFlexiData(null, '/'.$id);
-        if (count($flexidata) == 1) {
+        $flexidata    = $this->getFlexiData(null, '/'.$id);
+        $this->apiURL = $this->info;
+        if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
         }
         return $this->takeData($data);
@@ -1463,5 +1529,18 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         return $result;
+    }
+
+
+    /**
+     * Save current object to file
+     * @param string $destfile path to file
+     */
+    public function saveResponseToFile($destfile)
+    {
+        if (strlen($this->lastCurlResponse)) {
+            $this->doCurlRequest($this->apiURL, 'GET', $this->format);
+        }
+        file_put_contents($destfile, $this->lastCurlResponse);
     }
 }

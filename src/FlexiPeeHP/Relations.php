@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.1.4';
+ static public $version = '2017.1.7';
 
     /**
      * Evidence kontakt (Kontakty) Relations.
@@ -1197,7 +1197,7 @@ class Relations
   1 => 
   array (
     'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
+    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
     'name' => 'Položky',
   ),
 );
@@ -1226,7 +1226,7 @@ class Relations
   1 => 
   array (
     'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
+    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
     'name' => 'Položky',
   ),
 );

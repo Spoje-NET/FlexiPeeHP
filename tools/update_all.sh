@@ -13,6 +13,8 @@ then
     mv Actions.php  ../src/FlexiPeeHP/Actions.php
     php -qf update_relations_class.php 
     mv Relations.php ../src/FlexiPeeHP/Relations.php
+    php -qf update_formats_class.php 
+    mv Formats.php ../src/FlexiPeeHP/Formats.php
 else
     echo  $CURRENT still fresh
 fi
