@@ -279,7 +279,7 @@ class FlexiBeeRO extends \Ease\Brick
         'report-name',
         'report-lang',
         'report-sign',
-        'detail',
+        'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
         'mode',
         'limit',
         'start',
@@ -306,6 +306,8 @@ class FlexiBeeRO extends \Ease\Brick
         'auth',
         'skupina-stitku',
         'dir',
+        'relations',
+        'relations',
         'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
         'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
         'inDesktopApp' // Note: Undocumented function (html only)
@@ -1566,8 +1568,9 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $vazby = $this->getDataValue('vazby');
         if (is_null($vazby)) {
-            $vazby = $this->getColumnsFromFlexibee('vazby',
+            $vazby = $this->getColumnsFromFlexibee('*',
                 ['relations' => 'vazby', 'id' => $this->getRecordID()]);
+            $vazby = $vazby[0]['vazby'];
         }
         return $vazby;
     }
