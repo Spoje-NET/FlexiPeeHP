@@ -627,7 +627,12 @@ class FlexiBeeRO extends \Ease\Brick
         $response       = null;
         $result         = null;
         $this->rowCount = null;
-        $url            = $this->getEvidenceURL($urlSuffix);
+
+        if (preg_match('/^http/', $urlSuffix)) {
+            $url = $urlSuffix;
+        } else {
+            $url = $this->getEvidenceURL($urlSuffix);
+        }
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
 
@@ -778,9 +783,12 @@ class FlexiBeeRO extends \Ease\Brick
 
         $formats = $this->reindexArrayBy(self::$formats, 'suffix');
 
-        $httpHeaders['Accept']       = $formats[$format]['content-type'];
-        $httpHeaders['Content-Type'] = $formats[$format]['content-type'];
-
+        if (!isset($httpHeaders['Accept'])) {
+            $httpHeaders['Accept'] = $formats[$format]['content-type'];
+        }
+        if (!isset($httpHeaders['Content-Type'])) {
+            $httpHeaders['Content-Type'] = $formats[$format]['content-type'];
+        }
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
             if (($key == 'User-Agent') && ($value == 'FlexiPeeHP')) {
@@ -855,6 +863,9 @@ class FlexiBeeRO extends \Ease\Brick
         $this->curl = null;
     }
 
+    /**
+     * Disconnect CURL befere pass away
+     */
     public function __destruct()
     {
         $this->disconnect();
@@ -915,12 +926,17 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $conditions = '';
         }
-        if (strlen($suffix)) {
-            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
-                'GET');
+
+        if (preg_match('/^http/', $suffix)) {
+            $transactions = $this->performRequest($suffix, 'GET');
         } else {
-            $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.http_build_query($urlParams),
-                'GET');
+            if (strlen($suffix)) {
+                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
+                    'GET');
+            } else {
+                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.http_build_query($urlParams),
+                    'GET');
+            }
         }
         if (isset($transactions[$this->evidence])) {
             $result = $transactions[$this->evidence];
@@ -946,7 +962,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         $flexidata    = $this->getFlexiData(null, '/'.$id);
-        $this->apiURL = $this->info;
+        $this->apiURL = $this->info['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
         }
@@ -1397,7 +1413,11 @@ class FlexiBeeRO extends \Ease\Brick
                         $response[$evidence][0] = $evidenceContent; //One result
                     }
                 } else {
-                    $response = $responseBody;
+                    if (isset($responseBody['priloha'])) {
+                        $response = $responseBody['priloha'];
+                    } else {
+                        $response = $responseBody;
+                    }
                 }
             } else {
                 $response = $responseRaw;
@@ -1545,7 +1565,6 @@ class FlexiBeeRO extends \Ease\Brick
         return $result;
     }
 
-
     /**
      * Save current object to file
      *
@@ -1575,4 +1594,22 @@ class FlexiBeeRO extends \Ease\Brick
         return $vazby;
     }
 
+    /**
+     * Gives You URL for Current Record in FlexiBee web interface
+     *
+     * @return string url
+     */
+    public function getFlexiBeeURL()
+    {
+        $parsed_url = parse_url(str_replace('.'.$this->format, '', $this->apiURL));
+        $scheme     = isset($parsed_url['scheme']) ? $parsed_url['scheme'].'://'
+                : '';
+        $host       = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+        $port       = isset($parsed_url['port']) ? ':'.$parsed_url['port'] : '';
+        $user       = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+        $pass       = isset($parsed_url['pass']) ? ':'.$parsed_url['pass'] : '';
+        $pass       = ($user || $pass) ? "$pass@" : '';
+        $path       = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+        return $scheme.$user.$pass.$host.$port.$path;
+    }
 }
