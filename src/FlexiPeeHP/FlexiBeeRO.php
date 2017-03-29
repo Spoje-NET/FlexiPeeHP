@@ -734,18 +734,13 @@ class FlexiBeeRO extends \Ease\Brick
                 if (is_array($response) && ($this->lastResponseCode == 400)) {
                     $this->logResult($response, $url);
                 } else {
-                    $this->addStatusMessage(sprintf('Error (HTTP %d): <pre>%s</pre> %s',
+                    $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
                             curl_getinfo($this->curl, CURLINFO_HTTP_CODE),
                             $result, $this->lastCurlError), 'error');
                     $this->addStatusMessage($url, 'info');
-                    if (count($this->postFields)) {
-                        if (is_array($result)) {
-                            $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                                'debug');
-                        } else {
-                            $this->addStatusMessage(urldecode(http_build_query($this->getData())),
-                                'debug');
-                        }
+                    if (!empty($this->postFields)) {
+                        $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                            'debug');
                     }
                 }
 
@@ -1612,4 +1607,5 @@ class FlexiBeeRO extends \Ease\Brick
         $path       = isset($parsed_url['path']) ? $parsed_url['path'] : '';
         return $scheme.$user.$pass.$host.$port.$path;
     }
+
 }
