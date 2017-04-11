@@ -929,6 +929,9 @@ class FlexiBeeRO extends \Ease\Brick
         }
         if (isset($transactions[$this->evidence])) {
             $result = $transactions[$this->evidence];
+            if ((count($result) == 1) && (count(current($result)) == 0 )) {
+                $result = null; // Response is empty Array
+            }
         } else {
             $result = $transactions;
         }

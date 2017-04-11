@@ -1,4 +1,4 @@
-flexipeehp (1.6.4-1) UNRELEASED; urgency=low
+flexipeehp (1.6.4-2) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -58,5 +58,6 @@ flexipeehp (1.6.4-1) UNRELEASED; urgency=low
   [ vitex ]
   * Additonal control for relations in debug mode
   * __ToString returns allways string now
+  * Updated Generated classes
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 04 Oct 2016 19:04:51 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 04 Oct 2016 20:17:10 +0200

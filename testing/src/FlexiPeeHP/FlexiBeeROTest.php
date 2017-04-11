@@ -122,6 +122,18 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setFormat
+     * @todo   Implement testSetFormat().
+     */
+    public function testSetFormat()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
      * We can set only evidence defined in EvidenceList class
      *
      * @covers FlexiPeeHP\FlexiBeeRO::setEvidence
@@ -403,6 +415,18 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getRecordID
+     * @todo   Implement testGetRecordID().
+     */
+    public function testGetRecordID()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::recordExists
      */
     public function testRecordExists()
@@ -562,14 +586,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertNull($this->object->unifyResponseFormat(null));
         //One Row Test
         $test1raw = [$this->object->nameSpace =>
-                [$this->object->getResponseEvidence() =>
-                    ['id' => 1, 'name' => 'value']
+            [$this->object->getResponseEvidence() =>
+                ['id' => 1, 'name' => 'value']
             ]
         ];
 
         $test1expected = [$this->object->getResponseEvidence() =>
-                [
-                    ['id' => 1, 'name' => 'value']
+            [
+                ['id' => 1, 'name' => 'value']
             ]
         ];
 
@@ -578,17 +602,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
         //Two Row Test
         $test2Raw      = [$this->object->nameSpace =>
-                [$this->object->getResponseEvidence() =>
-                    [
-                        ['id' => 1, 'name' => 'value'],
-                        ['id' => 2, 'name' => 'value2']
+            [$this->object->getResponseEvidence() =>
+                [
+                    ['id' => 1, 'name' => 'value'],
+                    ['id' => 2, 'name' => 'value2']
                 ]
             ]
         ];
         $test2expected = [$this->object->getResponseEvidence() =>
-                [
-                    ['id' => 1, 'name' => 'value'],
-                    ['id' => 2, 'name' => 'value2']
+            [
+                ['id' => 1, 'name' => 'value'],
+                ['id' => 2, 'name' => 'value2']
             ]
         ];
 
@@ -718,6 +742,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'This test has not been implemented yet.'
         );
     }
+
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceName
      * @todo   Implement testGetEvidenceName().
@@ -741,4 +766,29 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'This test has not been implemented yet.'
         );
     }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::saveResponseToFile
+     * @todo   Implement testSaveResponseToFile().
+     */
+    public function testSaveResponseToFile()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getVazby
+     * @todo   Implement testGetVazby().
+     */
+    public function testGetVazby()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
 }

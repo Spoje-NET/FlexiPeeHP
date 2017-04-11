@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Objekt kontaktu.
  *
@@ -17,7 +16,6 @@ namespace FlexiPeeHP;
  */
 class Priloha extends FlexiBeeRW
 {
-
     /**
      * Evidence užitá objektem.
      *
@@ -31,16 +29,16 @@ class Priloha extends FlexiBeeRW
      * @var array
      */
     public static $relatedEvidence = [
-      'prodejka' => 'doklFak', 'pohledavka' => 'doklFak', 'zavazek' => 'doklFak',
-      'faktura-prijata' => 'doklFak', 'faktura-vydana' => 'doklFak',
-      'interni-doklad' => 'doklInt', 'pokladni-pohyb' => 'doklInt', 'vzajemny-zapocet' => 'doklInt',
-      'banka' => 'doklInt',
-      'poptavka-vydana' => 'doklObch', 'poptavka-prijata' => 'doklObch', 'objednavka-prijata' => 'doklObch',
-      'nabidka-vydana' => 'doklObch',
-      'objednavka-vydana' => 'doklObch', 'nabidka-prijata' => 'doklObch',
-      'skladovy-pohyb' => 'doklSklad',
-      'cenik' => 'cenik',
-      'adresar' => 'adresar', 'kontakt' => 'kontakt'
+        'prodejka' => 'doklFak', 'pohledavka' => 'doklFak', 'zavazek' => 'doklFak',
+        'faktura-prijata' => 'doklFak', 'faktura-vydana' => 'doklFak',
+        'interni-doklad' => 'doklInt', 'pokladni-pohyb' => 'doklInt', 'vzajemny-zapocet' => 'doklInt',
+        'banka' => 'doklInt',
+        'poptavka-vydana' => 'doklObch', 'poptavka-prijata' => 'doklObch', 'objednavka-prijata' => 'doklObch',
+        'nabidka-vydana' => 'doklObch',
+        'objednavka-vydana' => 'doklObch', 'nabidka-prijata' => 'doklObch',
+        'skladovy-pohyb' => 'doklSklad',
+        'cenik' => 'cenik',
+        'adresar' => 'adresar', 'kontakt' => 'kontakt'
     ];
 
     /**
@@ -52,10 +50,10 @@ class Priloha extends FlexiBeeRW
     public function attachFile($filepath, $attachmentData = [])
     {
         if (file_exists($filepath)) {
-            $attachmentData['nazSoub'] = basename($filepath);
+            $attachmentData['nazSoub']     = basename($filepath);
             $attachmentData['contentType'] = mime_content_type($filepath);
-            $attachmentData['dataSize'] = filesize($filepath);
-            $attachmentData['dataHash'] = md5_file($filepath);
+            $attachmentData['dataSize']    = filesize($filepath);
+            $attachmentData['dataHash']    = md5_file($filepath);
 
             switch ($attachmentData['contentType']) {
                 case 'image/png':
@@ -75,7 +73,7 @@ class Priloha extends FlexiBeeRW
      */
     public static function getDownloadUrl($object)
     {
-        return $object->apiURL . '/content';
+        return $object->apiURL.'/content';
     }
 
     /**
@@ -104,8 +102,8 @@ class Priloha extends FlexiBeeRW
         header('Expires: 0');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Pragma: public');
-        header('Content-Disposition: attachment; filename=' . $object->getName() . '_nrpe.sh');
-        header('Content-Length: ' . strlen($nrpesh));
+        header('Content-Disposition: attachment; filename='.$object->getName().'_nrpe.sh');
+        header('Content-Length: '.strlen($nrpesh));
         echo $object;
     }
 
@@ -124,7 +122,8 @@ class Priloha extends FlexiBeeRW
      */
     public static function addAttachmentFromFile($object, $filename)
     {
-        return self::addAttachment($object, basename($filename), file_get_contents($filename), mime_content_type($filename));
+        return self::addAttachment($object, basename($filename),
+                file_get_contents($filename), mime_content_type($filename));
     }
 
     /**
@@ -137,14 +136,16 @@ class Priloha extends FlexiBeeRW
      *
      * @return int HTTP Response code
      */
-    public static function addAttachment($object, $filename, $attachment, $contentType)
+    public static function addAttachment($object, $filename, $attachment,
+                                         $contentType)
     {
-        $headersBackup = $object->defaultHttpHeaders;
-        $object->postFields = $attachment;
+        $headersBackup                              = $object->defaultHttpHeaders;
+        $object->postFields                         = $attachment;
         $object->defaultHttpHeaders['Content-Type'] = $contentType;
-        $url = $object->getFlexiBeeURL() . '/prilohy/new/' . $filename;
-        $response = $object->doCurlRequest($url, 'PUT');
-        $object->defaultHttpHeaders = $headersBackup;
+        $url                                        = $object->getFlexiBeeURL().'/prilohy/new/'.$filename;
+        $response                                   = $object->doCurlRequest($url,
+            'PUT');
+        $object->defaultHttpHeaders                 = $headersBackup;
         return $response;
     }
 
@@ -156,11 +157,11 @@ class Priloha extends FlexiBeeRW
      */
     public static function getAttachmentsList($object)
     {
-        $fburl = $object->getFlexiBeeURL();
-        $attachments = $object->getFlexiData($fburl . '/prilohy');
+        $fburl       = $object->getFlexiBeeURL();
+        $attachments = $object->getFlexiData($fburl.'/prilohy');
         if (count($attachments)) {
             foreach ($attachments as $attachmentID => $attachmentData) {
-                $attachments[$attachmentID]['url'] = $object->url . '/c/' . $object->company . '/priloha/' . $attachmentData['id'];
+                $attachments[$attachmentID]['url'] = $object->url.'/c/'.$object->company.'/priloha/'.$attachmentData['id'];
             }
         }
         return $attachments;

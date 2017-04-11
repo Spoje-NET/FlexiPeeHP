@@ -34,4 +34,5 @@ class DodavatelskaSmlouva extends FlexiBeeRW
             'PUT', 'xml');
         return $this->lastResponseCode == 200;
     }
+
 }

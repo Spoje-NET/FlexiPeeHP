@@ -58,4 +58,5 @@ class Status extends FlexiBeeRO
         }
         return $response;
     }
+
 }

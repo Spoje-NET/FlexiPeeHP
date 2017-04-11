@@ -46,4 +46,5 @@ class Banka extends FlexiBeeRW
         $this->performRequest('banka/automaticke-parovani', 'PUT');
         return $this->lastResponseCode == 200;
     }
+
 }
