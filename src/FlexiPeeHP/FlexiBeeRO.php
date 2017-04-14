@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FlexiPeeHP - Read Only Access to FlexiBee class.
  *
@@ -16,7 +15,6 @@ namespace FlexiPeeHP;
  */
 class FlexiBeeRO extends \Ease\Brick
 {
-
     /**
      * Version of FlexiPeeHP library
      *
@@ -31,35 +29,35 @@ class FlexiBeeRO extends \Ease\Brick
      * @var array formats known to flexibee
      */
     static public $formats = [
-      'JS' => ['desc' => 'JavaScropt',
-        'suffix' => 'js', 'content-type' => 'application/javascript', 'import' => false],
-      'CSS' => ['desc' => 'Kaskádový styl',
-        'suffix' => 'css', 'content-type' => 'text/css', 'import' => false],
-      'HTML' => ['desc' => 'HTML stránka pro zobrazení informací na webové stránce.',
-        'suffix' => 'html', 'content-type' => 'text/html', 'import' => false],
-      'XML' => ['desc' => 'Strojově čitelná struktura ve formátu XML.', 'suffix' => 'xml',
-        'content-type' => 'application/xml', 'import' => true],
-      'JSON' => ['desc' => 'Strojově čitelná struktura ve formátu JSON. ', 'suffix' => 'json',
-        'content-type' => 'application/json', 'import' => true],
-      'CSV' => ['desc' => 'Tabulkový výstup do formátu CSV (Column Separated Values).',
-        'suffix' => 'csv', 'content-type' => 'text/csv', 'import' => true],
-      'DBF' => ['desc' => 'Databázový výstup ve formátu DBF (dBase).', 'suffix' => 'dbf',
-        'content-type' => 'application/dbf', 'import' => true],
-      'XLS' => ['desc' => 'Tabulkový výstup ve formátu Excel.', 'suffix' => 'xls',
-        'content-type' => 'application/ms-excel', 'import' => true],
-      'ISDOC' => ['desc' => 'e-faktura ISDOC.', 'suffix' => 'isdoc', 'content-type' => 'application/x-isdoc',
-        'import' => false],
-      'ISDOCx' => ['desc' => 'e-faktura ISDOC s PDF přílohou', 'suffix' => 'isdocx',
-        'content-type' => 'application/x-isdocx',
-        'import' => false],
-      'EDI' => ['desc' => 'Elektronická výměna data (EDI) ve formátu INHOUSE.',
-        'suffix' => 'edi', 'content-type' => 'application/x-edi-inhouse', 'import' => 'objednavka-prijata'],
-      'PDF' => ['desc' => 'Generování tiskového reportu. Jedná se o stejnou funkci která je dostupná v aplikaci. Export do PDF',
-        'suffix' => 'pdf', 'content-type' => 'application/pdf', 'import' => false],
-      'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
-        'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
-      'iCalendar' => ['desc' => '"Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
-        'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
+        'JS' => ['desc' => 'JavaScropt',
+            'suffix' => 'js', 'content-type' => 'application/javascript', 'import' => false],
+        'CSS' => ['desc' => 'Kaskádový styl',
+            'suffix' => 'css', 'content-type' => 'text/css', 'import' => false],
+        'HTML' => ['desc' => 'HTML stránka pro zobrazení informací na webové stránce.',
+            'suffix' => 'html', 'content-type' => 'text/html', 'import' => false],
+        'XML' => ['desc' => 'Strojově čitelná struktura ve formátu XML.', 'suffix' => 'xml',
+            'content-type' => 'application/xml', 'import' => true],
+        'JSON' => ['desc' => 'Strojově čitelná struktura ve formátu JSON. ', 'suffix' => 'json',
+            'content-type' => 'application/json', 'import' => true],
+        'CSV' => ['desc' => 'Tabulkový výstup do formátu CSV (Column Separated Values).',
+            'suffix' => 'csv', 'content-type' => 'text/csv', 'import' => true],
+        'DBF' => ['desc' => 'Databázový výstup ve formátu DBF (dBase).', 'suffix' => 'dbf',
+            'content-type' => 'application/dbf', 'import' => true],
+        'XLS' => ['desc' => 'Tabulkový výstup ve formátu Excel.', 'suffix' => 'xls',
+            'content-type' => 'application/ms-excel', 'import' => true],
+        'ISDOC' => ['desc' => 'e-faktura ISDOC.', 'suffix' => 'isdoc', 'content-type' => 'application/x-isdoc',
+            'import' => false],
+        'ISDOCx' => ['desc' => 'e-faktura ISDOC s PDF přílohou', 'suffix' => 'isdocx',
+            'content-type' => 'application/x-isdocx',
+            'import' => false],
+        'EDI' => ['desc' => 'Elektronická výměna data (EDI) ve formátu INHOUSE.',
+            'suffix' => 'edi', 'content-type' => 'application/x-edi-inhouse', 'import' => 'objednavka-prijata'],
+        'PDF' => ['desc' => 'Generování tiskového reportu. Jedná se o stejnou funkci která je dostupná v aplikaci. Export do PDF',
+            'suffix' => 'pdf', 'content-type' => 'application/pdf', 'import' => false],
+        'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
+            'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
+        'iCalendar' => ['desc' => '"Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
+            'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
     ];
 
     /**
@@ -279,44 +277,44 @@ class FlexiBeeRO extends \Ease\Brick
      * @var array
      */
     public $urlParams = [
-      'idUcetniObdobi',
-      'dry-run',
-      'fail-on-warning',
-      'report-name',
-      'report-lang',
-      'report-sign',
-      'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
-      'mode',
-      'limit',
-      'start',
-      'order',
-      'sort',
-      'add-row-count',
-      'relations',
-      'includes',
-      'use-ext-id',
-      'use-internal-id',
-      'stitky-as-ids',
-      'only-ext-ids',
-      'no-ext-ids',
-      'no-ids',
-      'code-as-id',
-      'no-http-errors',
-      'export-settings',
-      'as-gui',
-      'code-in-response',
-      'add-global-version',
-      'encoding',
-      'delimeter',
-      'format',
-      'auth',
-      'skupina-stitku',
-      'dir',
-      'relations',
-      'relations',
-      'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
-      'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
-      'inDesktopApp' // Note: Undocumented function (html only)
+        'idUcetniObdobi',
+        'dry-run',
+        'fail-on-warning',
+        'report-name',
+        'report-lang',
+        'report-sign',
+        'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
+        'mode',
+        'limit',
+        'start',
+        'order',
+        'sort',
+        'add-row-count',
+        'relations',
+        'includes',
+        'use-ext-id',
+        'use-internal-id',
+        'stitky-as-ids',
+        'only-ext-ids',
+        'no-ext-ids',
+        'no-ids',
+        'code-as-id',
+        'no-http-errors',
+        'export-settings',
+        'as-gui',
+        'code-in-response',
+        'add-global-version',
+        'encoding',
+        'delimeter',
+        'format',
+        'auth',
+        'skupina-stitku',
+        'dir',
+        'relations',
+        'relations',
+        'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
+        'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
+        'inDesktopApp' // Note: Undocumented function (html only)
     ];
 
     /**
@@ -396,7 +394,8 @@ class FlexiBeeRO extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false); // FlexiBee by default uses Self-Signed certificates
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($this->curl, CURLOPT_VERBOSE, ($this->debug === true)); // For debugging
-        curl_setopt($this->curl, CURLOPT_USERPWD, $this->user . ':' . $this->password); // set username and password
+        curl_setopt($this->curl, CURLOPT_USERPWD,
+            $this->user.':'.$this->password); // set username and password
     }
 
     /**
@@ -430,7 +429,7 @@ class FlexiBeeRO extends \Ease\Brick
             case 'admin':
             case 'status':
             case 'login-logout':
-                $this->prefix = '/' . $prefix . '/';
+                $this->prefix = '/'.$prefix.'/';
                 break;
             case null:
             case '':
@@ -468,14 +467,15 @@ class FlexiBeeRO extends \Ease\Brick
             case '/c/':
                 if (array_key_exists($evidence, EvidenceList::$name)) {
                     $this->evidence = $evidence;
-                    $result = true;
+                    $result         = true;
                 } else {
-                    throw new \Exception(sprintf('Try to set unsupported evidence %s', $evidence));
+                    throw new \Exception(sprintf('Try to set unsupported evidence %s',
+                        $evidence));
                 }
                 break;
             default:
                 $this->evidence = $evidence;
-                $result = true;
+                $result         = true;
                 break;
         }
         $this->updateApiURL();
@@ -600,9 +600,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($urlSuffix)) {
             $urlSuffix = $this->getEvidence();
         } elseif ($urlSuffix[0] == ';') {
-            $urlSuffix = $this->getEvidence() . $urlSuffix;
+            $urlSuffix = $this->getEvidence().$urlSuffix;
         }
-        return $this->url . $this->prefix . $this->company . '/' . $urlSuffix;
+        return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
     }
 
     /**
@@ -611,9 +611,9 @@ class FlexiBeeRO extends \Ease\Brick
     public function updateApiURL()
     {
         $this->apiURL = $this->getEvidenceURL();
-        $id = $this->__toString();
+        $id           = $this->__toString();
         if (!is_null($id)) {
-            $this->apiURL .= '/' . urlencode($id);
+            $this->apiURL .= '/'.urlencode($id);
         }
     }
 
@@ -625,10 +625,11 @@ class FlexiBeeRO extends \Ease\Brick
      * @param string $format    Requested format
      * @return array|boolean Výsledek operace
      */
-    public function performRequest($urlSuffix = null, $method = 'GET', $format = null)
+    public function performRequest($urlSuffix = null, $method = 'GET',
+                                   $format = null)
     {
-        $response = null;
-        $result = null;
+        $response       = null;
+        $result         = null;
         $this->rowCount = null;
 
         if (preg_match('/^http/', $urlSuffix)) {
@@ -651,7 +652,8 @@ class FlexiBeeRO extends \Ease\Brick
 
                 switch ($format) {
                     case 'json':
-                        $responseDecoded = json_decode($this->lastCurlResponse, true, 10);
+                        $responseDecoded = json_decode($this->lastCurlResponse,
+                            true, 10);
                         if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
                             $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
                             $this->setMyKey($this->lastInsertedID);
@@ -680,7 +682,7 @@ class FlexiBeeRO extends \Ease\Brick
                 }
 
 
-                $response = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
+                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
 
                 break;
 
@@ -688,10 +690,13 @@ class FlexiBeeRO extends \Ease\Brick
                 $this->lastCurlError = curl_error($this->curl);
                 switch ($format) {
                     case 'json':
-                        $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
-                            return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+                        $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
+                            function ($match) {
+                            return mb_convert_encoding(pack('H*', $match[1]),
+                                'UTF-8', 'UCS-2BE');
                         }, $this->lastCurlResponse);
-                        $response = (json_encode(json_decode($response, true, 10), JSON_PRETTY_PRINT));
+                        $response = (json_encode(json_decode($response, true, 10),
+                                JSON_PRETTY_PRINT));
                         break;
                     case 'xml':
                         if (strlen($this->lastCurlResponse)) {
@@ -733,10 +738,26 @@ class FlexiBeeRO extends \Ease\Brick
                 if (is_array($response) && ($this->lastResponseCode == 400)) {
                     $this->logResult($response, $url);
                 } else {
-                    $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s', curl_getinfo($this->curl, CURLINFO_HTTP_CODE), $result, $this->lastCurlError), 'error');
+                    $responseDecoded = json_decode($this->lastCurlResponse,
+                        true, 10);
+
+                    $errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+
+                    foreach ($errors as $error) {
+                        $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
+                                $responseCode,
+                                $error['message'].' '.$error['for']
+                                , $this->lastCurlError), 'error');
+                    }
                     $this->addStatusMessage($url, 'info');
-                    if (!empty($this->postFields)) {
-                        $this->addStatusMessage(urldecode(http_build_query($this->postFields)), 'debug');
+                    if (!empty($this->postFields) && $this->debug === true) {
+                        if (is_array($this->postFields)) {
+                            $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
+                                'debug');
+                        } else {
+                            $this->addStatusMessage(urldecode($this->postFields),
+                                'debug');
+                        }
                     }
                 }
 
@@ -783,9 +804,9 @@ class FlexiBeeRO extends \Ease\Brick
         $httpHeadersFinal = [];
         foreach ($httpHeaders as $key => $value) {
             if (($key == 'User-Agent') && ($value == 'FlexiPeeHP')) {
-                $value .= ' v' . self::$libVersion;
+                $value .= ' v'.self::$libVersion;
             }
-            $httpHeadersFinal[] = $key . ': ' . $value;
+            $httpHeadersFinal[] = $key.': '.$value;
         }
 
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeadersFinal);
@@ -808,11 +829,11 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setAction($action)
     {
-        $result = false;
+        $result           = false;
         $actionsAvailable = $this->getActionsInfo();
         if (array_key_exists($action, $actionsAvailable)) {
             $this->action = $action;
-            $result = true;
+            $result       = true;
         }
         return $result;
     }
@@ -871,8 +892,8 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getFlexiRow($recordID)
     {
-        $record = null;
-        $response = $this->performRequest($this->evidence . '/' . $recordID . '.json');
+        $record   = null;
+        $response = $this->performRequest($this->evidence.'/'.$recordID.'.json');
         if (isset($response[$this->evidence])) {
             $record = $response[$this->evidence][0];
         }
@@ -912,7 +933,7 @@ class FlexiBeeRO extends \Ease\Brick
             }
 
             if (strlen($conditions) && ($conditions[0] != '/')) {
-                $conditions = '/' . rawurlencode('(' . ($conditions) . ')');
+                $conditions = '/'.rawurlencode('('.($conditions).')');
             }
         } else {
             $conditions = '';
@@ -922,9 +943,11 @@ class FlexiBeeRO extends \Ease\Brick
             $transactions = $this->performRequest($suffix, 'GET');
         } else {
             if (strlen($suffix)) {
-                $transactions = $this->performRequest($this->evidence . $conditions . '.' . $this->format . '?' . $suffix . '&' . http_build_query($urlParams), 'GET');
+                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
+                    'GET');
             } else {
-                $transactions = $this->performRequest($this->evidence . $conditions . '.' . $this->format . '?' . http_build_query($urlParams), 'GET');
+                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.http_build_query($urlParams),
+                    'GET');
             }
         }
         if (isset($transactions[$this->evidence])) {
@@ -953,7 +976,7 @@ class FlexiBeeRO extends \Ease\Brick
             $id = $this->getMyKey();
         }
 
-        $flexidata = $this->getFlexiData(null, '/' . $id);
+        $flexidata    = $this->getFlexiData(null, '/'.$id);
         $this->apiURL = $this->info['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
@@ -972,15 +995,15 @@ class FlexiBeeRO extends \Ease\Brick
     public function jsonizeData($data)
     {
         $jsonize = [
-          $this->nameSpace => [
-            '@version' => $this->protoVersion,
-            $this->evidence => $this->objectToID($data),
-          ],
+            $this->nameSpace => [
+                '@version' => $this->protoVersion,
+                $this->evidence => $this->objectToID($data),
+            ],
         ];
 
         if (!is_null($this->action)) {
-            $jsonize[$this->nameSpace][$this->evidence . '@action'] = $this->action;
-            $this->action = null;
+            $jsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
+            $this->action                                         = null;
         }
 
         return json_encode($jsonize);
@@ -997,7 +1020,7 @@ class FlexiBeeRO extends \Ease\Brick
             $identifer = $this->getMyKey();
         }
         $flexiData = $this->getFlexiData(
-            'detail=custom:' . $this->getmyKeyColumn(), $identifer);
+            'detail=custom:'.$this->getmyKeyColumn(), $identifer);
 
         return $flexiData;
     }
@@ -1015,9 +1038,11 @@ class FlexiBeeRO extends \Ease\Brick
             $data = $this->getData();
         }
 
-        $res = $this->getColumnsFromFlexibee([$this->myKeyColumn], self::flexiUrl($data));
+        $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
+            self::flexiUrl($data));
 
-        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false')) || !count($res[0])) {
+        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
+            || !count($res[0])) {
             $found = false;
         } else {
             $found = true;
@@ -1057,7 +1082,8 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @return array
      */
-    public function getColumnsFromFlexibee($columnsList, $conditions = null, $indexBy = null)
+    public function getColumnsFromFlexibee($columnsList, $conditions = null,
+                                           $indexBy = null)
     {
         $detail = 'full';
 
@@ -1067,17 +1093,18 @@ class FlexiBeeRO extends \Ease\Brick
 
         if ($columnsList != '*') {
             if (is_array($columnsList)) {
-                if (!is_null($indexBy) && !array_key_exists($indexBy, $columnsList)) {
+                if (!is_null($indexBy) && !array_key_exists($indexBy,
+                        $columnsList)) {
                     $columnsList[] = $indexBy;
                 }
                 $columns = implode(',', array_unique($columnsList));
             } else {
                 $columns = $columnsList;
             }
-            $detail = 'custom:' . $columns;
+            $detail = 'custom:'.$columns;
         }
 
-        $flexiData = $this->getFlexiData('detail=' . $detail, $conditions);
+        $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
 
         if (!is_null($indexBy) && count($flexiData) && count(current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
@@ -1109,7 +1136,8 @@ class FlexiBeeRO extends \Ease\Brick
             $kod = $data['kod'];
         } else {
             if (isset($data[$this->nameColumn])) {
-                $kod = preg_replace('/[^a-zA-Z0-9]/', '', \Ease\Sand::rip($data[$this->nameColumn]));
+                $kod = preg_replace('/[^a-zA-Z0-9]/', '',
+                    \Ease\Sand::rip($data[$this->nameColumn]));
             } else {
                 if (isset($data[$this->myKeyColumn])) {
                     $kod = \Ease\Sand::rip($data[$this->myKeyColumn]);
@@ -1137,7 +1165,7 @@ class FlexiBeeRO extends \Ease\Brick
                 }
             }
             if ($counter) {
-                $kodfinal = $kodfinal . $counter;
+                $kodfinal = $kodfinal.$counter;
             }
 
             $this->codes[$kodfinal] = $kod;
@@ -1160,7 +1188,8 @@ class FlexiBeeRO extends \Ease\Brick
             if (isset($resultData['message'])) {
                 $this->addStatusMessage($resultData['message'], 'warning');
             }
-            $this->addStatusMessage('Error ' . $this->lastResponseCode . ': ' . urldecode($url), 'warning');
+            $this->addStatusMessage('Error '.$this->lastResponseCode.': '.urldecode($url),
+                'warning');
             unset($url);
         }
         if (is_null($resultData)) {
@@ -1187,15 +1216,15 @@ class FlexiBeeRO extends \Ease\Brick
                     foreach ($result['errors'] as $error) {
                         $message = $error['message'];
                         if (isset($error['for'])) {
-                            $message .= ' for: ' . $error['for'];
+                            $message .= ' for: '.$error['for'];
                         }
                         if (isset($error['value'])) {
-                            $message .= ' value:' . $error['value'];
+                            $message .= ' value:'.$error['value'];
                         }
                         if (isset($error['code'])) {
-                            $message .= ' code:' . $error['code'];
+                            $message .= ' code:'.$error['code'];
                         }
-                        $this->addStatusMessage($rid . ': ' . $message, $status);
+                        $this->addStatusMessage($rid.': '.$message, $status);
                     }
                 }
             }
@@ -1209,8 +1238,10 @@ class FlexiBeeRO extends \Ease\Brick
     public function saveDebugFiles()
     {
         $tmpdir = sys_get_temp_dir();
-        file_put_contents($tmpdir . '/request-' . $this->evidence . '-' . microtime() . '.' . $this->format, $this->postFields);
-        file_put_contents($tmpdir . '/response-' . $this->evidence . '-' . microtime() . '.' . $this->format, $this->lastCurlResponse);
+        file_put_contents($tmpdir.'/request-'.$this->evidence.'-'.microtime().'.'.$this->format,
+            $this->postFields);
+        file_put_contents($tmpdir.'/response-'.$this->evidence.'-'.microtime().'.'.$this->format,
+            $this->lastCurlResponse);
     }
 
     /**
@@ -1237,32 +1268,32 @@ class FlexiBeeRO extends \Ease\Brick
     public static function flexiUrl(array $data, $joiner = 'and', $defop = 'eq')
     {
         $flexiUrl = '';
-        $parts = [];
+        $parts    = [];
 
         foreach ($data as $column => $value) {
             if (is_integer($data[$column]) || is_float($data[$column])) {
-                $parts[$column] = $column . ' eq \'' . $data[$column] . '\'';
+                $parts[$column] = $column.' eq \''.$data[$column].'\'';
             } elseif (is_bool($data[$column])) {
-                $parts[$column] = $data[$column] ? $column . ' eq true' : $column . ' eq false';
+                $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
             } elseif (is_null($data[$column])) {
-                $parts[$column] = $column . " is null";
+                $parts[$column] = $column." is null";
             } else {
                 switch ($value) {
                     case '!null':
-                        $parts[$column] = $column . " is not null";
+                        $parts[$column] = $column." is not null";
                         break;
                     case 'is empty':
                     case 'is not empty':
-                        $parts[$column] = $column . ' ' . $value;
+                        $parts[$column] = $column.' '.$value;
                         break;
                     default:
-                        $parts[$column] = $column . " $defop '" . $data[$column] . "'";
+                        $parts[$column] = $column." $defop '".$data[$column]."'";
                         break;
                 }
             }
         }
 
-        $flexiUrl = implode(' ' . $joiner . ' ', $parts);
+        $flexiUrl = implode(' '.$joiner.' ', $parts);
 
         return $flexiUrl;
     }
@@ -1278,11 +1309,12 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $myCode = $this->getDataValue('kod');
         if ($myCode) {
-            $id = 'code:' . $myCode;
+            $id = 'code:'.$myCode;
         } else {
             $id = $this->getDataValue('id');
             if (($this->debug === true) && is_null($id)) {
-                $this->addToLog('Object Data does not contain code: or id: cannot match with statement!', 'warning');
+                $this->addToLog('Object Data does not contain code: or id: cannot match with statement!',
+                    'warning');
             }
         }
         return is_numeric($id) ? intval($id) : strval($id);
@@ -1320,7 +1352,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function getExternalID($want = null)
     {
         $extid = null;
-        $ids = $this->getDataValue('external-ids');
+        $ids   = $this->getDataValue('external-ids');
         if (is_null($want)) {
             if (count($ids)) {
                 $extid = current($ids);
@@ -1328,8 +1360,8 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             if (!is_null($ids) && is_array($ids)) {
                 foreach ($ids as $id) {
-                    if (strstr($id, 'ext:' . $want)) {
-                        $extid = str_replace('ext:' . $want . ':', '', $id);
+                    if (strstr($id, 'ext:'.$want)) {
+                        $extid = str_replace('ext:'.$want.':', '', $id);
                     }
                 }
             }
@@ -1348,7 +1380,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $globalVersion = null;
         if (!count($this->lastResult) || !isset($this->lastResult['@globalVersion'])) {
-            $this->getFlexiData(null, ['add-global-version' => 'true', 'limit' => 1]);
+            $this->getFlexiData(null,
+                ['add-global-version' => 'true', 'limit' => 1]);
         }
 
         if (isset($this->lastResult['@globalVersion'])) {
@@ -1515,15 +1548,16 @@ class FlexiBeeRO extends \Ease\Brick
 
         $actionsAvailble = $this->getActionsInfo();
 
-        if (is_array($actionsAvailble) && array_key_exists($action, $actionsAvailble)) {
+        if (is_array($actionsAvailble) && array_key_exists($action,
+                $actionsAvailble)) {
             switch ($actionsAvailble[$action]['actionMakesSense']) {
                 case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
                 case 'ONLY_WITH_INSTANCE': //Add instance
-                    $urlSuffix = '/' . $this->__toString() . '/' . $action . '.' . $this->format;
+                    $urlSuffix = '/'.$this->__toString().'/'.$action.'.'.$this->format;
                     break;
 
                 default:
-                    $urlSuffix = '/' . $action;
+                    $urlSuffix = '/'.$action;
                     break;
             }
 
@@ -1539,7 +1573,8 @@ class FlexiBeeRO extends \Ease\Brick
                     break;
             }
         } else {
-            throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'), $action, $this->getEvidence()));
+            throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
+                $action, $this->getEvidence()));
         }
 
         return $result;
@@ -1567,7 +1602,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $vazby = $this->getDataValue('vazby');
         if (is_null($vazby)) {
-            $vazby = $this->getColumnsFromFlexibee('*', ['relations' => 'vazby', 'id' => $this->getRecordID()]);
+            $vazby = $this->getColumnsFromFlexibee('*',
+                ['relations' => 'vazby', 'id' => $this->getRecordID()]);
             $vazby = $vazby[0]['vazby'];
         }
         return $vazby;
@@ -1580,15 +1616,16 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getFlexiBeeURL()
     {
-        $parsed_url = parse_url(str_replace('.' . $this->format, '', $this->apiURL));
-        $scheme = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-        $host = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-        $port = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-        $user = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-        $pass = isset($parsed_url['pass']) ? ':' . $parsed_url['pass'] : '';
-        $pass = ($user || $pass) ? "$pass@" : '';
-        $path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-        return $scheme . $user . $pass . $host . $port . $path;
+        $parsed_url = parse_url(str_replace('.'.$this->format, '', $this->apiURL));
+        $scheme     = isset($parsed_url['scheme']) ? $parsed_url['scheme'].'://'
+                : '';
+        $host       = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+        $port       = isset($parsed_url['port']) ? ':'.$parsed_url['port'] : '';
+        $user       = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+        $pass       = isset($parsed_url['pass']) ? ':'.$parsed_url['pass'] : '';
+        $pass       = ($user || $pass) ? "$pass@" : '';
+        $path       = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+        return $scheme.$user.$pass.$host.$port.$path;
     }
 
 }
