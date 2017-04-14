@@ -657,6 +657,7 @@ class FlexiBeeRO extends \Ease\Brick
                         if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
                             $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
                             $this->setMyKey($this->lastInsertedID);
+                            $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
                         } else {
                             $this->lastInsertedID = null;
                             if (isset($responseDecoded[$this->nameSpace]['@rowCount'])) {
