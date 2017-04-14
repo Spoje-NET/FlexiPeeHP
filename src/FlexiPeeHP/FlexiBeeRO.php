@@ -743,13 +743,17 @@ class FlexiBeeRO extends \Ease\Brick
                         true, 10);
 
                     $errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+                    if (!is_array($errors)) {
+                        $errors[]['message'] = '';
+                    }
 
                     foreach ($errors as $error) {
-                        $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
+                            $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
                                 $responseCode,
-                                $error['message'].' '.$error['for']
-                                , $this->lastCurlError), 'error');
-                    }
+                                    implode('; ', $error)
+                                    , $this->lastCurlError), 'error');
+                        }
+                    
                     $this->addStatusMessage($url, 'info');
                     if (!empty($this->postFields) && $this->debug === true) {
                         if (is_array($this->postFields)) {
