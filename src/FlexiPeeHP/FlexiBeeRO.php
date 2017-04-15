@@ -318,6 +318,12 @@ class FlexiBeeRO extends \Ease\Brick
     ];
 
     /**
+     * Save 404 results to log ?
+     * @var boolean
+     */
+    protected $ignoreNotFound = false;
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -753,6 +759,9 @@ class FlexiBeeRO extends \Ease\Brick
                         $errors[]['message'] = '';
                     }
 
+                    if (( $responseCode == 404 ) && ($this->ignoreNotFound === true)) {
+                        break;
+                    }
                     foreach ($errors as $error) {
                         $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
                                 $responseCode,
@@ -1650,5 +1659,21 @@ class FlexiBeeRO extends \Ease\Brick
         $res = parent::setMyKey($myKeyValue);
         $this->updateApiURL();
         return $res;
+    }
+
+
+    /**
+     * Set or get ignore not found pages flag
+     *
+     * @param boolean $ignore set flag to
+     *
+     * @return boolean get flag state
+     */
+    public function ignore404($ignore = null)
+    {
+        if (!is_null($ignore)) {
+            $this->ignoreNotFound;
+        }
+        return $this->ignoreNotFound;
     }
 }
