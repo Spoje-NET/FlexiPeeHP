@@ -754,12 +754,12 @@ class FlexiBeeRO extends \Ease\Brick
                     }
 
                     foreach ($errors as $error) {
-                            $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
+                        $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
                                 $responseCode,
-                                    implode('; ', $error)
-                                    , $this->lastCurlError), 'error');
-                        }
-                    
+                                implode('; ', $error)
+                                , $this->lastCurlError), 'error');
+                    }
+
                     $this->addStatusMessage($url, 'info');
                     if (!empty($this->postFields) && $this->debug === true) {
                         if (is_array($this->postFields)) {
@@ -1639,4 +1639,16 @@ class FlexiBeeRO extends \Ease\Brick
         return $scheme.$user.$pass.$host.$port.$path;
     }
 
+    /**
+     * Set Record Key
+     *
+     * @param int|string $myKeyValue
+     * @return boolean
+     */
+    public function setMyKey($myKeyValue)
+    {
+        $res = parent::setMyKey($myKeyValue);
+        $this->updateApiURL();
+        return $res;
+    }
 }
