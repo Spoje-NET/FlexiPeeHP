@@ -158,9 +158,10 @@ class Priloha extends FlexiBeeRW
     public static function getAttachmentsList($object)
     {
         $fburl       = $object->getFlexiBeeURL();
-        $attachments = $object->getFlexiData($fburl.'/prilohy');
-        if (count($attachments)) {
-            foreach ($attachments as $attachmentID => $attachmentData) {
+        $attachments = [];
+        $atch        = $object->getFlexiData($fburl.'/prilohy');
+        if (count($atch) && ($object->lastResponseCode == 200)) {
+            foreach ($atch as $attachmentID => $attachmentData) {
                 $attachments[$attachmentID]['url'] = $object->url.'/c/'.$object->company.'/priloha/'.$attachmentData['id'];
             }
         }

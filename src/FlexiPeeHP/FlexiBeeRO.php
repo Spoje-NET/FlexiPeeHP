@@ -742,7 +742,13 @@ class FlexiBeeRO extends \Ease\Brick
                     $responseDecoded = json_decode($this->lastCurlResponse,
                         true, 10);
 
-                    $errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+                    if (is_array($responseDecoded) && array_key_exists('results',
+                            $responseDecoded[$this->nameSpace])) {
+                        $errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+                    } else {
+                        $errors = null;
+                    }
+
                     if (!is_array($errors)) {
                         $errors[]['message'] = '';
                     }
