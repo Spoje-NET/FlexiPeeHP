@@ -80,11 +80,25 @@ $syncer->addStatusMessage('Updating Evidences List');
 
 $evidencies = $syncer->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
 
+//Add Evidencies Forbidden on demo.FlexiBee.eu
+$evidencies['evidences']['evidence'][] = [
+    "evidenceType" => "NASTAVENI",
+    "evidenceName" => "Nastavení",
+    "evidencePath" => "nastaveni",
+    "importStatus" => "NOT_DOCUMENTED",
+    "className" => "cz.winstrom.vo.nast.Nastaveni",
+    "formCode" => "nNastav"
+];
+
 $evlist = [];
 foreach ($evidencies['evidences']['evidence'] as $evidenceID => $evidence) {
     $evlist[$evidence['evidencePath']]   = $evidence['evidenceName'];
     $fullList[$evidence['evidencePath']] = $evidence;
 }
+
+asort($evlist);
+asort($fullList);
+
 $evidenceList .= '    /**
      * Evidences Path/Name listing.
      *

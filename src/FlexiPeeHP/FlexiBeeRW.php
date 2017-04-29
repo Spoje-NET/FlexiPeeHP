@@ -310,4 +310,13 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         return parent::jsonizeData($data);
     }
+
+    /**
+     * Insert current data into FlexiBee and load actual record data back
+     */
+    public function refresh()
+    {
+        $this->insertToFlexiBee();
+        $this->loadFromFlexiBee();
+    }
 }

@@ -24,29 +24,14 @@ class Relations
  static public $version = '2017.1.8';
 
     /**
-     * Evidence kontakt (Kontakty) Relations.
+     * Evidence banka-polozka (#banBanZapoctyPol) Relations.
      *
      * @var array
      */
- static public $kontakt = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
+ static public $bankaPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
 );
     /**
      * Evidence adresar (Adresy firem) Relations.
@@ -122,890 +107,11 @@ class Relations
   ),
 );
     /**
-     * Evidence udalost (Události, aktivity) Relations.
+     * Evidence atribut (Atributy) Relations.
      *
      * @var array
      */
- static public $udalost = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'naklady',
-    'evidenceType' => 'NAKLAD',
-    'name' => 'Náklady aktivity',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-);
-    /**
-     * Evidence typ-aktivity (Typy událostí / aktivit) Relations.
-     *
-     * @var array
-     */
- static public $typAktivity = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-nakladu (Typy nákladů na události / aktivity) Relations.
-     *
-     * @var array
-     */
- static public $typNakladu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence naklad (Náklady na události / aktivity) Relations.
-     *
-     * @var array
-     */
- static public $naklad = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence adresar-bankovni-ucet (Bankovní spojení) Relations.
-     *
-     * @var array
-     */
- static public $adresarBankovniUcet = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence skupina-firem (Skupiny firem) Relations.
-     *
-     * @var array
-     */
- static public $skupinaFirem = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence smlouva (Odběratelské smlouvy) Relations.
-     *
-     * @var array
-     */
- static public $smlouva = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkySmlouvy',
-    'evidenceType' => 'SMLOUVA_POLOZKA',
-    'name' => 'Standardní položky smluv',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  3 => 
-  array (
-    'url' => 'polozkySmlouvyExt',
-    'evidenceType' => 'SMLOUVA_POLOZKA',
-    'name' => 'Externí položky smluv',
-  ),
-);
-    /**
-     * Evidence dodavatelska-smlouva (Dodavatelské smlouvy) Relations.
-     *
-     * @var array
-     */
- static public $dodavatelskaSmlouva = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkySmlouvy',
-    'evidenceType' => 'SMLOUVA_POLOZKA',
-    'name' => 'Standardní položky smluv',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  3 => 
-  array (
-    'url' => 'polozkySmlouvyExt',
-    'evidenceType' => 'SMLOUVA_POLOZKA',
-    'name' => 'Externí položky smluv',
-  ),
-);
-    /**
-     * Evidence typ-smlouvy (Typy odběratelských smluv) Relations.
-     *
-     * @var array
-     */
- static public $typSmlouvy = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence dodavatelsky-typ-smlouvy (Typy dodavatelských smluv) Relations.
-     *
-     * @var array
-     */
- static public $dodavatelskyTypSmlouvy = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence stav-smlouvy (Stavy smluv) Relations.
-     *
-     * @var array
-     */
- static public $stavSmlouvy = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence smlouva-polozka (Položky smluv) Relations.
-     *
-     * @var array
-     */
- static public $smlouvaPolozka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-);
-    /**
-     * Evidence objednavka-prijata (Přijaté objednávky) Relations.
-     *
-     * @var array
-     */
- static public $objednavkaPrijata = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'OBJEDNAVKA_IN_POLOZKA',
-    'name' => 'Položky objednávky přijaté',
-  ),
-);
-    /**
-     * Evidence objednavka-prijata-polozka (Položky přijaté objednávky) Relations.
-     *
-     * @var array
-     */
- static public $objednavkaPrijataPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-objednavky-prijate (Dokladové řady - přijaté objednávky) Relations.
-     *
-     * @var array
-     */
- static public $radaObjednavkyPrijate = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence typ-objednavky-prijate (Typy přijatých objednávek) Relations.
-     *
-     * @var array
-     */
- static public $typObjednavkyPrijate = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence objednavka-vydana (Vydané objednávky) Relations.
-     *
-     * @var array
-     */
- static public $objednavkaVydana = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'OBJEDNAVKA_OUT_POLOZKA',
-    'name' => 'Položky objednávky vydané',
-  ),
-);
-    /**
-     * Evidence objednavka-vydana-polozka (Položky vydané objednávky) Relations.
-     *
-     * @var array
-     */
- static public $objednavkaVydanaPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-objednavky-vydane (Typy vydaných objednávek) Relations.
-     *
-     * @var array
-     */
- static public $typObjednavkyVydane = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-objednavky-vydane (Dokladové řady - vydané objednávky) Relations.
-     *
-     * @var array
-     */
- static public $radaObjednavkyVydane = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence poptavka-vydana (Vydané poptávky) Relations.
-     *
-     * @var array
-     */
- static public $poptavkaVydana = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'POPTAVKA_OUT_POLOZKA',
-    'name' => 'Položky poptávky vydané',
-  ),
-);
-    /**
-     * Evidence poptavka-vydana-polozka (Položky vydané poptávky) Relations.
-     *
-     * @var array
-     */
- static public $poptavkaVydanaPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-poptavky-vydane (Typy vydaných poptávek) Relations.
-     *
-     * @var array
-     */
- static public $typPoptavkyVydane = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-poptavky-vydane (Dokladové řady - vydané poptávky) Relations.
-     *
-     * @var array
-     */
- static public $radaPoptavkyVydane = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence poptavka-prijata (Přijaté poptávky) Relations.
-     *
-     * @var array
-     */
- static public $poptavkaPrijata = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'POPTAVKA_IN_POLOZKA',
-    'name' => 'Položky poptávky přijaté',
-  ),
-);
-    /**
-     * Evidence poptavka-prijata-polozka (Položky přijatých poptávek) Relations.
-     *
-     * @var array
-     */
- static public $poptavkaPrijataPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-poptavky-prijate (Typy přijatých poptávek) Relations.
-     *
-     * @var array
-     */
- static public $typPoptavkyPrijate = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-poptavky-prijate (Dokladové řady - přijaté poptávky) Relations.
-     *
-     * @var array
-     */
- static public $radaPoptavkyPrijate = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence nabidka-vydana (Vydané nabídky) Relations.
-     *
-     * @var array
-     */
- static public $nabidkaVydana = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'NABIDKA_OUT_POLOZKA',
-    'name' => 'Položky nabídky vydané',
-  ),
-);
-    /**
-     * Evidence nabidka-vydana-polozka (Položky vydané nabídky) Relations.
-     *
-     * @var array
-     */
- static public $nabidkaVydanaPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-nabidky-vydane (Typy vydaných nabídek) Relations.
-     *
-     * @var array
-     */
- static public $typNabidkyVydane = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-nabidky-vydane (Dokladové řady - vydané nabídky) Relations.
-     *
-     * @var array
-     */
- static public $radaNabidkyVydane = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence nabidka-prijata (Přijaté nabídky) Relations.
-     *
-     * @var array
-     */
- static public $nabidkaPrijata = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'NABIDKA_IN_POLOZKA',
-    'name' => 'Položky nabídky přijaté',
-  ),
-);
-    /**
-     * Evidence typ-nabidky-prijate (Typy přijatých nabídek) Relations.
-     *
-     * @var array
-     */
- static public $typNabidkyPrijate = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence nabidka-prijata-polozka (Položky přijaté nabídky) Relations.
-     *
-     * @var array
-     */
- static public $nabidkaPrijataPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-nabidky-prijate (Dokladové řady - přijaté nabídky) Relations.
-     *
-     * @var array
-     */
- static public $radaNabidkyPrijate = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence faktura-prijata (Přijaté faktury) Relations.
-     *
-     * @var array
-     */
- static public $fakturaPrijata = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'FAKTURA_IN_POLOZKA',
-    'name' => 'Položky faktur',
-  ),
-);
-    /**
-     * Evidence faktura-prijata-polozka (Položky přijatých faktur) Relations.
-     *
-     * @var array
-     */
- static public $fakturaPrijataPolozka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'vyrobniCislaVydana',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-  2 => 
-  array (
-    'url' => 'vyrobniCislaPrijata',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-);
-    /**
-     * Evidence typ-faktury-prijate (Typy přijatých faktur) Relations.
-     *
-     * @var array
-     */
- static public $typFakturyPrijate = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-faktury-prijate (Dokladové řady - přijaté faktury) Relations.
-     *
-     * @var array
-     */
- static public $radaFakturyPrijate = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence predpis-zauctovani (Předpisy zaúčtování) Relations.
-     *
-     * @var array
-     */
- static public $predpisZauctovani = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada (dokladové řady) Relations.
-     *
-     * @var array
-     */
- static public $rada = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence rocni-rada (Roční položky dokladové řady) Relations.
-     *
-     * @var array
-     */
- static public $rocniRada = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence misto-urceni (Místa určení) Relations.
-     *
-     * @var array
-     */
- static public $mistoUrceni = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence text (Předdefinované texty) Relations.
-     *
-     * @var array
-     */
- static public $text = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence pokladni-pohyb (Pokladna) Relations.
-     *
-     * @var array
-     */
- static public $pokladniPohyb = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'POKLADNI_POHYB_POLOZKA',
-    'name' => 'Položky pokladního dokladu',
-  ),
-);
-    /**
-     * Evidence pokladni-pohyb-polozka (Položky pokladních dokladů) Relations.
-     *
-     * @var array
-     */
- static public $pokladniPohybPolozka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'vyrobniCislaVydana',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-  2 => 
-  array (
-    'url' => 'vyrobniCislaPrijata',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-);
-    /**
-     * Evidence rada-pokladni-pohyb (Dokladové řady - pokladní doklady) Relations.
-     *
-     * @var array
-     */
- static public $radaPokladniPohyb = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence typ-pokladni-pohyb (Typy pokladních dokladů) Relations.
-     *
-     * @var array
-     */
- static public $typPokladniPohyb = array (
+ static public $atribut = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1048,21 +154,21 @@ class Relations
   ),
 );
     /**
-     * Evidence typ-banka (Typy bankovních dokladů) Relations.
+     * Evidence adresar-bankovni-ucet (Bankovní spojení) Relations.
      *
      * @var array
      */
- static public $typBanka = array (
+ static public $adresarBankovniUcet = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence rada-banka (Dokladové řady - bankovní doklady) Relations.
+     * Evidence cenova-uroven (Cenové úrovně) Relations.
      *
      * @var array
      */
- static public $radaBanka = array (
+ static public $cenovaUroven = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1071,877 +177,38 @@ class Relations
   ),
   1 => 
   array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence banka-polozka (#banBanZapoctyPol) Relations.
-     *
-     * @var array
-     */
- static public $bankaPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence pohledavka (Ostatní pohledávky) Relations.
-     *
-     * @var array
-     */
- static public $pohledavka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
+    'url' => 'skupinyZbozi',
+    'evidenceType' => 'SKUPINA_ZBOZI',
+    'name' => 'Skupiny zboží',
   ),
   2 => 
   array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
+    'url' => 'firmy',
+    'evidenceType' => 'ADRESAR',
+    'name' => 'Adresář',
   ),
   3 => 
   array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
+    'url' => 'skupinyCen',
+    'evidenceType' => 'CENIKOVA_SKUPINA',
+    'name' => 'Ceníkové skupiny',
   ),
   4 => 
   array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'POHLEDAVKA_POLOZKA',
-    'name' => 'Položky faktur',
+    'url' => 'ceniky',
+    'evidenceType' => 'CENIK',
+    'name' => 'Ceníky',
   ),
 );
     /**
-     * Evidence pohledavka-polozka (Položky ostatních pohledávek) Relations.
+     * Evidence odberatel (Ceny pro odběratele/skupiny odběratelů, speciální kódy) Relations.
      *
      * @var array
      */
- static public $pohledavkaPolozka = array (
+ static public $odberatel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-pohledavky (Typy ostatních pohledávek) Relations.
-     *
-     * @var array
-     */
- static public $typPohledavky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-pohledavky (Dokladové řady - pohledávky) Relations.
-     *
-     * @var array
-     */
- static public $radaPohledavky = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence bankovni-ucet (Seznam bankovních účtů) Relations.
-     *
-     * @var array
-     */
- static public $bankovniUcet = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence pokladna (Seznam pokladen) Relations.
-     *
-     * @var array
-     */
- static public $pokladna = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence prikaz-k-uhrade (Příkaz k úhradě) Relations.
-     *
-     * @var array
-     */
- static public $prikazKUhrade = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
-    'name' => 'Položky',
-  ),
-);
-    /**
-     * Evidence prikaz-k-uhrade-polozka (Položka příkazu k úhradě) Relations.
-     *
-     * @var array
-     */
- static public $prikazKUhradePolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence prikaz-k-inkasu (Příkaz k inkasu) Relations.
-     *
-     * @var array
-     */
- static public $prikazKInkasu = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
-    'name' => 'Položky',
-  ),
-);
-    /**
-     * Evidence prikaz-k-inkasu-polozka (Položka inkasa) Relations.
-     *
-     * @var array
-     */
- static public $prikazKInkasuPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence vzajemny-zapocet (Vzájemné zápočty) Relations.
-     *
-     * @var array
-     */
- static public $vzajemnyZapocet = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'BANKA_POLOZKA',
-    'name' => 'Položky bankovního dokladu',
-  ),
-);
-    /**
-     * Evidence typ-vzajemnych-zapoctu (Typy zápočtů) Relations.
-     *
-     * @var array
-     */
- static public $typVzajemnychZapoctu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-interniho-dokladu (Typy interních dokladů) Relations.
-     *
-     * @var array
-     */
- static public $typInternihoDokladu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-interniho-dokladu (Dokladové řady - interní doklady) Relations.
-     *
-     * @var array
-     */
- static public $radaInternihoDokladu = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence interni-doklad (Interní doklady) Relations.
-     *
-     * @var array
-     */
- static public $interniDoklad = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'INTERNI_DOKLAD_POLOZKA',
-    'name' => 'Položky interního dokladu',
-  ),
-);
-    /**
-     * Evidence interni-doklad-polozka (Položky interních dokladů) Relations.
-     *
-     * @var array
-     */
- static public $interniDokladPolozka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence priloha (Příloha) Relations.
-     *
-     * @var array
-     */
- static public $priloha = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence faktura-vydana (Vydané faktury) Relations.
-     *
-     * @var array
-     */
- static public $fakturaVydana = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'FAKTURA_OUT_POLOZKA',
-    'name' => 'Položky faktur',
-  ),
-);
-    /**
-     * Evidence faktura-vydana-polozka (Položky vydaných faktur a prodejek) Relations.
-     *
-     * @var array
-     */
- static public $fakturaVydanaPolozka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'vyrobniCislaVydana',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-  2 => 
-  array (
-    'url' => 'vyrobniCislaPrijata',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-);
-    /**
-     * Evidence typ-faktury-vydane (Typy vydaných faktur) Relations.
-     *
-     * @var array
-     */
- static public $typFakturyVydane = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rada-faktury-vydane (Dokladové řady - vydané faktury) Relations.
-     *
-     * @var array
-     */
- static public $radaFakturyVydane = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence prodejka (Prodejní kasa) Relations.
-     *
-     * @var array
-     */
- static public $prodejka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'vazby',
-    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
-    'name' => 'Vazby mezi doklady',
-  ),
-  3 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  4 => 
-  array (
-    'url' => 'polozkyDokladu',
-    'evidenceType' => 'FAKTURA_OUT_POLOZKA',
-    'name' => 'Položky faktur',
-  ),
-);
-    /**
-     * Evidence typ-prodejky (Seznam prodejních kas) Relations.
-     *
-     * @var array
-     */
- static public $typProdejky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence kurz (Kurzy) Relations.
-     *
-     * @var array
-     */
- static public $kurz = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence ucet (Účtový rozvrh) Relations.
-     *
-     * @var array
-     */
- static public $ucet = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence mena (Měny) Relations.
-     *
-     * @var array
-     */
- static public $mena = array (
-  0 => 
-  array (
-    'url' => 'kurzy',
-    'evidenceType' => 'KURZ',
-    'name' => 'Kurzy',
-  ),
-  1 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-);
-    /**
-     * Evidence stat (Státy) Relations.
-     *
-     * @var array
-     */
- static public $stat = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence cinnost (Činnost) Relations.
-     *
-     * @var array
-     */
- static public $cinnost = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence stredisko (Střediska) Relations.
-     *
-     * @var array
-     */
- static public $stredisko = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence sazba-dph (Sazby DPH) Relations.
-     *
-     * @var array
-     */
- static public $sazbaDph = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence zakazka (Zakázky) Relations.
-     *
-     * @var array
-     */
- static public $zakazka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'udalosti',
-    'evidenceType' => 'ADR_UDALOST',
-    'name' => 'Události',
-  ),
-  2 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-);
-    /**
-     * Evidence typ-zakazky (Typy zakázek) Relations.
-     *
-     * @var array
-     */
- static public $typZakazky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence stav-zakazky (Stavy zakázek) Relations.
-     *
-     * @var array
-     */
- static public $stavZakazky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence hodnoceni-zakazky (Vyhodnocení zakázek) Relations.
-     *
-     * @var array
-     */
- static public $hodnoceniZakazky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence konst-symbol (Konstantní symboly) Relations.
-     *
-     * @var array
-     */
- static public $konstSymbol = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence merna-jednotka (Měrné jednotky ) Relations.
-     *
-     * @var array
-     */
- static public $mernaJednotka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence cleneni-dph (Řádky přiznání DPH) Relations.
-     *
-     * @var array
-     */
- static public $cleneniDph = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence cleneni-kontrolni-hlaseni (Řádky kontrolního hlášení DPH) Relations.
-     *
-     * @var array
-     */
- static public $cleneniKontrolniHlaseni = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence ucetni-osnova (Standardní účetní osnova) Relations.
-     *
-     * @var array
-     */
- static public $ucetniOsnova = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence kurz-pro-cenotvorbu (Kurzy pro cenotvorbu) Relations.
-     *
-     * @var array
-     */
- static public $kurzProCenotvorbu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence penezni-ustav (Peněžní ústavy) Relations.
-     *
-     * @var array
-     */
- static public $penezniUstav = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence psc (Poštovní směrovací čísla) Relations.
-     *
-     * @var array
-     */
- static public $psc = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence stitek (Štítky) Relations.
-     *
-     * @var array
-     */
- static public $stitek = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence skupina-stitku (Skupiny štítků) Relations.
-     *
-     * @var array
-     */
- static public $skupinaStitku = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence preneseni-dph (Seznam zboží v režimu přenesení DPH) Relations.
-     *
-     * @var array
-     */
- static public $preneseniDph = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence sablona-upominky (Upomínky) Relations.
-     *
-     * @var array
-     */
- static public $sablonaUpominky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence forma-uhrady (Formy úhrady) Relations.
-     *
-     * @var array
-     */
- static public $formaUhrady = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'zauctovani',
-    'evidenceType' => 'FORMA_UHRADY_ZAUCTOVANI',
-    'name' => 'Zaúčtování',
-  ),
-);
-    /**
-     * Evidence forma-uhrady-zauctovani (Zaúčtování formy úhrady) Relations.
-     *
-     * @var array
-     */
- static public $formaUhradyZauctovani = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence certifikacni-autorita (Certifikační autority) Relations.
-     *
-     * @var array
-     */
- static public $certifikacniAutorita = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence forma-dopravy (Formy dopravy) Relations.
-     *
-     * @var array
-     */
- static public $formaDopravy = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence cislo-baliku (Čísla balíků) Relations.
-     *
-     * @var array
-     */
- static public $cisloBaliku = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-uzivatelske-vazby (Typy uživatelských vazeb) Relations.
-     *
-     * @var array
-     */
- static public $typUzivatelskeVazby = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-kraj-urceni (Kraje určení) Relations.
-     *
-     * @var array
-     */
- static public $intrastatKrajUrceni = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-zvlastni-pohyb (Zvláštní pohyby) Relations.
-     *
-     * @var array
-     */
- static public $intrastatZvlastniPohyb = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-obchodni-transakce (Obchodní transakce) Relations.
-     *
-     * @var array
-     */
- static public $intrastatObchodniTransakce = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-dodaci-podminky (Dodací podmínky) Relations.
-     *
-     * @var array
-     */
- static public $intrastatDodaciPodminky = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-druh-dopravy (Druh dopravy) Relations.
-     *
-     * @var array
-     */
- static public $intrastatDruhDopravy = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-kurz (Kurzy pro Intrastat) Relations.
-     *
-     * @var array
-     */
- static public $intrastatKurz = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-merna-jednotka (Měrné jednotky) Relations.
-     *
-     * @var array
-     */
- static public $intrastatMernaJednotka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence intrastat-kod-nomenklatury (Kódy nomenklatury) Relations.
-     *
-     * @var array
-     */
- static public $intrastatKodNomenklatury = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence rezervace (Rezervace) Relations.
-     *
-     * @var array
-     */
- static public $rezervace = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence skladova-karta (Skladové karty) Relations.
-     *
-     * @var array
-     */
- static public $skladovaKarta = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'skladovy-pohyb-polozky',
-    'evidenceType' => 'SKLADOVY_POHYB_POLOZKA',
-    'name' => 'Položky příjemky/výdejky',
-  ),
 );
     /**
      * Evidence cenik (Ceník) Relations.
@@ -2035,63 +302,6 @@ class Relations
   ),
 );
     /**
-     * Evidence dodavatel (Dodavatelé) Relations.
-     *
-     * @var array
-     */
- static public $dodavatel = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence odberatel (Ceny pro odběratele/skupiny odběratelů, speciální kódy) Relations.
-     *
-     * @var array
-     */
- static public $odberatel = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence cenova-uroven (Cenové úrovně) Relations.
-     *
-     * @var array
-     */
- static public $cenovaUroven = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'skupinyZbozi',
-    'evidenceType' => 'SKUPINA_ZBOZI',
-    'name' => 'Skupiny zboží',
-  ),
-  2 => 
-  array (
-    'url' => 'firmy',
-    'evidenceType' => 'ADRESAR',
-    'name' => 'Adresář',
-  ),
-  3 => 
-  array (
-    'url' => 'skupinyCen',
-    'evidenceType' => 'CENIKOVA_SKUPINA',
-    'name' => 'Ceníkové skupiny',
-  ),
-  4 => 
-  array (
-    'url' => 'ceniky',
-    'evidenceType' => 'CENIK',
-    'name' => 'Ceníky',
-  ),
-);
-    /**
      * Evidence cenikova-skupina (Ceníkové skupiny) Relations.
      *
      * @var array
@@ -2102,61 +312,377 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence poplatek (Poplatky) Relations.
+     * Evidence certifikacni-autorita (Certifikační autority) Relations.
      *
      * @var array
      */
- static public $poplatek = array (
+ static public $certifikacniAutorita = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence podobne-zbozi (Podobné) Relations.
+     * Evidence intrastat-dodaci-podminky (Dodací podmínky) Relations.
      *
      * @var array
      */
- static public $podobneZbozi = array (
+ static public $intrastatDodaciPodminky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence sady-a-komplety (Sady) Relations.
+     * Evidence dodavatelska-smlouva (Dodavatelské smlouvy) Relations.
      *
      * @var array
      */
- static public $sadyAKomplety = array (
+ static public $dodavatelskaSmlouva = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkySmlouvy',
+    'evidenceType' => 'SMLOUVA_POLOZKA',
+    'name' => 'Standardní položky smluv',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  3 => 
+  array (
+    'url' => 'polozkySmlouvyExt',
+    'evidenceType' => 'SMLOUVA_POLOZKA',
+    'name' => 'Externí položky smluv',
+  ),
+);
+    /**
+     * Evidence dodavatel (Dodavatelé) Relations.
+     *
+     * @var array
+     */
+ static public $dodavatel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence kusovnik (Kusovník) Relations.
+     * Evidence rada-banka (Dokladové řady - bankovní doklady) Relations.
      *
      * @var array
      */
- static public $kusovnik = array (
+ static public $radaBanka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-interniho-dokladu (Dokladové řady - interní doklady) Relations.
+     *
+     * @var array
+     */
+ static public $radaInternihoDokladu = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-pohledavky (Dokladové řady - pohledávky) Relations.
+     *
+     * @var array
+     */
+ static public $radaPohledavky = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-pokladni-pohyb (Dokladové řady - pokladní doklady) Relations.
+     *
+     * @var array
+     */
+ static public $radaPokladniPohyb = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-faktury-prijate (Dokladové řady - přijaté faktury) Relations.
+     *
+     * @var array
+     */
+ static public $radaFakturyPrijate = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-nabidky-prijate (Dokladové řady - přijaté nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $radaNabidkyPrijate = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-objednavky-prijate (Dokladové řady - přijaté objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $radaObjednavkyPrijate = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-poptavky-prijate (Dokladové řady - přijaté poptávky) Relations.
+     *
+     * @var array
+     */
+ static public $radaPoptavkyPrijate = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-skladovy-pohyb (Dokladové řady - sklad) Relations.
+     *
+     * @var array
+     */
+ static public $radaSkladovyPohyb = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-faktury-vydane (Dokladové řady - vydané faktury) Relations.
+     *
+     * @var array
+     */
+ static public $radaFakturyVydane = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-nabidky-vydane (Dokladové řady - vydané nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $radaNabidkyVydane = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-objednavky-vydane (Dokladové řady - vydané objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $radaObjednavkyVydane = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-poptavky-vydane (Dokladové řady - vydané poptávky) Relations.
+     *
+     * @var array
+     */
+ static public $radaPoptavkyVydane = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence rada-zavazku (Dokladové řady - závazky) Relations.
+     *
+     * @var array
+     */
+ static public $radaZavazku = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence intrastat-druh-dopravy (Druh dopravy) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatDruhDopravy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence skupina-zbozi (Skupiny zboží a materiálu) Relations.
+     * Evidence forma-dopravy (Formy dopravy) Relations.
      *
      * @var array
      */
- static public $skupinaZbozi = array (
+ static public $formaDopravy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence skladovy-pohyb (Příjemky/výdejky) Relations.
+     * Evidence forma-uhrady (Formy úhrady) Relations.
      *
      * @var array
      */
- static public $skladovyPohyb = array (
+ static public $formaUhrady = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'zauctovani',
+    'evidenceType' => 'FORMA_UHRADY_ZAUCTOVANI',
+    'name' => 'Zaúčtování',
+  ),
+);
+    /**
+     * Evidence interni-doklad (Interní doklady) Relations.
+     *
+     * @var array
+     */
+ static public $interniDoklad = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2184,193 +710,9 @@ class Relations
   4 => 
   array (
     'url' => 'polozkyDokladu',
-    'evidenceType' => 'SKLADOVY_POHYB_POLOZKA',
-    'name' => 'Položky příjemky/výdejky',
+    'evidenceType' => 'INTERNI_DOKLAD_POLOZKA',
+    'name' => 'Položky interního dokladu',
   ),
-);
-    /**
-     * Evidence skladovy-pohyb-polozka (Položky příjemky/výdejky) Relations.
-     *
-     * @var array
-     */
- static public $skladovyPohybPolozka = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'vyrobniCislaVydana',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-  2 => 
-  array (
-    'url' => 'vyrobniCislaPrijata',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-);
-    /**
-     * Evidence rada-skladovy-pohyb (Dokladové řady - sklad) Relations.
-     *
-     * @var array
-     */
- static public $radaSkladovyPohyb = array (
-  0 => 
-  array (
-    'url' => 'uzivatelske-vazby',
-    'evidenceType' => 'VAZBA',
-    'name' => 'Uživatelské vazby',
-  ),
-  1 => 
-  array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
-  ),
-);
-    /**
-     * Evidence typ-skladovy-pohyb (Typy skladových dokladů) Relations.
-     *
-     * @var array
-     */
- static public $typSkladovyPohyb = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence sklad (Seznam skladů) Relations.
-     *
-     * @var array
-     */
- static public $sklad = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence strom (Uzel stromu) Relations.
-     *
-     * @var array
-     */
- static public $strom = array (
-  0 => 'prilohy',
-  1 => 'PRILOHA',
-  2 => 'Přílohy',
-);
-    /**
-     * Evidence mapovani-skladu (Mapování skladů) Relations.
-     *
-     * @var array
-     */
- static public $mapovaniSkladu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence umisteni-ve-skladu (Umístění ve skladu) Relations.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence umisteni-ve-skladu-regal (Umístění ve skladu) Relations.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladuRegal = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Relations.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladuPolice = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladuMistnost = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence atribut (Atributy) Relations.
-     *
-     * @var array
-     */
- static public $atribut = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence prislustenstvi (Příslušenství) Relations.
-     *
-     * @var array
-     */
- static public $prislustenstvi = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-stavu-ceniku (Číselník stavů položek ceníku) Relations.
-     *
-     * @var array
-     */
- static public $typStavuCeniku = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence stav-ceniku (Číselník stavů položek ceníku) Relations.
-     *
-     * @var array
-     */
- static public $stavCeniku = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-atributu (Typy atributů) Relations.
-     *
-     * @var array
-     */
- static public $typAtributu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence skupina-atributu (Skupiny atributů) Relations.
-     *
-     * @var array
-     */
- static public $skupinaAtributu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
 );
     /**
      * Evidence inventura (Inventury) Relations.
@@ -2392,14 +734,124 @@ class Relations
   ),
 );
     /**
-     * Evidence inventura-polozka (Položky inventur) Relations.
+     * Evidence konst-symbol (Konstantní symboly) Relations.
      *
      * @var array
      */
- static public $inventuraPolozka = array (
+ static public $konstSymbol = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence kontakt (Kontakty) Relations.
+     *
+     * @var array
+     */
+ static public $kontakt = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+);
+    /**
+     * Evidence intrastat-kraj-urceni (Kraje určení) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatKrajUrceni = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence kurz (Kurzy) Relations.
+     *
+     * @var array
+     */
+ static public $kurz = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence intrastat-kurz (Kurzy pro Intrastat) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatKurz = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence kurz-pro-cenotvorbu (Kurzy pro cenotvorbu) Relations.
+     *
+     * @var array
+     */
+ static public $kurzProCenotvorbu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence kusovnik (Kusovník) Relations.
+     *
+     * @var array
+     */
+ static public $kusovnik = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence intrastat-kod-nomenklatury (Kódy nomenklatury) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatKodNomenklatury = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence leasing (Leasing) Relations.
+     *
+     * @var array
+     */
+ static public $leasing = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'zapujcky',
+    'evidenceType' => 'ZAPUJCKA',
+    'name' => 'Zápůjčky/odpovědná osoba',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
 );
     /**
      * Evidence majetek (Majetek) Relations.
@@ -2433,11 +885,90 @@ class Relations
   ),
 );
     /**
-     * Evidence leasing (Leasing) Relations.
+     * Evidence mapovani-skladu (Mapování skladů) Relations.
      *
      * @var array
      */
- static public $leasing = array (
+ static public $mapovaniSkladu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence misto-urceni (Místa určení) Relations.
+     *
+     * @var array
+     */
+ static public $mistoUrceni = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence mena (Měny) Relations.
+     *
+     * @var array
+     */
+ static public $mena = array (
+  0 => 
+  array (
+    'url' => 'kurzy',
+    'evidenceType' => 'KURZ',
+    'name' => 'Kurzy',
+  ),
+  1 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+);
+    /**
+     * Evidence intrastat-merna-jednotka (Měrné jednotky) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatMernaJednotka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence merna-jednotka (Měrné jednotky ) Relations.
+     *
+     * @var array
+     */
+ static public $mernaJednotka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence naklad (Náklady na události / aktivity) Relations.
+     *
+     * @var array
+     */
+ static public $naklad = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence intrastat-obchodni-transakce (Obchodní transakce) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatObchodniTransakce = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence smlouva (Odběratelské smlouvy) Relations.
+     *
+     * @var array
+     */
+ static public $smlouva = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2446,9 +977,9 @@ class Relations
   ),
   1 => 
   array (
-    'url' => 'zapujcky',
-    'evidenceType' => 'ZAPUJCKA',
-    'name' => 'Zápůjčky/odpovědná osoba',
+    'url' => 'polozkySmlouvy',
+    'evidenceType' => 'SMLOUVA_POLOZKA',
+    'name' => 'Standardní položky smluv',
   ),
   2 => 
   array (
@@ -2456,36 +987,12 @@ class Relations
     'evidenceType' => 'PRILOHA',
     'name' => 'Přílohy',
   ),
-);
-    /**
-     * Evidence typ-majetku (Typy majetků) Relations.
-     *
-     * @var array
-     */
- static public $typMajetku = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence typ-leasingu (Typy leasingů) Relations.
-     *
-     * @var array
-     */
- static public $typLeasingu = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence umisteni (Umístění) Relations.
-     *
-     * @var array
-     */
- static public $umisteni = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
+  3 => 
+  array (
+    'url' => 'polozkySmlouvyExt',
+    'evidenceType' => 'SMLOUVA_POLOZKA',
+    'name' => 'Externí položky smluv',
+  ),
 );
     /**
      * Evidence odpisova-skupina (Odpisové skupiny) Relations.
@@ -2498,24 +1005,41 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence majetek-udalost (Události) Relations.
+     * Evidence pohledavka (Ostatní pohledávky) Relations.
      *
      * @var array
      */
- static public $majetekUdalost = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence zapujcka (Zápůjčky) Relations.
-     *
-     * @var array
-     */
- static public $zapujcka = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
+ static public $pohledavka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'POHLEDAVKA_POLOZKA',
+    'name' => 'Položky faktur',
+  ),
 );
     /**
      * Evidence zavazek (Ostatní závazky) Relations.
@@ -2555,11 +1079,952 @@ class Relations
   ),
 );
     /**
+     * Evidence uzivatelsky-dotaz-parametr (Parametry) Relations.
+     *
+     * @var array
+     */
+ static public $uzivatelskyDotazParametr = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence penezni-ustav (Peněžní ústavy) Relations.
+     *
+     * @var array
+     */
+ static public $penezniUstav = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence podobne-zbozi (Podobné) Relations.
+     *
+     * @var array
+     */
+ static public $podobneZbozi = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence pokladni-pohyb (Pokladna) Relations.
+     *
+     * @var array
+     */
+ static public $pokladniPohyb = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'POKLADNI_POHYB_POLOZKA',
+    'name' => 'Položky pokladního dokladu',
+  ),
+);
+    /**
+     * Evidence parametr (Pokročilá parametrizace pomocí parametrů) Relations.
+     *
+     * @var array
+     */
+ static public $parametr = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence prikaz-k-inkasu-polozka (Položka inkasa) Relations.
+     *
+     * @var array
+     */
+ static public $prikazKInkasuPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence prikaz-k-uhrade-polozka (Položka příkazu k úhradě) Relations.
+     *
+     * @var array
+     */
+ static public $prikazKUhradePolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence interni-doklad-polozka (Položky interních dokladů) Relations.
+     *
+     * @var array
+     */
+ static public $interniDokladPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence inventura-polozka (Položky inventur) Relations.
+     *
+     * @var array
+     */
+ static public $inventuraPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence pohledavka-polozka (Položky ostatních pohledávek) Relations.
+     *
+     * @var array
+     */
+ static public $pohledavkaPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence zavazek-polozka (Položky ostatních závazků) Relations.
      *
      * @var array
      */
  static public $zavazekPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence pokladni-pohyb-polozka (Položky pokladních dokladů) Relations.
+     *
+     * @var array
+     */
+ static public $pokladniPohybPolozka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'vyrobniCislaVydana',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+  2 => 
+  array (
+    'url' => 'vyrobniCislaPrijata',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+);
+    /**
+     * Evidence nabidka-prijata-polozka (Položky přijaté nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $nabidkaPrijataPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence objednavka-prijata-polozka (Položky přijaté objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $objednavkaPrijataPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence faktura-prijata-polozka (Položky přijatých faktur) Relations.
+     *
+     * @var array
+     */
+ static public $fakturaPrijataPolozka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'vyrobniCislaVydana',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+  2 => 
+  array (
+    'url' => 'vyrobniCislaPrijata',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+);
+    /**
+     * Evidence poptavka-prijata-polozka (Položky přijatých poptávek) Relations.
+     *
+     * @var array
+     */
+ static public $poptavkaPrijataPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence skladovy-pohyb-polozka (Položky příjemky/výdejky) Relations.
+     *
+     * @var array
+     */
+ static public $skladovyPohybPolozka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'vyrobniCislaVydana',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+  2 => 
+  array (
+    'url' => 'vyrobniCislaPrijata',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+);
+    /**
+     * Evidence smlouva-polozka (Položky smluv) Relations.
+     *
+     * @var array
+     */
+ static public $smlouvaPolozka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+);
+    /**
+     * Evidence nabidka-vydana-polozka (Položky vydané nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $nabidkaVydanaPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence objednavka-vydana-polozka (Položky vydané objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $objednavkaVydanaPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence poptavka-vydana-polozka (Položky vydané poptávky) Relations.
+     *
+     * @var array
+     */
+ static public $poptavkaVydanaPolozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence faktura-vydana-polozka (Položky vydaných faktur a prodejek) Relations.
+     *
+     * @var array
+     */
+ static public $fakturaVydanaPolozka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'vyrobniCislaVydana',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+  2 => 
+  array (
+    'url' => 'vyrobniCislaPrijata',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
+  ),
+);
+    /**
+     * Evidence poplatek (Poplatky) Relations.
+     *
+     * @var array
+     */
+ static public $poplatek = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence psc (Poštovní směrovací čísla) Relations.
+     *
+     * @var array
+     */
+ static public $psc = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence prodejka (Prodejní kasa) Relations.
+     *
+     * @var array
+     */
+ static public $prodejka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'FAKTURA_OUT_POLOZKA',
+    'name' => 'Položky faktur',
+  ),
+);
+    /**
+     * Evidence text (Předdefinované texty) Relations.
+     *
+     * @var array
+     */
+ static public $text = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence predpis-zauctovani (Předpisy zaúčtování) Relations.
+     *
+     * @var array
+     */
+ static public $predpisZauctovani = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence faktura-prijata (Přijaté faktury) Relations.
+     *
+     * @var array
+     */
+ static public $fakturaPrijata = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'FAKTURA_IN_POLOZKA',
+    'name' => 'Položky faktur',
+  ),
+);
+    /**
+     * Evidence nabidka-prijata (Přijaté nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $nabidkaPrijata = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'NABIDKA_IN_POLOZKA',
+    'name' => 'Položky nabídky přijaté',
+  ),
+);
+    /**
+     * Evidence objednavka-prijata (Přijaté objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $objednavkaPrijata = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'OBJEDNAVKA_IN_POLOZKA',
+    'name' => 'Položky objednávky přijaté',
+  ),
+);
+    /**
+     * Evidence poptavka-prijata (Přijaté poptávky) Relations.
+     *
+     * @var array
+     */
+ static public $poptavkaPrijata = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'POPTAVKA_IN_POLOZKA',
+    'name' => 'Položky poptávky přijaté',
+  ),
+);
+    /**
+     * Evidence skladovy-pohyb (Příjemky/výdejky) Relations.
+     *
+     * @var array
+     */
+ static public $skladovyPohyb = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'SKLADOVY_POHYB_POLOZKA',
+    'name' => 'Položky příjemky/výdejky',
+  ),
+);
+    /**
+     * Evidence prikaz-k-inkasu (Příkaz k inkasu) Relations.
+     *
+     * @var array
+     */
+ static public $prikazKInkasu = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozky',
+    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
+    'name' => 'Položky',
+  ),
+);
+    /**
+     * Evidence prikaz-k-uhrade (Příkaz k úhradě) Relations.
+     *
+     * @var array
+     */
+ static public $prikazKUhrade = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozky',
+    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
+    'name' => 'Položky',
+  ),
+);
+    /**
+     * Evidence priloha (Příloha) Relations.
+     *
+     * @var array
+     */
+ static public $priloha = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence prislustenstvi (Příslušenství) Relations.
+     *
+     * @var array
+     */
+ static public $prislustenstvi = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence rezervace (Rezervace) Relations.
+     *
+     * @var array
+     */
+ static public $rezervace = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence rocni-rada (Roční položky dokladové řady) Relations.
+     *
+     * @var array
+     */
+ static public $rocniRada = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence sady-a-komplety (Sady) Relations.
+     *
+     * @var array
+     */
+ static public $sadyAKomplety = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence sazba-dph (Sazby DPH) Relations.
+     *
+     * @var array
+     */
+ static public $sazbaDph = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence dashboard-sharing (Sdílení přehledů) Relations.
+     *
+     * @var array
+     */
+ static public $dashboardSharing = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence bankovni-ucet (Seznam bankovních účtů) Relations.
+     *
+     * @var array
+     */
+ static public $bankovniUcet = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence pokladna (Seznam pokladen) Relations.
+     *
+     * @var array
+     */
+ static public $pokladna = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-prodejky (Seznam prodejních kas) Relations.
+     *
+     * @var array
+     */
+ static public $typProdejky = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence sklad (Seznam skladů) Relations.
+     *
+     * @var array
+     */
+ static public $sklad = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence preneseni-dph (Seznam zboží v režimu přenesení DPH) Relations.
+     *
+     * @var array
+     */
+ static public $preneseniDph = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence skladova-karta (Skladové karty) Relations.
+     *
+     * @var array
+     */
+ static public $skladovaKarta = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'skladovy-pohyb-polozky',
+    'evidenceType' => 'SKLADOVY_POHYB_POLOZKA',
+    'name' => 'Položky příjemky/výdejky',
+  ),
+);
+    /**
+     * Evidence skupina-atributu (Skupiny atributů) Relations.
+     *
+     * @var array
+     */
+ static public $skupinaAtributu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence skupina-firem (Skupiny firem) Relations.
+     *
+     * @var array
+     */
+ static public $skupinaFirem = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence skupina-zbozi (Skupiny zboží a materiálu) Relations.
+     *
+     * @var array
+     */
+ static public $skupinaZbozi = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence skupina-stitku (Skupiny štítků) Relations.
+     *
+     * @var array
+     */
+ static public $skupinaStitku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence dashboard-panel (Správa přehledů) Relations.
+     *
+     * @var array
+     */
+ static public $dashboardPanel = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence ucetni-osnova (Standardní účetní osnova) Relations.
+     *
+     * @var array
+     */
+ static public $ucetniOsnova = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stav-smlouvy (Stavy smluv) Relations.
+     *
+     * @var array
+     */
+ static public $stavSmlouvy = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stav-zakazky (Stavy zakázek) Relations.
+     *
+     * @var array
+     */
+ static public $stavZakazky = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stat (Státy) Relations.
+     *
+     * @var array
+     */
+ static public $stat = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stredisko (Střediska) Relations.
+     *
+     * @var array
+     */
+ static public $stredisko = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-atributu (Typy atributů) Relations.
+     *
+     * @var array
+     */
+ static public $typAtributu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-banka (Typy bankovních dokladů) Relations.
+     *
+     * @var array
+     */
+ static public $typBanka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence dodavatelsky-typ-smlouvy (Typy dodavatelských smluv) Relations.
+     *
+     * @var array
+     */
+ static public $dodavatelskyTypSmlouvy = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-interniho-dokladu (Typy interních dokladů) Relations.
+     *
+     * @var array
+     */
+ static public $typInternihoDokladu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-leasingu (Typy leasingů) Relations.
+     *
+     * @var array
+     */
+ static public $typLeasingu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-majetku (Typy majetků) Relations.
+     *
+     * @var array
+     */
+ static public $typMajetku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-nakladu (Typy nákladů na události / aktivity) Relations.
+     *
+     * @var array
+     */
+ static public $typNakladu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-smlouvy (Typy odběratelských smluv) Relations.
+     *
+     * @var array
+     */
+ static public $typSmlouvy = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-pohledavky (Typy ostatních pohledávek) Relations.
+     *
+     * @var array
+     */
+ static public $typPohledavky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2575,11 +2040,161 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence rada-zavazku (Dokladové řady - závazky) Relations.
+     * Evidence typ-pokladni-pohyb (Typy pokladních dokladů) Relations.
      *
      * @var array
      */
- static public $radaZavazku = array (
+ static public $typPokladniPohyb = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-faktury-prijate (Typy přijatých faktur) Relations.
+     *
+     * @var array
+     */
+ static public $typFakturyPrijate = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-nabidky-prijate (Typy přijatých nabídek) Relations.
+     *
+     * @var array
+     */
+ static public $typNabidkyPrijate = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-objednavky-prijate (Typy přijatých objednávek) Relations.
+     *
+     * @var array
+     */
+ static public $typObjednavkyPrijate = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-poptavky-prijate (Typy přijatých poptávek) Relations.
+     *
+     * @var array
+     */
+ static public $typPoptavkyPrijate = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-skladovy-pohyb (Typy skladových dokladů) Relations.
+     *
+     * @var array
+     */
+ static public $typSkladovyPohyb = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-aktivity (Typy událostí / aktivit) Relations.
+     *
+     * @var array
+     */
+ static public $typAktivity = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-uzivatelske-vazby (Typy uživatelských vazeb) Relations.
+     *
+     * @var array
+     */
+ static public $typUzivatelskeVazby = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-faktury-vydane (Typy vydaných faktur) Relations.
+     *
+     * @var array
+     */
+ static public $typFakturyVydane = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-nabidky-vydane (Typy vydaných nabídek) Relations.
+     *
+     * @var array
+     */
+ static public $typNabidkyVydane = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-objednavky-vydane (Typy vydaných objednávek) Relations.
+     *
+     * @var array
+     */
+ static public $typObjednavkyVydane = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-poptavky-vydane (Typy vydaných poptávek) Relations.
+     *
+     * @var array
+     */
+ static public $typPoptavkyVydane = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-zakazky (Typy zakázek) Relations.
+     *
+     * @var array
+     */
+ static public $typZakazky = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-vzajemnych-zapoctu (Typy zápočtů) Relations.
+     *
+     * @var array
+     */
+ static public $typVzajemnychZapoctu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence majetek-udalost (Události) Relations.
+     *
+     * @var array
+     */
+ static public $majetekUdalost = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence udalost (Události, aktivity) Relations.
+     *
+     * @var array
+     */
+ static public $udalost = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2588,30 +2203,86 @@ class Relations
   ),
   1 => 
   array (
-    'url' => 'polozkyRady',
-    'evidenceType' => 'ROCNI_RADA',
-    'name' => 'Roční položky číselné řady',
+    'url' => 'naklady',
+    'evidenceType' => 'NAKLAD',
+    'name' => 'Náklady aktivity',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
   ),
 );
     /**
-     * Evidence filtr (Uživatelské filtry) Relations.
+     * Evidence umisteni (Umístění) Relations.
      *
      * @var array
      */
- static public $filtr = array (
+ static public $umisteni = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence parametr (Pokročilá parametrizace pomocí parametrů) Relations.
+     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
      *
      * @var array
      */
- static public $parametr = array (
+ static public $umisteniVeSkladuMistnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Relations.
+     *
+     * @var array
+     */
+ static public $umisteniVeSkladuPolice = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence umisteni-ve-skladu-regal (Umístění ve skladu) Relations.
+     *
+     * @var array
+     */
+ static public $umisteniVeSkladuRegal = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence umisteni-ve-skladu (Umístění ve skladu) Relations.
+     *
+     * @var array
+     */
+ static public $umisteniVeSkladu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence sablona-upominky (Upomínky) Relations.
+     *
+     * @var array
+     */
+ static public $sablonaUpominky = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence strom (Uzel stromu) Relations.
+     *
+     * @var array
+     */
+ static public $strom = array (
+  0 => 'prilohy',
+  1 => 'PRILOHA',
+  2 => 'Přílohy',
 );
     /**
      * Evidence uzivatelsky-dotaz (Uživatelské dotazy) Relations.
@@ -2639,21 +2310,11 @@ class Relations
   ),
 );
     /**
-     * Evidence uzivatelsky-dotaz-parametr (Parametry) Relations.
+     * Evidence filtr (Uživatelské filtry) Relations.
      *
      * @var array
      */
- static public $uzivatelskyDotazParametr = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
-     * Evidence uzivatelsky-dotaz-vlastnost (Vlastnosti) Relations.
-     *
-     * @var array
-     */
- static public $uzivatelskyDotazVlastnost = array (
+ static public $filtr = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2669,21 +2330,360 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence dashboard-panel (Správa přehledů) Relations.
+     * Evidence uzivatelsky-dotaz-vlastnost (Vlastnosti) Relations.
      *
      * @var array
      */
- static public $dashboardPanel = array (
+ static public $uzivatelskyDotazVlastnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence dashboard-sharing (Sdílení přehledů) Relations.
+     * Evidence faktura-vydana (Vydané faktury) Relations.
      *
      * @var array
      */
- static public $dashboardSharing = array (
+ static public $fakturaVydana = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'FAKTURA_OUT_POLOZKA',
+    'name' => 'Položky faktur',
+  ),
+);
+    /**
+     * Evidence nabidka-vydana (Vydané nabídky) Relations.
+     *
+     * @var array
+     */
+ static public $nabidkaVydana = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'NABIDKA_OUT_POLOZKA',
+    'name' => 'Položky nabídky vydané',
+  ),
+);
+    /**
+     * Evidence objednavka-vydana (Vydané objednávky) Relations.
+     *
+     * @var array
+     */
+ static public $objednavkaVydana = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'OBJEDNAVKA_OUT_POLOZKA',
+    'name' => 'Položky objednávky vydané',
+  ),
+);
+    /**
+     * Evidence poptavka-vydana (Vydané poptávky) Relations.
+     *
+     * @var array
+     */
+ static public $poptavkaVydana = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'POPTAVKA_OUT_POLOZKA',
+    'name' => 'Položky poptávky vydané',
+  ),
+);
+    /**
+     * Evidence hodnoceni-zakazky (Vyhodnocení zakázek) Relations.
+     *
+     * @var array
+     */
+ static public $hodnoceniZakazky = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence vzajemny-zapocet (Vzájemné zápočty) Relations.
+     *
+     * @var array
+     */
+ static public $vzajemnyZapocet = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vazby',
+    'evidenceType' => 'VAZBA_MEZI_DOKLADY',
+    'name' => 'Vazby mezi doklady',
+  ),
+  3 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  4 => 
+  array (
+    'url' => 'polozkyDokladu',
+    'evidenceType' => 'BANKA_POLOZKA',
+    'name' => 'Položky bankovního dokladu',
+  ),
+);
+    /**
+     * Evidence zakazka (Zakázky) Relations.
+     *
+     * @var array
+     */
+ static public $zakazka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+);
+    /**
+     * Evidence forma-uhrady-zauctovani (Zaúčtování formy úhrady) Relations.
+     *
+     * @var array
+     */
+ static public $formaUhradyZauctovani = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence intrastat-zvlastni-pohyb (Zvláštní pohyby) Relations.
+     *
+     * @var array
+     */
+ static public $intrastatZvlastniPohyb = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence zapujcka (Zápůjčky) Relations.
+     *
+     * @var array
+     */
+ static public $zapujcka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence rada (dokladové řady) Relations.
+     *
+     * @var array
+     */
+ static public $rada = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'polozkyRady',
+    'evidenceType' => 'ROCNI_RADA',
+    'name' => 'Roční položky číselné řady',
+  ),
+);
+    /**
+     * Evidence ucet (Účtový rozvrh) Relations.
+     *
+     * @var array
+     */
+ static public $ucet = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence cinnost (Činnost) Relations.
+     *
+     * @var array
+     */
+ static public $cinnost = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stav-ceniku (Číselník stavů položek ceníku) Relations.
+     *
+     * @var array
+     */
+ static public $stavCeniku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-stavu-ceniku (Číselník stavů položek ceníku) Relations.
+     *
+     * @var array
+     */
+ static public $typStavuCeniku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence cislo-baliku (Čísla balíků) Relations.
+     *
+     * @var array
+     */
+ static public $cisloBaliku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence cleneni-kontrolni-hlaseni (Řádky kontrolního hlášení DPH) Relations.
+     *
+     * @var array
+     */
+ static public $cleneniKontrolniHlaseni = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence cleneni-dph (Řádky přiznání DPH) Relations.
+     *
+     * @var array
+     */
+ static public $cleneniDph = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stitek (Štítky) Relations.
+     *
+     * @var array
+     */
+ static public $stitek = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',

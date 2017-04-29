@@ -70,7 +70,13 @@ $syncer->addStatusMessage('Updating Evidences Properties');
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
-    $structure = getPropertiesInfo($evidencePath, $syncer);
+    if ($evidencePath == 'nastaveni') {
+        $info      = json_decode(file_get_contents('nastaveni-properties.json'),
+            true);
+        $structure = $info['properties']['property'];
+    } else {
+        $structure = getPropertiesInfo($evidencePath, $syncer);
+    }
     if (count($structure)) {
         $evidenceProps .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') structure.

@@ -23,6 +23,11 @@ class PrilohaTest extends FlexiBeeRWTest
         $this->object = new Priloha();
     }
 
+    public function testAttachFile()
+    {
+        $this->object->attachFile('../project_logo.png');
+    }
+
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.

@@ -167,5 +167,4 @@ class Priloha extends FlexiBeeRW
         }
         return $attachments;
     }
-
 }
