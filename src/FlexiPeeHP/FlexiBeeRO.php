@@ -1676,4 +1676,30 @@ class FlexiBeeRO extends \Ease\Brick
         }
         return $this->ignoreNotFound;
     }
+
+    /**
+     * Send Invoice by mail
+     *
+     * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
+     * @param array $params
+     * @return int http response code
+     */
+    public function sendByMail($params = [])
+    {
+        return $this->doCurlRequest($this->getEvidenceURL().'/'.$this->getRecordID().'/odeslani-dokladu'.count($params)
+                    ? '?'.http_build_query($params) : '', 'PUT', 'xml');
+    }
+
+    /**
+     * Send all unsent Invoices by mail
+     *
+     * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
+     * @return int http response code
+     */
+    public function sendUnsent()
+    {
+        return $this->doCurlRequest($this->getEvidenceURL().'/automaticky-odeslat-neodeslane',
+                'PUT', 'xml');
+    }
+
 }
