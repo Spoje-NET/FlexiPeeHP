@@ -42,6 +42,7 @@ class Priloha extends FlexiBeeRW
     ];
 
     /**
+     * Attach file
      * Přilož Soubor
      *
      * @param string $filepath
@@ -59,7 +60,6 @@ class Priloha extends FlexiBeeRW
                 case 'image/png':
                 case 'image/gif':
                 case 'image/jpeg':
-
                     break;
             }
             $attachmentData['content'] = base64_encode(file_get_contents($filepath));
@@ -94,17 +94,27 @@ class Priloha extends FlexiBeeRW
      * @param FlexiBeeRO $object
      * @param int|string $attachmentID
      */
-    public static function download($object, $attachmentID = null)
+    public static function download($object, $format = 'pdf',
+                                    $attachmentID = null)
     {
+        $attachments = self::getAttachmentsList($object);
+
+        if (isset($attachmentID) && !array_key_exists($attachmentID,
+                $attachments)) {
+                $object->addStatusMessage(sprintf(_('Attagment %s does no exist'),
+                    $attachmentID), 'warning');
+        }
+
+        $attachmentBody = $object->doCurlRequest(self::getDownloadUrl($object));
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Transfer-Encoding: binary');
         header('Expires: 0');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Pragma: public');
-        header('Content-Disposition: attachment; filename='.$object->getName().'_nrpe.sh');
-        header('Content-Length: '.strlen($nrpesh));
-        echo $object;
+        header('Content-Disposition: attachment; filename='.$object->getEvidence().'_'.$object.'.'.$format);
+        header('Content-Length: '.strlen($attachmentBody));
+        echo $attachmentBody;
     }
 
     public static function saveToFile($object, $filename, $attachmentID = null)
@@ -168,4 +178,5 @@ class Priloha extends FlexiBeeRW
         }
         return $attachments;
     }
+
 }

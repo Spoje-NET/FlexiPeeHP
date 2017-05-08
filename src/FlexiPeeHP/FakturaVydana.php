@@ -41,7 +41,7 @@ class FakturaVydana extends FlexiBeeRW
                     break;
                 case 'code:ZÁLOHA':
                 case 'code:ZALOHA':
-                default :
+                default:
                     $data['ucetni'] = false;
                     break;
             }

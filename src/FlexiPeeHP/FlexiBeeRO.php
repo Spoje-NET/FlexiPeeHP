@@ -56,7 +56,7 @@ class FlexiBeeRO extends \Ease\Brick
             'suffix' => 'pdf', 'content-type' => 'application/pdf', 'import' => false],
         'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
             'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
-        'iCalendar' => ['desc' => '"Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
+        'iCalendar' => ['desc' => 'Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
             'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
     ];
 
@@ -796,7 +796,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
      * @param string $url    URL požadavku
-     * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
+     * @param string $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
      * @param string $format požadovaný formát komunikace
      * @return int HTTP Response CODE
      */
@@ -1661,7 +1661,6 @@ class FlexiBeeRO extends \Ease\Brick
         return $res;
     }
 
-
     /**
      * Set or get ignore not found pages flag
      *
@@ -1681,13 +1680,20 @@ class FlexiBeeRO extends \Ease\Brick
      * Send Invoice by mail
      *
      * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
-     * @param array $params
+     *
+     * @param string $to
+     * @param string $subject
+     * @param string $body Email Text
+     *
      * @return int http response code
      */
-    public function sendByMail($params = [])
+    public function sendByMail($to, $subject, $body, $cc = null)
     {
-        return $this->doCurlRequest($this->getEvidenceURL().'/'.$this->getRecordID().'/odeslani-dokladu'.count($params)
-                    ? '?'.http_build_query($params) : '', 'PUT', 'xml');
+        $this->setPostFields($body);
+        $result = $this->doCurlRequest($this->getEvidenceURL().'/'.
+                urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
+            , 'PUT', 'xml');
+        return $result == 200;
     }
 
     /**
