@@ -69,11 +69,14 @@ class Priloha extends FlexiBeeRW
     /**
      * Obtain url for Attachment Download
      *
+     * @param \FlexiBeeRO $object Source object
      * @return string url
      */
     public static function getDownloadUrl($object)
     {
-        return $object->apiURL.'/content';
+        $urlParts  = parse_url($object->apiURL);
+        $pathParts = pathinfo($urlParts['path']);
+        return $urlParts['scheme'].'://'.$urlParts['host'].$pathParts['dirname'].'/'.$pathParts['filename'].'/content';
     }
 
     /**
@@ -101,7 +104,7 @@ class Priloha extends FlexiBeeRW
 
         if (isset($attachmentID) && !array_key_exists($attachmentID,
                 $attachments)) {
-                $object->addStatusMessage(sprintf(_('Attagment %s does no exist'),
+            $object->addStatusMessage(sprintf(_('Attagment %s does no exist'),
                     $attachmentID), 'warning');
         }
 
@@ -117,9 +120,29 @@ class Priloha extends FlexiBeeRW
         echo $attachmentBody;
     }
 
-    public static function saveToFile($object, $filename, $attachmentID = null)
+    /**
+     * Save attachment to file
+     *
+     * @param int $attachmentID
+     * @param string $destination directory or filename with path
+     * @return int
+     */
+    public static function saveToFile($attachmentID, $destination)
     {
+        $result     = 0;
+        $downloader = new Priloha($attachmentID);
+        if ($downloader->lastResponseCode == 200) {
 
+            $downloader->doCurlRequest(self::getDownloadURL($downloader), 'GET');
+            if ($downloader->lastResponseCode == 200) {
+                if (is_dir($destination)) {
+                    $destination .= '/'.$downloader->getDataValue('nazSoub');
+                }
+                $result = file_put_contents($destination,
+                    $downloader->lastCurlResponse);
+            }
+        }
+        return $result;
     }
 
     /**
@@ -178,5 +201,4 @@ class Priloha extends FlexiBeeRW
         }
         return $attachments;
     }
-
 }
