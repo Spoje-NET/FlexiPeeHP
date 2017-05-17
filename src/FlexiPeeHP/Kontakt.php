@@ -22,4 +22,24 @@ class Kontakt extends FlexiBeeRW
      */
     public $evidence = 'kontakt';
 
+    /**
+     * Authenticate by contact
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/autentizace-kontaktu/ Contact Auth
+     * @param string $login
+     * @param string $password
+     * @return boolean
+     */
+    public function authenticate($login, $password)
+    {
+        $defaultHttpHeaders                       = $this->defaultHttpHeaders;
+        $this->defaultHttpHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+        $this->setPostFields(http_build_query(['username' => $login, 'password' => $password]));
+        $result                                   = $this->performRequest($this->evidence.'/authenticate',
+            'POST', 'xml');
+        $this->defaultHttpHeaders                 = $defaultHttpHeaders;
+        $this->addStatusMessage($result['message'],
+            $result['success'] == 'true' ? 'success' : 'warning' );
+        return $result['success'] == 'true';
+    }
 }
