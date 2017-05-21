@@ -123,6 +123,9 @@ A poté je již snadné si vypsat měrné jednotky na 2 řádky:
 Pokud chceme aby nově vytvořená třída uměla do flexibee i zapisovat, je třeba jí 
 odvodit od předka FlexiBeeRW.
 
+
+Více příkladů použití je možné najít [v samostatném projektu](https://github.com/VitexSoftware/FlexiPeeHP-Examples/tree/master/Examples)
+
 Struktura Evidencí, Akcí a vztahů
 ---------------------------------
 
