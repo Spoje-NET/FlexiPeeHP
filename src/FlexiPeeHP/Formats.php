@@ -19,7 +19,7 @@ class Formats
  *
  * @var string
  */
- static public $version = '2017.1.8';
+ static public $version = '2017.1.10';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Formats.
