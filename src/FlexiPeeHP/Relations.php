@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.1.8';
+ static public $version = '2017.1.10';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Relations.
@@ -1677,7 +1677,7 @@ class Relations
   1 => 
   array (
     'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
+    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
     'name' => 'Položky',
   ),
 );
@@ -1696,7 +1696,7 @@ class Relations
   1 => 
   array (
     'url' => 'polozky',
-    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
+    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
     'name' => 'Položky',
   ),
 );
