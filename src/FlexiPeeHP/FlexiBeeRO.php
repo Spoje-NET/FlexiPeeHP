@@ -1105,8 +1105,6 @@ class FlexiBeeRO extends \Ease\Brick
     public function getColumnsFromFlexibee($columnsList, $conditions = null,
                                            $indexBy = null)
     {
-        $detail = 'full';
-
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
         }
@@ -1122,6 +1120,18 @@ class FlexiBeeRO extends \Ease\Brick
                 $columns = $columnsList;
             }
             $detail = 'custom:'.$columns;
+        }
+        switch ($columnsList) {
+            case 'id':
+                $detail = 'id';
+                break;
+            case 'summary':
+                $detail = 'summary';
+                break;
+            case 'full':
+            default:
+                $detail = 'full';
+                break;
         }
 
         $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
@@ -1708,4 +1718,14 @@ class FlexiBeeRO extends \Ease\Brick
                 'PUT', 'xml');
     }
 
+    /**
+     * FlexiBee date to PHP DateTime
+     *
+     * @param string $flexidate
+     * @return \DateTime
+     */
+    public static function flexiDateToDateTime($flexidate)
+    {
+        return \DateTime::createFromFormat('Y-m-jO', $flexidate);
+    }
 }
