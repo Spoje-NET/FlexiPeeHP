@@ -453,10 +453,22 @@ class FlexiBeeRO extends \Ease\Brick
      * One of html|xml|json|csv|dbf|xls|isdoc|isdocx|edi|pdf|pdf|vcf|ical
      *
      * @param string $format
+     * @return boolen format is availble
      */
     public function setFormat($format)
     {
-        $this->format = $format;
+        $result       = true;
+        if ($this->debug === true) {
+            $evidence = lcfirst(FlexiBeeRO::evidenceToClassName($this->getEvidence()));
+            if (array_key_exists($format, array_flip(Formats::$$evidence)) === false) {
+                $result = false;
+            }
+        }
+        if ($result === true) {
+            $this->format = $format;
+            $this->updateApiURL();
+        }
+        return $result;
     }
 
     /**
@@ -621,6 +633,7 @@ class FlexiBeeRO extends \Ease\Brick
         if (!is_null($id)) {
             $this->apiURL .= '/'.urlencode($id);
         }
+        $this->apiURL .= '.'.$this->format;
     }
 
     /**
@@ -653,7 +666,7 @@ class FlexiBeeRO extends \Ease\Brick
         switch ($responseCode) {
             case 200:
             case 201:
-                // Parse response
+// Parse response
                 $responseDecoded = [];
 
                 switch ($format) {
@@ -1447,7 +1460,7 @@ class FlexiBeeRO extends \Ease\Brick
         $response = $responseRaw;
         $evidence = $this->getResponseEvidence();
         if (is_array($responseRaw)) {
-            // Get response body root automatically
+// Get response body root automatically
             if (array_key_exists($this->nameSpace, $responseRaw)) { //Unifi response format
                 $responseBody = $responseRaw[$this->nameSpace];
                 if (array_key_exists($evidence, $responseBody)) {
@@ -1687,7 +1700,7 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Send Invoice by mail
+     * Send Document by mail
      *
      * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
      *
@@ -1701,7 +1714,7 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $this->setPostFields($body);
         $result = $this->doCurlRequest($this->getEvidenceURL().'/'.
-                urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
+            urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
             , 'PUT', 'xml');
         return $result == 200;
     }
@@ -1727,5 +1740,27 @@ class FlexiBeeRO extends \Ease\Brick
     public static function flexiDateToDateTime($flexidate)
     {
         return \DateTime::createFromFormat('Y-m-jO', $flexidate);
+    }
+
+    /**
+     * Uloží dokument v daném formátu do složky v systému souborů
+     * Save document in given format to directory in filesystem
+     *
+     * @param string $format  pdf/csv/xml/json/ ...
+     * @param string $destDir where to put file (prefix)
+     * 
+     * @return string|null filename downloaded or none
+     */
+    public function downloadInFormat($format, $destDir = './')
+    {
+        $fileOnDisk = null;
+        if ($this->setFormat($format)) {
+            $downloadTo = $destDir.$this->getEvidence().'_'.$this->getMyKey().'.'.$format;
+            if (($this->doCurlRequest($this->apiURL, 'GET') == 200) && (file_put_contents($downloadTo,
+                    $this->lastCurlResponse) !== false)) {
+                $fileOnDisk = $downloadTo;
+            }
+        }
+        return $fileOnDisk;
     }
 }
