@@ -1111,7 +1111,7 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param string[] $columnsList seznam položek
+     * @param string[] $columnsList seznam položek *|full|id|summary
      * @param array    $conditions  pole podmínek nebo ID záznamu
      * @param string   $indexBy     Sloupeček podle kterého indexovat záznamy
      *
@@ -1120,22 +1120,11 @@ class FlexiBeeRO extends \Ease\Brick
     public function getColumnsFromFlexibee($columnsList, $conditions = null,
                                            $indexBy = null)
     {
+        $detail = null;
         if (is_int($conditions)) {
             $conditions = [$this->getmyKeyColumn() => $conditions];
         }
 
-        if ($columnsList != '*') {
-            if (is_array($columnsList)) {
-                if (!is_null($indexBy) && !array_key_exists($indexBy,
-                        $columnsList)) {
-                    $columnsList[] = $indexBy;
-                }
-                $columns = implode(',', array_unique($columnsList));
-            } else {
-                $columns = $columnsList;
-            }
-            $detail = 'custom:'.$columns;
-        }
         switch ($columnsList) {
             case 'id':
                 $detail = 'id';
@@ -1143,13 +1132,25 @@ class FlexiBeeRO extends \Ease\Brick
             case 'summary':
                 $detail = 'summary';
                 break;
+            case '*':
             case 'full':
-            default:
                 $detail = 'full';
+                break;
+            default:
+                if (is_array($columnsList)) {
+                    if (!is_null($indexBy)) {
+                        $columnsList[] = $indexBy;
+                    }
+                    $columns = implode(',', array_unique($columnsList));
+                } else {
+                    $columns = $columnsList;
+                }
+                $detail = 'custom:'.$columns;
                 break;
         }
 
-        $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
+        $flexiData = $this->getFlexiData(!is_null($detail) ? 'detail='.$detail : '',
+            $conditions);
 
         if (!is_null($indexBy) && count($flexiData) && count(current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
