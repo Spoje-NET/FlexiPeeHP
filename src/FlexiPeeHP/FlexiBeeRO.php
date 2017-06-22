@@ -1697,7 +1697,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function ignore404($ignore = null)
     {
         if (!is_null($ignore)) {
-            $this->ignoreNotFound;
+            $this->ignoreNotFound = $ignore;
         }
         return $this->ignoreNotFound;
     }
