@@ -23,44 +23,6 @@ class FlexiBeeRO extends \Ease\Brick
     static public $libVersion = '1.6.4.2';
 
     /**
-     * Availble Formats.
-     *
-     * @see https://www.flexibee.eu/api/dokumentace/ref/format-types/
-     * @var array formats known to flexibee
-     */
-    static public $formats = [
-        'JS' => ['desc' => 'JavaScropt',
-            'suffix' => 'js', 'content-type' => 'application/javascript', 'import' => false],
-        'CSS' => ['desc' => 'Kaskádový styl',
-            'suffix' => 'css', 'content-type' => 'text/css', 'import' => false],
-        'HTML' => ['desc' => 'HTML stránka pro zobrazení informací na webové stránce.',
-            'suffix' => 'html', 'content-type' => 'text/html', 'import' => false],
-        'XML' => ['desc' => 'Strojově čitelná struktura ve formátu XML.', 'suffix' => 'xml',
-            'content-type' => 'application/xml', 'import' => true],
-        'JSON' => ['desc' => 'Strojově čitelná struktura ve formátu JSON. ', 'suffix' => 'json',
-            'content-type' => 'application/json', 'import' => true],
-        'CSV' => ['desc' => 'Tabulkový výstup do formátu CSV (Column Separated Values).',
-            'suffix' => 'csv', 'content-type' => 'text/csv', 'import' => true],
-        'DBF' => ['desc' => 'Databázový výstup ve formátu DBF (dBase).', 'suffix' => 'dbf',
-            'content-type' => 'application/dbf', 'import' => true],
-        'XLS' => ['desc' => 'Tabulkový výstup ve formátu Excel.', 'suffix' => 'xls',
-            'content-type' => 'application/ms-excel', 'import' => true],
-        'ISDOC' => ['desc' => 'e-faktura ISDOC.', 'suffix' => 'isdoc', 'content-type' => 'application/x-isdoc',
-            'import' => false],
-        'ISDOCx' => ['desc' => 'e-faktura ISDOC s PDF přílohou', 'suffix' => 'isdocx',
-            'content-type' => 'application/x-isdocx',
-            'import' => false],
-        'EDI' => ['desc' => 'Elektronická výměna data (EDI) ve formátu INHOUSE.',
-            'suffix' => 'edi', 'content-type' => 'application/x-edi-inhouse', 'import' => 'objednavka-prijata'],
-        'PDF' => ['desc' => 'Generování tiskového reportu. Jedná se o stejnou funkci která je dostupná v aplikaci. Export do PDF',
-            'suffix' => 'pdf', 'content-type' => 'application/pdf', 'import' => false],
-        'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
-            'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
-        'iCalendar' => ['desc' => 'Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
-            'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
-    ];
-
-    /**
      * Základní namespace pro komunikaci s FlexiBee.
      * Basic namespace for communication with FlexiBee
      *
@@ -668,20 +630,16 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
+        $format       = $this->responseFormat;
 
         $responseArray = $this->rawResponseToArray($this->lastCurlResponse,
-            $format);
+            $format, $method);
 
-        if (is_null($format)) {
-            $format = $this->format;
-        }
 
         switch ($responseCode) {
             case 200:
             case 201:
-// Parse response
-                $responseDecoded = [];
-                $responseDecoded = $this->parseResponse($respnseArray);
+                $responseDecoded  = $this->parseResponse($responseArray);
                 $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
 
                 break;
@@ -787,12 +745,13 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Parse Raw FlexiBee response in several formats
      *
-     * @param string $responseRaw
-     * @param string $format
+     * @param string $responseRaw raw response body
+     * @param string $format      Raw Response format json|xml|etc
+     * @param string $method      Http method GET|POST|etc
      *
      * @return array
      */
-    public function rawResponseToArray($responseRaw, $format)
+    public function rawResponseToArray($responseRaw, $format, $method)
     {
         switch ($format) {
             case 'json':
@@ -854,7 +813,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $httpHeaders = $this->defaultHttpHeaders;
 
-        $formats = $this->reindexArrayBy(self::$formats, 'suffix');
+        $formats = $this->reindexArrayBy(Formats::$formats, 'suffix');
 
         if (!isset($httpHeaders['Accept'])) {
             $httpHeaders['Accept'] = $formats[$format]['content-type'];
@@ -876,7 +835,7 @@ class FlexiBeeRO extends \Ease\Brick
         $this->lastCurlResponse = curl_exec($this->curl);
         $this->info             = curl_getinfo($this->curl);
         $this->responseFormat   = Formats::contentTypeToSuffix($this->info['content_type']);
-        $this->lastResponseCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $this->lastResponseCode = $this->info['http_code'];
         return $this->lastResponseCode;
     }
 
