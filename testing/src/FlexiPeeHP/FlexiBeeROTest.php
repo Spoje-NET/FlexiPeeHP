@@ -58,6 +58,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'url' => 'https://flexibee.firma.cz/',
             'user' => 'rest',
             'password' => '-dj3x21xaA_',
+            'debug' => true,
             'prefix' => 'c',
             'evidence' => $evidence]);
     }
@@ -98,6 +99,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 'user' => 'usr',
                 'password' => 'pwd',
                 'prefix' => 'c',
+                'debug' => true,
                 'evidence' => 'smlouva'
             ]
         );
