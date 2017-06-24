@@ -25,7 +25,7 @@ function getEvidenceFormats($evidence, FlexiBeeRO $syncer)
     if (is_array($flexinfo) && array_key_exists('id', $flexinfo[0])) {
         $id = is_numeric($flexinfo[0]['id']) ? intval($flexinfo[0]['id']) : $flexinfo[0]['id'];
 
-        foreach (FlexiBeeRO::$formats as $cancode => $candidate) {
+        foreach (Formats::$formats as $cancode => $candidate) {
             $syncer->setFormat($candidate['suffix']);
             $syncer->loadFromFlexiBee($id);
             if ($syncer->lastResponseCode == 200) {
@@ -112,7 +112,7 @@ $evidenceFormats .= '
      *
      * @return array
      */
-    static function byContentType()
+    static public function byContentType()
     {
         return \Ease\Sand::reindexArrayBy(self::$formats, \'content-type\');
     }
@@ -122,7 +122,7 @@ $evidenceFormats .= '
      *
      * @return array
      */
-    static function bySuffix()
+    static public function bySuffix()
     {
         return \Ease\Sand::reindexArrayBy(self::$formats, \'suffix\');
     }
@@ -130,25 +130,25 @@ $evidenceFormats .= '
     /**
      * Obtain Suffix for given content
      *
-     * @param string $contentType
+     * @param string $suffix
      * @return string
      */
-    static function suffixToContentType($contentType)
+    static public function suffixToContentType($suffix)
     {
-        $types = self::byContentType($contentType);
-        return isset($types[$contentType]) ? $types[$contentType] : null;
+        $types = self::bySuffix($suffix);
+        return isset($types[$suffix]) ? $types[$suffix][\'content-type\'] : null;
     }
 
     /**
      * Obtain Content-Type for given suffix
      *
-     * @param string $suffix
+     * @param string $contentType
      * @return string
      */
-    static function contentTypeToSuffix($suffix)
+    static public function contentTypeToSuffix($contentType)
     {
-        $types = self::bySuffix($suffix);
-        return isset($types[$suffix]) ? $types[$suffix] : null;
+        $types = self::byContentType($contentType);
+        return isset($types[$contentType]) ? $types[$contentType][\'suffix\'] : null;
     }
 
     ';
