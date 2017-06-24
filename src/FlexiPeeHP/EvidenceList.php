@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
- * Generated: Fri, 16 Jun 2017 11:38:45 +0200 
+ * Generated: Sat, 24 Jun 2017 08:50:06 +0200 
  * From:      https://demo.flexibee.eu
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -31,7 +31,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- static public $version = '2017.1.11';
+ static public $version = '2017.1.12-beta-1';
 
     /**
      * Evidences Path/Name listing.
