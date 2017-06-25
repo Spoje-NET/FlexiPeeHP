@@ -166,7 +166,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var *
      */
-    public $info;
+    public $curlInfo;
 
     /**
      * Informace o poslední HTTP chybě.
@@ -294,6 +294,12 @@ class FlexiBeeRO extends \Ease\Brick
      * @var boolean
      */
     protected $ignoreNotFound = false;
+
+    /**
+     * Array of errors caused by last request
+     * @var array
+     */
+    private $errors = [];
 
     /**
      * Class for read only interaction with FlexiBee.
@@ -430,7 +436,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function setFormat($format)
     {
         $result = true;
-        if ($this->debug === true) {
+        if (($this->debug === true) && isset(Formats::$$evidence)) {
             $evidence = lcfirst(FlexiBeeRO::evidenceToClassName($this->getEvidence()));
             if (array_key_exists($format, array_flip(Formats::$$evidence)) === false) {
                 $result = false;
@@ -630,116 +636,9 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
-        $format       = $this->responseFormat;
 
-        $responseArray = $this->rawResponseToArray($this->lastCurlResponse,
-            $format, $method);
-
-
-        switch ($responseCode) {
-            case 200:
-            case 201:
-                $responseDecoded  = $this->parseResponse($responseArray);
-                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
-
-                break;
-
-            default: //Some goes wrong
-                $this->lastCurlError = curl_error($this->curl);
-                switch ($format) {
-                    case 'json':
-                        $response = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
-                            function ($match) {
-                            return mb_convert_encoding(pack('H*', $match[1]),
-                                'UTF-8', 'UCS-2BE');
-                        }, $this->lastCurlResponse);
-                        $response = (json_encode(json_decode($response, true, 10),
-                                JSON_PRETTY_PRINT));
-                        break;
-                    case 'xml':
-                        if (strlen($this->lastCurlResponse)) {
-                            $response = self::xml2array($this->lastCurlResponse);
-                        }
-                        break;
-                    case 'txt':
-                    default:
-                        $response = $this->lastCurlResponse;
-                        break;
-                }
-
-                if (is_array($response)) {
-                    $result = urldecode(http_build_query($response));
-                } elseif (strlen($response) && ($response != 'null')) {
-                    $decoded = json_decode($response);
-                    if (is_array($decoded)) {
-                        $result = urldecode(http_build_query(self::object2array(current($decoded))));
-                    }
-                } else {
-                    $result = null;
-                }
-
-                if ($response == 'null') {
-                    if ($this->lastResponseCode == 200) {
-                        $response = true;
-                    } else {
-                        $response = null;
-                    }
-                } else {
-                    if (is_string($response)) {
-                        $decoded = json_decode($response);
-                        if (is_array($decoded)) {
-                            $response = self::object2array(current($decoded));
-                        }
-                    }
-                }
-
-                if (is_array($response) && ($this->lastResponseCode == 400)) {
-                    $this->logResult($response, $url);
-                } else {
-                    $responseDecoded = json_decode($this->lastCurlResponse,
-                        true, 10);
-
-                    if (is_array($responseDecoded) && array_key_exists('results',
-                            $responseDecoded[$this->nameSpace])) {
-                        $errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
-                    } else {
-                        $errors = null;
-                    }
-
-                    if (!is_array($errors)) {
-                        $errors[]['message'] = '';
-                    }
-
-                    if (( $responseCode == 404 ) && ($this->ignoreNotFound === true)) {
-                        break;
-                    }
-                    foreach ($errors as $error) {
-                        $this->addStatusMessage(sprintf('Error (HTTP %d): %s %s',
-                                $responseCode,
-                                implode('; ', $error)
-                                , $this->lastCurlError), 'error');
-                    }
-
-                    $this->addStatusMessage($url, 'info');
-                    if (!empty($this->postFields) && $this->debug === true) {
-                        if (is_array($this->postFields)) {
-                            $this->addStatusMessage(urldecode(http_build_query($this->postFields)),
-                                'debug');
-                        } else {
-                            $this->addStatusMessage(urldecode($this->postFields),
-                                'debug');
-                        }
-                    }
-                }
-
-                break;
-        }
-
-        if ($this->debug === true) {
-            $this->saveDebugFiles();
-        }
-
-        return $response;
+        return strlen($this->lastCurlResponse) ? $this->parseResponse($this->rawResponseToArray($this->lastCurlResponse,
+                    $this->responseFormat, $method), $responseCode) : null;
     }
 
     /**
@@ -756,27 +655,16 @@ class FlexiBeeRO extends \Ease\Brick
         switch ($format) {
             case 'json':
                 $responseDecoded = json_decode($responseRaw, true, 10);
-                if (($method == 'PUT') && isset($responseDecoded[$this->nameSpace][$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
-                    $this->setMyKey($this->lastInsertedID);
-                    $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
-                } else {
-                    $this->lastInsertedID = null;
-                    if (isset($responseDecoded[$this->nameSpace]['@rowCount'])) {
-                        $this->rowCount = (int) $responseDecoded[$this->nameSpace]['@rowCount'];
-                    }
-                }
-                $decodeError = json_last_error_msg();
+                $decodeError     = json_last_error_msg();
                 if ($decodeError != 'No error') {
                     $this->addStatusMessage($decodeError, 'error');
                 }
+                if (array_key_exists($this->nameSpace, $responseDecoded)) {
+                    $responseDecoded = $responseDecoded[$this->nameSpace];
+                }
                 break;
             case 'xml':
-                if (strlen($this->lastCurlResponse)) {
-                    $responseDecoded = self::xml2array($this->lastCurlResponse);
-                } else {
-                    $responseDecoded = null;
-                }
+                $responseDecoded = self::xml2array($this->lastCurlResponse);
                 break;
             case 'txt':
             default:
@@ -786,9 +674,61 @@ class FlexiBeeRO extends \Ease\Brick
         return $responseDecoded;
     }
 
-    public function parseResponse($responseArray)
+    /**
+     * Parse Response array
+     * 
+     * @param array $responseDecoded
+     * @param int $responseCode Request Response Code
+     *
+     * @return array main data part of response
+     */
+    public function parseResponse($responseDecoded, $responseCode)
     {
-        return $responseArray;
+        switch ($responseCode) {
+            case 201:
+                if (isset($responseDecoded[$this->resultField][0]['id'])) {
+                    $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
+                    $this->setMyKey($this->lastInsertedID);
+                    $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
+                } else {
+                    $this->lastInsertedID = null;
+                    if (isset($responseDecoded[$this->nameSpace]['@rowCount'])) {
+                        $this->rowCount = (int) $responseDecoded[$this->nameSpace]['@rowCount'];
+                    }
+                }
+            case 200:
+                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
+                break;
+
+            case 404:
+                if ($this->ignoreNotFound === true) {
+                    break;
+                }
+            case 400:
+            default: //Something goes wrong
+                $this->addStatusMessage($this->curlInfo['url'], 'warning');
+                $this->parseError($responseDecoded);
+
+                $this->logResult($response, $url);
+                break;
+        }
+        return $response;
+    }
+
+    public function parseError($responseDecoded)
+    {
+        $errorInfo = $responseDecoded[$this->nameSpace];
+
+        if (is_array($responseDecoded) && array_key_exists('results',
+                $responseDecoded[$this->nameSpace])) {
+            $this->errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+        } else {
+            $this->errors = [['message' => $errorInfo['message']]];
+        }
+        foreach ($this->errors as $error) {
+            $this->addStatusMessage($error['message'], 'error');
+        }
+        return count($this->errors);
     }
 
     /**
@@ -833,9 +773,19 @@ class FlexiBeeRO extends \Ease\Brick
 
 // Proveď samotnou operaci
         $this->lastCurlResponse = curl_exec($this->curl);
-        $this->info             = curl_getinfo($this->curl);
-        $this->responseFormat   = Formats::contentTypeToSuffix($this->info['content_type']);
-        $this->lastResponseCode = $this->info['http_code'];
+        $this->curlInfo         = curl_getinfo($this->curl);
+        $this->responseFormat   = Formats::contentTypeToSuffix($this->curlInfo['content_type']);
+        $this->lastResponseCode = $this->curlInfo['http_code'];
+        $this->lastCurlError    = curl_error($this->curl);
+        if (strlen($this->lastCurlError)) {
+            $this->addStatusMessage(sprintf('Curl Error (HTTP %d): %s',
+                    $this->lastResponseCode, $this->lastCurlError), 'error');
+        }
+
+        if ($this->debug === true) {
+            $this->saveDebugFiles();
+        }
+
         return $this->lastResponseCode;
     }
 
@@ -996,7 +946,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         $flexidata    = $this->getFlexiData(null, '/'.$id);
-        $this->apiURL = $this->info['url'];
+        $this->apiURL = $this->curlInfo['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
         }
@@ -1104,32 +1054,28 @@ class FlexiBeeRO extends \Ease\Brick
     public function getColumnsFromFlexibee($columnsList, $conditions = null,
                                            $indexBy = null)
     {
-        if (is_int($conditions)) {
-            $conditions = [$this->getmyKeyColumn() => $conditions];
-        }
-
-        if ($columnsList != '*') {
-            if (is_array($columnsList)) {
+        $detail = 'full';
+        switch (gettype($columnsList)) {
+            case 'integer':
+                $conditions = [$this->getmyKeyColumn() => $conditions];
+            case 'array':
                 if (!is_null($indexBy) && !array_key_exists($indexBy,
                         $columnsList)) {
                     $columnsList[] = $indexBy;
                 }
                 $columns = implode(',', array_unique($columnsList));
-            } else {
-                $columns = $columnsList;
-            }
-            $detail = 'custom:'.$columns;
-        }
-        switch ($columnsList) {
-            case 'id':
-                $detail = 'id';
-                break;
-            case 'summary':
-                $detail = 'summary';
-                break;
-            case 'full':
+                $detail  = 'custom:'.$columns;
             default:
-                $detail = 'full';
+                switch ($columnsList) {
+                    case 'id':
+                        $detail = 'id';
+                        break;
+                    case 'summary':
+                        $detail = 'summary';
+                        break;
+                    default:
+                        break;
+                }
                 break;
         }
 
@@ -1427,8 +1373,8 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getResponseFormat()
     {
-        if (isset($this->info['content_type'])) {
-            $responseFormat = $this->info['content_type'];
+        if (isset($this->curlInfo['content_type'])) {
+            $responseFormat = $this->curlInfo['content_type'];
         } else {
             $responseFormat = null;
         }
@@ -1438,33 +1384,28 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Return the same response format for one and multiplete results
      *
-     * @param array $responseRaw
+     * @param array $responseBody
      * @return array
      */
-    public function unifyResponseFormat($responseRaw)
+    public function unifyResponseFormat($responseBody)
     {
-        $response = $responseRaw;
         $evidence = $this->getResponseEvidence();
-        if (is_array($responseRaw)) {
-// Get response body root automatically
-            if (array_key_exists($this->nameSpace, $responseRaw)) { //Unifi response format
-                $responseBody = $responseRaw[$this->nameSpace];
-                if (array_key_exists($evidence, $responseBody)) {
-                    $evidenceContent = $responseBody[$evidence];
-                    if (array_key_exists(0, $evidenceContent)) {
-                        $response[$evidence] = $evidenceContent; //Multiplete Results
-                    } else {
-                        $response[$evidence][0] = $evidenceContent; //One result
-                    }
+        if (array_key_exists('message', $responseBody)) { //Unifi response format
+            $response = $responseBody;
+        } else {
+            if (array_key_exists($evidence, $responseBody)) {
+                $evidenceContent = $responseBody[$evidence];
+                if (array_key_exists(0, $evidenceContent)) {
+                    $response[$evidence] = $evidenceContent; //Multiplete Results
                 } else {
-                    if (isset($responseBody['priloha'])) {
-                        $response = $responseBody['priloha'];
-                    } else {
-                        $response = $responseBody;
-                    }
+                    $response[$evidence][0] = $evidenceContent; //One result
                 }
             } else {
-                $response = $responseRaw;
+                if (isset($responseBody['priloha'])) {
+                    $response = $responseBody['priloha'];
+                } else {
+                    $response = $responseBody;
+                }
             }
         }
         return $response;

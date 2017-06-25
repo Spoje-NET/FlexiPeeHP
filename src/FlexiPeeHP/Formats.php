@@ -66,7 +66,7 @@ class Formats
      *
      * @return array
      */
-    static function byContentType()
+    static public function byContentType()
     {
         return \Ease\Sand::reindexArrayBy(self::$formats, 'content-type');
     }
@@ -76,7 +76,7 @@ class Formats
      *
      * @return array
      */
-    static function bySuffix()
+    static public function bySuffix()
     {
         return \Ease\Sand::reindexArrayBy(self::$formats, 'suffix');
     }
@@ -87,7 +87,7 @@ class Formats
      * @param string $suffix
      * @return string
      */
-    static function suffixToContentType($suffix)
+    static public function suffixToContentType($suffix)
     {
         $types = self::bySuffix($suffix);
         return isset($types[$suffix]) ? $types[$suffix]['content-type'] : null;
@@ -99,7 +99,7 @@ class Formats
      * @param string $contentType
      * @return string
      */
-    static function contentTypeToSuffix($contentType)
+    static public function contentTypeToSuffix($contentType)
     {
         $types = self::byContentType($contentType);
         return isset($types[$contentType]) ? $types[$contentType]['suffix'] : null;

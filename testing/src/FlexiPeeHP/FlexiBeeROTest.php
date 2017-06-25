@@ -25,6 +25,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->evidence  = 'c';
         $this->object->prefix    = '';
         $this->object->company   = '';
+        $this->object->debug     = true;
         $this->object->nameSpace = 'companies';
     }
 
@@ -84,6 +85,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 ['limit' => 1]);
             $this->object->processInit((int) current($firstID));
             $this->assertNotEmpty($this->object->__toString());
+
+            if (isset($firstID[0]['kod'])) {
+                $this->object->processInit('code:'.$firstID[0]['kod']);
+                $this->assertNotEmpty($this->object->__toString());
+            }
         }
     }
 
@@ -125,14 +131,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::setFormat
-     * @todo   Implement testSetFormat().
      */
     public function testSetFormat()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setFormat('xml');
+        $this->assertEquals('xml', $this->object->format);
     }
 
     /**
@@ -792,5 +795,4 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'This test has not been implemented yet.'
         );
     }
-
 }
