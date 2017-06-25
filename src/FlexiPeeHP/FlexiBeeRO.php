@@ -684,6 +684,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
+        $response = null;
         switch ($responseCode) {
             case 201:
                 if (isset($responseDecoded[$this->resultField][0]['id'])) {
@@ -707,23 +708,27 @@ class FlexiBeeRO extends \Ease\Brick
             case 400:
             default: //Something goes wrong
                 $this->addStatusMessage($this->curlInfo['url'], 'warning');
-                $this->parseError($responseDecoded);
-
-                $this->logResult($response, $url);
+                $this->logResult($this->parseError($responseDecoded),
+                    $this->curlInfo['url']);
                 break;
         }
         return $response;
     }
 
+
+    /**
+     * Parse error message response
+     *
+     * @param array $responseDecoded
+     * @return int number of errors processed
+     */
     public function parseError($responseDecoded)
     {
-        $errorInfo = $responseDecoded[$this->nameSpace];
-
         if (is_array($responseDecoded) && array_key_exists('results',
-                $responseDecoded[$this->nameSpace])) {
-            $this->errors = $responseDecoded[$this->nameSpace]['results'][0]['errors'];
+                $responseDecoded)) {
+            $this->errors = $responseDecoded['results'][0]['errors'];
         } else {
-            $this->errors = [['message' => $errorInfo['message']]];
+            $this->errors = [['message' => $responseDecoded['message']]];
         }
         foreach ($this->errors as $error) {
             $this->addStatusMessage($error['message'], 'error');
