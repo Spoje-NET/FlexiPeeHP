@@ -44,8 +44,6 @@ foreach (getOverdueInvoices() as $invoice) {
     $kontakt = $firmer->getColumnsFromFlexibee(['nazev', 'email'],
         ['id' => $invoice['firma']]);
     $firmer->addStatusMessage(implode(',', $kontakt[0]), 'success');
-    print_r($invoice);
-
     if (isset($kontakt[0]['email'])) {
         $mail = new \Ease\Mailer($kontakt[0]['email'],
             sprintf(_('Overdue invoice: %s'), $invoice['kod']),

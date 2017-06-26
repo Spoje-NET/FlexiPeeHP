@@ -17,7 +17,6 @@ $companies     = $companer->getFlexiData();
 
 if (array_key_exists('company', $companies) === true) {
     $companer->addStatusMessage('Connection OK', 'success');
-    print_r($companies['company']);
 } else {
     $companer->addStatusMessage('Connection failed', 'warning');
 }

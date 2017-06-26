@@ -32,4 +32,3 @@ $polozka = new \FlexiPeeHP\FlexiBeeRO(intval($vazby['typVazbyDokl.odpocetZALOHY'
 
 $faktura = new \FlexiPeeHP\FakturaVydana($polozka->getDataValue('doklFak'));
 
-print_r($faktura);

@@ -17,5 +17,3 @@ include_once '../vendor/autoload.php';
 $adreser   = new \FlexiPeeHP\Adresar();
 $addresses = $adreser->getColumnsFromFlexibee(['id', 'nazev', 'email'],
     ['typVztahuK' => 'typVztahu.odberatel'], 'nazev');
-
-print_r($addresses);
