@@ -24,7 +24,7 @@ function getEvidenceFormats($evidence, FlexiBeeRO $syncer)
     $flexinfo = $syncer->getColumnsFromFlexibee(['id'], ['limit' => 1]);
     if (is_array($flexinfo) && array_key_exists('id', $flexinfo[0])) {
         $id = is_numeric($flexinfo[0]['id']) ? intval($flexinfo[0]['id']) : $flexinfo[0]['id'];
-
+        $formats = [];
         foreach (Formats::$formats as $cancode => $candidate) {
             $syncer->setFormat($candidate['suffix']);
             $syncer->loadFromFlexiBee($id);
@@ -135,7 +135,7 @@ $evidenceFormats .= '
      */
     static public function suffixToContentType($suffix)
     {
-        $types = self::bySuffix($suffix);
+        $types = self::bySuffix();
         return isset($types[$suffix]) ? $types[$suffix][\'content-type\'] : null;
     }
 
@@ -147,7 +147,7 @@ $evidenceFormats .= '
      */
     static public function contentTypeToSuffix($contentType)
     {
-        $types = self::byContentType($contentType);
+        $types = self::byContentType();
         return isset($types[$contentType]) ? $types[$contentType][\'suffix\'] : null;
     }
 

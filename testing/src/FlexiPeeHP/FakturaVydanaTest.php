@@ -163,11 +163,11 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     public function invoiceCopy($invoice, $override = [])
     {
         $invoice2        = new \FlexiPeeHP\FakturaVydana($invoice->getData());
-        $invoice2->debug = 1;
+        $invoice2->debug = true;
         $invoice2->unsetDataValue('id');
         $invoice2->unsetDataValue('kod');
         $polozky         = $invoice2->getDataValue('polozkyFaktury');
-        if (!is_null($polozky)) {
+        if (is_array($polozky) && count($polozky)) {
             foreach ($polozky as $pid => $polozka) {
                 unset($polozky[$pid]['id']);
                 unset($polozky[$pid]['doklFak']);

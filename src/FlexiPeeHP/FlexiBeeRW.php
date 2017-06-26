@@ -126,13 +126,13 @@ class FlexiBeeRW extends FlexiBeeRO
     public function takeData($data)
     {
         if ($this->debug === true) {
+            $fbRelations = [];
             $fbColumns = $this->getColumnsInfo();
             foreach ($this->getRelationsInfo() as $relation) {
                 if (is_array($relation) && isset($relation['url'])) {
                     $fbRelations[$relation['url']] = $relation['url'];
                 }
             }
-
             if (count($fbColumns)) {
                 foreach ($data as $key => $value) {
                     if (!array_key_exists($key, $fbColumns)) {
@@ -187,7 +187,7 @@ class FlexiBeeRW extends FlexiBeeRO
     public function controlReadOnlyColumns($data = null)
     {
         if (is_null($data)) {
-            $data->getData();
+            $data = $this->getData();
         }
 
         $readonlyColumns = [];
@@ -275,20 +275,28 @@ class FlexiBeeRW extends FlexiBeeRO
     }
 
     /**
+     * Přidá uživatelskou vazbu
+     *
      * @see https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-vazby/
+     * @param string $vazba
      */
-    public function vazbaAdd()
+    public function vazbaAdd($vazba)
     {
-        $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
+       $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
             'uzivatelske-vazby');
     }
 
     /**
-     * @
+     * Smaže uživatelskou vazbu
+     *
+     * @see https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-vazby/
+     * @param string $vazba
      */
-    public function vazbaDel()
+    public function vazbaDel($vazba)
     {
-        
+        $this->setDataValue('uzivatelska-vazba@action', 'delete');
+        $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
+            'uzivatelske-vazby');
     }
 
     /**

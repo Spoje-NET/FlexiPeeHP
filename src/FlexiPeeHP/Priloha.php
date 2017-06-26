@@ -108,7 +108,8 @@ class Priloha extends FlexiBeeRW
                     $attachmentID), 'warning');
         }
 
-        $attachmentBody = $object->doCurlRequest(self::getDownloadUrl($object));
+        $attachmentBody = $object->doCurlRequest(self::getDownloadUrl($object),
+            'GET');
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Transfer-Encoding: binary');

@@ -422,7 +422,6 @@ class FlexiBeeRO extends \Ease\Brick
                 break;
             default:
                 throw new \Exception(sprintf('Unknown prefix %s', $prefix));
-                break;
         }
     }
 
@@ -436,9 +435,10 @@ class FlexiBeeRO extends \Ease\Brick
     public function setFormat($format)
     {
         $result = true;
-        if (($this->debug === true) && isset(Formats::$$evidence)) {
+        if (($this->debug === true) && isset(Formats::$$this->evidence)) {
             $evidence = lcfirst(FlexiBeeRO::evidenceToClassName($this->getEvidence()));
-            if (array_key_exists($format, array_flip(Formats::$$evidence)) === false) {
+            if (array_key_exists($format, array_flip(Formats::$$this->evidence))
+                === false) {
                 $result = false;
             }
         }
@@ -458,7 +458,6 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setEvidence($evidence)
     {
-        $result = null;
         switch ($this->prefix) {
             case '/c/':
                 if (array_key_exists($evidence, EvidenceList::$name)) {
@@ -625,8 +624,6 @@ class FlexiBeeRO extends \Ease\Brick
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
     {
-        $response       = null;
-        $result         = null;
         $this->rowCount = null;
 
         if (preg_match('/^http/', $urlSuffix)) {
@@ -638,7 +635,7 @@ class FlexiBeeRO extends \Ease\Brick
         $responseCode = $this->doCurlRequest($url, $method, $format);
 
         return strlen($this->lastCurlResponse) ? $this->parseResponse($this->rawResponseToArray($this->lastCurlResponse,
-                    $this->responseFormat, $method), $responseCode) : null;
+                    $this->responseFormat), $responseCode) : null;
     }
 
     /**
@@ -646,11 +643,10 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param string $responseRaw raw response body
      * @param string $format      Raw Response format json|xml|etc
-     * @param string $method      Http method GET|POST|etc
      *
      * @return array
      */
-    public function rawResponseToArray($responseRaw, $format, $method)
+    public function rawResponseToArray($responseRaw, $format)
     {
         switch ($format) {
             case 'json':
@@ -1180,7 +1176,6 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         if (isset($resultData['results'])) {
-            $status = null;
             if ($resultData['success'] == 'false') {
                 $status = 'error';
             } else {
@@ -1247,9 +1242,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function flexiUrl(array $data, $joiner = 'and', $defop = 'eq')
     {
-        $flexiUrl = '';
-        $parts    = [];
-
+        $parts = [];
         foreach ($data as $column => $value) {
             if (is_integer($data[$column]) || is_float($data[$column])) {
                 $parts[$column] = $column.' eq \''.$data[$column].'\'';
@@ -1272,10 +1265,7 @@ class FlexiBeeRO extends \Ease\Brick
                 }
             }
         }
-
-        $flexiUrl = implode(' '.$joiner.' ', $parts);
-
-        return $flexiUrl;
+        return implode(' '.$joiner.' ', $parts);
     }
 
     /**
@@ -1399,6 +1389,7 @@ class FlexiBeeRO extends \Ease\Brick
             $response = $responseBody;
         } else {
             if (array_key_exists($evidence, $responseBody)) {
+                $response        = [];
                 $evidenceContent = $responseBody[$evidence];
                 if (array_key_exists(0, $evidenceContent)) {
                     $response[$evidence] = $evidenceContent; //Multiplete Results
@@ -1519,8 +1510,6 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function performAction($action, $method = 'ext')
     {
-        $result = null;
-
         $actionsAvailble = $this->getActionsInfo();
 
         if (is_array($actionsAvailble) && array_key_exists($action,

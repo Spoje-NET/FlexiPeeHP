@@ -517,7 +517,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetKod()
     {
-
+        $testString = [];
         $this->assertEquals('CODE',
             $this->object->getKod([$this->object->myKeyColumn => 'code']));
 

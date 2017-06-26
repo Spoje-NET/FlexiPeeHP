@@ -89,7 +89,7 @@ class Formats
      */
     static public function suffixToContentType($suffix)
     {
-        $types = self::bySuffix($suffix);
+        $types = self::bySuffix();
         return isset($types[$suffix]) ? $types[$suffix]['content-type'] : null;
     }
 
@@ -101,7 +101,7 @@ class Formats
      */
     static public function contentTypeToSuffix($contentType)
     {
-        $types = self::byContentType($contentType);
+        $types = self::byContentType();
         return isset($types[$contentType]) ? $types[$contentType]['suffix'] : null;
     }
 
