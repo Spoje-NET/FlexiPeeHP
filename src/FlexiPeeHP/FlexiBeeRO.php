@@ -697,6 +697,8 @@ class FlexiBeeRO extends \Ease\Brick
                 $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
                 break;
 
+            case 500:
+                $this->error500Reporter($responseDecoded);
             case 404:
                 if ($this->ignoreNotFound === true) {
                     break;
@@ -704,8 +706,8 @@ class FlexiBeeRO extends \Ease\Brick
             case 400:
             default: //Something goes wrong
                 $this->addStatusMessage($this->curlInfo['url'], 'warning');
-                $this->logResult($this->parseError($responseDecoded),
-                    $this->curlInfo['url']);
+                $this->parseError($responseDecoded);
+                $this->logResult($responseDecoded,$this->curlInfo['url']);
                 break;
         }
         return $response;
@@ -725,9 +727,6 @@ class FlexiBeeRO extends \Ease\Brick
             $this->errors = $responseDecoded['results'][0]['errors'];
         } else {
             $this->errors = [['message' => $responseDecoded['message']]];
-        }
-        foreach ($this->errors as $error) {
-            $this->addStatusMessage($error['message'], 'error');
         }
         return count($this->errors);
     }
@@ -1384,10 +1383,10 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function unifyResponseFormat($responseBody)
     {
-        $evidence = $this->getResponseEvidence();
         if (array_key_exists('message', $responseBody)) { //Unifi response format
             $response = $responseBody;
         } else {
+            $evidence = $this->getResponseEvidence();
             if (array_key_exists($evidence, $responseBody)) {
                 $response        = [];
                 $evidenceContent = $responseBody[$evidence];
@@ -1684,4 +1683,13 @@ class FlexiBeeRO extends \Ease\Brick
         }
         return $fileOnDisk;
     }
+
+    public function error500Reporter($errorResponse)
+    {
+        //Send Raw Request: Method/URL/Headers/Body
+        //With tail of FlexiBee log 
+        //To FlexiBee developers team
+        //By mail
+    }
+
 }

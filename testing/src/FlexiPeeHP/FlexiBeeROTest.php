@@ -223,10 +223,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 break;
         }
 
-
-        $err = $this->object->performRequest('error.json');
-        $this->assertArrayHasKey('success', $err);
-        $this->assertEquals('false', $err['success']);
+        //404 Test
+        $this->assertNull ($this->object->performRequest('error.json'));
     }
 
     /**
