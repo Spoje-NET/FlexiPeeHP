@@ -684,13 +684,13 @@ class FlexiBeeRO extends \Ease\Brick
         switch ($responseCode) {
             case 201:
                 if (isset($responseDecoded[$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->nameSpace][$this->resultField][0]['id'];
+                    $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
                     $this->setMyKey($this->lastInsertedID);
                     $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
                 } else {
                     $this->lastInsertedID = null;
-                    if (isset($responseDecoded[$this->nameSpace]['@rowCount'])) {
-                        $this->rowCount = (int) $responseDecoded[$this->nameSpace]['@rowCount'];
+                    if (isset($responseDecoded['@rowCount'])) {
+                        $this->rowCount = (int) $responseDecoded['@rowCount'];
                     }
                 }
             case 200:
