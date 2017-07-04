@@ -27,14 +27,14 @@ class Company extends FlexiBeeRO
      *
      * @var string
      */
-    public $prefix = '';
+    public $prefix = '/c';
 
     /**
      * Company.
      *
      * @var string
      */
-    public $evidence = 'c';
+    public $evidence = '';
 
     /**
      * Tato třída nepracuje sezvolenou firmou.
@@ -57,8 +57,40 @@ class Company extends FlexiBeeRO
 
         $url = $this->url.$this->prefix;
         if (!is_null($urlSuffix)) {
-            $url .= '/'.$urlSuffix;
+            $url .= (($urlSuffix[0] == '.') ? '' : '/').$urlSuffix;
         }
         return $url;
+    }
+
+    /**
+     * Vrací název evidence použité v odpovědích z FlexiBee
+     *
+     * @return string
+     */
+    public function getResponseEvidence()
+    {
+        return 'company';
+    }
+
+    /**
+     * Parse Raw FlexiBee response in several formats
+     *
+     * @param string $responseRaw raw response body
+     * @param string $format      Raw Response format json|xml|etc
+     *
+     * @return array
+     */
+    public function rawResponseToArray($responseRaw, $format)
+    {
+        $response = [];
+        if (strstr($responseRaw, 'winstrom')) {
+            $nsbackup        = $this->nameSpace;
+            $this->nameSpace = 'winstrom';
+            $response        = parent::rawResponseToArray($responseRaw, $format);
+            $this->nameSpace = $nsbackup;
+        } else {
+            $response = parent::rawResponseToArray($responseRaw, $format);
+        }
+        return $response;
     }
 }

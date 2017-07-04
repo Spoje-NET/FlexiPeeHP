@@ -919,8 +919,9 @@ class FlexiBeeRO extends \Ease\Brick
                     'GET');
             }
         }
-        if (isset($transactions[$this->evidence])) {
-            $result = $transactions[$this->evidence];
+        $responseEvidence = $this->getResponseEvidence();
+        if (array_key_exists($responseEvidence, $transactions)) {
+            $result = $transactions[$responseEvidence];
             if ((count($result) == 1) && (count(current($result)) == 0 )) {
                 $result = null; // Response is empty Array
             }
