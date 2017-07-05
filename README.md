@@ -16,9 +16,9 @@ CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee]
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)
 
-#Poděkování
+# Poděkování 
 Vznik této knihovny by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
-která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu.
+která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu. :+1:
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
@@ -180,6 +180,8 @@ dat do FlexiBee provedeny dodatečné testy. Kontrolují se tyto možné chyby:
  * Je vkládané políčko Pouze pro čtení ?
  * Pokud je vkládané políčko vazbou, je i polem ?
 
+V ladícím režimu se také ukládají do složky /tmp všechny požadavky na flexibee a jejich odpovědi
+
 
 Testování
 ---------
@@ -202,7 +204,28 @@ trvat nějakou dobu, jelikož se testuje i zavolání automatického párování
 Ukázka
 ------
 
-Příkladem využití knihovny je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+Ve složce Examples jsou tyto ukázky použití:
+
+| Soubor                                                        | Popis                                 |
+| ------------------------------------------------------------- | --------------------------------------|
+| [AttachmentSaveToFile.php](Examples/AttachmentSaveToFile.php) | uložení přílohy do souboru
+| [AttachmentUpload.php](Examples/AttachmentUpload.php)         | nahrání přílohy
+| [AuthentizeContact.php](Examples/AuthentizeContact.php)       | autentizace kontaktu
+| [CreateLabel.php](Examples/CreateLabel.php)                   | práce se štítky
+| [DownloadInvoicePDF.php](Examples/DownloadInvoicePDF.php)     | stažení PDF faktury
+| [Error404.php](Examples/Error404.php)                         | práce s neexistujícími záznamy
+| [FindOverdueInvoices.php](Examples/FindOverdueInvoices.php)   | najdi faktury po splatnosti
+| [InvoiceCopy.php](Examples/InvoiceCopy.php)                   | vytvoření daňového dokladu ze zálohy
+| [NajdiDanovyDokladKzalohovemu.php](Examples/NajdiDanovyDokladKzalohovemu.php) | dohledání dokladu
+| [ReadAddressColumns.php](Examples/ReadAddressColumns.php)     | vrať konkrétní sloupečky
+| [sendInvoiceByMail.php](Examples/sendInvoiceByMail.php)       | odeslání faktury mailem
+| [SendReminders.php](Examples/SendReminders.php)               | odeslání upomínek
+| [SetContactAuth.php](Examples/SetContactAuth.php)             | nastavení autentizace
+| [TestConnection.php](Examples/TestConnection.php)             | kontrola spojení 
+
+
+> Příkladem využití knihovny v aplikaci je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+
 
 Docker
 ------
@@ -275,5 +298,5 @@ FlexiBee knihovny pro další jazky:
 
  * [Flexipy](https://github.com/JakubJecminek/flexipy)  (Python) [Dokumentace](http://pythonhosted.org/flexipy/index.html)
  * [Flexibee.rb](https://github.com/danpecher/flexibee.rb) (Ruby)
-
+ * [UniMapper Flexibee extension](https://github.com/unimapper/flexibee) (PHP)
  
