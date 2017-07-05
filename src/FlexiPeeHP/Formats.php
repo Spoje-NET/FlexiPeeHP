@@ -57,9 +57,10 @@ class Formats
         'vCard' => ['desc' => 'Výstup adresáře do formátu elektronické vizitky vCard.',
             'suffix' => 'vcf', 'content-type' => 'text/vcard', 'import' => false],
         'iCalendar' => ['desc' => 'Výstup do kalendáře ve formátu iCalendar. Lze takto exportovat události, ale také třeba splatnosti u přijatých či vydaných faktur.',
-            'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false]
+            'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false],
+        'TEXT' => ['desc' => 'Prostý text', 'suffix' => 'txt',
+            'content-type' => 'text/plain', 'import' => false],
     ];
-
 
     /**
      * Array of formats indexed by Content-Type

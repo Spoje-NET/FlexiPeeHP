@@ -652,11 +652,14 @@ class FlexiBeeRO extends \Ease\Brick
             case 'json':
                 $responseDecoded = json_decode($responseRaw, true, 10);
                 $decodeError     = json_last_error_msg();
-                if ($decodeError != 'No error') {
-                    $this->addStatusMessage($decodeError, 'error');
-                }
-                if (array_key_exists($this->nameSpace, $responseDecoded)) {
-                    $responseDecoded = $responseDecoded[$this->nameSpace];
+                if ($decodeError == 'No error') {
+                    if (array_key_exists($this->nameSpace, $responseDecoded)) {
+                        $responseDecoded = $responseDecoded[$this->nameSpace];
+                    }
+                } else {
+                    $this->addStatusMessage('JSON Decoder: '.$decodeError,
+                        'error');
+                    $this->addStatusMessage($responseRaw, 'debug');
                 }
                 break;
             case 'xml':
@@ -754,7 +757,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         $httpHeaders = $this->defaultHttpHeaders;
 
-        $formats = $this->reindexArrayBy(Formats::$formats, 'suffix');
+        $formats = Formats::bySuffix();
 
         if (!isset($httpHeaders['Accept'])) {
             $httpHeaders['Accept'] = $formats[$format]['content-type'];
