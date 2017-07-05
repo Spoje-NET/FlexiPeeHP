@@ -56,7 +56,7 @@ class Company extends FlexiBeeRO
         }
 
         $url = $this->url.$this->prefix;
-        if (!is_null($urlSuffix)) {
+        if (!empty($urlSuffix)) {
             $url .= (($urlSuffix[0] == '.') ? '' : '/').$urlSuffix;
         }
         return $url;

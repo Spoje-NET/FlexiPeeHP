@@ -522,7 +522,7 @@ class FlexiBeeRO extends \Ease\Brick
                 $evidence = 'company';
                 break;
             case 'evidence-list':
-                $evidence = 'evidences';
+                $evidence = 'evidence';
                 break;
             default:
                 $evidence = $this->getEvidence();
