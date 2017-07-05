@@ -224,7 +224,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [TestConnection.php](Examples/TestConnection.php)             | kontrola spojení 
 
 
-> Příkladem využití knihovny v aplikaci je nástroj [Flexplorer](https://github.com/Spoje-NET/Flexplorer)
+> Příkladem využití knihovny v aplikaci je nástroj [Flexplorer](https://github.com/VitexSoftware/Flexplorer)
 
 
 Docker
