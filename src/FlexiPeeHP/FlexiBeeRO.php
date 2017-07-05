@@ -607,7 +607,7 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $this->apiURL = $this->getEvidenceURL();
         $id           = $this->__toString();
-        if (!is_null($id)) {
+        if (!empty($id)) {
             $this->apiURL .= '/'.urlencode($id);
         }
         $this->apiURL .= '.'.$this->format;
@@ -706,7 +706,9 @@ class FlexiBeeRO extends \Ease\Brick
             case 400:
             default: //Something goes wrong
                 $this->addStatusMessage($this->curlInfo['url'], 'warning');
-                $this->parseError($responseDecoded);
+                if (is_array($responseDecoded)) {
+                    $this->parseError($responseDecoded);
+                }
                 $this->logResult($responseDecoded,$this->curlInfo['url']);
                 break;
         }
@@ -720,10 +722,9 @@ class FlexiBeeRO extends \Ease\Brick
      * @param array $responseDecoded
      * @return int number of errors processed
      */
-    public function parseError($responseDecoded)
+    public function parseError(array $responseDecoded)
     {
-        if (is_array($responseDecoded) && array_key_exists('results',
-                $responseDecoded)) {
+        if (array_key_exists('results', $responseDecoded)) {
             $this->errors = $responseDecoded['results'][0]['errors'];
         } else {
             $this->errors = [['message' => $responseDecoded['message']]];
@@ -920,7 +921,8 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
         $responseEvidence = $this->getResponseEvidence();
-        if (array_key_exists($responseEvidence, $transactions)) {
+        if (is_array($transactions) && array_key_exists($responseEvidence,
+                $transactions)) {
             $result = $transactions[$responseEvidence];
             if ((count($result) == 1) && (count(current($result)) == 0 )) {
                 $result = null; // Response is empty Array
@@ -1384,7 +1386,8 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function unifyResponseFormat($responseBody)
     {
-        if (array_key_exists('message', $responseBody)) { //Unifi response format
+        if (!is_array($responseBody) || array_key_exists('message',
+                $responseBody)) { //Unifi response format
             $response = $responseBody;
         } else {
             $evidence = $this->getResponseEvidence();

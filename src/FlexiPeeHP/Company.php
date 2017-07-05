@@ -82,7 +82,6 @@ class Company extends FlexiBeeRO
      */
     public function rawResponseToArray($responseRaw, $format)
     {
-        $response = [];
         if (strstr($responseRaw, 'winstrom')) {
             $nsbackup        = $this->nameSpace;
             $this->nameSpace = 'winstrom';
