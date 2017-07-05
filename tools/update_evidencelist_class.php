@@ -63,6 +63,14 @@ class EvidenceList extends FlexiBeeRO
      */
     public $evidence = \'evidence-list\';
 
+    /**
+     * Základní namespace pro komunikaci s FlexiBee.
+     * Basic namespace for communication with FlexiBee
+     *
+     * @var string Jmený prostor datového bloku odpovědi
+     */
+    public $nameSpace = \'evidences\';
+
 ';
 
 $evidenceList .= '    /**
