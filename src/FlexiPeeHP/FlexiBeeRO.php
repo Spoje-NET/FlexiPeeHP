@@ -402,7 +402,7 @@ class FlexiBeeRO extends \Ease\Brick
             $this->loadFromFlexiBee($init);
         } elseif (is_array($init)) {
             $this->takeData($init);
-        } elseif (preg_match('\.(json|xml|csv)', $init)) {
+        } elseif (preg_match('/\.(json|xml|csv)/', $init)) {
             $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL().'/'
                             : '').$init));
         } else {
