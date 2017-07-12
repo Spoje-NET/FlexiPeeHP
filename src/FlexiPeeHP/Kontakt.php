@@ -38,8 +38,10 @@ class Kontakt extends FlexiBeeRW
         $result                                   = $this->performRequest($this->evidence.'/authenticate',
             'POST', 'xml');
         $this->defaultHttpHeaders                 = $defaultHttpHeaders;
-        $this->addStatusMessage($result['message'],
-            $result['success'] == 'true' ? 'success' : 'warning' );
+        if (!empty($result['message'])) {
+            $this->addStatusMessage($result['message'],
+                $result['success'] == 'true' ? 'success' : 'warning' );
+        }
         return $result['success'] == 'true';
     }
 }
