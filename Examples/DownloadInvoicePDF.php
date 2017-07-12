@@ -14,7 +14,7 @@ include_once '../vendor/autoload.php';
 
 include_once './common.php';
 
-$invoiceID = askForInvoiceID();
+$invoiceID = askForFlexiBeeID();
 
 /*
  * FlexiPeeHP Classes accept this form of initial identifier:

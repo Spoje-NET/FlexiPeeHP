@@ -11,12 +11,13 @@ namespace Example\FlexiPeeHP;
 /**
  * Ask For Invoice ID
  *
+ * @param string $type Requested type for documents
  * @return int|string id or code
  */
-function askForInvoiceID()
+function askForFlexiBeeID($type = 'invoice')
 {
     $invoiceID = null;
-    echo "Please enter invoice ID ( one of https://demo.flexibee.eu/c/demo/faktura-vydana.json?detail=custom;id&limit=0 ):";
+    echo "Please enter $type ID:";
     $input     = fopen("php://stdin", "r");
     $invoiceID = trim(fgets($input));
     fclose($input);

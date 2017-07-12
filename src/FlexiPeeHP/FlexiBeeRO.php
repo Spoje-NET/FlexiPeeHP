@@ -314,7 +314,7 @@ class FlexiBeeRO extends \Ease\Brick
         parent::__construct();
         $this->setUp($options);
         $this->curlInit();
-        if (!is_null($init)) {
+        if (!empty($init)) {
             $this->processInit($init);
         }
     }
@@ -323,7 +323,7 @@ class FlexiBeeRO extends \Ease\Brick
      * SetUp Object to be ready for connect
      *
      * @param array $options Object Options (company,url,user,password,evidence,
-     *                                       prefix,debug)
+     *                                       prefix,defaultUrlParams,debug)
      */
     public function setUp($options = [])
     {
@@ -358,6 +358,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
         }
+        if (isset($options['defaultUrlParams'])) {
+            $this->defaultUrlParams = $options['defaultUrlParams'];
+        }
         if (isset($options['prefix'])) {
             $this->setPrefix($options['prefix']);
         }
@@ -383,9 +386,15 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Zinicializuje objekt dle daných dat
+     * Zinicializuje objekt dle daných dat. Možné hodnoty:
      *
-     * @param mixed $init
+     *  * 234                              - interní číslo záznamu k načtení
+     *  * code:LOPATA                      - kód záznamu
+     *  * BAGR                             - kód záznamu ka načtení
+     *  * ['id'=>24,'nazev'=>'hoblík']     - pole hodnot k předvyplnění
+     *  * 743.json?relations=adresa,vazby  - část url s parametry k načtení
+     *
+     * @param mixed $init číslo/"(code:)kód"/(část)URI záznamu k načtení | pole hodnot k předvyplnění
      */
     public function processInit($init)
     {
@@ -393,8 +402,11 @@ class FlexiBeeRO extends \Ease\Brick
             $this->loadFromFlexiBee($init);
         } elseif (is_array($init)) {
             $this->takeData($init);
-        } elseif (strstr($init, 'code:')) {
-            $this->loadFromFlexiBee($init);
+        } elseif (preg_match('\.(json|xml|csv)', $init)) {
+            $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL().'/'
+                            : '').$init));
+        } else {
+            $this->loadFromFlexiBee('code:'.str_replace('code:', '', $init));
         }
     }
 
@@ -712,12 +724,11 @@ class FlexiBeeRO extends \Ease\Brick
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
                 }
-                $this->logResult($responseDecoded,$this->curlInfo['url']);
+                $this->logResult($responseDecoded, $this->curlInfo['url']);
                 break;
         }
         return $response;
     }
-
 
     /**
      * Parse error message response
@@ -1698,5 +1709,4 @@ class FlexiBeeRO extends \Ease\Brick
         //To FlexiBee developers team
         //By mail
     }
-
 }

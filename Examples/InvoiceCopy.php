@@ -59,7 +59,7 @@ function invoiceCopy($invoice, $extraValues = [])
 }
 include_once './common.php';
 
-$invoiceID = askForInvoiceID();
+$invoiceID = askForFlexiBeeID();
 
 /*
  * FlexiPeeHP Classes accept this form of initial identifier:

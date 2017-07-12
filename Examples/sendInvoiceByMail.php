@@ -19,7 +19,7 @@ $input     = fopen("php://stdin", "r");
 $recipient = trim(fgets($input));
 fclose($input);
 
-$invoiceID = askForInvoiceID();
+$invoiceID = askForFlexiBeeID();
 
 /*
  * FlexiPeeHP Classes accept this form of initial identifier:

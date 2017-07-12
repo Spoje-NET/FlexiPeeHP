@@ -13,7 +13,7 @@ include_once './config.php';
 include_once '../vendor/autoload.php';
 include_once './common.php';
 
-$invoiceID = askForInvoiceID();
+$invoiceID = askForFlexiBeeID();
 
 $invoice = new \FlexiPeeHP\FakturaVydana($invoiceID);
 

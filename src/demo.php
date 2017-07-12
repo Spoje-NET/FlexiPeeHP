@@ -23,15 +23,9 @@ $company = new Company();
 $info    = $company->getAllFromFlexibee();
 
 if (isset($info) && count($info)) {
-    if (isset($info['company']) && count($info['company']) && array_key_exists(0,
-            $info['company'])) {
-        foreach ($info['company'] as $companyInfo) {
-            $return[] = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL').'/c/'.$companyInfo['dbNazev'],
-                $companyInfo['nazev'], 'success');
-        }
-    } else { //Vrácena pouze jedna firma
-        $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL').'/c/'.$info['company']['dbNazev'],
-            $info['company']['nazev'], 'success');
+    foreach ($info as $companyInfo) {
+        $return[] = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL').'/c/'.$companyInfo['dbNazev'],
+            $companyInfo['nazev'], 'success');
     }
 } else {
     $return = new \Ease\TWB\LinkButton(constant('FLEXIBEE_URL'),
