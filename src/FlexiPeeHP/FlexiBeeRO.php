@@ -1683,6 +1683,25 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Získá dokument v daném formátu
+     * Obtain document in given format
+     *
+     * @param string $format  pdf/csv/xml/json/ ...
+     *
+     * @return string|null filename downloaded or none
+     */
+    public function getInFormat($format)
+    {
+        $response = null;
+        if ($this->setFormat($format)) {
+            if (($this->doCurlRequest($this->apiURL, 'GET') == 200)) {
+                $response = $this->lastCurlResponse;
+            }
+        }
+        return $response;
+    }
+
+    /**
      * Uloží dokument v daném formátu do složky v systému souborů
      * Save document in given format to directory in filesystem
      *
