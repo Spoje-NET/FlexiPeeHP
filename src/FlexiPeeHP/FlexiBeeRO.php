@@ -1694,7 +1694,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $response = null;
         if ($this->setFormat($format)) {
-            if (($this->doCurlRequest($this->apiURL, 'GET') == 200)) {
+            if (($this->doCurlRequest(($format == 'html') ? $this->apiURL.'?inDesktopApp=true'
+                            : $this->apiURL, 'GET') == 200)) {
                 $response = $this->lastCurlResponse;
             }
         }
