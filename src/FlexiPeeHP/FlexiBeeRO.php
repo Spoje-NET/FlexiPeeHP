@@ -231,6 +231,12 @@ class FlexiBeeRO extends \Ease\Brick
     public $rowCount = null;
 
     /**
+     * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
+     * @var string filter query
+     */
+    public $filter;
+
+    /**
      * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
      * @var string
      */
@@ -992,6 +998,10 @@ class FlexiBeeRO extends \Ease\Brick
         if (!is_null($this->action)) {
             $jsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
             $this->action                                         = null;
+        }
+
+        if (!is_null($this->filter)) {
+            $jsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
         }
 
         return json_encode($jsonize);
