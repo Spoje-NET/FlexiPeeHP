@@ -1271,6 +1271,7 @@ class FlexiBeeRO extends \Ease\Brick
     public static function flexiUrl(array $data, $joiner = 'and', $defop = 'eq')
     {
         $parts = [];
+
         foreach ($data as $column => $value) {
             if (is_integer($data[$column]) || is_float($data[$column])) {
                 $parts[$column] = $column.' eq \''.$data[$column].'\'';
@@ -1288,7 +1289,11 @@ class FlexiBeeRO extends \Ease\Brick
                         $parts[$column] = $column.' '.$value;
                         break;
                     default:
-                        $parts[$column] = $column." $defop '".$data[$column]."'";
+                        if ($column == 'stitky') {
+                            $parts[$column] = $column."='code:".$data[$column]."'";
+                        } else {
+                            $parts[$column] = $column." $defop '".$data[$column]."'";
+                        }
                         break;
                 }
             }
