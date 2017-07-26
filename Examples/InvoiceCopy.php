@@ -70,8 +70,7 @@ $invoiceID = askForFlexiBeeID();
  */
 
 $originalInvoice = new \FlexiPeeHP\FakturaVydana($invoiceID);
-if ($originalInvoice->loadFromFlexiBee()) {
-
+if ($originalInvoice->getMyKey()) {
     $invoiceCopy = invoiceCopy($originalInvoice,
         ['poznam' => 'FlexiPeeHP php library example - this is copy of '.$invoiceID]);
 

@@ -231,6 +231,12 @@ class FlexiBeeRO extends \Ease\Brick
     public $rowCount = null;
 
     /**
+     * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
+     * @var string filter query
+     */
+    public $filter;
+
+    /**
      * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
      * @var string
      */
@@ -995,6 +1001,10 @@ class FlexiBeeRO extends \Ease\Brick
             $this->action                                         = null;
         }
 
+        if (!is_null($this->filter)) {
+            $jsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
+        }
+
         return json_encode($jsonize);
     }
 
@@ -1262,6 +1272,7 @@ class FlexiBeeRO extends \Ease\Brick
     public static function flexiUrl(array $data, $joiner = 'and', $defop = 'eq')
     {
         $parts = [];
+
         foreach ($data as $column => $value) {
             if (is_integer($data[$column]) || is_float($data[$column])) {
                 $parts[$column] = $column.' eq \''.$data[$column].'\'';
@@ -1279,7 +1290,11 @@ class FlexiBeeRO extends \Ease\Brick
                         $parts[$column] = $column.' '.$value;
                         break;
                     default:
-                        $parts[$column] = $column." $defop '".$data[$column]."'";
+                        if ($column == 'stitky') {
+                            $parts[$column] = $column."='code:".$data[$column]."'";
+                        } else {
+                            $parts[$column] = $column." $defop '".$data[$column]."'";
+                        }
                         break;
                 }
             }
@@ -1695,7 +1710,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $response = null;
         if ($this->setFormat($format)) {
-            if (($this->doCurlRequest($this->apiURL, 'GET') == 200)) {
+            if (($this->doCurlRequest(($format == 'html') ? $this->apiURL.'?inDesktopApp=true'
+                            : $this->apiURL, 'GET') == 200)) {
                 $response = $this->lastCurlResponse;
             }
         }

@@ -25,4 +25,4 @@ $invoiceID = askForFlexiBeeID();
  */
 
 $invoice = new \FlexiPeeHP\FakturaVydana($invoiceID);
-$invoice->downloadInFormat('pdf');
+$invoice->downloadInFormat('pdf', '/tmp/');

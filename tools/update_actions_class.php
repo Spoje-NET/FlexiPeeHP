@@ -10,6 +10,7 @@ define('EASE_LOGGER', 'console|syslog');
 $outFile = 'Actions.php';
 $ok      = 0;
 
+
 /**
  * Obtain Actions for given evidence
  *
@@ -19,7 +20,39 @@ $ok      = 0;
  */
 function getEvidenceActions($evidence, FlexiBeeRO $syncer)
 {
-    $actions  = [];
+    $columns = $syncer->getColumnsInfo($evidence);
+    if (array_key_exists('zamekK', $columns)) {
+        $syncer->addStatusMessage('Adding LOCK actions to evidence '.$evidence,
+            'debug');
+        $actions = [
+            'lock' => [
+                'actionId' => 'lock',
+                'actionName' => 'Zamknout',
+                'needInstance' => 'true',
+                'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+                'isRealAction' => 'true',
+                'isService' => 'YES',
+            ],
+            'lock-for-ucetni' => [
+                'actionId' => 'lock-for-ucetni',
+                'actionName' => 'Zamknout pro učetní',
+                'needInstance' => 'true',
+                'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+                'isRealAction' => 'true',
+                'isService' => 'YES',
+            ],
+            'unlock' => [
+                'actionId' => 'unlock',
+                'actionName' => 'Odemknout',
+                'needInstance' => 'true',
+                'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+                'isRealAction' => 'true',
+                'isService' => 'YES',
+            ]
+        ];
+    } else {
+        $actions = [];
+    }
     $flexinfo = $syncer->performRequest($evidence.'/actions.json');
     if (count($flexinfo) && array_key_exists('actions', $flexinfo)) {
         if (isset($flexinfo['actions']['action'])) {
@@ -54,7 +87,7 @@ class Actions
 {
 ';
 
-$statuser = new Status();
+$statuser        = new Status();
 $evidenceActions .= '    /**
      * Source FlexiBee server version.
      *

@@ -21,12 +21,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     protected function setUp()
     {
-        $this->object            = new FlexiBeeRO();
-        $this->object->evidence  = 'c';
-        $this->object->prefix    = '';
-        $this->object->company   = '';
-        $this->object->debug     = true;
-        $this->object->nameSpace = 'companies';
+        $this->object          = new FlexiBeeRO();
+        $this->object->prefix  = '';
+        $this->object->company = '';
+        $this->object->debug   = true;
     }
 
     /**
@@ -94,7 +92,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRO::setUp
+     * @covers FlexiPeeHP\Flexi/home/vitex/Projects/Spoje.Net/flexipeehp/testing/src/FlexiPeeHP/FlexiBeeROTest.php:86BeeRO::setUp
      */
     public function testSetUp()
     {
@@ -202,15 +200,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case '':
             case 'test':
             case 'c':
-                $this->object->evidence  = 'c';
-                $this->object->prefix    = '';
-                $this->object->company   = '';
-                $this->object->nameSpace = 'companies';
-                $json                    = $this->object->performRequest();
-                $this->assertArrayHasKey('company', $json);
-
-                $xml = $this->object->performRequest(null, 'GET', 'xml');
-                $this->assertArrayHasKey('company', $xml);
+                $this->markTestSkipped('Evidence not set');
                 break;
 
             default:
@@ -220,11 +210,15 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 } else {
                     $this->assertArrayHasKey($evidence, $json);
                 }
+
+                $xml = $this->object->performRequest(null, 'GET', 'xml');
+                $this->assertArrayHasKey('companies', $xml);
+
                 break;
         }
 
         //404 Test
-        $this->assertNull ($this->object->performRequest('error.json'));
+        $this->assertNull($this->object->performRequest('error404.json'));
     }
 
     /**
@@ -265,17 +259,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetResponseEvidence()
     {
-        switch ($this->object->getEvidence()) {
-            case 'c':
-                $this->assertEquals('companies',
-                    $this->object->getResponseEvidence());
-                break;
-
-            default:
-                $this->assertEquals($this->object->getEvidence(),
-                    $this->object->getResponseEvidence());
-                break;
-        }
+        $this->assertEquals($this->object->getEvidence(),
+            $this->object->getResponseEvidence());
     }
 
     /**
@@ -588,13 +573,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertNull($this->object->unifyResponseFormat(null));
         //One Row Test
-        $test1raw = [$this->object->nameSpace =>
-            [$this->object->getResponseEvidence() =>
-                ['id' => 1, 'name' => 'value']
-            ]
-        ];
 
-        $test1expected = [$this->object->getResponseEvidence() =>
+        $responseEvidence = $this->object->getResponseEvidence();
+        if (empty($responseEvidence)) {
+            $responseEvidence       = $this->object->evidence = 'test';
+        }
+
+        $test1raw = [$responseEvidence =>
+                ['id' => 1, 'name' => 'value']
+            ];
+
+        $test1expected = [$responseEvidence =>
             [
                 ['id' => 1, 'name' => 'value']
             ]
@@ -604,14 +593,13 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             $this->object->unifyResponseFormat($test1raw));
 
         //Two Row Test
-        $test2Raw      = [$this->object->nameSpace =>
-            [$this->object->getResponseEvidence() =>
+        $test2Raw = [$this->object->getResponseEvidence() =>
                 [
                     ['id' => 1, 'name' => 'value'],
                     ['id' => 2, 'name' => 'value2']
                 ]
-            ]
-        ];
+            ];
+
         $test2expected = [$this->object->getResponseEvidence() =>
             [
                 ['id' => 1, 'name' => 'value'],
