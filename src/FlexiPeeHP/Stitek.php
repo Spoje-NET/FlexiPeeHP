@@ -68,7 +68,7 @@ class Stitek extends FlexiBeeRW
     public static function listToArray($listRaw)
     {
         if (strstr($listRaw, ',')) {
-            $list = explode(',', $listRaw);
+            $list = array_map('trim', explode(',', $listRaw));
         } else {
             $list = [$listRaw];
         }
