@@ -45,7 +45,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $mock = $this->getMockBuilder($classname)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
-        $mock->__construct('');
+        $mock->__construct('', ['debug' => false]);
 
         if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
             $evidence = 'adresar';
@@ -111,6 +111,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 'password' => 'pwd',
                 'prefix' => 'c',
                 'debug' => true,
+                'defaultUrlParams' => ['limit' => 10],
                 'evidence' => 'smlouva'
             ]
         );
