@@ -1747,4 +1747,5 @@ class FlexiBeeRO extends \Ease\Brick
         //To FlexiBee developers team
         //By mail
     }
+
 }
