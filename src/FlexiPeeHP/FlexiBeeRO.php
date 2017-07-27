@@ -373,6 +373,7 @@ class FlexiBeeRO extends \Ease\Brick
         if (isset($options['debug'])) {
             $this->debug = $options['debug'];
         }
+        $this->updateApiURL();
     }
 
     /**

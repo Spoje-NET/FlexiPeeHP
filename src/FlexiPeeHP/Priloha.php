@@ -193,7 +193,8 @@ class Priloha extends FlexiBeeRW
     {
         $fburl       = $object->getFlexiBeeURL();
         $attachments = [];
-        $atch        = $object->getFlexiData($fburl.'/prilohy');
+        $atch        = $object->getFlexiData($fburl.'/prilohy'.(count($object->defaultUrlParams)
+                ? '?'.http_build_query($object->defaultUrlParams) : ''));
         if (count($atch) && ($object->lastResponseCode == 200)) {
             foreach ($atch as $attachmentID => $attachmentData) {
                 $attachments[$attachmentID]        = $attachmentData;
@@ -202,4 +203,5 @@ class Priloha extends FlexiBeeRW
         }
         return $attachments;
     }
+
 }

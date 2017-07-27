@@ -81,12 +81,19 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         if (!is_null($this->object->evidence) && $this->object->evidence != 'test') {
             $firstID = $this->object->getColumnsFromFlexibee('id',
                 ['limit' => 1]);
-            $this->object->processInit((int) current($firstID));
-            $this->assertNotEmpty($this->object->__toString());
 
-            if (isset($firstID[0]['kod'])) {
-                $this->object->processInit('code:'.$firstID[0]['kod']);
+            if (count($firstID)) {
+
+                $this->object->processInit((int) current($firstID));
                 $this->assertNotEmpty($this->object->__toString());
+
+                if (isset($firstID[0]['kod'])) {
+                    $this->object->processInit('code:'.$firstID[0]['kod']);
+                    $this->assertNotEmpty($this->object->__toString());
+                }
+            } else {
+                $this->markTestSkipped(sprintf('Evidence %s doed not contain first record',
+                        $this->object->getEvidence()));
             }
         }
     }
@@ -580,8 +587,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         }
 
         $test1raw = [$responseEvidence =>
-                ['id' => 1, 'name' => 'value']
-            ];
+            ['id' => 1, 'name' => 'value']
+        ];
 
         $test1expected = [$responseEvidence =>
             [
@@ -594,11 +601,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
         //Two Row Test
         $test2Raw = [$this->object->getResponseEvidence() =>
-                [
-                    ['id' => 1, 'name' => 'value'],
-                    ['id' => 2, 'name' => 'value2']
-                ]
-            ];
+            [
+                ['id' => 1, 'name' => 'value'],
+                ['id' => 2, 'name' => 'value2']
+            ]
+        ];
 
         $test2expected = [$this->object->getResponseEvidence() =>
             [
@@ -781,4 +788,5 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             'This test has not been implemented yet.'
         );
     }
+
 }
