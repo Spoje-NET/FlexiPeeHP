@@ -71,7 +71,7 @@ class Stitek extends FlexiBeeRW
             $list = array_map('trim', explode(',', $listRaw));
             $list = array_combine($list, $list);
         } else {
-            $list = [$listRaw];
+            $list = [$listRaw => $listRaw];
         }
         return $list;
     }
@@ -130,11 +130,11 @@ class Stitek extends FlexiBeeRW
         $labels = self::getLabels($object);
         if (array_key_exists($label, $labels)) {
             unset($labels[$label]);
-            if ($object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky@removeAll' => 'true',
-                    'stitky' => $labels])) {
-                $result = true;
-            }
+            $object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky@removeAll' => 'true',
+                'stitky' => $labels]);
+            $result = ($object->lastResponseCode == 201);
         }
         return $result;
     }
+
 }
