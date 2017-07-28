@@ -22,17 +22,24 @@ class Stitek extends FlexiBeeRW
      */
     static public $vsbToEvidencePath = [
         'vsbAdr' => 'adresar', // Adresář
-        'vsbSkl' => 'sklad', // Sklad
-        'vsbPhl' => 'pohledavka', // Pohledávky
-        'vsbZav' => 'zavazek', // Závazky
-        'vsbObp' => 'objednavka-prijata', // Objednávky přijaté
-        'vsbNav' => 'objednavka-vydana', // Nabídky vydané
-        'vsbPpp' => 'poptavka-prijata', // Poptávky přijaté
-        'vsbObv' => 'objednavka-vydana', // Objednávky vydané
+        'vsbBan' => 'banka', // Banka
+//      'vsbCis' => 'ciselnik', // Číselníky
+        'vsbFap' => 'faktura-prijata', // Přijaté faktury
+        'vsbFav' => 'faktura-vydana', // Vydané faktury
+//      'vsbInt' => '' // Interní doklady
+        'vsbKatalog' => 'cenik', // Adresář
+//      'vsbMaj' => '', // Majetek
+//      'vsbMzd' => 'mzda', // Mzdy
         'vsbNap' => 'nabidka-prijata', // Nabídky přijaté
+        'vsbNav' => 'nabidka-vydana', // Nabídky vydané
+        'vsbObp' => 'objednavka-prijata', // Objednávky přijaté
+        'vsbObv' => 'objednavka-vydana', // Objednávky vydané
+        'vsbPhl' => 'pohledavka', // Pohledávky
+        'vsbPok' => 'pokladna', // Pokladna
+        'vsbPpp' => 'poptavka-prijata', // Poptávky přijaté
         'vsbPpv' => 'poptavka-vydana', // Poptávky vydané
-//        'vsbMzd' => 'mzda', // Mzdy
-//        'vsbCis' => 'ciselnik', // Číselníky
+        'vsbSkl' => 'sklad', // Sklad
+        'vsbZav' => 'zavazek', // Závazky
     ];
 
     /**
