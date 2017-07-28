@@ -69,6 +69,7 @@ class Stitek extends FlexiBeeRW
     {
         if (strstr($listRaw, ',')) {
             $list = array_map('trim', explode(',', $listRaw));
+            $list = array_combine($list, $list);
         } else {
             $list = [$listRaw];
         }
@@ -102,4 +103,38 @@ class Stitek extends FlexiBeeRW
         return $labels;
     }
 
+    /**
+     * Set Label for Current Object record
+     *
+     * @param string     $label
+     * @param FlexiBeeRW $object
+     *
+     * @return boolean   success result ?
+     */
+    static public function setLabel($label, $object)
+    {
+        return $object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky' => $label]);
+    }
+
+    /**
+     * UnSet Label for Current Object record
+     *
+     * @param string     $label
+     * @param FlexiBeeRW $object
+     *
+     * @return boolean   success result ?
+     */
+    static public function unsetLabel($label, $object)
+    {
+        $result = true;
+        $labels = self::getLabels($object);
+        if (array_key_exists($label, $labels)) {
+            unset($labels[$label]);
+            if ($object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky@removeAll' => 'true',
+                    'stitky' => $labels])) {
+                $result = true;
+            }
+        }
+        return $result;
+    }
 }
