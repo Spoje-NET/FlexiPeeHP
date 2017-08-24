@@ -455,7 +455,6 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $result = true;
         if (($this->debug === true) && isset(Formats::$$this->evidence)) {
-            $evidence = lcfirst(FlexiBeeRO::evidenceToClassName($this->getEvidence()));
             if (array_key_exists($format, array_flip(Formats::$$this->evidence))
                 === false) {
                 $result = false;
