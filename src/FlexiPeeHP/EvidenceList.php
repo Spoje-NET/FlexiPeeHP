@@ -39,14 +39,14 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- static public $version = '2017.1.17';
+ public static  $version = '2017.1.17';
 
     /**
      * Evidences Path/Name listing.
      *
      * @var array
      */
- static public $name = array (
+ public static  $name = array (
   'banka-polozka' => '#banBanZapoctyPol',
   'pravo-viditelnosti' => '#uzivPristup',
   'adresar' => 'Adresy firem',
@@ -251,7 +251,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var array
      */
- static public $evidences = array (
+ public static  $evidences = array (
   'adresar' => 
   array (
     'evidenceType' => 'ADRESAR',

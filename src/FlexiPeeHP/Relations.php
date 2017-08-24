@@ -21,14 +21,14 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.1.17';
+ public static  $version = '2017.1.17';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Relations.
      *
      * @var array
      */
- static public $bankaPolozka = array (
+ public static  $bankaPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -38,7 +38,7 @@ class Relations
      *
      * @var array
      */
- static public $adresar = array (
+ public static  $adresar = array (
   0 => 
   array (
     'url' => 'mistaUrceni',
@@ -111,7 +111,7 @@ class Relations
      *
      * @var array
      */
- static public $atribut = array (
+ public static  $atribut = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -121,7 +121,7 @@ class Relations
      *
      * @var array
      */
- static public $banka = array (
+ public static  $banka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -158,7 +158,7 @@ class Relations
      *
      * @var array
      */
- static public $adresarBankovniUcet = array (
+ public static  $adresarBankovniUcet = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -168,7 +168,7 @@ class Relations
      *
      * @var array
      */
- static public $cenovaUroven = array (
+ public static  $cenovaUroven = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -205,7 +205,7 @@ class Relations
      *
      * @var array
      */
- static public $odberatel = array (
+ public static  $odberatel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -215,7 +215,7 @@ class Relations
      *
      * @var array
      */
- static public $cenik = array (
+ public static  $cenik = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -306,7 +306,7 @@ class Relations
      *
      * @var array
      */
- static public $cenikovaSkupina = array (
+ public static  $cenikovaSkupina = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -316,7 +316,7 @@ class Relations
      *
      * @var array
      */
- static public $certifikacniAutorita = array (
+ public static  $certifikacniAutorita = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -326,7 +326,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatDodaciPodminky = array (
+ public static  $intrastatDodaciPodminky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -336,7 +336,7 @@ class Relations
      *
      * @var array
      */
- static public $dodavatelskaSmlouva = array (
+ public static  $dodavatelskaSmlouva = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -367,7 +367,7 @@ class Relations
      *
      * @var array
      */
- static public $dodavatel = array (
+ public static  $dodavatel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -377,7 +377,7 @@ class Relations
      *
      * @var array
      */
- static public $radaBanka = array (
+ public static  $radaBanka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -396,7 +396,7 @@ class Relations
      *
      * @var array
      */
- static public $radaInternihoDokladu = array (
+ public static  $radaInternihoDokladu = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -415,7 +415,7 @@ class Relations
      *
      * @var array
      */
- static public $radaPohledavky = array (
+ public static  $radaPohledavky = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -434,7 +434,7 @@ class Relations
      *
      * @var array
      */
- static public $radaPokladniPohyb = array (
+ public static  $radaPokladniPohyb = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -453,7 +453,7 @@ class Relations
      *
      * @var array
      */
- static public $radaFakturyPrijate = array (
+ public static  $radaFakturyPrijate = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -472,7 +472,7 @@ class Relations
      *
      * @var array
      */
- static public $radaNabidkyPrijate = array (
+ public static  $radaNabidkyPrijate = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -491,7 +491,7 @@ class Relations
      *
      * @var array
      */
- static public $radaObjednavkyPrijate = array (
+ public static  $radaObjednavkyPrijate = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -510,7 +510,7 @@ class Relations
      *
      * @var array
      */
- static public $radaPoptavkyPrijate = array (
+ public static  $radaPoptavkyPrijate = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -529,7 +529,7 @@ class Relations
      *
      * @var array
      */
- static public $radaSkladovyPohyb = array (
+ public static  $radaSkladovyPohyb = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -548,7 +548,7 @@ class Relations
      *
      * @var array
      */
- static public $radaFakturyVydane = array (
+ public static  $radaFakturyVydane = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -567,7 +567,7 @@ class Relations
      *
      * @var array
      */
- static public $radaNabidkyVydane = array (
+ public static  $radaNabidkyVydane = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -586,7 +586,7 @@ class Relations
      *
      * @var array
      */
- static public $radaObjednavkyVydane = array (
+ public static  $radaObjednavkyVydane = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -605,7 +605,7 @@ class Relations
      *
      * @var array
      */
- static public $radaPoptavkyVydane = array (
+ public static  $radaPoptavkyVydane = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -624,7 +624,7 @@ class Relations
      *
      * @var array
      */
- static public $radaZavazku = array (
+ public static  $radaZavazku = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -643,7 +643,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatDruhDopravy = array (
+ public static  $intrastatDruhDopravy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -653,7 +653,7 @@ class Relations
      *
      * @var array
      */
- static public $formaDopravy = array (
+ public static  $formaDopravy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -663,7 +663,7 @@ class Relations
      *
      * @var array
      */
- static public $formaUhrady = array (
+ public static  $formaUhrady = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -682,7 +682,7 @@ class Relations
      *
      * @var array
      */
- static public $interniDoklad = array (
+ public static  $interniDoklad = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -719,7 +719,7 @@ class Relations
      *
      * @var array
      */
- static public $inventura = array (
+ public static  $inventura = array (
   0 => 
   array (
     'url' => 'inventura-polozky',
@@ -738,7 +738,7 @@ class Relations
      *
      * @var array
      */
- static public $konstSymbol = array (
+ public static  $konstSymbol = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -748,7 +748,7 @@ class Relations
      *
      * @var array
      */
- static public $kontakt = array (
+ public static  $kontakt = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -773,7 +773,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatKrajUrceni = array (
+ public static  $intrastatKrajUrceni = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -783,7 +783,7 @@ class Relations
      *
      * @var array
      */
- static public $kurz = array (
+ public static  $kurz = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -793,7 +793,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatKurz = array (
+ public static  $intrastatKurz = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -803,7 +803,7 @@ class Relations
      *
      * @var array
      */
- static public $kurzProCenotvorbu = array (
+ public static  $kurzProCenotvorbu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -813,7 +813,7 @@ class Relations
      *
      * @var array
      */
- static public $kusovnik = array (
+ public static  $kusovnik = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -823,7 +823,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatKodNomenklatury = array (
+ public static  $intrastatKodNomenklatury = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -833,7 +833,7 @@ class Relations
      *
      * @var array
      */
- static public $leasing = array (
+ public static  $leasing = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -858,7 +858,7 @@ class Relations
      *
      * @var array
      */
- static public $majetek = array (
+ public static  $majetek = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -889,7 +889,7 @@ class Relations
      *
      * @var array
      */
- static public $mapovaniSkladu = array (
+ public static  $mapovaniSkladu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -899,7 +899,7 @@ class Relations
      *
      * @var array
      */
- static public $mistoUrceni = array (
+ public static  $mistoUrceni = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -909,7 +909,7 @@ class Relations
      *
      * @var array
      */
- static public $mena = array (
+ public static  $mena = array (
   0 => 
   array (
     'url' => 'kurzy',
@@ -928,7 +928,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatMernaJednotka = array (
+ public static  $intrastatMernaJednotka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -938,7 +938,7 @@ class Relations
      *
      * @var array
      */
- static public $mernaJednotka = array (
+ public static  $mernaJednotka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -948,7 +948,7 @@ class Relations
      *
      * @var array
      */
- static public $naklad = array (
+ public static  $naklad = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -958,7 +958,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatObchodniTransakce = array (
+ public static  $intrastatObchodniTransakce = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -968,7 +968,7 @@ class Relations
      *
      * @var array
      */
- static public $smlouva = array (
+ public static  $smlouva = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -999,7 +999,7 @@ class Relations
      *
      * @var array
      */
- static public $odpisovaSkupina = array (
+ public static  $odpisovaSkupina = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1009,7 +1009,7 @@ class Relations
      *
      * @var array
      */
- static public $pohledavka = array (
+ public static  $pohledavka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1046,7 +1046,7 @@ class Relations
      *
      * @var array
      */
- static public $zavazek = array (
+ public static  $zavazek = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1083,7 +1083,7 @@ class Relations
      *
      * @var array
      */
- static public $uzivatelskyDotazParametr = array (
+ public static  $uzivatelskyDotazParametr = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1093,7 +1093,7 @@ class Relations
      *
      * @var array
      */
- static public $penezniUstav = array (
+ public static  $penezniUstav = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1103,7 +1103,7 @@ class Relations
      *
      * @var array
      */
- static public $podobneZbozi = array (
+ public static  $podobneZbozi = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1113,7 +1113,7 @@ class Relations
      *
      * @var array
      */
- static public $pokladniPohyb = array (
+ public static  $pokladniPohyb = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1150,7 +1150,7 @@ class Relations
      *
      * @var array
      */
- static public $parametr = array (
+ public static  $parametr = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1160,7 +1160,7 @@ class Relations
      *
      * @var array
      */
- static public $prikazKInkasuPolozka = array (
+ public static  $prikazKInkasuPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1170,7 +1170,7 @@ class Relations
      *
      * @var array
      */
- static public $prikazKUhradePolozka = array (
+ public static  $prikazKUhradePolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1180,7 +1180,7 @@ class Relations
      *
      * @var array
      */
- static public $interniDokladPolozka = array (
+ public static  $interniDokladPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1190,7 +1190,7 @@ class Relations
      *
      * @var array
      */
- static public $inventuraPolozka = array (
+ public static  $inventuraPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1200,7 +1200,7 @@ class Relations
      *
      * @var array
      */
- static public $pohledavkaPolozka = array (
+ public static  $pohledavkaPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1210,7 +1210,7 @@ class Relations
      *
      * @var array
      */
- static public $zavazekPolozka = array (
+ public static  $zavazekPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1220,7 +1220,7 @@ class Relations
      *
      * @var array
      */
- static public $pokladniPohybPolozka = array (
+ public static  $pokladniPohybPolozka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1245,7 +1245,7 @@ class Relations
      *
      * @var array
      */
- static public $nabidkaPrijataPolozka = array (
+ public static  $nabidkaPrijataPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1255,7 +1255,7 @@ class Relations
      *
      * @var array
      */
- static public $objednavkaPrijataPolozka = array (
+ public static  $objednavkaPrijataPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1265,7 +1265,7 @@ class Relations
      *
      * @var array
      */
- static public $fakturaPrijataPolozka = array (
+ public static  $fakturaPrijataPolozka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1290,7 +1290,7 @@ class Relations
      *
      * @var array
      */
- static public $poptavkaPrijataPolozka = array (
+ public static  $poptavkaPrijataPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1300,7 +1300,7 @@ class Relations
      *
      * @var array
      */
- static public $skladovyPohybPolozka = array (
+ public static  $skladovyPohybPolozka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1325,7 +1325,7 @@ class Relations
      *
      * @var array
      */
- static public $smlouvaPolozka = array (
+ public static  $smlouvaPolozka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1350,7 +1350,7 @@ class Relations
      *
      * @var array
      */
- static public $nabidkaVydanaPolozka = array (
+ public static  $nabidkaVydanaPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1360,7 +1360,7 @@ class Relations
      *
      * @var array
      */
- static public $objednavkaVydanaPolozka = array (
+ public static  $objednavkaVydanaPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1370,7 +1370,7 @@ class Relations
      *
      * @var array
      */
- static public $poptavkaVydanaPolozka = array (
+ public static  $poptavkaVydanaPolozka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1380,7 +1380,7 @@ class Relations
      *
      * @var array
      */
- static public $fakturaVydanaPolozka = array (
+ public static  $fakturaVydanaPolozka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1405,7 +1405,7 @@ class Relations
      *
      * @var array
      */
- static public $poplatek = array (
+ public static  $poplatek = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1415,7 +1415,7 @@ class Relations
      *
      * @var array
      */
- static public $psc = array (
+ public static  $psc = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1425,7 +1425,7 @@ class Relations
      *
      * @var array
      */
- static public $prodejka = array (
+ public static  $prodejka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1462,7 +1462,7 @@ class Relations
      *
      * @var array
      */
- static public $text = array (
+ public static  $text = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1472,7 +1472,7 @@ class Relations
      *
      * @var array
      */
- static public $predpisZauctovani = array (
+ public static  $predpisZauctovani = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1482,7 +1482,7 @@ class Relations
      *
      * @var array
      */
- static public $fakturaPrijata = array (
+ public static  $fakturaPrijata = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1519,7 +1519,7 @@ class Relations
      *
      * @var array
      */
- static public $nabidkaPrijata = array (
+ public static  $nabidkaPrijata = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1556,7 +1556,7 @@ class Relations
      *
      * @var array
      */
- static public $objednavkaPrijata = array (
+ public static  $objednavkaPrijata = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1593,7 +1593,7 @@ class Relations
      *
      * @var array
      */
- static public $poptavkaPrijata = array (
+ public static  $poptavkaPrijata = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1630,7 +1630,7 @@ class Relations
      *
      * @var array
      */
- static public $skladovyPohyb = array (
+ public static  $skladovyPohyb = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1667,7 +1667,7 @@ class Relations
      *
      * @var array
      */
- static public $prikazKInkasu = array (
+ public static  $prikazKInkasu = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1686,7 +1686,7 @@ class Relations
      *
      * @var array
      */
- static public $prikazKUhrade = array (
+ public static  $prikazKUhrade = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1705,7 +1705,7 @@ class Relations
      *
      * @var array
      */
- static public $priloha = array (
+ public static  $priloha = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1715,7 +1715,7 @@ class Relations
      *
      * @var array
      */
- static public $prislustenstvi = array (
+ public static  $prislustenstvi = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1725,7 +1725,7 @@ class Relations
      *
      * @var array
      */
- static public $rezervace = array (
+ public static  $rezervace = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1735,7 +1735,7 @@ class Relations
      *
      * @var array
      */
- static public $rocniRada = array (
+ public static  $rocniRada = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1745,7 +1745,7 @@ class Relations
      *
      * @var array
      */
- static public $sadyAKomplety = array (
+ public static  $sadyAKomplety = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1755,7 +1755,7 @@ class Relations
      *
      * @var array
      */
- static public $sazbaDph = array (
+ public static  $sazbaDph = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1765,7 +1765,7 @@ class Relations
      *
      * @var array
      */
- static public $dashboardSharing = array (
+ public static  $dashboardSharing = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1775,7 +1775,7 @@ class Relations
      *
      * @var array
      */
- static public $bankovniUcet = array (
+ public static  $bankovniUcet = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1785,7 +1785,7 @@ class Relations
      *
      * @var array
      */
- static public $pokladna = array (
+ public static  $pokladna = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1795,7 +1795,7 @@ class Relations
      *
      * @var array
      */
- static public $typProdejky = array (
+ public static  $typProdejky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1805,7 +1805,7 @@ class Relations
      *
      * @var array
      */
- static public $sklad = array (
+ public static  $sklad = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1815,7 +1815,7 @@ class Relations
      *
      * @var array
      */
- static public $preneseniDph = array (
+ public static  $preneseniDph = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1825,7 +1825,7 @@ class Relations
      *
      * @var array
      */
- static public $skladovaKarta = array (
+ public static  $skladovaKarta = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -1844,7 +1844,7 @@ class Relations
      *
      * @var array
      */
- static public $skupinaAtributu = array (
+ public static  $skupinaAtributu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1854,7 +1854,7 @@ class Relations
      *
      * @var array
      */
- static public $skupinaFirem = array (
+ public static  $skupinaFirem = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1864,7 +1864,7 @@ class Relations
      *
      * @var array
      */
- static public $skupinaZbozi = array (
+ public static  $skupinaZbozi = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1874,7 +1874,7 @@ class Relations
      *
      * @var array
      */
- static public $skupinaStitku = array (
+ public static  $skupinaStitku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1884,7 +1884,7 @@ class Relations
      *
      * @var array
      */
- static public $dashboardPanel = array (
+ public static  $dashboardPanel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1894,7 +1894,7 @@ class Relations
      *
      * @var array
      */
- static public $ucetniOsnova = array (
+ public static  $ucetniOsnova = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1904,7 +1904,7 @@ class Relations
      *
      * @var array
      */
- static public $stavSmlouvy = array (
+ public static  $stavSmlouvy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1914,7 +1914,7 @@ class Relations
      *
      * @var array
      */
- static public $stavZakazky = array (
+ public static  $stavZakazky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1924,7 +1924,7 @@ class Relations
      *
      * @var array
      */
- static public $stat = array (
+ public static  $stat = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1934,7 +1934,7 @@ class Relations
      *
      * @var array
      */
- static public $stredisko = array (
+ public static  $stredisko = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1944,7 +1944,7 @@ class Relations
      *
      * @var array
      */
- static public $typAtributu = array (
+ public static  $typAtributu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1954,7 +1954,7 @@ class Relations
      *
      * @var array
      */
- static public $typBanka = array (
+ public static  $typBanka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1964,7 +1964,7 @@ class Relations
      *
      * @var array
      */
- static public $dodavatelskyTypSmlouvy = array (
+ public static  $dodavatelskyTypSmlouvy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1974,7 +1974,7 @@ class Relations
      *
      * @var array
      */
- static public $typInternihoDokladu = array (
+ public static  $typInternihoDokladu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1984,7 +1984,7 @@ class Relations
      *
      * @var array
      */
- static public $typLeasingu = array (
+ public static  $typLeasingu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1994,7 +1994,7 @@ class Relations
      *
      * @var array
      */
- static public $typMajetku = array (
+ public static  $typMajetku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2004,7 +2004,7 @@ class Relations
      *
      * @var array
      */
- static public $typNakladu = array (
+ public static  $typNakladu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2014,7 +2014,7 @@ class Relations
      *
      * @var array
      */
- static public $typSmlouvy = array (
+ public static  $typSmlouvy = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2024,7 +2024,7 @@ class Relations
      *
      * @var array
      */
- static public $typPohledavky = array (
+ public static  $typPohledavky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2034,7 +2034,7 @@ class Relations
      *
      * @var array
      */
- static public $typZavazku = array (
+ public static  $typZavazku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2044,7 +2044,7 @@ class Relations
      *
      * @var array
      */
- static public $typPokladniPohyb = array (
+ public static  $typPokladniPohyb = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2054,7 +2054,7 @@ class Relations
      *
      * @var array
      */
- static public $typFakturyPrijate = array (
+ public static  $typFakturyPrijate = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2064,7 +2064,7 @@ class Relations
      *
      * @var array
      */
- static public $typNabidkyPrijate = array (
+ public static  $typNabidkyPrijate = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2074,7 +2074,7 @@ class Relations
      *
      * @var array
      */
- static public $typObjednavkyPrijate = array (
+ public static  $typObjednavkyPrijate = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2084,7 +2084,7 @@ class Relations
      *
      * @var array
      */
- static public $typPoptavkyPrijate = array (
+ public static  $typPoptavkyPrijate = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2094,7 +2094,7 @@ class Relations
      *
      * @var array
      */
- static public $typSkladovyPohyb = array (
+ public static  $typSkladovyPohyb = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2104,7 +2104,7 @@ class Relations
      *
      * @var array
      */
- static public $typAktivity = array (
+ public static  $typAktivity = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2114,7 +2114,7 @@ class Relations
      *
      * @var array
      */
- static public $typUzivatelskeVazby = array (
+ public static  $typUzivatelskeVazby = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2124,7 +2124,7 @@ class Relations
      *
      * @var array
      */
- static public $typFakturyVydane = array (
+ public static  $typFakturyVydane = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2134,7 +2134,7 @@ class Relations
      *
      * @var array
      */
- static public $typNabidkyVydane = array (
+ public static  $typNabidkyVydane = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2144,7 +2144,7 @@ class Relations
      *
      * @var array
      */
- static public $typObjednavkyVydane = array (
+ public static  $typObjednavkyVydane = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2154,7 +2154,7 @@ class Relations
      *
      * @var array
      */
- static public $typPoptavkyVydane = array (
+ public static  $typPoptavkyVydane = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2164,7 +2164,7 @@ class Relations
      *
      * @var array
      */
- static public $typZakazky = array (
+ public static  $typZakazky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2174,7 +2174,7 @@ class Relations
      *
      * @var array
      */
- static public $typVzajemnychZapoctu = array (
+ public static  $typVzajemnychZapoctu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2184,7 +2184,7 @@ class Relations
      *
      * @var array
      */
- static public $majetekUdalost = array (
+ public static  $majetekUdalost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2194,7 +2194,7 @@ class Relations
      *
      * @var array
      */
- static public $udalost = array (
+ public static  $udalost = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2219,7 +2219,7 @@ class Relations
      *
      * @var array
      */
- static public $umisteni = array (
+ public static  $umisteni = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2229,7 +2229,7 @@ class Relations
      *
      * @var array
      */
- static public $umisteniVeSkladuMistnost = array (
+ public static  $umisteniVeSkladuMistnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2239,7 +2239,7 @@ class Relations
      *
      * @var array
      */
- static public $umisteniVeSkladuPolice = array (
+ public static  $umisteniVeSkladuPolice = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2249,7 +2249,7 @@ class Relations
      *
      * @var array
      */
- static public $umisteniVeSkladuRegal = array (
+ public static  $umisteniVeSkladuRegal = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2259,7 +2259,7 @@ class Relations
      *
      * @var array
      */
- static public $umisteniVeSkladu = array (
+ public static  $umisteniVeSkladu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2269,7 +2269,7 @@ class Relations
      *
      * @var array
      */
- static public $sablonaUpominky = array (
+ public static  $sablonaUpominky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2279,7 +2279,7 @@ class Relations
      *
      * @var array
      */
- static public $strom = array (
+ public static  $strom = array (
   0 => 'prilohy',
   1 => 'PRILOHA',
   2 => 'Přílohy',
@@ -2289,7 +2289,7 @@ class Relations
      *
      * @var array
      */
- static public $uzivatelskyDotaz = array (
+ public static  $uzivatelskyDotaz = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2314,7 +2314,7 @@ class Relations
      *
      * @var array
      */
- static public $filtr = array (
+ public static  $filtr = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2324,7 +2324,7 @@ class Relations
      *
      * @var array
      */
- static public $customButton = array (
+ public static  $customButton = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2334,7 +2334,7 @@ class Relations
      *
      * @var array
      */
- static public $uzivatelskyDotazVlastnost = array (
+ public static  $uzivatelskyDotazVlastnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2344,7 +2344,7 @@ class Relations
      *
      * @var array
      */
- static public $fakturaVydana = array (
+ public static  $fakturaVydana = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2381,7 +2381,7 @@ class Relations
      *
      * @var array
      */
- static public $nabidkaVydana = array (
+ public static  $nabidkaVydana = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2418,7 +2418,7 @@ class Relations
      *
      * @var array
      */
- static public $objednavkaVydana = array (
+ public static  $objednavkaVydana = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2455,7 +2455,7 @@ class Relations
      *
      * @var array
      */
- static public $poptavkaVydana = array (
+ public static  $poptavkaVydana = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2492,7 +2492,7 @@ class Relations
      *
      * @var array
      */
- static public $hodnoceniZakazky = array (
+ public static  $hodnoceniZakazky = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2502,7 +2502,7 @@ class Relations
      *
      * @var array
      */
- static public $vzajemnyZapocet = array (
+ public static  $vzajemnyZapocet = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2539,7 +2539,7 @@ class Relations
      *
      * @var array
      */
- static public $zakazka = array (
+ public static  $zakazka = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2564,7 +2564,7 @@ class Relations
      *
      * @var array
      */
- static public $formaUhradyZauctovani = array (
+ public static  $formaUhradyZauctovani = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2574,7 +2574,7 @@ class Relations
      *
      * @var array
      */
- static public $intrastatZvlastniPohyb = array (
+ public static  $intrastatZvlastniPohyb = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2584,7 +2584,7 @@ class Relations
      *
      * @var array
      */
- static public $zapujcka = array (
+ public static  $zapujcka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2594,7 +2594,7 @@ class Relations
      *
      * @var array
      */
- static public $rada = array (
+ public static  $rada = array (
   0 => 
   array (
     'url' => 'uzivatelske-vazby',
@@ -2613,7 +2613,7 @@ class Relations
      *
      * @var array
      */
- static public $ucet = array (
+ public static  $ucet = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2623,7 +2623,7 @@ class Relations
      *
      * @var array
      */
- static public $cinnost = array (
+ public static  $cinnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2633,7 +2633,7 @@ class Relations
      *
      * @var array
      */
- static public $stavCeniku = array (
+ public static  $stavCeniku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2643,7 +2643,7 @@ class Relations
      *
      * @var array
      */
- static public $typStavuCeniku = array (
+ public static  $typStavuCeniku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2653,7 +2653,7 @@ class Relations
      *
      * @var array
      */
- static public $cisloBaliku = array (
+ public static  $cisloBaliku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2663,7 +2663,7 @@ class Relations
      *
      * @var array
      */
- static public $cleneniKontrolniHlaseni = array (
+ public static  $cleneniKontrolniHlaseni = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2673,7 +2673,7 @@ class Relations
      *
      * @var array
      */
- static public $cleneniDph = array (
+ public static  $cleneniDph = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2683,7 +2683,7 @@ class Relations
      *
      * @var array
      */
- static public $stitek = array (
+ public static  $stitek = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',

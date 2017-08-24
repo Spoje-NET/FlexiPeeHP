@@ -20,7 +20,7 @@ class Stitek extends FlexiBeeRW
      *
      * @var array
      */
-    static public $vsbToEvidencePath = [
+    public static  $vsbToEvidencePath = [
         'vsbAdr' => 'adresar', // Adresář
         'vsbBan' => 'banka', // Banka
 //      'vsbCis' => 'ciselnik', // Číselníky
@@ -118,7 +118,7 @@ class Stitek extends FlexiBeeRW
      *
      * @return boolean   success result ?
      */
-    static public function setLabel($label, $object)
+    public static  function setLabel($label, $object)
     {
         return $object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky' => $label]);
     }
@@ -131,7 +131,7 @@ class Stitek extends FlexiBeeRW
      *
      * @return boolean   success result ?
      */
-    static public function unsetLabel($label, $object)
+    public static  function unsetLabel($label, $object)
     {
         $result = true;
         $labels = self::getLabels($object);

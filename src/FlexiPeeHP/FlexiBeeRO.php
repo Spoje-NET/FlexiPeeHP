@@ -20,7 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    static public $libVersion = '1.6.4.2';
+    public static  $libVersion = '1.6.4.2';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -1342,7 +1342,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @param string $evidence
      * @return string Class name
      */
-    static public function evidenceToClassName($evidence)
+    public static  function evidenceToClassName($evidence)
     {
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
