@@ -19,7 +19,7 @@ class Formats
  *
  * @var string
  */
- static public $version = '2017.1.12';
+ static public $version = '2017.1.17';
 
 
     /**
@@ -61,6 +61,7 @@ class Formats
         'TEXT' => ['desc' => 'Prostý text', 'suffix' => 'txt',
             'content-type' => 'text/plain', 'import' => false],
     ];
+
 
     /**
      * Array of formats indexed by Content-Type
