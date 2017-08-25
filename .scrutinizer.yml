@@ -28,4 +28,4 @@ build:
                 coverage:
                     file: 'clover'
                     format: 'php-clover'
-a
+                    
