@@ -23,6 +23,9 @@ build:
             - pwd
             - ls -la
     tests:
+        before:
+            -
+                idle_timeout: 5000     
         override:
             -
                 command: 'php -d memory_limit=2048M -f ./vendor/bin/phpunit -- --coverage-clover=clover'
