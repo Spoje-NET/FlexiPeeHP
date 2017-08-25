@@ -333,47 +333,37 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setUp($options = [])
     {
-        if (isset($options['company'])) {
-            $this->company = $options['company'];
-        } else {
-            if (is_null($this->company) && defined('FLEXIBEE_COMPANY')) {
-                $this->company = constant('FLEXIBEE_COMPANY');
-            }
-        }
-        if (isset($options['url'])) {
-            $this->url = $options['url'];
-        } else {
-            if (is_null($this->url) && defined('FLEXIBEE_URL')) {
-                $this->url = constant('FLEXIBEE_URL');
-            }
-        }
-        if (isset($options['user'])) {
-            $this->user = $options['user'];
-        } else {
-            if (is_null($this->user) && defined('FLEXIBEE_LOGIN')) {
-                $this->user = constant('FLEXIBEE_LOGIN');
-            }
-        }
-        if (isset($options['password'])) {
-            $this->password = $options['password'];
-        } else {
-            if (is_null($this->password) && defined('FLEXIBEE_PASSWORD')) {
-                $this->password = constant('FLEXIBEE_PASSWORD');
-            }
-        }
+        $this->setupProperty($options, 'company', 'FLEXIBEE_COMPANY');
+        $this->setupProperty($options, 'url', 'FLEXIBEE_URL');
+        $this->setupProperty($options, 'user', 'FLEXIBEE_LOGIN');
+        $this->setupProperty($options, 'password', 'FLEXIBEE_PASSWORD');
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
         }
-        if (isset($options['defaultUrlParams'])) {
-            $this->defaultUrlParams = $options['defaultUrlParams'];
-        }
+        $this->setupProperty($options, 'defaultUrlParams');
         if (isset($options['prefix'])) {
             $this->setPrefix($options['prefix']);
         }
-        if (isset($options['debug'])) {
-            $this->debug = $options['debug'];
-        }
+        $this->setupProperty($options, 'debug');
         $this->updateApiURL();
+    }
+
+    /**
+     * Set up one of properties
+     *
+     * @param array  $options  array of given properties
+     * @param string $name     name of property to process
+     * @param string $constant load default property value from constant
+     */
+    public function setupProperty($options, $name, $constant = null)
+    {
+        if (isset($options[$name])) {
+            $this->$name = $options[$name];
+        } else {
+            if (is_null($this->$name) && !empty($constant) && defined($constant)) {
+                $this->$name = constant($constant);
+            }
+        }
     }
 
     /**
@@ -454,7 +444,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function setFormat($format)
     {
         $result = true;
-        if (($this->debug === true) && isset(Formats::$$this->evidence)) {
+        if (($this->debug === true) && !empty($this->evidence) && isset(Formats::$$this->evidence)) {
             if (array_key_exists($format, array_flip(Formats::$$this->evidence))
                 === false) {
                 $result = false;

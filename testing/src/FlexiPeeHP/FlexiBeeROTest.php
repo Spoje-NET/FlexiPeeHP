@@ -65,6 +65,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::curlInit
      */
+    public function testSetupProperty()
+    {
+        $properties = ['debug' => true];
+        $this->object->setupProperty($properties, 'debug');
+        $this->assertTrue($this->object->debug);
+        $this->object->setupProperty($properties, 'url', 'FLEXIBEE_URL');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::curlInit
+     */
     public function testCurlInit()
     {
         $this->object->curlInit();
