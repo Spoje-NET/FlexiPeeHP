@@ -31,4 +31,61 @@ class StitekTest extends FlexiBeeRWTest
     {
         
     }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::getLabels
+     * @todo   Implement testGetLabels().
+     */
+    public function testGetLabels()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::listToArray
+     * @todo   Implement testListToArray().
+     */
+    public function testListToArray()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::getAvailbleLabels
+     */
+    public function testGetAvailbleLabels()
+    {
+        $labels = \FlexiPeeHP\Stitek::getAvailbleLabels(new \FlexiPeeHP\FakturaVydana());
+        $this->assertTrue(is_array($labels) && count($labels));
+    }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::setLabel
+     * @todo   Implement testSetLabel().
+     */
+    public function testSetLabel()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::unsetLabel
+     * @todo   Implement testUnsetLabel().
+     */
+    public function testUnsetLabel()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
 }

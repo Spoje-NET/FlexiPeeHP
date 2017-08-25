@@ -10,6 +10,7 @@ sudo: false
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
+  - travis_retry composer require satooshi/php-coveralls
   - travis_retry echo 'date.timezone = "Europe/Prague"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - travis_retry echo 'memory_limit = "2048M"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   
