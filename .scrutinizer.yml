@@ -22,11 +22,10 @@ build:
             - sudo composer self-update && composer --version    
             - pwd
             - ls -la
-            - which phpunit
     tests:
         override:
             -
-                command: 'php -d memory_limit=2048M -f ./vendor/bin/phpunit --coverage-clover=clover'
+                command: 'php -d memory_limit=2048M -f /home/scrutinizer/build/vendor/bin/phpunit --coverage-clover=clover'
                 coverage:
                     file: 'clover'
                     format: 'php-clover'
