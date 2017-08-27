@@ -60,8 +60,9 @@ class Formats
             'suffix' => 'ical', 'content-type' => 'text/calendar', 'import' => false],
         'TEXT' => ['desc' => 'Prostý text', 'suffix' => 'txt',
             'content-type' => 'text/plain', 'import' => false],
+        'TTF' => ['desc' => 'TrueType font', 'suffix' => 'ttf',
+            'content-type' => 'application/x-font-truetype', 'import' => false],
     ];
-
 
     /**
      * Array of formats indexed by Content-Type
