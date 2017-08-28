@@ -20,7 +20,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    public static  $libVersion = '1.6.4.2';
+    public static $libVersion = '1.6.4.2';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -785,8 +785,10 @@ class FlexiBeeRO extends \Ease\Brick
 // Proveď samotnou operaci
         $this->lastCurlResponse = curl_exec($this->curl);
         $this->curlInfo         = curl_getinfo($this->curl);
-        $this->responseFormat   = Formats::contentTypeToSuffix($this->curlInfo['content_type']);
-        $this->lastResponseCode = $this->curlInfo['http_code'];
+        $this->curlInfo['when']            = microtime();
+        $this->curlInfo['request_headers'] = $httpHeadersFinal;
+        $this->responseFormat              = Formats::contentTypeToSuffix($this->curlInfo['content_type']);
+        $this->lastResponseCode            = $this->curlInfo['http_code'];
         $this->lastCurlError    = curl_error($this->curl);
         if (strlen($this->lastCurlError)) {
             $this->addStatusMessage(sprintf('Curl Error (HTTP %d): %s',
@@ -1230,11 +1232,12 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function saveDebugFiles()
     {
-        $tmpdir = sys_get_temp_dir();
-        file_put_contents($tmpdir.'/request-'.$this->evidence.'-'.microtime().'.'.$this->format,
-            $this->postFields);
-        file_put_contents($tmpdir.'/response-'.$this->evidence.'-'.microtime().'.'.$this->format,
-            $this->lastCurlResponse);
+        $tmpdir   = sys_get_temp_dir();
+        $fname    = $this->evidence.'-'.$this->curlInfo['when'].'.'.$this->format;
+        $reqname  = $tmpdir.'/request-'.$fname;
+        $respname = $tmpdir.'/response-'.$fname;
+        file_put_contents($reqname, $this->postFields);
+        file_put_contents($respname, $this->lastCurlResponse);
     }
 
     /**
@@ -1331,7 +1334,7 @@ class FlexiBeeRO extends \Ease\Brick
      * @param string $evidence
      * @return string Class name
      */
-    public static  function evidenceToClassName($evidence)
+    public static function evidenceToClassName($evidence)
     {
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
@@ -1731,10 +1734,13 @@ class FlexiBeeRO extends \Ease\Brick
 
     public function error500Reporter($errorResponse)
     {
+        $tmpdir   = sys_get_temp_dir();
+        $curlname = $tmpdir.'/curl-'.$this->evidence.'-'.$this->curlInfo['when'].'.json';
+        file_put_contents($curlname,
+            json_encode($this->curlInfo, JSON_PRETTY_PRINT));
         //Send Raw Request: Method/URL/Headers/Body
         //With tail of FlexiBee log 
         //To FlexiBee developers team
         //By mail
     }
-
 }
