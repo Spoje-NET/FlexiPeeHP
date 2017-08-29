@@ -308,6 +308,18 @@ class FlexiBeeRO extends \Ease\Brick
     private $errors = [];
 
     /**
+     * List of Error500 reports sent
+     * @var array
+     */
+    private $reports = [];
+
+    /**
+     * Send Error500 Report to
+     * @var string email address
+     */
+    public $reportRecipient = 'kbel@flexibee.eu';
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -683,7 +695,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Parse Response array
-     * 
+     *
      * @param array $responseDecoded
      * @param int $responseCode Request Response Code
      *
@@ -709,7 +721,9 @@ class FlexiBeeRO extends \Ease\Brick
                 break;
 
             case 500:
-                $this->error500Reporter($responseDecoded);
+                if ($this->debug === true) {
+                    $this->error500Reporter($responseDecoded);
+                }
             case 404:
                 if ($this->ignoreNotFound === true) {
                     break;
@@ -783,13 +797,13 @@ class FlexiBeeRO extends \Ease\Brick
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $httpHeadersFinal);
 
 // Proveď samotnou operaci
-        $this->lastCurlResponse = curl_exec($this->curl);
-        $this->curlInfo         = curl_getinfo($this->curl);
+        $this->lastCurlResponse            = curl_exec($this->curl);
+        $this->curlInfo                    = curl_getinfo($this->curl);
         $this->curlInfo['when']            = microtime();
         $this->curlInfo['request_headers'] = $httpHeadersFinal;
         $this->responseFormat              = Formats::contentTypeToSuffix($this->curlInfo['content_type']);
         $this->lastResponseCode            = $this->curlInfo['http_code'];
-        $this->lastCurlError    = curl_error($this->curl);
+        $this->lastCurlError               = curl_error($this->curl);
         if (strlen($this->lastCurlError)) {
             $this->addStatusMessage(sprintf('Curl Error (HTTP %d): %s',
                     $this->lastResponseCode, $this->lastCurlError), 'error');
@@ -1716,7 +1730,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param string $format  pdf/csv/xml/json/ ...
      * @param string $destDir where to put file (prefix)
-     * 
+     *
      * @return string|null filename downloaded or none
      */
     public function downloadInFormat($format, $destDir = './')
@@ -1732,15 +1746,76 @@ class FlexiBeeRO extends \Ease\Brick
         return $fileOnDisk;
     }
 
+    /**
+     * Compile and send Report about Error500 to FlexiBee developers
+     * If FlexiBee is running on localost try also include java backtrace
+     *
+     * @param array $errorResponse result of parseError();
+     */
     public function error500Reporter($errorResponse)
     {
-        $tmpdir   = sys_get_temp_dir();
-        $curlname = $tmpdir.'/curl-'.$this->evidence.'-'.$this->curlInfo['when'].'.json';
-        file_put_contents($curlname,
-            json_encode($this->curlInfo, JSON_PRETTY_PRINT));
-        //Send Raw Request: Method/URL/Headers/Body
-        //With tail of FlexiBee log 
-        //To FlexiBee developers team
-        //By mail
+        $ur = str_replace('/c/'.$this->company, '',
+            str_replace($this->url, '', $this->curlInfo['url']));
+        if (!array_key_exists($ur, $this->reports)) {
+            $tmpdir   = sys_get_temp_dir();
+            $myTime   = $this->curlInfo['when'];
+            $curlname = $tmpdir.'/curl-'.$this->evidence.'-'.$myTime.'.json';
+            file_put_contents($curlname,
+                json_encode($this->curlInfo, JSON_PRETTY_PRINT));
+
+            $report = new \Ease\Mailer($this->reportRecipient,
+                'Error report 500 - '.$ur);
+
+            $d     = dir($tmpdir);
+            while (false !== ($entry = $d->read())) {
+                if (strstr($entry, $myTime)) {
+                    $ext  = pathinfo($tmpdir.'/'.$entry, PATHINFO_EXTENSION);
+                    $mime = Formats::suffixToContentType($ext);
+                    $report->addFile($tmpdir.'/'.$entry,
+                        empty($mime) ? 'text/plain' : $mime);
+                }
+            }
+            $d->close();
+
+            if ((strstr($this->url, '://localhost') || strstr($this->url,
+                    '://127.')) && file_exists('/var/log/flexibee.log')) {
+
+                $fl = fopen("/var/log/flexibee.log", "r");
+                if ($fl) {
+                    $tracelog = [];
+                    for ($x_pos = 0, $ln = 0, $output = array(); fseek($fl,
+                            $x_pos, SEEK_END) !== -1; $x_pos--) {
+                        $char = fgetc($fl);
+                        if ($char === "\n") {
+                            $tracelog[] = $output[$ln];
+                            if (strstr($output[$ln], $errorResponse['message'])) {
+                                break;
+                            }
+                            $ln++;
+                            continue;
+                        }
+                        $output[$ln] = $char.((array_key_exists($ln, $output)) ? $output[$ln]
+                                : '');
+                    }
+
+                    $trace     = implode("\n", array_reverse($tracelog));
+                    $tracefile = $tmpdir.'/trace-'.$this->evidence.'-'.$myTime.'.log';
+                    file_put_contents($tracefile, $trace);
+                    $report->addItem("\n\n".$trace);
+                    fclose($fl);
+                }
+            } else {
+                $report->addItem($errorResponse['message']);
+            }
+
+            $licenseInfo = $this->performRequest($this->url.'/default-license.json');
+
+            $report->addItem("\n\n".json_encode($licenseInfo['license'],
+                    JSON_PRETTY_PRINT));
+
+            if ($report->send()) {
+                $this->reports[$ur] = $myTime;
+            }
+        }
     }
 }
