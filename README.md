@@ -182,6 +182,18 @@ dat do FlexiBee provedeny dodatečné testy. Kontrolují se tyto možné chyby:
 
 V ladícím režimu se také ukládají do složky /tmp všechny požadavky na flexibee a jejich odpovědi
 
+Knihovna obsahuje mechanizmus pro odesílání zaznamenaných chyb při běhu FlexiBee vývojářům:
+
+Pokud FlexiBee vrátí Internal Server Error 500, je odeslán vývojářům email obsahující chybovou zprávu.
+
+V případě že je použito FlexiBee běžící na stejném serveru a je možné číst chybové logy je z nich vypreparován patřičný fragment a i ten je přidán do těla mailu.
+
+Email obsahuje také dodatečné informace o licenci a povolených modulech.
+
+Jako přílohy jsou také připojeny soubory obsahující tělo dotazu na server, tělo jeho odpovědi a soubor obsahující informace o curl.
+
+Během života objektu se chyby evidují a odesílá se pouze první každého druhu. 
+
 
 Testování
 ---------

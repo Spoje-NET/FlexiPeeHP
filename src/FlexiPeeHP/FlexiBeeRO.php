@@ -712,12 +712,12 @@ class FlexiBeeRO extends \Ease\Brick
                     $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
                 } else {
                     $this->lastInsertedID = null;
-                    if (isset($responseDecoded['@rowCount'])) {
-                        $this->rowCount = (int) $responseDecoded['@rowCount'];
-                    }
                 }
             case 200:
                 $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
+                if (isset($responseDecoded['@rowCount'])) {
+                    $this->rowCount = (int) $responseDecoded['@rowCount'];
+                }
                 break;
 
             case 500:
