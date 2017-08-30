@@ -4,5 +4,5 @@ REVISION=`cat debian/revision | perl -ne 'chomp; print join(".", splice(@{[split
 echo ${VERSION}.${REVISION}
 sed -i -e '/\"version\"/c\    \"version\": \"'${VERSION}'.'${REVISION}'",' debian/flexipeehp/usr/share/php/FlexiPeeHP/composer.json
 
-sed -i -e "/static public \$libVersion/c\    static public \$libVersion = '${VERSION}.${REVISION}';" debian/flexipeehp/usr/share/php/FlexiPeeHP/FlexiBeeRO.php
-sed -i -e "/static public \$libVersion/c\    static public \$libVersion = '${VERSION}.${REVISION}';" src/FlexiPeeHP/FlexiBeeRO.php
+sed -i -e "/public static \$libVersion/c\    public static \$libVersion = '${VERSION}.${REVISION}';" debian/flexipeehp/usr/share/php/FlexiPeeHP/FlexiBeeRO.php
+sed -i -e "/public static \$libVersion/c\    public static \$libVersion = '${VERSION}.${REVISION}';" src/FlexiPeeHP/FlexiBeeRO.php
