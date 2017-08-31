@@ -45,7 +45,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $mock = $this->getMockBuilder($classname)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
-        $mock->__construct(0, ['debug' => false]);
+        $mock->__construct(1, ['debug' => false]);
 
         if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
             $evidence = 'adresar';
@@ -415,22 +415,22 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testIdExists()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertFalse($this->object->idExists('nonexistent'));
+        $first = $this->object->getColumnsFromFlexibee(['id'], ['limit' => 1],
+            'id');
+        $this->object->setData($first);
+        $this->assertTrue($this->object->idExists());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getRecordID
-     * @todo   Implement testGetRecordID().
      */
     public function testGetRecordID()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setData(['id' => 10]);
+        $this->assertEquals(10, $this->object->getRecordID());
+        $this->object->setData(['kod' => 'KOD']);
+        $this->assertEquals('code:KOD', $this->object->getRecordID());
     }
 
     /**
@@ -472,46 +472,39 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetColumnsFromFlexibee()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $columns = $this->object->getColumnsFromFlexibee(['id'], ['limit' => 1],
+            'id');
+        $this->assertNotEmpty($columns);
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getExternalID
-     * @todo   Implement testGetExternalID().
      */
     public function testGetExternalID()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals('test:10',
+            $this->object->getExternalID('ext:test:10'));
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getGlobalVersion
-     * @todo   Implement testGetGlobalVersion().
      */
     public function testGetGlobalVersion()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertNotEmpty($this->object->getGlobalVersion());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getResponseFormat
-     * @todo   Implement testGetResponseFormat().
      */
     public function testGetResponseFormat()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->performRequest(null, 'GET', 'json');
+        $this->assertEquals('application/json',
+            $this->object->getResponseFormat());
+        $this->object->performRequest(null, 'GET', 'xml');
+        $this->assertEquals('application/xml',
+            $this->object->getResponseFormat());
     }
 
     /**
@@ -743,62 +736,48 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceInfo
-     * @todo   Implement testGetEvidenceInfo().
      */
     public function testGetEvidenceInfo()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertArray($this->object->getEvidenceInfo());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getEvidenceName
-     * @todo   Implement testGetEvidenceName().
      */
     public function testGetEvidenceName()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertNotEmpty($this->object->getEvidenceName());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::performAction
-     * @todo   Implement testPerformAction().
      */
     public function testPerformAction()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $actions = $this->object->getActionsInfo();
+        $this->assertTrue($this->object->performAction(key($actions)));
+        $this->object->performAction(next($actions), 'ext');
+
+        $this->expectException($this->object->performAction('nonexitst'));
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::saveResponseToFile
-     * @todo   Implement testSaveResponseToFile().
      */
     public function testSaveResponseToFile()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $tmp = sys_get_temp_dir().'/'.tmpfile();
+        $this->object->saveResponseToFile($tmp);
+        $this->assertFileExists($tmp);
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getVazby
-     * @todo   Implement testGetVazby().
      */
     public function testGetVazby()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $vazby = $this->object->getVazby();
+        $this->assertArray($vazby);
     }
-
 }
