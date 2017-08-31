@@ -588,20 +588,20 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function objectToID($object)
     {
-        $result = null;
+        $resultID = null;
         if (is_object($object)) {
-            $result = $object->__toString();
+            $resultID = $object->__toString();
         } else {
             if (is_array($object)) {
                 foreach ($object as $item => $value) {
-                    $result[$item] = self::objectToID($value);
+                    $resultID[$item] = self::objectToID($value);
                 }
             } else { //String
-                $result = $object;
+                $resultID = $object;
             }
         }
 
-        return $result;
+        return $resultID;
     }
 
     /**
@@ -705,7 +705,7 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $response = null;
         switch ($responseCode) {
-            case 201:
+            case 201: //Success Write
                 if (isset($responseDecoded[$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
                     $this->setMyKey($this->lastInsertedID);
@@ -713,22 +713,22 @@ class FlexiBeeRO extends \Ease\Brick
                 } else {
                     $this->lastInsertedID = null;
                 }
-            case 200:
+            case 200: //Success Read
                 $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
                 if (isset($responseDecoded['@rowCount'])) {
                     $this->rowCount = (int) $responseDecoded['@rowCount'];
                 }
                 break;
 
-            case 500:
+            case 500: // Internal Server Error
                 if ($this->debug === true) {
                     $this->error500Reporter($responseDecoded);
                 }
-            case 404:
+            case 404: // Page not found
                 if ($this->ignoreNotFound === true) {
                     break;
                 }
-            case 400:
+            case 400: //Bad Request parameters
             default: //Something goes wrong
                 $this->addStatusMessage($this->curlInfo['url'], 'warning');
                 if (is_array($responseDecoded)) {
@@ -994,7 +994,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function jsonizeData($data)
     {
-        $jsonize = [
+        $dataToJsonize = [
             $this->nameSpace => [
                 '@version' => $this->protoVersion,
                 $this->evidence => $this->objectToID($data),
@@ -1002,15 +1002,15 @@ class FlexiBeeRO extends \Ease\Brick
         ];
 
         if (!is_null($this->action)) {
-            $jsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
+            $dataToJsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
             $this->action                                         = null;
         }
 
         if (!is_null($this->filter)) {
-            $jsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
+            $dataToJsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
         }
 
-        return json_encode($jsonize);
+        return json_encode($dataToJsonize);
     }
 
     /**
@@ -1035,10 +1035,10 @@ class FlexiBeeRO extends \Ease\Brick
      * @param array $data
      * @return boolean Record presence status
      */
-    public function recordExists($data = null)
+    public function recordExists($data = [])
     {
 
-        if (is_null($data)) {
+        if (empty($data)) {
             $data = $this->getData();
         }
 
@@ -1091,9 +1091,9 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $detail = 'full';
         switch (gettype($columnsList)) {
-            case 'integer':
+            case 'integer': //Record ID
                 $conditions = [$this->getmyKeyColumn() => $conditions];
-            case 'array':
+            case 'array': //Few Conditions
                 if (!is_null($indexBy) && !array_key_exists($indexBy,
                         $columnsList)) {
                     $columnsList[] = $indexBy;
@@ -1125,6 +1125,7 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Vrací kód záznamu.
+     * Obtain record CODE
      *
      * @param mixed $data
      *
@@ -1697,7 +1698,8 @@ class FlexiBeeRO extends \Ease\Brick
      * FlexiBee date to PHP DateTime
      *
      * @param string $flexidate
-     * @return \DateTime
+     *
+     * @return \DateTime | false
      */
     public static function flexiDateToDateTime($flexidate)
     {

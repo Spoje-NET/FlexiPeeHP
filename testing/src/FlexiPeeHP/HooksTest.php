@@ -78,13 +78,13 @@ class HooksTest extends FlexiBeeRWTest
     }
 
     /**
-     * @covers FlexiPeeHP\Hooks::refresh
+     * @covers FlexiPeeHP\Hooks::refreshWebHook
      * @depends testRegister
      */
-    public function testRefresh()
+    public function testRefreshWebHook()
     {
         $hooks = $this->object->getAllFromFlexibee();
-        $this->assertTrue($this->object->refresh(current(end($hooks))));
+        $this->assertTrue($this->object->refreshWebHook(current(end($hooks))));
     }
 
     /**

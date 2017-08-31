@@ -45,7 +45,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $mock = $this->getMockBuilder($classname)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
-        $mock->__construct('', ['debug' => false]);
+        $mock->__construct(0, ['debug' => false]);
 
         if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
             $evidence = 'adresar';
@@ -110,7 +110,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\Flexi/home/vitex/Projects/Spoje.Net/flexipeehp/testing/src/FlexiPeeHP/FlexiBeeROTest.php:86BeeRO::setUp
+     * @covers FlexiPeeHP\FlexiBeeRO::setUp
      */
     public function testSetUp()
     {
@@ -231,7 +231,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 }
 
                 $xml = $this->object->performRequest(null, 'GET', 'xml');
-                $this->assertArrayHasKey('companies', $xml);
+                $this->assertArrayHasKey($evidence, $xml);
 
                 break;
         }
