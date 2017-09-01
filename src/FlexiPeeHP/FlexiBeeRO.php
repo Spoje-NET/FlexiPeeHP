@@ -412,8 +412,8 @@ class FlexiBeeRO extends \Ease\Brick
         } elseif (is_array($init)) {
             $this->takeData($init);
         } elseif (preg_match('/\.(json|xml|csv)/', $init)) {
-            $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL().'/'
-                            : '').$init));
+            $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL($init)
+                            : $init)));
         } else {
             $this->loadFromFlexiBee('code:'.str_replace('code:', '', $init));
         }
@@ -608,16 +608,22 @@ class FlexiBeeRO extends \Ease\Brick
      * Return basic URL for used Evidence
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
-     * @param string $urlSuffix
+     * @param string $urlSuffix additional url Suffix
      */
     public function getEvidenceURL($urlSuffix = null)
     {
-        if (is_null($urlSuffix)) {
-            $urlSuffix = $this->getEvidence();
-        } elseif ($urlSuffix[0] == ';') {
-            $urlSuffix = $this->getEvidence().$urlSuffix;
+        $evidenceUrl = $this->url.$this->prefix.$this->company;
+        $evidence    = $this->getEvidence();
+        if (!empty($evidence)) {
+            $evidenceUrl .= '/'.$evidence;
         }
-        return $this->url.$this->prefix.$this->company.'/'.$urlSuffix;
+        if (!empty($urlSuffix)) {
+            if (($urlSuffix[0] != '/') && ($urlSuffix[0] != ';')) {
+                $evidenceUrl .= '/';
+            }
+            $evidenceUrl .= $urlSuffix;
+        }
+        return $evidenceUrl;
     }
 
     /**
@@ -648,6 +654,8 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (preg_match('/^http/', $urlSuffix)) {
             $url = $urlSuffix;
+        } elseif ($urlSuffix[0] == '/') {
+            $url = $this->url.$urlSuffix;
         } else {
             $url = $this->getEvidenceURL($urlSuffix);
         }
@@ -935,7 +943,7 @@ class FlexiBeeRO extends \Ease\Brick
             $conditions = '';
         }
 
-        if (preg_match('/^http/', $suffix)) {
+        if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
             $transactions = $this->performRequest($suffix, 'GET');
         } else {
             if (strlen($suffix)) {
@@ -1003,7 +1011,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (!is_null($this->action)) {
             $dataToJsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
-            $this->action                                         = null;
+            $this->action                                               = null;
         }
 
         if (!is_null($this->filter)) {
