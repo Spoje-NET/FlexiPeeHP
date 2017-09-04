@@ -227,11 +227,13 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 if (array_key_exists('message', $json)) {
                     $this->assertArrayHasKey('@version', $json);
                 } else {
-                    $this->assertArrayHasKey($evidence, $json);
+                    $this->assertArrayHasKey($this->object->getResponseEvidence(),
+                        $json);
                 }
 
                 $xml = $this->object->performRequest(null, 'GET', 'xml');
-                $this->assertArrayHasKey($evidence, $xml);
+                $this->assertArrayHasKey($this->object->getResponseEvidence(),
+                    $xml);
 
                 break;
         }
@@ -739,7 +741,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetEvidenceInfo()
     {
-        $this->assertArray($this->object->getEvidenceInfo());
+        $this->assertArrayHasKey('evidencePath',
+            $this->object->getEvidenceInfo());
     }
 
     /**

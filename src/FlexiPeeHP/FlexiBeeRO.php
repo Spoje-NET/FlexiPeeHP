@@ -751,7 +751,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (array_key_exists('results', $responseDecoded)) {
             $this->errors = $responseDecoded['results'][0]['errors'];
         } else {
-            $this->errors = [['message' => $responseDecoded['message']]];
+            if (array_key_exists('message', $responseDecoded)) {
+                $this->errors = [['message' => $responseDecoded['message']]];
+            }
         }
         return count($this->errors);
     }
@@ -827,7 +829,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $result           = false;
         $actionsAvailable = $this->getActionsInfo();
-        if (array_key_exists($action, $actionsAvailable)) {
+        if (is_array($actionsAvailable) && array_key_exists($action,
+                $actionsAvailable)) {
             $this->action = $action;
             $result       = true;
         }
@@ -1003,7 +1006,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (!is_null($this->action)) {
             $dataToJsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
-            $this->action                                         = null;
+            $this->action                                               = null;
         }
 
         if (!is_null($this->filter)) {
