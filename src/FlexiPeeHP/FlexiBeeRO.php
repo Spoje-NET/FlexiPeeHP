@@ -608,15 +608,29 @@ class FlexiBeeRO extends \Ease\Brick
      * Return basic URL for used Evidence
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
-     * @param string $urlSuffix additional url Suffix
+     *
+     * @return string Evidence URL
      */
-    public function getEvidenceURL($urlSuffix = null)
+    public function getEvidenceURL()
     {
         $evidenceUrl = $this->url.$this->prefix.$this->company;
         $evidence    = $this->getEvidence();
         if (!empty($evidence)) {
             $evidenceUrl .= '/'.$evidence;
         }
+        return $evidenceUrl;
+    }
+
+    /**
+     * Add suffix to Evidence URL
+     *
+     * @param string $urlSuffix
+     *
+     * @return string
+     */
+    public function evidenceUrlWithSuffix($urlSuffix)
+    {
+        $evidenceUrl = $this->getEvidenceUrl();
         if (!empty($urlSuffix)) {
             if (($urlSuffix[0] != '/') && ($urlSuffix[0] != ';')) {
                 $evidenceUrl .= '/';
@@ -657,7 +671,7 @@ class FlexiBeeRO extends \Ease\Brick
         } elseif ($urlSuffix[0] == '/') {
             $url = $this->url.$urlSuffix;
         } else {
-            $url = $this->getEvidenceURL($urlSuffix);
+            $url = $this->evidenceUrlWithSuffix($urlSuffix);
         }
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
@@ -940,7 +954,7 @@ class FlexiBeeRO extends \Ease\Brick
             }
 
             if (strlen($conditions) && ($conditions[0] != '/')) {
-                $conditions = '/'.rawurlencode('('.($conditions).')');
+                $conditions = rawurlencode('('.($conditions).')');
             }
         } else {
             $conditions = '';
@@ -950,10 +964,10 @@ class FlexiBeeRO extends \Ease\Brick
             $transactions = $this->performRequest($suffix, 'GET');
         } else {
             if (strlen($suffix)) {
-                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
+                $transactions = $this->performRequest($conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
                     'GET');
             } else {
-                $transactions = $this->performRequest($this->evidence.$conditions.'.'.$this->format.'?'.http_build_query($urlParams),
+                $transactions = $this->performRequest($conditions.'.'.$this->format.'?'.http_build_query($urlParams),
                     'GET');
             }
         }
