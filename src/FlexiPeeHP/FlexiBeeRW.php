@@ -87,7 +87,7 @@ class FlexiBeeRW extends FlexiBeeRO
             }
         }
         $this->postFields = $this->jsonizeData($data);
-        return $this->performRequest($this->evidence.'.'.$this->format, 'PUT');
+        return $this->performRequest(null, 'PUT');
     }
 
     /**

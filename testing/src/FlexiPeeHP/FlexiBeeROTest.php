@@ -445,6 +445,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         switch ($evidence) {
             case null:
             case 'c':
+            case 'evidence-list':
                 $this->markTestSkipped('Unsupported evidence');
                 break;
 
