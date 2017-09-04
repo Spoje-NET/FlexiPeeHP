@@ -632,7 +632,8 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $evidenceUrl = $this->getEvidenceUrl();
         if (!empty($urlSuffix)) {
-            if (($urlSuffix[0] != '/') && ($urlSuffix[0] != ';')) {
+            if (($urlSuffix[0] != '/') && ($urlSuffix[0] != ';') && ($urlSuffix[0]
+                != '?')) {
                 $evidenceUrl .= '/';
             }
             $evidenceUrl .= $urlSuffix;
@@ -947,6 +948,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function getFlexiData($suffix = null, $conditions = null)
     {
         $urlParams = $this->defaultUrlParams;
+
         if (!is_null($conditions)) {
             if (is_array($conditions)) {
                 $this->extractUrlParams($conditions, $urlParams);
@@ -956,21 +958,20 @@ class FlexiBeeRO extends \Ease\Brick
             if (strlen($conditions) && ($conditions[0] != '/')) {
                 $conditions = rawurlencode('('.($conditions).')');
             }
-        } else {
-            $conditions = '';
         }
 
-        if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
-            $transactions = $this->performRequest($suffix, 'GET');
-        } else {
-            if (strlen($suffix)) {
-                $transactions = $this->performRequest($conditions.'.'.$this->format.'?'.$suffix.'&'.http_build_query($urlParams),
-                    'GET');
+        if (strlen($suffix)) {
+            if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
+                $transactions = $this->performRequest($suffix, 'GET');
             } else {
-                $transactions = $this->performRequest($conditions.'.'.$this->format.'?'.http_build_query($urlParams),
+                $transactions = $this->performRequest($conditions.'?'.$suffix.'&'.http_build_query($urlParams),
                     'GET');
             }
+        } else {
+            $transactions = $this->performRequest($conditions.'?'.http_build_query($urlParams),
+                'GET');
         }
+
         $responseEvidence = $this->getResponseEvidence();
         if (is_array($transactions) && array_key_exists($responseEvidence,
                 $transactions)) {
