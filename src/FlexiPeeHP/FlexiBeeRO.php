@@ -1050,7 +1050,8 @@ class FlexiBeeRO extends \Ease\Brick
             $identifer = $this->getMyKey();
         }
         $flexiData = $this->getFlexiData(
-            'detail=custom:'.$this->getmyKeyColumn(), $identifer);
+            'detail=custom:'.$this->getmyKeyColumn(),
+            [$this->getmyKeyColumn() => $identifer]);
 
         return $flexiData;
     }
