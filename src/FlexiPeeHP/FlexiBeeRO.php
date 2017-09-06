@@ -1381,6 +1381,23 @@ class FlexiBeeRO extends \Ease\Brick
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
 
+
+    /**
+     * Obtain ID of first record in evidence
+     *
+     * @return string|null id or null if no records
+     */
+    public function getFirstRecordID()
+    {
+        $firstID    = null;
+        $firstIdRaw = $this->getColumnsFromFlexibee(['id'],
+            ['limit' => 1, 'order' => 'id'], 'id');
+        if (count($firstIdRaw)) {
+            $firstID = (int) current($firstIdRaw)['id'];
+        }
+        return $firstID;
+    }
+
     /**
      * Vrací hodnotu daného externího ID
      *
@@ -1631,13 +1648,17 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @return array Null or Relations
      */
-    public function getVazby()
+    public function getVazby($id = null)
     {
-        $vazby = $this->getDataValue('vazby');
-        if (is_null($vazby)) {
-            $vazby = $this->getColumnsFromFlexibee('*',
-                ['relations' => 'vazby', 'id' => $this->getRecordID()]);
-            $vazby = $vazby[0]['vazby'];
+        if (is_null($id)) {
+            $id = $this->getRecordID();
+        }
+        if (!empty($id)) {
+            $vazbyRaw = $this->getColumnsFromFlexibee(['vazby'],
+                ['relations' => 'vazby', 'id' => $id]);
+            $vazby    = $vazbyRaw[0]['vazby'];
+        } else {
+            throw new \Exception(_('ID requied to get record relations '));
         }
         return $vazby;
     }

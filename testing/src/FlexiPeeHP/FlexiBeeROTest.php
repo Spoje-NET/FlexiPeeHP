@@ -223,7 +223,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 break;
 
             default:
-                $json = $this->object->performRequest($evidence.'.json');
+                $json = $this->object->performRequest(null, 'GET', 'json');
                 if (array_key_exists('message', $json)) {
                     $this->assertArrayHasKey('@version', $json);
                 } else {
@@ -777,11 +777,30 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRO::getVazby
+     * @covers FlexiPeeHP\FlexiBeeRO::getFirstRecordID()
+     */
+    public function testgetFirstRecordID()
+    {
+        $firstID = $this->object->getFirstRecordID();
+        if (is_null($firstID)) {
+            $this->markTestSkipped('Empty evidence');
+        } else {
+            $this->assertFalse(empty($firstID));
+        }
+    }
+
+    /**
+     * @covers FlexiPeeHP\Adresar::getVazby
      */
     public function testGetVazby()
     {
+        //       $this->expectException($this->object->getVazby());
+        $this->object->setMyKey($this->object->getFirstRecordID());
         $vazby = $this->object->getVazby();
-        $this->assertArray($vazby);
+        if (is_null($vazby)) {
+            $this->markAsSkipped();
+        } else {
+            $this->assertTrue(is_array($vazby));
+        }
     }
 }
