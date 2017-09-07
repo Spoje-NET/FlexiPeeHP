@@ -32,6 +32,14 @@ class Zurnal extends FlexiBeeRO
     /**
      * obtain all record changes array
      *
+     * Note: Do not use this method in production environment!
+     *
+     *       If you have no other choice pleas add indexes into wzurnal
+     *       postgesql table:
+     *
+     *       CREATE INDEX CONCURRENTLY tname_index ON wzurnal (tabulka);
+     *       CREATE INDEX CONCURRENTLY rid_index ON wzurnal (idZaznamu);
+     *
      * @param FlexiBeeRO $object
      * @return array changes history
      */
