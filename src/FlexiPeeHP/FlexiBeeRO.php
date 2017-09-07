@@ -1379,7 +1379,6 @@ class FlexiBeeRO extends \Ease\Brick
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $evidence)));
     }
 
-
     /**
      * Obtain ID of first record in evidence
      *
