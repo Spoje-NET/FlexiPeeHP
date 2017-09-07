@@ -990,7 +990,7 @@ class FlexiBeeRO extends \Ease\Brick
      * Načte záznam z FlexiBee a uloží v sobě jeho data
      * Read FlexiBee record and store it inside od object
      *
-     * @param int|array $id ID or conditions
+     * @param int $id ID or conditions
      *
      * @return int počet načtených položek
      */
@@ -1000,9 +1000,7 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
-
-        $flexidata = $this->getFlexiData(null, is_array($id) ? $id : '/'.$id);
-
+        $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
         $this->apiURL = $this->curlInfo['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
