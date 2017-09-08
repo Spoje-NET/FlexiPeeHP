@@ -28,7 +28,7 @@ class Changes extends FlexiBeeRO
      */
     public function enable()
     {
-        $this->performRequest('changes/enable.xml', 'POST', 'xml');
+        $this->performRequest('enable.xml', 'POST', 'xml');
         return $this->lastResponseCode == 200;
     }
 
@@ -38,7 +38,7 @@ class Changes extends FlexiBeeRO
      */
     public function disable()
     {
-        $this->performRequest('changes/disable.xml', 'POST', 'xml');
+        $this->performRequest('disable.xml', 'POST', 'xml');
         return $this->lastResponseCode == 200;
     }
 
@@ -49,7 +49,7 @@ class Changes extends FlexiBeeRO
      */
     public function getStatus()
     {
-        $status = $this->performRequest('changes/status.xml', 'GET', 'xml');
+        $status = $this->performRequest('status.xml', 'GET', 'xml');
         return (($this->lastResponseCode == 200) && ($status['success'] === 'true'));
     }
 
