@@ -63,4 +63,19 @@ class Changes extends FlexiBeeRO
     {
         return null;
     }
+
+    /**
+     * Obtain actual GlobalVersion
+     * Vrací aktuální globální verzi změn
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api#globalVersion Globální Verze
+     * @return int
+     */
+    public function getGlobalVersion()
+    {
+        $this->getColumnsFromFlexibee('*', ['start' => 0, 'limit' => 0]);
+        $globalVersionRaw = json_decode($this->lastCurlResponse, TRUE);
+        return isset($globalVersionRaw[$this->nameSpace]['@globalVersion']) ? intval($globalVersionRaw[$this->nameSpace]['@globalVersion'])
+                : null;
+    }
 }
