@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
- * Generated: Thu, 24 Aug 2017 19:16:38 +0200 
+ * Generated: Sun, 10 Sep 2017 09:54:44 +0200 
  * From:      https://demo.flexibee.eu
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -39,14 +39,14 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- public static  $version = '2017.1.17';
+ static public $version = '2017.2.0-beta-1';
 
     /**
      * Evidences Path/Name listing.
      *
      * @var array
      */
- public static  $name = array (
+ static public $name = array (
   'banka-polozka' => '#banBanZapoctyPol',
   'pravo-viditelnosti' => '#uzivPristup',
   'adresar' => 'Adresy firem',
@@ -203,8 +203,8 @@ class EvidenceList extends FlexiBeeRO
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
   'umisteni-ve-skladu-police' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
   'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
   'umisteni-ve-skladu' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
@@ -212,6 +212,7 @@ class EvidenceList extends FlexiBeeRO
   'uzivatelsky-dotaz' => 'Uživatelské dotazy',
   'filtr' => 'Uživatelské filtry',
   'custom-button' => 'Uživatelské tlačítko',
+  'xslt' => 'Uživatelské transformace',
   'uzivatelska-vazba' => 'Uživatelské vazby',
   'strom-cenik' => 'Vazba uzlu na objekt',
   'vazba' => 'Vazby dokladu',
@@ -251,7 +252,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var array
      */
- public static  $evidences = array (
+ static public $evidences = array (
   'adresar' => 
   array (
     'evidenceType' => 'ADRESAR',
@@ -1961,6 +1962,15 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DOCUMENTED',
     'className' => 'cz.winstrom.vo.dok.TypDokl',
     'formCode' => 'banTypZapocty',
+  ),
+  'xslt' => 
+  array (
+    'evidenceType' => 'XSLT',
+    'evidenceName' => 'Uživatelské transformace',
+    'evidencePath' => 'xslt',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.w.Xslt',
+    'formCode' => 'xslt',
   ),
   'zakazka' => 
   array (
