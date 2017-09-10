@@ -30,7 +30,7 @@ class Banka extends FlexiBeeRW
      */
     public function stahnoutVypisyOnline()
     {
-        $this->performRequest('banka/nacteni-vypisu-online.json', 'PUT', 'txt');
+        $this->performRequest('nacteni-vypisu-online.json', 'PUT', 'txt');
         return $this->lastResponseCode == 200;
     }
 
@@ -43,7 +43,7 @@ class Banka extends FlexiBeeRW
      */
     public function automatickeParovani()
     {
-        $this->performRequest('banka/automaticke-parovani', 'PUT');
+        $this->performRequest('automaticke-parovani', 'PUT');
         return $this->lastResponseCode == 200;
     }
 }
