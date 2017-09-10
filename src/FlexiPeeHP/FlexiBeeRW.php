@@ -112,7 +112,7 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
-        $this->performRequest($this->evidence.'/'.$id.'.'.$this->format,
+        $this->performRequest($this->getEvidenceUrl().'/'.$id.'.'.$this->format,
             'DELETE');
         return $this->lastResponseCode == 200;
     }
