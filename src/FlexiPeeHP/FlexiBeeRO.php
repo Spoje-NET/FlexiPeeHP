@@ -1000,6 +1000,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
+        if (is_array($id)) {
+            $id = '('.self::flexiUrl($id).')';
+        }
         $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
         $this->apiURL = $this->curlInfo['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {

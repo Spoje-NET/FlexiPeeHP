@@ -35,7 +35,7 @@ class Kontakt extends FlexiBeeRW
         $defaultHttpHeaders                       = $this->defaultHttpHeaders;
         $this->defaultHttpHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
         $this->setPostFields(http_build_query(['username' => $login, 'password' => $password]));
-        $result                                   = $this->performRequest($this->evidence.'/authenticate',
+        $result                                   = $this->performRequest('authenticate',
             'POST', 'xml');
         $this->defaultHttpHeaders                 = $defaultHttpHeaders;
         if (!empty($result['message'])) {
