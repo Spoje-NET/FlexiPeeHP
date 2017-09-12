@@ -1724,8 +1724,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function sendByMail($to, $subject, $body, $cc = null)
     {
         $this->setPostFields($body);
-        $result = $this->doCurlRequest($this->getEvidenceURL().'/'.
-            urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
+        $result = $this->doCurlRequest(urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
             , 'PUT', 'xml');
         return $result == 200;
     }
@@ -1738,8 +1737,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function sendUnsent()
     {
-        return $this->doCurlRequest($this->getEvidenceURL().'/automaticky-odeslat-neodeslane',
-                'PUT', 'xml');
+        return $this->doCurlRequest('automaticky-odeslat-neodeslane', 'PUT', 'xml');
     }
 
     /**
