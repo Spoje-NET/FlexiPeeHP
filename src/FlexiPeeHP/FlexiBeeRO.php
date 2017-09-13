@@ -962,15 +962,22 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (strlen($suffix)) {
             if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
-                $transactions = $this->performRequest($suffix, 'GET');
-            } else {
-                $transactions = $this->performRequest($conditions.'?'.$suffix.'&'.http_build_query($urlParams),
-                    'GET');
+                $finalUrl = $suffix;
             }
-        } else {
-            $transactions = $this->performRequest($conditions.'?'.http_build_query($urlParams),
-                'GET');
         }
+
+        $finalUrl .= $conditions;
+
+        if (count($urlParams)) {
+            if (strstr($finalUrl, '?')) {
+                $finalUrl .= '&';
+            } else {
+                $finalUrl .= '?';
+            }
+            $finalUrl .= http_build_query($urlParams);
+        }
+
+        $transactions = $this->performRequest($finalUrl, 'GET');
 
         $responseEvidence = $this->getResponseEvidence();
         if (is_array($transactions) && array_key_exists($responseEvidence,
