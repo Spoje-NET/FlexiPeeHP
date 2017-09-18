@@ -962,7 +962,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         if (strlen($suffix)) {
-            if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
+            if (preg_match('/^http/', $suffix) || ($suffix[0] == '/') || is_numeric($suffix)) {
                 $finalUrl = $suffix;
             }
         }
