@@ -947,6 +947,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getFlexiData($suffix = null, $conditions = null)
     {
+        $finalUrl  = '';
         $urlParams = $this->defaultUrlParams;
 
         if (!is_null($conditions)) {
@@ -1333,7 +1334,7 @@ class FlexiBeeRO extends \Ease\Brick
                         break;
                     default:
                         if ($column == 'stitky') {
-                            $parts[$column] = $column."='code:".$data[$column]."'";
+                            $parts[$column] = $column."='".self::code($data[$column])."'";
                         } else {
                             $parts[$column] = $column." $defop '".$data[$column]."'";
                         }
@@ -1873,4 +1874,17 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
     }
+
+    /**
+     * Returns code:CODE
+     *
+     * @param string $code
+     *
+     * @return string
+     */
+    public static function code($code)
+    {
+        return str_replace('code:', '', $code);
+    }
+
 }
