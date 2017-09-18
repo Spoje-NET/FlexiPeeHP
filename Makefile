@@ -7,7 +7,10 @@ fresh:
 install: build
 	echo install
 	
-build: doc
+static: 
+	cd tools/ ; ./update_all.sh ; cd ..
+
+build: static doc
 	echo build
 
 clean:
