@@ -1887,7 +1887,18 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function code($code)
     {
-        return str_replace('code:', '', $code);
+        return 'code:'.self::uncode($code);
     }
 
+    /**
+     * Returns CODE without code: prefix
+     *
+     * @param string $code
+     *
+     * @return string
+     */
+    public static function uncode($code)
+    {
+        return str_replace('code:', '', $code);
+    }
 }
