@@ -944,6 +944,8 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param string $suffix     dotaz
      * @param string|array $conditions Volitelný filtrovací výraz
+     *
+     * @return array Data obtained
      */
     public function getFlexiData($suffix = null, $conditions = null)
     {
@@ -962,7 +964,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         if (strlen($suffix)) {
-            if (preg_match('/^http/', $suffix) || ($suffix[0] == '/')) {
+            if (preg_match('/^http/', $suffix) || ($suffix[0] == '/') || is_numeric($suffix)) {
                 $finalUrl = $suffix;
             }
         }
@@ -1664,7 +1666,8 @@ class FlexiBeeRO extends \Ease\Brick
         if (!empty($id)) {
             $vazbyRaw = $this->getColumnsFromFlexibee(['vazby'],
                 ['relations' => 'vazby', 'id' => $id]);
-            $vazby    = $vazbyRaw[0]['vazby'];
+            $vazby    = array_key_exists('vazby', $vazbyRaw[0]) ? $vazbyRaw[0]['vazby']
+                    : null;
         } else {
             throw new \Exception(_('ID requied to get record relations '));
         }
