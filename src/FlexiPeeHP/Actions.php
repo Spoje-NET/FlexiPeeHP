@@ -21,7 +21,7 @@ class Actions
      *
      * @var string
      */
- static public $version = '2017.2.0-beta-2';
+ static public $version = '2017.2.0';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Actions.
