@@ -798,7 +798,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->setMyKey($this->object->getFirstRecordID());
         $vazby = $this->object->getVazby();
         if (is_null($vazby)) {
-            $this->markAsSkipped();
+            $this->markTestSkipped('No bonds to check');
         } else {
             $this->assertTrue(is_array($vazby));
         }
