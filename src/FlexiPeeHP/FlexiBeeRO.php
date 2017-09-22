@@ -977,7 +977,8 @@ class FlexiBeeRO extends \Ease\Brick
             } else {
                 $finalUrl .= '?';
             }
-            $finalUrl .= http_build_query($urlParams);
+            $finalUrl .= http_build_query($urlParams, null, '&',
+                PHP_QUERY_RFC3986);
         }
 
         $transactions = $this->performRequest($finalUrl, 'GET');
@@ -1124,7 +1125,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @return array
      */
-    public function getColumnsFromFlexibee($columnsList, $conditions = null,
+    public function getColumnsFromFlexibee($columnsList, $conditions = [],
                                            $indexBy = null)
     {
         $detail = 'full';
@@ -1152,7 +1153,9 @@ class FlexiBeeRO extends \Ease\Brick
                 break;
         }
 
-        $flexiData = $this->getFlexiData('detail='.$detail, $conditions);
+        $conditions['detail'] = $detail;
+
+        $flexiData = $this->getFlexiData(null, $conditions);
 
         if (!is_null($indexBy) && count($flexiData) && count(current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
@@ -1319,29 +1322,33 @@ class FlexiBeeRO extends \Ease\Brick
         $parts = [];
 
         foreach ($data as $column => $value) {
-            if (is_integer($data[$column]) || is_float($data[$column])) {
-                $parts[$column] = $column.' eq \''.$data[$column].'\'';
-            } elseif (is_bool($data[$column])) {
-                $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
-            } elseif (is_null($data[$column])) {
-                $parts[$column] = $column." is null";
-            } else {
-                switch ($value) {
-                    case '!null':
-                        $parts[$column] = $column." is not null";
-                        break;
-                    case 'is empty':
-                    case 'is not empty':
-                        $parts[$column] = $column.' '.$value;
-                        break;
-                    default:
-                        if ($column == 'stitky') {
-                            $parts[$column] = $column."='".self::code($data[$column])."'";
-                        } else {
-                            $parts[$column] = $column." $defop '".$data[$column]."'";
-                        }
-                        break;
+            if (!is_numeric($column)) {
+                if (is_integer($data[$column]) || is_float($data[$column])) {
+                    $parts[$column] = $column.' eq \''.$data[$column].'\'';
+                } elseif (is_bool($data[$column])) {
+                    $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
+                } elseif (is_null($data[$column])) {
+                    $parts[$column] = $column." is null";
+                } else {
+                    switch ($value) {
+                        case '!null':
+                            $parts[$column] = $column." is not null";
+                            break;
+                        case 'is empty':
+                        case 'is not empty':
+                            $parts[$column] = $column.' '.$value;
+                            break;
+                        default:
+                            if ($column == 'stitky') {
+                                $parts[$column] = $column."='".self::code($data[$column])."'";
+                            } else {
+                                $parts[$column] = $column." $defop '".$data[$column]."'";
+                            }
+                            break;
+                    }
                 }
+            } else {
+                $parts[] = $value;
             }
         }
         return implode(' '.$joiner.' ', $parts);
@@ -1748,7 +1755,8 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function sendUnsent()
     {
-        return $this->doCurlRequest('automaticky-odeslat-neodeslane', 'PUT', 'xml');
+        return $this->doCurlRequest('automaticky-odeslat-neodeslane', 'PUT',
+                'xml');
     }
 
     /**
