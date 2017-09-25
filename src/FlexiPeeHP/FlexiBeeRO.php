@@ -1911,4 +1911,13 @@ class FlexiBeeRO extends \Ease\Brick
     {
         return str_replace('code:', '', $code);
     }
+
+    /**
+     * Reconnect After unserialization
+     */
+    public function __wakeup()
+    {
+        parent::__wakeup();
+        $this->curlInit();
+    }
 }
