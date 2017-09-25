@@ -677,8 +677,8 @@ class FlexiBeeRO extends \Ease\Brick
 
         $responseCode = $this->doCurlRequest($url, $method, $format);
 
-        return strlen($this->lastCurlResponse) ? $this->parseResponse($this->rawResponseToArray($this->lastCurlResponse,
-                    $this->responseFormat), $responseCode) : null;
+        return $this->parseResponse($this->rawResponseToArray($this->lastCurlResponse,
+                    $this->responseFormat), $responseCode);
     }
 
     /**
@@ -753,7 +753,8 @@ class FlexiBeeRO extends \Ease\Brick
                 }
             case 400: //Bad Request parameters
             default: //Something goes wrong
-                $this->addStatusMessage($this->curlInfo['url'], 'warning');
+                $this->addStatusMessage($this->lastResponseCode.': '.$this->curlInfo['url'],
+                    'warning');
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
                 }
@@ -826,7 +827,8 @@ class FlexiBeeRO extends \Ease\Brick
         $this->curlInfo                    = curl_getinfo($this->curl);
         $this->curlInfo['when']            = microtime();
         $this->curlInfo['request_headers'] = $httpHeadersFinal;
-        $this->responseFormat              = Formats::contentTypeToSuffix($this->curlInfo['content_type']);
+        $this->responseFormat              = isset($this->curlInfo['content_type'])
+                ? Formats::contentTypeToSuffix($this->curlInfo['content_type']) : 'txt';
         $this->lastResponseCode            = $this->curlInfo['http_code'];
         $this->lastCurlError               = curl_error($this->curl);
         if (strlen($this->lastCurlError)) {
@@ -1012,7 +1014,7 @@ class FlexiBeeRO extends \Ease\Brick
             $id = $this->getMyKey();
         }
         if (is_array($id)) {
-            $id = '('.self::flexiUrl($id).')';
+            $id = rawurlencode('('.self::flexiUrl($id).')');
         }
         $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
         $this->apiURL = $this->curlInfo['url'];
@@ -1248,7 +1250,7 @@ class FlexiBeeRO extends \Ease\Brick
             $resultData = $this->lastResult;
         }
         if (isset($url)) {
-            $this->logger->addStatusMessage(urldecode($url));
+            $this->logger->addStatusMessage($this->lastResponseCode.':'.urldecode($url));
         }
 
         if (isset($resultData['results'])) {
