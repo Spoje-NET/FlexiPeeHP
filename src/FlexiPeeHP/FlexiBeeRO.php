@@ -399,7 +399,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      *  * 234                              - interní číslo záznamu k načtení
      *  * code:LOPATA                      - kód záznamu
-     *  * BAGR                             - kód záznamu ka načtení
+     *  * BAGR                             - kód záznamu k načtení
      *  * ['id'=>24,'nazev'=>'hoblík']     - pole hodnot k předvyplnění
      *  * 743.json?relations=adresa,vazby  - část url s parametry k načtení
      *
