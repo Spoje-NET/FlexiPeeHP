@@ -10,6 +10,8 @@ require_once '../testing/bootstrap.php';
 
 
 $outFile = 'EvidenceList.php';
+$outJson = 'EvidenceList.json';
+$outFullJson = 'EvidenceFullList.json';
 
 /**
  * Obtain structure for given evidence
@@ -134,3 +136,8 @@ $evidenceList .= '}
 $syncer->addStatusMessage('Updating of '.count($fullList).' Evidences Infos done',
     'success');
 file_put_contents($outFile, $evidenceList);
+
+file_put_contents($outJson, json_encode($evlist));
+
+file_put_contents($outFullJson, json_encode($fullList));
+

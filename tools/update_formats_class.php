@@ -8,6 +8,7 @@ define('EASE_APPNAME', 'FlexiPeehUP');
 define('EASE_LOGGER', 'console|syslog');
 
 $outFile = 'Formats.php';
+$outJson = 'Formats.json';
 $ok      = 0;
 
 /**
@@ -161,10 +162,15 @@ $evidenceFormats .= '
 $syncer = new FlexiBeeRO();
 $syncer->addStatusMessage('Updating Evidences Formats');
 
+$formats = [];
+
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
     $structure = getEvidenceFormats($evidencePath, $syncer);
+
+    $formats[$evidencePath] = $structure;
+
     if (count($structure)) {
         $evidenceFormats .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') Formats.
@@ -191,3 +197,5 @@ $evidenceFormats .= '}
 $syncer->addStatusMessage('Updating of '.$ok.' Evidences Formats done',
     'success');
 file_put_contents($outFile, $evidenceFormats);
+
+file_put_contents($outJson, json_encode($formats));

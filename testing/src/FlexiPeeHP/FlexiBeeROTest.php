@@ -791,16 +791,36 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
     /**
      * @covers FlexiPeeHP\Adresar::getVazby
+     * @expectedException \Exception
      */
     public function testGetVazby()
     {
         //       $this->expectException($this->object->getVazby());
-        $this->object->setMyKey($this->object->getFirstRecordID());
-        $vazby = $this->object->getVazby();
-        if (is_null($vazby)) {
-            $this->markTestSkipped('No bonds to check');
-        } else {
-            $this->assertTrue(is_array($vazby));
+        $first = $this->object->getFirstRecordID();
+        if (!empty($first)) {
+            $this->object->setMyKey($first);
+            $vazby = $this->object->getVazby();
+            if (is_null($vazby)) {
+                $this->markTestSkipped('No bonds to check');
+            } else {
+                $this->assertTrue(is_array($vazby));
+            }
         }
+        $this->object->setMyKey(null);
+        $this->object->getVazby(); //Get Exception
+    }
+
+    /**
+     * @covers FlexiPeeHP\Adresar::evidenceUrlWithSuffix
+     */
+    public function testEvidenceUrlWithSuffix()
+    {
+        $urlraw = $this->object->getEvidenceURL();
+        $lala   = $this->object->evidenceUrlWithSuffix('lala');
+        $this->assertEquals($urlraw.'/lala', $lala);
+        $lolo   = $this->object->evidenceUrlWithSuffix('?lele');
+        $this->assertEquals($urlraw.'?lolo', $lolo);
+        $lulu   = $this->object->evidenceUrlWithSuffix(';lulu');
+        $this->assertEquals($urlraw.';lulu', $lulu);
     }
 }

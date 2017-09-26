@@ -8,6 +8,7 @@ define('EASE_APPNAME', 'FlexiPeehUP');
 define('EASE_LOGGER', 'console|syslog');
 
 $outFile = 'Relations.php';
+$outJson = 'Relations.json';
 $ok      = 0;
 
 /**
@@ -67,10 +68,15 @@ $evidenceRels .= ' static public $version = \''.$statuser->getDataValue('version
 $syncer = new FlexiBeeRO();
 $syncer->addStatusMessage('Updating Evidences Relations');
 
+$relations = [];
+
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
     $structure = getEvidenceRelations($evidencePath, $syncer);
+
+    $relations[$evidencePath] = $structure;
+
     if (count($structure)) {
         $evidenceRels .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') Relations.
@@ -97,3 +103,6 @@ $evidenceRels .= '}
 $syncer->addStatusMessage('Updating of '.$ok.' Evidences Properties done',
     'success');
 file_put_contents($outFile, $evidenceRels);
+
+file_put_contents($outJson, json_encode($relations));
+

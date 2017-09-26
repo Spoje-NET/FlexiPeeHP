@@ -8,8 +8,8 @@ define('EASE_APPNAME', 'FlexiPeehUP');
 define('EASE_LOGGER', 'console|syslog');
 
 $outFile = 'Actions.php';
+$outJson = 'Actions.json';
 $ok      = 0;
-
 
 /**
  * Obtain Actions for given evidence
@@ -101,10 +101,13 @@ $evidenceActions .= ' static public $version = \''.$statuser->getDataValue('vers
 $syncer = new FlexiBeeRO();
 $syncer->addStatusMessage('Updating Evidences Actions');
 
+$structures = [];
+
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     $pos++;
-    $structure = getEvidenceActions($evidencePath, $syncer);
+    $structure                 = getEvidenceActions($evidencePath, $syncer);
+    $structures[$evidencePath] = $structure;
     if (count($structure)) {
         $evidenceActions .= '    /**
      * Evidence '.$evidencePath.' ('.$evidenceName.') Actions.
@@ -131,3 +134,5 @@ $evidenceActions .= '}
 $syncer->addStatusMessage('Updating of '.$ok.' Evidences Actions done',
     'success');
 file_put_contents($outFile, $evidenceActions);
+
+file_put_contents($outJson, json_encode($structures));

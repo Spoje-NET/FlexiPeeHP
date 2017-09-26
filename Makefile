@@ -18,6 +18,7 @@ clean:
 	rm -rf debian/flexipeehp-doc
 	rm -rf debian/*.log
 	rm -rf docs/*
+	rm -rf static/*
 
 doc:
 	debian/apigendoc.sh
