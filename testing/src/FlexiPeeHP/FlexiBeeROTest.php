@@ -485,8 +485,13 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetExternalID()
     {
-        $this->assertEquals('test:10',
-            $this->object->getExternalID('ext:test:10'));
+        $this->assertTrue(empty($this->object->getExternalID('ext:test:10'))); //ext: does not exist
+
+        $this->object->setDataValue('external-ids',
+            ['ext:doe:22', 'ext:test:10']);
+
+        $this->assertEquals('ext:doe:22', $this->object->getExternalID());
+        $this->assertEquals('10', $this->object->getExternalID('test'));
     }
 
     /**
@@ -494,7 +499,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetGlobalVersion()
     {
-        $this->assertNotEmpty($this->object->getGlobalVersion());
+        if (empty($this->object->getEvidence())) {
+            $this->markTestSkipped('No evidence set');
+        } else {
+            $this->assertInternalType("int", $this->object->getGlobalVersion());
+        }
     }
 
     /**
@@ -760,9 +769,16 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     public function testPerformAction()
     {
         $actions = $this->object->getActionsInfo();
-        $this->assertTrue($this->object->performAction(key($actions)));
-        $this->object->performAction(next($actions), 'ext');
 
+        if (count($actions)) {
+            if (array_key_exists('new', $actions)) {
+                $this->object->performAction('new', 'ext');
+            }
+
+            if (array_key_exists('storno', $actions)) {
+                $this->assertTrue($this->object->performAction('storno'));
+            }
+        }
         $this->expectException($this->object->performAction('nonexitst'));
     }
 
@@ -819,7 +835,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $lala   = $this->object->evidenceUrlWithSuffix('lala');
         $this->assertEquals($urlraw.'/lala', $lala);
         $lolo   = $this->object->evidenceUrlWithSuffix('?lele');
-        $this->assertEquals($urlraw.'?lolo', $lolo);
+        $this->assertEquals($urlraw.'?lele', $lolo);
         $lulu   = $this->object->evidenceUrlWithSuffix(';lulu');
         $this->assertEquals($urlraw.';lulu', $lulu);
     }

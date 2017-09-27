@@ -66,6 +66,7 @@ $evidenceRels .= ' static public $version = \''.$statuser->getDataValue('version
 
 
 $syncer = new FlexiBeeRO();
+$syncer->setObjectName('FlexiBee Evidence Relations');
 $syncer->addStatusMessage('Updating Evidences Relations');
 
 $relations = [];

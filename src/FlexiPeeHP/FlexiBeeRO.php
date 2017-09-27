@@ -16,6 +16,12 @@ namespace FlexiPeeHP;
 class FlexiBeeRO extends \Ease\Brick
 {
     /**
+     * Where to get JSON files with evidence stricture etc.
+     * @var string
+     */
+    public static $infoDir = __DIR__.'/../../static';
+
+    /**
      * Version of FlexiPeeHP library
      *
      * @var string
@@ -225,10 +231,16 @@ class FlexiBeeRO extends \Ease\Brick
     public $lastResult = null;
 
     /**
-     * Nuber from  @rowCount
+     * Number from  @rowCount in response
      * @var int
      */
     public $rowCount = null;
+
+    /**
+     * Number from  @globalVersion
+     * @var int
+     */
+    public $globalVersion = null;
 
     /**
      * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
@@ -741,6 +753,9 @@ class FlexiBeeRO extends \Ease\Brick
                 if (isset($responseDecoded['@rowCount'])) {
                     $this->rowCount = (int) $responseDecoded['@rowCount'];
                 }
+                if (isset($responseDecoded['@globalVersion'])) {
+                    $this->globalVersion = (int) $responseDecoded['@globalVersion'];
+                }
                 break;
 
             case 500: // Internal Server Error
@@ -872,19 +887,19 @@ class FlexiBeeRO extends \Ease\Brick
     public static function xml2array($xml)
     {
         $arr = [];
+        if (!empty($xml)) {
+            if (is_string($xml)) {
+                $xml = simplexml_load_string($xml);
+            }
 
-        if (is_string($xml)) {
-            $xml = simplexml_load_string($xml);
-        }
-
-        foreach ($xml->children() as $r) {
-            if (count($r->children()) == 0) {
-                $arr[$r->getName()] = strval($r);
-            } else {
-                $arr[$r->getName()][] = self::xml2array($r);
+            foreach ($xml->children() as $r) {
+                if (count($r->children()) == 0) {
+                    $arr[$r->getName()] = strval($r);
+                } else {
+                    $arr[$r->getName()][] = self::xml2array($r);
+                }
             }
         }
-
         return $arr;
     }
 
@@ -1056,18 +1071,20 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Test if given record ID exists in FlexiBee.
      *
-     * @param string|int $identifer
+     * @param boolean $identifer presence state
      */
     public function idExists($identifer = null)
     {
         if (is_null($identifer)) {
             $identifer = $this->getMyKey();
         }
-        $flexiData = $this->getFlexiData(
-            'detail=custom:'.$this->getmyKeyColumn(),
-            [$this->getmyKeyColumn() => $identifer]);
+        $this->getFlexiData(null,
+            [
+            'detail' => 'custom:'.$this->getmyKeyColumn(),
+            $this->getmyKeyColumn() => $identifer
+        ]);
 
-        return $flexiData;
+        return $this->lastResponseCode == 200;
     }
 
     /**
@@ -1084,7 +1101,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
         $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
-            self::flexiUrl($data));
+            [self::flexiUrl($data)]);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
             || !count($res[0])) {
@@ -1452,17 +1469,9 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getGlobalVersion()
     {
-        $globalVersion = null;
-        if (!count($this->lastResult) || !isset($this->lastResult['@globalVersion'])) {
-            $this->getFlexiData(null,
-                ['add-global-version' => 'true', 'limit' => 1]);
-        }
+        $this->getFlexiData(null, ['add-global-version' => 'true', 'limit' => 1]);
 
-        if (isset($this->lastResult['@globalVersion'])) {
-            $globalVersion = intval($this->lastResult['@globalVersion']);
-        }
-
-        return $globalVersion;
+        return $this->globalVersion;
     }
 
     /**
@@ -1521,12 +1530,10 @@ class FlexiBeeRO extends \Ease\Brick
     public function getColumnsInfo($evidence = null)
     {
         $columnsInfo = null;
-        if (is_null($evidence)) {
-            $evidence = $this->getEvidence();
-        }
-        $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
-        if (isset(\FlexiPeeHP\Properties::$$propsName)) {
-            $columnsInfo = Properties::$$propsName;
+        $infoSource  = self::$infoDir.'/Properties.'.(empty($evidence) ? $this->getEvidence()
+                : $evidence).'.json';
+        if (file_exists($infoSource)) {
+            $columnsInfo = json_decode(file_get_contents($infoSource), true);
         }
         return $columnsInfo;
     }
@@ -1638,7 +1645,8 @@ class FlexiBeeRO extends \Ease\Brick
                     break;
 
                 default:
-                    $result = $this->performRequest($urlSuffix, 'GET');
+                    $result = $this->performRequest($this->evidenceUrlWithSuffix($urlSuffix),
+                        'GET');
                     break;
             }
         } else {
