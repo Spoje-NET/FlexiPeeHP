@@ -968,6 +968,10 @@ class FlexiBeeRO extends \Ease\Brick
         if (strlen($suffix)) {
             if (preg_match('/^http/', $suffix) || ($suffix[0] == '/') || is_numeric($suffix)) {
                 $finalUrl = $suffix;
+            } else {
+                if (preg_match('/^(code|ext):(.*)/', $suffix, $matches)) {
+                    $finalUrl = $matches[1].':'.rawurlencode($matches[2]);
+                }
             }
         }
 
