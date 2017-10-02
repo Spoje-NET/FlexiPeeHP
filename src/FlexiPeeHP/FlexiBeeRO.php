@@ -941,6 +941,18 @@ class FlexiBeeRO extends \Ease\Brick
         }
     }
 
+
+    /**
+     * convert unicode to entities
+     *
+     * @param string $urlRaw
+     * @return string
+     */
+    public static function urlEncode($urlRaw)
+    {
+        return str_replace(['%27'], ["'"], rawurlencode($urlRaw));
+    }
+
     /**
      * Načte data z FlexiBee.
      *
@@ -961,7 +973,7 @@ class FlexiBeeRO extends \Ease\Brick
             }
 
             if (strlen($conditions) && ($conditions[0] != '/')) {
-                $conditions = rawurlencode('('.($conditions).')');
+                $conditions = '('.self::urlEncode($conditions).')';
             }
         }
 
@@ -1020,6 +1032,11 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_array($id)) {
             $id = rawurlencode('('.self::flexiUrl($id).')');
         }
+
+        if (preg_match('/^code/', $id)) {
+            $id = self::code(rawurlencode(self::uncode($id)));
+        }
+
         $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
         $this->apiURL = $this->curlInfo['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
@@ -1371,7 +1388,7 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $myCode = $this->getDataValue('kod');
         if ($myCode) {
-            $id = 'code:'.$myCode;
+            $id = self::code($myCode);
         } else {
             $id = $this->getDataValue('id');
             if (($this->debug === true) && is_null($id)) {
@@ -1913,7 +1930,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function uncode($code)
     {
-        return str_replace('code:', '', $code);
+        return str_replace(['code:', 'code%3A'], '', $code);
     }
 
     /**
