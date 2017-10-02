@@ -160,6 +160,7 @@ $evidenceFormats .= '
     ';
 
 $syncer = new FlexiBeeRO();
+$syncer->setObjectName('FlexiBee Evidence Formats');
 $syncer->addStatusMessage('Updating Evidences Formats');
 
 $formats = [];

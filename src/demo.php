@@ -11,6 +11,8 @@ $statuser = new Status();
 
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
+$infoTable->addRowColumns(['URL', $statuser->apiURL]);
+
 foreach ($statuser->getData() as $property => $value) {
     $infoTable->addRowColumns([$property, $value]);
 }

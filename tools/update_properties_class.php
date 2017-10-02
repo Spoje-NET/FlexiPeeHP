@@ -8,7 +8,6 @@ define('EASE_APPNAME', 'FlexiPeehUP');
 define('EASE_LOGGER', 'console|syslog');
 
 $outFile = 'Properties.php';
-$outJson = 'Properties.json';
 $ok      = 0;
 
 /**
@@ -53,21 +52,11 @@ class Properties
 ';
 
 $statuser = new Status();
-$evidenceProps .= '    /**
-     * Source FlexiBee server version.
-     *
-     * @var string
-     */
-';
-$evidenceProps .= ' static public $version = \''.$statuser->getDataValue('version').'\';
-
-';
 
 
 $syncer = new FlexiBeeRO();
+$syncer->setObjectName('FlexiBee Evidence Properties');
 $syncer->addStatusMessage('Updating Evidences Properties');
-
-$properties = [];
 
 $pos = 0;
 foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
@@ -79,18 +68,8 @@ foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
     } else {
         $structure = getPropertiesInfo($evidencePath, $syncer);
     }
-    $properties[$evidencePath] = $structure;
-    if (count($structure)) {
-        $evidenceProps .= '    /**
-     * Evidence '.$evidencePath.' ('.$evidenceName.') structure.
-     *
-     * @var array
-     */
-';
-        $evidenceProps .= ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.str_replace('http://demo.flexibee.eu/c/demo/',
-                '', var_export($structure, true)).';
-';
 
+    if (count($structure)) {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': structure obtained',
             'success');
         $ok++;
@@ -98,14 +77,9 @@ foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': structure problem',
             'error');
     }
+    file_put_contents('Properties.'.$evidencePath.'.json',
+        json_encode($structure));
 }
-
-$evidenceProps .= '}
-';
 
 $syncer->addStatusMessage('Updating of '.$ok.' Evidences Properties done',
     'success');
-file_put_contents($outFile, $evidenceProps);
-
-file_put_contents($outJson, json_encode($properties));
-

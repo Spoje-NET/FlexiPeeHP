@@ -99,6 +99,7 @@ $evidenceActions .= ' static public $version = \''.$statuser->getDataValue('vers
 ';
 
 $syncer = new FlexiBeeRO();
+$syncer->setObjectName('FlexiBee Evidence Actions');
 $syncer->addStatusMessage('Updating Evidences Actions');
 
 $structures = [];
