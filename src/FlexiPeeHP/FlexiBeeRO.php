@@ -669,7 +669,7 @@ class FlexiBeeRO extends \Ease\Brick
 
         if (preg_match('/^http/', $urlSuffix)) {
             $url = $urlSuffix;
-        } elseif ($urlSuffix[0] == '/') {
+        } elseif (strlen($urlSuffix) && ($urlSuffix[0] == '/')) {
             $url = $this->url.$urlSuffix;
         } else {
             $url = $this->evidenceUrlWithSuffix($urlSuffix);
