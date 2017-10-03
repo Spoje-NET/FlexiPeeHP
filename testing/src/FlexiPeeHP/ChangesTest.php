@@ -33,7 +33,26 @@ class ChangesTest extends FlexiBeeROTest
     }
 
     /**
+     * @covers FlexiPeeHP\Changes::performRequest
+     * @depends testEnable
+     */
+    public function testPerformRequest()
+    {
+        parent::testPerformRequest();
+    }
+
+    /**
+     * @covers FlexiPeeHP\Changes::idExists
+     * @depends testEnable
+     */
+    public function testIdExists()
+    {
+        $this->markTestSkipped('changes does not return id column');
+    }
+
+    /**
      * @covers FlexiPeeHP\Changes::getFlexiData
+     * @depends testEnable
      */
     public function testGetFlexiData()
     {

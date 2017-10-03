@@ -53,9 +53,7 @@ class CompanyTest extends FlexiBeeROTest
         $xml = $this->object->performRequest(null, 'GET', 'xml');
         $this->assertArrayHasKey('company', $xml);
 
-        $err = $this->object->performRequest('error.json');
-        $this->assertArrayHasKey('success', $err);
-        $this->assertEquals('false', $err['success']);
+        $this->assertNull($this->object->performRequest('error.json'));
     }
 
     /**
@@ -64,8 +62,8 @@ class CompanyTest extends FlexiBeeROTest
     public function testGetFlexiData()
     {
         $flexidata = $this->object->getFlexiData();
-        $this->assertArrayHasKey(0, $flexidata['company']);
-        $this->assertArrayHasKey('id', $flexidata['company'][0]);
+        $this->assertArrayHasKey(0, $flexidata);
+        $this->assertArrayHasKey('id', $flexidata[0]);
     }
 
     /**
@@ -73,6 +71,6 @@ class CompanyTest extends FlexiBeeROTest
      */
     public function testGetResponseEvidence()
     {
-        $this->assertEquals('companies', $this->object->getResponseEvidence());
+        $this->assertEquals('company', $this->object->getResponseEvidence());
     }
 }

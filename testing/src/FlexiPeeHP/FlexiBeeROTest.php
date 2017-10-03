@@ -217,9 +217,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         switch ($evidence) {
             case null:
             case '':
-            case 'test':
             case 'c':
-                $this->markTestSkipped('Evidence not set');
+            case 'test':
+            case 'status':
+                $this->markTestSkipped('Unsupported Evidence');
                 break;
 
             default:
@@ -247,14 +248,22 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testSetAction()
     {
-        if (empty($this->object->evidence) || ($this->object->evidence == 'c')) {
-            $this->markTestSkipped('no evidence set');
-        } else {
-            $this->assertTrue($this->object->setAction('new'));
-            $this->object->actionsAvailable = [];
-            $this->assertFalse($this->object->setAction('none'));
-            $this->object->actionsAvailable = ['copy'];
-            $this->assertFalse($this->object->setAction('none'));
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('Virtual evidence');
+                break;
+            default:
+                $this->assertTrue($this->object->setAction('new'));
+                $this->object->actionsAvailable = [];
+                $this->assertFalse($this->object->setAction('none'));
+                $this->object->actionsAvailable = ['copy'];
+                $this->assertFalse($this->object->setAction('none'));
+                break;
         }
     }
 
@@ -373,14 +382,15 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 break;
 
             default:
-                $flexidata = $this->object->getFlexiData();
+                $flexidata = $this->object->getFlexiData(null,
+                    ['detail' => 'id']);
                 if (is_array($flexidata) && !count($flexidata)) {
                     $this->markTestSkipped('Empty evidence');
                 } else {
                     $this->assertArrayHasKey(0, $flexidata);
                     $this->assertArrayHasKey('id', $flexidata[0]);
                     $filtrered = $this->object->getFlexiData(null,
-                        "id = ".$flexidata[0]['id']);
+                        ["id = ".$flexidata[0]['id'], 'detail' => 'full']);
                     $this->assertArrayHasKey(0, $filtrered);
                     $this->assertArrayHasKey('id', $filtrered[0]);
                 }
@@ -405,10 +415,20 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
 
-        if (!empty($this->object->evidence) && ($this->object->evidence != 'c')) {
-            $this->object->setAction('copy');
-            $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
-                $this->object->jsonizeData(['key' => 'value']));
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('evidence with no actions');
+                break;
+            default:
+                $this->object->setAction('copy');
+                $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
+                    $this->object->jsonizeData(['key' => 'value']));
+                break;
         }
     }
 
@@ -418,10 +438,26 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     public function testIdExists()
     {
         $this->assertFalse($this->object->idExists('nonexistent'));
-        $first = $this->object->getColumnsFromFlexibee(['id'], ['limit' => 1],
-            'id');
-        $this->object->setData($first);
-        $this->assertTrue($this->object->idExists());
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                $first = $this->object->getColumnsFromFlexibee(['id'],
+                    ['limit' => 1], 'id');
+                if (empty($first)) {
+                    $this->markTestSkipped('empty evidence ?');
+                } else {
+                    $this->object->setData($first);
+                    $this->assertTrue($this->object->idExists());
+                }
+                break;
+        }
     }
 
     /**
@@ -445,12 +481,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         switch ($evidence) {
             case null:
             case 'c':
+            case 'status':
             case 'evidence-list':
                 $this->markTestSkipped('Unsupported evidence');
                 break;
 
             default:
-                $flexidata = $this->object->getFlexiData(null, ['limit' => 1]);
+                $flexidata = $this->object->getFlexiData(null,
+                    ['limit' => 1, 'detail' => 'id']);
                 if (is_array($flexidata) && !count($flexidata)) {
                     $this->markTestSkipped('Empty evidence');
                 } else {
@@ -475,9 +513,21 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetColumnsFromFlexibee()
     {
-        $columns = $this->object->getColumnsFromFlexibee(['id'], ['limit' => 1],
-            'id');
-        $this->assertNotEmpty($columns);
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                $columns = $this->object->getColumnsFromFlexibee(['id'],
+                    ['limit' => 1], 'id');
+                $this->assertNotEmpty($columns);
+                break;
+        }
     }
 
     /**
@@ -499,10 +549,19 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetGlobalVersion()
     {
-        if (empty($this->object->getEvidence())) {
-            $this->markTestSkipped('No evidence set');
-        } else {
-            $this->assertInternalType("int", $this->object->getGlobalVersion());
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                $this->assertInternalType("int",
+                    $this->object->getGlobalVersion());
+                break;
         }
     }
 
@@ -671,6 +730,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case '':
             case 'c':
             case 'hooks':
+            case 'status':
             case 'changes':
             case 'nastaveni':
                 $this->assertNull($this->object->getColumnsInfo());
@@ -693,6 +753,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case '':
             case 'c':
             case 'hooks':
+            case 'status':
             case 'changes':
             case 'nastaveni':
                 $this->assertNull($this->object->getActionsInfo());
@@ -715,8 +776,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case '':
             case 'c':
             case 'hooks':
+            case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'strom-cenik':
+            case 'ucetni-obdobi':
                 $this->assertNull($this->object->getRelationsInfo());
                 $this->assertNotEmpty($this->object->getRelationsInfo('faktura-vydana'),
                     'Cannot obtain relations for na evidence');
@@ -751,8 +815,20 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetEvidenceInfo()
     {
-        $this->assertArrayHasKey('evidencePath',
-            $this->object->getEvidenceInfo());
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('Virtual evidence');
+                break;
+            default:
+                $eInfo = $this->object->getEvidenceInfo();
+                $this->assertArrayHasKey('evidencePath', $eInfo);
+                break;
+        }
     }
 
     /**
@@ -760,11 +836,24 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetEvidenceName()
     {
-        $this->assertNotEmpty($this->object->getEvidenceName());
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                $this->assertNotEmpty($this->object->getEvidenceName());
+                break;
+        }
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::performAction
+     * @expectedException \Exception
      */
     public function testPerformAction()
     {
@@ -779,7 +868,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 $this->assertTrue($this->object->performAction('storno'));
             }
         }
-        $this->expectException($this->object->performAction('nonexitst'));
+        $this->object->performAction('nonexitst');
     }
 
     /**
@@ -797,11 +886,23 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testgetFirstRecordID()
     {
-        $firstID = $this->object->getFirstRecordID();
-        if (is_null($firstID)) {
-            $this->markTestSkipped('Empty evidence');
-        } else {
-            $this->assertFalse(empty($firstID));
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                $firstID = $this->object->getFirstRecordID();
+                if (is_null($firstID)) {
+                    $this->markTestSkipped('Empty evidence');
+                } else {
+                    $this->assertFalse(empty($firstID));
+                }
+                break;
         }
     }
 
@@ -811,19 +912,31 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetVazby()
     {
-        //       $this->expectException($this->object->getVazby());
-        $first = $this->object->getFirstRecordID();
-        if (!empty($first)) {
-            $this->object->setMyKey($first);
-            $vazby = $this->object->getVazby();
-            if (is_null($vazby)) {
-                $this->markTestSkipped('No bonds to check');
-            } else {
-                $this->assertTrue(is_array($vazby));
-            }
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+                $this->markTestSkipped('unsupported evidence');
+                break;
+            default:
+                //       $this->expectException($this->object->getVazby());
+                $first = $this->object->getFirstRecordID();
+                if (!empty($first)) {
+                    $this->object->setMyKey($first);
+                    $vazby = $this->object->getVazby();
+                    if (is_null($vazby)) {
+                        $this->markTestSkipped('No bonds to check');
+                    } else {
+                        $this->assertTrue(is_array($vazby));
+                    }
+                }
+                $this->object->setMyKey(null);
+                $this->object->getVazby(); //Get Exception
+                break;
         }
-        $this->object->setMyKey(null);
-        $this->object->getVazby(); //Get Exception
     }
 
     /**

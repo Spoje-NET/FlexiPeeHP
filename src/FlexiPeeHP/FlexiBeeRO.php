@@ -705,20 +705,10 @@ class FlexiBeeRO extends \Ease\Brick
     {
         switch ($format) {
             case 'json':
-                $responseDecoded = json_decode($responseRaw, true, 10);
-                $decodeError     = json_last_error_msg();
-                if ($decodeError == 'No error') {
-                    if (array_key_exists($this->nameSpace, $responseDecoded)) {
-                        $responseDecoded = $responseDecoded[$this->nameSpace];
-                    }
-                } else {
-                    $this->addStatusMessage('JSON Decoder: '.$decodeError,
-                        'error');
-                    $this->addStatusMessage($responseRaw, 'debug');
-                }
+                $responseDecoded = $this->rawJsonToArray($responseRaw);
                 break;
             case 'xml':
-                $responseDecoded = self::xml2array($this->lastCurlResponse);
+                $responseDecoded = $this->rawXmlToArray($this->lastCurlResponse);
                 break;
             case 'txt':
             default:
@@ -726,6 +716,40 @@ class FlexiBeeRO extends \Ease\Brick
                 break;
         }
         return $responseDecoded;
+    }
+
+    /**
+     * Convert FlexiBee Response JSON to Array
+     *
+     * @param string $rawJson
+     * 
+     * @return array
+     */
+    public function rawJsonToArray($rawJson)
+    {
+        $responseDecoded = json_decode($rawJson, true, 10);
+        $decodeError     = json_last_error_msg();
+        if ($decodeError == 'No error') {
+            if (array_key_exists($this->nameSpace, $responseDecoded)) {
+                $responseDecoded = $responseDecoded[$this->nameSpace];
+            }
+        } else {
+            $this->addStatusMessage('JSON Decoder: '.$decodeError, 'error');
+            $this->addStatusMessage($rawJson, 'debug');
+        }
+        return $responseDecoded;
+    }
+
+    /**
+     * Convert FlexiBee Response XML to Array
+     *
+     * @param string $rawXML
+     *
+     * @return array
+     */
+    public function rawXmlToArray($rawXML)
+    {
+        return self::xml2array($rawXML);
     }
 
     /**
@@ -955,7 +979,6 @@ class FlexiBeeRO extends \Ease\Brick
             }
         }
     }
-
 
     /**
      * convert unicode to entities

@@ -50,7 +50,8 @@ class Changes extends FlexiBeeRO
     public function getStatus()
     {
         $status = $this->performRequest('status.xml', 'GET', 'xml');
-        return (($this->lastResponseCode == 200) && ($status['success'] === 'true'));
+        return (($this->lastResponseCode == 200) && ($status['changes'][0]['success']
+            === 'true'));
     }
 
     /**
@@ -77,5 +78,17 @@ class Changes extends FlexiBeeRO
         $globalVersionRaw = json_decode($this->lastCurlResponse, TRUE);
         return isset($globalVersionRaw[$this->nameSpace]['@globalVersion']) ? intval($globalVersionRaw[$this->nameSpace]['@globalVersion'])
                 : null;
+    }
+
+    /**
+     * Convert FlexiBee Response XML to Array
+     *
+     * @param string $rawXML
+     *
+     * @return array
+     */
+    public function rawXmlToArray($rawXML)
+    {
+        return [$this->getEvidence() => parent::rawXmlToArray($rawXML)];
     }
 }
