@@ -608,29 +608,30 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     public function testGetKod()
     {
         $testString = [];
-        $this->assertEquals('CODE',
+        $this->assertEquals('code:CODE',
             $this->object->getKod([$this->object->myKeyColumn => 'code']));
 
         $testString[$this->object->nameColumn] = 'Fish clamp -  Úchytka pro instalaci samonosných kabelů '
             .'(3.5 mm)';
         $code0                                 = $this->object->getKod($testString);
-        $this->assertEquals('FISHCLAMPUCHYTKAPR', $code0);
+        $this->assertEquals('code:FISHCLAMPUCHYTKAPR', $code0);
         $code1                                 = $this->object->getKod($testString,
             false);
-        $this->assertEquals('FISHCLAMPUCHYTKAPR', $code1);
+        $this->assertEquals('code:FISHCLAMPUCHYTKAPR', $code1);
         $code2                                 = $this->object->getKod($testString);
-        $this->assertEquals('FISHCLAMPUCHYTKAPR1', $code2);
+        $this->assertEquals('code:FISHCLAMPUCHYTKAPR1', $code2);
         $this->object->setData($testString);
         $code3                                 = $this->object->getKod();
-        $this->assertEquals('FISHCLAMPUCHYTKAPR2', $code3);
+        $this->assertEquals('code:FISHCLAMPUCHYTKAPR2', $code3);
 
-        $this->assertEquals('TEST',
+        $this->assertEquals('code:TEST',
             $this->object->getKod([$this->object->nameColumn => 'test']));
 
-        $this->assertEquals('TEST1', $this->object->getKod('test'));
+        $this->assertEquals('code:TEST1', $this->object->getKod('test'));
 
-        $this->assertEquals('TEST2', $this->object->getKod(['kod' => 'test']));
-        $this->assertEquals('NOTSET', $this->object->getKod(['kod' => '']));
+        $this->assertEquals('code:TEST2',
+            $this->object->getKod(['kod' => 'test']));
+        $this->assertEquals('code:NOTSET', $this->object->getKod(['kod' => '']));
     }
 
     /**

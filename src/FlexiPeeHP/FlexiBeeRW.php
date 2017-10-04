@@ -321,10 +321,17 @@ class FlexiBeeRW extends FlexiBeeRO
 
     /**
      * Insert current data into FlexiBee and load actual record data back
+     *
+     * @return boolean Operation success
      */
     public function refresh()
     {
         $this->insertToFlexiBee();
-        $this->loadFromFlexiBee();
+        $insertResult = $this->lastResponseCode;
+        $id           = $this->getKod();
+        $this->dataReset();
+        $this->loadFromFlexiBee($id);
+        $loadResult   = $this->lastResponseCode;
+        return (($insertResult == 201) && ($loadResult == 200));
     }
 }

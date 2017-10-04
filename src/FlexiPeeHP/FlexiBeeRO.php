@@ -1286,7 +1286,7 @@ class FlexiBeeRO extends \Ease\Brick
             $this->codes[$kodfinal] = $kod;
         }
 
-        return $kodfinal;
+        return self::code($kodfinal);
     }
 
     /**
