@@ -255,6 +255,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('Virtual evidence');
                 break;
             default:
@@ -289,8 +290,21 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetResponseEvidence()
     {
-        $this->assertEquals($this->object->getEvidence(),
-            $this->object->getResponseEvidence());
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'nastaveni':
+            case 'evidence-list':
+                $this->markTestSkipped('Virtual evidence');
+                break;
+            default:
+                $this->assertEquals($this->object->getEvidence(),
+                    $this->object->getResponseEvidence());
+                break;
+        }
     }
 
     /**
@@ -380,6 +394,11 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 $flexidata               = $this->object->getFlexiData();
                 $this->assertArrayHasKey('company', $flexidata);
                 break;
+            case 'evidence-list':
+                $flexidata               = $this->object->getFlexiData(null,
+                    ['detail' => 'id']);
+                $this->assertArrayHasKey('evidenceType', $flexidata[0]);
+                break;
 
             default:
                 $flexidata = $this->object->getFlexiData(null,
@@ -388,6 +407,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                     $this->markTestSkipped('Empty evidence');
                 } else {
                     $this->assertArrayHasKey(0, $flexidata);
+
                     $this->assertArrayHasKey('id', $flexidata[0]);
                     $filtrered = $this->object->getFlexiData(null,
                         ["id = ".$flexidata[0]['id'], 'detail' => 'full']);
@@ -422,6 +442,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('evidence with no actions');
                 break;
             default:
@@ -445,6 +466,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('unsupported evidence');
                 break;
             default:
@@ -520,6 +542,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('unsupported evidence');
                 break;
             default:
@@ -556,6 +579,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('unsupported evidence');
                 break;
             default:
@@ -733,9 +757,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->assertNull($this->object->getColumnsInfo());
-                $this->assertNotEmpty($this->object->getColumnsInfo('faktura-vydana'),
-                    'Cannot obtain structure for na evidence');
                 break;
             default:
                 $this->assertNotEmpty($this->object->getColumnsInfo(),
@@ -756,6 +779,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->assertNull($this->object->getActionsInfo());
                 $this->assertNotEmpty($this->object->getActionsInfo('faktura-vydana'),
                     'Cannot obtain actions for na evidence');
@@ -781,9 +805,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'nastaveni':
             case 'strom-cenik':
             case 'ucetni-obdobi':
+            case 'evidence-list':
                 $this->assertNull($this->object->getRelationsInfo());
-                $this->assertNotEmpty($this->object->getRelationsInfo('faktura-vydana'),
-                    'Cannot obtain relations for na evidence');
                 break;
             default:
                 $this->assertNotEmpty($this->object->getRelationsInfo(),
@@ -822,6 +845,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('Virtual evidence');
                 break;
             default:
@@ -843,6 +867,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('unsupported evidence');
                 break;
             default:
@@ -893,6 +918,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 $this->markTestSkipped('unsupported evidence');
                 break;
             default:
