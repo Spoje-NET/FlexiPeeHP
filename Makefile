@@ -1,7 +1,7 @@
 all: fresh build install
 
 fresh:
-	git pull
+	#git pull
 	composer update
 
 install: build
@@ -17,8 +17,10 @@ clean:
 	rm -rf debian/flexipeehp
 	rm -rf debian/flexipeehp-doc
 	rm -rf debian/*.log
+	rm -rf debian/*.substvars
 	rm -rf docs/*
 	rm -rf static/*
+	rm -f  debianTest/composer.lock
 
 doc:
 	debian/apigendoc.sh

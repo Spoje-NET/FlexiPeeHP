@@ -89,7 +89,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->object->processInit(['id' => 1]);
         $this->assertEquals(1, $this->object->getDataValue('id'));
+
         if (!is_null($this->object->evidence) && $this->object->evidence != 'test') {
+
+
             $firstID = $this->object->getColumnsFromFlexibee('id',
                 ['limit' => 1]);
 
@@ -102,6 +105,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                     $this->object->processInit('code:'.$firstID[0]['kod']);
                     $this->assertNotEmpty($this->object->__toString());
                 }
+
+                $this->object->processInit($this->object->getEvidenceURL().'/'.$firstID.'.xml');
             } else {
                 $this->markTestSkipped(sprintf('Evidence %s doed not contain first record',
                         $this->object->getEvidence()));
@@ -220,6 +225,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'c':
             case 'test':
             case 'status':
+            case 'nastaveni':
                 $this->markTestSkipped('Unsupported Evidence');
                 break;
 

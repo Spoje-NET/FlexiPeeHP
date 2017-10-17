@@ -6,3 +6,5 @@ composer.lock
 /debian/flexipeehp.debhelper.log
 /debian/flexipeehp.substvars
 /docs/
+/.vagrant/
+/debian/flexipeehp-doc.substvars

@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    public static $libVersion = '1.6.4.2';
+    public static $libVersion = '1.8.4.3';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -427,7 +427,7 @@ class FlexiBeeRO extends \Ease\Brick
             $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL($init)
                             : $init)));
         } else {
-            $this->loadFromFlexiBee('code:'.str_replace('code:', '', $init));
+            $this->loadFromFlexiBee($init);
         }
     }
 
@@ -1558,7 +1558,11 @@ class FlexiBeeRO extends \Ease\Brick
                 if (isset($responseBody['priloha'])) {
                     $response = $responseBody['priloha'];
                 } else {
-                    $response = $responseBody;
+                    if (array_key_exists('results', $responseBody)) {
+                        $response = $responseBody['results'];
+                    } else {
+                        $response = $responseBody;
+                    }
                 }
             }
         }
