@@ -21,7 +21,7 @@ class Actions
      *
      * @var string
      */
- static public $version = '2017.2.3.1';
+ static public $version = '2017.2.4';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Actions.
@@ -210,6 +210,33 @@ class Actions
      * @var array
      */
  static public $banka = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -1561,6 +1588,33 @@ class Actions
      * @var array
      */
  static public $interniDoklad = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -2052,6 +2106,33 @@ class Actions
      * @var array
      */
  static public $majetek = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -2706,6 +2787,33 @@ class Actions
      * @var array
      */
  static public $pohledavka = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -2776,6 +2884,33 @@ class Actions
      * @var array
      */
  static public $zavazek = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -3061,6 +3196,33 @@ class Actions
      * @var array
      */
  static public $pokladniPohyb = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -4074,6 +4236,33 @@ class Actions
      * @var array
      */
  static public $prodejka = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'delete' => 
   array (
     'actionId' => 'delete',
@@ -4221,6 +4410,33 @@ class Actions
      * @var array
      */
  static public $fakturaPrijata = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -4291,6 +4507,33 @@ class Actions
      * @var array
      */
  static public $nabidkaPrijata = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -4352,6 +4595,33 @@ class Actions
      * @var array
      */
  static public $objednavkaPrijata = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -4413,6 +4683,33 @@ class Actions
      * @var array
      */
  static public $poptavkaPrijata = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -4474,6 +4771,33 @@ class Actions
      * @var array
      */
  static public $skladovyPohyb = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -5533,6 +5857,33 @@ class Actions
      * @var array
      */
  static public $saldoKDatu = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -7597,6 +7948,33 @@ class Actions
      * @var array
      */
  static public $fakturaVydana = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -7685,6 +8063,33 @@ class Actions
      * @var array
      */
  static public $nabidkaVydana = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -7746,6 +8151,33 @@ class Actions
      * @var array
      */
  static public $objednavkaVydana = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -7807,6 +8239,33 @@ class Actions
      * @var array
      */
  static public $poptavkaVydana = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
@@ -7911,6 +8370,33 @@ class Actions
      * @var array
      */
  static public $vzajemnyZapocet = array (
+  'lock' => 
+  array (
+    'actionId' => 'lock',
+    'actionName' => 'Zamknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'lock-for-ucetni' => 
+  array (
+    'actionId' => 'lock-for-ucetni',
+    'actionName' => 'Zamknout pro učetní',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
+  'unlock' => 
+  array (
+    'actionId' => 'unlock',
+    'actionName' => 'Odemknout',
+    'needInstance' => 'true',
+    'actionMakesSense' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_CREATE',
+    'isRealAction' => 'true',
+    'isService' => 'YES',
+  ),
   'new' => 
   array (
     'actionId' => 'new',
