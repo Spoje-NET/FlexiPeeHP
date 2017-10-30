@@ -497,7 +497,7 @@ class FlexiBeeRO extends \Ease\Brick
                     $result         = true;
                 } else {
                     throw new \Exception(sprintf('Try to set unsupported evidence %s',
-                        $evidence));
+                            $evidence));
                 }
                 break;
             default:
@@ -1124,8 +1124,8 @@ class FlexiBeeRO extends \Ease\Brick
         }
         $this->getFlexiData(null,
             [
-            'detail' => 'custom:'.$this->getmyKeyColumn(),
-            $this->getmyKeyColumn() => $identifer
+                'detail' => 'custom:'.$this->getmyKeyColumn(),
+                $this->getmyKeyColumn() => $identifer
         ]);
 
         return $this->lastResponseCode == 200;
@@ -1143,8 +1143,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (empty($data)) {
             $data = $this->getData();
         }
-
-        $res = $this->getColumnsFromFlexibee([$this->myKeyColumn],
+        $ignorestate = $this->ignore404();
+        $this->ignore404(true);
+        $res         = $this->getColumnsFromFlexibee([$this->myKeyColumn],
             [self::flexiUrl($data)]);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
@@ -1153,6 +1154,7 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $found = true;
         }
+        $this->ignore404($ignorestate);
         return $found;
     }
 
@@ -1699,7 +1701,7 @@ class FlexiBeeRO extends \Ease\Brick
             }
         } else {
             throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
-                $action, $this->getEvidence()));
+                    $action, $this->getEvidence()));
         }
 
         return $result;
@@ -1966,6 +1968,22 @@ class FlexiBeeRO extends \Ease\Brick
     public static function uncode($code)
     {
         return str_replace(['code:', 'code%3A'], '', $code);
+    }
+
+    /**
+     * Remove all @ items from array
+     *
+     * @param array $data original data
+     *
+     * @return array data without @ columns
+     */
+    public static function arrayCleanUP($data)
+    {
+        return array_filter(
+            $data,
+            function ($key) {
+            return !strchr($key, '@');
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**
