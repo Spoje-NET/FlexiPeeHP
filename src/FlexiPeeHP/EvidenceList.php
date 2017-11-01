@@ -2,8 +2,8 @@
 /**
  * FlexiPeeHP - Seznam Evidencí.
  *
- * Generated: Tue, 31 Oct 2017 00:09:28 +0100 
- * From:      https://demo.flexibee.eu
+ * Generated: Wed, 01 Nov 2017 15:16:27 +0100 
+ * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  (C) 2016-2017 Spoje.Net
@@ -47,17 +47,17 @@ class EvidenceList extends FlexiBeeRO
      * @var array
      */
  static public $name = array (
+  'analyza-nakupu' => '#analyzaNakupu',
   'banka-polozka' => '#banBanZapoctyPol',
   'pravo-viditelnosti' => '#uzivPristup',
   'adresar' => 'Adresy firem',
+  'analyza-prodeje' => 'Analýza prodeje',
   'atribut' => 'Atributy',
   'banka' => 'Banka',
   'format-elektronickeho-bankovnictvi' => 'Bankovní formáty',
   'adresar-bankovni-ucet' => 'Bankovní spojení',
-  'cenova-uroven' => 'Cenové úrovně',
   'odberatel' => 'Ceny pro odběratele/skupiny odběratelů, speciální kódy',
   'cenik' => 'Ceník',
-  'cenikova-skupina' => 'Ceníkové skupiny',
   'certifikacni-autorita' => 'Certifikační autority',
   'intrastat-dodaci-podminky' => 'Dodací podmínky',
   'dodavatelska-smlouva' => 'Dodavatelské smlouvy',
@@ -67,21 +67,14 @@ class EvidenceList extends FlexiBeeRO
   'rada-pohledavky' => 'Dokladové řady - pohledávky',
   'rada-pokladni-pohyb' => 'Dokladové řady - pokladní doklady',
   'rada-faktury-prijate' => 'Dokladové řady - přijaté faktury',
-  'rada-nabidky-prijate' => 'Dokladové řady - přijaté nabídky',
-  'rada-objednavky-prijate' => 'Dokladové řady - přijaté objednávky',
-  'rada-poptavky-prijate' => 'Dokladové řady - přijaté poptávky',
   'rada-skladovy-pohyb' => 'Dokladové řady - sklad',
   'rada-faktury-vydane' => 'Dokladové řady - vydané faktury',
-  'rada-nabidky-vydane' => 'Dokladové řady - vydané nabídky',
-  'rada-objednavky-vydane' => 'Dokladové řady - vydané objednávky',
-  'rada-poptavky-vydane' => 'Dokladové řady - vydané poptávky',
   'rada-zavazku' => 'Dokladové řady - závazky',
   'intrastat-druh-dopravy' => 'Druh dopravy',
   'eet-komunikace' => 'EET komunikace',
   'forma-dopravy' => 'Formy dopravy',
   'forma-uhrady' => 'Formy úhrady',
   'hlavni-kniha' => 'Hlavní kniha',
-  'individualni-cenik' => 'Individuální ceník',
   'interni-doklad' => 'Interní doklady',
   'inventura' => 'Inventury',
   'konst-symbol' => 'Konstantní symboly',
@@ -90,19 +83,17 @@ class EvidenceList extends FlexiBeeRO
   'kurz' => 'Kurzy',
   'intrastat-kurz' => 'Kurzy pro Intrastat',
   'kurz-pro-cenotvorbu' => 'Kurzy pro cenotvorbu',
-  'kusovnik' => 'Kusovník',
   'intrastat-kod-nomenklatury' => 'Kódy nomenklatury',
   'leasing' => 'Leasing',
   'majetek' => 'Majetek',
-  'mapovani-skladu' => 'Mapování skladů',
   'misto-urceni' => 'Místa určení',
   'mena' => 'Měny',
   'intrastat-merna-jednotka' => 'Měrné jednotky',
   'merna-jednotka' => 'Měrné jednotky ',
   'nastaveni' => 'Nastavení',
   'naklad' => 'Náklady na události / aktivity',
-  'cenikovy-pohyb-nakup' => 'Nákupní, prodejní a skladové pohyby',
   'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
+  'cenikovy-pohyb-nakup' => 'Nákupní, prodejní a skladové pohyby',
   'intrastat-obchodni-transakce' => 'Obchodní transakce',
   'strom-koren' => 'Obecný strom',
   'obratova-predvaha' => 'Obratová předvaha',
@@ -118,8 +109,6 @@ class EvidenceList extends FlexiBeeRO
   'pohyb-na-uctech' => 'Pohyby na účtech',
   'pokladni-pohyb' => 'Pokladna',
   'parametr' => 'Pokročilá parametrizace pomocí parametrů',
-  'prikaz-k-inkasu-polozka' => 'Položka inkasa',
-  'prikaz-k-uhrade-polozka' => 'Položka příkazu k úhradě',
   'interni-doklad-polozka' => 'Položky interních dokladů',
   'inventura-polozka' => 'Položky inventur',
   'pohledavka-polozka' => 'Položky ostatních pohledávek',
@@ -141,12 +130,7 @@ class EvidenceList extends FlexiBeeRO
   'text' => 'Předdefinované texty',
   'predpis-zauctovani' => 'Předpisy zaúčtování',
   'faktura-prijata' => 'Přijaté faktury',
-  'nabidka-prijata' => 'Přijaté nabídky',
-  'objednavka-prijata' => 'Přijaté objednávky',
-  'poptavka-prijata' => 'Přijaté poptávky',
   'skladovy-pohyb' => 'Příjemky/výdejky',
-  'prikaz-k-inkasu' => 'Příkaz k inkasu',
-  'prikaz-k-uhrade' => 'Příkaz k úhradě',
   'priloha' => 'Příloha',
   'prislustenstvi' => 'Příslušenství',
   'rezervace' => 'Rezervace',
@@ -163,7 +147,6 @@ class EvidenceList extends FlexiBeeRO
   'skladova-karta' => 'Skladové karty',
   'skupina-atributu' => 'Skupiny atributů',
   'skupina-firem' => 'Skupiny firem',
-  'skupina-zbozi' => 'Skupiny zboží a materiálu',
   'skupina-stitku' => 'Skupiny štítků',
   'rozvaha-po-uctech' => 'Soupis aktiv a pasiv',
   'dashboard-panel' => 'Správa přehledů',
@@ -188,23 +171,17 @@ class EvidenceList extends FlexiBeeRO
   'typ-zavazku' => 'Typy ostatních závazků',
   'typ-pokladni-pohyb' => 'Typy pokladních dokladů',
   'typ-faktury-prijate' => 'Typy přijatých faktur',
-  'typ-nabidky-prijate' => 'Typy přijatých nabídek',
-  'typ-objednavky-prijate' => 'Typy přijatých objednávek',
-  'typ-poptavky-prijate' => 'Typy přijatých poptávek',
   'typ-skladovy-pohyb' => 'Typy skladových dokladů',
   'typ-aktivity' => 'Typy událostí / aktivit',
   'typ-uzivatelske-vazby' => 'Typy uživatelských vazeb',
   'typ-faktury-vydane' => 'Typy vydaných faktur',
-  'typ-nabidky-vydane' => 'Typy vydaných nabídek',
-  'typ-objednavky-vydane' => 'Typy vydaných objednávek',
-  'typ-poptavky-vydane' => 'Typy vydaných poptávek',
   'typ-zakazky' => 'Typy zakázek',
   'typ-vzajemnych-zapoctu' => 'Typy zápočtů',
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
   'umisteni-ve-skladu' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
@@ -218,9 +195,6 @@ class EvidenceList extends FlexiBeeRO
   'vazba' => 'Vazby dokladu',
   'uzivatelsky-dotaz-vlastnost' => 'Vlastnosti',
   'faktura-vydana' => 'Vydané faktury',
-  'nabidka-vydana' => 'Vydané nabídky',
-  'objednavka-vydana' => 'Vydané objednávky',
-  'poptavka-vydana' => 'Vydané poptávky',
   'hodnoceni-zakazky' => 'Vyhodnocení zakázek',
   'vzajemny-zapocet' => 'Vzájemné zápočty',
   'danova-evidence' => 'Výkaz daňové evidence',
@@ -288,6 +262,24 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'SUPPORTED',
     'className' => 'cz.winstrom.vo.adr.AdrUdalostMaj',
     'formCode' => 'adrUdalosti',
+  ),
+  'analyza-nakupu' => 
+  array (
+    'evidenceType' => 'ANALYZA_NAKUPU',
+    'evidenceName' => '#analyzaNakupu',
+    'evidencePath' => 'analyza-nakupu',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.vyk.PrehledPolozekFaktur',
+    'formCode' => 'analyzaNakupu',
+  ),
+  'analyza-prodeje' => 
+  array (
+    'evidenceType' => 'ANALYZA_PRODEJE',
+    'evidenceName' => 'Analýza prodeje',
+    'evidencePath' => 'analyza-prodeje',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.vyk.PrehledPolozekFaktur',
+    'formCode' => 'vykazPolozkyFaktur',
   ),
   'analyza-zakazky' => 
   array (
@@ -361,15 +353,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.cen.CenikView',
     'formCode' => 'cenAkt',
   ),
-  'cenikova-skupina' => 
-  array (
-    'evidenceType' => 'CENIKOVA_SKUPINA',
-    'evidenceName' => 'Ceníkové skupiny',
-    'evidencePath' => 'cenikova-skupina',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.cen.SkupCen',
-    'formCode' => 'cenSkupCen',
-  ),
   'cenikovy-pohyb-nakup' => 
   array (
     'evidenceType' => 'CENIKOVE_POHYBY_NAKUP',
@@ -387,15 +370,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'DISALLOWED',
     'className' => 'cz.winstrom.vo.vyk.CenikovePohyby',
     'formCode' => 'vykazCenPohyby',
-  ),
-  'cenova-uroven' => 
-  array (
-    'evidenceType' => 'CENOVA_UROVEN',
-    'evidenceName' => 'Cenové úrovně',
-    'evidencePath' => 'cenova-uroven',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.cen.CenHlad',
-    'formCode' => 'cenHlad',
   ),
   'certifikacni-autorita' => 
   array (
@@ -649,15 +623,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.ucto.VyhZakazky',
     'formCode' => 'cisVyhZak',
   ),
-  'individualni-cenik' => 
-  array (
-    'evidenceType' => 'INDIVIDUALNI_CENIK',
-    'evidenceName' => 'Individuální ceník',
-    'evidencePath' => 'individualni-cenik',
-    'importStatus' => 'DISALLOWED',
-    'className' => 'cz.winstrom.vo.vyk.CenyView',
-    'formCode' => 'cenyView',
-  ),
   'interni-doklad' => 
   array (
     'evidenceType' => 'INTERNI_DOKLAD',
@@ -811,15 +776,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.ucto.Kurz',
     'formCode' => 'cisKurzyCen',
   ),
-  'kusovnik' => 
-  array (
-    'evidenceType' => 'KUSOVNIK',
-    'evidenceName' => 'Kusovník',
-    'evidencePath' => 'kusovnik',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.cen.Kusovnik',
-    'formCode' => 'kusovnik',
-  ),
   'leasing' => 
   array (
     'evidenceType' => 'LEASING',
@@ -865,15 +821,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.maj.Udalost',
     'formCode' => 'majUdalosti',
   ),
-  'mapovani-skladu' => 
-  array (
-    'evidenceType' => 'MAPOVANI_SKLADU',
-    'evidenceName' => 'Mapování skladů',
-    'evidencePath' => 'mapovani-skladu',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.skl.MapSklad',
-    'formCode' => 'sklMapSklad',
-  ),
   'mena' => 
   array (
     'evidenceType' => 'MENA',
@@ -901,15 +848,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.adr.MistUrc',
     'formCode' => 'adrMistUrc',
   ),
-  'nabidka-prijata' => 
-  array (
-    'evidenceType' => 'NABIDKA_IN',
-    'evidenceName' => 'Přijaté nabídky',
-    'evidencePath' => 'nabidka-prijata',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodNapDokl',
-  ),
   'nabidka-prijata-polozka' => 
   array (
     'evidenceType' => 'NABIDKA_IN_POLOZKA',
@@ -919,33 +857,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodNapPol',
   ),
-  'rada-nabidky-prijate' => 
-  array (
-    'evidenceType' => 'NABIDKA_IN_RADA',
-    'evidenceName' => 'Dokladové řady - přijaté nabídky',
-    'evidencePath' => 'rada-nabidky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodNapRady',
-  ),
-  'typ-nabidky-prijate' => 
-  array (
-    'evidenceType' => 'NABIDKA_IN_TYP',
-    'evidenceName' => 'Typy přijatých nabídek',
-    'evidencePath' => 'typ-nabidky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodNapTyp',
-  ),
-  'nabidka-vydana' => 
-  array (
-    'evidenceType' => 'NABIDKA_OUT',
-    'evidenceName' => 'Vydané nabídky',
-    'evidencePath' => 'nabidka-vydana',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodNavDokl',
-  ),
   'nabidka-vydana-polozka' => 
   array (
     'evidenceType' => 'NABIDKA_OUT_POLOZKA',
@@ -954,24 +865,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DIRECT',
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodNavPol',
-  ),
-  'rada-nabidky-vydane' => 
-  array (
-    'evidenceType' => 'NABIDKA_OUT_RADA',
-    'evidenceName' => 'Dokladové řady - vydané nabídky',
-    'evidencePath' => 'rada-nabidky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodNavRady',
-  ),
-  'typ-nabidky-vydane' => 
-  array (
-    'evidenceType' => 'NABIDKA_OUT_TYP',
-    'evidenceName' => 'Typy vydaných nabídek',
-    'evidencePath' => 'typ-nabidky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodNavTyp',
   ),
   'naklad' => 
   array (
@@ -991,15 +884,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.nast.Nastaveni',
     'formCode' => 'nNastav',
   ),
-  'objednavka-prijata' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_IN',
-    'evidenceName' => 'Přijaté objednávky',
-    'evidencePath' => 'objednavka-prijata',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodObpDokl',
-  ),
   'objednavka-prijata-polozka' => 
   array (
     'evidenceType' => 'OBJEDNAVKA_IN_POLOZKA',
@@ -1009,33 +893,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodObpPol',
   ),
-  'rada-objednavky-prijate' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_IN_RADA',
-    'evidenceName' => 'Dokladové řady - přijaté objednávky',
-    'evidencePath' => 'rada-objednavky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodObpRady',
-  ),
-  'typ-objednavky-prijate' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_IN_TYP',
-    'evidenceName' => 'Typy přijatých objednávek',
-    'evidencePath' => 'typ-objednavky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodObpTyp',
-  ),
-  'objednavka-vydana' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_OUT',
-    'evidenceName' => 'Vydané objednávky',
-    'evidencePath' => 'objednavka-vydana',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodObvDokl',
-  ),
   'objednavka-vydana-polozka' => 
   array (
     'evidenceType' => 'OBJEDNAVKA_OUT_POLOZKA',
@@ -1044,24 +901,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DIRECT',
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodObvPol',
-  ),
-  'rada-objednavky-vydane' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_OUT_RADA',
-    'evidenceName' => 'Dokladové řady - vydané objednávky',
-    'evidencePath' => 'rada-objednavky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodObvRady',
-  ),
-  'typ-objednavky-vydane' => 
-  array (
-    'evidenceType' => 'OBJEDNAVKA_OUT_TYP',
-    'evidenceName' => 'Typy vydaných objednávek',
-    'evidencePath' => 'typ-objednavky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodObvTyp',
   ),
   'obrat' => 
   array (
@@ -1234,15 +1073,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.cen.Poplatek',
     'formCode' => 'cenPoplatky',
   ),
-  'poptavka-prijata' => 
-  array (
-    'evidenceType' => 'POPTAVKA_IN',
-    'evidenceName' => 'Přijaté poptávky',
-    'evidencePath' => 'poptavka-prijata',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodPppDokl',
-  ),
   'poptavka-prijata-polozka' => 
   array (
     'evidenceType' => 'POPTAVKA_IN_POLOZKA',
@@ -1252,33 +1082,6 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodPppPol',
   ),
-  'rada-poptavky-prijate' => 
-  array (
-    'evidenceType' => 'POPTAVKA_IN_RADA',
-    'evidenceName' => 'Dokladové řady - přijaté poptávky',
-    'evidencePath' => 'rada-poptavky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodPppRady',
-  ),
-  'typ-poptavky-prijate' => 
-  array (
-    'evidenceType' => 'POPTAVKA_IN_TYP',
-    'evidenceName' => 'Typy přijatých poptávek',
-    'evidencePath' => 'typ-poptavky-prijate',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodPppTyp',
-  ),
-  'poptavka-vydana' => 
-  array (
-    'evidenceType' => 'POPTAVKA_OUT',
-    'evidenceName' => 'Vydané poptávky',
-    'evidencePath' => 'poptavka-vydana',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.dok.DoklObch',
-    'formCode' => 'obchodPpvDokl',
-  ),
   'poptavka-vydana-polozka' => 
   array (
     'evidenceType' => 'POPTAVKA_OUT_POLOZKA',
@@ -1287,24 +1090,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DIRECT',
     'className' => 'cz.winstrom.vo.dok.PolObch',
     'formCode' => 'obchodPpvPol',
-  ),
-  'rada-poptavky-vydane' => 
-  array (
-    'evidenceType' => 'POPTAVKA_OUT_RADA',
-    'evidenceName' => 'Dokladové řady - vydané poptávky',
-    'evidencePath' => 'rada-poptavky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.Rada',
-    'formCode' => 'obchodPpvRady',
-  ),
-  'typ-poptavky-vydane' => 
-  array (
-    'evidenceType' => 'POPTAVKA_OUT_TYP',
-    'evidenceName' => 'Typy vydaných poptávek',
-    'evidencePath' => 'typ-poptavky-vydane',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.dok.TypDokl',
-    'formCode' => 'obchodPpvTyp',
   ),
   'pravo-viditelnosti' => 
   array (
@@ -1332,42 +1117,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DOCUMENTED',
     'className' => 'cz.winstrom.vo.ucto.DphPren',
     'formCode' => 'cisDphPren',
-  ),
-  'prikaz-k-inkasu' => 
-  array (
-    'evidenceType' => 'PRIKAZ_K_INKASU',
-    'evidenceName' => 'Příkaz k inkasu',
-    'evidencePath' => 'prikaz-k-inkasu',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.eban.Prikaz',
-    'formCode' => 'elInkaso',
-  ),
-  'prikaz-k-inkasu-polozka' => 
-  array (
-    'evidenceType' => 'PRIKAZ_K_INKASU_POLOZKA',
-    'evidenceName' => 'Položka inkasa',
-    'evidencePath' => 'prikaz-k-inkasu-polozka',
-    'importStatus' => 'DISALLOWED',
-    'className' => 'cz.winstrom.vo.eban.PolozkaPrikazu',
-    'formCode' => 'elInkasoPol',
-  ),
-  'prikaz-k-uhrade' => 
-  array (
-    'evidenceType' => 'PRIKAZ_K_UHRADE',
-    'evidenceName' => 'Příkaz k úhradě',
-    'evidencePath' => 'prikaz-k-uhrade',
-    'importStatus' => 'NOT_DOCUMENTED',
-    'className' => 'cz.winstrom.vo.eban.Prikaz',
-    'formCode' => 'elPrikaz',
-  ),
-  'prikaz-k-uhrade-polozka' => 
-  array (
-    'evidenceType' => 'PRIKAZ_K_UHRADE_POLOZKA',
-    'evidenceName' => 'Položka příkazu k úhradě',
-    'evidencePath' => 'prikaz-k-uhrade-polozka',
-    'importStatus' => 'DISALLOWED',
-    'className' => 'cz.winstrom.vo.eban.PolozkaPrikazu',
-    'formCode' => 'elPrikazPol',
   ),
   'priloha' => 
   array (
@@ -1584,15 +1333,6 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DOCUMENTED',
     'className' => 'cz.winstrom.vo.w.SkupVybKlic',
     'formCode' => 'cisSkupVybKlic',
-  ),
-  'skupina-zbozi' => 
-  array (
-    'evidenceType' => 'SKUPINA_ZBOZI',
-    'evidenceName' => 'Skupiny zboží a materiálu',
-    'evidencePath' => 'skupina-zbozi',
-    'importStatus' => 'SUPPORTED',
-    'className' => 'cz.winstrom.vo.cen.SkupZboz',
-    'formCode' => 'cenSku',
   ),
   'smlouva' => 
   array (

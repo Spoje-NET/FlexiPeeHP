@@ -157,4 +157,16 @@ class FakturaVydana extends FlexiBeeRW
         return $this->insertToFlexiBee();
     }
 
+    public function vytvorVazbuZDD($modul = 'banka' /* pokladna */)
+    {
+        $headersBackup                            = $this->defaultHttpHeaders;
+        $this->defaultHttpHeaders['Accept']       = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
+        $this->defaultHttpHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+        $this->setPostFields(['module' => $modul, 'submit' => 'OK']);
+        $this->performRequest($this->myKey().'/vytvor-vazbu-zdd/'.$idBanky,
+            'POST', 'html');
+        $this->defaultHttpHeaders                 = $headersBackup;
+
+        return $this->lastResponseCode == 201;
+    }
 }
