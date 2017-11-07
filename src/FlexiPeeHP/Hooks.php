@@ -28,6 +28,7 @@ class Hooks extends FlexiBeeRW
      *
      * @param string $url URL skript přímající WebHook
      * @param string $format json|xml formát přenášených dat
+     *
      * @return boolean výsledek požadavku
      */
     public function register($url, $format = 'json')
@@ -47,8 +48,8 @@ class Hooks extends FlexiBeeRW
                 }
             }
         }
-        $this->performRequest('hooks.xml?'.http_build_query($this->getData()),
-            'PUT', 'xml');
+        $this->performRequest('?'.http_build_query($this->getData()), 'PUT',
+            'xml');
 
         return $this->lastResponseCode === 200;
     }
