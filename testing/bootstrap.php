@@ -18,7 +18,7 @@ if (file_exists('../vendor/autoload.php')) {
 define('LOG_NAME', 'FlexiPeeHPtest');
 define('LOG_TYPE', 'syslog');
 
-$testServer = 'official';
+$testServer = 'vitexsoftware';
 switch ($testServer) {
     case 'official':
 ////
@@ -44,7 +44,7 @@ switch ($testServer) {
 
 
         break;
-    case 'spoje.net':
+    case 'vitexsoftware':
 //
 // Config for Spoje.Net
 //
@@ -52,19 +52,19 @@ switch ($testServer) {
         /*
          * URL Flexibee API
          */
-        define('FLEXIBEE_URL', 'https://flexibee-dev.spoje.net:5434');
+        define('FLEXIBEE_URL', 'https://vitexsoftware.flexibee.eu:5434');
         /*
          * Uživatel FlexiBee API
          */
-        define('FLEXIBEE_LOGIN', 'test');
+        define('FLEXIBEE_LOGIN', 'flexipeehp');
         /*
          * Heslo FlexiBee API
          */
-        define('FLEXIBEE_PASSWORD', 'testing');
+        define('FLEXIBEE_PASSWORD', '8Ojeton_');
         /*
          * Společnost v FlexiBee
          */
-        define('FLEXIBEE_COMPANY', 'test');
+        define('FLEXIBEE_COMPANY', 'flexipeehp');
 
 
         break;
