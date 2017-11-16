@@ -40,7 +40,7 @@ class Status extends FlexiBeeRO
     public function __construct($init = null, $options = [])
     {
         parent::__construct($init, $options);
-        $this->takeData($this->getFlexiData(null, '/'.$this->evidence));
+        $this->takeData($this->getFlexiData('/'.$this->evidence));
     }
 
     /**

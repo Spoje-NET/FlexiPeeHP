@@ -15,7 +15,7 @@ if (file_exists('../vendor/autoload.php')) {
 /**
  * Write logs as:
  */
-define('LOG_NAME', 'FlexiPeeHPtest');
+define('EASE_APPNAME', 'FlexiPeeHPtest');
 define('LOG_TYPE', 'syslog');
 
 $testServer = 'vitexsoftware';

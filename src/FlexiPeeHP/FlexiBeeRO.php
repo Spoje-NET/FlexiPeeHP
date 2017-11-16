@@ -492,12 +492,17 @@ class FlexiBeeRO extends \Ease\Brick
     {
         switch ($this->prefix) {
             case '/c/':
-                if (array_key_exists($evidence, EvidenceList::$name)) {
+                if ($this->debug === true) {
+                    if (array_key_exists($evidence, EvidenceList::$name)) {
+                        $this->evidence = $evidence;
+                        $result         = true;
+                    } else {
+                        throw new \Exception(sprintf('Try to set unsupported evidence %s',
+                                $evidence));
+                    }
+                } else {
                     $this->evidence = $evidence;
                     $result         = true;
-                } else {
-                    throw new \Exception(sprintf('Try to set unsupported evidence %s',
-                            $evidence));
                 }
                 break;
             default:
@@ -664,6 +669,52 @@ class FlexiBeeRO extends \Ease\Brick
             $this->apiURL .= '/'.urlencode($id);
         }
         $this->apiURL .= '.'.$this->format;
+    }
+
+    /**
+     * Add params to url
+     *
+     * @param string  $url      originall url
+     * @param array   $params   value to add
+     * @param boolean $override replace already existing values ?
+     *
+     * @return string url with parameters added
+     */
+    public function addUrlParams($url, $params, $override = false)
+    {
+        $urlParts = parse_url($url);
+        $urlFinal = '';
+        if (array_key_exists('scheme', $urlParts)) {
+            $urlFinal .= $urlParts['scheme'].'://'.$urlParts['host'];
+        }
+        if (array_key_exists('path', $urlParts)) {
+            $urlFinal .= $urlParts['path'];
+        }
+        if (array_key_exists('query', $urlParts)) {
+            parse_str($urlParts['query'], $queryUrlParams);
+            $urlParams = $override ? array_merge($params, $queryUrlParams) : array_merge($queryUrlParams,
+                    $params);
+        } else {
+            $urlParams = $params;
+        }
+        if (!empty($urlParams) && is_array($urlParams)) {
+            $urlFinal .= '?'.http_build_query($urlParams);
+        } else {
+            $urlFinal .= '?'.$urlParams;
+        }
+        return $urlFinal;
+    }
+
+    /**
+     * Add Default Url params to given url if not overrided
+     *
+     * @param string $urlRaw
+     *
+     * @return string url with default params added
+     */
+    public function addDefaultUrlParams($urlRaw)
+    {
+        return $this->addUrlParams($urlRaw, $this->defaultUrlParams, false);
     }
 
     /**
@@ -1004,7 +1055,7 @@ class FlexiBeeRO extends \Ease\Brick
         $finalUrl  = '';
         $urlParams = $this->defaultUrlParams;
 
-        if (!is_null($conditions)) {
+        if (!empty($conditions)) {
             if (is_array($conditions)) {
                 $this->extractUrlParams($conditions, $urlParams);
                 $conditions = $this->flexiUrl($conditions);
@@ -1122,12 +1173,14 @@ class FlexiBeeRO extends \Ease\Brick
         if (is_null($identifer)) {
             $identifer = $this->getMyKey();
         }
+        $ignorestate = $this->ignore404();
+        $this->ignore404(true);
         $this->getFlexiData(null,
             [
                 'detail' => 'custom:'.$this->getmyKeyColumn(),
                 $this->getmyKeyColumn() => $identifer
         ]);
-
+        $this->ignore404($ignorestate);
         return $this->lastResponseCode == 200;
     }
 
@@ -1862,13 +1915,15 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function downloadInFormat($format, $destDir = './')
     {
-        $fileOnDisk = null;
+        $fileOnDisk   = null;
+        $formatBackup = $this->format;
         if ($this->setFormat($format)) {
             $downloadTo = $destDir.$this->getEvidence().'_'.$this->getMyKey().'.'.$format;
             if (($this->doCurlRequest($this->apiURL, 'GET') == 200) && (file_put_contents($downloadTo,
                     $this->lastCurlResponse) !== false)) {
                 $fileOnDisk = $downloadTo;
             }
+            $this->setFormat($formatBackup);
         }
         return $fileOnDisk;
     }
@@ -1984,6 +2039,18 @@ class FlexiBeeRO extends \Ease\Brick
             function ($key) {
             return !strchr($key, '@');
         }, ARRAY_FILTER_USE_KEY);
+    }
+
+    /**
+     * Add Info about used user, server and libraries
+     *
+     * @param string $additions Additional note text
+     */
+    function logBanner($additions = null)
+    {
+        $this->addStatusMessage('FlexiBee '.str_replace('://',
+                '://'.$this->user.'@', str_replace('.json', '', $this->apiURL)).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
+            'debug');
     }
 
     /**

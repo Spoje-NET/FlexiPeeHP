@@ -9,8 +9,8 @@ require_once '../testing/bootstrap.php';
 
 
 
-$outFile = 'EvidenceList.php';
-$outJson = 'EvidenceList.json';
+$outFile     = 'EvidenceList.php';
+$outJson     = 'EvidenceList.json';
 $outFullJson = 'EvidenceFullList.json';
 
 /**
@@ -39,7 +39,7 @@ $statuser = new Status();
 
 $evidenceList = '<?php
 /**
- * FlexiPeeHP - Seznam Evidencí.
+ * FlexiPeeHP - List of Evidencies.
  *
  * Generated: '.date(DATE_RFC2822).' 
  * From:      '.$statuser->url.'
@@ -99,6 +99,16 @@ $evidencies[] = [
     "className" => "cz.winstrom.vo.nast.Nastaveni",
     "formCode" => "nNastav"
 ];
+
+$evidencies[] = [
+    "evidenceType" => "UZIVATELE",
+    "evidenceName" => "Osoby a uživatelé",
+    "evidencePath" => "uzivatel",
+    "importStatus" => "NOT_DOCUMENTED",
+    "className" => "cz.winstrom.vo.w.Uzivatel",
+    "formCode" => "cisOsoby"
+];
+
 
 $evlist = [];
 foreach ($evidencies as $evidenceID => $evidence) {
