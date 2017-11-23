@@ -384,7 +384,7 @@ class FlexiBeeRO extends \Ease\Brick
         if (isset($options[$name])) {
             $this->$name = $options[$name];
         } else {
-            if (is_null($this->$name) && !empty($constant) && defined($constant)) {
+            if (property_exists($this, $name) && !empty($constant) && defined($constant)) {
                 $this->$name = constant($constant);
             }
         }
@@ -1881,7 +1881,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function flexiDateToDateTime($flexidate)
     {
-        return \DateTime::createFromFormat('Y-m-jO', $flexidate);
+        return \DateTime::createFromFormat('Y-m-j\TH:i:s.u+P', $flexidate);
     }
 
     /**

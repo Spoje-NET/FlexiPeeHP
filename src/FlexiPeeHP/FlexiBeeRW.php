@@ -77,15 +77,6 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($data)) {
             $data = $this->getData();
         }
-        if ($this->debug === true) {
-            $missingColumns = $this->controlMandatoryColumns($data);
-            if (count($missingColumns)) {
-                $this->addStatusMessage(sprintf('Given data does not contain requied Columns: %s',
-                        '['.implode(',', array_keys($missingColumns)).'] '.implode(',',
-                            $missingColumns))
-                    , 'warning');
-            }
-        }
         $this->postFields = $this->jsonizeData($data);
         return $this->performRequest(null, 'PUT');
     }
