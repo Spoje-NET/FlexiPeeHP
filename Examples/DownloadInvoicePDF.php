@@ -24,5 +24,6 @@ $invoiceID = askForFlexiBeeID();
  * (array) ['varSym'=>'20080015']
  */
 
-$invoice = new \FlexiPeeHP\FakturaVydana($invoiceID);
-$invoice->downloadInFormat('pdf', '/tmp/');
+$invoice = new \FlexiPeeHP\FakturaVydana($invoiceID, ['detail' => 'id']);
+echo 'invoice saved to: '.$invoice->downloadInFormat('pdf', '/tmp/',
+    'fakturaKB$$SUM_BEZ_QR')."\n";

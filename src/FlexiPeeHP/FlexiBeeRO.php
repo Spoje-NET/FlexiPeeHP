@@ -368,6 +368,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (isset($options['prefix'])) {
             $this->setPrefix($options['prefix']);
         }
+        if (array_key_exists('detail', $options)) {
+            $this->defaultUrlParams['detail'] = $options['detail'];
+        }
         $this->setupProperty($options, 'debug');
         $this->updateApiURL();
     }
@@ -1889,6 +1892,7 @@ class FlexiBeeRO extends \Ease\Brick
      * Obtain document in given format
      *
      * @param string $format  pdf/csv/xml/json/ ...
+     * @param string $reportName Template used to generate PDF
      *
      * @return string|null filename downloaded or none
      */
@@ -1896,8 +1900,15 @@ class FlexiBeeRO extends \Ease\Brick
     {
         $response = null;
         if ($this->setFormat($format)) {
-            if (($this->doCurlRequest(($format == 'html') ? $this->apiURL.'?inDesktopApp=true'
-                            : $this->apiURL, 'GET') == 200)) {
+            $urlParams = [];
+            if (!empty($reportName)) {
+                $urlParams['report-name'] = $reportName;
+            }
+            if ($format == 'html') {
+                $urlParams['inDesktopApp'] = 'true';
+            }
+            if (($this->doCurlRequest($this->addUrlParams($this->apiURL,
+                        $urlParams), 'GET') == 200)) {
                 $response = $this->lastCurlResponse;
             }
         }
@@ -1910,16 +1921,19 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param string $format  pdf/csv/xml/json/ ...
      * @param string $destDir where to put file (prefix)
+     * @param string $reportName Template used to generate PDF
      *
      * @return string|null filename downloaded or none
      */
-    public function downloadInFormat($format, $destDir = './')
+    public function downloadInFormat($format, $destDir = './',
+                                     $reportName = null)
     {
         $fileOnDisk   = null;
         $formatBackup = $this->format;
         if ($this->setFormat($format)) {
             $downloadTo = $destDir.$this->getEvidence().'_'.$this->getMyKey().'.'.$format;
-            if (($this->doCurlRequest($this->apiURL, 'GET') == 200) && (file_put_contents($downloadTo,
+            if (($this->doCurlRequest(empty($reportName) ? $this->apiURL : $this->addUrlParams($this->apiURL,
+                            ['report-name' => $reportName]), 'GET') == 200) && (file_put_contents($downloadTo,
                     $this->lastCurlResponse) !== false)) {
                 $fileOnDisk = $downloadTo;
             }
