@@ -16,6 +16,12 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public $poznam = 'Generováno UnitTestem PHP Knihovny https://github.com/Spoje-NET/FlexiPeeHP';
 
     /**
+     *
+     * @var array
+     */
+    public $insertableData = [];
+
+    /**
      * @var FlexiBeeRW
      */
     protected $object;
@@ -53,10 +59,25 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testInsertToFlexiBee()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        if (empty($this->insertableData)) {
+            $structure = $this->object->getColumnsInfo();
+            if (array_key_exists('typDokl', $structure)) {
+                if ($structure['typDokl']['type'] == 'relation') {
+                    $relatedEvidence                 = basename($structure['typDokl']['url']);
+                    $loader                          = new \FlexiPeeHP\FlexiBeeRO(null,
+                        ['evidence' => $relatedEvidence]);
+                    $code                            = $loader->getColumnsFromFlexibee([
+                        'kod'], ['limit' => 1]);
+                    $this->insertableData['typDokl'] = \FlexiPeeHP\FlexiBeeRO::code($code[0]['kod']);
+                }
+
+                if (array_key_exists('poznam', $structure)) {
+                    $this->insertableData['poznam'] = $this->poznam;
+                }
+            }
+        }
+
+        $this->object->insertToFlexiBee($this->insertableData);
     }
 
     /**

@@ -172,12 +172,14 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      * We can set only evidence defined in EvidenceList class
      *
      * @covers FlexiPeeHP\FlexiBeeRO::setEvidence
+     * @expectedException \Exception
      */
     public function testSetEvidence()
     {
         $this->object->setEvidence('adresar');
         $this->assertEquals('adresar', $this->object->evidence);
         $this->object->setPrefix('c');
+        $this->object->debug = true;
         $this->object->setEvidence('fail');
     }
 
@@ -246,9 +248,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 }
 
                 $xml = $this->object->performRequest(null, 'GET', 'xml');
-                $this->assertArrayHasKey($this->object->getResponseEvidence(),
-                    $xml);
-
+                if (!empty($xml)) {
+                    $this->assertArrayHasKey($this->object->getResponseEvidence(),
+                        $xml);
+                }
                 break;
         }
 
@@ -1014,5 +1017,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->object->defaultUrlParams['id'] = 1;
         $this->assertEquals('http://vitexsoftware.cz/path?a=b&id=1',
             $this->object->addDefaultUrlParams('http://vitexsoftware.cz/path?a=b'));
+    }
+
+    public function testFlexiDateToDateTime()
+    {
+        $this->assertEquals(1495749600,
+            FlexiBeeRO::flexiDateToDateTime('2017-05-26+02:00')->getTimestamp());
+    }
+
+    public function testFlexiDateTimeToDateTime()
+    {
+        $this->assertEquals(1506412853,
+            FlexiBeeRO::flexiDateTimeToDateTime('2017-09-26T10:00:53.755+02:00')->getTimestamp());
     }
 }

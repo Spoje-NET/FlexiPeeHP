@@ -1876,15 +1876,27 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * FlexiBee date to PHP DateTime
+     * FlexiBee date to PHP DateTime conversion
      *
-     * @param string $flexidate
+     * @param string $flexidate 2017-05-26+02:00
      *
      * @return \DateTime | false
      */
     public static function flexiDateToDateTime($flexidate)
     {
-        return \DateTime::createFromFormat('Y-m-j\TH:i:s.u+P', $flexidate);
+        return \DateTime::createFromFormat('Y-m-dO', $flexidate)->setTime(0, 0);
+    }
+
+    /**
+     * FlexiBee dateTime to PHP DateTime conversion
+     *
+     * @param string $flexidatetime 2017-09-26T10:00:53.755+02:00
+     *
+     * @return \DateTime | false
+     */
+    public static function flexiDateTimeToDateTime($flexidatetime)
+    {
+        return \DateTime::createFromFormat('Y-m-j\TH:i:s.u+P', $flexidatetime);
     }
 
     /**
