@@ -148,7 +148,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
         $this->assertNull($this->object->timestampToFlexiDateTime());
         $flexiDateTime = $this->object->timestampToFlexiDateTime('1474040506');
         $this->assertEquals('2016-09-16', substr($flexiDateTime, 0, 10));
-        $this->assertEquals('15:41:46', substr($flexiDateTime, -8));
+        $this->assertEquals(':41:46', substr($flexiDateTime, -6));
     }
 
     /**
