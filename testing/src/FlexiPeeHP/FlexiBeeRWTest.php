@@ -146,7 +146,8 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public function testTimestampToFlexiDateTime()
     {
         $this->assertNull($this->object->timestampToFlexiDateTime());
-        $this->assertEquals('2016-09-16UTC15:41:46',
+        $zoner = new \DateTime;
+        $this->assertEquals('2016-09-16'.$zoner->format('T').'15:41:46',
             $this->object->timestampToFlexiDateTime('1474040506'));
     }
 
@@ -173,4 +174,113 @@ class FlexiBeeRWTest extends FlexiBeeROTest
             $this->assertEquals('code:KOD', $this->object->getRecordID());
         }
     }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::takeData
+     * @todo   Implement testTakeData().
+     */
+    public function testTakeData()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::controlMandatoryColumns
+     * @todo   Implement testControlMandatoryColumns().
+     */
+    public function testControlMandatoryColumns()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::controlReadOnlyColumns
+     * @todo   Implement testControlReadOnlyColumns().
+     */
+    public function testControlReadOnlyColumns()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::addArrayToBranch
+     * @todo   Implement testAddArrayToBranch().
+     */
+    public function testAddArrayToBranch()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::addObjectToBranch
+     * @todo   Implement testAddObjectToBranch().
+     */
+    public function testAddObjectToBranch()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::vazbaAdd
+     * @todo   Implement testVazbaAdd().
+     */
+    public function testVazbaAdd()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::vazbaDel
+     * @todo   Implement testVazbaDel().
+     */
+    public function testVazbaDel()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::jsonizeData
+     * @todo   Implement testJsonizeData().
+     */
+    public function testJsonizeData()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::refresh
+     * @todo   Implement testRefresh().
+     */
+    public function testRefresh()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
 }
