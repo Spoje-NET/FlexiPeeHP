@@ -84,7 +84,7 @@ class HooksTest extends FlexiBeeRWTest
     public function testRefreshWebHook()
     {
         $hooks = $this->object->getAllFromFlexibee();
-        $this->assertTrue($this->object->refreshWebHook(current(end($hooks))));
+        $this->assertTrue($this->object->refreshWebHook(end($hooks)['id']));
     }
 
     /**

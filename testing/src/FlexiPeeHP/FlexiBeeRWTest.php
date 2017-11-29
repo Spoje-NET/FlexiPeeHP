@@ -36,8 +36,8 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public function getDataForInsert($code = 'UnitTest')
     {
         $dataForInsert = [];
-        $structure = $this->object->getColumnsInfo();
-        if (array_key_exists('typDokl', $structure)) {
+        $structure     = $this->object->getColumnsInfo();
+        if (count($structure) && array_key_exists('typDokl', $structure)) {
             if ($structure['typDokl']['type'] == 'relation') {
                 $relatedEvidence          = basename($structure['typDokl']['url']);
                 $loader                   = new \FlexiPeeHP\FlexiBeeRO(null,
@@ -92,7 +92,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public function testInsertToFlexiBee()
     {
         if (empty($this->insertableData)) {
-            $this->insertableData = $this->getDataForInsert();
+            $this->insertableData = $this->getDataForInsert('INSERTTEST'.time());
         }
 
         $this->object->insertToFlexiBee($this->insertableData);
@@ -112,9 +112,8 @@ class FlexiBeeRWTest extends FlexiBeeROTest
             }
 
             if (array_key_exists('storno', $actions)) {
-                $this->object->insertToFlexiBee($this->getDataForInsert('StornoTest '.time()));
-
-                $this->assertTrue($this->object->performAction('storno', 'int'));
+                $this->object->insertToFlexiBee($this->getDataForInsert('StornoTest_'.time()));
+                $this->object->performAction('storno', 'int');
             }
         }
         $this->object->performAction('nonexitst');
@@ -149,5 +148,29 @@ class FlexiBeeRWTest extends FlexiBeeROTest
         $this->assertNull($this->object->timestampToFlexiDateTime());
         $this->assertEquals('2016-09-16UTC15:41:46',
             $this->object->timestampToFlexiDateTime('1474040506'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::objectToID
+     */
+    public function testObjectToID()
+    {
+        $id = \Ease\Sand::randomNumber(1, 9999);
+        $this->object->setMyKey($id);
+        $this->assertEquals([$id], $this->object->objectToID([$this->object]));
+        parent::testObjectToID();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::getRecordID
+     */
+    public function testGetRecordID()
+    {
+        parent::testGetRecordID();
+        $structure = $this->object->getEvidenceInfo();
+        if (count($structure) && array_key_exists('kod', $structure)) {
+            $this->object->setData(['kod' => 'KOD']);
+            $this->assertEquals('code:KOD', $this->object->getRecordID());
+        }
     }
 }

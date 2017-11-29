@@ -1529,12 +1529,13 @@ class FlexiBeeRO extends \Ease\Brick
     public function getFirstRecordID()
     {
         $firstID    = null;
-        $firstIdRaw = $this->getColumnsFromFlexibee(['id'],
-            ['limit' => 1, 'order' => 'id'], 'id');
+        $keyColumn  = $this->getmyKeyColumn();
+        $firstIdRaw = $this->getColumnsFromFlexibee([$keyColumn],
+            ['limit' => 1, 'order' => $keyColumn], $keyColumn);
         if (count($firstIdRaw)) {
-            $firstID = (int) current($firstIdRaw)['id'];
+            $firstID = current($firstIdRaw)[$keyColumn];
         }
-        return $firstID;
+        return is_numeric($firstID) ? intval($firstID) : $firstID;
     }
 
     /**

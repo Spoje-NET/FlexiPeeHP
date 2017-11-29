@@ -57,8 +57,14 @@ function getEvidenceActions($evidence, FlexiBeeRO $syncer)
     if (count($flexinfo) && array_key_exists('actions', $flexinfo)) {
         if (isset($flexinfo['actions']['action'])) {
             foreach ($flexinfo['actions']['action'] as $evidenceActions) {
-                $key           = $evidenceActions['actionId'];
-                $actions[$key] = $evidenceActions;
+                if (array_key_exists('actionId', $evidenceActions)) {
+                    $key           = $evidenceActions['actionId'];
+                    $actions[$key] = $evidenceActions;
+                } else {
+                    $syncer->addStatusMessage(sprintf('actionId not set for %s',
+                            $evidence.' / '.$evidenceActions['actionName']),
+                        'warning');
+                }
             }
         } else {
             $syncer->addStatusMessage(sprintf('Missing actions for %s',

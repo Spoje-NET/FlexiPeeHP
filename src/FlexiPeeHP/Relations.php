@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.2.4.1';
+ static public $version = '2017.2.4.2';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Relations.
@@ -807,6 +807,16 @@ class Relations
      * @var array
      */
  static public $odpisovaSkupina = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence uzivatel (Osoby a uživatelé) Relations.
+     *
+     * @var array
+     */
+ static public $uzivatel = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',

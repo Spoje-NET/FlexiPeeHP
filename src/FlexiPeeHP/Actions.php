@@ -21,7 +21,7 @@ class Actions
      *
      * @var string
      */
- static public $version = '2017.2.4.1';
+ static public $version = '2017.2.4.2';
 
     /**
      * Evidence analyza-nakupu (#analyzaNakupu) Actions.
@@ -1999,19 +1999,6 @@ class Actions
   ),
 );
     /**
-     * Evidence nastaveni (Nastavení) Actions.
-     *
-     * @var array
-     */
- static public $nastaveni = array (
-  'e' => 'edit',
-  'Z' => 'Změnit',
-  't' => 'true',
-  'O' => 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT',
-  'f' => 'false',
-  'N' => 'NO',
-);
-    /**
      * Evidence naklad (Náklady na události / aktivity) Actions.
      *
      * @var array
@@ -2055,11 +2042,11 @@ class Actions
   ),
 );
     /**
-     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Actions.
+     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Actions.
      *
      * @var array
      */
- static public $cenikovyPohybProdej = array (
+ static public $cenikovyPohybNakup = array (
   'new' => 
   array (
     'actionId' => 'new',
@@ -2098,11 +2085,11 @@ class Actions
   ),
 );
     /**
-     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Actions.
+     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Actions.
      *
      * @var array
      */
- static public $cenikovyPohybNakup = array (
+ static public $cenikovyPohybProdej = array (
   'new' => 
   array (
     'actionId' => 'new',

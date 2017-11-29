@@ -19,7 +19,7 @@ class Formats
  *
  * @var string
  */
- static public $version = '2017.2.4.1';
+ static public $version = '2017.2.4.2';
 
 
     /**
@@ -612,22 +612,22 @@ class Formats
   'CSV' => 'csv',
 );
     /**
-     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Formats.
+     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Formats.
      *
      * @var array
      */
- static public $cenikovyPohybProdej = array (
+ static public $cenikovyPohybNakup = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',
   'CSV' => 'csv',
 );
     /**
-     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Formats.
+     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Formats.
      *
      * @var array
      */
- static public $cenikovyPohybNakup = array (
+ static public $cenikovyPohybProdej = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',
@@ -694,6 +694,17 @@ class Formats
      * @var array
      */
  static public $odpisovaSkupina = array (
+  'HTML' => 'html',
+  'XML' => 'xml',
+  'JSON' => 'json',
+  'CSV' => 'csv',
+);
+    /**
+     * Evidence uzivatel (Osoby a uživatelé) Formats.
+     *
+     * @var array
+     */
+ static public $uzivatel = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',

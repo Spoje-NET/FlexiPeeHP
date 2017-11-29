@@ -5,6 +5,14 @@
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2015 Spoje.Net
  */
+
+/**
+ * Predefined server:One of:
+ *
+ * official|vitexsoftware|localhost
+ */
+$testServer = 'vitexsoftware';
+
 if (file_exists('../vendor/autoload.php')) {
     include_once '../vendor/autoload.php';
 } else {
@@ -15,10 +23,14 @@ if (file_exists('../vendor/autoload.php')) {
 /**
  * Write logs as:
  */
-define('EASE_APPNAME', 'FlexiPeeHPtest');
-define('LOG_TYPE', 'syslog');
+if (!defined('EASE_APPNAME')) {
+    define('EASE_APPNAME', 'FlexiPeeHPtest');
+}
+if (!defined('EASE_LOGGER')) {
+    define('EASE_LOGGER', 'syslog');
+}
 
-$testServer = 'vitexsoftware';
+
 switch ($testServer) {
     case 'official':
 ////

@@ -1,8 +1,8 @@
 <?php
 /**
- * FlexiPeeHP - Seznam Evidencí.
+ * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Tue, 07 Nov 2017 14:44:00 +0100 
+ * Generated: Wed, 29 Nov 2017 15:55:31 +0100 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -35,11 +35,18 @@ class EvidenceList extends FlexiBeeRO
     public $nameSpace = 'evidences';
 
     /**
+     * Column use to identfy record
+     *
+     * @var string
+     */
+    public $myKeyColumn = 'evidencePath';
+
+    /**
      * Source FlexiBee server version.
      *
      * @var string
      */
- static public $version = '2017.2.4.1';
+ static public $version = '2017.2.4.2';
 
     /**
      * Evidences Path/Name listing.
@@ -92,14 +99,15 @@ class EvidenceList extends FlexiBeeRO
   'merna-jednotka' => 'Měrné jednotky ',
   'nastaveni' => 'Nastavení',
   'naklad' => 'Náklady na události / aktivity',
-  'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
   'cenikovy-pohyb-nakup' => 'Nákupní, prodejní a skladové pohyby',
+  'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
   'intrastat-obchodni-transakce' => 'Obchodní transakce',
   'strom-koren' => 'Obecný strom',
   'obratova-predvaha' => 'Obratová předvaha',
   'obrat' => 'Obraty',
   'smlouva' => 'Odběratelské smlouvy',
   'odpisova-skupina' => 'Odpisové skupiny',
+  'uzivatel' => 'Osoby a uživatelé',
   'pohledavka' => 'Ostatní pohledávky',
   'zavazek' => 'Ostatní závazky',
   'uzivatelsky-dotaz-parametr' => 'Parametry',
@@ -1613,6 +1621,15 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.w.Sablona',
     'formCode' => 'upominky',
   ),
+  'uzivatel' => 
+  array (
+    'evidenceType' => 'UZIVATELE',
+    'evidenceName' => 'Osoby a uživatelé',
+    'evidencePath' => 'uzivatel',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.w.Uzivatel',
+    'formCode' => 'cisOsoby',
+  ),
   'uzivatelsky-dotaz' => 
   array (
     'evidenceType' => 'UZIVATELSKY_DOTAZ',
@@ -1777,4 +1794,13 @@ class EvidenceList extends FlexiBeeRO
   ),
 );
 
+    /**
+     * Obtain evidence identifier
+     *
+     * @return string company database name
+     */
+    public function getRecordID()
+    {
+        return $this->getDataValue('evidencePath');
+    }
 }

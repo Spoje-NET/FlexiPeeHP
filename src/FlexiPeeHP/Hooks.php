@@ -61,7 +61,7 @@ class Hooks extends FlexiBeeRW
      */
     public function refreshWebHook($id)
     {
-        $this->performRequest('hooks/'.$id.'/retry', 'PUT');
+        $this->performRequest($id.'/retry', 'PUT');
         return $this->lastResponseCode === 200;
     }
 

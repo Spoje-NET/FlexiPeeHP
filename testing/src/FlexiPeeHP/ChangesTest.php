@@ -47,7 +47,7 @@ class ChangesTest extends FlexiBeeROTest
      */
     public function testIdExists()
     {
-        $this->markTestSkipped('changes does not return id column');
+        $this->object->idExists();
     }
 
     /**
@@ -105,6 +105,7 @@ class ChangesTest extends FlexiBeeROTest
         $this->assertInternalType('boolean', $status);
     }
 
+    
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.

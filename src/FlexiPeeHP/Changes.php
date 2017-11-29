@@ -91,4 +91,14 @@ class Changes extends FlexiBeeRO
     {
         return [$this->getEvidence() => parent::rawXmlToArray($rawXML)];
     }
+
+    /**
+     * Changes has no relations
+     *
+     * @return null
+     */
+    public function getVazby($id = null)
+    {
+        throw new \Exception(_('Changes has no relations'));
+    }
 }

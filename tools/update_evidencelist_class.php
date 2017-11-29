@@ -73,6 +73,13 @@ class EvidenceList extends FlexiBeeRO
      */
     public $nameSpace = \'evidences\';
 
+    /**
+     * Column use to identfy record
+     *
+     * @var string
+     */
+    public $myKeyColumn = \'evidencePath\';
+
 ';
 
 $evidenceList .= '    /**
@@ -139,6 +146,19 @@ $evidenceList .= '    /**
 $evidenceList .= ' static public $evidences = '.var_export($fullList, true).';
 
 ';
+
+$evidenceList .= '
+    /**
+     * Obtain evidence identifier
+     *
+     * @return string company database name
+     */
+    public function getRecordID()
+    {
+        return $this->getDataValue(\'evidencePath\');
+    }
+    ';
+
 
 $evidenceList .= '}
 ';

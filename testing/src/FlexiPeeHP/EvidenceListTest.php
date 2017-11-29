@@ -23,10 +23,50 @@ class EvidenceListTest extends FlexiBeeROTest
         $this->object = new EvidenceList();
     }
 
+    /**
+     * 
+     */
     public function checkLists()
     {
         $this->assertTrue(count(EvidenceList::$evidences) > 80);
         $this->assertTrue($this->object->setEvidence('cenik'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\EvidenceList::objectToID
+     */
+    public function testObjectToID()
+    {
+        $this->object->setDataValue($this->object->myKeyColumn, 'TEST');
+        $this->assertEquals('TEST', $this->object->objectToID($this->object));
+
+        $this->assertEquals('TEST2', $this->object->objectToID('TEST2'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\EvidenceList::__toString
+     */
+    public function testtoString()
+    {
+        $this->object->__toString();
+    }
+
+    /**
+     * @covers FlexiPeeHP\EvidenceList::draw
+     */
+    public function testDraw($whatWant = NULL)
+    {
+        $this->object->draw();
+    }
+
+    /**
+     * @covers FlexiPeeHP\EvidenceList::getMyKey
+     *
+     * @todo   Implement testGetMyKey().
+     */
+    public function testGetMyKey()
+    {
+        $this->object->getmyKey();
     }
 
     /**

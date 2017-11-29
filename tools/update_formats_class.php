@@ -2,10 +2,11 @@
 
 namespace FlexiPeeHP;
 
-require_once '../testing/bootstrap.php';
-
 define('EASE_APPNAME', 'FlexiPeehUP');
 define('EASE_LOGGER', 'console|syslog');
+
+require_once '../testing/bootstrap.php';
+
 
 $outFile = 'Formats.php';
 $outJson = 'Formats.json';

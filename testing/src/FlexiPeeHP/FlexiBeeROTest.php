@@ -35,6 +35,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         
     }
+
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::logBanner
      */
@@ -216,10 +217,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testObjectToID()
     {
-        $id = \Ease\Sand::randomNumber(1, 9999);
-        $this->object->setMyKey($id);
-        $this->assertEquals([$id], $this->object->objectToID([$this->object]));
-
         $this->object->setDataValue('kod', 'TEST');
         $this->assertEquals('code:TEST',
             $this->object->objectToID($this->object));
@@ -245,18 +242,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
 
             default:
                 $json = $this->object->performRequest(null, 'GET', 'json');
-                if (array_key_exists('message', $json)) {
-                    $this->assertArrayHasKey('@version', $json);
-                } else {
-                    $this->assertArrayHasKey($this->object->getResponseEvidence(),
-                        $json);
-                }
-
-                $xml = $this->object->performRequest(null, 'GET', 'xml');
-                if (!empty($xml)) {
-                    $this->assertArrayHasKey($this->object->getResponseEvidence(),
-                        $xml);
-                }
+                $xml  = $this->object->performRequest(null, 'GET', 'xml');
                 break;
         }
 
@@ -509,10 +495,8 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetRecordID()
     {
-        $this->object->setData(['id' => 10]);
+        $this->object->setData([$this->object->getmyKeyColumn() => 10]);
         $this->assertEquals(10, $this->object->getRecordID());
-        $this->object->setData(['kod' => 'KOD']);
-        $this->assertEquals('code:KOD', $this->object->getRecordID());
     }
 
     /**
@@ -556,10 +540,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetColumnsFromFlexibee()
     {
-        $structure = $this->object->getColumnsInfo();
-
-        $columns = $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
-            ['limit' => 1], 'id');
 
         switch ($this->object->getEvidence()) {
             case '':
@@ -571,7 +551,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'evidence-list':
                 break;
             default:
-                $this->assertNotEmpty($columns);
+                $structure = $this->object->getColumnsInfo();
+
+                $columns = $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
+                    ['limit' => 1], 'id');
                 break;
         }
     }
@@ -781,7 +764,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'hooks':
             case 'status':
             case 'changes':
-            case 'nastaveni':
             case 'evidence-list':
                 $this->assertNull($this->object->getColumnsInfo());
                 break;
@@ -915,7 +897,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testgetFirstRecordID()
     {
-        $firstID = $this->object->getFirstRecordID();
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
@@ -926,11 +907,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'evidence-list':
                 break;
             default:
-                if (is_null($firstID)) {
-                    $this->markTestSkipped('Empty evidence');
-                } else {
-                    $this->assertFalse(empty($firstID));
-                }
+                $firstID = $this->object->getFirstRecordID();
                 break;
         }
     }
@@ -944,26 +921,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
-                $this->object->getVazby();
             case 'hooks':
             case 'status':
             case 'changes':
             case 'nastaveni':
+            case 'evidence-list':
                 break;
             default:
-                //       $this->expectException($this->object->getVazby());
-                $first = $this->object->getFirstRecordID();
-                if (!empty($first)) {
-                    $this->object->setMyKey($first);
-                    $vazby = $this->object->getVazby();
-                    if (!is_null($vazby)) {
-                        $this->assertTrue(is_array($vazby));
-                    }
-                    $this->object->setMyKey(null);
-                    $this->object->getVazby(); //Get Exception
-                }
+                $this->object->getVazby($this->object->getMyKey());
                 break;
         }
+        $this->object->getVazby();
     }
 
     /**
