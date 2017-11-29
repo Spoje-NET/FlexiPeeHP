@@ -43,6 +43,10 @@ class Company extends FlexiBeeRW
      */
     public $company = '';
 
+    /**
+     * Key Column for this evidence
+     * @var string
+     */
     public $myKeyColumn = 'dbNazev';
 
     /**
@@ -154,7 +158,7 @@ class Company extends FlexiBeeRW
         $result                                   = false;
         $headersBackup                            = $this->defaultHttpHeaders;
         $this->defaultHttpHeaders['Accept']       = '*/*';
-        $this->defaultHttpHeaders['Content-Type'] = 'application/octet-stream';
+        $this->defaultHttpHeaders['Content-Type'] = 'application/x-winstrom-backup';
         $this->setPostFields(file_get_contents($filename));
         $this->performRequest($this->getDataValue('dbNazev').'/restore', 'PUT');
         return $this->lastResponseCode == 200;
@@ -171,5 +175,25 @@ class Company extends FlexiBeeRW
     {
         $this->performRequest('/admin/zalozeni-firmy?name='.$name, 'PUT');
         return $this->lastResponseCode == 201;
+    }
+
+    /**
+     * Obtain company identifier
+     *
+     * @return string company database name
+     */
+    public function getRecordID()
+    {
+        return $this->getDataValue('dbNazev');
+    }
+
+    /**
+     * Company has no relations
+     *
+     * @return null
+     */
+    public function getVazby($id = null)
+    {
+        throw new \Exception(_('Company has no relations'));
     }
 }

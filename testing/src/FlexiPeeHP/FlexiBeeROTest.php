@@ -35,7 +35,20 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         
     }
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::logBanner
+     */
+    public function testLogBanner()
+    {
+        $this->object->logBanner(addslashes(get_class($this)));
+    }
 
+    /**
+     * Test Constructor
+     *
+     * @depends testLogBanner
+     * @covers FlexiPeeHP\FlexiBeeRO::__construct
+     */
     public function testConstructor()
     {
         $classname = get_class($this->object);
@@ -60,14 +73,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 'debug' => true,
                 'prefix' => 'c',
                 'evidence' => $evidence]);
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRO::logBanner
-     */
-    public function testLogBanner()
-    {
-        $this->object->logBanner(addslashes(get_class($this)));
     }
 
     /**
@@ -532,9 +537,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                     $this->assertFalse($this->object->recordExists(['id' => 1]),
                         'Record ID 1 exists in empty evidence ?');
                 } else {
-                    if (isset($flexidata['success']) && ($flexidata['success'] == 'false')) {
-                        $this->markTestSkipped($flexidata['message']);
-                    } else {
+                    if (!is_null($flexidata)) {
                         $this->object->setData(['id' => (int) $flexidata[0]['id']]);
                         $this->assertTrue($this->object->recordExists(),
                             'First record exists test failed');
@@ -553,8 +556,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testGetColumnsFromFlexibee()
     {
-        $columns = $this->object->getColumnsFromFlexibee(['id'], ['limit' => 1],
-            'id');
+        $structure = $this->object->getColumnsInfo();
+
+        $columns = $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
+            ['limit' => 1], 'id');
 
         switch ($this->object->getEvidence()) {
             case '':
@@ -896,26 +901,6 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRO::performAction
-     * @expectedException \Exception
-     */
-    public function testPerformAction()
-    {
-        $actions = $this->object->getActionsInfo();
-
-        if (count($actions)) {
-            if (array_key_exists('new', $actions)) {
-                $this->object->performAction('new', 'ext');
-            }
-
-            if (array_key_exists('storno', $actions)) {
-                $this->assertTrue($this->object->performAction('storno'));
-            }
-        }
-        $this->object->performAction('nonexitst');
-    }
-
-    /**
      * @covers FlexiPeeHP\FlexiBeeRO::saveResponseToFile
      */
     public function testSaveResponseToFile()
@@ -959,6 +944,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
+                $this->object->getVazby();
             case 'hooks':
             case 'status':
             case 'changes':
@@ -970,14 +956,12 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 if (!empty($first)) {
                     $this->object->setMyKey($first);
                     $vazby = $this->object->getVazby();
-                    if (is_null($vazby)) {
-                        $this->markTestSkipped('No bonds to check');
-                    } else {
+                    if (!is_null($vazby)) {
                         $this->assertTrue(is_array($vazby));
                     }
+                    $this->object->setMyKey(null);
+                    $this->object->getVazby(); //Get Exception
                 }
-                $this->object->setMyKey(null);
-                $this->object->getVazby(); //Get Exception
                 break;
         }
     }

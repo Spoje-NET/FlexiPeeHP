@@ -27,6 +27,38 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     protected $object;
 
     /**
+     * Gives You data able to insert into current evidence
+     *
+     * @param string $code custom record code
+     *
+     * @return array
+     */
+    public function getDataForInsert($code = 'UnitTest')
+    {
+        $dataForInsert = [];
+        $structure = $this->object->getColumnsInfo();
+        if (array_key_exists('typDokl', $structure)) {
+            if ($structure['typDokl']['type'] == 'relation') {
+                $relatedEvidence          = basename($structure['typDokl']['url']);
+                $loader                   = new \FlexiPeeHP\FlexiBeeRO(null,
+                    ['evidence' => $relatedEvidence]);
+                $typDoklRaw               = $loader->getColumnsFromFlexibee([
+                    'kod'], ['limit' => 1]);
+                $dataForInsert['typDokl'] = \FlexiPeeHP\FlexiBeeRO::code($typDoklRaw[0]['kod']);
+            }
+
+            if (array_key_exists('poznam', $structure)) {
+                $dataForInsert['poznam'] = $this->poznam;
+            }
+
+            if (array_key_exists('kod', $structure)) {
+                $dataForInsert['kod'] = \FlexiPeeHP\FlexiBeeRO::uncode($this->object->getKod($code));
+            }
+        }
+        return $dataForInsert;
+    }
+
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      * @covers FlexiPeeHP\FlexiBeeRW::__construct
@@ -60,24 +92,32 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public function testInsertToFlexiBee()
     {
         if (empty($this->insertableData)) {
-            $structure = $this->object->getColumnsInfo();
-            if (array_key_exists('typDokl', $structure)) {
-                if ($structure['typDokl']['type'] == 'relation') {
-                    $relatedEvidence                 = basename($structure['typDokl']['url']);
-                    $loader                          = new \FlexiPeeHP\FlexiBeeRO(null,
-                        ['evidence' => $relatedEvidence]);
-                    $code                            = $loader->getColumnsFromFlexibee([
-                        'kod'], ['limit' => 1]);
-                    $this->insertableData['typDokl'] = \FlexiPeeHP\FlexiBeeRO::code($code[0]['kod']);
-                }
-
-                if (array_key_exists('poznam', $structure)) {
-                    $this->insertableData['poznam'] = $this->poznam;
-                }
-            }
+            $this->insertableData = $this->getDataForInsert();
         }
 
         $this->object->insertToFlexiBee($this->insertableData);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::performAction
+     * @expectedException \Exception
+     */
+    public function testPerformAction()
+    {
+        $actions = $this->object->getActionsInfo();
+
+        if (count($actions)) {
+            if (array_key_exists('new', $actions)) {
+                $this->object->performAction('new', 'ext');
+            }
+
+            if (array_key_exists('storno', $actions)) {
+                $this->object->insertToFlexiBee($this->getDataForInsert('StornoTest '.time()));
+
+                $this->assertTrue($this->object->performAction('storno', 'int'));
+            }
+        }
+        $this->object->performAction('nonexitst');
     }
 
     /**

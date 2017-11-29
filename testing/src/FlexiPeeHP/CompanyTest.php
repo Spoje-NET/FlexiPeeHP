@@ -39,6 +39,43 @@ class CompanyTest extends FlexiBeeROTest
     }
 
     /**
+     * @covers Ease\Brick::getMyKey
+     *
+     * @todo   Implement testGetMyKey().
+     */
+    public function testGetMyKey()
+    {
+        $this->assertEquals('X', $this->object->getmyKey(['dbNazev' => 'X']));
+    }
+
+    /**
+     * @covers FlexiPeeHP\Company::processInit
+     */
+    public function testProcessInit()
+    {
+        $this->object->processInit(['dbNazev' => constant('FLEXIBEE_COMPANY')]);
+        $this->assertEquals(constant('FLEXIBEE_COMPANY'), $this->object->company);
+        $this->assertEquals(200, $this->object->lastResponseCode);
+    }
+
+    /**
+     * @covers FlexiPeeHP\Company::getRecordID
+     */
+    public function testGetRecordID()
+    {
+        $this->object->setData(['dbNazev' => 'TEST']);
+        $this->assertEquals('TEST', $this->object->getRecordID());
+    }
+
+    /**
+     * @covers FlexiPeeHP\Company::objectToID
+     */
+    public function testObjectToID()
+    {
+        $this->assertEquals('TEST', $this->object->objectToID('TEST'));
+    }
+
+    /**
      * @covers FlexiPeeHP\Company::performRequest
      */
     public function testPerformRequest()
@@ -72,5 +109,24 @@ class CompanyTest extends FlexiBeeROTest
     public function testGetResponseEvidence()
     {
         $this->assertEquals('company', $this->object->getResponseEvidence());
+    }
+
+    /**
+     * @covers FlexiPeeHP\Company::__toString
+     */
+    public function testtoString()
+    {
+        $company = 'test';
+        $this->object->setDataValue('dbNazev', $company);
+        $this->assertEquals($company, (string) $this->object);
+    }
+
+    /**
+     * @covers FlexiPeeHP\Company::draw
+     */
+    public function testDraw($whatWant = NULL)
+    {
+        $this->object->setDataValue('dbNazev', 'test');
+        $this->assertEquals('test', $this->object->draw());
     }
 }

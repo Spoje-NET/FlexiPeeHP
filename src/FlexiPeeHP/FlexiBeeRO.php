@@ -1480,6 +1480,7 @@ class FlexiBeeRO extends \Ease\Brick
      * Vrací identifikátor objektu code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     *
      * @return string|int indentifikátor záznamu reprezentovaného objektem
      */
     public function getRecordID()
@@ -1716,51 +1717,6 @@ class FlexiBeeRO extends \Ease\Brick
             $evidenceName = EvidenceList::$name[$evidence];
         }
         return $evidenceName;
-    }
-
-    /**
-     * Perform given action (if availble) on current evidence/record
-     * @url https://demo.flexibee.eu/devdoc/actions
-     *
-     * @param string $action one of evidence actions
-     * @param string $method ext|int External method call operation in URL.
-     *                               Internal add the @action element to request body
-     */
-    public function performAction($action, $method = 'ext')
-    {
-        $actionsAvailble = $this->getActionsInfo();
-
-        if (is_array($actionsAvailble) && array_key_exists($action,
-                $actionsAvailble)) {
-            switch ($actionsAvailble[$action]['actionMakesSense']) {
-                case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
-                case 'ONLY_WITH_INSTANCE': //Add instance
-                    $urlSuffix = '/'.$this->__toString().'/'.$action.'.'.$this->format;
-                    break;
-
-                default:
-                    $urlSuffix = '/'.$action;
-                    break;
-            }
-
-            switch ($method) {
-                case 'int':
-                    $this->setAction($action);
-                    $this->setPostFields($this->jsonizeData($this->getData()));
-                    $result = $this->performRequest(null, 'POST');
-                    break;
-
-                default:
-                    $result = $this->performRequest($this->evidenceUrlWithSuffix($urlSuffix),
-                        'GET');
-                    break;
-            }
-        } else {
-            throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
-                    $action, $this->getEvidence()));
-        }
-
-        return $result;
     }
 
     /**

@@ -58,10 +58,10 @@ class FlexiBeeRW extends FlexiBeeRO
         switch ($info['importStatus']) {
             case 'DISALLOWED':
                 throw new \Exception(sprintf('Inserting data to r/o evidence %s',
-                    $this->getEvidence()));
+                        $this->getEvidence()));
             case 'NOT_DIRECT':
                 throw new \Exception(sprintf('Inserting data to slave only evidence %s',
-                    $this->getEvidence()));
+                        $this->getEvidence()));
             case 'NOT_DOCUMENTED':
                 if ($this->debug === true) {
                     $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
@@ -118,7 +118,7 @@ class FlexiBeeRW extends FlexiBeeRO
     {
         if ($this->debug === true) {
             $fbRelations = [];
-            $fbColumns = $this->getColumnsInfo();
+            $fbColumns   = $this->getColumnsInfo();
             foreach ($this->getRelationsInfo() as $relation) {
                 if (is_array($relation) && isset($relation['url'])) {
                     $fbRelations[$relation['url']] = $relation['url'];
@@ -273,7 +273,7 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function vazbaAdd($vazba)
     {
-       $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
+        $this->addArrayToBranch(['uzivatelska-vazba' => $vazba],
             'uzivatelske-vazby');
     }
 
@@ -324,5 +324,53 @@ class FlexiBeeRW extends FlexiBeeRO
         $this->loadFromFlexiBee($id);
         $loadResult   = $this->lastResponseCode;
         return (($insertResult == 201) && ($loadResult == 200));
+    }
+
+    /**
+     * Perform given action (if availble) on current evidence/record
+     * @url https://demo.flexibee.eu/devdoc/actions
+     *
+     * @param string $action one of evidence actions
+     * @param string $method ext|int External method call operation in URL.
+     *                               Internal add the @action element to request body
+     *
+     * @return boolean operation success
+     */
+    public function performAction($action, $method = 'ext')
+    {
+        $actionsAvailble = $this->getActionsInfo();
+
+        if (is_array($actionsAvailble) && array_key_exists($action,
+                $actionsAvailble)) {
+            switch ($actionsAvailble[$action]['actionMakesSense']) {
+                case 'ONLY_WITH_INSTANCE_AND_NOT_IN_EDIT':
+                case 'ONLY_WITH_INSTANCE': //Add instance
+                    $urlSuffix = '/'.$this->__toString().'/'.$action;
+                    break;
+
+                default:
+                    $urlSuffix = '/'.$action;
+                    break;
+            }
+
+            switch ($method) {
+                case 'int':
+                    $this->setAction($action);
+                    $this->setPostFields($this->jsonizeData(['id' => $this]));
+                    $this->performRequest(null, 'POST');
+                    $result = $this->lastResponseCode == 201;
+                    break;
+
+                default:
+                    $result = $this->performRequest($this->evidenceUrlWithSuffix($urlSuffix),
+                        'GET');
+                    break;
+            }
+        } else {
+            throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
+                    $action, $this->getEvidence()));
+        }
+
+        return $result;
     }
 }

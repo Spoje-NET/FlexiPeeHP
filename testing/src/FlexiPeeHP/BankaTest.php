@@ -33,6 +33,25 @@ class BankaTest extends FlexiBeeRWTest
     }
 
     /**
+     * Gives You data able to insert into current evidence
+     *
+     * @param string $code custom record code
+     *
+     * @return array
+     */
+    public function getDataForInsert($code = 'UnitTest')
+    {
+        $dataForInsert               = parent::getDataForInsert($code);
+        $loader                      = new \FlexiPeeHP\FlexiBeeRO(null,
+            ['evidence' => 'bankovni-ucet']);
+        $bankCodeRaw                 = $loader->getColumnsFromFlexibee([
+            'kod'], ['limit' => 1]);
+        $dataForInsert['banka']      = \FlexiPeeHP\FlexiBeeRO::code($bankCodeRaw[0]['kod']);
+        $dataForInsert['typPohybuK'] = 'typPohybu.prijem';
+        return $dataForInsert;
+    }
+
+    /**
      * @covers FlexiPeeHP\Banka::stahnoutVypisyOnline
      */
     public function testStahnoutVypisyOnline()

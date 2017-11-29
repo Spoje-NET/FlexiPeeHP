@@ -37,6 +37,12 @@ class Status extends FlexiBeeRO
      */
     public $prefix = '';
 
+    /**
+     * FlexiBee status
+     *
+     * @param mixed $init       mostly ignored
+     * @param array $options    not used at all
+     */
     public function __construct($init = null, $options = [])
     {
         parent::__construct($init, $options);
@@ -57,5 +63,15 @@ class Status extends FlexiBeeRO
             $response = $responseRaw;
         }
         return $response;
+    }
+
+    /**
+     * Status has no relations
+     *
+     * @return null
+     */
+    public function getVazby($id = null)
+    {
+        throw new \Exception(_('Status has no relations'));
     }
 }
