@@ -26,9 +26,12 @@ class FakturaVydana extends FlexiBeeRW
      * Add Data to evidence Branch
      * Přidá položky do dokladu a nastaví jim správně flag "ucetni"
      *
+     * @see Relations
+     *
      * @param array  $data pole dat
      * @param string $relationPath path evidence (relation) pro vkládaná data
-     * @see Relations
+     *
+     * @return boolean Description
      */
     public function addArrayToBranch($data, $relationPath)
     {

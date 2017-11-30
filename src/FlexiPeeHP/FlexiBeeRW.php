@@ -235,9 +235,13 @@ class FlexiBeeRW extends FlexiBeeRO
      * Přidá data do větve
      *
      * @thanksto Karel Běl
-     * @param array  $data pole dat
-     * @param string $relationPath path evidence (relation) pro vkládaná data 
+     *
      * @see Relations
+     *
+     * @param array  $data pole dat
+     * @param string $relationPath path evidence (relation) pro vkládaná data
+     *
+     * @return boolean Operation success
      */
     public function addArrayToBranch($data, $relationPath)
     {
@@ -252,7 +256,7 @@ class FlexiBeeRW extends FlexiBeeRO
         $currentBranchData = $this->getDataValue($relationPath);
         $branchData        = $currentBranchData;
         $branchData[]      = $data;
-        $this->setDataValue($relationPath, $branchData);
+        return $this->setDataValue($relationPath, $branchData);
     }
 
     /**

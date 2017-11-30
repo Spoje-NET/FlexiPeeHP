@@ -757,18 +757,21 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function rawResponseToArray($responseRaw, $format)
     {
-        switch ($format) {
-            case 'json':
-                $responseDecoded = $this->rawJsonToArray($responseRaw);
-                break;
-            case 'xml':
-                $responseDecoded = $this->rawXmlToArray($this->lastCurlResponse);
-                break;
-            case 'txt':
-            default:
-                $responseDecoded = $this->lastCurlResponse;
-                break;
+        if (!empty(trim($responseRaw))) {
+            switch ($format) {
+                case 'json':
+                    $responseDecoded = $this->rawJsonToArray($responseRaw);
+                    break;
+                case 'xml':
+                    $responseDecoded = $this->rawXmlToArray($this->lastCurlResponse);
+                    break;
+                case 'txt':
+                default:
+                    $responseDecoded = $this->lastCurlResponse;
+                    break;
+            }
         }
+
         return $responseDecoded;
     }
 
