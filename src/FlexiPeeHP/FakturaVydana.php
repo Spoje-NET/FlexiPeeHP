@@ -56,8 +56,11 @@ class FakturaVydana extends FlexiBeeRW
      * Provede spárování platby s dokladem
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Párování plateb
+     * 
      * @param $doklad Banka|PokladniPohyb|InterniDoklad S jakým dokladem spárovat ?
      * @param $zbytek string ne|zauctovat|ignorovat|castecnaUhrada|castecnaUhradaNeboZauctovat|castecnaUhradaNeboIgnorovat
+     * 
+     * @return Banka|PokladniPohyb|InterniDoklad Matched document
      */
     public function sparujPlatbu($doklad, $zbytek = 'ignorovat')
     {

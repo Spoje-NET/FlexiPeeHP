@@ -15,6 +15,26 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     protected $object;
 
     /**
+     * Gives You data able to insert into current evidence
+     *
+     * @param string $code custom record code
+     *
+     * @return array
+     */
+    public function getDataForInsert($code = 'UnitTest')
+    {
+        $dataForInsert               = parent::getDataForInsert($code);
+        $dataForInsert['typDokl']    = 'code:FAKTURA';
+        $adresar                     = new \FlexiPeeHP\Adresar();
+        $candidates                  = $adresar->getColumnsFromFlexibee('id');
+        $candidat                    = array_rand($candidates);
+        $dataForInsert['firma']      = $candidat['id'];
+        $dataForInsert['sumZklZakl'] = \Ease\Sand::randomNumber(1000, 9999);
+        $dataForInsert['bezPolozek'] = true;
+        return $dataForInsert;
+    }
+
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */

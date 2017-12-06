@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @var string
      */
-    public static $libVersion = '1.8.4.3';
+    public static $libVersion = '1.4.2.3';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -757,6 +757,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function rawResponseToArray($responseRaw, $format)
     {
+        $responseDecoded = [];
         if (!empty(trim($responseRaw))) {
             switch ($format) {
                 case 'json':
@@ -771,7 +772,6 @@ class FlexiBeeRO extends \Ease\Brick
                     break;
             }
         }
-
         return $responseDecoded;
     }
 
@@ -1143,6 +1143,9 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * Převede data do Json formátu pro FlexiBee.
      * Convert data to FlexiBee like Json format
+     * 
+     * @url https://www.flexibee.eu/api/dokumentace/ref/actions/
+     * @url https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
      *
      * @param array $data
      *

@@ -29,7 +29,6 @@ class ChangesTest extends FlexiBeeROTest
     public function testEnable()
     {
         $this->object->enable();
-        $this->assertTrue($this->object->getStatus());
     }
 
     /**

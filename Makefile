@@ -1,17 +1,18 @@
 all: fresh build install
 
 fresh:
-	#git pull
-	composer update
+	git pull
 
 install: build
 	echo install
 	
 static: 
+	rm -rf static/*
+	echo "STATIC  #######################
 	cd tools/ ; ./update_all.sh ; cd ..
 
 build: static doc
-	echo build
+	cd tools/ ; ./update_all.sh ; cd ..
 
 clean:
 	rm -rf debian/flexipeehp
@@ -19,13 +20,13 @@ clean:
 	rm -rf debian/*.log
 	rm -rf debian/*.substvars
 	rm -rf docs/*
-	rm -rf static/*
 	rm -f  debianTest/composer.lock
 
 doc:
 	debian/apigendoc.sh
 
 test:
+	composer update
 	phpunit --bootstrap testing/bootstrap.php
 
 deb:

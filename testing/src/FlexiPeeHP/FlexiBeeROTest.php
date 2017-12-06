@@ -443,7 +443,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->jsonizeData(['key' => 'value']));
-
+        
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
@@ -459,6 +459,10 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                 $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
                     $this->object->jsonizeData(['key' => 'value']));
                 break;
+
+            $this->object->action = 'storno';
+            $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
+            $this->object->jsonizeData([]);
         }
     }
 
