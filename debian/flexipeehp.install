@@ -1,4 +1,5 @@
 src/FlexiPeeHP/*.php             /usr/share/php/FlexiPeeHP
 debian/composer.json		 /usr/share/php/FlexiPeeHP
 debianTest/*                     /usr/share/doc/FlexiPeeHP
-static/*                         /usr/lib/flexipeehp/static
+static/*                         /usr/share/php/FlexiPeeHP/static
+
