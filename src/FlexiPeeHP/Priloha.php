@@ -76,7 +76,7 @@ class Priloha extends FlexiBeeRW
     {
         $urlParts  = parse_url($object->apiURL);
         $pathParts = pathinfo($urlParts['path']);
-        return $urlParts['scheme'].'://'.$urlParts['host'].$pathParts['dirname'].'/'.$pathParts['filename'].'/content';
+        return $urlParts['scheme'].'://'.$urlParts['host'] .( array_key_exists('port',$urlParts) ? ':'.$urlParts['port'] : '') .$pathParts['dirname'].'/'.$pathParts['filename'].'/content';
     }
 
     /**
@@ -89,6 +89,27 @@ class Priloha extends FlexiBeeRW
     {
         $attachments = self::getAttachmentsList($object);
         return count($attachments) ? current($attachments) : null;
+    }
+
+    /**
+     * Gives you attachment body as return value
+     * 
+     * @param int $attachmentID
+     * 
+     * @return string
+     */
+    public static function getAttachment($attachmentID)
+    {
+        $result     = null;
+        $downloader = new Priloha($attachmentID);
+        if ($downloader->lastResponseCode == 200) {
+
+            $downloader->doCurlRequest(self::getDownloadURL($downloader), 'GET');
+            if ($downloader->lastResponseCode == 200) {
+                $result = $downloader->lastCurlResponse;
+            }
+        }
+        return $result;
     }
 
     /**
@@ -203,5 +224,4 @@ class Priloha extends FlexiBeeRW
         }
         return $attachments;
     }
-
 }

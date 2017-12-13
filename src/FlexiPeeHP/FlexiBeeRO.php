@@ -690,6 +690,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (array_key_exists('scheme', $urlParts)) {
             $urlFinal .= $urlParts['scheme'].'://'.$urlParts['host'];
         }
+        if (array_key_exists('port', $urlParts)) {
+            $urlFinal .= ':'.$urlParts['port'];
+        }
         if (array_key_exists('path', $urlParts)) {
             $urlFinal .= $urlParts['path'];
         }
@@ -700,10 +703,14 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $urlParams = $params;
         }
-        if (!empty($urlParams) && is_array($urlParams)) {
-            $urlFinal .= '?'.http_build_query($urlParams);
-        } else {
-            $urlFinal .= '?'.$urlParams;
+
+        if (!empty($urlParams)) {
+            $urlFinal .= '?';
+            if (is_array($urlParams)) {
+                $urlFinal .= http_build_query($urlParams);
+            } else {
+                $urlFinal .= $urlParams;
+            }
         }
         return $urlFinal;
     }
@@ -1482,26 +1489,47 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * Obtain record/object identificator code: or id:
+     * Obtain record/object numeric identificator id:
+     * Vrací číselný identifikátor objektu id:
+     *
+     * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     *
+     * @return null|int indentifikátor záznamu reprezentovaného objektem
+     */
+    public function getRecordID()
+    {
+        $id = $this->getDataValue('id');
+        return is_null($id) ? null : intval($id);
+    }
+
+    /**
+     * Obtain record/object identificator code:
+     * Vrací identifikátor objektu code:
+     *
+     * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     *
+     * @return string record code identifier
+     */
+    public function getRecordCode()
+    {
+        return self::code($this->getDataValue('kod'));
+    }
+
+    /**
+     * Obtain record/object identificator cdode: or id:
      * Vrací identifikátor objektu code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
      *
-     * @return string|int indentifikátor záznamu reprezentovaného objektem
+     * @return string|int|null record code identifier
      */
-    public function getRecordID()
+    public function getRecordIdent()
     {
-        $myCode = $this->getDataValue('kod');
-        if ($myCode) {
-            $id = self::code($myCode);
-        } else {
-            $id = $this->getDataValue('id');
-            if (($this->debug === true) && is_null($id)) {
-                $this->addToLog('Object Data does not contain code: or id: cannot match with statement!',
-                    'warning');
-            }
+        $ident = $this->getRecordCode();
+        if (empty($ident)) {
+            $ident = $this->getRecordID();
         }
-        return is_numeric($id) ? intval($id) : strval($id);
+        return $ident;
     }
 
     /**
@@ -1513,7 +1541,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function __toString()
     {
-        return strval($this->getRecordID());
+        return strval($this->getRecordIdent());
     }
 
     /**
@@ -1812,18 +1840,20 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
      *
-     * @param string $to
-     * @param string $subject
-     * @param string $body Email Text
+     * @param string $to         Email ecipient
+     * @param string $subject    Email Subject
+     * @param string $body       Email Text
      *
      * @return int http response code
      */
     public function sendByMail($to, $subject, $body, $cc = null)
     {
         $this->setPostFields($body);
-        $result = $this->doCurlRequest(urlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
+
+        $this->performRequest(rawurlencode($this->getRecordID()).'/odeslani-dokladu?to='.$to.'&subject='.urlencode($subject).'&cc='.$cc
             , 'PUT', 'xml');
-        return $result == 200;
+
+        return $this->lastResponseCode == 200;
     }
 
     /**
@@ -1853,13 +1883,18 @@ class FlexiBeeRO extends \Ease\Brick
     /**
      * FlexiBee dateTime to PHP DateTime conversion
      *
-     * @param string $flexidatetime 2017-09-26T10:00:53.755+02:00
+     * @param string $flexidatetime 2017-09-26T10:00:53.755+02:00 or older 2017-05-19T00:00:00+02:00
      *
      * @return \DateTime | false
      */
     public static function flexiDateTimeToDateTime($flexidatetime)
     {
-        return \DateTime::createFromFormat('Y-m-j\TH:i:s.u+P', $flexidatetime);
+        if(strchr($flexidatetime, '.')){ //NewFormat
+            $format = 'Y-m-d\TH:i:s.u+P';
+        } else { // Old format
+            $format = 'Y-m-d\TH:i:s+P';
+    }
+        return \DateTime::createFromFormat($format, $flexidatetime);
     }
 
     /**

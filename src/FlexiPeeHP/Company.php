@@ -50,6 +50,20 @@ class Company extends FlexiBeeRW
     public $myKeyColumn = 'dbNazev';
 
     /**
+     * Class for read only interaction with FlexiBee.
+     *
+     * @param string|array $init    company dbNazev or initial data
+     * @param array        $options Connection settings override
+     */
+    public function __construct($init = null, $options = [])
+    {
+        if(is_string($init)){
+            $init = ['dbNazev'=>$init];
+        }
+        parent::__construct($init,$options);
+    }
+    
+    /**
      * Zinicializuje objekt dle daných dat. Možné hodnoty:
      *
      *  * ['dbNazev'=>'company']           - load company form FlexiBee
@@ -63,6 +77,7 @@ class Company extends FlexiBeeRW
      */
     public function processInit($init)
     {
+        
         parent::processInit($init);
         if (is_array($init) && array_key_exists('dbNazev', $init)) {
             $companyInfo = $this->getFlexiData('/c/'.$init['dbNazev']);
