@@ -1512,12 +1512,12 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getRecordCode()
     {
-        return self::code($this->getDataValue('kod'));
+        return empty($this->getDataValue('kod')) ? null : self::code($this->getDataValue('kod'));
     }
 
     /**
-     * Obtain record/object identificator cdode: or id:
-     * Vrací identifikátor objektu code: nebo id:
+     * Obtain record/object identificator extId: code: or id:
+     * Vrací identifikátor objektu extId: code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
      *
@@ -1525,7 +1525,10 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function getRecordIdent()
     {
-        $ident = $this->getRecordCode();
+        $ident = $this->getExternalID();
+        if (empty($ident)) {
+            $ident = $this->getRecordCode();
+        }
         if (empty($ident)) {
             $ident = $this->getRecordID();
         }
@@ -1815,7 +1818,16 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setMyKey($myKeyValue)
     {
-        $res = parent::setMyKey($myKeyValue);
+        if (substr($myKeyValue, 0, 4) == 'ext:') {
+            $extIds = $this->getDataValue('external-ids');
+            if (count($extIds)) {
+                $extIds = array_combine($extIds, $extIds);
+            }
+            $extIds[$myKeyValue] = $myKeyValue;
+            $res                 = $this->setDataValue('external-ids', $extIds);
+        } else {
+            $res = parent::setMyKey($myKeyValue);
+        }
         $this->updateApiURL();
         return $res;
     }
@@ -1889,11 +1901,11 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function flexiDateTimeToDateTime($flexidatetime)
     {
-        if(strchr($flexidatetime, '.')){ //NewFormat
+        if (strchr($flexidatetime, '.')) { //NewFormat
             $format = 'Y-m-d\TH:i:s.u+P';
         } else { // Old format
             $format = 'Y-m-d\TH:i:s+P';
-    }
+        }
         return \DateTime::createFromFormat($format, $flexidatetime);
     }
 

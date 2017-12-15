@@ -735,14 +735,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testtoString()
     {
-
-        $identifer = 'ext:test:123';
-        $this->object->setDataValue('id', $identifer);
-        $this->assertEquals($identifer, (string) $this->object);
-
+        $id = '123';
+        $this->object->setMyKey($id);
+        $this->assertEquals($id, (string) $this->object);
+        
         $code = 'test';
         $this->object->setDataValue('kod', $code);
         $this->assertEquals('code:'.$code, (string) $this->object);
+
+        $identifer = 'ext:test:123';
+        $this->object->setMyKey($identifer);
+        $this->assertEquals($identifer, (string) $this->object);
 
         $this->object->dataReset();
         $this->assertEquals('', $this->object->__toString());
