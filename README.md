@@ -298,6 +298,16 @@ Generujeme také balíček **flexipeehp-doc**, obsahující vývojářskou dokum
 generovanou pomcí programu ApiGen. Dokumnentace je online k nahlédnutí na adrese
 http://flexibee-dev.spoje.net/flexipeehp/
 
+Testování:
+
+     cd /usr/share/doc/FlexiPeeHP/
+     composer install
+     php -f flexibeeping.php
+
+
+![Debian Test](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/Examples/flexipeehp-debian-test.png "Test")
+    
+
 Sestavení
 ---------
 
