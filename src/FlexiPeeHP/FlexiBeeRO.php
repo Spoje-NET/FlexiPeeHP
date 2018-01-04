@@ -341,7 +341,7 @@ class FlexiBeeRO extends \Ease\Brick
      * Formating string for \DateTime::format() for date columns
      * @var string 
      */
-    static public $DateFormat = 'Y-m-dO';
+    static public $DateFormat = 'Y-m-d';
 
     /**
      * Class for read only interaction with FlexiBee.
@@ -1944,7 +1944,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function flexiDateToDateTime($flexidate)
     {
-        return \DateTime::createFromFormat(self::$DateFormat, $flexidate)->setTime(0,
+        return \DateTime::createFromFormat(self::$DateFormat.'O', $flexidate)->setTime(0,
                 0);
     }
 
