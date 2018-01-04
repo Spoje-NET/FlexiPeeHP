@@ -37,7 +37,7 @@ class EvidenceListTest extends FlexiBeeROTest
      */
     public function testObjectToID()
     {
-        $this->object->setDataValue($this->object->myKeyColumn, 'TEST');
+        $this->object->setDataValue($this->object->keyColumn, 'TEST');
         $this->assertEquals('TEST', $this->object->objectToID($this->object));
 
         $this->assertEquals('TEST2', $this->object->objectToID('TEST2'));

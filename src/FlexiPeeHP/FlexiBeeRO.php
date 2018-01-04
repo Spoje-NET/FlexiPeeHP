@@ -1365,8 +1365,8 @@ class FlexiBeeRO extends \Ease\Brick
                 $kod = preg_replace('/[^a-zA-Z0-9]/', '',
                     \Ease\Sand::rip($data[$this->nameColumn]));
             } else {
-                if (isset($data[$this->myKeyColumn])) {
-                    $kod = \Ease\Sand::rip($data[$this->myKeyColumn]);
+                if (isset($data[$this->keyColumn])) {
+                    $kod = \Ease\Sand::rip($data[$this->keyColumn]);
                 }
             }
         }

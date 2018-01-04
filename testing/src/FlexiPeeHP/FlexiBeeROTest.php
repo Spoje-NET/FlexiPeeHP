@@ -620,7 +620,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     {
         $testString = [];
         $this->assertEquals('code:CODE',
-            $this->object->getKod([$this->object->myKeyColumn => 'code']));
+            $this->object->getKod([$this->object->keyColumn => 'code']));
 
         $testString[$this->object->nameColumn] = 'Fish clamp -  Úchytka pro instalaci samonosných kabelů '
             .'(3.5 mm)';
