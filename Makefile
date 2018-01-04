@@ -29,6 +29,9 @@ test:
 	composer update
 	phpunit --bootstrap testing/bootstrap.php
 
+changelog:
+	CHANGES=`git log -n 1 | tail -n+5` ; dch -b -v `cat debian/version`-`cat debian/revision` --package flexipeehp "$(CHANGES)"
+
 deb:
 	debuild -i -us -uc -b
 

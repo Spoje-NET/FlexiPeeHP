@@ -332,6 +332,18 @@ class FlexiBeeRO extends \Ease\Brick
     public $reportRecipient = 'kbel@flexibee.eu';
 
     /**
+     * Formating string for \DateTime::format() for datetime columns
+     * @var string 
+     */
+    static public $DateTimeFormat = 'Y-m-d\TH:i:s.u+P';
+
+    /**
+     * Formating string for \DateTime::format() for date columns
+     * @var string 
+     */
+    static public $DateFormat = 'Y-m-dO';
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -432,6 +444,34 @@ class FlexiBeeRO extends \Ease\Brick
         } else {
             $this->loadFromFlexiBee($init);
         }
+    }
+
+    /**
+     * Set Data Field value
+     *
+     * @param string $columnName field name
+     * @param mixed  $value      field data value
+     *
+     * @return bool Success
+     */
+    public function setDataValue($columnName, $value)
+    {
+        if (is_object($value)) {
+            switch (get_class($value)) {
+                case 'DateTime':
+                    $columnInfo = $this->getColumnInfo($columnName);
+                    switch ($columnInfo['type']) {
+                        case 'date':
+                            $value = $value->format(self::$DateFormat);
+                            break;
+                        case 'datetime':
+                            $value = $value->format(self::$DateTimeFormat);
+                            break;
+                    }
+                    break;
+            }
+        }
+        return parent::setDataValue($columnName, $value);
     }
 
     /**
@@ -1214,7 +1254,7 @@ class FlexiBeeRO extends \Ease\Brick
         }
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
-        $res         = $this->getColumnsFromFlexibee([$this->myKeyColumn],
+        $res         = $this->getColumnsFromFlexibee([$this->getKeyColumn()],
             [self::flexiUrl($data)]);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
@@ -1684,6 +1724,21 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
+     * Gives you properties for (current) evidence column
+     * 
+     * @param string $column    name of column
+     * @param string $evidence  evidence name if different
+     * 
+     * @return array column properties or null if column not exits
+     */
+    public function getColumnInfo($column, $evidence = null)
+    {
+        $columnsInfo = $this->getColumnsInfo(empty($evidence) ? $this->getEvidence()
+                : $evidence);
+        return array_key_exists($column, $columnsInfo) ? $columnsInfo[$column] : null;
+    }
+
+    /**
      * Obtain actions for current (or given) evidence
      *
      * @param string $evidence
@@ -1889,7 +1944,8 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public static function flexiDateToDateTime($flexidate)
     {
-        return \DateTime::createFromFormat('Y-m-dO', $flexidate)->setTime(0, 0);
+        return \DateTime::createFromFormat(self::$DateFormat, $flexidate)->setTime(0,
+                0);
     }
 
     /**
@@ -1902,7 +1958,7 @@ class FlexiBeeRO extends \Ease\Brick
     public static function flexiDateTimeToDateTime($flexidatetime)
     {
         if (strchr($flexidatetime, '.')) { //NewFormat
-            $format = 'Y-m-d\TH:i:s.u+P';
+            $format = self::$DateTimeFormat;
         } else { // Old format
             $format = 'Y-m-d\TH:i:s+P';
         }
