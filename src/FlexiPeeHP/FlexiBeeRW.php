@@ -340,7 +340,7 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @return boolean operation success
      */
-    public function performAction($action, $method = 'ext')
+    public function performAction($action, $method = 'int')
     {
         $actionsAvailble = $this->getActionsInfo();
 
