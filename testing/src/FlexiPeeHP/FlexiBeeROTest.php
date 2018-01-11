@@ -442,7 +442,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     public function testJsonizeData()
     {
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
-            $this->object->jsonizeData(['key' => 'value']));
+            $this->object->getJsonizedData(['key' => 'value']));
         
         switch ($this->object->getEvidence()) {
             case '':
@@ -452,17 +452,17 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
             case 'changes':
             case 'nastaveni':
             case 'evidence-list':
-                $this->object->jsonizeData(['key' => 'value']);
+                $this->object->getJsonizedData(['key' => 'value']);
                 break;
             default:
                 $this->object->setAction('copy');
                 $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
-                    $this->object->jsonizeData(['key' => 'value']));
+                    $this->object->getJsonizedData(['key' => 'value']));
                 break;
 
             $this->object->action = 'storno';
             $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
-            $this->object->jsonizeData([]);
+            $this->object->getJsonizedData([]);
         }
     }
 

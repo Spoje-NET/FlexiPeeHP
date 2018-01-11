@@ -344,6 +344,12 @@ class FlexiBeeRO extends \Ease\Brick
     static public $DateFormat = 'Y-m-d';
 
     /**
+     * Chained Objects
+     * @var array
+     */
+    public $chained = null;
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -1194,29 +1200,68 @@ class FlexiBeeRO extends \Ease\Brick
      * @url https://www.flexibee.eu/api/dokumentace/ref/actions/
      * @url https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
      *
-     * @param array $data
+     * @param array $data    object data 
+     * @param int   $options json_encode options like JSON_PRETTY_PRINT etc 
      *
      * @return string
      */
-    public function jsonizeData($data)
+    public function getJsonizedData($data = null, $options = 0)
     {
-        $dataToJsonize = [
-            $this->nameSpace => [
-                '@version' => $this->protoVersion,
-                $this->evidence => $this->objectToID($data),
-            ],
-        ];
+        if (is_null($data)) {
+            $data = $this->getData();
+        }
+
+        $dataToJsonize = array_merge(['@version' => $this->protoVersion],
+            $this->getDataForJSON($data));
+
+        return json_encode([$this->nameSpace => $dataToJsonize], $options);
+    }
+
+    /**
+     * Get Data Fragment specific for current object
+     * 
+     * @param array $data
+     * 
+     * @return array
+     */
+    public function getDataForJSON($data = null)
+    {
+        if (is_null($data)) {
+            $data = $this->getData();
+        }
+
+        $dataForJson = [$this->getEvidence() => $data];
 
         if (!is_null($this->action)) {
-            $dataToJsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
-            $this->action                                               = null;
+            $dataForJson[$this->evidence.'@action'] = $this->action;
+            $this->action                           = null;
         }
 
         if (!is_null($this->filter)) {
-            $dataToJsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
+            $dataForJson[$this->evidence.'@filter'] = $this->filter;
         }
 
-        return json_encode($dataToJsonize);
+        if (count($this->chained)) {
+            foreach ($this->chained as $chained) {
+                $chainedData = $chained->getDataForJSON();
+                $dataForJson = array_merge($dataForJson, $chainedData);
+            }
+        }
+
+        return $dataForJson;
+    }
+
+    /**
+     * Join another FlexiPeeHP Object
+     * 
+     * @param FlexiBeeRO $object
+     * 
+     * @return boolean success
+     */
+    public function join($object)
+    {
+        $this->chained[] = $object;
+        return true;
     }
 
     /**
