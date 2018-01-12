@@ -232,6 +232,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [InvoiceCopy.php](Examples/InvoiceCopy.php)                   | vytvoření daňového dokladu ze zálohy
 | [NajdiDanovyDokladKzalohovemu.php](Examples/NajdiDanovyDokladKzalohovemu.php) | dohledání dokladu
 | [NewInvoice.php](Examples/NewInvoice.php)                     | Nová faktura se splatností vypsaná jako json
+| [ObjectChaining.php](Examples/ObjectChaining.php)             | Řetězení objektů pro více operací v jenom pořadavku
 | [ReadAddressColumns.php](Examples/ReadAddressColumns.php)     | vrať konkrétní sloupečky
 | [sendInvoiceByMail.php](Examples/sendInvoiceByMail.php)       | odeslání faktury mailem
 | [SendReminders.php](Examples/SendReminders.php)               | odeslání upomínek
@@ -315,7 +316,7 @@ Debianí balíček vytvoříme spuštěním debian/deb-package.sh
 
 Obraz pro Docker:
 
-    docker build -t vitexsoftware/easephpframework
+    docker build -t vitexsoftware/flexipeehp
 
 
 FlexiBee knihovny pro další jazky:
