@@ -77,7 +77,7 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($data)) {
             $data = $this->getData();
         }
-        $this->postFields = $this->jsonizeData($data);
+        $this->postFields = $this->getJsonizedData($data);
         return $this->performRequest(null, 'PUT');
     }
 
@@ -301,17 +301,22 @@ class FlexiBeeRW extends FlexiBeeRO
      * Array of Labels is converted to coma separated list
      *
      * @param array $data
+     * @param int   $options json_encode options like JSON_PRETTY_PRINT etc 
      *
      * @return string
      */
-    public function jsonizeData($data)
+    public function getJsonizedData($data = null, $options = 0)
     {
+        if(is_null($data)){
+            $data = $this->getData();
+        }
+        
         if (array_key_exists('stitky', $data)) {
             if (is_array($data['stitky'])) {
                 $data['stitky'] = implode(',', $data['stitky']);
             }
         }
-        return parent::jsonizeData($data);
+        return parent::getJsonizedData($data, $options);
     }
 
     /**
@@ -360,7 +365,7 @@ class FlexiBeeRW extends FlexiBeeRO
             switch ($method) {
                 case 'int':
                     $this->setAction($action);
-                    $this->setPostFields($this->jsonizeData(['id' => $this]));
+                    $this->setPostFields($this->getJsonizedData(['id' => $this]));
                     $this->performRequest(null, 'POST');
                     $result = $this->lastResponseCode == 201;
                     break;

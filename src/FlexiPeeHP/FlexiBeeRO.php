@@ -344,6 +344,12 @@ class FlexiBeeRO extends \Ease\Brick
     static public $DateFormat = 'Y-m-d';
 
     /**
+     * Chained Objects
+     * @var array
+     */
+    public $chained = [];
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -1194,35 +1200,89 @@ class FlexiBeeRO extends \Ease\Brick
      * @url https://www.flexibee.eu/api/dokumentace/ref/actions/
      * @url https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
      *
-     * @param array $data
+     * @param array $data    object data 
+     * @param int   $options json_encode options like JSON_PRETTY_PRINT etc 
      *
      * @return string
      */
-    public function jsonizeData($data)
+    public function getJsonizedData($data = null, $options = 0)
     {
-        $dataToJsonize = [
-            $this->nameSpace => [
-                '@version' => $this->protoVersion,
-                $this->evidence => $this->objectToID($data),
-            ],
-        ];
+        if (is_null($data)) {
+            $data = $this->getData();
+        }
+
+        $dataToJsonize = array_merge(['@version' => $this->protoVersion],
+            $this->getDataForJSON($data));
+        $jsonRaw = json_encode([$this->nameSpace => $dataToJsonize], $options);
+        
+        return preg_replace('/#[0-9]*#/','',$jsonRaw);
+    }
+
+    /**
+     * Get Data Fragment specific for current object
+     * 
+     * @param array $data
+     * 
+     * @return array
+     */
+    public function getDataForJSON($data = null)
+    {
+        if (is_null($data)) {
+            $data = $this->getData();
+        }
+
+        $dataForJson = [$this->getEvidence() => $data];
 
         if (!is_null($this->action)) {
-            $dataToJsonize[$this->nameSpace][$this->evidence.'@action'] = $this->action;
-            $this->action                                               = null;
+            $dataForJson[$this->evidence.'@action'] = $this->action;
+            $this->action                           = null;
         }
 
         if (!is_null($this->filter)) {
-            $dataToJsonize[$this->nameSpace][$this->evidence.'@filter'] = $this->filter;
+            $dataForJson[$this->evidence.'@filter'] = $this->filter;
         }
 
-        return json_encode($dataToJsonize);
+
+            foreach ($this->chained as $chained) {
+                $chainedData = $chained->getDataForJSON();
+                foreach ($chainedData as $chainedItemName => $chainedData){
+                    if(array_key_exists($chainedItemName, $dataForJson)){
+                        $dataForJson[$chainedItemName.'#'.\Ease\Sand::randomNumber().'#'] = $chainedData;
+                    } else {
+                        $dataForJson[$chainedItemName] = $chainedData;
+                    }
+                }
+            }
+
+
+        return $dataForJson;
+    }
+
+    /**
+     * Join another FlexiPeeHP Object
+     * 
+     * @param FlexiBeeRO $object
+     * 
+     * @return boolean adding to stack success
+     */
+    public function join($object)
+    {
+        $result = true;
+        if (method_exists($object, 'getDataForJSON')) {
+            $this->chained[] = $object;
+        } else {
+            throw new \Ease\Exception('$object->getDataForJSON() does not exist');
+        }
+
+        return $result;
     }
 
     /**
      * Test if given record ID exists in FlexiBee.
      *
-     * @param boolean $identifer presence state
+     * @param mixed $identifer presence state
+     * 
+     * @return boolean
      */
     public function idExists($identifer = null)
     {
