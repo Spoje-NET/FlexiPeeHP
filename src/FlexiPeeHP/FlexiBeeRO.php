@@ -347,7 +347,7 @@ class FlexiBeeRO extends \Ease\Brick
      * Chained Objects
      * @var array
      */
-    public $chained = null;
+    public $chained = [];
 
     /**
      * Class for read only interaction with FlexiBee.
@@ -1213,8 +1213,9 @@ class FlexiBeeRO extends \Ease\Brick
 
         $dataToJsonize = array_merge(['@version' => $this->protoVersion],
             $this->getDataForJSON($data));
-
-        return json_encode([$this->nameSpace => $dataToJsonize], $options);
+        $jsonRaw = json_encode([$this->nameSpace => $dataToJsonize], $options);
+        
+        return preg_replace('/#[0-9]*#/','',$jsonRaw);
     }
 
     /**
@@ -1241,12 +1242,18 @@ class FlexiBeeRO extends \Ease\Brick
             $dataForJson[$this->evidence.'@filter'] = $this->filter;
         }
 
-        if (count($this->chained)) {
+
             foreach ($this->chained as $chained) {
                 $chainedData = $chained->getDataForJSON();
-                $dataForJson = array_merge($dataForJson, $chainedData);
+                foreach ($chainedData as $chainedItemName => $chainedData){
+                    if(array_key_exists($chainedItemName, $dataForJson)){
+                        $dataForJson[$chainedItemName.'#'.\Ease\Sand::randomNumber().'#'] = $chainedData;
+                    } else {
+                        $dataForJson[$chainedItemName] = $chainedData;
+                    }
+                }
             }
-        }
+
 
         return $dataForJson;
     }
@@ -1256,18 +1263,26 @@ class FlexiBeeRO extends \Ease\Brick
      * 
      * @param FlexiBeeRO $object
      * 
-     * @return boolean success
+     * @return boolean adding to stack success
      */
     public function join($object)
     {
-        $this->chained[] = $object;
-        return true;
+        $result = true;
+        if (method_exists($object, 'getDataForJSON')) {
+            $this->chained[] = $object;
+        } else {
+            throw new \Ease\Exception('$object->getDataForJSON() does not exist');
+        }
+
+        return $result;
     }
 
     /**
      * Test if given record ID exists in FlexiBee.
      *
-     * @param boolean $identifer presence state
+     * @param mixed $identifer presence state
+     * 
+     * @return boolean
      */
     public function idExists($identifer = null)
     {

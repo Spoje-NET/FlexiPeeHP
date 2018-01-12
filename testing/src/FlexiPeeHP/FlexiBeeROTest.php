@@ -437,13 +437,13 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRO::jsonizeData
+     * @covers FlexiPeeHP\FlexiBeeRO::getJsonizedData
      */
-    public function testJsonizeData()
+    public function testGetJsonizedData()
     {
         $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"}}}',
             $this->object->getJsonizedData(['key' => 'value']));
-        
+
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
@@ -460,10 +460,18 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
                     $this->object->getJsonizedData(['key' => 'value']));
                 break;
 
-            $this->object->action = 'storno';
-            $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
-            $this->object->getJsonizedData([]);
+                $this->object->action = 'storno';
+                $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
+                $this->object->getJsonizedData([]);
         }
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getDataForJSON
+     */
+    public function testGetDataForJson()
+    {
+        $this->object->getDataForJSON();
     }
 
     /**
@@ -738,7 +746,7 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $id = '123';
         $this->object->setMyKey($id);
         $this->assertEquals($id, (string) $this->object);
-        
+
         $code = 'test';
         $this->object->setDataValue('kod', $code);
         $this->assertEquals('code:'.$code, (string) $this->object);
@@ -953,6 +961,19 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
         $this->assertEquals($urlraw.'?lele', $lolo);
         $lulu   = $this->object->evidenceUrlWithSuffix(';lulu');
         $this->assertEquals($urlraw.';lulu', $lulu);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::join
+     * @expectedException \Ease\Exception
+     */
+    public function testJoin()
+    {
+        $this->assertTrue($this->object->join(new FlexiBeeRO(['id' => 'A'],
+                    ['evidence' => 'adresar'])));
+        $this->assertTrue($this->object->join(new FlexiBeeRO(['id' => 'B'],
+                    ['evidence' => 'adresar'])));
+        $this->object->join(new \stdClass());
     }
 
     /**
