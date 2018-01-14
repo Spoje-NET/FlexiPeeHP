@@ -12,37 +12,56 @@ namespace Example\FlexiPeeHP;
 include_once './config.php';
 include_once '../vendor/autoload.php';
 
-$adresar = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:123', 'nazev' => 'FirmaAB']);
-$adresar2 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:456', 'nazev' => 'FirmaXY']);
+$adresar  = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:100', 'nazev' => 'FirmaAB']);
+$adresar2 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:200', 'nazev' => 'FirmaCD']);
+$adresar3 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:300', 'nazev' => 'FirmaEF']);
+$adresar4 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:400', 'nazev' => 'FirmaGH']);
 
-$adresarBankovniUcet = new \FlexiPeeHP\Adresar(['iban' => 'CZ9501000000001234567899','bic'=>'KOMBCZPP', 'firma' => 'EXT:APP:123'],
+$adresarBankovniUcet = new \FlexiPeeHP\Adresar(['iban' => 'CZ9501000000001234567899',
+    'bic' => 'KOMBCZPP', 'firma' => 'EXT:APP:123'],
     ['evidence' => 'adresar-bankovni-ucet']);
 
 
 $adresarBankovniUcet->join($adresar2);
 
+$adresar3->join($adresar4);
+
+$adresarBankovniUcet->join($adresar3);
+
+
+
 $adresar->join($adresarBankovniUcet);
 
 
 
-echo $adresar->getJsonizedData(null,JSON_PRETTY_PRINT);
+echo $adresar->getJsonizedData(null, JSON_PRETTY_PRINT);
 
-/* Result:
+/*
 {
     "winstrom": {
         "@version": "1.0",
-        "adresar": {
-            "id": "EXT:APP:123",
-            "nazev": "FirmaAB"
-        },
+        "adresar": [
+            {
+                "id": "EXT:APP:100",
+                "nazev": "FirmaAB"
+            },
+            {
+                "id": "EXT:APP:200",
+                "nazev": "FirmaCD"
+            },
+            {
+                "id": "EXT:APP:300",
+                "nazev": "FirmaEF"
+            },
+            {
+                "id": "EXT:APP:400",
+                "nazev": "FirmaGH"
+            }
+        ],
         "adresar-bankovni-ucet": {
             "iban": "CZ9501000000001234567899",
             "bic": "KOMBCZPP",
             "firma": "EXT:APP:123"
-        },
-        "adresar": {
-            "id": "EXT:APP:456",
-            "nazev": "FirmaXY"
         }
     }
 }

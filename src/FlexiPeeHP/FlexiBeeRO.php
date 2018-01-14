@@ -1215,7 +1215,7 @@ class FlexiBeeRO extends \Ease\Brick
             $this->getDataForJSON($data));
         $jsonRaw = json_encode([$this->nameSpace => $dataToJsonize], $options);
         
-        return preg_replace('/#[0-9]*#/','',$jsonRaw);
+        return $jsonRaw;
     }
 
     /**
@@ -1245,11 +1245,22 @@ class FlexiBeeRO extends \Ease\Brick
 
             foreach ($this->chained as $chained) {
                 $chainedData = $chained->getDataForJSON();
-                foreach ($chainedData as $chainedItemName => $chainedData){
-                    if(array_key_exists($chainedItemName, $dataForJson)){
-                        $dataForJson[$chainedItemName.'#'.\Ease\Sand::randomNumber().'#'] = $chainedData;
+                foreach ($chainedData as $chainedItemEvidence => $chainedItemData){
+                    if(array_key_exists($chainedItemEvidence, $dataForJson)){
+                        if(is_string(key($dataForJson[$chainedItemEvidence]))){
+                            $dataBackup = $dataForJson[$chainedItemEvidence];
+                            $dataForJson[$chainedItemEvidence]=[];
+                            $dataForJson[$chainedItemEvidence][] = $dataBackup;
+                        }
+                        if(array_key_exists(0, $chainedItemData)){
+                            foreach ($chainedItemData as $chainedItem){
+                                $dataForJson[$chainedItemEvidence][] = $chainedItem;
+                            }
+                        } else {
+                            $dataForJson[$chainedItemEvidence][] = $chainedItemData;
+                        }
                     } else {
-                        $dataForJson[$chainedItemName] = $chainedData;
+                        $dataForJson[$chainedItemEvidence] = $chainedItemData;
                     }
                 }
             }
