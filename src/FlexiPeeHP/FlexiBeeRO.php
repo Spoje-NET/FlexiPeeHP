@@ -350,6 +350,12 @@ class FlexiBeeRO extends \Ease\Brick
     public $chained = [];
 
     /**
+     * We Connect to server by default
+     * @var boolean
+     */
+    public $offline = false;
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -389,6 +395,9 @@ class FlexiBeeRO extends \Ease\Brick
         if (array_key_exists('detail', $options)) {
             $this->defaultUrlParams['detail'] = $options['detail'];
         }
+        if (array_key_exists('offline', $options)) {
+            $this->offline = (boolean) $options['offline'];
+        }
         $this->setupProperty($options, 'debug');
         $this->updateApiURL();
     }
@@ -413,18 +422,23 @@ class FlexiBeeRO extends \Ease\Brick
 
     /**
      * Inicializace CURL
+     * 
+     * @return boolean Online Status
      */
     public function curlInit()
     {
-        $this->curl = \curl_init(); // create curl resource
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true); // return content as a string from curl_exec
-        curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true); // follow redirects (compatibility for future changes in FlexiBee)
-        curl_setopt($this->curl, CURLOPT_HTTPAUTH, true);       // HTTP authentication
-        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false); // FlexiBee by default uses Self-Signed certificates
-        curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($this->curl, CURLOPT_VERBOSE, ($this->debug === true)); // For debugging
-        curl_setopt($this->curl, CURLOPT_USERPWD,
-            $this->user.':'.$this->password); // set username and password
+        if ($this->offline === false) {
+            $this->curl = \curl_init(); // create curl resource
+            curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true); // return content as a string from curl_exec
+            curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true); // follow redirects (compatibility for future changes in FlexiBee)
+            curl_setopt($this->curl, CURLOPT_HTTPAUTH, true);       // HTTP authentication
+            curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false); // FlexiBee by default uses Self-Signed certificates
+            curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($this->curl, CURLOPT_VERBOSE, ($this->debug === true)); // For debugging
+            curl_setopt($this->curl, CURLOPT_USERPWD,
+                $this->user.':'.$this->password); // set username and password
+        }
+        return !$this->offline;
     }
 
     /**
@@ -1213,8 +1227,9 @@ class FlexiBeeRO extends \Ease\Brick
 
         $dataToJsonize = array_merge(['@version' => $this->protoVersion],
             $this->getDataForJSON($data));
-        $jsonRaw = json_encode([$this->nameSpace => $dataToJsonize], $options);
-        
+        $jsonRaw       = json_encode([$this->nameSpace => $dataToJsonize],
+            $options);
+
         return $jsonRaw;
     }
 
@@ -1243,27 +1258,27 @@ class FlexiBeeRO extends \Ease\Brick
         }
 
 
-            foreach ($this->chained as $chained) {
-                $chainedData = $chained->getDataForJSON();
-                foreach ($chainedData as $chainedItemEvidence => $chainedItemData){
-                    if(array_key_exists($chainedItemEvidence, $dataForJson)){
-                        if(is_string(key($dataForJson[$chainedItemEvidence]))){
-                            $dataBackup = $dataForJson[$chainedItemEvidence];
-                            $dataForJson[$chainedItemEvidence]=[];
-                            $dataForJson[$chainedItemEvidence][] = $dataBackup;
-                        }
-                        if(array_key_exists(0, $chainedItemData)){
-                            foreach ($chainedItemData as $chainedItem){
-                                $dataForJson[$chainedItemEvidence][] = $chainedItem;
-                            }
-                        } else {
-                            $dataForJson[$chainedItemEvidence][] = $chainedItemData;
+        foreach ($this->chained as $chained) {
+            $chainedData = $chained->getDataForJSON();
+            foreach ($chainedData as $chainedItemEvidence => $chainedItemData) {
+                if (array_key_exists($chainedItemEvidence, $dataForJson)) {
+                    if (is_string(key($dataForJson[$chainedItemEvidence]))) {
+                        $dataBackup                          = $dataForJson[$chainedItemEvidence];
+                        $dataForJson[$chainedItemEvidence]   = [];
+                        $dataForJson[$chainedItemEvidence][] = $dataBackup;
+                    }
+                    if (array_key_exists(0, $chainedItemData)) {
+                        foreach ($chainedItemData as $chainedItem) {
+                            $dataForJson[$chainedItemEvidence][] = $chainedItem;
                         }
                     } else {
-                        $dataForJson[$chainedItemEvidence] = $chainedItemData;
+                        $dataForJson[$chainedItemEvidence][] = $chainedItemData;
                     }
+                } else {
+                    $dataForJson[$chainedItemEvidence] = $chainedItemData;
                 }
             }
+        }
 
 
         return $dataForJson;

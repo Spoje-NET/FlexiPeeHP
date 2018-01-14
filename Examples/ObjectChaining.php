@@ -13,13 +13,16 @@ include_once './config.php';
 include_once '../vendor/autoload.php';
 
 $adresar  = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:100', 'nazev' => 'FirmaAB']);
-$adresar2 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:200', 'nazev' => 'FirmaCD']);
-$adresar3 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:300', 'nazev' => 'FirmaEF']);
-$adresar4 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:400', 'nazev' => 'FirmaGH']);
+$adresar2 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:200', 'nazev' => 'FirmaCD'],
+    ['offline' => true]);
+$adresar3 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:300', 'nazev' => 'FirmaEF'],
+    ['offline' => true]);
+$adresar4 = new \FlexiPeeHP\Adresar(['id' => 'EXT:APP:400', 'nazev' => 'FirmaGH'],
+    ['offline' => true]);
 
 $adresarBankovniUcet = new \FlexiPeeHP\Adresar(['iban' => 'CZ9501000000001234567899',
     'bic' => 'KOMBCZPP', 'firma' => 'EXT:APP:123'],
-    ['evidence' => 'adresar-bankovni-ucet']);
+    ['evidence' => 'adresar-bankovni-ucet'], ['offline' => true]);
 
 
 $adresarBankovniUcet->join($adresar2);
