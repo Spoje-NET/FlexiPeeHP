@@ -44,6 +44,29 @@ class FlexiBeeRW extends FlexiBeeRO
     public $postFields = null;
 
     /**
+     * Transaction processing mode
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/ref/tx/ Transakční zpracování
+     * @var boolean
+     */
+    public $atomic = null;
+
+    /**
+     * SetUp Object to be ready for work
+     *
+     * @param array $options Object Options (company,url,user,password,evidence,
+     *                                       prefix,defaultUrlParams,debug,
+     *                                       detail,offline,atomic
+     */
+    public function setUp($options = array())
+    {
+        if (array_key_exists('atomic', $options)) {
+            $this->atomic = (boolean) $options['atomic'];
+        }
+        return parent::setUp($options);
+    }
+
+    /**
      * Save record (if evidence allow to).
      * Uloží záznam (pokud to evidence dovoluje)
      *
@@ -307,16 +330,36 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function getJsonizedData($data = null, $options = 0)
     {
-        if(is_null($data)){
+        if (is_null($data)) {
             $data = $this->getData();
         }
-        
+
         if (array_key_exists('stitky', $data)) {
             if (is_array($data['stitky'])) {
                 $data['stitky'] = implode(',', $data['stitky']);
             }
         }
-        return parent::getJsonizedData($data, $options);
+        $dataToJsonize = parent::getJsonizedData($data, $options);
+        return $dataToJsonize;
+    }
+
+    /**
+     * Get Data Fragment specific for current object
+     * 
+     * @param array $data
+     * 
+     * @return array
+     */
+    public function getDataForJSON($data = null)
+    {
+        if (is_null($data)) {
+            $data = $this->getData();
+        }
+        $dataForJSON = parent::getDataForJSON($data);
+        if (!is_null($this->atomic)) {
+            $dataForJSON['@atomic'] = $this->atomic;
+        }
+        return $dataForJSON;
     }
 
     /**

@@ -374,10 +374,11 @@ class FlexiBeeRO extends \Ease\Brick
     }
 
     /**
-     * SetUp Object to be ready for connect
+     * SetUp Object to be ready for work
      *
      * @param array $options Object Options (company,url,user,password,evidence,
-     *                                       prefix,defaultUrlParams,debug)
+     *                                       prefix,defaultUrlParams,debug,
+     *                                       detail,offline
      */
     public function setUp($options = [])
     {
@@ -920,6 +921,7 @@ class FlexiBeeRO extends \Ease\Brick
                     'warning');
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
+                    $response = $responseDecoded['results'];
                 }
                 $this->logResult($responseDecoded, $this->curlInfo['url']);
                 break;
@@ -1291,7 +1293,7 @@ class FlexiBeeRO extends \Ease\Brick
      * 
      * @return boolean adding to stack success
      */
-    public function join($object)
+    public function join(&$object)
     {
         $result = true;
         if (method_exists($object, 'getDataForJSON')) {
