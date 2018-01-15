@@ -56,7 +56,7 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @param array $options Object Options (company,url,user,password,evidence,
      *                                       prefix,defaultUrlParams,debug,
-     *                                       detail,offline,atomic
+     *                                       detail,offline,atomic,filter
      */
     public function setUp($options = array())
     {

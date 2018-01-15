@@ -378,7 +378,7 @@ class FlexiBeeRO extends \Ease\Brick
      *
      * @param array $options Object Options (company,url,user,password,evidence,
      *                                       prefix,defaultUrlParams,debug,
-     *                                       detail,offline
+     *                                       detail,offline,filter
      */
     public function setUp($options = [])
     {
@@ -396,6 +396,7 @@ class FlexiBeeRO extends \Ease\Brick
         if (array_key_exists('detail', $options)) {
             $this->defaultUrlParams['detail'] = $options['detail'];
         }
+        $this->setupProperty($options, 'filter');
         if (array_key_exists('offline', $options)) {
             $this->offline = (boolean) $options['offline'];
         }
@@ -412,7 +413,7 @@ class FlexiBeeRO extends \Ease\Brick
      */
     public function setupProperty($options, $name, $constant = null)
     {
-        if (isset($options[$name])) {
+        if (array_key_exists($name, $options)) {
             $this->$name = $options[$name];
         } else {
             if (property_exists($this, $name) && !empty($constant) && defined($constant)) {

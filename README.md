@@ -30,7 +30,7 @@ knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
   * Obousměrná synchronizace s externím systém
   * Párování dokladů dle specifického symbolu
 
-**Dále chci poděkovat technické podpoře společnosti [FlexiBee](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
+**Dále chci poděkovat technické podpoře společnosti [ABRA Flexi s.r.o.](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
 při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
 Instalace
@@ -223,6 +223,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [AttachmentSaveToFile.php](Examples/AttachmentSaveToFile.php) | uložení přílohy do souboru
 | [AttachmentUpload.php](Examples/AttachmentUpload.php)         | nahrání přílohy
 | [AuthentizeContact.php](Examples/AuthentizeContact.php)       | autentizace kontaktu
+| [BatchOperation.php](Examples/BatchOperation.php)             | Použití filtru při dávkových operacích
 | [CreateLabel.php](Examples/CreateLabel.php)                   | práce se štítky
 | [DownloadInvoicePDF.php](Examples/DownloadInvoicePDF.php)     | stažení PDF faktury
 | [Error404.php](Examples/Error404.php)                         | práce s neexistujícími záznamy
