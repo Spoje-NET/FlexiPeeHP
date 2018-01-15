@@ -969,11 +969,12 @@ class FlexiBeeROTest extends \Test\Ease\BrickTest
      */
     public function testJoin()
     {
-        $this->assertTrue($this->object->join(new FlexiBeeRO(['id' => 'A'],
-                    ['evidence' => 'adresar'])));
-        $this->assertTrue($this->object->join(new FlexiBeeRO(['id' => 'B'],
-                    ['evidence' => 'adresar'])));
-        $this->object->join(new \stdClass());
+        $ada = new FlexiBeeRO(['id' => 'A'],['evidence' => 'adresar']);
+        $adb = new FlexiBeeRO(['id' => 'B'],['evidence' => 'adresar']);
+        $this->assertTrue($this->object->join($ada));
+        $this->assertTrue($this->object->join($adb));
+        $ads = new \stdClass();
+        $this->object->join($ads);
     }
 
     /**

@@ -921,7 +921,9 @@ class FlexiBeeRO extends \Ease\Brick
                     'warning');
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
-                    $response = $responseDecoded['results'];
+                    if (array_key_exists('results', $responseDecoded)) {
+                        $response = $responseDecoded['results'];
+                    }
                 }
                 $this->logResult($responseDecoded, $this->curlInfo['url']);
                 break;
@@ -1248,7 +1250,7 @@ class FlexiBeeRO extends \Ease\Brick
             $data = $this->getData();
         }
 
-        $dataForJson = [$this->getEvidence() => $data];
+        $dataForJson = [$this->getEvidence() => $this->objectToID($data)];
 
         if (!is_null($this->action)) {
             $dataForJson[$this->evidence.'@action'] = $this->action;

@@ -67,8 +67,7 @@ class FakturaVydana extends FlexiBeeRW
         $sparovani                       = ['uhrazovanaFak' => $this];
         $sparovani['uhrazovanaFak@type'] = $this->evidence;
         $sparovani['zbytek']             = $zbytek;
-        $doklad->setDataValue('sparovani', $sparovani);
-        return $doklad->insertToFlexiBee();
+        return $doklad->insertToFlexiBee(['id'=>$doklad,'sparovani'=> $sparovani]);
     }
 
     /**

@@ -260,10 +260,10 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRW::jsonizeData
-     * @todo   Implement testJsonizeData().
+     * @covers FlexiPeeHP\FlexiBeeRW::getJsonizedData
+     * @todo   Implement testGetJsonizedData().
      */
-    public function testJsonizeData()
+    public function testGetJsonizedData()
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
