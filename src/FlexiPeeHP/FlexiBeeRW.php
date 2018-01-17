@@ -425,4 +425,21 @@ class FlexiBeeRW extends FlexiBeeRO
 
         return $result;
     }
+
+    /**
+     * Add External ID to Current Record
+     * 
+     * @param string $extId
+     * 
+     * @return array Insert result
+     */
+    public function addExternalID($extId)
+    {
+        return $this->insertToFlexiBee(['id' => [$this->getFirstRecordID(), $extId]]);
+    }
+
+    public function changeExternalID($selector, $newValue)
+    {
+        
+    }
 }
