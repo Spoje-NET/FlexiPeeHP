@@ -99,7 +99,7 @@ class Company extends FlexiBeeRW
             $urlSuffix = $this->evidence;
         }
 
-        $url = $this->url.$this->prefix;
+        $url = $this->url.$this->prefix.'/'.$this->company;
         if (!empty($urlSuffix)) {
             $url .= (($urlSuffix[0] == '.') ? '' : '/').$urlSuffix;
         }
@@ -150,7 +150,7 @@ class Company extends FlexiBeeRW
         $headersBackup                            = $this->defaultHttpHeaders;
         $this->defaultHttpHeaders['Accept']       = '*/*';
         $this->defaultHttpHeaders['Content-Type'] = 'application/x-winstrom-backup';
-        $this->performRequest($this->getDataValue('dbNazev').'/backup', 'GET');
+        $this->performRequest('backup', 'GET');
         $this->defaultHttpHeaders                 = $headersBackup;
 
         if ($this->lastResponseCode == 200) {
@@ -175,7 +175,7 @@ class Company extends FlexiBeeRW
         $this->defaultHttpHeaders['Accept']       = '*/*';
         $this->defaultHttpHeaders['Content-Type'] = 'application/x-winstrom-backup';
         $this->setPostFields(file_get_contents($filename));
-        $this->performRequest($this->getDataValue('dbNazev').'/restore', 'PUT');
+        $this->performRequest('restore', 'PUT');
         return $this->lastResponseCode == 200;
     }
 
