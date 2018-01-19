@@ -65,7 +65,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     protected function setUp()
     {
-        $this->object = new FlexiBeeRW();
+        $this->object = new FlexiBeeRW(null,['atomic'=>false,'debug'=>false]);
     }
 
     /**
@@ -75,27 +75,6 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     protected function tearDown()
     {
         
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRW::getLastInsertedId
-     * @depends testInsertToFlexiBee
-     */
-    public function testGetLastInsertedId()
-    {
-        $this->assertNotEmpty($this->object->getLastInsertedId());
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRW::insertToFlexiBee
-     */
-    public function testInsertToFlexiBee()
-    {
-        if (empty($this->insertableData)) {
-            $this->insertableData = $this->getDataForInsert('INSERTTEST'.time());
-        }
-
-        $this->object->insertToFlexiBee($this->insertableData);
     }
 
     /**
@@ -117,17 +96,6 @@ class FlexiBeeRWTest extends FlexiBeeROTest
             }
         }
         $this->object->performAction('nonexitst');
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRWRW::deleteFromFlexiBee
-     */
-    public function testDeleteFromFlexiBee()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 
     /**
@@ -176,110 +144,256 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     }
 
     /**
-     * @covers FlexiPeeHP\FlexiBeeRW::takeData
-     * @todo   Implement testTakeData().
-     */
-    public function testTakeData()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * @covers FlexiPeeHP\FlexiBeeRW::controlMandatoryColumns
-     * @todo   Implement testControlMandatoryColumns().
      */
     public function testControlMandatoryColumns()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->controlMandatoryColumns();
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::controlReadOnlyColumns
-     * @todo   Implement testControlReadOnlyColumns().
      */
     public function testControlReadOnlyColumns()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->controlReadOnlyColumns();
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::addArrayToBranch
-     * @todo   Implement testAddArrayToBranch().
      */
     public function testAddArrayToBranch()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addArrayToBranch(['nazev' => 'test'], 'podEvidence');
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::addObjectToBranch
-     * @todo   Implement testAddObjectToBranch().
      */
     public function testAddObjectToBranch()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->addObjectToBranch(new \FlexiPeeHP\FakturaVydanaPolozka(['nazev' => 'test']));
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::vazbaAdd
-     * @todo   Implement testVazbaAdd().
      */
     public function testVazbaAdd()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->vazbaAdd(\Ease\Sand::randomNumber());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::vazbaDel
-     * @todo   Implement testVazbaDel().
      */
     public function testVazbaDel()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->vazbaDel(\Ease\Sand::randomNumber());
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::getJsonizedData
-     * @todo   Implement testGetJsonizedData().
      */
     public function testGetJsonizedData()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->setData(['id' => time(), 'nazev' => \Ease\Sand::randomString(),
+            'stitky' => ['TEST', 'TESTING']]);
+        $this->object->getJsonizedData();
     }
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::refresh
-     * @todo   Implement testRefresh().
      */
     public function testRefresh()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->object->setMyKey('ext:test:'.\Ease\Sand::randomNumber());
+        $this->object->refresh();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::insertToFlexiBee
+     */
+    public function testInsertToFlexiBee()
+    {
+        $this->object->insertToFlexiBee(['id' => 'ext:test:'.time()]);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::parseResponse
+     */
+    public function testParseResponse()
+    {
+        $responseDecoded = array(
+            '@version' => '1.0',
+            'success' => 'true',
+            'stats' =>
+            array(
+                'created' => '1',
+                'updated' => '5',
+                'deleted' => '0',
+                'skipped' => '0',
+                'failed' => '0',
+            ),
+            'results' =>
+            array(
+                0 =>
+                array(
+                    'id' => '792',
+                    'request-id' => 'EXT:APP:100',
+                    'ref' => '/c/flexipeehp/adresar/792',
+                ),
+                1 =>
+                array(
+                    'id' => '793',
+                    'request-id' => 'EXT:APP:200',
+                    'ref' => '/c/flexipeehp/adresar/793',
+                ),
+                2 =>
+                array(
+                    'id' => '794',
+                    'request-id' => 'EXT:APP:300',
+                    'ref' => '/c/flexipeehp/adresar/794',
+                ),
+                3 =>
+                array(
+                    'id' => '795',
+                    'request-id' => 'EXT:APP:400',
+                    'ref' => '/c/flexipeehp/adresar/795',
+                ),
+                4 =>
+                array(
+                    'id' => '830',
+                    'request-id' => 'EXT:APP:500',
+                    'ref' => '/c/flexipeehp/banka/830',
+                ),
+                5 =>
+                array(
+                    'id' => '28',
+                    'ref' => '/c/flexipeehp/adresar-bankovni-ucet/28',
+                ),
+            ),
+            )
+        ;
+        $this->object->parseResponse($responseDecoded, 201);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::assignResultIDs
+     */
+    public function testAssignResultIDs()
+    {
+        $ids = array(
+            'adresar' =>
+            array(
+                'EXT:APP:100' => '792',
+                'EXT:APP:200' => '793',
+                'EXT:APP:300' => '794',
+                'EXT:APP:400' => '795',
+            ),
+            'banka' =>
+            array(
+                'EXT:APP:500' => '830',
+            ),
+            'adresar-bankovni-ucet' =>
+            array(
+                '' => '27',
+            ),
         );
+        $this->object->assignResultIDs($ids);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::extractResultIDs
+     */
+    public function testExtractResultIDs()
+    {
+        $resultInfo = array(
+            0 =>
+            array(
+                'id' => '792',
+                'request-id' => 'EXT:APP:100',
+                'ref' => '/c/flexipeehp/adresar/792',
+            ),
+            1 =>
+            array(
+                'id' => '793',
+                'request-id' => 'EXT:APP:200',
+                'ref' => '/c/flexipeehp/adresar/793',
+            ),
+            2 =>
+            array(
+                'id' => '794',
+                'request-id' => 'EXT:APP:300',
+                'ref' => '/c/flexipeehp/adresar/794',
+            ),
+            3 =>
+            array(
+                'id' => '795',
+                'request-id' => 'EXT:APP:400',
+                'ref' => '/c/flexipeehp/adresar/795',
+            ),
+            4 =>
+            array(
+                'id' => '830',
+                'request-id' => 'EXT:APP:500',
+                'ref' => '/c/flexipeehp/banka/830',
+            ),
+            5 =>
+            array(
+                'id' => '26',
+                'ref' => '/c/flexipeehp/adresar-bankovni-ucet/26',
+            ),
+        );
+        $this->object->extractResultIDs($resultInfo);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::getLastInsertedId
+     */
+    public function testGetLastInsertedId()
+    {
+        $this->object->getLastInsertedId();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::deleteFromFlexiBee
+     */
+    public function testDeleteFromFlexiBee()
+    {
+        $this->object->deleteFromFlexiBee();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::takeData
+     */
+    public function testTakeData()
+    {
+        $this->object->takeData(['id' => \Ease\Sand::randomNumber()]);
+    }
+
+    /**
+     * @after 
+     * @covers FlexiPeeHP\FlexiBeeRW::getDataForJSON
+     */
+    public function testGetDataForJSON()
+    {
+        $this->object->getDataForJSON();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::addExternalID
+     */
+    public function testAddExternalID()
+    {
+        $this->object->addExternalID('ext:test:'.\Ease\Sand::randomNumber());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::changeExternalID
+     */
+    public function testChangeExternalID()
+    {
+        $this->object->changeExternalID('test', \Ease\Sand::randomNumber(),
+            \Ease\Sand::randomNumber());
     }
 }

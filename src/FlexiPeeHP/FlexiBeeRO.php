@@ -13,7 +13,7 @@ namespace FlexiPeeHP;
  *
  * @url https://demo.flexibee.eu/devdoc/
  */
-class FlexiBeeRO extends \Ease\Brick
+class FlexiBeeRO extends \Ease\Sand
 {
     /**
      * Where to get JSON files with evidence stricture etc.
@@ -891,13 +891,6 @@ class FlexiBeeRO extends \Ease\Brick
         $response = null;
         switch ($responseCode) {
             case 201: //Success Write
-                if (isset($responseDecoded[$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
-                    $this->setMyKey($this->lastInsertedID);
-                    $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
-                } else {
-                    $this->lastInsertedID = null;
-                }
             case 200: //Success Read
                 $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
                 if (isset($responseDecoded['@rowCount'])) {
@@ -1324,8 +1317,8 @@ class FlexiBeeRO extends \Ease\Brick
         $this->ignore404(true);
         $this->getFlexiData(null,
             [
-                'detail' => 'custom:'.$this->getmyKeyColumn(),
-                $this->getmyKeyColumn() => $identifer
+                'detail' => 'custom:'.$this->getKeyColumn(),
+                $this->getKeyColumn() => $identifer
         ]);
         $this->ignore404($ignorestate);
         return $this->lastResponseCode == 200;
@@ -1630,7 +1623,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function getRecordID()
     {
         $id = $this->getDataValue('id');
-        return is_null($id) ? null : intval($id);
+        return is_null($id) ? null : is_numeric($id) ? intval($id) : $id ;
     }
 
     /**
@@ -1697,7 +1690,7 @@ class FlexiBeeRO extends \Ease\Brick
     public function getFirstRecordID()
     {
         $firstID    = null;
-        $keyColumn  = $this->getmyKeyColumn();
+        $keyColumn  = $this->getKeyColumn();
         $firstIdRaw = $this->getColumnsFromFlexibee([$keyColumn],
             ['limit' => 1, 'order' => $keyColumn], $keyColumn);
         if (count($firstIdRaw)) {

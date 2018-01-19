@@ -105,6 +105,76 @@ class FlexiBeeRW extends FlexiBeeRO
     }
 
     /**
+     * Parse Response array
+     *
+     * @param array $responseDecoded
+     * @param int $responseCode Request Response Code
+     *
+     * @return array main data part of response
+     */
+    public function parseResponse($responseDecoded, $responseCode)
+    {
+        switch ($responseCode) {
+            case 201: //Success Write
+                if (isset($responseDecoded[$this->resultField][0]['id'])) {
+                    $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
+                    $this->setMyKey($this->lastInsertedID);
+                    $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
+                } else {
+                    $this->lastInsertedID = null;
+                }
+                if (count($this->chained)) {
+                    $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
+                }
+        }
+        return parent::parseResponse($responseDecoded, $responseCode);
+    }
+
+    /**
+     * Assign result IDs to its source objects
+     * 
+     * @param array $candidates FlexiBee insert IDs  prepared by extractResultIDs()
+     */
+    public function assignResultIDs($candidates)
+    {
+        foreach ($this->chained as $chid => $chained) {
+            $chainedEvidence = $chained->getEvidence();
+            $chainedExtid    = $chained->getRecordID();
+            $chained->getData();
+            if (isset($candidates[$chainedEvidence][$chainedExtid])) {
+                $chained->setMyKey($candidates[$chainedEvidence][$chainedExtid]);
+                $chained->setDataValue('external-ids', [$chainedExtid]);
+            }
+            if (count($this->chained[$chid]->chained)) {
+                $this->chained[$chid]->assignResultIDs($candidates);
+            }
+        }
+    }
+
+    /**
+     * Extract IDs from FlexiBee response Array
+     * 
+     * @param array $resultInfo FlexiBee response
+     * 
+     * @return array List of [ 'evidence1'=>[ 'original-id'=>numericID,'original-id2'=>numericID2 ], 'evidence2'=> ... ]
+     */
+    public function extractResultIDs($resultInfo)
+    {
+        $candidates = [];
+        foreach ($resultInfo as $insertResult) {
+            $newID = $insertResult['id'];
+            if (array_key_exists('request-id', $insertResult)) {
+                $extid = $insertResult['request-id'];
+            } else {
+                $extid = null;
+            }
+            $evidence                      = explode('/', $insertResult['ref'])[3];
+            $candidates[$evidence][$extid] = $newID;
+        }
+        return $candidates;
+    }
+
+    /**
      * Give you last inserted record ID.
      * 
      * @return int
@@ -119,6 +189,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * Delete record in FlexiBee
      *
      * @param int|string $id identifikátor záznamu
+     * 
      * @return boolean Response code is 200 ?
      */
     public function deleteFromFlexiBee($id = null)
@@ -135,6 +206,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * Control for existing column names in evidence and take data
      *
      * @param array $data Data to keep
+     * 
      * @return int number of records taken
      */
     public function takeData($data)
@@ -170,7 +242,10 @@ class FlexiBeeRW extends FlexiBeeRO
     /**
      * Control data for mandatory columns presence.
      *
+     * @deprecated since version 1.8.7
+     * 
      * @param array $data
+     * 
      * @return array List of missing columns. Empty if all is ok
      */
     public function controlMandatoryColumns($data = null)
@@ -182,13 +257,14 @@ class FlexiBeeRW extends FlexiBeeRO
         $missingMandatoryColumns = [];
 
         $fbColumns = $this->getColumnsInfo();
-        foreach ($fbColumns as $columnName => $columnInfo) {
-            $mandatory = ($columnInfo['mandatory'] == 'true');
-            if ($mandatory && !array_key_exists($columnName, $data)) {
-                $missingMandatoryColumns[$columnName] = $columnInfo['name'];
+        if (count($fbColumns)) {
+            foreach ($fbColumns as $columnName => $columnInfo) {
+                $mandatory = ($columnInfo['mandatory'] == 'true');
+                if ($mandatory && !array_key_exists($columnName, $data)) {
+                    $missingMandatoryColumns[$columnName] = $columnInfo['name'];
+                }
             }
         }
-
         return $missingMandatoryColumns;
     }
 
@@ -196,6 +272,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * Control data for readonly columns presence.
      *
      * @param array $data
+     * 
      * @return array List of ReadOnly columns. Empty if all is ok
      */
     public function controlReadOnlyColumns($data = null)
@@ -207,13 +284,14 @@ class FlexiBeeRW extends FlexiBeeRO
         $readonlyColumns = [];
 
         $fbColumns = $this->getColumnsInfo();
-        foreach ($fbColumns as $columnName => $columnInfo) {
-            $writable = ($columnInfo['isWritable'] == 'true');
-            if (!$writable && !array_key_exists($columnName, $data)) {
-                $readonlyColumns[$columnName] = $columnInfo['name'];
+        if (count($fbColumns)) {
+            foreach ($fbColumns as $columnName => $columnInfo) {
+                $writable = ($columnInfo['isWritable'] == 'true');
+                if (!$writable && !array_key_exists($columnName, $data)) {
+                    $readonlyColumns[$columnName] = $columnInfo['name'];
+                }
             }
         }
-
         return $readonlyColumns;
     }
 
@@ -269,11 +347,14 @@ class FlexiBeeRW extends FlexiBeeRO
     public function addArrayToBranch($data, $relationPath)
     {
         if ($this->debug === true) {
-            $relationsByUrl = \Ease\Sand::reindexArrayBy($this->getRelationsInfo(),
-                    'url');
-            if (!array_key_exists($relationPath, $relationsByUrl)) {
-                $this->addStatusMessage("Relation to $relationPath does not exist for evidence ".$this->getEvidence(),
-                    'warning');
+            $relationsInfo = $this->getRelationsInfo();
+            if (count($relationsInfo)) {
+                $relationsByUrl = \Ease\Sand::reindexArrayBy($relationsInfo,
+                        'url');
+                if (!array_key_exists($relationPath, $relationsByUrl)) {
+                    $this->addStatusMessage("Relation to $relationPath does not exist for evidence ".$this->getEvidence(),
+                        'warning');
+                }
             }
         }
         $currentBranchData = $this->getDataValue($relationPath);
@@ -438,8 +519,21 @@ class FlexiBeeRW extends FlexiBeeRO
         return $this->insertToFlexiBee(['id' => [$this->getFirstRecordID(), $extId]]);
     }
 
-    public function changeExternalID($selector, $newValue)
+    /**
+     * Change Value of external id identified by selector. Add new if not exists
+     * 
+     * @param string     $selector ext:$selector:$newValue
+     * @param string|int $newValue string or number
+     * @param string|int $forID    Other than current record id
+     * 
+     * @return array operation result
+     */
+    public function changeExternalID($selector, $newValue, $forID = null)
     {
-        
+        $result                       = null;
+        $change['@removeExternalIds'] = 'ext:'.$selector.':';
+        $change['id']                 = [is_null($forID) ? $this->getRecordID() : $forID,
+            'ext:'.$selector.':'.$newValue];
+        return $this->insertToFlexiBee($change);
     }
 }
