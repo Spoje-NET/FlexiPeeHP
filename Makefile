@@ -4,7 +4,7 @@ fresh:
 	git pull
 
 install: build
-	cp -rvf src/FlexiPeeHP /usr/share/php/FlexiPeeHP
+#	cp -rvf src/FlexiPeeHP /usr/share/php/FlexiPeeHP
 	
 static: 
 	rm -rf static/*
