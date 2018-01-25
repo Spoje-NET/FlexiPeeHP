@@ -156,7 +156,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testControlReadOnlyColumns()
     {
-        $this->object->controlReadOnlyColumns();
+        $this->object->controlReadOnlyColumns(['id'=>1]);
     }
 
     /**
@@ -377,6 +377,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testGetDataForJSON()
     {
+        $this->object->setData(['name'=>'test']);
         $this->object->getDataForJSON();
     }
 
@@ -385,6 +386,9 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testAddExternalID()
     {
+        if(empty($this->object->getEvidence())){
+            $this->object->setEvidence('banka');
+        }
         $this->object->addExternalID('ext:test:'.\Ease\Sand::randomNumber());
     }
 

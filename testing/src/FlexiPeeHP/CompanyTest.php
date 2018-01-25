@@ -80,10 +80,6 @@ class CompanyTest extends FlexiBeeROTest
      */
     public function testPerformRequest()
     {
-        $this->object->evidence  = 'c';
-        $this->object->prefix    = '';
-        $this->object->company   = '';
-        $this->object->nameSpace = 'companies';
         $json                    = $this->object->performRequest();
         $this->assertArrayHasKey('company', $json);
 

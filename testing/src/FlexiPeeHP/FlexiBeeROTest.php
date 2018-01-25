@@ -67,10 +67,10 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
 
         $mock->__construct('',
             [
-                'company' => 'Firma_s_r_o_',
-                'url' => 'https://flexibee.firma.cz/',
-                'user' => 'rest',
-                'password' => '-dj3x21xaA_',
+                'company' => constant('FLEXIBEE_COMPANY'),
+                'url' => constant('FLEXIBEE_URL'),
+                'user' => constant('FLEXIBEE_LOGIN'),
+                'password' => constant('FLEXIBEE_PASSWORD'),
                 'debug' => true,
                 'prefix' => 'c',
                 'evidence' => $evidence]);
@@ -969,8 +969,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testJoin()
     {
-        $ada = new FlexiBeeRO(['id' => 'A'],['evidence' => 'adresar']);
-        $adb = new FlexiBeeRO(['id' => 'B'],['evidence' => 'adresar']);
+        $ada = new FlexiBeeRO(['id' => 'A'], ['evidence' => 'adresar']);
+        $adb = new FlexiBeeRO(['id' => 'B'], ['evidence' => 'adresar']);
         $this->assertTrue($this->object->join($ada));
         $this->assertTrue($this->object->join($adb));
         $ads = new \stdClass();

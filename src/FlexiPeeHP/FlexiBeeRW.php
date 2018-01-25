@@ -253,15 +253,15 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($data)) {
             $data = $this->getData();
         }
-
         $missingMandatoryColumns = [];
-
-        $fbColumns = $this->getColumnsInfo();
-        if (count($fbColumns)) {
-            foreach ($fbColumns as $columnName => $columnInfo) {
-                $mandatory = ($columnInfo['mandatory'] == 'true');
-                if ($mandatory && !array_key_exists($columnName, $data)) {
-                    $missingMandatoryColumns[$columnName] = $columnInfo['name'];
+        if (count($data)) {
+            $fbColumns = $this->getColumnsInfo();
+            if (count($fbColumns)) {
+                foreach ($fbColumns as $columnName => $columnInfo) {
+                    $mandatory = ($columnInfo['mandatory'] == 'true');
+                    if ($mandatory && !array_key_exists($columnName, $data)) {
+                        $missingMandatoryColumns[$columnName] = $columnInfo['name'];
+                    }
                 }
             }
         }

@@ -4,7 +4,7 @@ fresh:
 	git pull
 
 install: build
-	echo install
+	cp -rvf src/FlexiPeeHP /usr/share/php/FlexiPeeHP
 	
 static: 
 	rm -rf static/*
@@ -23,7 +23,9 @@ clean:
 	rm -f  debianTest/composer.lock
 
 doc:
-	debian/apigendoc.sh
+	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
+	apigen generate --source src --destination docs --title "FlexiPeeHP ${VERSION}" --charset UTF-8 --access-levels public --access-levels protected --php --tree
+
 
 test:
 	composer update
@@ -34,6 +36,14 @@ changelog:
 
 deb:
 	debuild -i -us -uc -b
+
+rpm:
+	rpmdev-bumpspec --comment="Build" --userstring="Vítězslav Dvořák <info@vitexsoftware.cz>" flexipeehp.spec
+	rpmbuild -ba flexipeehp.spec 
+
+verup:
+	git commit debian/composer.json debian/version debian/revision  -m "`cat debian/version`-`cat debian/revision`"
+	git push origin master
 
 .PHONY : install
 	

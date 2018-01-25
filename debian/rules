@@ -10,4 +10,3 @@ override_dh_install:
 	dh_install	
 	sed -i -e  "s/__DIR__.'\/..\/..\//'\\/usr\/share\/php\/FlexiPeeHP\//g" debian/flexipeehp/usr/share/php/FlexiPeeHP/FlexiBeeRO.php
 	./debian/fixversion.sh
-	./debian/apigendoc.sh

@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2017.2.4.2';
+ static public $version = '2017.2.5.1';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Relations.
@@ -355,17 +355,23 @@ class Relations
   ),
   1 => 
   array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
     'url' => 'polozkySmlouvy',
     'evidenceType' => 'SMLOUVA_POLOZKA',
     'name' => 'Standardní položky smluv',
   ),
-  2 => 
+  3 => 
   array (
     'url' => 'prilohy',
     'evidenceType' => 'PRILOHA',
     'name' => 'Přílohy',
   ),
-  3 => 
+  4 => 
   array (
     'url' => 'polozkySmlouvyExt',
     'evidenceType' => 'SMLOUVA_POLOZKA',
@@ -1026,17 +1032,23 @@ class Relations
   ),
   1 => 
   array (
+    'url' => 'udalosti',
+    'evidenceType' => 'ADR_UDALOST',
+    'name' => 'Události',
+  ),
+  2 => 
+  array (
     'url' => 'polozkySmlouvy',
     'evidenceType' => 'SMLOUVA_POLOZKA',
     'name' => 'Standardní položky smluv',
   ),
-  2 => 
+  3 => 
   array (
     'url' => 'prilohy',
     'evidenceType' => 'PRILOHA',
     'name' => 'Přílohy',
   ),
-  3 => 
+  4 => 
   array (
     'url' => 'polozkySmlouvyExt',
     'evidenceType' => 'SMLOUVA_POLOZKA',
