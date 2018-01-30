@@ -34,7 +34,7 @@ test:
 changelog:
 	CHANGES=`git log -n 1 | tail -n+5` ; dch -b -v `cat debian/version`-`cat debian/revision` --package flexipeehp "$(CHANGES)"
 
-deb:
+deb: changelog
 	debuild -i -us -uc -b
 
 rpm:

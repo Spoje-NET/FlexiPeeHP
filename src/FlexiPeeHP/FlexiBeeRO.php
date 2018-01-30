@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.8.7.4.3';
+    public static $libVersion = '1.8.8.1';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -1203,6 +1203,20 @@ class FlexiBeeRO extends \Ease\Sand
             $data = current($flexidata);
         }
         return $this->takeData($data);
+    }
+
+    /**
+     * Set Filter code for requests
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
+     * 
+     * @param array|string $filter filter formula or ['key'=>'value'] 
+     * 
+     * @return string Filter code
+     */
+    public function setFilter($filter)
+    {
+        return $this->filter = is_array($filter) ? self::flexiUrl($filter) : $filter;
     }
 
     /**

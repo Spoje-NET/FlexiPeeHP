@@ -1011,4 +1011,10 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertEquals(1506412853,
             FlexiBeeRO::flexiDateTimeToDateTime('2017-09-26T10:00:53.755+02:00')->getTimestamp());
     }
+
+    public function testSetFilter()
+    {
+        $this->object->setFilter('X');
+        $this->object->setFilter(['a' => 'b']);
+    }
 }
