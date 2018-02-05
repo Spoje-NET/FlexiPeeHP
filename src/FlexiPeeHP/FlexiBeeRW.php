@@ -140,6 +140,14 @@ class FlexiBeeRW extends FlexiBeeRO
         foreach ($this->chained as $chid => $chained) {
             $chainedEvidence = $chained->getEvidence();
             $chainedExtid    = $chained->getRecordID();
+            if (is_array($chainedExtid)) { //if there are more IDs
+                foreach ($chainedExtid as $extId) { //find external ID in format ext:.....
+                    if (stripos($extId, 'ext:') === 0) {
+                        $chainedExtid = $extId;
+                        break;
+                    }
+                }
+            }
             $chained->getData();
             if (isset($candidates[$chainedEvidence][$chainedExtid])) {
                 $chained->setMyKey($candidates[$chainedEvidence][$chainedExtid]);
