@@ -84,7 +84,7 @@ PHP rozšíření curl komunikovat s REST Api FlexiBee.
 Z ní jsou pak odvozeny třídy pro jednotlivé evidence, obsahující metody pro 
 často používané operace, například "Zaplať" v případě přijatých faktur.
 
-Nová odvozená třída vzniká tak že jméno třídy je název evidence avšak bez 
+Nová odvozená třída vzniká tak, že jméno třídy je název evidence avšak bez 
 pomlček. Ty jsou ve jméně nahrazeny velkým písmenem. 
 
 ```php
