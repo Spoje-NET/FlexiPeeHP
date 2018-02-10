@@ -35,15 +35,15 @@ class FakturaVydana extends FlexiBeeRW
      */
     public function addArrayToBranch($data, $relationPath)
     {
-        if (($relationPath == 'polozky-dokladu') || ($relationPath == 'polozky-faktury')) {
-            switch ($this->getDataValue('typDokl')) {
-                case 'code:DOBR':
-                case 'code:DOBROPIS':
-                case 'code:FAKTURA':
+        if ( ($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu') || ($relationPath == 'polozky-faktury')) {
+            switch (self::uncode($this->getDataValue('typDokl'))) {
+                case 'DOBR':
+                case 'DOBROPIS':
+                case 'FAKTURA':
                     $data['ucetni'] = true;
                     break;
-                case 'code:ZÁLOHA':
-                case 'code:ZALOHA':
+                case 'ZÁLOHA':
+                case 'ZALOHA':
                 default:
                     $data['ucetni'] = false;
                     break;
@@ -67,7 +67,7 @@ class FakturaVydana extends FlexiBeeRW
         $sparovani                       = ['uhrazovanaFak' => $this];
         $sparovani['uhrazovanaFak@type'] = $this->evidence;
         $sparovani['zbytek']             = $zbytek;
-        return $doklad->insertToFlexiBee(['id'=>$doklad,'sparovani'=> $sparovani]);
+        return $doklad->insertToFlexiBee(['id' => $doklad, 'sparovani' => $sparovani]);
     }
 
     /**
@@ -162,16 +162,64 @@ class FakturaVydana extends FlexiBeeRW
         return $this->insertToFlexiBee();
     }
 
-    public function vytvorVazbuZDD($modul = 'banka' /* pokladna */)
+    /**
+     * add link to advance tax document
+     * 
+     * @param Banka|PokladniPohyb $income Income payment document
+     * 
+     * @return boolean success
+     * 
+     * @throws Exception
+     */
+    public function vytvorVazbuZDD($income)
     {
-        $headersBackup                            = $this->defaultHttpHeaders;
-        $this->defaultHttpHeaders['Accept']       = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
-        $this->defaultHttpHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
-        $this->setPostFields(['module' => $modul, 'submit' => 'OK']);
-        $this->performRequest($this->myKey().'/vytvor-vazbu-zdd/'.$idBanky,
-            'POST', 'html');
-        $this->defaultHttpHeaders                 = $headersBackup;
+        switch (get_class($income)) {
+            case 'FlexiPeeHP\\Banka':
+                $modul = 'banka';
+                break;
+            case 'FlexiPeeHP\\PokladniPohyb':
+                $modul = 'pokladna';
+                break;
+            default :
+                throw new Exception(_('Unsupported $income parameter type'));
+        }
 
-        return $this->lastResponseCode == 201;
+        $incomeId = $income->getRecordID();
+        $myId = $this->getRecordID();
+        
+        $headersBackup = $this->defaultHttpHeaders;
+
+        $this->defaultHttpHeaders['Accept'] = 'text/html';
+        $this->setPostFields(http_build_query(['modul' => $modul,
+            'submit' => 'OK']));
+        $this->performRequest($myId.'/vytvor-vazbu-zdd/'.$incomeId, 'GET',
+            'json');
+
+        $responseArr = explode("\n", $this->lastCurlResponse);
+        $result      = true;
+        $message     = '';
+        foreach ($responseArr as $lineNo => $responseLine) {
+            if (strstr($responseLine, '<ul class = "flexibee-errors">')) {
+                $message = trim($responseArr[$lineNo + 1]);
+                $result  = false;
+            }
+            if (strstr($responseLine, '<div class = "alert alert-success">')) {
+                $message = strip_tags(html_entity_decode(trim($responseArr[$lineNo
+                            + 1])));
+                $result  = true;
+            }
+        }
+
+        if ($result === true) {
+            $this->addStatusMessage(empty($message) ? $this->getDataValue('kod').'/vytvor-vazbu-zdd/'.$income->getRecordCode()
+                        : $message, 'success');
+        } else {
+            $this->addStatusMessage($this->getDataValue('kod').'/vytvor-vazbu-zdd/'.$incomeId,
+                'warning');
+        }
+
+        $this->defaultHttpHeaders = $headersBackup;
+
+        return $result;
     }
 }
