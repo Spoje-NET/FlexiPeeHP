@@ -39,11 +39,14 @@ class Banka extends FlexiBeeRW
      * Spustí proces automatického párování plateb. ( trvá delší dobu )
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Interní dokumentace
+     * 
+     * @param boolean $advanced Use Advanced matching method ?
+     * 
      * @return boolean
      */
-    public function automatickeParovani()
+    public function automatickeParovani($advanced = false)
     {
-        $this->performRequest('automaticke-parovani', 'PUT');
+        $this->performRequest('automaticke-parovani'.($advanced ? '-pokrocile' : '' ), 'PUT');
         return $this->lastResponseCode == 200;
     }
 }
