@@ -19,7 +19,7 @@ class Formats
  *
  * @var string
  */
- static public $version = '2017.2.5.1';
+ static public $version = '2018.1.0.2';
 
 
     /**
