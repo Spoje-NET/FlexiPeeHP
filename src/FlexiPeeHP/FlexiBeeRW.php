@@ -368,6 +368,9 @@ class FlexiBeeRW extends FlexiBeeRO
         $currentBranchData = $this->getDataValue($relationPath);
         $branchData        = $currentBranchData;
         $branchData[]      = $data;
+        if( is_array($this->getEvidence()) && array_key_exists('bezPolozek',$this->getColumnsInfo())){
+            $this->setDataValue('bezPolozek',false);
+        }
         return $this->setDataValue($relationPath, $branchData);
     }
 
@@ -460,9 +463,11 @@ class FlexiBeeRW extends FlexiBeeRO
     {
         $this->insertToFlexiBee();
         $insertResult = $this->lastResponseCode;
+        if($insertResult == 201){
         $id           = $this->getRecordID();
         $this->dataReset();
         $this->loadFromFlexiBee($id);
+        }
         $loadResult   = $this->lastResponseCode;
         return (($insertResult == 201) && ($loadResult == 200));
     }

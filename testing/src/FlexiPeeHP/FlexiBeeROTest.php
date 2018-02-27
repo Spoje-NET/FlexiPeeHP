@@ -747,9 +747,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->object->setMyKey($id);
         $this->assertEquals($id, (string) $this->object);
 
-        $code = 'test';
-        $this->object->setDataValue('kod', $code);
-        $this->assertEquals('code:'.$code, (string) $this->object);
+        $this->object->setDataValue('kod', 'test');
+        $this->assertEquals('code:TEST', (string) $this->object);
 
         $identifer = 'ext:test:123';
         $this->object->setMyKey($identifer);
@@ -765,7 +764,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testDraw($whatWant = NULL)
     {
         $this->object->setDataValue('kod', 'test');
-        $this->assertEquals('code:test', $this->object->draw());
+        $this->assertEquals('code:TEST', $this->object->draw());
     }
 
     /**
