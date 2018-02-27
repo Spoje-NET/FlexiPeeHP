@@ -267,6 +267,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @var array
      */
     public $urlParams = [
+        'authSessionId',
         'idUcetniObdobi',
         'dry-run',
         'fail-on-warning',
@@ -306,6 +307,12 @@ class FlexiBeeRO extends \Ease\Sand
         'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
         'inDesktopApp' // Note: Undocumented function (html only)
     ];
+
+    /**
+     * Session ID 
+     * @var string 
+     */
+    public $authSessionId = null;
 
     /**
      * Save 404 results to log ?
@@ -396,6 +403,11 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('detail', $options)) {
             $this->defaultUrlParams['detail'] = $options['detail'];
         }
+        if (array_key_exists('authSessionId', $options)) {
+            $this->authSessionId                     = $this->defaultUrlParams['authSessionId']
+                = $options['authSessionId'];
+        }
+
         $this->setupProperty($options, 'filter');
         if (array_key_exists('offline', $options)) {
             $this->offline = (boolean) $options['offline'];
@@ -786,6 +798,9 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function addDefaultUrlParams($urlRaw)
     {
+        if (!empty($this->authSessionId)) {
+            $this->defaultUrlParams['authSessionId'] = $this->authSessionId;
+        }
         return $this->addUrlParams($urlRaw, $this->defaultUrlParams, false);
     }
 
@@ -1637,7 +1652,7 @@ class FlexiBeeRO extends \Ease\Sand
     public function getRecordID()
     {
         $id = $this->getDataValue('id');
-        return is_null($id) ? null : is_numeric($id) ? intval($id) : $id ;
+        return is_null($id) ? null : is_numeric($id) ? intval($id) : $id;
     }
 
     /**
