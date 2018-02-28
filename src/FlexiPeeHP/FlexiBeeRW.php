@@ -54,7 +54,8 @@ class FlexiBeeRW extends FlexiBeeRO
     /**
      * SetUp Object to be ready for work
      *
-     * @param array $options Object Options (company,url,user,password,evidence,
+     * @param array $options Object Options (authSessionId,user,password,
+     *                                       url,company,evidence,
      *                                       prefix,defaultUrlParams,debug,
      *                                       detail,offline,atomic,filter
      */
@@ -119,7 +120,7 @@ class FlexiBeeRW extends FlexiBeeRO
                 if (isset($responseDecoded[$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
                     $this->setMyKey($this->lastInsertedID);
-                    $this->apiURL         = $this->getEvidenceURL().'/'.$this->lastInsertedID;
+                    $this->updateApiURL();
                 } else {
                     $this->lastInsertedID = null;
                 }

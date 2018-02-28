@@ -366,7 +366,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
-     * @param array $options Connection settings override
+     * @param array $options Connection settings and other options override
      */
     public function __construct($init = null, $options = [])
     {
@@ -383,9 +383,10 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * SetUp Object to be ready for work
      *
-     * @param array $options Object Options (company,url,user,password,evidence,
-     *                                       prefix,defaultUrlParams,debug,
-     *                                       detail,offline,filter
+     * @param array $options Object Options ( user,password,authSessionId
+     *                                        company,url,evidence,
+     *                                        prefix,defaultUrlParams,debug,
+     *                                        detail,offline,filter
      */
     public function setUp($options = [])
     {
@@ -393,6 +394,10 @@ class FlexiBeeRO extends \Ease\Sand
         $this->setupProperty($options, 'url', 'FLEXIBEE_URL');
         $this->setupProperty($options, 'user', 'FLEXIBEE_LOGIN');
         $this->setupProperty($options, 'password', 'FLEXIBEE_PASSWORD');
+        $this->setupProperty($options, 'authSessionId', 'FLEXIBEE_AUTHSESSID');
+        if (!empty($this->authSessionId)) {
+            $this->defaultUrlParams['authSessionId'] = $this->authSessionId;
+        }
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
         }
@@ -403,11 +408,6 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('detail', $options)) {
             $this->defaultUrlParams['detail'] = $options['detail'];
         }
-        if (array_key_exists('authSessionId', $options)) {
-            $this->authSessionId                     = $this->defaultUrlParams['authSessionId']
-                = $options['authSessionId'];
-        }
-
         $this->setupProperty($options, 'filter');
         if (array_key_exists('offline', $options)) {
             $this->offline = (boolean) $options['offline'];
@@ -449,8 +449,10 @@ class FlexiBeeRO extends \Ease\Sand
             curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false); // FlexiBee by default uses Self-Signed certificates
             curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($this->curl, CURLOPT_VERBOSE, ($this->debug === true)); // For debugging
-            curl_setopt($this->curl, CURLOPT_USERPWD,
-                $this->user.':'.$this->password); // set username and password
+            if (empty($this->authSessionId)) {
+                curl_setopt($this->curl, CURLOPT_USERPWD,
+                    $this->user.':'.$this->password); // set username and password
+            }
         }
         return !$this->offline;
     }

@@ -44,22 +44,26 @@ Konfigurace
 Konfigurace se provádí nastavením následujících konstant:
 
 ```php
-    /*
+   /*
     * URL Flexibee API
     */
     define('FLEXIBEE_URL', 'https://flexibee-dev.spoje.net:5434');
-    /*
+   /*
     * Uživatel FlexiBee API
     */
     define('FLEXIBEE_LOGIN', 'apiuser');
-    /*
+   /*
     * Heslo FlexiBee API
     */
     define('FLEXIBEE_PASSWORD', 'apipass');
-    /*
-     * Společnost v FlexiBee
+   /*
+    * Společnost v FlexiBee
     */
     define('FLEXIBEE_COMPANY', 'test_s_r_o_');
+   /*
+    * Nebo pokud nechceme používat jméno a heslo
+    */
+    define('FLEXIBEE_AUTHSESSID', '6QuifebMits');
 ```
 
 nebo je možné přihlašovací údaje zadávat při vytváření instance třídy.
