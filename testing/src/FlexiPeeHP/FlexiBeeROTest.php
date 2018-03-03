@@ -153,6 +153,14 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getConnectionOptions
+     */
+    public function testGetConnectionOptions(){
+        $options = $this->object->getConnectionOptions();
+        $this->assertArrayHasKey('url', $options);
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::setPrefix
      * @expectedException \Exception
      */

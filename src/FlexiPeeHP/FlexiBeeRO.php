@@ -435,6 +435,27 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
+     * Get Current connection options for use in another object
+     * 
+     * @return array usable as second constructor parameter
+     */
+    public function getConnectionOptions()
+    {
+        $conOpts = ['url' => $this->url];
+        if (empty($this->authSessionId)) {
+            $conOpts ['user']    = $this->user;
+            $conOpts['password'] = $this->password;
+        } else {
+            $conOpts['authSessionId'] = $this->authSessionId;
+        }
+        $company = $this->getCompany();
+        if(!empty($company)){
+            $conOpts['company'] = $company;
+        }
+        return $conOpts;
+    }
+    
+    /**
      * Inicializace CURL
      * 
      * @return boolean Online Status
