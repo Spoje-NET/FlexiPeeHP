@@ -309,8 +309,8 @@ class FlexiBeeRO extends \Ease\Sand
     ];
 
     /**
-     * Session ID 
-     * @var string 
+     * Session ID
+     * @var string
      */
     public $authSessionId = null;
 
@@ -340,13 +340,13 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Formating string for \DateTime::format() for datetime columns
-     * @var string 
+     * @var string
      */
     static public $DateTimeFormat = 'Y-m-d\TH:i:s.u+P';
 
     /**
      * Formating string for \DateTime::format() for date columns
-     * @var string 
+     * @var string
      */
     static public $DateFormat = 'Y-m-d';
 
@@ -436,7 +436,7 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Get Current connection options for use in another object
-     * 
+     *
      * @return array usable as second constructor parameter
      */
     public function getConnectionOptions()
@@ -454,10 +454,10 @@ class FlexiBeeRO extends \Ease\Sand
         }
         return $conOpts;
     }
-    
+
     /**
      * Inicializace CURL
-     * 
+     *
      * @return boolean Online Status
      */
     public function curlInit()
@@ -886,7 +886,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Convert FlexiBee Response JSON to Array
      *
      * @param string $rawJson
-     * 
+     *
      * @return array
      */
     public function rawJsonToArray($rawJson)
@@ -1245,11 +1245,11 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Set Filter code for requests
-     * 
+     *
      * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
-     * 
-     * @param array|string $filter filter formula or ['key'=>'value'] 
-     * 
+     *
+     * @param array|string $filter filter formula or ['key'=>'value']
+     *
      * @return string Filter code
      */
     public function setFilter($filter)
@@ -1260,12 +1260,12 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Převede data do Json formátu pro FlexiBee.
      * Convert data to FlexiBee like Json format
-     * 
+     *
      * @url https://www.flexibee.eu/api/dokumentace/ref/actions/
      * @url https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
      *
-     * @param array $data    object data 
-     * @param int   $options json_encode options like JSON_PRETTY_PRINT etc 
+     * @param array $data    object data
+     * @param int   $options json_encode options like JSON_PRETTY_PRINT etc
      *
      * @return string
      */
@@ -1285,9 +1285,9 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Get Data Fragment specific for current object
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return array
      */
     public function getDataForJSON($data = null)
@@ -1336,9 +1336,9 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Join another FlexiPeeHP Object
-     * 
+     *
      * @param FlexiBeeRO $object
-     * 
+     *
      * @return boolean adding to stack success
      */
     public function join(&$object)
@@ -1357,7 +1357,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Test if given record ID exists in FlexiBee.
      *
      * @param mixed $identifer presence state
-     * 
+     *
      * @return boolean
      */
     public function idExists($identifer = null)
@@ -1745,7 +1745,7 @@ class FlexiBeeRO extends \Ease\Sand
         $keyColumn  = $this->getKeyColumn();
         $firstIdRaw = $this->getColumnsFromFlexibee([$keyColumn],
             ['limit' => 1, 'order' => $keyColumn], $keyColumn);
-        if (count($firstIdRaw)) {
+        if (!empty($firstIdRaw)) {
             $firstID = current($firstIdRaw)[$keyColumn];
         }
         return is_numeric($firstID) ? intval($firstID) : $firstID;
@@ -1762,7 +1762,7 @@ class FlexiBeeRO extends \Ease\Sand
         $extid = null;
         $ids   = $this->getDataValue('external-ids');
         if (is_null($want)) {
-            if (count($ids)) {
+            if (!empty($ids)) {
                 $extid = current($ids);
             }
         } else {
@@ -1861,10 +1861,10 @@ class FlexiBeeRO extends \Ease\Sand
 
     /**
      * Gives you properties for (current) evidence column
-     * 
+     *
      * @param string $column    name of column
      * @param string $evidence  evidence name if different
-     * 
+     *
      * @return array column properties or null if column not exits
      */
     public function getColumnInfo($column, $evidence = null)
