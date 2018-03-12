@@ -57,12 +57,12 @@ class Company extends FlexiBeeRW
      */
     public function __construct($init = null, $options = [])
     {
-        if(is_string($init)){
-            $init = ['dbNazev'=>$init];
+        if (is_string($init)) {
+            $init = ['dbNazev' => $init];
         }
-        parent::__construct($init,$options);
+        parent::__construct($init, $options);
     }
-    
+
     /**
      * Zinicializuje objekt dle daných dat. Možné hodnoty:
      *
@@ -77,7 +77,7 @@ class Company extends FlexiBeeRW
      */
     public function processInit($init)
     {
-        
+
         parent::processInit($init);
         if (is_array($init) && array_key_exists('dbNazev', $init)) {
             $companyInfo = $this->getFlexiData('/c/'.$init['dbNazev']);
@@ -188,7 +188,8 @@ class Company extends FlexiBeeRW
      */
     public function createNew($name)
     {
-        $this->performRequest('/admin/zalozeni-firmy?name='.$name, 'PUT');
+        $this->performRequest('/admin/zalozeni-firmy?name='.urlencode($name),
+            'PUT');
         return $this->lastResponseCode == 201;
     }
 
@@ -210,5 +211,22 @@ class Company extends FlexiBeeRW
     public function getVazby($id = null)
     {
         throw new \Exception(_('Company has no relations'));
+    }
+
+    /**
+     * Smaže firmu ve FlexiBee
+     * Delete  company in FlexiBee
+     *
+     * @param string $company identifikátor záznamu
+     * 
+     * @return boolean Response code is 200 ?
+     */
+    public function deleteFromFlexiBee($company = null)
+    {
+        if (is_null($company)) {
+            $company = $this->getDataValue('dbNazev');
+        }
+        $this->performRequest('/c/'.$company.'.'.$this->format, 'DELETE');
+        return $this->lastResponseCode == 200;
     }
 }

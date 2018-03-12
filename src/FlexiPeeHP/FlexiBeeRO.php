@@ -449,7 +449,7 @@ class FlexiBeeRO extends \Ease\Sand
             $conOpts['authSessionId'] = $this->authSessionId;
         }
         $company = $this->getCompany();
-        if(!empty($company)){
+        if (!empty($company)) {
             $conOpts['company'] = $company;
         }
         return $conOpts;
@@ -1789,6 +1789,19 @@ class FlexiBeeRO extends \Ease\Sand
         $this->getFlexiData(null, ['add-global-version' => 'true', 'limit' => 1]);
 
         return $this->globalVersion;
+    }
+
+    /**
+     * Gives you current ApiURL with given format suffix
+     * 
+     * @param string $format json|html|xml|...
+     * 
+     * @return string API URL for current record or object/evidence
+     */
+    public function getApiURL($format = null)
+    {
+        $apiUrl = str_replace('.'.$this->format, '', $this->apiURL);
+        return $apiUrl.(empty($format) ? '' : '.'.$format );
     }
 
     /**
