@@ -238,6 +238,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [NajdiDanovyDokladKzalohovemu.php](Examples/NajdiDanovyDokladKzalohovemu.php) | dohledání dokladu
 | [NewInvoice.php](Examples/NewInvoice.php)                     | Nová faktura se splatností vypsaná jako json
 | [ObjectChaining.php](Examples/ObjectChaining.php)             | Řetězení objektů pro více operací v jenom pořadavku
+| [ObjectCooperation.php](Examples/ObjectCooperation.php)       | Sdílení data a parametrů připojení mezi objekty
 | [ReadAddressColumns.php](Examples/ReadAddressColumns.php)     | vrať konkrétní sloupečky
 | [sendInvoiceByMail.php](Examples/sendInvoiceByMail.php)       | odeslání faktury mailem
 | [SendReminders.php](Examples/SendReminders.php)               | odeslání upomínek
@@ -245,8 +246,21 @@ Ve složce Examples jsou tyto ukázky použití:
 | [TestConnection.php](Examples/TestConnection.php)             | kontrola spojení 
 
 
-> Příkladem využití knihovny v aplikaci je nástroj [Flexplorer](https://github.com/VitexSoftware/Flexplorer)
+Příklady použití:
+-----------------
 
+  * [Flexplorer](https://github.com/VitexSoftware/Flexplorer) Vývojářský nástoj a editor záznamů
+  * [FlexiProXY](https://github.com/VitexSoftware/FlexiProxy) Modifikátor webového rozhraní FlexiBee
+  * [Upomínač](https://github.com/VitexSoftware/php-flexibee-reminder) Odesílač upomínek
+  * [Redmine2FlexiBee](https://github.com/VitexSoftware/Redmine2FlexiBee) Generuje faktury z odpracovaného času v Redmine
+  * [FlexiPeeHP-Bricks](https://github.com/VitexSoftware/FlexiPeeHP-Bricks) Příklady a často požívaní třídy při práci s FlexiBee
+  * [Shop4FlexiBee](https://github.com/VitexSoftware/Shop4FlexiBee) 
+
+Reference:
+----------
+
+  * [Import dat z FAPI do FlexiBee](https://flexibee.info/fapi2flexibee/)  - blahasoft.cz
+  * [Import dat z iDokladu do FlexiBee](https://flexibee.info/idoklad2flexibee/) - blahasoft.cz
 
 Docker
 ------
