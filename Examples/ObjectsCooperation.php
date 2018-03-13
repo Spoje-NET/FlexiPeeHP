@@ -27,7 +27,7 @@ $invoice = new \FlexiPeeHP\FakturaVydana($originalInvoice->getData(),
 /**
  * Save to FlexiBee a obtain processed record record with its new CODE, Number etc.
  */
-$invoice->refresh();
+$invoice->sync();
 
 
 /**

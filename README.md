@@ -238,7 +238,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [NajdiDanovyDokladKzalohovemu.php](Examples/NajdiDanovyDokladKzalohovemu.php) | dohledání dokladu
 | [NewInvoice.php](Examples/NewInvoice.php)                     | Nová faktura se splatností vypsaná jako json
 | [ObjectChaining.php](Examples/ObjectChaining.php)             | Řetězení objektů pro více operací v jenom pořadavku
-| [ObjectCooperation.php](Examples/ObjectCooperation.php)       | Sdílení data a parametrů připojení mezi objekty
+| [ObjectCooperation.php](Examples/ObjectsCooperation.php)      | Sdílení data a parametrů připojení mezi objekty
 | [ReadAddressColumns.php](Examples/ReadAddressColumns.php)     | vrať konkrétní sloupečky
 | [sendInvoiceByMail.php](Examples/sendInvoiceByMail.php)       | odeslání faktury mailem
 | [SendReminders.php](Examples/SendReminders.php)               | odeslání upomínek
