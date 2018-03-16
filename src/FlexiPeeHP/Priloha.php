@@ -94,14 +94,15 @@ class Priloha extends FlexiBeeRW
     /**
      * Gives you attachment body as return value
      * 
-     * @param int $attachmentID
+     * @param int   $attachmentID
+     * @param array $options      Additional Connection Options
      * 
      * @return string
      */
-    public static function getAttachment($attachmentID)
+    public static function getAttachment($attachmentID,$options = [])
     {
         $result     = null;
-        $downloader = new Priloha($attachmentID);
+        $downloader = new Priloha($attachmentID,$options);
         if ($downloader->lastResponseCode == 200) {
 
             $downloader->doCurlRequest(self::getDownloadURL($downloader), 'GET');
@@ -208,14 +209,18 @@ class Priloha extends FlexiBeeRW
      * Obtain Record related attachments list
      *
      * @param FlexiBeeRO $object
+     * 
      * @return array
      */
     public static function getAttachmentsList($object)
     {
         $fburl       = $object->getFlexiBeeURL();
         $attachments = [];
+        $oFormat = $object->format;
+        $object->setFormat('json');
         $atch        = $object->getFlexiData($fburl.'/prilohy'.(count($object->defaultUrlParams)
                 ? '?'.http_build_query($object->defaultUrlParams) : ''));
+        $object->setFormat($oFormat);
         if (count($atch) && ($object->lastResponseCode == 200)) {
             foreach ($atch as $attachmentID => $attachmentData) {
                 $attachments[$attachmentID]        = $attachmentData;
