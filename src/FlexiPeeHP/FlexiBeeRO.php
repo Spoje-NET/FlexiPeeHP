@@ -351,6 +351,12 @@ class FlexiBeeRO extends \Ease\Sand
     static public $DateFormat = 'Y-m-d';
 
     /**
+     * Last Request response stats
+     * @var array 
+     */
+    private $responseStats = null;
+
+    /**
      * Chained Objects
      * @var array
      */
@@ -926,11 +932,14 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
-        $response = null;
+        $mainResult          = $this->unifyResponseFormat($responseDecoded);
+        $this->responseStats = array_key_exists('stats', $responseDecoded) ? (isset($responseDecoded['stats'][0])
+                ? $responseDecoded['stats'][0] : $responseDecoded['stats']) : null;
+
         switch ($responseCode) {
             case 201: //Success Write
             case 200: //Success Read
-                $response         = $this->lastResult = $this->unifyResponseFormat($responseDecoded);
+                $this->lastResult = $mainResult;
                 if (isset($responseDecoded['@rowCount'])) {
                     $this->rowCount = (int) $responseDecoded['@rowCount'];
                 }
@@ -953,14 +962,11 @@ class FlexiBeeRO extends \Ease\Sand
                     'warning');
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
-                    if (array_key_exists('results', $responseDecoded)) {
-                        $response = $responseDecoded['results'];
-                    }
                 }
                 $this->logResult($responseDecoded, $this->curlInfo['url']);
                 break;
         }
-        return $response;
+        return $mainResult;
     }
 
     /**
@@ -1141,14 +1147,15 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
-     * convert unicode to entities
+     * convert unicode to entities for use with FlexiBee queries
      *
      * @param string $urlRaw
+     * 
      * @return string
      */
     public static function urlEncode($urlRaw)
     {
-        return str_replace(['%27'], ["'"], rawurlencode($urlRaw));
+        return str_replace(['%27','%3A'], ["'",':'], rawurlencode($urlRaw));
     }
 
     /**
@@ -1390,8 +1397,9 @@ class FlexiBeeRO extends \Ease\Sand
         }
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
-        $res         = $this->getColumnsFromFlexibee([$this->getKeyColumn()],
-            [self::flexiUrl($data)]);
+        $keyColumn   = $this->getKeyColumn();
+        $res         = $this->getColumnsFromFlexibee([$keyColumn],
+            [is_array($data) ? self::flexiUrl($data) : $keyColumn => $data]);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
             || !count($res[0])) {
