@@ -1513,6 +1513,7 @@ class FlexiBeeRO extends \Ease\Sand
                     $kod = \Ease\Sand::rip($data[$this->keyColumn]);
                 }
             }
+            $kod =  substr($kod, 0, 20);
         }
 
         if (!strlen($kod)) {
@@ -1808,7 +1809,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function getApiURL($format = null)
     {
-        $apiUrl = str_replace('.'.$this->format, '', $this->apiURL);
+        $apiUrl = str_replace(['.'.$this->format,'?limit=0'], '', $this->apiURL);
         return $apiUrl.(empty($format) ? '' : '.'.$format );
     }
 

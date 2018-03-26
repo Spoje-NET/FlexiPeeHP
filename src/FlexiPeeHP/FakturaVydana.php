@@ -222,4 +222,30 @@ class FakturaVydana extends FlexiBeeRW
 
         return $result;
     }
+
+    /**
+     * 
+     * @param int $size requested of image
+     * 
+     * @return type
+     */
+    public function getQrCodeImage($size = 140)
+    {
+        $this->performRequest($this->getRecordID().'/qrcode.png?size='.$size, 'GET', 'png');
+        if ($this->lastResponseCode == 200) {
+            return $this->lastCurlResponse;
+}
+    }
+
+    /**
+     * Get base64 encoded QrCode image
+     * 
+     * @param int $size requested of image
+     * 
+     * @return string IMG SRC code
+     */
+    public function getQrCodeBase64($size = 140)
+    {
+        return 'data: image/png;base64,'. base64_encode($this->getQrCodeImage($size));
+    }
 }
