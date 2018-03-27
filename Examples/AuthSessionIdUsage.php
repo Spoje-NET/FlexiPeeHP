@@ -18,3 +18,4 @@ define('FLEXIBEE_AUTHSESSID',
 $invoice = new \FlexiPeeHP\FakturaVydana();
 $invoice->setDataValue('typDokl', 'FAKTURA');
 $invoice->insertToFlexiBee();
+

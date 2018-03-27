@@ -226,6 +226,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | ------------------------------------------------------------- | --------------------------------------|
 | [AttachmentSaveToFile.php](Examples/AttachmentSaveToFile.php) | uložení přílohy do souboru
 | [AttachmentUpload.php](Examples/AttachmentUpload.php)         | nahrání přílohy
+| [AuthSessionIdUsage.php](Examples/AuthSessionIdUsage.php)     | Ukázka autentizace AuthSessionId
 | [AuthentizeContact.php](Examples/AuthentizeContact.php)       | autentizace kontaktu
 | [BatchOperation.php](Examples/BatchOperation.php)             | Použití filtru při dávkových operacích
 | [CreateLabel.php](Examples/CreateLabel.php)                   | práce se štítky
@@ -239,6 +240,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [NewInvoice.php](Examples/NewInvoice.php)                     | Nová faktura se splatností vypsaná jako json
 | [ObjectChaining.php](Examples/ObjectChaining.php)             | Řetězení objektů pro více operací v jenom pořadavku
 | [ObjectCooperation.php](Examples/ObjectsCooperation.php)      | Sdílení data a parametrů připojení mezi objekty
+| [PerformingActions.php](Examples/PerformingActions.php)       | Jak vykonávat akce nad dokladem akce. např. storno
 | [ReadAddressColumns.php](Examples/ReadAddressColumns.php)     | vrať konkrétní sloupečky
 | [sendInvoiceByMail.php](Examples/sendInvoiceByMail.php)       | odeslání faktury mailem
 | [SendReminders.php](Examples/SendReminders.php)               | odeslání upomínek
