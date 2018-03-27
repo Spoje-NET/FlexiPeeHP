@@ -402,7 +402,7 @@ class FlexiBeeRO extends \Ease\Sand
         $this->setupProperty($options, 'password', 'FLEXIBEE_PASSWORD');
         $this->setupProperty($options, 'authSessionId', 'FLEXIBEE_AUTHSESSID');
         if (!empty($this->authSessionId)) {
-            $this->defaultUrlParams['authSessionId'] = $this->authSessionId;
+            $this->defaultHttpHeaders['authSessionId'] = $this->authSessionId;
         }
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
@@ -827,9 +827,6 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function addDefaultUrlParams($urlRaw)
     {
-        if (!empty($this->authSessionId)) {
-            $this->defaultUrlParams['authSessionId'] = $this->authSessionId;
-        }
         return $this->addUrlParams($urlRaw, $this->defaultUrlParams, false);
     }
 
@@ -1155,7 +1152,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public static function urlEncode($urlRaw)
     {
-        return str_replace(['%27','%3A'], ["'",':'], rawurlencode($urlRaw));
+        return str_replace(['%27', '%3A'], ["'", ':'], rawurlencode($urlRaw));
     }
 
     /**
@@ -1513,7 +1510,7 @@ class FlexiBeeRO extends \Ease\Sand
                     $kod = \Ease\Sand::rip($data[$this->keyColumn]);
                 }
             }
-            $kod =  substr($kod, 0, 20);
+            $kod = substr($kod, 0, 20);
         }
 
         if (!strlen($kod)) {
@@ -1809,7 +1806,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function getApiURL($format = null)
     {
-        $apiUrl = str_replace(['.'.$this->format,'?limit=0'], '', $this->apiURL);
+        $apiUrl = str_replace(['.'.$this->format, '?limit=0'], '', $this->apiURL);
         return $apiUrl.(empty($format) ? '' : '.'.$format );
     }
 

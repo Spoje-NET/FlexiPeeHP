@@ -255,7 +255,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         }
 
         //404 Test
-        $this->assertNull($this->object->performRequest('error404.json'));
+        $this->assertEquals('false',$this->object->performRequest('error404.json')['success']);
     }
 
     /**
