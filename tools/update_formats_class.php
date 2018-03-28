@@ -79,6 +79,8 @@ $evidenceFormats .= '
     static public $formats = [
         \'JS\' => [\'desc\' => \'JavaScropt\',
             \'suffix\' => \'js\', \'content-type\' => \'application/javascript\', \'import\' => false],
+        \'PNG\' => [\'desc\' => \'Portable Network Graphics\',
+            \'suffix\' => \'png\', \'content-type\' => \'image/png\', \'import\' => false],
         \'CSS\' => [\'desc\' => \'Kaskádový styl\',
             \'suffix\' => \'css\', \'content-type\' => \'text/css\', \'import\' => false],
         \'HTML\' => [\'desc\' => \'HTML stránka pro zobrazení informací na webové stránce.\',

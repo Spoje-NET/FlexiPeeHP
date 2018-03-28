@@ -47,7 +47,7 @@ class Company extends FlexiBeeRW
      * Key Column for this evidence
      * @var string
      */
-    public $myKeyColumn = 'dbNazev';
+    public $keyColumn = 'dbNazev';
 
     /**
      * Class for read only interaction with FlexiBee.

@@ -85,8 +85,8 @@ class CompanyTest extends FlexiBeeROTest
 
         $xml = $this->object->performRequest(null, 'GET', 'xml');
         $this->assertArrayHasKey('company', $xml);
-
-        $this->assertNull($this->object->performRequest('error.json'));
+        $nonExist = $this->object->performRequest('error.json');
+        $this->assertEquals($nonExist['success'],'false');
     }
 
     /**

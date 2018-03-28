@@ -78,7 +78,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
-    public $myKeyColumn = \'evidencePath\';
+    public $keyColumn = \'evidencePath\';
 
 ';
 
