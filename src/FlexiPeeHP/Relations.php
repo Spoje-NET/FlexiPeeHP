@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2018.1.0.2';
+ static public $version = '2018.1.1.1';
 
     /**
      * Evidence banka-polozka (#banBanZapoctyPol) Relations.

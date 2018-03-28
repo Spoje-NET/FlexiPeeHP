@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Tue, 20 Feb 2018 23:02:20 +0100 
+ * Generated: Wed, 28 Mar 2018 13:39:19 +0200 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -39,14 +39,14 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
-    public $myKeyColumn = 'evidencePath';
+    public $keyColumn = 'evidencePath';
 
     /**
      * Source FlexiBee server version.
      *
      * @var string
      */
- static public $version = '2018.1.0.2';
+ static public $version = '2018.1.1.1';
 
     /**
      * Evidences Path/Name listing.
