@@ -531,7 +531,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             case 'c':
             case 'status':
             case 'evidence-list':
-                $this->object->recordExists(['id' => 1]);
+                $this->object->recordExists();
                 break;
 
             default:

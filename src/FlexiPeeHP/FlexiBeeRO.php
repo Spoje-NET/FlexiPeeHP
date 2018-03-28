@@ -336,7 +336,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Send Error500 Report to
      * @var string email address
      */
-    public $reportRecipient = 'kbel@flexibee.eu';
+    public $reportRecipient = 'podpora@flexibee.eu';
 
     /**
      * Formating string for \DateTime::format() for datetime columns
@@ -402,7 +402,7 @@ class FlexiBeeRO extends \Ease\Sand
         $this->setupProperty($options, 'password', 'FLEXIBEE_PASSWORD');
         $this->setupProperty($options, 'authSessionId', 'FLEXIBEE_AUTHSESSID');
         if (!empty($this->authSessionId)) {
-            $this->defaultHttpHeaders['authSessionId'] = $this->authSessionId;
+            $this->defaultHttpHeaders['X-authSessionId'] = $this->authSessionId;
         }
         if (isset($options['evidence'])) {
             $this->setEvidence($options['evidence']);
@@ -1395,8 +1395,7 @@ class FlexiBeeRO extends \Ease\Sand
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
         $keyColumn   = $this->getKeyColumn();
-        $res         = $this->getColumnsFromFlexibee([$keyColumn],
-            [is_array($data) ? self::flexiUrl($data) : $keyColumn => $data]);
+        $res         = $this->getColumnsFromFlexibee([$keyColumn], $data );
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
             || !count($res[0])) {
