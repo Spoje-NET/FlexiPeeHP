@@ -230,6 +230,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [AuthentizeContact.php](Examples/AuthentizeContact.php)       | autentizace kontaktu
 | [BatchOperation.php](Examples/BatchOperation.php)             | Použití filtru při dávkových operacích
 | [CreateLabel.php](Examples/CreateLabel.php)                   | práce se štítky
+| [DryRun.php](Examples/DryRun.php)                             | Testovací uložení (dry-run)
 | [DownloadInvoicePDF.php](Examples/DownloadInvoicePDF.php)     | stažení PDF faktury
 | [Error404.php](Examples/Error404.php)                         | práce s neexistujícími záznamy
 | [FindOverdueInvoices.php](Examples/FindOverdueInvoices.php)   | najdi faktury po splatnosti

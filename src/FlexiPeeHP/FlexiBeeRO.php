@@ -772,7 +772,7 @@ class FlexiBeeRO extends \Ease\Sand
         $this->apiURL = $this->getEvidenceURL();
         $id           = $this->__toString();
         if (!empty($id)) {
-            $this->apiURL .= '/'.urlencode($id);
+            $this->apiURL .= '/'.self::urlEncode($id);
         }
         $this->apiURL .= '.'.$this->format;
     }
@@ -851,7 +851,8 @@ class FlexiBeeRO extends \Ease\Sand
             $url = $this->evidenceUrlWithSuffix($urlSuffix);
         }
 
-        $responseCode = $this->doCurlRequest($url, $method, $format);
+        $responseCode = $this->doCurlRequest($this->addDefaultUrlParams($url),
+            $method, $format);
 
         return $this->parseResponse($this->rawResponseToArray($this->lastCurlResponse,
                     $this->responseFormat), $responseCode);
@@ -929,19 +930,24 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
-        $mainResult          = $this->unifyResponseFormat($responseDecoded);
-        $this->responseStats = array_key_exists('stats', $responseDecoded) ? (isset($responseDecoded['stats'][0])
-                ? $responseDecoded['stats'][0] : $responseDecoded['stats']) : null;
-
+        if (is_array($responseDecoded)) {
+            $mainResult          = $this->unifyResponseFormat($responseDecoded);
+            $this->responseStats = array_key_exists('stats', $responseDecoded) ? (isset($responseDecoded['stats'][0])
+                    ? $responseDecoded['stats'][0] : $responseDecoded['stats']) : null;
+        } else {
+            $mainResult = $responseDecoded;
+        }
         switch ($responseCode) {
             case 201: //Success Write
             case 200: //Success Read
-                $this->lastResult = $mainResult;
-                if (isset($responseDecoded['@rowCount'])) {
-                    $this->rowCount = (int) $responseDecoded['@rowCount'];
-                }
-                if (isset($responseDecoded['@globalVersion'])) {
-                    $this->globalVersion = (int) $responseDecoded['@globalVersion'];
+                if (is_array($responseDecoded)) {
+                    $this->lastResult = $mainResult;
+                    if (isset($responseDecoded['@rowCount'])) {
+                        $this->rowCount = (int) $responseDecoded['@rowCount'];
+                    }
+                    if (isset($responseDecoded['@globalVersion'])) {
+                        $this->globalVersion = (int) $responseDecoded['@globalVersion'];
+                    }
                 }
                 break;
 
@@ -1233,9 +1239,9 @@ class FlexiBeeRO extends \Ease\Sand
         }
         if (is_array($id)) {
             $id = rawurlencode('('.self::flexiUrl($id).')');
-        }
-
-        if (preg_match('/^code/', $id)) {
+        } else if (preg_match('/^ext:/', $id)) {
+            $id = self::urlEncode($id);
+        } else if (preg_match('/^code:/', $id)) {
             $id = self::code(rawurlencode(self::uncode($id)));
         }
 
@@ -1395,10 +1401,10 @@ class FlexiBeeRO extends \Ease\Sand
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
         $keyColumn   = $this->getKeyColumn();
-        $res         = $this->getColumnsFromFlexibee([$keyColumn], $data );
+        $res         = $this->getColumnsFromFlexibee([$keyColumn], $data);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
-            || !count($res[0])) {
+            || (isset($res) && !count($res[0]) )) {
             $found = false;
         } else {
             $found = true;
