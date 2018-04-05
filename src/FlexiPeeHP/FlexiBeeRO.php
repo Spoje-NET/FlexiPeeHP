@@ -267,45 +267,44 @@ class FlexiBeeRO extends \Ease\Sand
      * @var array
      */
     public $urlParams = [
-        'authSessionId',
-        'idUcetniObdobi',
-        'dry-run',
-        'fail-on-warning',
-        'report-name',
-        'report-lang',
-        'report-sign',
-        'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
-        'mode',
-        'limit',
-        'start',
-        'order',
-        'sort',
+        'add-global-version',
         'add-row-count',
-        'relations',
+        'as-gui',
+        'auth',
+        'authSessionId',
+        'code-as-id',
+        'code-in-response',
+        'delimeter',
+        'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
+        'dir',
+        'dry-run',
+        'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
+        'encoding',
+        'export-settings',
+        'fail-on-warning',
+        'filter',
+        'format',
+        'idUcetniObdobi',
         'includes',
+        'inDesktopApp', // Note: Undocumented function (html only)
+        'limit',
+        'mode',
+        'no-ext-ids',
+        'no-http-errors',
+        'no-ids',
+        'only-ext-ids',
+        'order',
+        'relations',
+        'report-lang',
+        'report-name',
+        'report-sign',
+        'skupina-stitku',
+        'sort',
+        'start',
+        'stitky-as-ids',
         'use-ext-id',
         'use-internal-id',
-        'stitky-as-ids',
-        'only-ext-ids',
-        'no-ext-ids',
-        'no-ids',
-        'code-as-id',
-        'no-http-errors',
-        'export-settings',
-        'as-gui',
-        'code-in-response',
-        'add-global-version',
-        'encoding',
-        'delimeter',
-        'format',
-        'auth',
-        'skupina-stitku',
-        'dir',
-        'relations',
-        'relations',
         'xpath', // See: https://www.flexibee.eu/api/dokumentace/ref/xpath/
-        'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
-        'inDesktopApp' // Note: Undocumented function (html only)
     ];
 
     /**
@@ -392,7 +391,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @param array $options Object Options ( user,password,authSessionId
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
-     *                                        detail,offline,filter
+     *                                        detail,offline,filter,ignore404
      */
     public function setUp($options = [])
     {
@@ -418,6 +417,11 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('offline', $options)) {
             $this->offline = (boolean) $options['offline'];
         }
+        
+        if(array_key_exists('ignore404', $options)){
+            $this->ignore404($options['ignore404']);
+        }
+        
         $this->setupProperty($options, 'debug');
         $this->updateApiURL();
     }
@@ -1404,7 +1408,7 @@ class FlexiBeeRO extends \Ease\Sand
         $res         = $this->getColumnsFromFlexibee([$keyColumn], $data);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
-            || (isset($res) && !count($res[0]) )) {
+            || ((isset($res) && is_array($res)) && !isset($res[0]) )) {
             $found = false;
         } else {
             $found = true;
