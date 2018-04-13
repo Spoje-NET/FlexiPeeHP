@@ -120,7 +120,6 @@ class FlexiBeeRW extends FlexiBeeRO
                 if (isset($responseDecoded[$this->resultField][0]['id'])) {
                     $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
                     $this->setMyKey($this->lastInsertedID);
-                    $this->updateApiURL();
                 } else {
                     $this->lastInsertedID = null;
                 }

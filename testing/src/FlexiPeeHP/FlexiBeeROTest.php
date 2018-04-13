@@ -155,7 +155,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getConnectionOptions
      */
-    public function testGetConnectionOptions(){
+    public function testGetConnectionOptions()
+    {
         $options = $this->object->getConnectionOptions();
         $this->assertArrayHasKey('url', $options);
     }
@@ -255,7 +256,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         }
 
         //404 Test
-        $this->assertEquals('false',$this->object->performRequest('error404.json')['success']);
+        $this->assertEquals('false',
+            $this->object->performRequest('error404.json')['success']);
     }
 
     /**
@@ -919,6 +921,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testgetFirstRecordID()
     {
+        $firstID = $this->object->getFirstRecordID();
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':
@@ -929,7 +932,6 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             case 'evidence-list':
                 break;
             default:
-                $firstID = $this->object->getFirstRecordID();
                 break;
         }
     }

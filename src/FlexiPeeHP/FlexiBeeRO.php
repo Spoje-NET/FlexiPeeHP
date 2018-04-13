@@ -3,7 +3,7 @@
  * FlexiPeeHP - Read Only Access to FlexiBee class.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @copyright  (C) 2015-2018 Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -417,11 +417,11 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('offline', $options)) {
             $this->offline = (boolean) $options['offline'];
         }
-        
-        if(array_key_exists('ignore404', $options)){
+
+        if (array_key_exists('ignore404', $options)) {
             $this->ignore404($options['ignore404']);
         }
-        
+
         $this->setupProperty($options, 'debug');
         $this->updateApiURL();
     }
@@ -1393,7 +1393,7 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Test if given record exists in FlexiBee.
      *
-     * @param array $data
+     * @param array|string|int $data ext:id:23|code:ITEM|['id'=>23]|23
      * @return boolean Record presence status
      */
     public function recordExists($data = [])
@@ -1405,7 +1405,8 @@ class FlexiBeeRO extends \Ease\Sand
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
         $keyColumn   = $this->getKeyColumn();
-        $res         = $this->getColumnsFromFlexibee([$keyColumn], $data);
+        $res         = $this->getColumnsFromFlexibee([$keyColumn],
+            is_array($data) ? $data : [$keyColumn => $data]);
 
         if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
             || ((isset($res) && is_array($res)) && !isset($res[0]) )) {
@@ -1690,6 +1691,9 @@ class FlexiBeeRO extends \Ease\Sand
     public function getRecordID()
     {
         $id = $this->getDataValue('id');
+        if (is_null($id) && $this->recordExists($this->getRecordCode())) {
+            $id = $this->lastResult[$this->getEvidence()][0]['id'];
+        }
         return is_null($id) ? null : is_numeric($id) ? intval($id) : $id;
     }
 
