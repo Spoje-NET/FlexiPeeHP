@@ -1691,9 +1691,6 @@ class FlexiBeeRO extends \Ease\Sand
     public function getRecordID()
     {
         $id = $this->getDataValue('id');
-        if (is_null($id) && $this->recordExists($this->getRecordCode())) {
-            $id = $this->lastResult[$this->getEvidence()][0]['id'];
-        }
         return is_null($id) ? null : is_numeric($id) ? intval($id) : $id;
     }
 
