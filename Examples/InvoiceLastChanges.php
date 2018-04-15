@@ -28,7 +28,6 @@ $invoice = new \FlexiPeeHP\FakturaVydana($invoiceID);
 if ($invoice->getMyKey()) {
     $journaler = new \FlexiPeeHP\Zurnal();
     $changes   = $journaler->getLastChange($invoice);
-    echo var_export($changes);
 } else {
     $invoice->addStatusMessage('Source Invoice does not exists');
 }
