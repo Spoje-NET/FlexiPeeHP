@@ -2,9 +2,5 @@ composer.phar
 /vendor/
 composer.lock
 /nbproject/private/
-/debian/flexipeehp/
-/debian/flexipeehp.debhelper.log
-/debian/flexipeehp.substvars
 /docs/
 /.vagrant/
-/debian/flexipeehp-doc.substvars

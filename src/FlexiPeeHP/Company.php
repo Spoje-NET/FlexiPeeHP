@@ -158,6 +158,7 @@ class Company extends FlexiBeeRW
                 $result = true;
             }
         }
+        $this->defaultHttpHeaders = $headersBackup;
         return $result;
     }
 
@@ -170,7 +171,6 @@ class Company extends FlexiBeeRW
      */
     public function restoreBackupFrom($filename)
     {
-        $result                                   = false;
         $headersBackup                            = $this->defaultHttpHeaders;
         $this->defaultHttpHeaders['Accept']       = '*/*';
         $this->defaultHttpHeaders['Content-Type'] = 'application/x-winstrom-backup';

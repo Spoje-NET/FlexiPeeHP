@@ -846,6 +846,7 @@ class FlexiBeeRO extends \Ease\Sand
                                    $format = null)
     {
         $this->rowCount = null;
+        $this->responseStats = [];
 
         if (preg_match('/^http/', $urlSuffix)) {
             $url = $urlSuffix;
@@ -2219,7 +2220,7 @@ class FlexiBeeRO extends \Ease\Sand
             if ((strstr($this->url, '://localhost') || strstr($this->url,
                     '://127.')) && file_exists('/var/log/flexibee.log')) {
 
-                $fl = fopen("/var/log/flexibee.log", "r");
+                $fl = fopen('/var/log/'.'flexibee.log', 'r');
                 if ($fl) {
                     $tracelog = [];
                     for ($x_pos = 0, $ln = 0, $output = array(); fseek($fl,
@@ -2303,7 +2304,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @param string $additions Additional note text
      */
-    function logBanner($additions = null)
+    public function logBanner($additions = null)
     {
         $this->addStatusMessage('FlexiBee '.str_replace('://',
                 '://'.$this->user.'@', str_replace('.json', '', $this->apiURL)).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,

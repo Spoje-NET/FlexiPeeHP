@@ -17,4 +17,6 @@ $invoice = new \FlexiPeeHP\FakturaVydana();
 
 $invoice->defaultUrlParams['dry-run'] = 'true';
 
-print_r($invoice->insertToFlexiBee(['typDokl' => 'code:FAKTURA']));
+$resultHere = $invoice->insertToFlexiBee(['typDokl' => 'code:FAKTURA']);
+
+echo json_encode($resultHere, JSON_PRETTY_PRINT);;

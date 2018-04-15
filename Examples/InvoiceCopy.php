@@ -20,7 +20,7 @@ include_once '../vendor/autoload.php';
  *
  * @return \FlexiPeeHP\FakturaVydana
  */
-function invoiceCopy($invoice, $extraValues = [])
+function invoiceCopy(\FlexiPeeHP\FakturaVydana $invoice, $extraValues = [])
 {
     $invoice2 = new \FlexiPeeHP\FakturaVydana(array_merge(
             $extraValues, $invoice->getData()));

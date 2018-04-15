@@ -250,8 +250,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
                 break;
 
             default:
-                $json = $this->object->performRequest(null, 'GET', 'json');
-                $xml  = $this->object->performRequest(null, 'GET', 'xml');
+                $this->object->performRequest(null, 'GET', 'json');
+                $this->object->performRequest(null, 'GET', 'xml');
                 break;
         }
 
@@ -468,11 +468,12 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
                 $this->object->setAction('copy');
                 $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
                     $this->object->getJsonizedData(['key' => 'value']));
-                break;
-
+                
                 $this->object->action = 'storno';
                 $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
                 $this->object->getJsonizedData([]);
+                break;
+
         }
     }
 
@@ -575,7 +576,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             default:
                 $structure = $this->object->getColumnsInfo();
 
-                $columns = $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
+                $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
                     ['limit' => 1], 'id');
                 break;
         }
@@ -921,7 +922,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testgetFirstRecordID()
     {
-        $firstID = $this->object->getFirstRecordID();
+        $this->object->getFirstRecordID();
         switch ($this->object->getEvidence()) {
             case '':
             case 'c':

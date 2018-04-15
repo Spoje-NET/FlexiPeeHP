@@ -181,7 +181,7 @@ class FakturaVydana extends FlexiBeeRW
                 $modul = 'pokladna';
                 break;
             default :
-                throw new Exception(_('Unsupported $income parameter type'));
+                throw new \Ease\Exception(_('Unsupported $income parameter type'));
         }
 
         $incomeId = $income->getRecordID();

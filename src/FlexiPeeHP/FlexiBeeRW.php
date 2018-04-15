@@ -556,7 +556,6 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function changeExternalID($selector, $newValue, $forID = null)
     {
-        $result                       = null;
         $change['@removeExternalIds'] = 'ext:'.$selector.':';
         $change['id']                 = [is_null($forID) ? $this->getRecordID() : $forID,
             'ext:'.$selector.':'.$newValue];

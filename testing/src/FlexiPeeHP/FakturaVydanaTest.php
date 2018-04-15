@@ -260,6 +260,8 @@ class FakturaVydanaTest extends FlexiBeeRWTest
 
         $invdata = $this->object->getData();
 
+        $this->assertArrayHasKey('id', $invdata);
+
 //        $this->object->getDataValue('sumCelkem'); ????
 //        $result = $invoice2->odpocetZalohy($this->object);
 //        $this->assertArrayHasKey('success', $result);
@@ -277,25 +279,24 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $this->object->addArrayToBranch(['nazev' => 'zaloha'], 'polozkyDokladu');
     }
 
-
     /**
      * @covers FlexiPeeHP\FakturaVydana::vytvorVazbuZDD
      */
     public function testVytvorVazbuZDD()
     {
-        $vs = \Ease\Sand::randomNumber();
-        $this->object->setDataValue('typDokl','code:ZÁLOHA');
+        $vs     = \Ease\Sand::randomNumber();
+        $this->object->setDataValue('typDokl', 'code:ZÁLOHA');
         $this->object->setDataValue('varSym', $vs);
-        $this->object->setDataValue('duzpPuv', '2018-02-10T23:47:10.510+01:00' );
+        $this->object->setDataValue('duzpPuv', '2018-02-10T23:47:10.510+01:00');
         $this->object->refresh();
-        $this->object->setDataValue('typDokl','code:ZDD');
+        $this->object->setDataValue('typDokl', 'code:ZDD');
         $this->object->refresh();
         $income = new \FlexiPeeHP\Banka();
-        $income->setDataValue('typDokl','code:STANDARD');
-        $income->setDataValue('kod',$vs);
-        $income->setDataValue('banka','code:BANKOVNÍ ÚČET');
+        $income->setDataValue('typDokl', 'code:STANDARD');
+        $income->setDataValue('kod', $vs);
+        $income->setDataValue('banka', 'code:BANKOVNÍ ÚČET');
         $income->setDataValue('varSym', $vs);
         $income->refresh();
-        $this->object->vytvorVazbuZDD($income);        
+        $this->object->vytvorVazbuZDD($income);
     }
 }
