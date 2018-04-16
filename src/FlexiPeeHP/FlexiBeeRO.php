@@ -2140,7 +2140,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @return string|null filename downloaded or none
      */
-    public function getInFormat($format)
+    public function getInFormat($format, $reportName = null)
     {
         $response = null;
         if ($this->setFormat($format)) {
