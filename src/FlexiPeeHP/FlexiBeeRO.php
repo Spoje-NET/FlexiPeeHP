@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.8.9.1';
+    public static $libVersion = '1.9.2.1';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -845,7 +845,7 @@ class FlexiBeeRO extends \Ease\Sand
     public function performRequest($urlSuffix = null, $method = 'GET',
                                    $format = null)
     {
-        $this->rowCount = null;
+        $this->rowCount      = null;
         $this->responseStats = [];
 
         if (preg_match('/^http/', $urlSuffix)) {

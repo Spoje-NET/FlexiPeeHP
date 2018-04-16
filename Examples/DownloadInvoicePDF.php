@@ -27,3 +27,6 @@ $invoiceID = askForFlexiBeeID();
 $invoice = new \FlexiPeeHP\FakturaVydana($invoiceID, ['detail' => 'id']);
 echo 'invoice saved to: '.$invoice->downloadInFormat('pdf', '/tmp/',
     'fakturaKB$$SUM_BEZ_QR')."\n";
+
+echo 'post money order saved to: '.$invoice->downloadInFormat($format, '/tmp/', 'slozenkaA$$SUM')."\n";
+
