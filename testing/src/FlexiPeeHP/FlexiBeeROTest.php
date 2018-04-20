@@ -468,12 +468,11 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
                 $this->object->setAction('copy');
                 $this->assertEquals('{"'.$this->object->nameSpace.'":{"@version":"1.0","'.$this->object->evidence.'":{"key":"value"},"'.$this->object->evidence.'@action":"copy"}}',
                     $this->object->getJsonizedData(['key' => 'value']));
-                
+
                 $this->object->action = 'storno';
                 $this->object->filter = "stavUhrK = 'stavUhr.uhrazeno'";
                 $this->object->getJsonizedData([]);
                 break;
-
         }
     }
 
@@ -1020,6 +1019,40 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     {
         $this->assertEquals(1506412853,
             FlexiBeeRO::flexiDateTimeToDateTime('2017-09-26T10:00:53.755+02:00')->getTimestamp());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setDataValue
+     */
+    public function testSetDataValue()
+    {
+        if(!empty($this->object->getColumnsInfo())){
+            $this->object->setDataValue('datVyst', new \DateTime());
+        }
+    }
+
+    /**
+     * PHP Date object to FlexiBee date format test
+     * 
+     * @covers FlexiPeeHP\FlexiBeeRO::dateToFlexiDate
+     */
+    public function testDateToFlexiDate()
+    {
+        $dater = new \DateTime();
+        $this->assertEquals($dater->format(FlexiBeeRO::$DateFormat),
+            FlexiBeeRO::dateToFlexiDate($dater));
+    }
+
+    /**
+     * PHP Date object to FlexiBee dateTime format test
+     * 
+     * @covers FlexiPeeHP\FlexiBeeRO::dateToFlexiDateTime
+     */
+    public function testDateToFlexiDateTime()
+    {
+        $dater = new \DateTime();
+        $this->assertEquals($dater->format(FlexiBeeRO::$DateTimeFormat),
+            FlexiBeeRO::dateToFlexiDateTime($dater));
     }
 
     public function testSetFilter()

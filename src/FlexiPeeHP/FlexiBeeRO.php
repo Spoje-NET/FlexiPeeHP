@@ -529,10 +529,10 @@ class FlexiBeeRO extends \Ease\Sand
                     $columnInfo = $this->getColumnInfo($columnName);
                     switch ($columnInfo['type']) {
                         case 'date':
-                            $value = $value->format(self::$DateFormat);
+                            $value = self::dateToFlexiDate($value);
                             break;
                         case 'datetime':
-                            $value = $value->format(self::$DateTimeFormat);
+                            $value = self::dateToFlexiDateTime($value);
                             break;
                     }
                     break;
@@ -540,6 +540,30 @@ class FlexiBeeRO extends \Ease\Sand
         }
         return parent::setDataValue($columnName, $value);
     }
+
+    
+    /**
+     * PHP Date object to FlexiBee date format
+     * 
+     * @param \DateTime $date
+     */
+    public static function dateToFlexiDate($date)
+    {
+        return $date->format(self::$DateFormat);
+    }
+
+    /**
+     * PHP Date object to FlexiBee date format
+     * 
+     * @param \DateTime $dateTime
+     */
+    public static function dateToFlexiDateTime($dateTime)
+    {
+        return $dateTime->format(self::$DateTimeFormat);
+    }
+
+
+
 
     /**
      * Set URL prefix
