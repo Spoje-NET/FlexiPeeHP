@@ -20,7 +20,7 @@ class Stitek extends FlexiBeeRW
      *
      * @var array
      */
-    public static  $vsbToEvidencePath = [
+    public static $vsbToEvidencePath = [
         'vsbAdr' => 'adresar', // Adresář
         'vsbBan' => 'banka', // Banka
 //      'vsbCis' => 'ciselnik', // Číselníky
@@ -118,7 +118,7 @@ class Stitek extends FlexiBeeRW
      *
      * @return boolean   success result ?
      */
-    public static  function setLabel($label, $object)
+    public static function setLabel($label, $object)
     {
         return $object->insertToFlexiBee(['id' => $object->getMyKey(), 'stitky' => $label]);
     }
@@ -131,7 +131,7 @@ class Stitek extends FlexiBeeRW
      *
      * @return boolean   success result ?
      */
-    public static  function unsetLabel($label, $object)
+    public static function unsetLabel($label, $object)
     {
         $result = true;
         $labels = self::getLabels($object);
@@ -144,4 +144,29 @@ class Stitek extends FlexiBeeRW
         return $result;
     }
 
+    /**
+     * Create New Label for given evidencies
+     * 
+     * @param string $name       Label Name
+     * @param array  $evidences  Evidence code list ex: ['faktura-vydana','faktura-prijata']
+     * @param array  $options    Additional Label properties ex: ['kod'=>'EXAMPLE','skupVybKlic'=>'SKUPINA_STITKU'] 
+     * 
+     * @return boolean success
+     */
+    public function createNew($name, $evidences, $options = [])
+    {
+        $this->setData($options,true);
+        $evidence2code = array_flip(self::$vsbToEvidencePath);
+        foreach ($evidences as $evidence) {
+            if (array_key_exists($evidence,$evidence2code)) {
+                $this->setDataValue($evidence2code[$evidence], true);
+            }
+        }
+
+        if (!array_key_exists('kod', $options)) {
+            $this->setDataValue('kod', self::code($name));
+        }
+        $this->setDataValue('nazev', $name);
+        return $this->sync();
+    }
 }

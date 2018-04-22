@@ -34,26 +34,18 @@ class StitekTest extends FlexiBeeRWTest
 
     /**
      * @covers FlexiPeeHP\Stitek::getLabels
-     * @todo   Implement testGetLabels().
      */
     public function testGetLabels()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->object->getLabels(new \FlexiPeeHP\Adresar());
     }
 
     /**
      * @covers FlexiPeeHP\Stitek::listToArray
-     * @todo   Implement testListToArray().
      */
     public function testListToArray()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals(['A' => 'A', 'B' => 'B'], Stitek::listToArray('A,B'));
     }
 
     /**
@@ -87,5 +79,21 @@ class StitekTest extends FlexiBeeRWTest
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
+    }
+
+    /**
+     * @covers FlexiPeeHP\Stitek::createNew
+     */
+    public function testCreateNew()
+    {
+        $this->assertFalse($this->object->createNew('Without Invoice',
+                ['pokladna']));
+
+        $testCode = \Ease\Sand::randomString();
+
+        $this->assertTrue($this->object->createNew('Example Label',
+                ['faktura-vydana', 'faktura-prijata'], ['kod' => $testCode]));
+
+        $this->object->deleteFromFlexiBee($this->object->getRecordIdent()); //Cleanup
     }
 }

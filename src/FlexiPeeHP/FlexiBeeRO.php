@@ -523,6 +523,13 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function setDataValue($columnName, $value)
     {
+        switch ($columnName) {
+            case 'kod':
+                $value = self::uncode($value); //Alwyas uncode "kod" column
+                break;
+            default:
+                break;
+        }
         if (is_object($value)) {
             switch (get_class($value)) {
                 case 'DateTime':
@@ -541,7 +548,6 @@ class FlexiBeeRO extends \Ease\Sand
         return parent::setDataValue($columnName, $value);
     }
 
-    
     /**
      * PHP Date object to FlexiBee date format
      * 
@@ -561,9 +567,6 @@ class FlexiBeeRO extends \Ease\Sand
     {
         return $dateTime->format(self::$DateTimeFormat);
     }
-
-
-
 
     /**
      * Set URL prefix
@@ -740,7 +743,8 @@ class FlexiBeeRO extends \Ease\Sand
     public static function objectToID($object)
     {
         $resultID = null;
-        if (is_object($object)) {
+        if (is_object($object) && method_exists($object, '__toString')
+        ) {
             $resultID = $object->__toString();
         } else {
             if (is_array($object)) {
