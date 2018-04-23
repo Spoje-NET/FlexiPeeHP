@@ -1511,7 +1511,7 @@ class FlexiBeeRO extends \Ease\Sand
 
         $flexiData = $this->getFlexiData(null, $conditions);
 
-        if (!is_null($indexBy) && count($flexiData) && count(current($flexiData))) {
+        if (is_array($indexBy) && count($flexiData) && count(current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
