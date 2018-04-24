@@ -65,7 +65,8 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     protected function setUp()
     {
-        $this->object = new FlexiBeeRW(null,['atomic'=>false,'debug'=>false]);
+        $this->object = new FlexiBeeRW(null,
+            ['atomic' => false, 'debug' => false]);
     }
 
     /**
@@ -156,7 +157,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testControlReadOnlyColumns()
     {
-        $this->object->controlReadOnlyColumns(['id'=>1]);
+        $this->object->controlReadOnlyColumns(['id' => 1]);
     }
 
     /**
@@ -377,7 +378,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testGetDataForJSON()
     {
-        $this->object->setData(['name'=>'test']);
+        $this->object->setData(['name' => 'test']);
         $this->object->getDataForJSON();
     }
 
@@ -386,7 +387,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testAddExternalID()
     {
-        if(empty($this->object->getEvidence())){
+        if (empty($this->object->getEvidence())) {
             $this->object->setEvidence('banka');
         }
         $this->object->addExternalID('ext:test:'.\Ease\Sand::randomNumber());
@@ -399,5 +400,18 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     {
         $this->object->changeExternalID('test', \Ease\Sand::randomNumber(),
             \Ease\Sand::randomNumber());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRW::sync
+     */
+    public function testSync()
+    {
+        $syncResult = $this->object->sync(['kod' => \Ease\Sand::randomString()]);
+        if ($this->object->getEvidence()) {
+            $this->assertTrue($syncResult);
+        } else {
+            $this->assertFalse($syncResult);
+        }
     }
 }

@@ -1,9 +1,9 @@
 <?php
 /**
- * FlexiPeeHP - Objekt pokladny.
+ * FlexiPeeHP - Objekt položky skladového pohybu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @copyright  (C) 2015-2018 Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -22,4 +22,27 @@ class SkladovyPohybPolozka extends FlexiBeeRW
      */
     public $evidence = 'skladovy-pohyb-polozka';
 
+    /**
+     * Add Items Serial Number
+     * 
+     * @param type $number
+     * @param type $isMain
+     * 
+     * @return boolean Success
+     */
+    public function addSerialNumber($number, $isMain = false)
+    {
+        $numberBranch['kod'] = $number;
+        $crrentSerialNumbers = $this->getDataValue('vyrobniCislaPrijata');
+        if ($isMain) {
+            if (!empty($crrentSerialNumbers)) {
+                foreach (array_keys($crrentSerialNumbers) as $serialNumberID) {
+                    unset($this->data['vyrobniCislaPrijata'][$serialNumberID]['vyrobnicislohlav']);
+                }
+            }
+            $numberBranch['vyrobnicislohlav'] = 1;
+        }
+        $this->setDataValue('mnozMj', count($crrentSerialNumbers) + 1);
+        return $this->addArrayToBranch($numberBranch, 'vyrobniCislaPrijata');
+    }
 }

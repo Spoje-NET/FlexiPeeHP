@@ -1790,7 +1790,7 @@ class FlexiBeeRO extends \Ease\Sand
         $keyColumn  = $this->getKeyColumn();
         $firstIdRaw = $this->getColumnsFromFlexibee([$keyColumn],
             ['limit' => 1, 'order' => $keyColumn], $keyColumn);
-        if (!empty($firstIdRaw)) {
+        if (!empty($firstIdRaw) && isset(current($firstIdRaw)[$keyColumn])) {
             $firstID = current($firstIdRaw)[$keyColumn];
         }
         return is_numeric($firstID) ? intval($firstID) : $firstID;

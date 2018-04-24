@@ -101,7 +101,8 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($data)) {
             $data = $this->getData();
         }
-        $this->postFields = $this->getJsonizedData($data);
+        $this->postFields = $this->getJsonizedData($data,
+            $this->debug ? JSON_PRETTY_PRINT : 0);
         return $this->performRequest(null, 'PUT');
     }
 
@@ -352,19 +353,8 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @return boolean Operation success
      */
-    public function addArrayToBranch($data, $relationPath)
+    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu')
     {
-        if ($this->debug === true) {
-            $relationsInfo = $this->getRelationsInfo();
-            if (count($relationsInfo)) {
-                $relationsByUrl = \Ease\Sand::reindexArrayBy($relationsInfo,
-                        'url');
-                if (!array_key_exists($relationPath, $relationsByUrl)) {
-                    $this->addStatusMessage("Relation to $relationPath does not exist for evidence ".$this->getEvidence(),
-                        'warning');
-                }
-            }
-        }
         $currentBranchData = $this->getDataValue($relationPath);
         $branchData        = $currentBranchData;
         $branchData[]      = $data;
@@ -382,7 +372,7 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function addObjectToBranch($object)
     {
-        $this->addArrayToBranch($object->getData(), $object->getEvidence());
+        $this->addArrayToBranch([$object->getEvidence() => $object->getData()]);
     }
 
     /**
@@ -458,11 +448,13 @@ class FlexiBeeRW extends FlexiBeeRO
     /**
      * Insert current data into FlexiBee and load actual record data back
      *
+     * @param array $data Initial data to save
+     * 
      * @return boolean Operation success
      */
-    public function sync()
+    public function sync($data = null)
     {
-        $this->insertToFlexiBee();
+        $this->insertToFlexiBee($data);
         $insertResult = $this->lastResponseCode;
         if ($insertResult == 201) {
             $id = $this->getRecordID();

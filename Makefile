@@ -26,7 +26,9 @@ doc:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
 	apigen generate --source src --destination docs --title "FlexiPeeHP ${VERSION}" --charset UTF-8 --access-levels public --access-levels protected --php --tree
 
-
+pretest:
+	composer --ansi --no-interaction update
+	php -f tests/PrepareForTest.php
 test:
 	composer update
 	phpunit --bootstrap testing/bootstrap.php
