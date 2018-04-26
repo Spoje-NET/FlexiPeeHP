@@ -33,7 +33,7 @@ class FakturaVydana extends FlexiBeeRW
      *
      * @return boolean Description
      */
-    public function addArrayToBranch($data, $relationPath)
+    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu')
     {
         if ( ($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu') || ($relationPath == 'polozky-faktury')) {
             switch (self::uncode($this->getDataValue('typDokl'))) {
