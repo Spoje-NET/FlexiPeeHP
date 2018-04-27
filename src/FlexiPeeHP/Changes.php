@@ -74,10 +74,8 @@ class Changes extends FlexiBeeRO
      */
     public function getGlobalVersion()
     {
-        $this->getColumnsFromFlexibee('*', ['start' => 0, 'limit' => 0]);
-        $globalVersionRaw = json_decode($this->lastCurlResponse, TRUE);
-        return isset($globalVersionRaw[$this->nameSpace]['@globalVersion']) ? intval($globalVersionRaw[$this->nameSpace]['@globalVersion'])
-                : null;
+        $this->getColumnsFromFlexibee('id', ['start' => 0, 'limit' => 0]);
+        return $this->globalVersion;
     }
 
     /**
