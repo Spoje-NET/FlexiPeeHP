@@ -4,3 +4,7 @@ composer.lock
 /nbproject/private/
 /docs/
 /.vagrant/
+/debian/flexipeehp-doc.debhelper.log
+/debian/debhelper-build-stamp
+/debian/flexipeehp
+/debian/flexipeehp-doc
