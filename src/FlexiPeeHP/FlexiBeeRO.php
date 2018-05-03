@@ -366,7 +366,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @var boolean
      */
     public $offline = false;
-    
+
     /**
      * Override cURL timeout
      * @var int seconds
@@ -470,7 +470,7 @@ class FlexiBeeRO extends \Ease\Sand
         if (!empty($company)) {
             $conOpts['company'] = $company;
         }
-        if(!is_null($this->timeout)){
+        if (!is_null($this->timeout)) {
             $conOpts['timeout'] = $this->timeout;
         }
         return $conOpts;
@@ -495,7 +495,7 @@ class FlexiBeeRO extends \Ease\Sand
                 curl_setopt($this->curl, CURLOPT_USERPWD,
                     $this->user.':'.$this->password); // set username and password
             }
-            if(!is_null($this->timeout)){
+            if (!is_null($this->timeout)) {
                 curl_setopt($this->curl, CURLOPT_TIMEOUT, $this->timeout);
             }
         }
@@ -614,6 +614,7 @@ class FlexiBeeRO extends \Ease\Sand
      * One of html|xml|json|csv|dbf|xls|isdoc|isdocx|edi|pdf|pdf|vcf|ical
      *
      * @param string $format
+     * 
      * @return boolen format is availble
      */
     public function setFormat($format)
@@ -637,6 +638,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Set evidence for communication
      *
      * @param string $evidence evidence pathName to use
+     * 
      * @return boolean evidence switching status
      */
     public function setEvidence($evidence)
@@ -827,12 +829,12 @@ class FlexiBeeRO extends \Ease\Sand
      * Add params to url
      *
      * @param string  $url      originall url
-     * @param array   $params   value to add
+     * @param array   $addParams   value to add
      * @param boolean $override replace already existing values ?
      *
      * @return string url with parameters added
      */
-    public function addUrlParams($url, $params, $override = false)
+    public function addUrlParams($url, $addParams, $override = false)
     {
         $urlParts = parse_url($url);
         $urlFinal = '';
@@ -847,10 +849,10 @@ class FlexiBeeRO extends \Ease\Sand
         }
         if (array_key_exists('query', $urlParts)) {
             parse_str($urlParts['query'], $queryUrlParams);
-            $urlParams = $override ? array_merge($params, $queryUrlParams) : array_merge($queryUrlParams,
-                    $params);
+            $urlParams = $override ? array_merge($queryUrlParams, $addParams) : array_merge($addParams,
+                    $queryUrlParams);
         } else {
-            $urlParams = $params;
+            $urlParams = $addParams;
         }
 
         if (!empty($urlParams)) {
@@ -882,6 +884,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @param string $urlSuffix část URL za identifikátorem firmy.
      * @param string $method    HTTP/REST metoda
      * @param string $format    Requested format
+     * 
      * @return array|boolean Výsledek operace
      */
     public function performRequest($urlSuffix = null, $method = 'GET',
@@ -1023,6 +1026,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Parse error message response
      *
      * @param array $responseDecoded
+     * 
      * @return int number of errors processed
      */
     public function parseError(array $responseDecoded)
@@ -1044,6 +1048,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @param string $url    URL požadavku
      * @param string $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
      * @param string $format požadovaný formát komunikace
+     * 
      * @return int HTTP Response CODE
      */
     public function doCurlRequest($url, $method, $format = null)
@@ -1103,6 +1108,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @link https://demo.flexibee.eu/devdoc/actions Provádění akcí
      * @param string $action
+     * 
      * @return boolean
      */
     public function setAction($action)
@@ -1437,6 +1443,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Test if given record exists in FlexiBee.
      *
      * @param array|string|int $data ext:id:23|code:ITEM|['id'=>23]|23
+     * 
      * @return boolean Record presence status
      */
     public function recordExists($data = [])
@@ -1600,6 +1607,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @param array  $resultData
      * @param string $url        URL
+     * 
      * @return boolean Log save success
      */
     public function logResult($resultData = null, $url = null)
@@ -1775,6 +1783,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Vrací identifikátor objektu code: nebo id:
      *
      * @link https://demo.flexibee.eu/devdoc/identifiers Identifikátory záznamů
+     * 
      * @return string indentifikátor záznamu reprezentovaného objektem
      */
     public function __toString()
@@ -1786,6 +1795,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Gives you FlexiPeeHP class name for Given Evidence
      *
      * @param string $evidence
+     * 
      * @return string Class name
      */
     public static function evidenceToClassName($evidence)
@@ -1814,6 +1824,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Vrací hodnotu daného externího ID
      *
      * @param string $want Which ? If empty,you obtain the first one.
+     * 
      * @return string
      */
     public function getExternalID($want = null)
@@ -1841,6 +1852,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Vrací aktuální globální verzi změn
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api#globalVersion Globální Verze
+     * 
      * @return type
      */
     public function getGlobalVersion()
@@ -1882,6 +1894,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Return the same response format for one and multiplete results
      *
      * @param array $responseBody
+     * 
      * @return array
      */
     public function unifyResponseFormat($responseBody)
@@ -1918,6 +1931,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Obtain structure for current (or given) evidence
      *
      * @param string $evidence
+     * 
      * @return array Evidence structure
      */
     public function getColumnsInfo($evidence = null)
@@ -1950,6 +1964,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Obtain actions for current (or given) evidence
      *
      * @param string $evidence
+     * 
      * @return array Evidence structure
      */
     public function getActionsInfo($evidence = null)
@@ -1969,6 +1984,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Obtain relations for current (or given) evidence
      *
      * @param string $evidence
+     * 
      * @return array Evidence structure
      */
     public function getRelationsInfo($evidence = null)
@@ -1988,6 +2004,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Obtain info for current (or given) evidence
      *
      * @param string $evidence
+     * 
      * @return array Evidence info
      */
     public function getEvidenceInfo($evidence = null)
@@ -2006,6 +2023,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Obtain name for current (or given) evidence path
      *
      * @param string $evidence Evidence Path
+     * 
      * @return array Evidence info
      */
     public function getEvidenceName($evidence = null)
@@ -2077,6 +2095,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Set Record Key
      *
      * @param int|string $myKeyValue
+     * 
      * @return boolean
      */
     public function setMyKey($myKeyValue)
@@ -2132,9 +2151,10 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
-     * Send all unsent Invoices by mail
+     * Send all unsent Documents by eMail
      *
      * @url https://www.flexibee.eu/api/dokumentace/ref/odesilani-mailem/
+     * 
      * @return int http response code
      */
     public function sendUnsent()

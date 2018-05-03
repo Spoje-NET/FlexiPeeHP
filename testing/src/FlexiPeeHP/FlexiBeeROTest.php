@@ -159,9 +159,9 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testGetConnectionOptions()
     {
-        $options = $this->object->getConnectionOptions();
+        $options                     = $this->object->getConnectionOptions();
         $this->assertArrayHasKey('url', $options);
-        $this->object->timeout = 120;
+        $this->object->timeout       = 120;
         $this->object->authSessionId = 'sessid';
         $this->object->setCompany('test');
         $this->object->getConnectionOptions();
@@ -997,7 +997,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testAddUrlParams()
     {
-        $this->assertEquals('http://vitexsoftware.cz/path?id=1&a=b',
+        $this->assertEquals('http://vitexsoftware.cz/path?a=b&id=1',
             $this->object->addUrlParams('http://vitexsoftware.cz/path?a=b',
                 ['id' => 1], TRUE));
     }
@@ -1011,7 +1011,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertEquals('http://vitexsoftware.cz?a=b',
             $this->object->addDefaultUrlParams('http://vitexsoftware.cz?a=b'));
         $this->object->defaultUrlParams['id'] = 1;
-        $this->assertEquals('http://vitexsoftware.cz/path?a=b&id=1',
+        $this->assertEquals('http://vitexsoftware.cz/path?id=1&a=b',
             $this->object->addDefaultUrlParams('http://vitexsoftware.cz/path?a=b'));
     }
 
@@ -1035,6 +1035,9 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         if (!empty($this->object->getColumnsInfo())) {
             $this->object->setDataValue('datVyst', new \DateTime());
         }
+        $this->object->setDataValue('test', 'test');
+        $this->object->setDataValue('kod', 'code:testKOD');
+        $this->assertEquals('testKOD',  $this->object->getDataValue('kod'));
     }
 
     /**
