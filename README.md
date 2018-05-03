@@ -61,9 +61,13 @@ Konfigurace se provádí nastavením následujících konstant:
     */
     define('FLEXIBEE_COMPANY', 'test_s_r_o_');
    /*
-    * Nebo pokud nechceme používat jméno a heslo
+    * Nebo pokud nechceme používat jméno a heslo 
     */
-    define('FLEXIBEE_AUTHSESSID', '6QuifebMits');
+    define('FLEXIBEE_AUTHSESSID', '6QuifebMits'); //Volitelné
+   /*
+    * Pomalý server, velká databáze a přes modem k tomu
+    */
+    define('FLEXIBEE_TIMEOUT', 60); //Volitelné
 ```
 
 nebo je možné přihlašovací údaje zadávat při vytváření instance třídy.
@@ -216,6 +220,23 @@ administrátora zadaný při instalaci FlexiBee.)
 
 Upozornění: testování proti firmě s množstvím faktur a připojenou bankou může 
 trvat nějakou dobu, jelikož se testuje i zavolání automatického párování dokladů.
+
+Pokud se ve vašem projektu rozhodnete podědit FlexiPeeHP a k těmto třídám napíšete 
+testy také  poděděné z FlexiPeeHP např:
+
+class HookRecieverTest extends \Test\FlexiPeeHP\ChangesTest
+
+Přidejte do vašeho composer.json i cesty k původním testům:
+
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "vendor/spoje.net/flexipeehp/testing/src/FlexiPeeHP/testing/",
+            "Test\\Ease\\": "vendor/vitexsoftware/ease-framework/tests/src/Ease",
+            "Test\\FlexiPeeHP\\": "vendor/spoje.net/flexipeehp/testing/src/FlexiPeeHP/",
+         }
+    }
+
+
 
 Ukázka
 ------

@@ -92,6 +92,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testCurlInit()
     {
+        $this->object->timeout = 120;
         $this->object->curlInit();
         $this->assertTrue(is_resource($this->object->curl));
     }
@@ -101,6 +102,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testProcessInit()
     {
+        $this->object->processInit(1);
         $this->object->processInit(['id' => 1]);
         $this->assertEquals(1, $this->object->getDataValue('id'));
 
@@ -159,6 +161,10 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     {
         $options = $this->object->getConnectionOptions();
         $this->assertArrayHasKey('url', $options);
+        $this->object->timeout = 120;
+        $this->object->authSessionId = 'sessid';
+        $this->object->setCompany('test');
+        $this->object->getConnectionOptions();
     }
 
     /**
@@ -1026,7 +1032,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testSetDataValue()
     {
-        if(!empty($this->object->getColumnsInfo())){
+        if (!empty($this->object->getColumnsInfo())) {
             $this->object->setDataValue('datVyst', new \DateTime());
         }
     }

@@ -366,6 +366,12 @@ class FlexiBeeRO extends \Ease\Sand
      * @var boolean
      */
     public $offline = false;
+    
+    /**
+     * Override cURL timeout
+     * @var int seconds
+     */
+    public $timeout = null;
 
     /**
      * Class for read only interaction with FlexiBee.
@@ -392,6 +398,7 @@ class FlexiBeeRO extends \Ease\Sand
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
      *                                        detail,offline,filter,ignore404
+     *                                        timeout
      */
     public function setUp($options = [])
     {
@@ -400,6 +407,7 @@ class FlexiBeeRO extends \Ease\Sand
         $this->setupProperty($options, 'user', 'FLEXIBEE_LOGIN');
         $this->setupProperty($options, 'password', 'FLEXIBEE_PASSWORD');
         $this->setupProperty($options, 'authSessionId', 'FLEXIBEE_AUTHSESSID');
+        $this->setupProperty($options, 'timeout', 'FLEXIBEE_TIMEOUT');
         if (!empty($this->authSessionId)) {
             $this->defaultHttpHeaders['X-authSessionId'] = $this->authSessionId;
         }
@@ -462,6 +470,9 @@ class FlexiBeeRO extends \Ease\Sand
         if (!empty($company)) {
             $conOpts['company'] = $company;
         }
+        if(!is_null($this->timeout)){
+            $conOpts['timeout'] = $this->timeout;
+        }
         return $conOpts;
     }
 
@@ -483,6 +494,9 @@ class FlexiBeeRO extends \Ease\Sand
             if (empty($this->authSessionId)) {
                 curl_setopt($this->curl, CURLOPT_USERPWD,
                     $this->user.':'.$this->password); // set username and password
+            }
+            if(!is_null($this->timeout)){
+                curl_setopt($this->curl, CURLOPT_TIMEOUT, $this->timeout);
             }
         }
         return !$this->offline;
