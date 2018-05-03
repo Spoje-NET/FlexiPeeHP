@@ -1033,6 +1033,10 @@ class FlexiBeeRO extends \Ease\Sand
     {
         if (array_key_exists('results', $responseDecoded)) {
             $this->errors = $responseDecoded['results'][0]['errors'];
+            foreach ($this->errors as $errorInfo) {
+                $this->addStatusMessage($errorInfo['message'].' "'.$errorInfo['for'].'" = '.$errorInfo['value'],
+                    'error');
+            }
         } else {
             if (array_key_exists('message', $responseDecoded)) {
                 $this->errors = [['message' => $responseDecoded['message']]];
