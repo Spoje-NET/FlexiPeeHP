@@ -1034,7 +1034,7 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('results', $responseDecoded)) {
             $this->errors = $responseDecoded['results'][0]['errors'];
             foreach ($this->errors as $errorInfo) {
-                $this->addStatusMessage($errorInfo['message'].' "'.$errorInfo['for'].'" = '.$errorInfo['value'],
+                $this->addStatusMessage($errorInfo['message'].' "'. (array_keys('for', $errorInfo) ? $errorInfo['for'].'" = '.$errorInfo['value'] : '') ,
                     'error');
             }
         } else {

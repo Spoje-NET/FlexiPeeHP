@@ -13,7 +13,18 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      * @var FakturaVydana
      */
     protected $object;
-
+    
+    /**
+     * Gives You new testng invoice
+     */
+    static public function getNew($code = 'UnitTest')
+    {
+        $helper = new FakturaVydanaTest();
+        $helper->setUp();
+        $helper->object->sync( $helper->getDataForInsert($code) );
+        return $helper->object;
+    }
+    
     /**
      * Gives You data able to insert into current evidence
      *
@@ -27,9 +38,9 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $dataForInsert['typDokl']    = 'code:FAKTURA';
         $adresar                     = new \FlexiPeeHP\Adresar();
         $candidates                  = $adresar->getColumnsFromFlexibee('id');
-        $candidat                    = array_rand($candidates);
-        $dataForInsert['firma']      = $candidat['id'];
+        $dataForInsert['firma']      = $candidates[array_rand($candidates)]['id'];
         $dataForInsert['sumZklZakl'] = \Ease\Sand::randomNumber(1000, 9999);
+        $dataForInsert['varSym']     = $dataForInsert['kod']        = time();
         $dataForInsert['bezPolozek'] = true;
         return $dataForInsert;
     }

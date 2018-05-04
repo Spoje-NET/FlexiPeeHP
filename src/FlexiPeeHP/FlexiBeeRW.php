@@ -528,13 +528,13 @@ class FlexiBeeRW extends FlexiBeeRO
     /**
      * Add External ID to Current Record
      * 
-     * @param string $extId
+     * @param string $extId ext:whatever:123 or simplay whatever:123
      * 
      * @return array Insert result
      */
     public function addExternalID($extId)
     {
-        return $this->insertToFlexiBee(['id' => [$this->getFirstRecordID(), $extId]]);
+        return $this->insertToFlexiBee(['id' => [$this->getRecordID(), 'ext:'.preg_replace('/^ext:/', '', $extId)]]);
     }
 
     /**
