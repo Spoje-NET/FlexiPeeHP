@@ -1827,9 +1827,9 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Vrací hodnotu daného externího ID
      *
-     * @param string $want Which ? If empty,you obtain the first one.
+     * @param string $want Namespace Selector. If empty,you obtain the first one.
      * 
-     * @return string
+     * @return string|array one id or array if multiplete
      */
     public function getExternalID($want = null)
     {
@@ -1843,9 +1843,18 @@ class FlexiBeeRO extends \Ease\Sand
             if (!is_null($ids) && is_array($ids)) {
                 foreach ($ids as $id) {
                     if (strstr($id, 'ext:'.$want)) {
+                        if (is_null($extid)) {
                         $extid = str_replace('ext:'.$want.':', '', $id);
+                        } else {
+                            if (is_array($extid)) {
+                                $extid[] = str_replace('ext:'.$want.':', '', $id);
+                            } else {
+                                $extid = [$extid, str_replace('ext:'.$want.':',
+                                        '', $id)];
                     }
                 }
+            }
+        }
             }
         }
         return $extid;
