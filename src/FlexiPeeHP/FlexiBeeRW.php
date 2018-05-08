@@ -78,26 +78,6 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function insertToFlexiBee($data = null)
     {
-        $info = $this->getEvidenceInfo();
-        switch ($info['importStatus']) {
-            case 'DISALLOWED':
-                throw new \Exception(sprintf('Inserting data to r/o evidence %s',
-                        $this->getEvidence()));
-            case 'NOT_DIRECT':
-                throw new \Exception(sprintf('Inserting data to slave only evidence %s',
-                        $this->getEvidence()));
-            case 'NOT_DOCUMENTED':
-                if ($this->debug === true) {
-                    $this->addStatusMessage(sprintf('Inserting data to undocumneted evidence %s',
-                            $this->getEvidence()));
-                }
-
-                break;
-            case 'SUPPORTED':
-            default:
-                break;
-        }
-
         if (is_null($data)) {
             $data = $this->getData();
         }

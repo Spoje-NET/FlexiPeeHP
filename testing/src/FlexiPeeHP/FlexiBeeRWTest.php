@@ -11,7 +11,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
 {
     /**
      * Poznámka vkládaná do záznamů vytvářených během testů
-     * @var strig 
+     * @var string 
      */
     public $poznam = 'Generováno UnitTestem PHP Knihovny https://github.com/Spoje-NET/FlexiPeeHP';
 
@@ -37,18 +37,23 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     {
         $dataForInsert = [];
         $structure     = $this->object->getColumnsInfo();
-        if (count($structure) && array_key_exists('typDokl', $structure)) {
-            if ($structure['typDokl']['type'] == 'relation') {
-                $relatedEvidence          = basename($structure['typDokl']['url']);
-                $loader                   = new \FlexiPeeHP\FlexiBeeRO(null,
-                    ['evidence' => $relatedEvidence]);
-                $typDoklRaw               = $loader->getColumnsFromFlexibee([
-                    'kod'], ['limit' => 1]);
-                $dataForInsert['typDokl'] = \FlexiPeeHP\FlexiBeeRO::code($typDoklRaw[0]['kod']);
+        if (count($structure)) {
+            if (array_key_exists('typDokl', $structure)) {
+                if ($structure['typDokl']['type'] == 'relation') {
+                    $relatedEvidence          = basename($structure['typDokl']['url']);
+                    $loader                   = new \FlexiPeeHP\FlexiBeeRO(null,
+                        ['evidence' => $relatedEvidence]);
+                    $typDoklRaw               = $loader->getColumnsFromFlexibee([
+                        'kod'], ['limit' => 1]);
+                    $dataForInsert['typDokl'] = \FlexiPeeHP\FlexiBeeRO::code($typDoklRaw[0]['kod']);
+                }
+            }
+            if (array_key_exists('poznam', $structure)) {
+                $dataForInsert['poznam'] = $this->poznam.' '.$code;
             }
 
-            if (array_key_exists('poznam', $structure)) {
-                $dataForInsert['poznam'] = $this->poznam;
+            if (array_key_exists('nazev', $structure)) {
+                $dataForInsert['nazev'] = $code.' '.$this->poznam.' ';
             }
 
             if (array_key_exists('kod', $structure)) {
@@ -407,11 +412,11 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      */
     public function testSync()
     {
-        $syncResult = $this->object->sync(['kod' => \Ease\Sand::randomString()]);
+        $code = \Ease\Sand::randomString();
+        $this->assertFalse($this->object->sync(['kod' => $code.'X']));
         if ($this->object->getEvidence()) {
+            $syncResult = $this->object->sync($this->getDataForInsert($code));
             $this->assertTrue($syncResult);
-        } else {
-            $this->assertFalse($syncResult);
         }
     }
 }

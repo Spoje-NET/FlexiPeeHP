@@ -929,7 +929,7 @@ class FlexiBeeRO extends \Ease\Sand
                     break;
                 case 'txt':
                 default:
-                    $responseDecoded = $this->lastCurlResponse;
+                    $responseDecoded = [$this->lastCurlResponse];
                     break;
             }
         }
@@ -1034,8 +1034,11 @@ class FlexiBeeRO extends \Ease\Sand
         if (array_key_exists('results', $responseDecoded)) {
             $this->errors = $responseDecoded['results'][0]['errors'];
             foreach ($this->errors as $errorInfo) {
-                $this->addStatusMessage($errorInfo['message'].' "'. (array_keys('for', $errorInfo) ? $errorInfo['for'].'" = '.$errorInfo['value'] : '') ,
-                    'error');
+                $this->addStatusMessage($errorInfo['message'], 'error');
+                if (array_key_exists('for', $errorInfo)) {
+                    unset($errorInfo['message']);
+                    $this->addStatusMessage(json_encode($errorInfo), 'debug');                    
+                }
             }
         } else {
             if (array_key_exists('message', $responseDecoded)) {
@@ -1141,7 +1144,9 @@ class FlexiBeeRO extends \Ease\Sand
             if (is_string($xml)) {
                 $xml = simplexml_load_string($xml);
             }
-
+            foreach ($xml->attributes() as $a) {
+                $arr['@'.$a->getName()] = strval($a);
+            }
             foreach ($xml->children() as $r) {
                 if (count($r->children()) == 0) {
                     $arr[$r->getName()] = strval($r);
@@ -1536,7 +1541,8 @@ class FlexiBeeRO extends \Ease\Sand
 
         $flexiData = $this->getFlexiData(null, $conditions);
 
-        if (is_array($indexBy) && count($flexiData) && count(current($flexiData))) {
+        if (is_string($indexBy) && count($flexiData) && is_array(current($flexiData))
+            && array_key_exists($indexBy, current($flexiData))) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
@@ -1685,6 +1691,15 @@ class FlexiBeeRO extends \Ease\Sand
     public function setPostFields($data)
     {
         $this->postFields = $data;
+    }
+
+    /**
+     * Get Content ready to be send as POST body
+     * @return string
+     */
+    public function getPostFields()
+    {
+        return $this->postFields;
     }
 
     /**
@@ -1844,17 +1859,17 @@ class FlexiBeeRO extends \Ease\Sand
                 foreach ($ids as $id) {
                     if (strstr($id, 'ext:'.$want)) {
                         if (is_null($extid)) {
-                        $extid = str_replace('ext:'.$want.':', '', $id);
+                            $extid = str_replace('ext:'.$want.':', '', $id);
                         } else {
                             if (is_array($extid)) {
                                 $extid[] = str_replace('ext:'.$want.':', '', $id);
                             } else {
                                 $extid = [$extid, str_replace('ext:'.$want.':',
                                         '', $id)];
+                            }
+                        }
                     }
                 }
-            }
-        }
             }
         }
         return $extid;
@@ -1970,7 +1985,8 @@ class FlexiBeeRO extends \Ease\Sand
     {
         $columnsInfo = $this->getColumnsInfo(empty($evidence) ? $this->getEvidence()
                 : $evidence);
-        return array_key_exists($column, $columnsInfo) ? $columnsInfo[$column] : null;
+        return is_array($columnsInfo) ? array_key_exists($column, $columnsInfo) ? $columnsInfo[$column]
+                : null : null;
     }
 
     /**

@@ -15,16 +15,43 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     protected $object;
 
     /**
+     * Example JSON 
+     * @var string json 
+     */
+    public $json = '{"winstrom":{"@version":"1.0","adresar":[{"id":"2574","kontakty":[{"id":"299"}]}]}}';
+
+    /**
+     * Example XML
+     * @var string xml 
+     */
+    public $xml = '<?xml version="1.0" encoding="utf-8"?>
+
+<winstrom version="1.0">
+  <!-- Adresář -->
+  <adresar>
+    <!-- ID (celé číslo) - -->
+    <id>2574</id>
+    <kontakty>
+      <!-- Kontakty -->
+      <kontakt>
+        <!-- ID (celé číslo) - -->
+        <id>299</id>
+      </kontakt>
+    </kontakty>
+  </adresar>
+</winstrom>';
+
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      * @covers FlexiPeeHP\FlexiBeeRO::__construct
      */
     protected function setUp()
     {
-        $this->object          = new FlexiBeeRO();
-        $this->object->prefix  = '';
-        $this->object->company = '';
-        $this->object->debug   = true;
+        $this->object                  = new FlexiBeeRO();
+        $this->object->prefix          = '/';
+        $this->object->debug           = true;
+        $this->object->reportRecipient = 'testreports@vitexsoftware.cz';
     }
 
     /**
@@ -81,6 +108,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testSetupProperty()
     {
+        $this->object->setupProperty(['test' => 'test'], 'test');
         $properties = ['debug' => true];
         $this->object->setupProperty($properties, 'debug');
         $this->assertTrue($this->object->debug);
@@ -135,6 +163,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testSetUp()
     {
+        $this->object->authSessionId = 'XXXtestXXX';
         $this->object->setUp(
             [
                 'company' => 'cmp',
@@ -144,7 +173,11 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
                 'prefix' => 'c',
                 'debug' => true,
                 'defaultUrlParams' => ['limit' => 10],
-                'evidence' => 'smlouva'
+                'evidence' => 'smlouva',
+                'detail' => 'summary',
+                'filter' => 'testfilter',
+                'ignore404' => true,
+                'offline' => true
             ]
         );
         $this->assertEquals('cmp', $this->object->company);
@@ -262,8 +295,96 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         }
 
         //404 Test
-        $this->assertEquals('false',
-            $this->object->performRequest('error404.json')['success']);
+
+        $notFound = $this->object->performRequest('error404.json');
+        if(array_key_exists('message', $notFound)){
+            $this->assertEquals('false', $notFound['success']);
+        } else {
+            echo '';
+        }
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::rawResponseToArray
+     */
+    public function testRawResponseToArray()
+    {
+
+        $this->assertTrue(is_array(
+                $this->object->rawResponseToArray($this->json, 'json')));
+        $this->assertTrue(is_array(
+                $this->object->rawResponseToArray($this->xml, 'xml')));
+        $this->assertTrue(is_array(
+                $this->object->rawResponseToArray('simpletext', 'txt')));
+        $this->assertTrue(is_array(
+                $this->object->rawResponseToArray('othertext', 'other')));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::rawJsonToArray
+     */
+    public function testRawJsonToArray()
+    {
+        $this->assertNull($this->object->rawJsonToArray($this->json.'XXX'));
+        $evidence = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence() : 'adresar';
+        $arrayWeWant = [
+            '@version' => '1.0',
+            $evidence  =>
+            [
+                [
+                    'id' => '2574',
+                    'kontakty' =>
+                    [
+                        ['id' => '299']
+                    ]
+                ]
+            ]
+        ];
+        $this->assertEquals($arrayWeWant,
+            $this->object->rawJsonToArray($this->json));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::rawXmlToArray
+     */
+    public function testRawXmlToArray()
+    {
+        $evidence = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence() : 'adresar';
+        $arrayWeWant = [
+            '@version' => '1.0',
+            $evidence =>
+            [
+                [
+                    'id' => '2574',
+                    'kontakty' =>
+                    [
+                        ['kontakt' => [
+                                ['id' => '299']
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $this->assertEquals($arrayWeWant,
+            $this->object->rawXmlToArray($this->xml));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::parseResponse
+     */
+    public function testParseResponse()
+    {
+        $this->object->parseResponse($this->object->rawJsonToArray($this->json),
+            200);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::doCurlRequest
+     */
+    public function testDoCurlRequest()
+    {
+        $this->object->doCurlRequest(constant('FLEXIBEE_URL'), 'GET');
     }
 
     /**
@@ -344,20 +465,52 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testXml2array()
     {
-        $xml = '<card xmlns="http://businesscard.org">
-   <name>John Doe</name>
-   <title>CEO, Widget Inc.</title>
-   <email>john.doe@widget.com</email>
-   <phone>(202) 456-1414</phone>
-   <logo url="widget.gif"/>
-   <a><b>c</b></a>
- </card>';
+        $arrayWeWant = [
+            '@version' => '1.0',
+            'adresar' =>
+            [
+                [
+                    'id' => '2574',
+                    'kontakty' =>
+                    [
+                        ['kontakt' => [
+                                ['id' => '299']
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
 
-        $data = ['name' => 'John Doe', 'title' => 'CEO, Widget Inc.', 'email' => 'john.doe@widget.com',
-            'phone' => '(202) 456-1414', 'logo' => '', 'a' => [['b' => 'c']]];
+        $this->assertEquals($arrayWeWant, $this->object->xml2array($this->xml));
+    }
 
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::extractUrlParams
+     */
+    public function testExtractUrlParams()
+    {
+        $conditions = ['id' => 23, 'limit' => 10];
+        $this->object->extractUrlParams($conditions, $urlParams);
+        $this->assertEquals(['id' => 23], $conditions);
+        $this->assertEquals(['limit' => 10], $urlParams);
+    }
 
-        $this->assertEquals($data, $this->object->xml2array($xml));
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::urlEncode
+     */
+    public function testUrlEncode()
+    {
+        $this->assertEquals("stitky%3D'code:VIP'%20or%20stitky%3D'code:DULEZITE'",
+            FlexiBeeRO::urlEncode("stitky='code:VIP' or stitky='code:DULEZITE'"));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getAllFromFlexibee
+     */
+    public function testGetAllFromFlexibee()
+    {
+        $this->object->getAllFromFlexibee();
     }
 
     /**
@@ -579,10 +732,11 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             case 'evidence-list':
                 break;
             default:
-                $structure = $this->object->getColumnsInfo();
-
-                $this->object->getColumnsFromFlexibee([current(array_keys($structure))],
+                $this->object->getColumnsFromFlexibee(['id', 'kod'],
                     ['limit' => 1], 'id');
+                $this->object->getColumnsFromFlexibee('summary', ['limit' => 1],
+                    'id');
+
                 break;
         }
     }
@@ -625,6 +779,23 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getApiURL
+     */
+    public function testGetApiUrl()
+    {
+        $evidence = $this->object->getEvidence();
+        if ($evidence) {
+            $url = $this->object->url.'/c/'.constant('FLEXIBEE_COMPANY').'/'.$evidence;
+        } else {
+            $url = $this->object->url.'/c/'.constant('FLEXIBEE_COMPANY');
+        }
+
+        $this->assertEquals($url, $this->object->getApiURL());
+        $this->assertEquals($url.'.html', $this->object->getApiURL('html'));
+        $this->assertEquals($url.'.xml', $this->object->getApiURL('xml'));
+    }
+
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::getResponseFormat
      */
     public function testGetResponseFormat()
@@ -635,6 +806,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->object->performRequest(null, 'GET', 'xml');
         $this->assertEquals('application/xml',
             $this->object->getResponseFormat());
+        unset($this->object->curlInfo['content_type']);
+        $this->assertNull($this->object->getResponseFormat());
     }
 
     /**
@@ -1037,7 +1210,25 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         }
         $this->object->setDataValue('test', 'test');
         $this->object->setDataValue('kod', 'code:testKOD');
-        $this->assertEquals('testKOD',  $this->object->getDataValue('kod'));
+        $this->assertEquals('testKOD', $this->object->getDataValue('kod'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::saveDebugFiles
+     */
+    public function testSaveDebugFiles()
+    {
+        $this->object->saveDebugFiles();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setPostFields
+     * @covers FlexiPeeHP\FlexiBeeRO::getPostFields
+     */
+    public function testSetPostFields()
+    {
+        $this->object->setPostFields('test');
+        $this->assertEquals($this->object->getPostFields(), 'test');
     }
 
     /**
@@ -1068,5 +1259,122 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     {
         $this->object->setFilter('X');
         $this->object->setFilter(['a' => 'b']);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getColumnInfo
+     */
+    public function testGetColumnInfo()
+    {
+        $this->object->getColumnInfo('id');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getFlexiBeeURL
+     */
+    public function testGetFlexiBeeURL()
+    {
+        $this->object->getFlexiBeeURL();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::error500Reporter
+     */
+    public function testError500Reporter()
+    {
+        $this->object->reportRecipient = 'testreports@vitexsoftware.cz';
+        $this->object->error500Reporter(['success' => 'false', 'message' => 'test']);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::setMyKey
+     */
+    public function testSetMyKey()
+    {
+        $this->object->setMyKey(1);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::ignore404
+     */
+    public function testIgnore404()
+    {
+        $this->object->ignore404(true);
+        $this->assertTrue($this->object->ignore404());
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::sendByMail
+     */
+    public function testSendByMail()
+    {
+        $this->object->sendByMail($this->object->reportRecipient, 'test',
+            'test body');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::sendUnsent
+     */
+    public function testSendUnsent()
+    {
+        $this->object->sendUnsent();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getInFormat
+     */
+    public function testGetInFormat()
+    {
+        $this->object->evidence = 'test';
+        $this->object->getInFormat('html', 'test');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::downloadInFormat
+     */
+    public function testDownloadInFormat()
+    {
+        $this->object->downloadInFormat('pdf', sys_get_temp_dir().'/');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::code
+     */
+    public function testCode()
+    {
+        $this->assertEquals('code:TEST', FlexiBeeRO::code('test'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::uncode
+     */
+    public function testUncode()
+    {
+        $this->assertEquals('test', FlexiBeeRO::uncode('code:test'));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::arrayCleanUP
+     */
+    public function testArrayCleanUP()
+    {
+        $this->assertEquals(['a' => 'b'],
+            FlexiBeeRO::arrayCleanUP(['a' => 'b', '@a' => 'aaa']));
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::__wakeup
+     */
+    public function test__wakeup()
+    {
+        $this->object->__wakeup();
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::__destruct
+     */
+    public function test_destruct()
+    {
+        $this->object->__destruct();
     }
 }

@@ -40,8 +40,6 @@ class CompanyTest extends FlexiBeeROTest
 
     /**
      * @covers Ease\Brick::getMyKey
-     *
-     * @todo   Implement testGetMyKey().
      */
     public function testGetMyKey()
     {
