@@ -29,9 +29,10 @@ doc:
 pretest:
 	composer --ansi --no-interaction update
 	php -f tests/PrepareForTest.php
-test:
+
+phpunit:
 	composer update
-	phpunit --bootstrap testing/bootstrap.php
+	vendor/bin/phpunit --bootstrap testing/bootstrap.php
 
 changelog:
 	CHANGES=`git log -n 1 | tail -n+5` ; dch -b -v `cat debian/version`-`cat debian/revision` --package flexipeehp "$(CHANGES)"

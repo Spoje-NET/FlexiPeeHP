@@ -825,48 +825,7 @@ class FlexiBeeRO extends \Ease\Sand
         $this->apiURL .= '.'.$this->format;
     }
 
-    /**
-     * Add params to url
-     *
-     * @param string  $url      originall url
-     * @param array   $addParams   value to add
-     * @param boolean $override replace already existing values ?
-     *
-     * @return string url with parameters added
-     */
-    public function addUrlParams($url, $addParams, $override = false)
-    {
-        $urlParts = parse_url($url);
-        $urlFinal = '';
-        if (array_key_exists('scheme', $urlParts)) {
-            $urlFinal .= $urlParts['scheme'].'://'.$urlParts['host'];
-        }
-        if (array_key_exists('port', $urlParts)) {
-            $urlFinal .= ':'.$urlParts['port'];
-        }
-        if (array_key_exists('path', $urlParts)) {
-            $urlFinal .= $urlParts['path'];
-        }
-        if (array_key_exists('query', $urlParts)) {
-            parse_str($urlParts['query'], $queryUrlParams);
-            $urlParams = $override ? array_merge($queryUrlParams, $addParams) : array_merge($addParams,
-                    $queryUrlParams);
-        } else {
-            $urlParams = $addParams;
-        }
-
-        if (!empty($urlParams)) {
-            $urlFinal .= '?';
-            if (is_array($urlParams)) {
-                $urlFinal .= http_build_query($urlParams);
-            } else {
-                $urlFinal .= $urlParams;
-            }
-        }
-        return $urlFinal;
-    }
-
-    /**
+    /**;
      * Add Default Url params to given url if not overrided
      *
      * @param string $urlRaw
@@ -875,7 +834,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function addDefaultUrlParams($urlRaw)
     {
-        return $this->addUrlParams($urlRaw, $this->defaultUrlParams, false);
+        return \Ease\Shared::addUrlParams($urlRaw, $this->defaultUrlParams, false);
     }
 
     /**
@@ -1037,7 +996,7 @@ class FlexiBeeRO extends \Ease\Sand
                 $this->addStatusMessage($errorInfo['message'], 'error');
                 if (array_key_exists('for', $errorInfo)) {
                     unset($errorInfo['message']);
-                    $this->addStatusMessage(json_encode($errorInfo), 'debug');                    
+                    $this->addStatusMessage(json_encode($errorInfo), 'debug');
                 }
             }
         } else {
@@ -1541,8 +1500,8 @@ class FlexiBeeRO extends \Ease\Sand
 
         $flexiData = $this->getFlexiData(null, $conditions);
 
-        if (is_string($indexBy) && count($flexiData) && is_array(current($flexiData))
-            && array_key_exists($indexBy, current($flexiData))) {
+        if (is_string($indexBy) && is_array($flexiData) && array_key_exists(0,
+                $flexiData) && array_key_exists($indexBy, $flexiData[0])) {
             $flexiData = $this->reindexArrayBy($flexiData, $indexBy);
         }
 
@@ -2044,6 +2003,10 @@ class FlexiBeeRO extends \Ease\Sand
         }
         if (isset(EvidenceList::$evidences[$evidence])) {
             $evidencesInfo = EvidenceList::$evidences[$evidence];
+            $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
+            if(isset(Formats::$$propsName)){
+                $evidencesInfo['formats'] = Formats::$$propsName;
+        }
         }
         return $evidencesInfo;
     }
@@ -2242,7 +2205,7 @@ class FlexiBeeRO extends \Ease\Sand
             if ($format == 'html') {
                 $urlParams['inDesktopApp'] = 'true';
             }
-            if (($this->doCurlRequest($this->addUrlParams($this->apiURL,
+            if (($this->doCurlRequest(\Ease\Shared::addUrlParams($this->apiURL,
                         $urlParams), 'GET') == 200)) {
                 $response = $this->lastCurlResponse;
             }
@@ -2267,7 +2230,7 @@ class FlexiBeeRO extends \Ease\Sand
         $formatBackup = $this->format;
         if ($this->setFormat($format)) {
             $downloadTo = $destDir.$this->getEvidence().'_'.$this->getMyKey().'.'.$format;
-            if (($this->doCurlRequest(empty($reportName) ? $this->apiURL : $this->addUrlParams($this->apiURL,
+            if (($this->doCurlRequest(empty($reportName) ? $this->apiURL : \Ease\Shared::addUrlParams($this->apiURL,
                             ['report-name' => $reportName]), 'GET') == 200) && (file_put_contents($downloadTo,
                     $this->lastCurlResponse) !== false)) {
                 $fileOnDisk = $downloadTo;

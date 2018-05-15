@@ -106,18 +106,6 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::curlInit
      */
-    public function testSetupProperty()
-    {
-        $this->object->setupProperty(['test' => 'test'], 'test');
-        $properties = ['debug' => true];
-        $this->object->setupProperty($properties, 'debug');
-        $this->assertTrue($this->object->debug);
-        $this->object->setupProperty($properties, 'url', 'FLEXIBEE_URL');
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRO::curlInit
-     */
     public function testCurlInit()
     {
         $this->object->timeout = 120;
@@ -152,7 +140,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
 
                 $this->object->processInit($this->object->getEvidenceURL().'/'.$firstID[0]['id'].'.xml');
             } else {
-                $this->markTestSkipped(sprintf('Evidence %s doed not contain first record',
+                $this->markTestSkipped(sprintf('Evidence %s does not contain first record',
                         $this->object->getEvidence()));
             }
         }
@@ -297,7 +285,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         //404 Test
 
         $notFound = $this->object->performRequest('error404.json');
-        if(array_key_exists('message', $notFound)){
+        if (array_key_exists('message', $notFound)) {
             $this->assertEquals('false', $notFound['success']);
         } else {
             echo '';
@@ -326,10 +314,11 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testRawJsonToArray()
     {
         $this->assertNull($this->object->rawJsonToArray($this->json.'XXX'));
-        $evidence = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence() : 'adresar';
+        $evidence    = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence()
+                : 'adresar';
         $arrayWeWant = [
             '@version' => '1.0',
-            $evidence  =>
+            $evidence =>
             [
                 [
                     'id' => '2574',
@@ -349,7 +338,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testRawXmlToArray()
     {
-        $evidence = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence() : 'adresar';
+        $evidence    = $this->object->getResponseEvidence() ? $this->object->getResponseEvidence()
+                : 'adresar';
         $arrayWeWant = [
             '@version' => '1.0',
             $evidence =>
@@ -1163,16 +1153,6 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertTrue($this->object->join($adb));
         $ads = new \stdClass();
         $this->object->join($ads);
-    }
-
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRO::addUrlParams
-     */
-    public function testAddUrlParams()
-    {
-        $this->assertEquals('http://vitexsoftware.cz/path?a=b&id=1',
-            $this->object->addUrlParams('http://vitexsoftware.cz/path?a=b',
-                ['id' => 1], TRUE));
     }
 
     /**

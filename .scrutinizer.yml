@@ -23,8 +23,13 @@ build:
     tests:
         override:
             -
-                idle_timeout: 5000     
+                idle_timeout: 5000
                 command: 'php -d memory_limit=2048M -f ./vendor/bin/phpunit -- --coverage-clover=clover'
                 coverage:
                     file: 'clover'
                     format: 'php-clover'
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
