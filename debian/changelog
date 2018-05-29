@@ -1,4 +1,4 @@
-flexipeehp (1.9.7+nmu1) UNRELEASED; urgency=low
+flexipeehp (1.9.7.1) experimental; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -46,4 +46,7 @@ flexipeehp (1.9.7+nmu1) UNRELEASED; urgency=low
   * Updated Generated classes
 
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Tue, 29 May 2018 13:05:15 +0200
+  [ Vítězslav Dvořák ]
+  * 
+
+ -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Tue, 29 May 2018 13:11:03 +0200
