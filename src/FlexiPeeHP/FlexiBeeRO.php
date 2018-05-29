@@ -1263,7 +1263,7 @@ class FlexiBeeRO extends \Ease\Sand
         } else if (preg_match('/^ext:/', $id)) {
             $id = self::urlEncode($id);
         } else if (preg_match('/^code:/', $id)) {
-            $id = self::code(rawurlencode(self::uncode($id)));
+            $id = self::code(self::urlEncodei(self::uncode($id)));
         }
 
         $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
@@ -1554,7 +1554,7 @@ class FlexiBeeRO extends \Ease\Sand
 
         if ($unique) {
             $counter = 0;
-            if (count($this->codes)) {
+            if (!empty($this->codes) && count($this->codes)) {
                 foreach ($this->codes as $codesearch => $keystring) {
                     if (strstr($codesearch, $kodfinal)) {
                         ++$counter;
@@ -2094,7 +2094,7 @@ class FlexiBeeRO extends \Ease\Sand
     {
         if (substr($myKeyValue, 0, 4) == 'ext:') {
             $extIds = $this->getDataValue('external-ids');
-            if (count($extIds)) {
+            if (!empty($extIds) && count($extIds)) {
                 $extIds = array_combine($extIds, $extIds);
             }
             $extIds[$myKeyValue] = $myKeyValue;
@@ -2164,8 +2164,8 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public static function flexiDateToDateTime($flexidate)
     {
-        return \DateTime::createFromFormat(self::$DateFormat.'O', $flexidate)->setTime(0,
-                0);
+        return \DateTime::createFromFormat(strstr($flexidate, '+') ? self::$DateFormat.'O'
+                    : self::$DateFormat, $flexidate)->setTime(0, 0);
     }
 
     /**

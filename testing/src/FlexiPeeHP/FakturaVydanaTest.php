@@ -13,18 +13,24 @@ class FakturaVydanaTest extends FlexiBeeRWTest
      * @var FakturaVydana
      */
     protected $object;
-    
+
     /**
      * Gives You new testng invoice
+     * 
+     * @param string $code      with givew code of internal ID
+     * @param array  $overrides with given values
+     * 
+     * @return FakturaVydana
      */
-    static public function getNew($code = 'UnitTest')
+    static public function getNew($code = 'UnitTest', $overrides = [])
     {
         $helper = new FakturaVydanaTest();
         $helper->setUp();
-        $helper->object->sync( $helper->getDataForInsert($code) );
+        $helper->object->sync(array_merge($helper->getDataForInsert($code),
+                $overrides));
         return $helper->object;
     }
-    
+
     /**
      * Gives You data able to insert into current evidence
      *
@@ -309,5 +315,20 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $income->setDataValue('varSym', $vs);
         $income->refresh();
         $this->object->vytvorVazbuZDD($income);
+    }
+
+    /**
+     * @covers FlexiPeeHP\FakturaVydana::overdueDays
+     */
+    public function testOverdueDays()
+    {
+        $datSplat = new \DateTime();
+        $datSplat->modify('-7 days');
+        $datVyst  = new \DateTime();
+        $datVyst->modify('-14 days');
+        $this->assertEquals(0, FakturaVydana::overdueDays(new \DateTime()));
+        $this->assertEquals(7, FakturaVydana::overdueDays($datSplat));
+        $this->assertEquals(14,
+            FakturaVydana::overdueDays(\FlexiPeeHP\FlexiBeeRW::dateToFlexiDate($datVyst)));
     }
 }

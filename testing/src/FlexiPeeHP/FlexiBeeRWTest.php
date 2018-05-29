@@ -91,7 +91,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     {
         $actions = $this->object->getActionsInfo();
 
-        if (count($actions)) {
+        if (!empty($actions) && count($actions)) {
             if (array_key_exists('new', $actions)) {
                 $this->object->performAction('new', 'ext');
             }
@@ -143,7 +143,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     {
         parent::testGetRecordID();
         $structure = $this->object->getEvidenceInfo();
-        if (count($structure) && array_key_exists('kod', $structure)) {
+        if (!empty($structure) && count($structure) && array_key_exists('kod', $structure)) {
             $this->object->setData(['kod' => 'KOD']);
             $this->assertEquals('code:KOD', $this->object->getRecordID());
         }

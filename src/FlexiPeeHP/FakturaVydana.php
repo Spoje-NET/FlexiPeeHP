@@ -35,7 +35,8 @@ class FakturaVydana extends FlexiBeeRW
      */
     public function addArrayToBranch($data, $relationPath = 'polozkyDokladu')
     {
-        if ( ($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu') || ($relationPath == 'polozky-faktury')) {
+        if (($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu')
+            || ($relationPath == 'polozky-faktury')) {
             switch (self::uncode($this->getDataValue('typDokl'))) {
                 case 'DOBR':
                 case 'DOBROPIS':
@@ -185,8 +186,8 @@ class FakturaVydana extends FlexiBeeRW
         }
 
         $incomeId = $income->getRecordID();
-        $myId = $this->getRecordID();
-        
+        $myId     = $this->getRecordID();
+
         $headersBackup = $this->defaultHttpHeaders;
 
         $this->defaultHttpHeaders['Accept'] = 'text/html';
@@ -231,10 +232,11 @@ class FakturaVydana extends FlexiBeeRW
      */
     public function getQrCodeImage($size = 140)
     {
-        $this->performRequest($this->getRecordID().'/qrcode.png?size='.$size, 'GET', 'png');
+        $this->performRequest($this->getRecordID().'/qrcode.png?size='.$size,
+            'GET', 'png');
         if ($this->lastResponseCode == 200) {
             return $this->lastCurlResponse;
-}
+        }
     }
 
     /**
@@ -246,6 +248,26 @@ class FakturaVydana extends FlexiBeeRW
      */
     public function getQrCodeBase64($size = 140)
     {
-        return 'data: image/png;base64,'. base64_encode($this->getQrCodeImage($size));
+        return 'data: image/png;base64,'.base64_encode($this->getQrCodeImage($size));
+    }
+
+    /**
+     * Get Number of days overdue
+     * 
+     * @param string $dueDate FlexiBee date
+     * 
+     * @return int
+     */
+    static public function overdueDays($dueDate)
+    {
+        $dateDiff = date_diff(is_object($dueDate) ? $dueDate : FlexiBeeRO::flexiDateToDateTime($dueDate),
+            new \DateTime());
+        if ($dateDiff->invert == 1) {
+            $ddif = $dateDiff->days * -1;
+        } else {
+            $ddif = $dateDiff->days;
+        }
+
+        return $ddif;
     }
 }

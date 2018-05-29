@@ -243,7 +243,7 @@ class FlexiBeeRW extends FlexiBeeRO
             $data = $this->getData();
         }
         $missingMandatoryColumns = [];
-        if (count($data)) {
+        if (!empty($data) && count($data)) {
             $fbColumns = $this->getColumnsInfo();
             if (count($fbColumns)) {
                 foreach ($fbColumns as $columnName => $columnInfo) {
@@ -273,7 +273,7 @@ class FlexiBeeRW extends FlexiBeeRO
         $readonlyColumns = [];
 
         $fbColumns = $this->getColumnsInfo();
-        if (count($fbColumns)) {
+        if (!empty($fbColumns) && count($fbColumns)) {
             foreach ($fbColumns as $columnName => $columnInfo) {
                 $writable = ($columnInfo['isWritable'] == 'true');
                 if (!$writable && !array_key_exists($columnName, $data)) {
