@@ -61,14 +61,15 @@ class FakturaVydana extends FlexiBeeRW
      * @param $doklad Banka|PokladniPohyb|InterniDoklad S jakým dokladem spárovat ?
      * @param $zbytek string ne|zauctovat|ignorovat|castecnaUhrada|castecnaUhradaNeboZauctovat|castecnaUhradaNeboIgnorovat
      * 
-     * @return Banka|PokladniPohyb|InterniDoklad Matched document
+     * @return boolean success
      */
     public function sparujPlatbu($doklad, $zbytek = 'ignorovat')
     {
         $sparovani                       = ['uhrazovanaFak' => $this];
         $sparovani['uhrazovanaFak@type'] = $this->evidence;
         $sparovani['zbytek']             = $zbytek;
-        return $doklad->insertToFlexiBee(['id' => $doklad, 'sparovani' => $sparovani]);
+        $doklad->insertToFlexiBee(['id' => $doklad, 'sparovani' => $sparovani]);
+        return $doklad->lastResponseCode == 201;
     }
 
     /**
@@ -87,7 +88,8 @@ class FakturaVydana extends FlexiBeeRW
      *        string  'rada' dokladová řada pro vytvářený pokladní doklad.
      *                      Např.:code:POKLADNA+
      *        string  'datumUhrady' sql formát. Výchozí: dnes
-     * @return array výsledek pokusu o provedení úhrady
+     * 
+     * @return boolean výsledek pokusu o provedení úhrady
      */
     public function hotovostniUhrada($value, $uhrada = [])
     {
@@ -110,7 +112,8 @@ class FakturaVydana extends FlexiBeeRW
         $uhrada['castka'] = $value;
 
         $this->setDataValue('hotovostni-uhrada', $uhrada);
-        return $this->insertToFlexiBee();
+        $this->insertToFlexiBee();
+        return $this->lastResponseCode == 201;
     }
 
     /**
@@ -119,7 +122,8 @@ class FakturaVydana extends FlexiBeeRW
      * @link https://demo.flexibee.eu/devdoc/odpocet-zaloh Odpočet záloh a ZDD
      * @param FakturaVydana $invoice zálohová faktura
      * @param array $odpocet Vlastnosti odpočtu
-     * @return array
+     * 
+     * @return boolean success
      */
     public function odpocetZalohy($invoice, $odpocet = [])
     {
@@ -129,7 +133,8 @@ class FakturaVydana extends FlexiBeeRW
         $odpocet['doklad'] = $invoice;
 
         $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
-        return $this->insertToFlexiBee();
+        $this->insertToFlexiBee();
+        return $this->lastResponseCode == 201;
     }
 
     /**
@@ -138,7 +143,8 @@ class FakturaVydana extends FlexiBeeRW
      * @link https://demo.flexibee.eu/devdoc/odpocet-zaloh Odpočet záloh a ZDD
      * @param FakturaVydana $invoice zálohová faktura
      * @param array $odpocet Vlastnosti odpočtu
-     * @return array
+     * 
+     * @return boolean success
      */
     public function odpocetZDD($invoice, $odpocet = [])
     {
@@ -160,7 +166,8 @@ class FakturaVydana extends FlexiBeeRW
         $odpocet['doklad'] = $invoice;
 
         $this->setDataValue('odpocty-zaloh', ['odpocet' => $odpocet]);
-        return $this->insertToFlexiBee();
+        $this->insertToFlexiBee();
+        return $this->lastResponseCode == 201;
     }
 
     /**

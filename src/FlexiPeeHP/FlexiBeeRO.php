@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.9.2.1';
+    public static $libVersion = '1.10';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -824,17 +824,18 @@ class FlexiBeeRO extends \Ease\Sand
         }
         $this->apiURL .= '.'.$this->format;
     }
-
-    /**;
+    /*     * ;
      * Add Default Url params to given url if not overrided
      *
      * @param string $urlRaw
      *
      * @return string url with default params added
      */
+
     public function addDefaultUrlParams($urlRaw)
     {
-        return \Ease\Shared::addUrlParams($urlRaw, $this->defaultUrlParams, false);
+        return \Ease\Shared::addUrlParams($urlRaw, $this->defaultUrlParams,
+                false);
     }
 
     /**
@@ -2003,10 +2004,10 @@ class FlexiBeeRO extends \Ease\Sand
         }
         if (isset(EvidenceList::$evidences[$evidence])) {
             $evidencesInfo = EvidenceList::$evidences[$evidence];
-            $propsName = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
-            if(isset(Formats::$$propsName)){
+            $propsName     = lcfirst(FlexiBeeRO::evidenceToClassName($evidence));
+            if (isset(Formats::$$propsName)) {
                 $evidencesInfo['formats'] = Formats::$$propsName;
-        }
+            }
         }
         return $evidencesInfo;
     }
