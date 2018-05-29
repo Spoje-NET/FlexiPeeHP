@@ -1,4 +1,4 @@
-flexipeehp (1.6.4-2) UNRELEASED; urgency=low
+flexipeehp (1.9.7) UNRELEASED; urgency=low
 
   [ Vítězslav Vitex Dvořák ]
 
@@ -8,16 +8,13 @@ flexipeehp (1.6.4-2) UNRELEASED; urgency=low
     třída pro cenník
   * Doplněna funkce pro získání GlobalVersion Přidána třída položky
     faktury vydané
-  * Doplněna funkce pro získání GlobalVersion Přidána třída položky
-    faktury vydané
+
 
   [ vitex ]
   * TODOs
   * Debian package buld update
-  * Debian package buld update
   * Debian package version fix Links to other libraries added to Readme
   * added public $this->rowCount to hold @rowCount value if obtained
-  * Debian package v1.3
   * Debian package v1.3
   * Added class Structure that hold structure of all evidencies added
     tool update_structure_clas.php for generating class Structure Added
@@ -39,20 +36,8 @@ flexipeehp (1.6.4-2) UNRELEASED; urgency=low
 
   [ Vítězslav Dvořák ]
   * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
-  * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
-  * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
-  * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
-  * UnitTest for FlexiBeeRW update Added missing PHPDoc comments
   * Added debian package for ApiGen documentation Static version as
     FlexiPeeHP::$libVersion
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
-  * Merge origin/master
   * Merge origin/master
 
   [ vitex ]
@@ -60,4 +45,6 @@ flexipeehp (1.6.4-2) UNRELEASED; urgency=low
   * __ToString returns allways string now
   * Updated Generated classes
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Tue, 04 Oct 2016 20:17:10 +0200
+  [ Vítězslav Dvořák ]
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Apr 2018 20:23:15 +0200
