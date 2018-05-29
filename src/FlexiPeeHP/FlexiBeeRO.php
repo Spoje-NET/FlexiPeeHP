@@ -1263,7 +1263,7 @@ class FlexiBeeRO extends \Ease\Sand
         } else if (preg_match('/^ext:/', $id)) {
             $id = self::urlEncode($id);
         } else if (preg_match('/^code:/', $id)) {
-            $id = self::code(self::urlEncodei(self::uncode($id)));
+            $id = self::code(self::urlEncode(self::uncode($id)));
         }
 
         $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
