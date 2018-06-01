@@ -277,7 +277,6 @@ class FlexiBeeRO extends \Ease\Sand
         'delimeter',
         'detail', //See: https://www.flexibee.eu/api/dokumentace/ref/detail-levels
         'dir',
-        'dry-run',
         'dry-run', // See: https://www.flexibee.eu/api/dokumentace/ref/dry-run/
         'encoding',
         'export-settings',
@@ -818,13 +817,16 @@ class FlexiBeeRO extends \Ease\Sand
     public function updateApiURL()
     {
         $this->apiURL = $this->getEvidenceURL();
-        $id           = $this->__toString();
+        $id = $this->getRecordID();
+        if(empty($id)){
+            $id = $this->getRecordCode();
+        }
         if (!empty($id)) {
             $this->apiURL .= '/'.self::urlEncode($id);
         }
         $this->apiURL .= '.'.$this->format;
     }
-    /*     * ;
+    /*   
      * Add Default Url params to given url if not overrided
      *
      * @param string $urlRaw
@@ -2241,6 +2243,23 @@ class FlexiBeeRO extends \Ease\Sand
         return $fileOnDisk;
     }
 
+    
+    /**
+     * Take data for object
+     *
+     * @param array $data Data to keep
+     * 
+     * @return int number of records taken
+     */
+    public function takeData($data)
+    {
+        $result = parent::takeData($data);
+        if(array_key_exists($this->getKeyColumn(), $data) || array_key_exists('kod', $data)){
+            $this->updateApiURL();
+        }
+        return $result;
+    }    
+    
     /**
      * Compile and send Report about Error500 to FlexiBee developers
      * If FlexiBee is running on localost try also include java backtrace

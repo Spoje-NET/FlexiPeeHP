@@ -21,6 +21,7 @@ clean:
 	rm -rf debian/*.substvars
 	rm -rf docs/*
 	rm -f  debianTest/composer.lock
+	rm -rf vendor/* composer.lock
 
 doc:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \

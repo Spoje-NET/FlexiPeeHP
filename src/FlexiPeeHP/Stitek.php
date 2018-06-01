@@ -70,6 +70,7 @@ class Stitek extends FlexiBeeRW
      * Convert coma-separated list to array
      *
      * @param string $listRaw
+     * 
      * @return array
      */
     public static function listToArray($listRaw)
@@ -80,7 +81,7 @@ class Stitek extends FlexiBeeRW
         } else {
             $list = [$listRaw => $listRaw];
         }
-        return $list;
+        return empty($listRaw) ? [] : $list;
     }
 
     /**
