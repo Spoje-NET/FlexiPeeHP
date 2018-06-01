@@ -38,6 +38,34 @@ Instalace
 
     composer require spoje.net/flexipeehp
 
+
+pokud váš výsledný composer.json bude vypadat  zhruba takto: 
+
+```json
+{
+    "name": "vendor/projectname",
+    "description": "Test",
+    "type": "project",
+    "require": {
+        "spoje.net/flexipeehp": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "minimum-stability": "stable"
+}
+```
+
+spustí se instalace:
+
+![Compser Install](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/Examples/flexipeehp-composer-install.png "Installation")
+
+
+
 Konfigurace
 -----------
 
