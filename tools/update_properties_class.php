@@ -27,6 +27,9 @@ function getPropertiesInfo($evidence, FlexiBeeRO $syncer)
             $properties[$key]         = $evidenceProperty;
             $properties[$key]['name'] = $evidenceProperty['name'];
             $properties[$key]['type'] = $evidenceProperty['type'];
+            if(array_key_exists('url', $evidenceProperty)){
+               $properties[$key]['url'] = str_replace('?limit=0', '', $evidenceProperty['url']);
+            }
         }
     }
     return $properties;

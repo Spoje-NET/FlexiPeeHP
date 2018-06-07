@@ -2,10 +2,15 @@
 
 namespace FlexiPeeHP;
 
-require_once '../testing/bootstrap.php';
 
-define('EASE_APPNAME', 'FlexiPeehUP');
-define('EASE_LOGGER', 'console|syslog');
+if(!defined('EASE_APPNAME')){
+    define('EASE_APPNAME', 'FlexiPeeHUP');
+}
+if(!defined('EASE_LOGGER')){
+    define('EASE_LOGGER', 'console|syslog');
+}
+
+require_once '../testing/bootstrap.php';
 
 $outFile = 'Actions.php';
 $outJson = 'Actions.json';

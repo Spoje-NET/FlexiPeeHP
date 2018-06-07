@@ -519,7 +519,7 @@ class FlexiBeeRO extends \Ease\Sand
         } elseif (is_array($init)) {
             $this->takeData($init);
         } elseif (preg_match('/\.(json|xml|csv)/', $init)) {
-            $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->getEvidenceURL($init)
+            $this->takeData($this->getFlexiData((($init[0] != '/') ? $this->evidenceUrlWithSuffix($init)
                             : $init)));
         } else {
             $this->loadFromFlexiBee($init);

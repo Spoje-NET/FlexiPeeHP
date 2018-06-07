@@ -670,6 +670,26 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertEquals(10, $this->object->getRecordID());
     }
 
+    
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getRecordIdent
+     */
+    public function testGetRecordIdent(){
+        $this->object->dataReset();
+        $this->assertNull($this->object->getRecordIdent());
+
+        $this->object->setMyKey(20);
+        $this->assertEquals(20,  $this->object->getRecordIdent());
+
+        $this->object->setDataValue('kod','test');
+        $this->assertEquals('code:TEST',  $this->object->getRecordIdent());
+        
+        $this->object->setDataValue('external-ids',['ext:test:10']);
+        $this->assertEquals('ext:test:10',  $this->object->getRecordIdent());
+        
+    }
+    
+
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::recordExists
      */

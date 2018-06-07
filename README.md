@@ -60,7 +60,7 @@ pokud váš výsledný composer.json bude vypadat  zhruba takto:
 }
 ```
 
-spustí se instalace:
+spustí se příkazem **composer install** instalace:
 
 ![Compser Install](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/Examples/flexipeehp-composer-install.png "Installation")
 
