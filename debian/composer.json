@@ -14,7 +14,7 @@
     "require": {
         "php": ">= 5.6",
         "ext-curl": "*",
-        "ease-framework": "*"
+        "ease-framework": ">=1.5"
     },
     "autoload": {
         "psr-4": {
