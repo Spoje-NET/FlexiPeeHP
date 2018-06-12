@@ -446,18 +446,6 @@ class FlexiBeeRW extends FlexiBeeRO
     }
 
     /**
-     * Insert current data into FlexiBee and load actual record data back
-     * 
-     * @deprecated since version 1.8.9
-     * 
-     * @return boolean Operation success
-     */
-    public function refresh()
-    {
-        return $this->sync();
-    }
-
-    /**
      * Perform given action (if availble) on current evidence/record
      * @url https://demo.flexibee.eu/devdoc/actions
      *

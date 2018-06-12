@@ -207,14 +207,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
         $this->object->getJsonizedData();
     }
 
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRW::refresh
-     */
-    public function testRefresh()
-    {
-        $this->object->setMyKey('ext:test:'.\Ease\Sand::randomNumber());
-        $this->object->refresh();
-    }
+ 
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRW::insertToFlexiBee
@@ -222,6 +215,8 @@ class FlexiBeeRWTest extends FlexiBeeROTest
     public function testInsertToFlexiBee()
     {
         $this->object->insertToFlexiBee(['id' => 'ext:test:'.time()]);
+        $this->object->setData(['id' => 'ext:test:'.time()], true);
+        $this->object->insertToFlexiBee();
     }
 
     /**

@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.10';
+    public static $libVersion = '1.11';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -2192,21 +2192,45 @@ class FlexiBeeRO extends \Ease\Sand
      * Získá dokument v daném formátu
      * Obtain document in given format
      *
-     * @param string $format  pdf/csv/xml/json/ ...
-     * @param string $reportName Template used to generate PDF
+     * @link https://www.flexibee.eu/api/dokumentace/ref/pdf/ PDF Exports
+     *
+     * @param string  $format     pdf/csv/xml/json/ ...
+     * @param string  $reportName Template used to generate PDF
+     * @param string  $lang       cs|sk|en|de Template language used to generate PDF
+     * @param boolean $sign       sign resulting PDF by certificate ?
      *
      * @return string|null filename downloaded or none
      */
-    public function getInFormat($format, $reportName = null)
+    public function getInFormat($format, $reportName = null, $lang = null,$sign = false)
     {
         $response = null;
         if ($this->setFormat($format)) {
             $urlParams = [];
+            switch ($format) {
+                case 'pdf':
+                    switch ($lang) {
+                        case 'cs':
+                        case 'sk':
+                        case 'en':
+                        case 'de':
+                            $urlParams['report-lang'] = $lang;
+                            break;
+                        case null:
+                            break;
+                        default:
+                            throw new \Ease\Exception('Unknown language '.$lang.' for PDF export');
+                            break;
+                    }
+                    if(boolval($sign) === true){
+                        $urlParams['report-sign'] = 'true';
+                    }
+                    break;
+                case 'html':
+                    $urlParams['inDesktopApp'] = 'true';
+                    break;
+            }
             if (!empty($reportName)) {
                 $urlParams['report-name'] = $reportName;
-            }
-            if ($format == 'html') {
-                $urlParams['inDesktopApp'] = 'true';
             }
             if (($this->doCurlRequest(\Ease\Shared::addUrlParams($this->apiURL,
                         $urlParams), 'GET') == 200)) {

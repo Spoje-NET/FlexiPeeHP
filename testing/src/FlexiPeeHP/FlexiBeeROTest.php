@@ -1201,6 +1201,20 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     }
 
     /**
+     * @covers FlexiPeeHP\FlexiBeeRO::takeData
+     */
+    public function testTakeData()
+    {
+        $this->object->takeData(['id'=>1]);
+        $this->assertEquals( constant('FLEXIBEE_URL') .'/'.constant('FLEXIBEE_COMPANY') .  '/1', $this->object->getApiURL());
+        
+        $this->object->dataReset();
+        $this->object->takeData(['kod'=>'test']);
+        $this->assertEquals(constant('FLEXIBEE_URL') .'/'.constant('FLEXIBEE_COMPANY') . '/code:TEST', $this->object->getApiURL());
+    }
+    
+    
+    /**
      * @covers FlexiPeeHP\FlexiBeeRO::setDataValue
      */
     public function testSetDataValue()
@@ -1321,12 +1335,17 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     }
 
     /**
+     * @expectedException        Ease\Exception
+     * @expectedExceptionMessage Unknown language ua for PDF export
      * @covers FlexiPeeHP\FlexiBeeRO::getInFormat
      */
     public function testGetInFormat()
     {
         $this->object->evidence = 'test';
         $this->object->getInFormat('html', 'test');
+        $this->object->getInFormat('pdf', 'test');
+        $this->object->getInFormat('pdf', 'test','cs',true);
+        $this->object->getInFormat('pdf', 'error','ua',false);
     }
 
     /**
