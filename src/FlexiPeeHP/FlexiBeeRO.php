@@ -1429,7 +1429,7 @@ class FlexiBeeRO extends \Ease\Sand
         $res         = $this->getColumnsFromFlexibee([$keyColumn],
             is_array($data) ? $data : [$keyColumn => $data]);
 
-        if (!count($res) || (isset($res['success']) && ($res['success'] == 'false'))
+        if (empty($res) || (isset($res['success']) && ($res['success'] == 'false'))
             || ((isset($res) && is_array($res)) && !isset($res[0]) )) {
             $found = false;
         } else {

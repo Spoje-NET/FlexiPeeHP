@@ -37,7 +37,7 @@ class Hooks extends FlexiBeeRW
         $this->setDataValue('format', strtoupper($format));
 
         $hooks = $this->getAllFromFlexibee();
-        if (count($hooks)) {
+        if (is_array($hooks) && count($hooks)) {
             foreach ($hooks as $hook) {
                 if (is_array($hook) && array_key_exists('url', $hook)) {
                     if ($hook['url'] == $url) {

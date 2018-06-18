@@ -29,6 +29,12 @@ class AdresarTest extends FlexiBeeRWTest
         $this->object = new Adresar();
     }
 
+    public function testGetNotificationEmailAddress()
+    {
+          $this->object->getNotificationEmailAddress();
+    }
+    
+    
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
