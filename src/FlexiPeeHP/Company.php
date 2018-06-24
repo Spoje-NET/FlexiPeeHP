@@ -81,7 +81,7 @@ class Company extends FlexiBeeRW
         parent::processInit($init);
         if (is_array($init) && array_key_exists('dbNazev', $init)) {
             $companyInfo = $this->getFlexiData('/c/'.$init['dbNazev']);
-            if (count($companyInfo)) {
+            if(!array_key_exists('message', $companyInfo)){
                 $this->takeData(current($companyInfo));
             }
         }

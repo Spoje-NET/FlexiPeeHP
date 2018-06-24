@@ -42,6 +42,6 @@ class Kontakt extends FlexiBeeRW
             $this->addStatusMessage($result['message'],
                 $result['success'] == 'true' ? 'success' : 'warning' );
         }
-        return $result['success'] == 'true';
+        return array_key_exists('success', $result) && $result['success'] == 'true';
     }
 }
