@@ -670,25 +670,23 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertEquals(10, $this->object->getRecordID());
     }
 
-    
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::getRecordIdent
      */
-    public function testGetRecordIdent(){
+    public function testGetRecordIdent()
+    {
         $this->object->dataReset();
         $this->assertNull($this->object->getRecordIdent());
 
         $this->object->setMyKey(20);
-        $this->assertEquals(20,  $this->object->getRecordIdent());
+        $this->assertEquals(20, $this->object->getRecordIdent());
 
-        $this->object->setDataValue('kod','test');
-        $this->assertEquals('code:TEST',  $this->object->getRecordIdent());
-        
-        $this->object->setDataValue('external-ids',['ext:test:10']);
-        $this->assertEquals('ext:test:10',  $this->object->getRecordIdent());
-        
+        $this->object->setDataValue('kod', 'test');
+        $this->assertEquals('code:TEST', $this->object->getRecordIdent());
+
+        $this->object->setDataValue('external-ids', ['ext:test:10']);
+        $this->assertEquals('ext:test:10', $this->object->getRecordIdent());
     }
-    
 
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::recordExists
@@ -1205,15 +1203,16 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testTakeData()
     {
-        $this->object->takeData(['id'=>1]);
-        $this->assertEquals( constant('FLEXIBEE_URL') .'/'.constant('FLEXIBEE_COMPANY') .  '/1', $this->object->getApiURL());
-        
+        $this->object->takeData(['id' => 1]);
+        $this->assertEquals(constant('FLEXIBEE_URL').'/'.constant('FLEXIBEE_COMPANY').'/1',
+            $this->object->getApiURL());
+
         $this->object->dataReset();
-        $this->object->takeData(['kod'=>'test']);
-        $this->assertEquals(constant('FLEXIBEE_URL') .'/'.constant('FLEXIBEE_COMPANY') . '/code:TEST', $this->object->getApiURL());
+        $this->object->takeData(['kod' => 'test']);
+        $this->assertEquals(constant('FLEXIBEE_URL').'/'.constant('FLEXIBEE_COMPANY').'/code:TEST',
+            $this->object->getApiURL());
     }
-    
-    
+
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::setDataValue
      */
@@ -1344,8 +1343,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->object->evidence = 'test';
         $this->object->getInFormat('html', 'test');
         $this->object->getInFormat('pdf', 'test');
-        $this->object->getInFormat('pdf', 'test','cs',true);
-        $this->object->getInFormat('pdf', 'error','ua',false);
+        $this->object->getInFormat('pdf', 'test', 'cs', true);
+        $this->object->getInFormat('pdf', 'error', 'ua', false);
     }
 
     /**
@@ -1354,6 +1353,27 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testDownloadInFormat()
     {
         $this->object->downloadInFormat('pdf', sys_get_temp_dir().'/');
+    }
+
+    /**
+     * @covers FlexiPeeHP\FlexiBeeRO::getReportsInfo
+     */
+    public function testGetReportsInfo()
+    {
+        $result = $this->object->getReportsInfo();
+        switch ($this->object->getEvidence()) {
+            case '':
+            case 'c':
+            case 'hooks':
+            case 'status':
+            case 'changes':
+            case 'evidence-list':
+                break;
+            default:
+                $this->assertNotEmpty($result,
+                    'Cannot obtain reports for '.$this->object->getEvidence());
+                break;
+        }
     }
 
     /**

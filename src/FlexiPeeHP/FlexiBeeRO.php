@@ -2285,6 +2285,21 @@ class FlexiBeeRO extends \Ease\Sand
     }    
     
     /**
+     * Get Current Evidence reports listing
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/casto-kladene-dotazy-pro-api/vyber-reportu-do-pdf/ Výběr reportu do PDF
+     * 
+     * @return array
+     */
+    public function getReportsInfo()
+    {
+        $reportsRaw = $this->getFlexiData($this->getEvidenceURL().'/reports');
+        return (array_key_exists('reports', $reportsRaw) && array_key_exists('report',
+                $reportsRaw['reports']) ) ? self::reindexArrayBy($reportsRaw['reports']['report'],
+                'reportId') : [];
+    }
+
+    /**
      * Compile and send Report about Error500 to FlexiBee developers
      * If FlexiBee is running on localost try also include java backtrace
      *
