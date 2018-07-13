@@ -35,11 +35,8 @@ phpunit:
 	composer update
 	vendor/bin/phpunit --bootstrap testing/bootstrap.php
 
-changelog:
-	CHANGES=`git log -n 1 | tail -n+5` ; dch -b -v `cat debian/version`-`cat debian/revision` --package flexipeehp "$(CHANGES)"
-
-deb: changelog
-	debuild -i -us -uc -b
+deb:
+	dpkg-buildpackage -A -us -uc
 
 rpm:
 	rpmdev-bumpspec --comment="Build" --userstring="Vítězslav Dvořák <info@vitexsoftware.cz>" flexipeehp.spec
@@ -48,6 +45,9 @@ rpm:
 verup:
 	git commit debian/composer.json debian/version debian/revision  -m "`cat debian/version`-`cat debian/revision`"
 	git push origin master
+
+dimage:
+	docker build -t vitexsoftware/flexipeehp .
 
 .PHONY : install
 	

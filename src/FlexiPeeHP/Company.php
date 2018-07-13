@@ -50,7 +50,7 @@ class Company extends FlexiBeeRW
     public $keyColumn = 'dbNazev';
 
     /**
-     * Class for read only interaction with FlexiBee.
+     * FlexiBee Company Class .
      *
      * @param string|array $init    company dbNazev or initial data
      * @param array        $options Connection settings override

@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.11';
+    public static $libVersion = '1.13';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -1669,7 +1669,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
      *
-     * @param array  $data
+     * @param array  $data   key=>values; value can bee class DatePeriod
      * @param string $joiner default and/or
      * @param string $defop  default operator
      *
@@ -1687,6 +1687,15 @@ class FlexiBeeRO extends \Ease\Sand
                     $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
                 } elseif (is_null($data[$column])) {
                     $parts[$column] = $column." is null";
+                } elseif (is_object($data[$column])) {
+                    switch (get_class($data[$column])) {
+                        case 'DatePeriod':
+                            $parts[$column] = $column . " between '".$data[$column]->getStartDate()->format(self::$DateFormat)."' '".$data[$column]->getEndDate()->format(self::$DateFormat)."'";
+                            break;
+                        default:
+                            $parts[$column] = $column .' '. $data[$column];
+                            break;
+                    }
                 } else {
                     switch ($value) {
                         case '!null':
