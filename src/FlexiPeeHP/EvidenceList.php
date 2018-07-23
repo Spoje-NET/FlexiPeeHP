@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Wed, 06 Jun 2018 16:30:40 +0200 
+ * Generated: Mon, 23 Jul 2018 14:33:53 +0200 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -46,7 +46,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- static public $version = '2018.2.0.2';
+ static public $version = '2018.2.2';
 
     /**
      * Evidences Path/Name listing.
@@ -182,6 +182,7 @@ class EvidenceList extends FlexiBeeRO
   'stav-uctu' => 'Stavy účtů',
   'stat' => 'Státy',
   'stredisko' => 'Střediska',
+  'subjekt' => 'Subjekt',
   'typ-organizace' => 'Typ organizace',
   'typ-atributu' => 'Typy atributů',
   'typ-banka' => 'Typy bankovních dokladů',
@@ -210,10 +211,10 @@ class EvidenceList extends FlexiBeeRO
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
-  'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
-  'umisteni-ve-skladu' => 'Umístění ve skladu',
   'umisteni-ve-skladu-police' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
+  'umisteni-ve-skladu' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
   'strom' => 'Uzel stromu',
   'uzivatelsky-dotaz' => 'Uživatelské dotazy',
@@ -1876,6 +1877,16 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DOCUMENTED',
     'className' => 'cz.winstrom.vo.w.Strom',
     'formCode' => 'strom',
+    'extIdSupported' => 'false',
+  ),
+  'subjekt' => 
+  array (
+    'evidenceType' => 'SUBJEKT',
+    'evidenceName' => 'Subjekt',
+    'evidencePath' => 'subjekt',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.w.Subjekt',
+    'formCode' => 'wSubjekt',
     'extIdSupported' => 'false',
   ),
   'text' => 
