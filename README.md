@@ -22,14 +22,6 @@ která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu. 
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
-U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny do vašich projektů. K dispozici jsou tyto neveřejné funkce:
-
-  * Příjmání a zpracování WebHooks
-  * Konverze a import dat z SQL databáze
-  * Obousměrná synchronizace s externím systém
-  * Párování dokladů dle specifického symbolu
-
 **Dále chci poděkovat technické podpoře společnosti [ABRA Flexi s.r.o.](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
 při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
@@ -305,9 +297,11 @@ Příklady použití:
   * [Flexplorer](https://github.com/VitexSoftware/Flexplorer) Vývojářský nástoj a editor záznamů
   * [FlexiProXY](https://github.com/VitexSoftware/FlexiProxy) Modifikátor webového rozhraní FlexiBee
   * [Upomínač](https://github.com/VitexSoftware/php-flexibee-reminder) Odesílač upomínek
+  * [Matcher](https://github.com/VitexSoftware/php-flexibee-matcher) Párovač fakur
   * [Redmine2FlexiBee](https://github.com/VitexSoftware/Redmine2FlexiBee) Generuje faktury z odpracovaného času v Redmine
   * [FlexiPeeHP-Bricks](https://github.com/VitexSoftware/FlexiPeeHP-Bricks) Příklady a často požívaní třídy při práci s FlexiBee
-  * [Shop4FlexiBee](https://github.com/VitexSoftware/Shop4FlexiBee) 
+  * [TestingTools](https://github.com/VitexSoftware/FlexiBee-TestingTools) Nástroje pro testování FlexiBee aplikací
+
 
 Reference:
 ----------
@@ -384,7 +378,7 @@ Testování:
 Sestavení
 ---------
 
-Debianí balíček vytvoříme spuštěním debian/deb-package.sh
+Debianí balíček vytvoříme spuštěním **make deb**
 
 Obraz pro Docker:
 
