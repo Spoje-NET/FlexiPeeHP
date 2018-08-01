@@ -1693,7 +1693,7 @@ class FlexiBeeRO extends \Ease\Sand
                             $parts[$column] = $column . " between '".$data[$column]->getStartDate()->format(self::$DateFormat)."' '".$data[$column]->getEndDate()->format(self::$DateFormat)."'";
                             break;
                         default:
-                            $parts[$column] = $column .' '. $data[$column];
+                            $parts[$column] = $column ." $defop '". $data[$column]."'";
                             break;
                     }
                 } else {
