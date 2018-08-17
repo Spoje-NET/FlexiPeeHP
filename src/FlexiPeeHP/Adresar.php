@@ -48,4 +48,31 @@ class Adresar extends FlexiBeeRW
         }
         return $email;
     }
+
+    /**
+     * get cell phone Number for Customer with primary contact prefered
+     * 
+     * @return string cell phone number of primary contact or address cell number or null
+     */
+    public function getCellPhoneNumber()
+    {
+        $mobil     = null;
+        $mobilsRaw = $this->getFlexiData($this->getApiURL(),
+            ['detail' => 'custom:id,mobil,kontakty(primarni,mobil)', 'relations' => 'kontakty']);
+        if (is_array($mobilsRaw)) {
+            $mobils = $mobilsRaw[0];
+            if (array_key_exists('mobil', $mobils) && strlen(trim($mobils['mobil']))) {
+                $mobil = $mobils['mobil'];
+            }
+            if (array_key_exists('kontakty', $mobils) && !empty($mobils['kontakty'])) {
+                foreach ($mobils['kontakty'] as $kontakt) {
+                    if (($kontakt['primarni'] == 'true') && strlen(trim($kontakt['mobil']))) {
+                        $mobil = $kontakt['mobil'];
+                        break;
+                    }
+                }
+            }
+        }
+        return $mobil;
+    }
 }
