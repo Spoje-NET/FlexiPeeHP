@@ -75,4 +75,40 @@ class Adresar extends FlexiBeeRW
         }
         return $mobil;
     }
+    
+    /**
+     * get any phone Number for Customer with primary contact prefered
+     * 
+     * @return string phone number of primary contact or address's phone number or null
+     */
+    public function getAnyPhoneNumber()
+    {
+        $phoneNo    = null;
+        $numbersRaw = $this->getFlexiData($this->getApiURL(),
+            ['detail' => 'custom:id,mobil,tel,kontakty(primarni,mobil,tel)', 'relations' => 'kontakty']);
+        if (is_array($numbersRaw)) {
+            $numbers = $numbersRaw[0];
+            if (array_key_exists('mobil', $numbers) && strlen(trim($numbers['mobil']))) {
+                $phoneNo = $numbers['mobil'];
+            }
+            if (array_key_exists('tel', $numbers) && strlen(trim($numbers['tel']))) {
+                $phoneNo = $numbers['tel'];
+            }
+            if (array_key_exists('kontakty', $numbers) && !empty($numbers['kontakty'])) {
+                foreach ($numbers['kontakty'] as $kontakt) {
+                    if ($kontakt['primarni'] == 'true') {
+                        
+                    }
+                    if (strlen(trim($kontakt['mobil']))) {
+                        $phoneNo = $kontakt['mobil'];
+                        break;
+                    } elseif (strlen(trim($kontakt['mobil']))) {
+                        $phoneNo = $kontakt['mobil'];
+                        break;
+                    }
+                }
+            }
+        }
+        return $phoneNo;
+    }
 }

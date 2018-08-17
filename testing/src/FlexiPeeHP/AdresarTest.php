@@ -46,6 +46,14 @@ class AdresarTest extends FlexiBeeRWTest
     }
 
     /**
+     * @covers FlexiPeeHP\Adresar::getAnyPhoneNumber
+     */
+    public function testGetAnyPhoneNumber()
+    {
+        $this->object->getAnyPhoneNumber();
+    }
+
+    /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
