@@ -1706,6 +1706,13 @@ class FlexiBeeRO extends \Ease\Sand
                             $parts[$column] = $column.' '.$value;
                             break;
                         default:
+                            switch (explode(' ', trim($value))[0]) {
+                                case 'like':
+                                case 'begins':
+                                case 'ends':
+                                    $parts[$column] = $column         .= ' '.$value;
+                                    break;
+                                default:
                             if ($column == 'stitky') {
                                 $parts[$column] = $column."='".self::code($data[$column])."'";
                             } else {
@@ -1713,6 +1720,9 @@ class FlexiBeeRO extends \Ease\Sand
                             }
                             break;
                     }
+
+                            break;
+                }
                 }
             } else {
                 $parts[] = $value;
@@ -2429,7 +2439,7 @@ class FlexiBeeRO extends \Ease\Sand
     public function logBanner($additions = null)
     {
         $this->addStatusMessage('FlexiBee '.str_replace('://',
-                '://'.$this->user.'@', str_replace('.json', '', $this->apiURL)).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
+                '://'.$this->user.'@', $this->getApiUrl()).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
             'debug');
     }
 
