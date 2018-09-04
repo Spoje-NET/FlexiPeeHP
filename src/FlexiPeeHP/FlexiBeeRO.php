@@ -2400,7 +2400,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public static function code($code)
     {
-        return 'code:'.strtoupper(self::uncode($code));
+        return ((substr($code,0,4) == 'ext:') ? $code :  'code:'.strtoupper(self::uncode($code)));
     }
 
     /**
