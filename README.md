@@ -278,6 +278,7 @@ Ve složce Examples jsou tyto ukázky použití:
 | [GetRecordWithRelation.php](Examples/GetRecordWithRelation.php) | Získání záznamu včetně dat z podevidence
 | [InvoiceLockUnlock.php](Examples/InvoiceLockUnlock.php)       | Zamykání a odemykání záznamu
 | [InvoiceCopy.php](Examples/InvoiceCopy.php)                   | vytvoření daňového dokladu ze zálohy
+| [LoginLogout](Examples/LoginLogout.php)                       | přihlášení uživatele a jeho odhlášení
 | [NajdiDanovyDokladKzalohovemu.php](Examples/NajdiDanovyDokladKzalohovemu.php) | dohledání dokladu
 | [Naskladnění.php](Examples/Naskladnění.php)                   | Naskladní produkt se sériovými čísly
 | [NewInvoice.php](Examples/NewInvoice.php)                     | Nová faktura se splatností vypsaná jako json

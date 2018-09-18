@@ -28,6 +28,7 @@ class Kontakt extends FlexiBeeRW
      * @link https://www.flexibee.eu/api/dokumentace/ref/autentizace-kontaktu/ Contact Auth
      * @param string $login
      * @param string $password
+     * 
      * @return boolean
      */
     public function authenticate($login, $password)

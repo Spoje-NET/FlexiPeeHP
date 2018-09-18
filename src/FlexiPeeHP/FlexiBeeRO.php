@@ -313,6 +313,12 @@ class FlexiBeeRO extends \Ease\Sand
     public $authSessionId = null;
 
     /**
+     * Token obtained during login procedure
+     * @var string 
+     */
+    public $refreshToken = null;
+
+    /**
      * Save 404 results to log ?
      * @var boolean
      */
@@ -650,7 +656,7 @@ class FlexiBeeRO extends \Ease\Sand
                         $result         = true;
                     } else {
                         throw new \Exception(sprintf('Try to set unsupported evidence %s',
-                                $evidence));
+                            $evidence));
                     }
                 } else {
                     $this->evidence = $evidence;
@@ -817,8 +823,8 @@ class FlexiBeeRO extends \Ease\Sand
     public function updateApiURL()
     {
         $this->apiURL = $this->getEvidenceURL();
-        $id = $this->getRecordID();
-        if(empty($id)){
+        $id           = $this->getRecordID();
+        if (empty($id)) {
             $id = $this->getRecordCode();
         }
         if (!empty($id)) {
@@ -826,7 +832,7 @@ class FlexiBeeRO extends \Ease\Sand
         }
         $this->apiURL .= '.'.$this->format;
     }
-    /*   
+    /*
      * Add Default Url params to given url if not overrided
      *
      * @param string $urlRaw
@@ -1056,8 +1062,8 @@ class FlexiBeeRO extends \Ease\Sand
         $this->curlInfo                    = curl_getinfo($this->curl);
         $this->curlInfo['when']            = microtime();
         $this->curlInfo['request_headers'] = $httpHeadersFinal;
-        $this->responseFormat              = isset($this->curlInfo['content_type'])
-                ? Formats::contentTypeToSuffix($this->curlInfo['content_type']) : 'txt';
+        $this->responseFormat              = $this->contentTypeToResponseFormat($this->curlInfo['content_type'],
+            $url);
         $this->lastResponseCode            = $this->curlInfo['http_code'];
         $this->lastCurlError               = curl_error($this->curl);
         if (strlen($this->lastCurlError)) {
@@ -1070,6 +1076,43 @@ class FlexiBeeRO extends \Ease\Sand
         }
 
         return $this->lastResponseCode;
+    }
+
+    /**
+     * Obtain json for application/json
+     * 
+     * @param string $contentType
+     * @param string $url
+     * 
+     * @return string response format
+     */
+    public function contentTypeToResponseFormat($contentType, $url = null)
+    {
+        if (!empty($url)) {
+            $url = parse_url($url, PHP_URL_PATH);
+        }
+
+        $contentTypeClean = strstr($contentType, ';') ? substr($contentType, 0,
+                strpos($contentType, ';')) : $contentType;
+
+        switch ($url) {
+            case '/login-logout/login';
+                $responseFormat = 'json';
+                break;
+            default :
+                switch ($contentTypeClean) {
+                    case 'text/javascript':
+                        $responseFormat = 'js';
+                        break;
+
+                    default:
+                        $responseFormat = Formats::contentTypeToSuffix($contentTypeClean);
+                        break;
+                }
+                break;
+        }
+
+        return $responseFormat;
     }
 
     /**
@@ -1403,8 +1446,8 @@ class FlexiBeeRO extends \Ease\Sand
         $this->ignore404(true);
         $this->getFlexiData(null,
             [
-                'detail' => 'custom:'.$this->getKeyColumn(),
-                $this->getKeyColumn() => $identifer
+            'detail' => 'custom:'.$this->getKeyColumn(),
+            $this->getKeyColumn() => $identifer
         ]);
         $this->ignore404($ignorestate);
         return $this->lastResponseCode == 200;
@@ -1447,7 +1490,8 @@ class FlexiBeeRO extends \Ease\Sand
     public function getSubItems()
     {
         return array_key_exists('polozkyFaktury', $this->getData()) ? $this->getDataValue('polozkyFaktury')
-                : (array_key_exists('polozkyDokladu', $this->getData()) ? $this->getDataValue('polozkyDokladu'): null);
+                : (array_key_exists('polozkyDokladu', $this->getData()) ? $this->getDataValue('polozkyDokladu')
+                : null);
     }
 
     /**
@@ -1701,10 +1745,10 @@ class FlexiBeeRO extends \Ease\Sand
                 } elseif (is_object($data[$column])) {
                     switch (get_class($data[$column])) {
                         case 'DatePeriod':
-                            $parts[$column] = $column . " between '".$data[$column]->getStartDate()->format(self::$DateFormat)."' '".$data[$column]->getEndDate()->format(self::$DateFormat)."'";
+                            $parts[$column] = $column." between '".$data[$column]->getStartDate()->format(self::$DateFormat)."' '".$data[$column]->getEndDate()->format(self::$DateFormat)."'";
                             break;
                         default:
-                            $parts[$column] = $column ." $defop '". $data[$column]."'";
+                            $parts[$column] = $column." $defop '".$data[$column]."'";
                             break;
                     }
                 } else {
@@ -1724,16 +1768,16 @@ class FlexiBeeRO extends \Ease\Sand
                                     $parts[$column] = $column         .= ' '.$value;
                                     break;
                                 default:
-                            if ($column == 'stitky') {
-                                $parts[$column] = $column."='".self::code($data[$column])."'";
-                            } else {
-                                $parts[$column] = $column." $defop '".$data[$column]."'";
+                                    if ($column == 'stitky') {
+                                        $parts[$column] = $column."='".self::code($data[$column])."'";
+                                    } else {
+                                        $parts[$column] = $column." $defop '".$data[$column]."'";
+                                    }
+                                    break;
                             }
-                            break;
-                    }
 
                             break;
-                }
+                    }
                 }
             } else {
                 $parts[] = $value;
@@ -1902,12 +1946,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function getResponseFormat()
     {
-        if (isset($this->curlInfo['content_type'])) {
-            $responseFormat = $this->curlInfo['content_type'];
-        } else {
-            $responseFormat = null;
-        }
-        return $responseFormat;
+        return $this->responseFormat;
     }
 
     /**
@@ -2231,7 +2270,8 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @return string|null filename downloaded or none
      */
-    public function getInFormat($format, $reportName = null, $lang = null,$sign = false)
+    public function getInFormat($format, $reportName = null, $lang = null,
+                                $sign = false)
     {
         $response = null;
         if ($this->setFormat($format)) {
@@ -2251,7 +2291,7 @@ class FlexiBeeRO extends \Ease\Sand
                             throw new \Ease\Exception('Unknown language '.$lang.' for PDF export');
                             break;
                     }
-                    if(boolval($sign) === true){
+                    if (boolval($sign) === true) {
                         $urlParams['report-sign'] = 'true';
                     }
                     break;
@@ -2297,7 +2337,6 @@ class FlexiBeeRO extends \Ease\Sand
         return $fileOnDisk;
     }
 
-    
     /**
      * Take data for object
      *
@@ -2308,12 +2347,13 @@ class FlexiBeeRO extends \Ease\Sand
     public function takeData($data)
     {
         $result = parent::takeData($data);
-        if(array_key_exists($this->getKeyColumn(), $data) || array_key_exists('kod', $data)){
+        if (array_key_exists($this->getKeyColumn(), $data) || array_key_exists('kod',
+                $data)) {
             $this->updateApiURL();
         }
         return $result;
-    }    
-    
+    }
+
     /**
      * Get Current Evidence reports listing
      * 
@@ -2323,10 +2363,70 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function getReportsInfo()
     {
+        $reports    = [];
         $reportsRaw = $this->getFlexiData($this->getEvidenceURL().'/reports');
-        return (array_key_exists('reports', $reportsRaw) && array_key_exists('report',
-                $reportsRaw['reports']) ) ? self::reindexArrayBy($reportsRaw['reports']['report'],
-                'reportId') : [];
+        if (array_key_exists('reports', $reportsRaw) && !empty($reportsRaw['reports'])
+            && array_key_exists('report', $reportsRaw['reports']) &&
+            !empty($reportsRaw['reports']['report'])) {
+            $reports = self::reindexArrayBy($reportsRaw['reports']['report'],
+                    'reportId');
+        }
+        return $reports;
+    }
+
+    /**
+     * Request authSessionId from current server
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/ref/login/ description
+     * 
+     * @param string $username
+     * @param string $password
+     * @param string $otp       optional onetime password
+     * 
+     * @return string authUserId or null in case of problems
+     */
+    public function requestAuthSessionID($username, $password, $otp = null)
+    {
+        $this->postFields = http_build_query(is_null($otp) ? ['username' => $username,
+            'password' => $password] : ['username' => $username, 'password' => $password,
+            'otp' => $otp]);
+        $response         = $this->performRequest('/login-logout/login', 'POST',
+            'json');
+        if (array_key_exists('refreshToken', $response)) {
+            $this->refreshToken = $response['refreshToken'];
+        } else {
+            $this->refreshToken = null;
+        }
+        return array_key_exists('authSessionId', $response) ? $response['authSessionId']
+                : null;
+    }
+
+    /**
+     * Try to Sign in current user to FlexiBee and keep authSessionId
+     * 
+     * @return boolen sign in success
+     */
+    public function login()
+    {
+        $this->authSessionId = $this->requestAuthSessionID($this->user,
+            $this->password);
+        return $this->lastResponseCode == 200;
+    }
+
+    /**
+     * End (current's user) session
+     * 
+     * 
+     * @link https://www.flexibee.eu/api/dokumentace/ref/logout Logout Reference
+     * 
+     * @param string $username force username to sign off
+     * 
+     * @return array server response
+     */
+    public function logout($username = null)
+    {
+        return $this->performRequest('/status/user/'.(is_null($username) ? $this->user
+                    : $username).'/logout', 'POST');
     }
 
     /**
@@ -2411,7 +2511,7 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public static function code($code)
     {
-        return ((substr($code,0,4) == 'ext:') ? $code :  'code:'.strtoupper(self::uncode($code)));
+        return ((substr($code, 0, 4) == 'ext:') ? $code : 'code:'.strtoupper(self::uncode($code)));
     }
 
     /**
