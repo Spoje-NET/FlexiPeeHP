@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=5.6 <7.3",
+        "php": ">=5.6 <7.4",
         "ext-curl": "*",
         "vitexsoftware/ease-framework": ">=1.5"
     },
