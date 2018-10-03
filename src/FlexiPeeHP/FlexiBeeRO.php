@@ -379,6 +379,12 @@ class FlexiBeeRO extends \Ease\Sand
     public $timeout = null;
 
     /**
+     * Columns Info for serveral evidencies
+     * @var array 
+     */
+    private $columnsInfo = null;
+
+    /**
      * Class for read only interaction with FlexiBee.
      *
      * @param mixed $init default record id or initial data
@@ -394,6 +400,19 @@ class FlexiBeeRO extends \Ease\Sand
         if (!empty($init)) {
             $this->processInit($init);
         }
+    }
+
+    /**
+     * Set internal Object name
+     *
+     * @param string $objectName
+     *
+     * @return string Jméno objektu
+     */
+    public function setObjectName($objectName = null)
+    {
+        return parent::setObjectName(is_null($objectName) ? ( empty($this->getRecordIdent()) ? $this->getObjectName() : $this->getRecordIdent().'@'.$this->getObjectName() )
+                    : $objectName);
     }
 
     /**
@@ -1993,7 +2012,7 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return array Evidence structure
      */
-    public function getColumnsInfo($evidence = null)
+    public function getOfflineColumnsInfo($evidence = null)
     {
         $columnsInfo = null;
         $infoSource  = self::$infoDir.'/Properties.'.(empty($evidence) ? $this->getEvidence()
@@ -2002,6 +2021,68 @@ class FlexiBeeRO extends \Ease\Sand
             $columnsInfo = json_decode(file_get_contents($infoSource), true);
         }
         return $columnsInfo;
+    }
+
+    /**
+     * Obtain Current evidence Live structure
+     * 
+     * @param string $evidence
+     * 
+     * @return array structure
+     */
+    public function getOnlineColumnsInfo($evidence = null)
+    {
+        $properties = [];
+        $evidence   = is_null($evidence) ? $this->getEvidence() : $evidence;
+        $flexinfo   = $this->performRequest('/c/'.$this->company.'/'.$evidence.'/properties.json');
+        if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
+            foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
+                $key                      = $evidenceProperty['propertyName'];
+                $properties[$key]         = $evidenceProperty;
+                $properties[$key]['name'] = $evidenceProperty['name'];
+                $properties[$key]['type'] = $evidenceProperty['type'];
+                if (array_key_exists('url', $evidenceProperty)) {
+                    $properties[$key]['url'] = str_replace('?limit=0', '',
+                        $evidenceProperty['url']);
+                }
+            }
+        }
+        return $properties;
+    }
+
+    /**
+     * Update evidence info from array or online from properties.json or offline
+     * 
+     * @param array  $columnsInfo
+     * @param string $evidence
+     */
+    public function updateColumnsInfo($columnsInfo = null, $evidence = null)
+    {
+        $evidence = is_null($evidence) ? $this->getEvidence() : $evidence;
+        if (is_null($columnsInfo)) {
+            $this->columnsInfo[$evidence] = $this->offline ? $this->getOfflineColumnsInfo($evidence)
+                    : $this->getOnlineColumnsInfo($evidence);
+        } else {
+            $this->columnsInfo[$evidence] = $columnsInfo;
+        }
+    }
+
+    /**
+     * Gives you evidence structure. You can obtain current online by pre-calling:
+     * $this->updateColumnsInfo($evidence, $this->getOnlineColumnsInfo($evidence));
+     * 
+     * @param string $evidence
+     * 
+     * @return array
+     */
+    public function getColumnsInfo($evidence = null)
+    {
+        $evidence = is_null($evidence) ? $this->getEvidence() : $evidence;
+        if (!array_key_exists($evidence, $this->columnsInfo)) {
+            $this->updateColumnsInfo($evidence,
+                $this->getOfflineColumnsInfo($evidence));
+        }
+        return $this->columnsInfo[$evidence];
     }
 
     /**
@@ -2365,11 +2446,15 @@ class FlexiBeeRO extends \Ease\Sand
     {
         $reports    = [];
         $reportsRaw = $this->getFlexiData($this->getEvidenceURL().'/reports');
-        if (array_key_exists('reports', $reportsRaw) && !empty($reportsRaw['reports'])
+        if (!empty($reportsRaw) && array_key_exists('reports', $reportsRaw) && !empty($reportsRaw['reports'])
             && array_key_exists('report', $reportsRaw['reports']) &&
             !empty($reportsRaw['reports']['report'])) {
-            $reports = self::reindexArrayBy($reportsRaw['reports']['report'],
-                    'reportId');
+            if (\Ease\jQuery\Part::isAssoc($reportsRaw['reports']['report'])) {
+                $reports = [$reportsRaw['reports']['report']['reportId'] => $reportsRaw['reports']['report']];
+            } else {
+                $reports = self::reindexArrayBy($reportsRaw['reports']['report'],
+                        'reportId');
+            }
         }
         return $reports;
     }
