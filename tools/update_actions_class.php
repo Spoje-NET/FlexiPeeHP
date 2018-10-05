@@ -2,11 +2,10 @@
 
 namespace FlexiPeeHP;
 
-
-if(!defined('EASE_APPNAME')){
-    define('EASE_APPNAME', 'FlexiPeeHUP');
+if (!defined('EASE_APPNAME')) {
+    define('EASE_APPNAME', 'FlexiPeeHP Actions');
 }
-if(!defined('EASE_LOGGER')){
+if (!defined('EASE_LOGGER')) {
     define('EASE_LOGGER', 'console|syslog');
 }
 
@@ -82,8 +81,8 @@ $evidenceActions = '<?php
 /**
  * FlexiPeeHP - Evidence Actions.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
+ * @copyright  (C) 2015-'.date('Y').' Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -131,8 +130,8 @@ foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
                 true).';
 ';
 
-        $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': actions obtained',
-            'success');
+        $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': '.implode(',',
+                array_keys($structure)), 'success');
         $ok++;
     } else {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': obtaining actions problem',

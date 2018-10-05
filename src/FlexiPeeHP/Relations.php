@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2018.2.2';
+ static public $version = '2018.2.5';
 
     /**
      * Evidence adresar (Adresy firem) Relations.
@@ -672,6 +672,16 @@ class Relations
     'evidenceType' => 'FORMA_UHRADY_ZAUCTOVANI',
     'name' => 'Zaúčtování',
   ),
+);
+    /**
+     * Evidence insight (Insight) Relations.
+     *
+     * @var array
+     */
+ static public $insight = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
 );
     /**
      * Evidence interni-doklad (Interní doklady) Relations.
@@ -2247,16 +2257,6 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Relations.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladuPolice = array (
-  0 => 'uzivatelske-vazby',
-  1 => 'VAZBA',
-  2 => 'Uživatelské vazby',
-);
-    /**
      * Evidence umisteni-ve-skladu-regal (Umístění ve skladu) Relations.
      *
      * @var array
@@ -2267,11 +2267,11 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
+     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Relations.
      *
      * @var array
      */
- static public $umisteniVeSkladuMistnost = array (
+ static public $umisteniVeSkladuPolice = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2282,6 +2282,16 @@ class Relations
      * @var array
      */
  static public $umisteniVeSkladu = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
+     *
+     * @var array
+     */
+ static public $umisteniVeSkladuMistnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',

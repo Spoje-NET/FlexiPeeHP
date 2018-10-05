@@ -10,36 +10,12 @@ require_once '../testing/bootstrap.php';
 $outFile = 'Properties.php';
 $ok      = 0;
 
-/**
- * Obtain structure for given evidence
- *
- * @param string     $evidence
- * @param FlexiBeeRO $syncer Class to read from FlexiBee
- * @return array     Evidence structure
- */
-function getPropertiesInfo($evidence, FlexiBeeRO $syncer)
-{
-    $properties = [];
-    $flexinfo   = $syncer->performRequest($evidence.'/properties.json');
-    if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
-        foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
-            $key                      = $evidenceProperty['propertyName'];
-            $properties[$key]         = $evidenceProperty;
-            $properties[$key]['name'] = $evidenceProperty['name'];
-            $properties[$key]['type'] = $evidenceProperty['type'];
-            if(array_key_exists('url', $evidenceProperty)){
-               $properties[$key]['url'] = str_replace('?limit=0', '', $evidenceProperty['url']);
-            }
-        }
-    }
-    return $properties;
-}
 $evidenceProps = '<?php
 /**
  * FlexiPeeHP - Evidence Properties.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
+ * @copyright  (C) 2015-'.date('Y').' Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -69,7 +45,7 @@ foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
             true);
         $structure = $info['properties']['property'];
     } else {
-        $structure = getPropertiesInfo($evidencePath, $syncer);
+        $structure = $syncer->getOnlineColumnsInfo($evidencePath);
     }
 
     if (count($structure)) {

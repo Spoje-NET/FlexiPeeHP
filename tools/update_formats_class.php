@@ -2,7 +2,7 @@
 
 namespace FlexiPeeHP;
 
-define('EASE_APPNAME', 'FlexiPeehUP');
+define('EASE_APPNAME', 'FlexiPeeHP Formats');
 define('EASE_LOGGER', 'console|syslog');
 
 require_once '../testing/bootstrap.php';
@@ -24,7 +24,7 @@ function getEvidenceFormats($evidence, FlexiBeeRO $syncer)
 
     $syncer->setEvidence($evidence);
     $flexinfo = $syncer->getColumnsFromFlexibee(['id'], ['limit' => 1]);
-    if (is_array($flexinfo) && array_key_exists('id', $flexinfo[0])) {
+    if (is_array($flexinfo) && is_array($flexinfo[0]) && array_key_exists('id', $flexinfo[0])) {
         $id = is_numeric($flexinfo[0]['id']) ? intval($flexinfo[0]['id']) : $flexinfo[0]['id'];
         $formats = [];
         foreach (Formats::$formats as $cancode => $candidate) {
@@ -45,8 +45,8 @@ $evidenceFormats = '<?php
 /**
  * FlexiPeeHP - Evidence Formats.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
+ * @copyright  (C) 2015-'.date('Y').' Spoje.Net
  */
 namespace FlexiPeeHP;
 
@@ -185,9 +185,7 @@ foreach (EvidenceList::$name as $evidencePath => $evidenceName) {
         $evidenceFormats .= ' static public $'.lcfirst(FlexiBeeRO::evidenceToClassName($evidencePath)).' = '.var_export($structure,
                 true).';
 ';
-
-        $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': formats: '.implode(',',
-                $structure).' obtained', 'success');
+        $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': formats: '.implode(',',$structure), 'success');
         $ok++;
     } else {
         $syncer->addStatusMessage($pos.' of '.count(EvidenceList::$name).' '.$evidencePath.': obtaining formats problem',

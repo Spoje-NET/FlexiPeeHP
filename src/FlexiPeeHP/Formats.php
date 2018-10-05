@@ -2,8 +2,8 @@
 /**
  * FlexiPeeHP - Evidence Formats.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2017 Spoje.Net
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
+ * @copyright  (C) 2015-2018 Spoje.Net
  */
 namespace FlexiPeeHP;
 
@@ -19,7 +19,7 @@ class Formats
  *
  * @var string
  */
- static public $version = '2018.2.2';
+ static public $version = '2018.2.5';
 
 
     /**
@@ -482,6 +482,17 @@ class Formats
   'CSV' => 'csv',
 );
     /**
+     * Evidence insight (Insight) Formats.
+     *
+     * @var array
+     */
+ static public $insight = array (
+  'HTML' => 'html',
+  'XML' => 'xml',
+  'JSON' => 'json',
+  'CSV' => 'csv',
+);
+    /**
      * Evidence interni-doklad (Interní doklady) Formats.
      *
      * @var array
@@ -680,22 +691,22 @@ class Formats
   'CSV' => 'csv',
 );
     /**
-     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Formats.
+     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Formats.
      *
      * @var array
      */
- static public $cenikovyPohybProdej = array (
+ static public $cenikovyPohybNakup = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',
   'CSV' => 'csv',
 );
     /**
-     * Evidence cenikovy-pohyb-nakup (Nákupní, prodejní a skladové pohyby) Formats.
+     * Evidence cenikovy-pohyb-prodej (Nákupní, prodejní a skladové pohyby) Formats.
      *
      * @var array
      */
- static public $cenikovyPohybNakup = array (
+ static public $cenikovyPohybProdej = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',
@@ -1846,17 +1857,6 @@ class Formats
   'CSV' => 'csv',
 );
     /**
-     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Formats.
-     *
-     * @var array
-     */
- static public $umisteniVeSkladuPolice = array (
-  'HTML' => 'html',
-  'XML' => 'xml',
-  'JSON' => 'json',
-  'CSV' => 'csv',
-);
-    /**
      * Evidence umisteni-ve-skladu-regal (Umístění ve skladu) Formats.
      *
      * @var array
@@ -1868,11 +1868,11 @@ class Formats
   'CSV' => 'csv',
 );
     /**
-     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Formats.
+     * Evidence umisteni-ve-skladu-police (Umístění ve skladu) Formats.
      *
      * @var array
      */
- static public $umisteniVeSkladuMistnost = array (
+ static public $umisteniVeSkladuPolice = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',
@@ -1884,6 +1884,17 @@ class Formats
      * @var array
      */
  static public $umisteniVeSkladu = array (
+  'HTML' => 'html',
+  'XML' => 'xml',
+  'JSON' => 'json',
+  'CSV' => 'csv',
+);
+    /**
+     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Formats.
+     *
+     * @var array
+     */
+ static public $umisteniVeSkladuMistnost = array (
   'HTML' => 'html',
   'XML' => 'xml',
   'JSON' => 'json',

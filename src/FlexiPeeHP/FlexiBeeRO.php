@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.17';
+    public static $libVersion = '1.20';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -382,7 +382,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Columns Info for serveral evidencies
      * @var array 
      */
-    private $columnsInfo = null;
+    private $columnsInfo = [];
 
     /**
      * Class for read only interaction with FlexiBee.
@@ -411,7 +411,8 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function setObjectName($objectName = null)
     {
-        return parent::setObjectName(is_null($objectName) ? ( empty($this->getRecordIdent()) ? $this->getObjectName() : $this->getRecordIdent().'@'.$this->getObjectName() )
+        return parent::setObjectName(is_null($objectName) ? ( empty($this->getRecordIdent())
+                    ? $this->getObjectName() : $this->getRecordIdent().'@'.$this->getObjectName() )
                     : $objectName);
     }
 
@@ -1323,10 +1324,12 @@ class FlexiBeeRO extends \Ease\Sand
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
-        $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.self::urlizeId( $id));
-        $this->apiURL = $this->curlInfo['url'];
-        if (is_array($flexidata) && (count($flexidata) == 1)) {
-            $data = current($flexidata);
+        $flexidata = $this->getFlexiData($this->getEvidenceUrl().'/'.self::urlizeId($id));
+        if ($this->lastResponseCode == 200) {
+            $this->apiURL = $this->curlInfo['url'];
+            if (is_array($flexidata) && (count($flexidata) == 1) && is_array(current($flexidata))) {
+                $data = current($flexidata);
+            }
         }
         return $this->takeData($data);
     }
@@ -1448,7 +1451,8 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return string id ready for use in URL
      */
-    public static function urlizeId($id){
+    public static function urlizeId($id)
+    {
         if (is_array($id)) {
             $id = rawurlencode('('.self::flexiUrl($id).')');
         } else if (preg_match('/^ext:/', $id)) {
@@ -2089,8 +2093,8 @@ class FlexiBeeRO extends \Ease\Sand
     {
         $evidence = is_null($evidence) ? $this->getEvidence() : $evidence;
         if (!array_key_exists($evidence, $this->columnsInfo)) {
-            $this->updateColumnsInfo($evidence,
-                $this->getOfflineColumnsInfo($evidence));
+            $this->updateColumnsInfo($this->getOfflineColumnsInfo($evidence),
+                $evidence);
         }
         return $this->columnsInfo[$evidence];
     }

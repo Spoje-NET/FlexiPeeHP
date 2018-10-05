@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Mon, 23 Jul 2018 14:33:53 +0200 
+ * Generated: Fri, 05 Oct 2018 16:23:16 +0200 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -46,7 +46,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- static public $version = '2018.2.2';
+ static public $version = '2018.2.5';
 
     /**
      * Evidences Path/Name listing.
@@ -87,6 +87,7 @@ class EvidenceList extends FlexiBeeRO
   'forma-uhrady' => 'Formy úhrady',
   'hlavni-kniha' => 'Hlavní kniha',
   'individualni-cenik' => 'Individuální ceník',
+  'insight' => 'Insight',
   'interni-doklad' => 'Interní doklady',
   'inventura' => 'Inventury',
   'konst-symbol' => 'Konstantní symboly',
@@ -105,8 +106,8 @@ class EvidenceList extends FlexiBeeRO
   'merna-jednotka' => 'Měrné jednotky ',
   'nastaveni' => 'Nastavení',
   'naklad' => 'Náklady na události / aktivity',
-  'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
   'cenikovy-pohyb-nakup' => 'Nákupní, prodejní a skladové pohyby',
+  'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
   'intrastat-obchodni-transakce' => 'Obchodní transakce',
   'strom-koren' => 'Obecný strom',
   'obratova-predvaha' => 'Obratová předvaha',
@@ -211,10 +212,10 @@ class EvidenceList extends FlexiBeeRO
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
-  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
   'strom' => 'Uzel stromu',
   'uzivatelsky-dotaz' => 'Uživatelské dotazy',
@@ -727,6 +728,16 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'DISALLOWED',
     'className' => 'cz.winstrom.vo.vyk.CenyView',
     'formCode' => 'cenyView',
+    'extIdSupported' => 'false',
+  ),
+  'insight' => 
+  array (
+    'evidenceType' => 'INSIGHT',
+    'evidenceName' => 'Insight',
+    'evidencePath' => 'insight',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.w.Insight',
+    'formCode' => 'insight',
     'extIdSupported' => 'false',
   ),
   'interni-doklad' => 
