@@ -32,7 +32,7 @@ class Adresar extends FlexiBeeRW
         $email     = null;
         $emailsRaw = $this->getFlexiData($this->getApiURL(),
             ['detail' => 'custom:id,email,kontakty(primarni,email)', 'relations' => 'kontakty']);
-        if (is_array($emailsRaw)) {
+        if (is_array($emailsRaw) && !empty($emailsRaw[0])) {
             $emails = $emailsRaw[0];
             if (array_key_exists('email', $emails) && strlen(trim($emails['email']))) {
                 $email = $emails['email'];
@@ -86,7 +86,7 @@ class Adresar extends FlexiBeeRW
         $phoneNo    = null;
         $numbersRaw = $this->getFlexiData($this->getApiURL(),
             ['detail' => 'custom:id,mobil,tel,kontakty(primarni,mobil,tel)', 'relations' => 'kontakty']);
-        if (is_array($numbersRaw)) {
+        if (is_array($numbersRaw) && !empty($numbersRaw[0])) {
             $numbers = $numbersRaw[0];
             if (array_key_exists('mobil', $numbers) && strlen(trim($numbers['mobil']))) {
                 $phoneNo = $numbers['mobil'];
