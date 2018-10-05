@@ -1323,15 +1323,7 @@ class FlexiBeeRO extends \Ease\Sand
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
-        if (is_array($id)) {
-            $id = rawurlencode('('.self::flexiUrl($id).')');
-        } else if (preg_match('/^ext:/', $id)) {
-            $id = self::urlEncode($id);
-        } else if (preg_match('/^code:/', $id)) {
-            $id = self::code(self::urlEncode(self::uncode($id)));
-        }
-
-        $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.$id);
+        $flexidata    = $this->getFlexiData($this->getEvidenceUrl().'/'.self::urlizeId( $id));
         $this->apiURL = $this->curlInfo['url'];
         if (is_array($flexidata) && (count($flexidata) == 1)) {
             $data = current($flexidata);
@@ -1447,6 +1439,24 @@ class FlexiBeeRO extends \Ease\Sand
         }
 
         return $result;
+    }
+
+    /**
+     * Prepare record ID to use in URL
+     * 
+     * @param mixed $id
+     * 
+     * @return string id ready for use in URL
+     */
+    public static function urlizeId($id){
+        if (is_array($id)) {
+            $id = rawurlencode('('.self::flexiUrl($id).')');
+        } else if (preg_match('/^ext:/', $id)) {
+            $id = self::urlEncode($id);
+        } else if (preg_match('/^code:/', $id)) {
+            $id = self::code(self::urlEncode(self::uncode($id)));
+        }
+        return $id;
     }
 
     /**

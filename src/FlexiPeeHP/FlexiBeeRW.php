@@ -186,7 +186,8 @@ class FlexiBeeRW extends FlexiBeeRO
         if (is_null($id)) {
             $id = $this->getMyKey();
         }
-        $this->performRequest($this->getEvidenceUrl().'/'.$id.'.'.$this->format,
+
+        $this->performRequest($this->getEvidenceUrl().'/'.self::urlizeId($id),
             'DELETE');
         return $this->lastResponseCode == 200;
     }
@@ -487,7 +488,7 @@ class FlexiBeeRW extends FlexiBeeRO
             }
         } else {
             throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
-                    $action, $this->getEvidence()));
+                $action, $this->getEvidence()));
         }
 
         return $result;
@@ -502,7 +503,8 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function addExternalID($extId)
     {
-        return $this->insertToFlexiBee(['id' => [$this->getRecordID(), 'ext:'.preg_replace('/^ext:/', '', $extId)]]);
+        return $this->insertToFlexiBee(['id' => [$this->getRecordID(), 'ext:'.preg_replace('/^ext:/',
+                        '', $extId)]]);
     }
 
     /**
