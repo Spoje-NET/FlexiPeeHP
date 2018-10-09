@@ -16,6 +16,9 @@ namespace FlexiPeeHP;
  */
 class Banka extends FlexiBeeRW
 {
+    
+    use Firma;
+    
     /**
      * Evidence užitá objektem.
      *

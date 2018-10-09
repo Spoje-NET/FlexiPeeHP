@@ -15,6 +15,8 @@ namespace FlexiPeeHP;
  */
 class FakturaPrijata extends FlexiBeeRW
 {
+
+    use Firma;
     /**
      * Evidence použitá třídou.
      *
