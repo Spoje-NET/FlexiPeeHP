@@ -7,12 +7,12 @@ install: build
 #	cp -rvf src/FlexiPeeHP /usr/share/php/FlexiPeeHP
 	
 static: 
-	rm -rf static/*
+	composer update
+	echo rm -rf static/*
 	echo "STATIC  #######################
 	cd tools/ ; ./update_all.sh ; cd ..
 
-build: static doc
-	cd tools/ ; ./update_all.sh ; cd ..
+build: static
 
 clean:
 	rm -rf debian/flexipeehp
