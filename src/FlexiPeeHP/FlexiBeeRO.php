@@ -1782,6 +1782,7 @@ class FlexiBeeRO extends \Ease\Sand
                             break;
                         case 'DateTime':
                             $parts[$column] = $column." eq '".$data[$column]->format(self::$DateFormat)."'";
+                            break;
                         default:
                             $parts[$column] = $column." $defop '".$data[$column]."'";
                             break;

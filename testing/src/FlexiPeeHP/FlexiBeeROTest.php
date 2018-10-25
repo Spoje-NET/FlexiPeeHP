@@ -94,13 +94,13 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
 
         $mock->__construct('',
             [
-                'company' => constant('FLEXIBEE_COMPANY'),
-                'url' => constant('FLEXIBEE_URL'),
-                'user' => constant('FLEXIBEE_LOGIN'),
-                'password' => constant('FLEXIBEE_PASSWORD'),
-                'debug' => true,
-                'prefix' => 'c',
-                'evidence' => $evidence]);
+            'company' => constant('FLEXIBEE_COMPANY'),
+            'url' => constant('FLEXIBEE_URL'),
+            'user' => constant('FLEXIBEE_LOGIN'),
+            'password' => constant('FLEXIBEE_PASSWORD'),
+            'debug' => true,
+            'prefix' => 'c',
+            'evidence' => $evidence]);
     }
 
     /**
@@ -242,8 +242,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertNull($this->object->object2array(new \stdClass()));
         $this->assertEquals(
             [
-                'item' => 1,
-                'arrItem' => ['a', 'b' => 'c']
+            'item' => 1,
+            'arrItem' => ['a', 'b' => 'c']
             ]
             , $this->object->object2array(new \Test\ObjectForTesting()));
     }
@@ -888,6 +888,16 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             $this->object->flexiUrl(['a' => true, 'b' => false], 'or'));
         $this->assertEquals("a is null and b is not null",
             $this->object->flexiUrl(['a' => null, 'b' => '!null'], 'and'));
+
+        $begin = new \DateTime('2018-08-01');
+        $end   = new \DateTime('2018-08-31');
+        $end   = $end->modify('+1 day');
+
+        $interval  = new \DateInterval('P1D');
+        $daterange = new \DatePeriod($begin, $interval, $end);
+
+        $this->assertEquals("a eq '2018-10-25' and b between '2018-08-01' '2018-09-01'",
+            $this->object->flexiUrl(['a' => new \DateTime('25-10-2018'), 'b' => $daterange]));
     }
 
     /**
