@@ -1780,6 +1780,8 @@ class FlexiBeeRO extends \Ease\Sand
                         case 'DatePeriod':
                             $parts[$column] = $column." between '".$data[$column]->getStartDate()->format(self::$DateFormat)."' '".$data[$column]->getEndDate()->format(self::$DateFormat)."'";
                             break;
+                        case 'DateTime':
+                            $parts[$column] = $column." eq '".$data[$column]->format(self::$DateFormat)."'";
                         default:
                             $parts[$column] = $column." $defop '".$data[$column]."'";
                             break;
