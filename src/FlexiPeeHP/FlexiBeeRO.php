@@ -1278,6 +1278,8 @@ class FlexiBeeRO extends \Ease\Sand
             } else {
                 if (preg_match('/^(code|ext):(.*)/', $suffix, $matches)) {
                     $finalUrl = $matches[1].':'.rawurlencode($matches[2]);
+                } else {
+                    $finalUrl = $suffix;
                 }
             }
         }
