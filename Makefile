@@ -1,7 +1,8 @@
-all: fresh build install
+all: build install
 
 fresh:
 	git pull
+	composer install
 
 install: build
 #	cp -rvf src/FlexiPeeHP /usr/share/php/FlexiPeeHP
@@ -23,7 +24,7 @@ clean:
 	rm -f  debianTest/composer.lock
 	rm -rf vendor/* composer.lock
 
-doc:
+apigen:
 	VERSION=`cat debian/composer.json | grep version | awk -F'"' '{print $4}'`; \
 	apigen generate --source src --destination docs --title "FlexiPeeHP ${VERSION}" --charset UTF-8 --access-levels public --access-levels protected --php --tree
 

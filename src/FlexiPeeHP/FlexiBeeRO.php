@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.17';
+    public static $libVersion = '1.20.2';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.

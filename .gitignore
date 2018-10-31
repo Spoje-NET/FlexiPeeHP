@@ -8,3 +8,4 @@ composer.lock
 /debian/debhelper-build-stamp
 /debian/flexipeehp
 /debian/flexipeehp-doc
+/deb/

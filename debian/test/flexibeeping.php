@@ -14,13 +14,13 @@ if (file_exists($autoload)) {
     exit(2);
 }
 
-if (file_exists('/etc/flexibee/config.json')) {
-    $config = '/etc/flexibee/config.json';
+if (file_exists('/usr/share/doc/FlexiPeeHP/config.json')) {
+    $config = '/usr/share/doc/FlexiPeeHP/config.json';
 } else {
     $config = './config.json';
 }
 
-\Ease\Shared::instanced()->loadConfig($config);
+\Ease\Shared::instanced()->loadConfig($config,true);
 
 $tester = new \FlexiPeeHP\Company();
 

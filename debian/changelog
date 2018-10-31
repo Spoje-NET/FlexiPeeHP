@@ -1,8 +1,9 @@
-flexipeehp (1.17) UNRELEASED; urgency=medium
+flexipeehp (1.20.2) UNRELEASED; urgency=medium
 
   * Docker Image build
+  * Ubuntu 18.04 compatibility build
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Tue, 03 Jul 2018 01:23:24 +0200
+ -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Wed, 31 Oct 2018 17:58:04 +0100
 
 flexipeehp (1.12) experimental; urgency=medium
 
