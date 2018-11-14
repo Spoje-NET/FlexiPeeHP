@@ -111,4 +111,22 @@ class Adresar extends FlexiBeeRW
         }
         return $phoneNo;
     }
+    
+    
+    /**
+     * 
+     * 
+     * @param Adresar|string|int $address
+     * 
+     * @return array bank account details
+     */
+    public function getBankAccountNumber($address = null)
+    {
+        if (is_null($address)) {
+            $address = $this->getMyKey();
+        }
+        $bucRaw = $this->getColumnsFromFlexibee(['buc', 'smerKod'], ['firma'=> $address ,'evidence' => 'adresar-bankovni-ucet']);
+        return array_key_exists(0, $bucRaw) ? $bucRaw : [];
+    }
+    
 }
