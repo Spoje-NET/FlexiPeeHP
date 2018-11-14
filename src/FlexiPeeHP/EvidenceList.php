@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Fri, 05 Oct 2018 16:23:16 +0200 
+ * Generated: Wed, 14 Nov 2018 22:08:58 +0100 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -46,7 +46,7 @@ class EvidenceList extends FlexiBeeRO
      *
      * @var string
      */
- static public $version = '2018.2.5';
+ static public $version = '2018.2.6.2';
 
     /**
      * Evidences Path/Name listing.
@@ -83,6 +83,7 @@ class EvidenceList extends FlexiBeeRO
   'rada-zavazku' => 'Dokladové řady - závazky',
   'intrastat-druh-dopravy' => 'Druh dopravy',
   'eet-komunikace' => 'EET komunikace',
+  'cenik-obal' => 'Evidence obalů EkoKom',
   'forma-dopravy' => 'Formy dopravy',
   'forma-uhrady' => 'Formy úhrady',
   'hlavni-kniha' => 'Hlavní kniha',
@@ -212,10 +213,10 @@ class EvidenceList extends FlexiBeeRO
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
   'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu' => 'Umístění ve skladu',
-  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
   'strom' => 'Uzel stromu',
   'uzivatelsky-dotaz' => 'Uživatelské dotazy',
@@ -247,8 +248,8 @@ class EvidenceList extends FlexiBeeRO
   'ucetni-obdobi' => 'Účetní období',
   'ucet' => 'Účtový rozvrh',
   'cinnost' => 'Činnost',
-  'typ-stavu-ceniku' => 'Číselník stavů položek ceníku',
   'stav-ceniku' => 'Číselník stavů položek ceníku',
+  'typ-stavu-ceniku' => 'Číselník stavů položek ceníku',
   'cislo-baliku' => 'Čísla balíků',
   'cleneni-kontrolni-hlaseni' => 'Řádky kontrolního hlášení DPH',
   'cleneni-dph' => 'Řádky přiznání DPH',
@@ -428,6 +429,16 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'DISALLOWED',
     'className' => 'cz.winstrom.vo.vyk.CenikovePohyby',
     'formCode' => 'vykazCenPohyby',
+    'extIdSupported' => 'false',
+  ),
+  'cenik-obal' => 
+  array (
+    'evidenceType' => 'CENIK_OBAL',
+    'evidenceName' => 'Evidence obalů EkoKom',
+    'evidencePath' => 'cenik-obal',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.cen.EkoKom',
+    'formCode' => 'cenEkoKom',
     'extIdSupported' => 'false',
   ),
   'cenova-uroven' => 
