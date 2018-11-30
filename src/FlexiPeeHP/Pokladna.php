@@ -15,6 +15,7 @@ namespace FlexiPeeHP;
  */
 class Pokladna extends FlexiBeeRW
 {
+    use Stitky;
     /**
      * Evidence užitá objektem.
      *

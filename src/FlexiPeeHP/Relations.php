@@ -154,6 +154,16 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence mzdy-bankovni-spojeni (Bankovní spojení) Relations.
+     *
+     * @var array
+     */
+ static public $mzdyBankovniSpojeni = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence cenova-uroven (Cenové úrovně) Relations.
      *
      * @var array
@@ -645,6 +655,16 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence dite (Dítě) Relations.
+     *
+     * @var array
+     */
+ static public $dite = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence cenik-obal (Evidence obalů EkoKom) Relations.
      *
      * @var array
@@ -681,6 +701,25 @@ class Relations
     'url' => 'zauctovani',
     'evidenceType' => 'FORMA_UHRADY_ZAUCTOVANI',
     'name' => 'Zaúčtování',
+  ),
+);
+    /**
+     * Evidence osoba-hlavicka (Hlavičky osob) Relations.
+     *
+     * @var array
+     */
+ static public $osobaHlavicka = array (
+  0 => 
+  array (
+    'url' => 'uzivatelske-vazby',
+    'evidenceType' => 'VAZBA',
+    'name' => 'Uživatelské vazby',
+  ),
+  1 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
   ),
 );
     /**
@@ -901,6 +940,16 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence mzdova-slozka (Mzdové složky - vstup a výběry) Relations.
+     *
+     * @var array
+     */
+ static public $mzdovaSlozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence misto-urceni (Místa určení) Relations.
      *
      * @var array
@@ -945,6 +994,16 @@ class Relations
      * @var array
      */
  static public $mernaJednotka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence nepritomnost (Nepřítomnost) Relations.
+     *
+     * @var array
+     */
+ static public $nepritomnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1116,6 +1175,16 @@ class Relations
      * @var array
      */
  static public $penezniUstav = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence osoba (Personalistika) Relations.
+     *
+     * @var array
+     */
+ static public $osoba = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1453,6 +1522,26 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence pracovni-pomer-hlavicka (Pracovní poměr) Relations.
+     *
+     * @var array
+     */
+ static public $pracovniPomerHlavicka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence pracovni-pomer (Pracovní poměr) Relations.
+     *
+     * @var array
+     */
+ static public $pracovniPomer = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence prodejka (Prodejní kasa) Relations.
      *
      * @var array
@@ -1488,6 +1577,26 @@ class Relations
     'evidenceType' => 'FAKTURA_OUT_POLOZKA',
     'name' => 'Položky faktur',
   ),
+);
+    /**
+     * Evidence prace-mesic (Práce pro střediska) Relations.
+     *
+     * @var array
+     */
+ static public $praceMesic = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence prace (Práce pro střediska) Relations.
+     *
+     * @var array
+     */
+ static public $prace = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
 );
     /**
      * Evidence text (Předdefinované texty) Relations.
@@ -1892,6 +2001,16 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence skupina-osob (Skupiny osob) Relations.
+     *
+     * @var array
+     */
+ static public $skupinaOsob = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence skupina-zbozi (Skupiny zboží a materiálu) Relations.
      *
      * @var array
@@ -1912,11 +2031,31 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence smena (Směny) Relations.
+     *
+     * @var array
+     */
+ static public $smena = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence dashboard-panel (Správa přehledů) Relations.
      *
      * @var array
      */
  static public $dashboardPanel = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence srazka (Srážka) Relations.
+     *
+     * @var array
+     */
+ static public $srazka = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -1952,6 +2091,16 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
+     * Evidence stala-mzdova-slozka (Stálá mzdová složka) Relations.
+     *
+     * @var array
+     */
+ static public $stalaMzdovaSlozka = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
      * Evidence stat (Státy) Relations.
      *
      * @var array
@@ -1977,6 +2126,16 @@ class Relations
      * @var array
      */
  static public $subjekt = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence typ-pracovniho-pomeru (Typ pracovního poměru) Relations.
+     *
+     * @var array
+     */
+ static public $typPracovnihoPomeru = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2267,11 +2426,11 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
+     * Evidence umisteni-ve-skladu (Umístění ve skladu) Relations.
      *
      * @var array
      */
- static public $umisteniVeSkladuMistnost = array (
+ static public $umisteniVeSkladu = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2287,11 +2446,11 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence umisteni-ve-skladu (Umístění ve skladu) Relations.
+     * Evidence umisteni-ve-skladu-mistnost (Umístění ve skladu) Relations.
      *
      * @var array
      */
- static public $umisteniVeSkladu = array (
+ static public $umisteniVeSkladuMistnost = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2681,11 +2840,11 @@ class Relations
   2 => 'Uživatelské vazby',
 );
     /**
-     * Evidence stav-ceniku (Číselník stavů položek ceníku) Relations.
+     * Evidence ciselnik-mzdovych-slozek (Číselník mzdových složek) Relations.
      *
      * @var array
      */
- static public $stavCeniku = array (
+ static public $ciselnikMzdovychSlozek = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',
@@ -2696,6 +2855,16 @@ class Relations
      * @var array
      */
  static public $typStavuCeniku = array (
+  0 => 'uzivatelske-vazby',
+  1 => 'VAZBA',
+  2 => 'Uživatelské vazby',
+);
+    /**
+     * Evidence stav-ceniku (Číselník stavů položek ceníku) Relations.
+     *
+     * @var array
+     */
+ static public $stavCeniku = array (
   0 => 'uzivatelske-vazby',
   1 => 'VAZBA',
   2 => 'Uživatelské vazby',

@@ -1,6 +1,8 @@
 #!/bin/bash
 VERSTR=`dpkg-parsechangelog --show-field Version`
-sed -i -e '/\"version\"/c\    \"version\": \"'${VERSTR}'",' debian/flexipeehp/usr/share/php/FlexiPeeHP/composer.json
+COMPOSER_VERSTR=`echo ${VERSTR}|sed 's/-/./g'`
+echo debian/flexipeehp/usr/share/php/FlexiPeeHP/composer.json version to ${COMPOSER_VERSTR}
+sed -i -e '/\"version\"/c\    \"version\": \"'${COMPOSER_VERSTR}'",' debian/flexipeehp/usr/share/php/FlexiPeeHP/composer.json
 sed -i -e "/public static \$libVersion/c\    public static \$libVersion = '${VERSTR}';" debian/flexipeehp/usr/share/php/FlexiPeeHP/FlexiBeeRO.php
 sed -i -e "/public static \$libVersion/c\    public static \$libVersion = '${VERSTR}';" src/FlexiPeeHP/FlexiBeeRO.php
 

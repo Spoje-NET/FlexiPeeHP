@@ -15,6 +15,7 @@ namespace FlexiPeeHP;
  */
 class SkladovyPohyb extends FlexiBeeRW
 {
+    use Stitky;
     use Firma;
     /**
      * Evidence užitá objektem.

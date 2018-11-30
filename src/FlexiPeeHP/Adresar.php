@@ -15,6 +15,8 @@ namespace FlexiPeeHP;
  */
 class Adresar extends FlexiBeeRW
 {
+    use Stitky;
+    
     /**
      * Evidence užitá objektem.
      *
@@ -126,7 +128,7 @@ class Adresar extends FlexiBeeRW
             $address = $this->getMyKey();
         }
         $bucRaw = $this->getColumnsFromFlexibee(['buc', 'smerKod'], ['firma'=> $address ,'evidence' => 'adresar-bankovni-ucet']);
-        return array_key_exists(0, $bucRaw) ? $bucRaw : [];
+        return (!empty($bucRaw) && array_key_exists(0, $bucRaw)) ? $bucRaw : [];
     }
     
 }

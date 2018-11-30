@@ -2,7 +2,7 @@
 /**
  * FlexiPeeHP - List of Evidencies.
  *
- * Generated: Wed, 14 Nov 2018 22:08:58 +0100 
+ * Generated: Fri, 30 Nov 2018 17:02:43 +0100 
  * From:      https://vitexsoftware.flexibee.eu:5434
  *    
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
@@ -55,10 +55,14 @@ class EvidenceList extends FlexiBeeRO
      */
  static public $name = array (
   'adresar' => 'Adresy firem',
+  'mzda' => 'Aktualizace mezd',
+  'analyza-nakupu' => 'Analýza nákupu',
+  'analyza-prodeje' => 'Analýza prodeje',
   'atribut' => 'Atributy',
   'banka' => 'Banka',
   'format-elektronickeho-bankovnictvi' => 'Bankovní formáty',
   'adresar-bankovni-ucet' => 'Bankovní spojení',
+  'mzdy-bankovni-spojeni' => 'Bankovní spojení',
   'cenova-uroven' => 'Cenové úrovně',
   'odberatel' => 'Ceny pro odběratele/skupiny odběratelů, speciální kódy',
   'cenik' => 'Ceník',
@@ -82,10 +86,12 @@ class EvidenceList extends FlexiBeeRO
   'rada-poptavky-vydane' => 'Dokladové řady - vydané poptávky',
   'rada-zavazku' => 'Dokladové řady - závazky',
   'intrastat-druh-dopravy' => 'Druh dopravy',
+  'dite' => 'Dítě',
   'eet-komunikace' => 'EET komunikace',
   'cenik-obal' => 'Evidence obalů EkoKom',
   'forma-dopravy' => 'Formy dopravy',
   'forma-uhrady' => 'Formy úhrady',
+  'osoba-hlavicka' => 'Hlavičky osob',
   'hlavni-kniha' => 'Hlavní kniha',
   'individualni-cenik' => 'Individuální ceník',
   'insight' => 'Insight',
@@ -101,11 +107,13 @@ class EvidenceList extends FlexiBeeRO
   'leasing' => 'Leasing',
   'majetek' => 'Majetek',
   'mapovani-skladu' => 'Mapování skladů',
+  'mzdova-slozka' => 'Mzdové složky - vstup a výběry',
   'misto-urceni' => 'Místa určení',
   'mena' => 'Měny',
   'intrastat-merna-jednotka' => 'Měrné jednotky',
   'merna-jednotka' => 'Měrné jednotky ',
   'nastaveni' => 'Nastavení',
+  'nepritomnost' => 'Nepřítomnost',
   'naklad' => 'Náklady na události / aktivity',
   'cenikovy-pohyb-nakup' => 'Nákupní, prodejní a skladové pohyby',
   'cenikovy-pohyb-prodej' => 'Nákupní, prodejní a skladové pohyby',
@@ -120,6 +128,7 @@ class EvidenceList extends FlexiBeeRO
   'zavazek' => 'Ostatní závazky',
   'uzivatelsky-dotaz-parametr' => 'Parametry',
   'penezni-ustav' => 'Peněžní ústavy',
+  'osoba' => 'Personalistika',
   'podklady-dph' => 'Podklady DPH',
   'podobne-zbozi' => 'Podobné',
   'pohyb-na-uctech' => 'Pohyby na účtech',
@@ -145,7 +154,11 @@ class EvidenceList extends FlexiBeeRO
   'banka-polozka' => 'Položky vzájemných zápočtů',
   'poplatek' => 'Poplatky',
   'psc' => 'Poštovní směrovací čísla',
+  'pracovni-pomer-hlavicka' => 'Pracovní poměr',
+  'pracovni-pomer' => 'Pracovní poměr',
   'prodejka' => 'Prodejní kasa',
+  'prace-mesic' => 'Práce pro střediska',
+  'prace' => 'Práce pro střediska',
   'pravo-viditelnosti' => 'Práva viditelnosti dat',
   'text' => 'Předdefinované texty',
   'predpis-zauctovani' => 'Předpisy zaúčtování',
@@ -172,20 +185,25 @@ class EvidenceList extends FlexiBeeRO
   'skladova-karta' => 'Skladové karty',
   'skupina-atributu' => 'Skupiny atributů',
   'skupina-firem' => 'Skupiny firem',
+  'skupina-osob' => 'Skupiny osob',
   'skupina-zbozi' => 'Skupiny zboží a materiálu',
   'skupina-stitku' => 'Skupiny štítků',
+  'smena' => 'Směny',
   'rozvaha-po-uctech' => 'Soupis aktiv a pasiv',
   'dashboard-panel' => 'Správa přehledů',
+  'srazka' => 'Srážka',
   'ucetni-osnova' => 'Standardní účetní osnova',
   'stav-skladu-k-datu' => 'Stav skladu k datu',
   'saldo-k-datu' => 'Stav úhrad k datu',
   'stav-smlouvy' => 'Stavy smluv',
   'stav-zakazky' => 'Stavy zakázek',
   'stav-uctu' => 'Stavy účtů',
+  'stala-mzdova-slozka' => 'Stálá mzdová složka',
   'stat' => 'Státy',
   'stredisko' => 'Střediska',
   'subjekt' => 'Subjekt',
   'typ-organizace' => 'Typ organizace',
+  'typ-pracovniho-pomeru' => 'Typ pracovního poměru',
   'typ-atributu' => 'Typy atributů',
   'typ-banka' => 'Typy bankovních dokladů',
   'dodavatelsky-typ-smlouvy' => 'Typy dodavatelských smluv',
@@ -213,9 +231,9 @@ class EvidenceList extends FlexiBeeRO
   'majetek-udalost' => 'Události',
   'udalost' => 'Události, aktivity',
   'umisteni' => 'Umístění',
-  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
-  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
   'umisteni-ve-skladu' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-police' => 'Umístění ve skladu',
+  'umisteni-ve-skladu-mistnost' => 'Umístění ve skladu',
   'umisteni-ve-skladu-regal' => 'Umístění ve skladu',
   'sablona-upominky' => 'Upomínky',
   'strom' => 'Uzel stromu',
@@ -248,8 +266,9 @@ class EvidenceList extends FlexiBeeRO
   'ucetni-obdobi' => 'Účetní období',
   'ucet' => 'Účtový rozvrh',
   'cinnost' => 'Činnost',
-  'stav-ceniku' => 'Číselník stavů položek ceníku',
+  'ciselnik-mzdovych-slozek' => 'Číselník mzdových složek',
   'typ-stavu-ceniku' => 'Číselník stavů položek ceníku',
+  'stav-ceniku' => 'Číselník stavů položek ceníku',
   'cislo-baliku' => 'Čísla balíků',
   'cleneni-kontrolni-hlaseni' => 'Řádky kontrolního hlášení DPH',
   'cleneni-dph' => 'Řádky přiznání DPH',
@@ -320,6 +339,26 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.adr.AdrUdalostMaj',
     'formCode' => 'adrUdalosti',
     'extIdSupported' => 'true',
+  ),
+  'analyza-nakupu' => 
+  array (
+    'evidenceType' => 'ANALYZA_NAKUPU',
+    'evidenceName' => 'Analýza nákupu',
+    'evidencePath' => 'analyza-nakupu',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.vyk.PrehledPolozekFaktur',
+    'formCode' => 'analyzaNakupu',
+    'extIdSupported' => 'false',
+  ),
+  'analyza-prodeje' => 
+  array (
+    'evidenceType' => 'ANALYZA_PRODEJE',
+    'evidenceName' => 'Analýza prodeje',
+    'evidencePath' => 'analyza-prodeje',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.vyk.PrehledPolozekFaktur',
+    'formCode' => 'vykazPolozkyFaktur',
+    'extIdSupported' => 'false',
   ),
   'analyza-zakazky' => 
   array (
@@ -471,6 +510,16 @@ class EvidenceList extends FlexiBeeRO
     'formCode' => 'cisCinnost',
     'extIdSupported' => 'true',
   ),
+  'ciselnik-mzdovych-slozek' => 
+  array (
+    'evidenceType' => 'CISELNIK_MZDOVYCH_SLOZEK',
+    'evidenceName' => 'Číselník mzdových složek',
+    'evidencePath' => 'ciselnik-mzdovych-slozek',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.mzdy.CisMzdSloz',
+    'formCode' => 'perCisMzdSloz',
+    'extIdSupported' => 'false',
+  ),
   'cislo-baliku' => 
   array (
     'evidenceType' => 'CISLO_BALIKU',
@@ -540,6 +589,16 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.w.DashboardSharing',
     'formCode' => 'dashboardSharing',
     'extIdSupported' => 'false',
+  ),
+  'dite' => 
+  array (
+    'evidenceType' => 'DITE',
+    'evidenceName' => 'Dítě',
+    'evidencePath' => 'dite',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.Dite',
+    'formCode' => 'perDite',
+    'extIdSupported' => 'true',
   ),
   'dodavatel' => 
   array (
@@ -1011,6 +1070,36 @@ class EvidenceList extends FlexiBeeRO
     'formCode' => 'adrMistUrc',
     'extIdSupported' => 'true',
   ),
+  'mzda' => 
+  array (
+    'evidenceType' => 'MZDA',
+    'evidenceName' => 'Aktualizace mezd',
+    'evidencePath' => 'mzda',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.mzdy.AktualMzdy',
+    'formCode' => 'perAktualMzdy',
+    'extIdSupported' => 'false',
+  ),
+  'mzdova-slozka' => 
+  array (
+    'evidenceType' => 'MZDOVA_SLOZKA',
+    'evidenceName' => 'Mzdové složky - vstup a výběry',
+    'evidencePath' => 'mzdova-slozka',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.MzdSloz',
+    'formCode' => 'perMzdSloz',
+    'extIdSupported' => 'true',
+  ),
+  'mzdy-bankovni-spojeni' => 
+  array (
+    'evidenceType' => 'MZDY_BANKOVNI_SPOJENI',
+    'evidenceName' => 'Bankovní spojení',
+    'evidencePath' => 'mzdy-bankovni-spojeni',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.BanSpojMzdy',
+    'formCode' => 'perBanSpojMzdy',
+    'extIdSupported' => 'true',
+  ),
   'nabidka-prijata' => 
   array (
     'evidenceType' => 'NABIDKA_IN',
@@ -1100,6 +1189,16 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.adr.NaklAkt',
     'formCode' => 'adrNaklAkt',
     'extIdSupported' => 'false',
+  ),
+  'nepritomnost' => 
+  array (
+    'evidenceType' => 'NEPRITOMNOST',
+    'evidenceName' => 'Nepřítomnost',
+    'evidencePath' => 'nepritomnost',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.Nepritomnost',
+    'formCode' => 'perNeprit',
+    'extIdSupported' => 'true',
   ),
   'objednavka-prijata' => 
   array (
@@ -1220,6 +1319,26 @@ class EvidenceList extends FlexiBeeRO
     'className' => 'cz.winstrom.vo.maj.Sazba',
     'formCode' => 'majSazby',
     'extIdSupported' => 'false',
+  ),
+  'osoba' => 
+  array (
+    'evidenceType' => 'OSOBA',
+    'evidenceName' => 'Personalistika',
+    'evidencePath' => 'osoba',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.Osoba',
+    'formCode' => 'perOsoba',
+    'extIdSupported' => 'true',
+  ),
+  'osoba-hlavicka' => 
+  array (
+    'evidenceType' => 'OSOBA_HLAVICKA',
+    'evidenceName' => 'Hlavičky osob',
+    'evidencePath' => 'osoba-hlavicka',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.OsobaHlav',
+    'formCode' => 'perOsobaHlav',
+    'extIdSupported' => 'true',
   ),
   'parametr' => 
   array (
@@ -1449,6 +1568,46 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DOCUMENTED',
     'className' => 'cz.winstrom.vo.dok.TypDokl',
     'formCode' => 'obchodPpvTyp',
+    'extIdSupported' => 'true',
+  ),
+  'prace' => 
+  array (
+    'evidenceType' => 'PRACE',
+    'evidenceName' => 'Práce pro střediska',
+    'evidencePath' => 'prace',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.PraceStred',
+    'formCode' => 'perPraceStred',
+    'extIdSupported' => 'true',
+  ),
+  'prace-mesic' => 
+  array (
+    'evidenceType' => 'PRACE_MESIC',
+    'evidenceName' => 'Práce pro střediska',
+    'evidencePath' => 'prace-mesic',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.PraceStred',
+    'formCode' => 'perPraceStred',
+    'extIdSupported' => 'true',
+  ),
+  'pracovni-pomer' => 
+  array (
+    'evidenceType' => 'PRACOVNI_POMER',
+    'evidenceName' => 'Pracovní poměr',
+    'evidencePath' => 'pracovni-pomer',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.PracPom',
+    'formCode' => 'perPracPom',
+    'extIdSupported' => 'true',
+  ),
+  'pracovni-pomer-hlavicka' => 
+  array (
+    'evidenceType' => 'PRACOVNI_POMER_HLAVICKA',
+    'evidenceName' => 'Pracovní poměr',
+    'evidencePath' => 'pracovni-pomer-hlavicka',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.PracPomHlav',
+    'formCode' => 'perPracPomHlav',
     'extIdSupported' => 'true',
   ),
   'pravo-viditelnosti' => 
@@ -1751,6 +1910,16 @@ class EvidenceList extends FlexiBeeRO
     'formCode' => 'adrSkupFir',
     'extIdSupported' => 'true',
   ),
+  'skupina-osob' => 
+  array (
+    'evidenceType' => 'SKUPINA_OSOB',
+    'evidenceName' => 'Skupiny osob',
+    'evidencePath' => 'skupina-osob',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.SkupOsob',
+    'formCode' => 'perSkupOsob',
+    'extIdSupported' => 'true',
+  ),
   'skupina-stitku' => 
   array (
     'evidenceType' => 'SKUPINA_STITKU',
@@ -1771,6 +1940,16 @@ class EvidenceList extends FlexiBeeRO
     'formCode' => 'cenSku',
     'extIdSupported' => 'true',
   ),
+  'smena' => 
+  array (
+    'evidenceType' => 'SMENA',
+    'evidenceName' => 'Směny',
+    'evidencePath' => 'smena',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.Smeny',
+    'formCode' => 'perSmeny',
+    'extIdSupported' => 'true',
+  ),
   'smlouva' => 
   array (
     'evidenceType' => 'SMLOUVA',
@@ -1789,6 +1968,26 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'NOT_DIRECT',
     'className' => 'cz.winstrom.vo.dok.PolSmlouvy',
     'formCode' => 'adrPolSml',
+    'extIdSupported' => 'true',
+  ),
+  'srazka' => 
+  array (
+    'evidenceType' => 'SRAZKA',
+    'evidenceName' => 'Srážka',
+    'evidencePath' => 'srazka',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.Srazka',
+    'formCode' => 'perSrazka',
+    'extIdSupported' => 'true',
+  ),
+  'stala-mzdova-slozka' => 
+  array (
+    'evidenceType' => 'STALA_MZDOVA_SLOZKA',
+    'evidenceName' => 'Stálá mzdová složka',
+    'evidencePath' => 'stala-mzdova-slozka',
+    'importStatus' => 'NOT_DOCUMENTED',
+    'className' => 'cz.winstrom.vo.mzdy.StalaMzdSloz',
+    'formCode' => 'perStalaMzdSloz',
     'extIdSupported' => 'true',
   ),
   'stat' => 
@@ -1959,6 +2158,16 @@ class EvidenceList extends FlexiBeeRO
     'importStatus' => 'DISALLOWED',
     'className' => 'cz.winstrom.vo.uses.TypOrganizace',
     'formCode' => 'ucTypOrg',
+    'extIdSupported' => 'false',
+  ),
+  'typ-pracovniho-pomeru' => 
+  array (
+    'evidenceType' => 'TYP_PRACOVNIHO_POMERU',
+    'evidenceName' => 'Typ pracovního poměru',
+    'evidencePath' => 'typ-pracovniho-pomeru',
+    'importStatus' => 'DISALLOWED',
+    'className' => 'cz.winstrom.vo.mzdy.TypPracPom',
+    'formCode' => 'perTypPracPom',
     'extIdSupported' => 'false',
   ),
   'typ-smlouvy' => 

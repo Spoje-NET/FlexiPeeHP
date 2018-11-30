@@ -16,6 +16,9 @@ namespace FlexiPeeHP;
  */
 class Smlouva extends FlexiBeeRW
 {
+
+    use Stitky;
+    use Firma;
     /**
      * Evidence užitá objektem.
      *
@@ -32,7 +35,8 @@ class Smlouva extends FlexiBeeRW
      */
     public function generovaniFaktur()
     {
-        $this->performRequest( ($this->getMyKey() ? $this->getMyKey().'/' : '' ). 'generovani-faktur', 'PUT');
+        $this->performRequest(($this->getMyKey() ? $this->getMyKey().'/' : '' ).'generovani-faktur',
+            'PUT');
         return $this->lastResponseCode == 200;
     }
 }
