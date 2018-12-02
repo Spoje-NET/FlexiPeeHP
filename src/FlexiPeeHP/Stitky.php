@@ -41,22 +41,16 @@ trait Stitky
     /**
      * UnSet Label for Current Object record
      *
-     * @param string     $label
-     * @param FlexiBeeRW $this
+     * @param string|array $label(s) To Remove
      *
      * @return boolean   success result ?
      */
-    public function unsetLabel($label)
+    public function unsetLabel($labelsToRemove)
     {
-        $result = true;
-        $labels = self::getLabels($this);
-        if (array_key_exists($label, $labels)) {
-            unset($labels[$label]);
-            $this->insertToFlexiBee(['id' => $this->getMyKey(), 'stitky@removeAll' => 'true',
-                'stitky' => $labels]);
-            $result = ($this->lastResponseCode == 201);
-        }
-        return $result;
+        $this->insertToFlexiBee(['id' => $this->getMyKey(), 'stitky@removeAll' => 'true',
+            'stitky' => array_diff_key(self::getLabels($this),
+                Stitek::listToArray($labelsToRemove))]);
+        return $this->lastResponseCode == 201;
     }
 
     /**
