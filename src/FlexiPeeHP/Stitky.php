@@ -35,7 +35,7 @@ trait Stitky
     public function setLabel($label)
     {
         $this->insertToFlexiBee(['id' => $this->getRecordID(), 'stitky' => $label]);
-        return $this->lastResultCode == 201;
+        return $this->lastResponseCode == 201;
     }
 
     /**

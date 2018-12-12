@@ -1344,6 +1344,19 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
+     * Reload current record from FlexiBee
+     * 
+     * @return boolean 
+     */
+    public function reload()
+    {
+        $id = $this->getRecordIdent();
+        $this->dataReset();
+        $this->loadFromFlexiBee($id);
+        return $this->lastResponseCode == 200;
+    }
+
+    /**
      * Set Filter code for requests
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/zamykani-odemykani/
