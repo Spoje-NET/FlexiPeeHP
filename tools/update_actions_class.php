@@ -60,14 +60,19 @@ function getEvidenceActions($evidence, FlexiBeeRO $syncer)
     $flexinfo = $syncer->performRequest($evidence.'/actions.json');
     if (count($flexinfo) && array_key_exists('actions', $flexinfo)) {
         if (isset($flexinfo['actions']['action'])) {
-            foreach ($flexinfo['actions']['action'] as $evidenceActions) {
-                if (array_key_exists('actionId', $evidenceActions)) {
-                    $key           = $evidenceActions['actionId'];
-                    $actions[$key] = $evidenceActions;
-                } else {
-                    $syncer->addStatusMessage(sprintf('actionId not set for %s',
-                            $evidence.' / '.$evidenceActions['actionName']),
-                        'warning');
+            if (\Ease\Sand::isAssoc($flexinfo['actions']['action'])) {
+                $key           = $flexinfo['actions']['action']['actionId'];
+                $actions[$key] = $flexinfo['actions']['action'];
+            } else {
+                foreach ($flexinfo['actions']['action'] as $evidenceActions) {
+                    if (array_key_exists('actionId', $evidenceActions)) {
+                        $key           = $evidenceActions['actionId'];
+                        $actions[$key] = $evidenceActions;
+                    } else {
+                        $syncer->addStatusMessage(sprintf('actionId not set for %s',
+                                $evidence.' / '.$evidenceActions['actionName']),
+                            'warning');
+                    }
                 }
             }
         } else {

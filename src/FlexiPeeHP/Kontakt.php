@@ -15,6 +15,9 @@ namespace FlexiPeeHP;
  */
 class Kontakt extends FlexiBeeRW
 {
+
+    use Stitky;
+    use Firma;
     /**
      * Evidence užitá objektem.
      *

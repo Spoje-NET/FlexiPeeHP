@@ -15,6 +15,8 @@ namespace FlexiPeeHP;
  */
 class PokladniPohyb extends FlexiBeeRW
 {
+    use Stitky;
+    use Firma;
     /**
      * Evidence FlexiBee.
      *

@@ -1252,18 +1252,24 @@ class FlexiBeeRO extends \Ease\Sand
      * Načte data z FlexiBee.
      *
      * @param string $suffix     dotaz
-     * @param string|array $conditions Volitelný filtrovací výraz
+     * @param string|array       $conditions Custom filters or modifiers
      *
      * @return array Data obtained
      */
     public function getFlexiData($suffix = null, $conditions = null)
     {
-        $finalUrl  = '';
-        $urlParams = $this->defaultUrlParams;
+        $finalUrl          = '';
+        $evidenceToRestore = null;
+        $urlParams         = $this->defaultUrlParams;
 
         if (!empty($conditions)) {
             if (is_array($conditions)) {
                 $this->extractUrlParams($conditions, $urlParams);
+                if (array_key_exists('evidence', $conditions)) {
+                    $evidenceToRestore = $this->getEvidence();
+                    $this->setEvidence($conditions['evidence']);
+                    unset($conditions['evidence']);
+                }
                 $conditions = $this->flexiUrl($conditions);
             }
 
@@ -1295,9 +1301,8 @@ class FlexiBeeRO extends \Ease\Sand
             $finalUrl .= http_build_query($urlParams, null, '&',
                 PHP_QUERY_RFC3986);
         }
-
+        
         $transactions = $this->performRequest($finalUrl, 'GET');
-
         $responseEvidence = $this->getResponseEvidence();
         if (is_array($transactions) && array_key_exists($responseEvidence,
                 $transactions)) {
@@ -1308,7 +1313,9 @@ class FlexiBeeRO extends \Ease\Sand
         } else {
             $result = $transactions;
         }
-
+        if (!is_null($evidenceToRestore)) {
+            $this->setEvidence($evidenceToRestore);
+        }
         return $result;
     }
 
@@ -2330,7 +2337,7 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * FlexiBee date to PHP DateTime conversion
      *
-     * @param string $flexidate 2017-05-26+02:00
+     * @param string $flexidate 2017-05-26 or 2017-05-26+02:00
      *
      * @return \DateTime | false
      */

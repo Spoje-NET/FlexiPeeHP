@@ -15,6 +15,8 @@ namespace FlexiPeeHP;
  */
 class SkladovyPohybPolozka extends FlexiBeeRW
 {
+
+    use Stitky;
     /**
      * Evidence užitá objektem.
      *

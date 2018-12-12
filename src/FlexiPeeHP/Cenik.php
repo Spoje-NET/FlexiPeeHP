@@ -16,6 +16,7 @@ namespace FlexiPeeHP;
  */
 class Cenik extends FlexiBeeRW
 {
+    use Stitky;
     /**
      * Evidence užitá objektem.
      *

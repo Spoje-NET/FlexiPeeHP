@@ -16,7 +16,7 @@ namespace FlexiPeeHP;
  */
 class Banka extends FlexiBeeRW
 {
-    
+    use Stitky;
     use Firma;
     
     /**

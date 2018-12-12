@@ -52,6 +52,8 @@ class Stitek extends FlexiBeeRW
     /**
      * Obtain labels for current record
      *
+     * @deprecated since version 1.21
+     * 
      * @param FlexiBeeRO $object data source
      * @return array labels
      */
@@ -75,11 +77,15 @@ class Stitek extends FlexiBeeRW
      */
     public static function listToArray($listRaw)
     {
-        if (strstr($listRaw, ',')) {
-            $list = array_map('trim', explode(',', $listRaw));
-            $list = array_combine($list, $list);
+        if (is_array($listRaw)) {
+            $list = array_combine(array_values($listRaw), array_values($listRaw));
         } else {
-            $list = [$listRaw => $listRaw];
+            if (strstr($listRaw, ',')) {
+                $list = array_map('trim', explode(',', $listRaw));
+            } else {
+                $list = [$listRaw];
+            }
+            $list = array_combine($list, $list);
         }
         return empty($listRaw) ? [] : $list;
     }
@@ -88,6 +94,7 @@ class Stitek extends FlexiBeeRW
      * Obtain list of availble labels for given object
      *
      * @param FlexiBeeRO $object
+     * 
      * @return array
      */
     public static function getAvailbleLabels($object)
@@ -114,6 +121,8 @@ class Stitek extends FlexiBeeRW
     /**
      * Set Label for Current Object record
      *
+     * @deprecated since version 1.21
+     * 
      * @param string     $label
      * @param FlexiBeeRW $object
      *
@@ -127,6 +136,8 @@ class Stitek extends FlexiBeeRW
     /**
      * UnSet Label for Current Object record
      *
+     * @deprecated since version 1.21
+     * 
      * @param string     $label
      * @param FlexiBeeRW $object
      *
@@ -156,10 +167,10 @@ class Stitek extends FlexiBeeRW
      */
     public function createNew($name, $evidences, $options = [])
     {
-        $this->setData($options,true);
+        $this->setData($options, true);
         $evidence2code = array_flip(self::$vsbToEvidencePath);
         foreach ($evidences as $evidence) {
-            if (array_key_exists($evidence,$evidence2code)) {
+            if (array_key_exists($evidence, $evidence2code)) {
                 $this->setDataValue($evidence2code[$evidence], true);
             }
         }

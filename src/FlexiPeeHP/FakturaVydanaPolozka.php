@@ -15,6 +15,7 @@ namespace FlexiPeeHP;
  */
 class FakturaVydanaPolozka extends FlexiBeeRW
 {
+    use Stitky;
     /**
      * Evidence užitá objektem.
      *
