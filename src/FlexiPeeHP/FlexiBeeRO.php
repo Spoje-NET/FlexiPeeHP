@@ -1934,6 +1934,41 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
+     * Get previous record ID
+     * 
+     * @param array $conditions optional
+     * 
+     * @return int|null
+     */
+    function getNextRecordID($conditions = [])
+    {
+        $conditions['order'] = 'id@D';
+        $conditions['limit'] = 1;
+        $conditions[]        = 'id gt '.$this->getRecordID();
+        $next                = $this->getColumnsFromFlexibee(['id'], $conditions);
+        return (is_array($next) && array_key_exists(0, $next) && array_key_exists('id',
+                $next[0])) ? intval($next[0]['id']) : null;
+    }
+
+    /**
+     * Get next record ID
+     * 
+     * @param array $conditions optional
+     * 
+     * @return int|null
+     */
+    function getPrevRecordID($conditions = [])
+    {
+        $conditions['order'] = 'id@A';
+        $conditions['limit'] = 1;
+        $conditions[]        = 'id lt '.$this->getRecordID();
+        $prev                = $this->getColumnsFromFlexibee(['id'], $conditions);
+        return (is_array($prev) && array_key_exists(0, $prev) && array_key_exists('id',
+                $prev[0])) ? intval($prev[0]['id']) : null;
+    }
+    
+    
+    /**
      * Vrací hodnotu daného externího ID
      *
      * @param string $want Namespace Selector. If empty,you obtain the first one.
