@@ -438,9 +438,7 @@ class FlexiBeeRW extends FlexiBeeRO
         $this->insertToFlexiBee($data);
         $insertResult = $this->lastResponseCode;
         if ($insertResult == 201) {
-            $id = $this->getRecordID();
-            $this->dataReset();
-            $this->loadFromFlexiBee($id);
+            $this->reload();
         }
         $loadResult = $this->lastResponseCode;
         return ($insertResult + $loadResult) == 401;
