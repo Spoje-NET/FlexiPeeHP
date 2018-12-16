@@ -107,6 +107,18 @@ class Company extends FlexiBeeRW
     }
 
     /**
+     * Gives you current ApiURL with given format suffix
+     * 
+     * @param string $format json|html|xml|...
+     * 
+     * @return string API URL for current record or object/evidence
+     */
+    public function getApiURL($format = null)
+    {
+        return dirname(parent::getApiURL($format));
+    }
+
+    /**
      * Vrací název evidence použité v odpovědích z FlexiBee
      *
      * @return string
