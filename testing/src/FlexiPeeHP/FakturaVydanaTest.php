@@ -291,7 +291,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     public function testAddArrayToBranch()
     {
         $this->object->setDataValue('typDokl', 'FAKTURA');
-        $this->object->addArrayToBranch(['nazev' => 'faktura'], 'polozkyDokladu');
+        $this->object->addArrayToBranch(['nazev' => 'faktura'], 'polozkyDokladu',true);
         $this->object->setDataValue('typDokl', 'ZALOHA');
         $this->object->addArrayToBranch(['nazev' => 'zaloha'], 'polozkyDokladu');
     }

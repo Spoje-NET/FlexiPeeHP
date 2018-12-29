@@ -329,12 +329,13 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @see Relations
      *
-     * @param array  $data pole dat
-     * @param string $relationPath path evidence (relation) pro vkládaná data
+     * @param array   $data pole dat
+     * @param string  $relationPath path evidence (relation) pro vkládaná data
+     * @param boolean $removeAll
      *
      * @return boolean Operation success
      */
-    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu')
+    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu', $removeAll = false)
     {
         $currentBranchData = $this->getDataValue($relationPath);
         $branchData        = $currentBranchData;
@@ -343,17 +344,21 @@ class FlexiBeeRW extends FlexiBeeRO
                 $this->getColumnsInfo())) {
             $this->setDataValue('bezPolozek', false);
         }
+        if($removeAll === true){
+            $this->setDataValue($relationPath.'@removeAll', true);
+        }
         return $this->setDataValue($relationPath, $branchData);
     }
 
     /**
      * Vloží do větve data z objektu
      *
-     * @param FlexiBeeRO $object objekt evidence
+     * @param FlexiBeeRO $object    objekt evidence
+     * @param boolean    $removeAll flush older items 
      */
-    public function addObjectToBranch($object)
+    public function addObjectToBranch($object,$removeAll = false)
     {
-        $this->addArrayToBranch([$object->getEvidence() => $object->getData()]);
+        $this->addArrayToBranch([$object->getEvidence() => $object->getData()],'polozkyDokladu',$removeAll);
     }
 
     /**

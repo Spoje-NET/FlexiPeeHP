@@ -30,12 +30,13 @@ class FakturaVydana extends FlexiBeeRW
      *
      * @see Relations
      *
-     * @param array  $data pole dat
-     * @param string $relationPath path evidence (relation) pro vkládaná data
+     * @param array   $data pole dat
+     * @param string  $relationPath path evidence (relation) pro vkládaná data
+     * @param boolean Flush current subitems
      *
      * @return boolean Description
      */
-    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu')
+    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu', $removeAll = false)
     {
         if (($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu')
             || ($relationPath == 'polozky-faktury')) {
@@ -52,7 +53,7 @@ class FakturaVydana extends FlexiBeeRW
                     break;
             }
         }
-        return parent::addArrayToBranch($data, $relationPath);
+        return parent::addArrayToBranch($data, $relationPath,$removeAll);
     }
 
     /**
