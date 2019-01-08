@@ -1302,7 +1302,7 @@ class FlexiBeeRO extends \Ease\Sand
                 PHP_QUERY_RFC3986);
         }
         
-        $transactions = $this->performRequest($finalUrl, 'GET');
+        $transactions     = $this->performRequest($finalUrl, 'GET');
         $responseEvidence = $this->getResponseEvidence();
         if (is_array($transactions) && array_key_exists($responseEvidence,
                 $transactions)) {
@@ -1751,8 +1751,12 @@ class FlexiBeeRO extends \Ease\Sand
         $fname    = $this->evidence.'-'.$this->curlInfo['when'].'.'.$this->format;
         $reqname  = $tmpdir.'/request-'.$fname;
         $respname = $tmpdir.'/response-'.$fname;
-        file_put_contents($reqname, $this->postFields);
-        file_put_contents($respname, $this->lastCurlResponse);
+        if (file_put_contents($reqname, $this->postFields)) {
+            $this->addStatusMessage($reqname, 'debug');
+        }
+        if (file_put_contents($respname, $this->lastCurlResponse)) {
+            $this->addStatusMessage($respname, 'debug');
+        }
     }
 
     /**
@@ -1966,7 +1970,6 @@ class FlexiBeeRO extends \Ease\Sand
         return (is_array($prev) && array_key_exists(0, $prev) && array_key_exists('id',
                 $prev[0])) ? intval($prev[0]['id']) : null;
     }
-    
     
     /**
      * Vrací hodnotu daného externího ID
