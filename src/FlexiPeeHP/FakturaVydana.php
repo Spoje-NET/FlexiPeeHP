@@ -25,38 +25,6 @@ class FakturaVydana extends FlexiBeeRW
     public $evidence = 'faktura-vydana';
 
     /**
-     * Add Data to evidence Branch
-     * Přidá položky do dokladu a nastaví jim správně flag "ucetni"
-     *
-     * @see Relations
-     *
-     * @param array   $data pole dat
-     * @param string  $relationPath path evidence (relation) pro vkládaná data
-     * @param boolean Flush current subitems
-     *
-     * @return boolean Description
-     */
-    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu', $removeAll = false)
-    {
-        if (($relationPath == 'polozkyDokladu') || ($relationPath == 'polozky-dokladu')
-            || ($relationPath == 'polozky-faktury')) {
-            switch (self::uncode($this->getDataValue('typDokl'))) {
-                case 'DOBR':
-                case 'DOBROPIS':
-                case 'FAKTURA':
-                    $data['ucetni'] = true;
-                    break;
-                case 'ZÁLOHA':
-                case 'ZALOHA':
-                default:
-                    $data['ucetni'] = false;
-                    break;
-            }
-        }
-        return parent::addArrayToBranch($data, $relationPath,$removeAll);
-    }
-
-    /**
      * Provede spárování platby s dokladem
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Párování plateb
