@@ -12,9 +12,11 @@ namespace Example\FlexiPeeHP;
 include_once './config.php';
 include_once '../vendor/autoload.php';
 
-function getOverdueInvoices()
+$invoicer = new \FlexiPeeHP\FakturaVydana();
+
+function getOverdueInvoices($invoicer)
 {
-    $invoicer = new \FlexiPeeHP\FakturaVydana();
+
 
     $result                                  = null;
     $invoicer->defaultUrlParams['order']     = 'datVyst@A';
@@ -40,26 +42,19 @@ function getOverdueInvoices()
 }
 $firmer = new \FlexiPeeHP\Adresar();
 
-foreach (getOverdueInvoices() as $invoice) {
-    $kontakt = $firmer->getColumnsFromFlexibee(['nazev', 'email'],
-        ['id' => $invoice['firma']]);
-    $firmer->addStatusMessage(implode(',', $kontakt[0]), 'success');
-    if (isset($kontakt[0]['email'])) {
-        $mail = new \Ease\Mailer($kontakt[0]['email'],
-            sprintf(_('Overdue invoice: %s'), $invoice['kod']),
-            sprintf(_('Please pay %s,-'), $invoice['sumCelkem']));
+foreach (getOverdueInvoices($invoicer) as $invoice) {
+    $invoicer->setData($invoice, true);
 
+    $firmer->setMyKey($invoicer->getDataValue('firma'));
 
-        $pdfUrl    = 'faktura-vydana/'.urlencode($invoice['id']).'.pdf';
-        $pdfSaveTo = '/tmp/faktura-vydana-'.$invoice['id'].'.pdf';
-        file_put_contents($pdfSaveTo, file_get_contents($pdfUrl));
-        $mail->addFile($pdfSaveTo);
+    $mail = new \Ease\Mailer($firmer->getNotificationEmailAddress(),
+        sprintf(_('Overdue invoice: %s'), $invoice['kod']),
+        sprintf(_('Please pay %s,-'), $invoice['sumCelkem']));
 
-        $isdocxUrl    = 'faktura-vydana/'.$invoice['id'].'.isdocx';
-        $isdocxSaveTo = '/tmp/faktura-vydana-'.$invoice['id'].'.isdocx';
-        file_put_contents($isdocxSaveTo, file_get_contents($isdocxUrl));
+    $mail->addFile($invoicer->downloadInFormat('pdf', '/tmp/'),
+        \FlexiPeeHP\Formats::$formats['PDF']['content-type']);
+    $mail->addFile($invoicer->downloadInFormat('isdocx', '/tmp/'),
+        \FlexiPeeHP\Formats::$formats['ISDOCx']['content-type']);
 
-        $mail->addFile($isdocxSaveTo);
-        $mail->send();
-    }
+    $mail->send();
 }
