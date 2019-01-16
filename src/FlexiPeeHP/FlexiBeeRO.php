@@ -1301,7 +1301,7 @@ class FlexiBeeRO extends \Ease\Sand
             $finalUrl .= http_build_query($urlParams, null, '&',
                 PHP_QUERY_RFC3986);
         }
-        
+
         $transactions     = $this->performRequest($finalUrl, 'GET');
         $responseEvidence = $this->getResponseEvidence();
         if (is_array($transactions) && array_key_exists($responseEvidence,
@@ -1970,7 +1970,7 @@ class FlexiBeeRO extends \Ease\Sand
         return (is_array($prev) && array_key_exists(0, $prev) && array_key_exists('id',
                 $prev[0])) ? intval($prev[0]['id']) : null;
     }
-    
+
     /**
      * Vrací hodnotu daného externího ID
      *
@@ -2174,8 +2174,9 @@ class FlexiBeeRO extends \Ease\Sand
     {
         $columnsInfo = $this->getColumnsInfo(empty($evidence) ? $this->getEvidence()
                 : $evidence);
-        return is_array($columnsInfo) ? array_key_exists($column, $columnsInfo) ? $columnsInfo[$column]
-                : null : null;
+        return (empty($column) || empty($columnsInfo) || !is_array($columnsInfo))
+                ? null : array_key_exists($column, $columnsInfo) ? $columnsInfo[$column]
+                : null;
     }
 
     /**
