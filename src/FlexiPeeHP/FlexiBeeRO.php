@@ -3,7 +3,7 @@
  * FlexiPeeHP - Read Only Access to FlexiBee class.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  (C) 2015-2018 Spoje.Net
+ * @copyright  (C) 2015-2019 Spoje.Net
  */
 
 namespace FlexiPeeHP;
@@ -676,7 +676,7 @@ class FlexiBeeRO extends \Ease\Sand
                         $result         = true;
                     } else {
                         throw new \Exception(sprintf('Try to set unsupported evidence %s',
-                            $evidence));
+                                $evidence));
                     }
                 } else {
                     $this->evidence = $evidence;
@@ -842,13 +842,16 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function updateApiURL()
     {
-        $this->apiURL = $this->getEvidenceURL();
-        $id           = $this->getRecordID();
-        if (empty($id)) {
-            $id = $this->getRecordCode();
+        $this->apiURL  = $this->getEvidenceURL();
+        $rowIdentifier = $this->getRecordID();
+        if (empty($rowIdentifier)) {
+            $rowIdentifier = $this->getRecordCode();
+            if (empty($rowIdentifier)) {
+                $rowIdentifier = $this->getExternalID();
+            }
         }
-        if (!empty($id)) {
-            $this->apiURL .= '/'.self::urlEncode($id);
+        if (!empty($rowIdentifier)) {
+            $this->apiURL .= '/'.self::urlEncode($rowIdentifier);
         }
         $this->apiURL .= '.'.$this->format;
     }
@@ -1501,8 +1504,8 @@ class FlexiBeeRO extends \Ease\Sand
         $this->ignore404(true);
         $this->getFlexiData(null,
             [
-            'detail' => 'custom:'.$this->getKeyColumn(),
-            $this->getKeyColumn() => $identifer
+                'detail' => 'custom:'.$this->getKeyColumn(),
+                $this->getKeyColumn() => $identifer
         ]);
         $this->ignore404($ignorestate);
         return $this->lastResponseCode == 200;
@@ -1981,7 +1984,7 @@ class FlexiBeeRO extends \Ease\Sand
     public function getExternalID($want = null)
     {
         $extid = null;
-        $ids   = $this->getDataValue('external-ids');
+        $ids   = $this->getExternalIDs();
         if (is_null($want)) {
             if (!empty($ids)) {
                 $extid = current($ids);
@@ -2005,6 +2008,16 @@ class FlexiBeeRO extends \Ease\Sand
             }
         }
         return $extid;
+    }
+
+    /**
+     * gives you currently loaded extermal IDs
+     * 
+     * @return array
+     */
+    public function getExternalIDs()
+    {
+        return $this->getDataValue('external-ids');
     }
 
     /**
@@ -2497,7 +2510,7 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
-     * Take data for object
+     * Take data for object. separate external IDs
      *
      * @param array $data Data to keep
      * 
@@ -2505,11 +2518,24 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function takeData($data)
     {
+        $keyColumn = $this->getKeyColumn();
+        if (array_key_exists($keyColumn, $data) && is_array($data[$keyColumn])) {
+            foreach ($data[$keyColumn] as $recPos => $recordKey) {
+                if (substr($recordKey, 0, 4) == 'ext:') {
+                    $data['external-ids'][] = $recordKey;
+                    unset($data[$keyColumn][$recPos]);
+                }
+            }
+            if (count($data[$keyColumn]) == 1) {
+                $data[$keyColumn] = current($data[$keyColumn]);
+            }
+        }
         $result = parent::takeData($data);
-        if (array_key_exists($this->getKeyColumn(), $data) || array_key_exists('kod',
-                $data)) {
+
+        if (array_key_exists($keyColumn, $data) || array_key_exists('kod', $data)) {
             $this->updateApiURL();
         }
+
         return $result;
     }
 
