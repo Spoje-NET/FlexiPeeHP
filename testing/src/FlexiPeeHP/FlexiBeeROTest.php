@@ -46,7 +46,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      * This method is called before a test is executed.
      * @covers FlexiPeeHP\FlexiBeeRO::__construct
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object                  = new FlexiBeeRO();
         $this->object->prefix          = '/';
@@ -58,7 +58,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         
     }

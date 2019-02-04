@@ -4,7 +4,7 @@
  * FlexiPeeHP - Odeslat Upomínky ?
  *
  * @author     Vítězslav Dvořák <info@vitexsofware.cz>
- * @copyright  (G) 2017 Vitex Software
+ * @copyright  (G) 2017-2019 Vitex Software
  */
 
 namespace Example\FlexiPeeHP;

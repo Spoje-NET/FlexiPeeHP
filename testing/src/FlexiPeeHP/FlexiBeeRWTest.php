@@ -68,7 +68,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      * This method is called before a test is executed.
      * @covers FlexiPeeHP\FlexiBeeRW::__construct
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new FlexiBeeRW(null,
             ['atomic' => false, 'debug' => false]);
@@ -78,7 +78,7 @@ class FlexiBeeRWTest extends FlexiBeeROTest
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         
     }
