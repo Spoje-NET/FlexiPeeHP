@@ -21,7 +21,7 @@ class Relations
      *
      * @var string
      */
- static public $version = '2018.2.6.2';
+ static public $version = '2019.1.0';
 
     /**
      * Evidence adresar (Adresy firem) Relations.
@@ -224,15 +224,15 @@ class Relations
   ),
   1 => 
   array (
-    'url' => 'poplatky',
-    'evidenceType' => 'POPLATKY',
-    'name' => 'Poplatky',
-  ),
-  2 => 
-  array (
     'url' => 'udalosti',
     'evidenceType' => 'ADR_UDALOST',
     'name' => 'Události',
+  ),
+  2 => 
+  array (
+    'url' => 'vyrobni-cisla',
+    'evidenceType' => 'VYROBNI_CISLA',
+    'name' => 'Výrobní čísla',
   ),
   3 => 
   array (
@@ -242,63 +242,63 @@ class Relations
   ),
   4 => 
   array (
-    'url' => 'vyrobni-cisla',
-    'evidenceType' => 'VYROBNI_CISLA',
-    'name' => 'Výrobní čísla',
-  ),
-  5 => 
-  array (
-    'url' => 'sklad-karty',
-    'evidenceType' => 'SKLADOVA_KARTA',
-    'name' => 'Skladová karta',
-  ),
-  6 => 
-  array (
     'url' => 'dodavatele',
     'evidenceType' => 'DODAVATEL',
     'name' => 'Nákupní ceny',
   ),
-  7 => 
-  array (
-    'url' => 'sady-a-komplety',
-    'evidenceType' => 'SADY_A_KOMPLETY',
-    'name' => 'Sady a komplety',
-  ),
-  8 => 
+  5 => 
   array (
     'url' => 'cenHladiny',
     'evidenceType' => 'CENOVA_UROVEN',
     'name' => 'Cenové úrovně',
   ),
-  9 => 
-  array (
-    'url' => 'prilohy',
-    'evidenceType' => 'PRILOHA',
-    'name' => 'Přílohy',
-  ),
-  10 => 
-  array (
-    'url' => 'prislustenstvi',
-    'evidenceType' => 'PRISLUSENSTVI',
-    'name' => 'Příslušenství',
-  ),
-  11 => 
-  array (
-    'url' => 'atributy',
-    'evidenceType' => 'ATRIBUT',
-    'name' => 'Atributy',
-  ),
-  12 => 
+  6 => 
   array (
     'url' => 'podobne-zbozi',
     'evidenceType' => 'PODOBNE_ZBOZI',
     'name' => 'Podobné zboží',
   ),
-  13 => 
+  7 => 
+  array (
+    'url' => 'poplatky',
+    'evidenceType' => 'POPLATKY',
+    'name' => 'Poplatky',
+  ),
+  8 => 
+  array (
+    'url' => 'sklad-karty',
+    'evidenceType' => 'SKLADOVA_KARTA',
+    'name' => 'Skladová karta',
+  ),
+  9 => 
+  array (
+    'url' => 'sady-a-komplety',
+    'evidenceType' => 'SADY_A_KOMPLETY',
+    'name' => 'Sady a komplety',
+  ),
+  10 => 
+  array (
+    'url' => 'prilohy',
+    'evidenceType' => 'PRILOHA',
+    'name' => 'Přílohy',
+  ),
+  11 => 
+  array (
+    'url' => 'prislustenstvi',
+    'evidenceType' => 'PRISLUSENSTVI',
+    'name' => 'Příslušenství',
+  ),
+  12 => 
   array (
     'url' => 'odberatele',
     'evidenceType' => 'ODBERATEL',
     'name' => 'Prodejní ceny',
+  ),
+  13 => 
+  array (
+    'url' => 'atributy',
+    'evidenceType' => 'ATRIBUT',
+    'name' => 'Atributy',
   ),
 );
     /**
