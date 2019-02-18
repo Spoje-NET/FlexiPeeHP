@@ -20,7 +20,7 @@ class KontaktTest extends FlexiBeeRWTest
      */
     protected function setUp(): void
     {
-        $this->object = new Kontakt;
+        $this->object = new Kontakt();
     }
 
     /**

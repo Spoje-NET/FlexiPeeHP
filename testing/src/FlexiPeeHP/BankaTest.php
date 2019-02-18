@@ -15,12 +15,48 @@ class BankaTest extends FlexiBeeRWTest
     protected $object;
 
     /**
+     * Prepare testing payment
+     * 
+     * @param array $initialData
+     * 
+     * @return \FlexiPeeHP\Banka
+     */
+    public static function makeTestPayment($initialData = [], $dayBack = 1)
+    {
+        $yesterday = new \DateTime();
+        $yesterday->modify('-'.$dayBack.' day');
+
+        $testCode = 'PAY_'.\Ease\Sand::randomString();
+
+        $payment = new \FlexiPeeHP\Banka($initialData);
+
+        $payment->takeData(array_merge([
+            'kod' => $testCode,
+            'banka' => 'code:HLAVNI',
+            'typPohybuK' => 'typPohybu.prijem',
+            'popis' => 'FlexiPeeHP Test bank record',
+            'varSym' => \Ease\Sand::randomNumber(1111, 9999),
+            'specSym' => \Ease\Sand::randomNumber(111, 999),
+            'bezPolozek' => true,
+            'datVyst' => \FlexiPeeHP\FlexiBeeRO::dateToFlexiDate($yesterday),
+            'typDokl' => \FlexiPeeHP\FlexiBeeRO::code('STANDARD')
+                ], $initialData));
+        if ($payment->sync()) {
+            $payment->addStatusMessage($payment->getApiURL().' '.unc($payment->getDataValue('typPohybuK')).' '.unc($payment->getRecordIdent()).' '.unc($payment->getDataValue('sumCelkem')).' '.unc($payment->getDataValue('mena')),
+                'success');
+        } else {
+            $payment->addStatusMessage(json_encode($payment->getData()), 'debug');
+        }
+        return $payment;
+    }
+
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp(): void
     {
-        $this->object = new Banka;
+        $this->object = new Banka();
     }
 
     /**

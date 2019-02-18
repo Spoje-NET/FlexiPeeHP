@@ -15,6 +15,40 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     protected $object;
 
     /**
+     * Prepare Testing Invoice
+     * 
+     * @param array $initialData
+     * 
+     * @return \FlexiPeeHP\FakturaVydana
+     */
+    public static function makeTestInvoice($initialData = [], $dayBack = 1,
+                                           $evidence = 'vydana')
+    {
+        $yesterday = new \DateTime();
+        $yesterday->modify('-'.$dayBack.' day');
+        $testCode  = 'INV_'.\Ease\Sand::randomString();
+        $invoice   = new \FlexiPeeHP\FakturaVydana(null,
+            ['evidence' => 'faktura-'.$evidence]);
+        $invoice->takeData(array_merge([
+            'kod' => $testCode,
+            'varSym' => \Ease\Sand::randomNumber(1111, 9999),
+            'specSym' => \Ease\Sand::randomNumber(111, 999),
+            'bezPolozek' => true,
+            'popis' => 'php-flexibee-matcher Test invoice',
+            'datVyst' => \FlexiPeeHP\FlexiBeeRO::dateToFlexiDate($yesterday),
+            'typDokl' => \FlexiPeeHP\FlexiBeeRO::code('FAKTURA')
+                ], $initialData));
+        if ($invoice->sync()) {
+            $invoice->addStatusMessage($invoice->getApiURL().' '.unc($invoice->getDataValue('typDokl')).' '.unc($invoice->getRecordIdent()).' '.unc($invoice->getDataValue('sumCelkem')).' '.unc($invoice->getDataValue('mena')),
+                'success');
+        } else {
+            $invoice->addStatusMessage(json_encode($invoice->getData()), 'debug');
+        }
+
+        return $invoice;
+    }
+
+    /**
      * Gives You new testng invoice
      * 
      * @param string $code      with givew code of internal ID
@@ -291,7 +325,8 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     public function testAddArrayToBranch()
     {
         $this->object->setDataValue('typDokl', 'FAKTURA');
-        $this->object->addArrayToBranch(['nazev' => 'faktura'], 'polozkyDokladu',true);
+        $this->object->addArrayToBranch(['nazev' => 'faktura'],
+            'polozkyDokladu', true);
         $this->object->setDataValue('typDokl', 'ZALOHA');
         $this->object->addArrayToBranch(['nazev' => 'zaloha'], 'polozkyDokladu');
     }
