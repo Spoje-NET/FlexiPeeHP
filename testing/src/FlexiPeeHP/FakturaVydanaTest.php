@@ -39,7 +39,7 @@ class FakturaVydanaTest extends FlexiBeeRWTest
             'typDokl' => \FlexiPeeHP\FlexiBeeRO::code('FAKTURA')
                 ], $initialData));
         if ($invoice->sync()) {
-            $invoice->addStatusMessage($invoice->getApiURL().' '.unc($invoice->getDataValue('typDokl')).' '.unc($invoice->getRecordIdent()).' '.unc($invoice->getDataValue('sumCelkem')).' '.unc($invoice->getDataValue('mena')),
+            $invoice->addStatusMessage($invoice->getApiURL().' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('typDokl')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getRecordIdent()).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('sumCelkem')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('mena')),
                 'success');
         } else {
             $invoice->addStatusMessage(json_encode($invoice->getData()), 'debug');

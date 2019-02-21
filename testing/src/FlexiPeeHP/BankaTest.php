@@ -42,7 +42,7 @@ class BankaTest extends FlexiBeeRWTest
             'typDokl' => \FlexiPeeHP\FlexiBeeRO::code('STANDARD')
                 ], $initialData));
         if ($payment->sync()) {
-            $payment->addStatusMessage($payment->getApiURL().' '.unc($payment->getDataValue('typPohybuK')).' '.unc($payment->getRecordIdent()).' '.unc($payment->getDataValue('sumCelkem')).' '.unc($payment->getDataValue('mena')),
+            $payment->addStatusMessage($payment->getApiURL().' '.\FlexiPeeHP\FlexiBeeRO::uncode($payment->getDataValue('typPohybuK')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($payment->getRecordIdent()).' '.\FlexiPeeHP\FlexiBeeRO::uncode($payment->getDataValue('sumCelkem')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($payment->getDataValue('mena')),
                 'success');
         } else {
             $payment->addStatusMessage(json_encode($payment->getData()), 'debug');

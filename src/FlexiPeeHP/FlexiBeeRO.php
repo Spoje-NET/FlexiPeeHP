@@ -1502,13 +1502,13 @@ class FlexiBeeRO extends \Ease\Sand
         }
         $ignorestate = $this->ignore404();
         $this->ignore404(true);
-        $this->getFlexiData(null,
+        $cands       = $this->getFlexiData(null,
             [
                 'detail' => 'custom:'.$this->getKeyColumn(),
                 $this->getKeyColumn() => $identifer
         ]);
         $this->ignore404($ignorestate);
-        return $this->lastResponseCode == 200;
+        return ($this->lastResponseCode == 200) && !empty($cands);
     }
 
     /**
