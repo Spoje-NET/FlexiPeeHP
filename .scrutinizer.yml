@@ -19,8 +19,8 @@ build:
                 before:
                     - composer self-update
                     - composer install --no-interaction
-            analysis:
-              tests:
+
+            tests:
                 override:
                     - php-scrutinizer-run
 
