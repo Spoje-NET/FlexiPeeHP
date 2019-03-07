@@ -4,19 +4,21 @@ checks:
         duplication: true
 
 build:
-  nodes:
-    flexipeehp:
-        override:
-            -
-                idle_timeout: 5000
-                command: 'php -d memory_limit=2048M -f ./vendor/bin/phpunit -- --coverage-clover=clover'
-                coverage:
-                    file: 'clover'
-                    format: 'php-clover'
-        dependencies:
-            before:
-                - composer self-update
-                - composer install --no-interaction
+    environment:
+        php: 7.3
+    nodes:
+        flexipeehp:
+            override:
+                -
+                    idle_timeout: 5000
+                    command: 'php -d memory_limit=2048M -f ./vendor/bin/phpunit -- --coverage-clover=clover'
+                    coverage:
+                        file: 'clover'
+                        format: 'php-clover'
+            dependencies:
+                before:
+                    - composer self-update
+                    - composer install --no-interaction
     analysis:
       tests:
         override:
@@ -32,7 +34,7 @@ build:
 
 filter:
     excluded_paths:
-        - 'tests/*'
+        - 'testing/*'
         - 'vendor/*'
         - 'Examples/*'
 tools:

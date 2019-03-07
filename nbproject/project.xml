@@ -5,5 +5,11 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>FlexiPeeHP</name>
         </data>
+        <phing-tasks xmlns="http://www.netbeans.org/ns/build-tool-tasks/1">
+            <workdir path="" showSimpleTasks="true">
+                <task index="0" name="new" options="" parameters="" tasks=""/>
+                <task index="1" name="static" options="" parameters="" tasks="build"/>
+            </workdir>
+        </phing-tasks>
     </configuration>
 </project>
