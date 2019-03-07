@@ -25,9 +25,25 @@ class Zurnal extends FlexiBeeRO
 
     /**
      *
-     * @var type
+     * @var array
      */
     public static $evidenceToDb = ['faktura-vydana' => 'ddoklfak'];
+
+    /**
+     * Class for read only interaction with FlexiBee.
+     *
+     * @param mixed $init default record id or initial data
+     * @param array $options Connection settings and other options override
+     */
+    public function __construct($init = null, $options = [])
+    {
+        parent::__construct($init, $options);
+        foreach (EvidenceList::$evidences as $evidenceName => $evidenceProperties) {
+            if (array_key_exists('dbName', $evidenceProperties)) {
+                self::$evidenceToDb[$evidenceName] = $evidenceProperties['dbName'];
+            }
+        }
+    }
 
     /**
      * obtain all record changes array

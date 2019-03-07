@@ -69,7 +69,7 @@ class Priloha extends FlexiBeeRW
     /**
      * Obtain url for Attachment Download
      *
-     * @param \FlexiBeeRO $object Source object
+     * @param FlexiBeeRO $object Source object
      * @return string url
      */
     public static function getDownloadUrl($object)

@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.20.2';
+    public static $libVersion = '1.20.3';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -640,7 +640,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @param string $format
      * 
-     * @return boolen format is availble
+     * @return boolean format is availble
      */
     public function setFormat($format)
     {
@@ -1326,7 +1326,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Načte záznam z FlexiBee a uloží v sobě jeho data
      * Read FlexiBee record and store it inside od object
      *
-     * @param int $id ID or conditions
+     * @param int|string $id ID or conditions
      *
      * @return int počet načtených položek
      */
@@ -1578,9 +1578,9 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Vrací z FlexiBee sloupečky podle podmínek.
      *
-     * @param string[] $columnsList seznam položek
-     * @param array    $conditions  pole podmínek nebo ID záznamu
-     * @param string   $indexBy     Sloupeček podle kterého indexovat záznamy
+     * @param string|string[] $columnsList seznam položek nebo úrověň detailu: id|summary|full
+     * @param array           $conditions  pole podmínek nebo ID záznamu
+     * @param string          $indexBy     Sloupeček podle kterého indexovat záznamy
      *
      * @return array
      */
@@ -2026,7 +2026,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api#globalVersion Globální Verze
      * 
-     * @return type
+     * @return int
      */
     public function getGlobalVersion()
     {
@@ -2374,7 +2374,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @param string $subject    Email Subject
      * @param string $body       Email Text
      *
-     * @return int http response code
+     * @return boolean mail sent status
      */
     public function sendByMail($to, $subject, $body, $cc = null)
     {
@@ -2458,6 +2458,7 @@ class FlexiBeeRO extends \Ease\Sand
                             $urlParams['report-lang'] = $lang;
                             break;
                         case null:
+                        case '':
                             break;
                         default:
                             throw new \Ease\Exception('Unknown language '.$lang.' for PDF export');
@@ -2593,7 +2594,7 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Try to Sign in current user to FlexiBee and keep authSessionId
      * 
-     * @return boolen sign in success
+     * @return boolean sign in success
      */
     public function login()
     {

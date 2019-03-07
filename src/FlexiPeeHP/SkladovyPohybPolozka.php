@@ -27,8 +27,8 @@ class SkladovyPohybPolozka extends FlexiBeeRW
     /**
      * Add Items Serial Number
      * 
-     * @param type $number
-     * @param type $isMain
+     * @param string  $number serial number
+     * @param boolean $isMain main number
      * 
      * @return boolean Success
      */

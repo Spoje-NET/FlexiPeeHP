@@ -15,6 +15,7 @@ namespace FlexiPeeHP;
  */
 class FakturaVydana extends FlexiBeeRW
 {
+
     use Stitky;
     use Firma;
     /**
@@ -206,7 +207,7 @@ class FakturaVydana extends FlexiBeeRW
      * 
      * @param int $size requested of image
      * 
-     * @return type
+     * @return string binary PNG body
      */
     public function getQrCodeImage($size = 140)
     {

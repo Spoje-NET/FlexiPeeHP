@@ -48,7 +48,7 @@ trait Stitky
     public function unsetLabel($labelsToRemove)
     {
         $this->insertToFlexiBee(['id' => $this->getMyKey(), 'stitky@removeAll' => 'true',
-            'stitky' => array_diff_key(self::getLabels($this),
+            'stitky' => array_diff_key($this->getLabels($this),
                 Stitek::listToArray($labelsToRemove))]);
         return $this->lastResponseCode == 201;
     }

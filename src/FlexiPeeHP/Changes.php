@@ -24,7 +24,9 @@ class Changes extends FlexiBeeRO
 
     /**
      * Povolí oznamování změn
-     * @return type
+     * Allow changes notification
+     * 
+     * @return boolean
      */
     public function enable()
     {
@@ -34,7 +36,9 @@ class Changes extends FlexiBeeRO
 
     /**
      * Zakáže oznamování změn
-     * @return type
+     * Disallow changes notification
+     * 
+     * @return boolean
      */
     public function disable()
     {
@@ -45,7 +49,7 @@ class Changes extends FlexiBeeRO
     /**
      * Vrátí stav zapnutí ChangesAPI
      *
-     * @return boolan
+     * @return boolean
      */
     public function getStatus()
     {
