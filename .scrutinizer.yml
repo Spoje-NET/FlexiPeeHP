@@ -19,18 +19,18 @@ build:
                 before:
                     - composer self-update
                     - composer install --no-interaction
-    analysis:
-      tests:
-        override:
-            - php-scrutinizer-run
+            analysis:
+              tests:
+                override:
+                    - php-scrutinizer-run
 
-    coverage:
-      tests:
-        override:
-          - command: './vendor/bin/phpunit --coverage-clover=/home/scrutinizer/build/coverage.xml'
             coverage:
-              file: coverage.xml
-              format: clover
+              tests:
+                override:
+                  - command: './vendor/bin/phpunit --coverage-clover=/home/scrutinizer/build/coverage.xml'
+                    coverage:
+                      file: coverage.xml
+                      format: clover
 
 filter:
     excluded_paths:
