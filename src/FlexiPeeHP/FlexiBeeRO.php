@@ -68,6 +68,13 @@ class FlexiBeeRO extends \Ease\Sand
     public $evidence = null;
 
     /**
+     * Detaily evidence užité objektem
+     * 
+     * @var array 
+     */
+    public $evidenceInfo = [];
+
+    /**
      * Výchozí formát pro komunikaci.
      * Default communication format.
      *
@@ -564,27 +571,31 @@ class FlexiBeeRO extends \Ease\Sand
     {
         switch ($columnName) {
             case 'kod':
-                $value = self::uncode($value); //Alwyas uncode "kod" column
+                $value  = self::uncode($value); //Alwyas uncode "kod" column
+                break;
+            case $this->getKeyColumn():
+                $result = $this->setMyKey($value);
                 break;
             default:
-                break;
-        }
-        if (is_object($value)) {
-            switch (get_class($value)) {
-                case 'DateTime':
-                    $columnInfo = $this->getColumnInfo($columnName);
-                    switch ($columnInfo['type']) {
-                        case 'date':
-                            $value = self::dateToFlexiDate($value);
-                            break;
-                        case 'datetime':
-                            $value = self::dateToFlexiDateTime($value);
+                if (is_object($value)) {
+                    switch (get_class($value)) {
+                        case 'DateTime':
+                            $columnInfo = $this->getColumnInfo($columnName);
+                            switch ($columnInfo['type']) {
+                                case 'date':
+                                    $value = self::dateToFlexiDate($value);
+                                    break;
+                                case 'datetime':
+                                    $value = self::dateToFlexiDateTime($value);
+                                    break;
+                            }
                             break;
                     }
-                    break;
-            }
+                }
+                $result = parent::setDataValue($columnName, $value);
+                break;
         }
-        return parent::setDataValue($columnName, $value);
+        return $result;
     }
 
     /**
@@ -689,6 +700,7 @@ class FlexiBeeRO extends \Ease\Sand
                 break;
         }
         $this->updateApiURL();
+        $this->evidenceInfo = $this->getEvidenceInfo();
         return $result;
     }
 
@@ -2337,12 +2349,20 @@ class FlexiBeeRO extends \Ease\Sand
     public function setMyKey($myKeyValue)
     {
         if (substr($myKeyValue, 0, 4) == 'ext:') {
-            $extIds = $this->getDataValue('external-ids');
-            if (!empty($extIds) && count($extIds)) {
-                $extIds = array_combine($extIds, $extIds);
+            if ($this->evidenceInfo['extIdSupported'] == 'false') {
+                $this->addStatusMessage(sprintf(_('Evidence %s does not support extIDs'),
+                        $this->getEvidence()), 'warning');
+                $res = false;
+            } else {
+                $extIds = $this->getDataValue('external-ids');
+                if (!empty($extIds) && count($extIds)) {
+                    $extIds = array_combine($extIds, $extIds);
+                }
+
+                $extIds[$myKeyValue] = $myKeyValue;
+                $res                 = $this->setDataValue('external-ids',
+                    $extIds);
             }
-            $extIds[$myKeyValue] = $myKeyValue;
-            $res                 = $this->setDataValue('external-ids', $extIds);
         } else {
             $res = parent::setMyKey($myKeyValue);
         }

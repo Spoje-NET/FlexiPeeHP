@@ -104,7 +104,8 @@ $evidencies[] = [
     "evidencePath" => "nastaveni",
     "importStatus" => "NOT_DOCUMENTED",
     "className" => "cz.winstrom.vo.nast.Nastaveni",
-    "formCode" => "nNastav"
+    "formCode" => "nNastav",
+    'extIdSupported' => 'false'
 ];
 
 $evidencies[] = [
@@ -113,15 +114,16 @@ $evidencies[] = [
     "evidencePath" => "uzivatel",
     "importStatus" => "NOT_DOCUMENTED",
     "className" => "cz.winstrom.vo.w.Uzivatel",
-    "formCode" => "cisOsoby"
+    "formCode" => "cisOsoby",
+    'extIdSupported' => 'false'
 ];
 
 
 $evlist = [];
-foreach ($evidencies as $evidenceID => $evidence) {
-    if (array_key_exists('evidencePath', $evidence)) {
-        $evlist[$evidence['evidencePath']]   = $evidence['evidenceName'];
-        $fullList[$evidence['evidencePath']] = $evidence;
+foreach ($evidencies as $evidenceID => $evidenceInfo) {
+    if (array_key_exists('evidencePath', $evidenceInfo)) {
+        $evlist[$evidenceInfo['evidencePath']]   = $evidenceInfo['evidenceName'];
+        $fullList[$evidenceInfo['evidencePath']] = $evidenceInfo;
     }
 }
 
