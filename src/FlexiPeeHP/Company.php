@@ -81,7 +81,7 @@ class Company extends FlexiBeeRW
         parent::processInit($init);
         if (is_array($init) && array_key_exists('dbNazev', $init)) {
             $companyInfo = $this->getFlexiData('/c/'.$init['dbNazev']);
-            if(!array_key_exists('message', $companyInfo)){
+            if (!array_key_exists('message', $companyInfo)) {
                 $this->takeData(current($companyInfo));
             }
         }
@@ -177,17 +177,41 @@ class Company extends FlexiBeeRW
     /**
      * Restore company from given file
      *
-     * @param string $filename
+     * @link https://www.flexibee.eu/api/dokumentace/ref/restore-backup/ Obnovení ze zálohy
+     * 
+     * @param string $filename             *.winstrom-backup file
+     * @param string $name                 Extra name for restored company   
+     * @param boolean $disableEet          Disable EET on restored company 
+     * @param boolean $disableAutoSendMail Dsable auto sending of all documents 
+     * @param boolean $disableWebHooks     Remove Registered webhooks 
      *
-     * @return boolean result
+     * @return boolean restore result
      */
-    public function restoreBackupFrom($filename)
+    public function restoreBackupFrom($filename, $name = null,
+                                      $disableEet = false,
+                                      $disableAutoSendMail = false,
+                                      $disableWebHooks = false)
     {
+        $options = [];
+        if (!empty($name)) {
+            $options['name'] = $name;
+        }
+        if ($disableEet === true) {
+            $options['disableEet'] = 1;
+        }
+        if ($disableAutoSendMail === true) {
+            $options['disableAutoSendMail'] = 1;
+        }
+        if ($disableWebHooks === true) {
+            $options['disableWebHooks'] = 1;
+        }
+
         $headersBackup                            = $this->defaultHttpHeaders;
         $this->defaultHttpHeaders['Accept']       = '*/*';
         $this->defaultHttpHeaders['Content-Type'] = 'application/x-winstrom-backup';
         $this->setPostFields(file_get_contents($filename));
-        $this->performRequest('restore', 'PUT');
+        $this->performRequest('restore'.(empty($options) ? '' : '?'.http_build_query($options) ),
+            'PUT');
         return $this->lastResponseCode == 200;
     }
 
