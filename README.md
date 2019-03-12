@@ -330,8 +330,8 @@ V tomto případě je potřeba do souboru composer.json vaší aplikace přidat:
 
 ```json
     "require": {
-        "flexipeehp": "*",
-        "ease-framework": "*"
+        "spojenet.flexipeehp": "*",
+        "vitexsoftware.ease-framework": "*"
     },
     "repositories": [
         {
