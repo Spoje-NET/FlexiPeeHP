@@ -1,5 +1,5 @@
 {
-    "name": "spojenet.flexipeehp",
+    "name": "spojenet_flexipeehp",
     "description": "PHP Based Library for easy interaction with czech accounting system Flexibee.",
     "homepage": "https://github.com/Spoje-NET/FlexiPeeHP",
     "license": "GPL-2.0+",
@@ -14,16 +14,12 @@
     "require": {
         "php": ">= 7",
         "ext-curl": "*",
-        "vitexsoftware.ease-framework": "*"
+        "vitexsoftware_ease-framework": "*"
     },
     "autoload": {
         "psr-4": {
             "FlexiPeeHP\\": "."
         }
-    },
-    "require": {
-        "php": ">=5.6.0",
-        "ext-curl": "*"
     },
     "repositories": [
         {
