@@ -1,5 +1,5 @@
 {
-    "name": "vitexsoftware_flexipeehpdebiantest",
+    "name": "deb/flexipeehp-debian-test",
     "description": "FlexiPeeHP debian package test",
     "type": "project",
     "authors": [
@@ -13,9 +13,8 @@
 	"vendor-dir": "/tmp/flexipeehpdebiantest"
     },
     "require": {
-        "php": ">= 5.5.9",
-        "spojenet_flexipeehp": "*",
-        "vitexsoftware_ease-framework": "*"
+        "deb/flexipeehp": "*",
+        "deb/ease-framework": "*"
     },
     "repositories": [
         {
