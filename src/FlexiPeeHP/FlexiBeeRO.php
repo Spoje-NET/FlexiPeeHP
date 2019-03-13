@@ -573,9 +573,6 @@ class FlexiBeeRO extends \Ease\Sand
             case 'kod':
                 $value  = self::uncode($value); //Alwyas uncode "kod" column
                 break;
-            case $this->getKeyColumn():
-                $result = $this->setMyKey($value);
-                break;
             default:
                 if (is_object($value)) {
                     switch (get_class($value)) {
