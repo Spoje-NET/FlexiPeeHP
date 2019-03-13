@@ -21,7 +21,7 @@ set -e
 case "$1" in
     configure)
 
-        composer-global-update spojenet_flexipeehp
+        composer-global-update deb/flexipeehp
 
     ;;
 
