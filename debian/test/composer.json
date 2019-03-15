@@ -1,6 +1,6 @@
 {
-    "name": "vitexsoftware/flexipeehpdebiantest",
-    "description": "FlexiPeeHP debian package test",
+    "name": "vitexsoftware/flexibeedebiantest",
+    "description": "FlexiBeeHP debian package test",
     "type": "project",
     "authors": [
         {
@@ -10,12 +10,12 @@
     ],
     "minimum-stability": "dev",
     "config": {
-	"vendor-dir": "/tmp/flexipeehpdebiantest"
+	"vendor-dir": "/tmp/flexibeehpdebiantest"
     },
     "require": {
-        "php": ">= 5.5.9",
-        "flexipeehp": "*",
-        "ease-framework": "*"
+        "php": ">= 7.1",
+        "deb/flexibee": "*",
+        "deb/ease-core": "*"
     },
     "repositories": [
         {

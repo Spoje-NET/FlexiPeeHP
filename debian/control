@@ -7,8 +7,8 @@ Priority: optional
 Homepage: https://github.com/Spoje-NET/FlexiPeeHP
 
 Package: php-flexibee
-Depends: ${misc:Depends}, php-curl|php5-curl|php5.6-curl|php7.0-curl|php7.1-curl|php7.2-curl|php7.3-curl,ease-framework (>= 1.5.11)
-Suggests: composer,flexipeehp-doc
+Depends: ${misc:Depends}, php-curl|php7.1-curl|php7.2-curl|php7.3-curl,ease-core (>= 0.5), composer
+Conflicts: flexipeehp
 Architecture: all
 Section: web
 Priority: optional

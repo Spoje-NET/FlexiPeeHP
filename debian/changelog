@@ -1,10 +1,10 @@
-flexipeehp (1.20.3) UNRELEASED; urgency=medium
+php-flexibee (1.20.4) UNRELEASED; urgency=medium
 
-  * Docker Image build
-  * Ubuntu 18.04 compatibility build
-  * Openbuild Service build
+  * ease-core based
+  * package renamed
+  * new branch 
 
- -- Vítězslav Dvořák <vitex@develoid.jinonice.czf>  Wed, 31 Oct 2018 17:58:04 +0100
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 15 Mar 2019 02:10:25 +0100
 
 flexipeehp (1.12) experimental; urgency=medium
 
