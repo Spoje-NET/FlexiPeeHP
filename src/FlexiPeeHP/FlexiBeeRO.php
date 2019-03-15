@@ -130,7 +130,7 @@ class FlexiBeeRO extends \Ease\Sand
      * @link https://www.flexibee.eu/api/dokumentace/ref/paging Paging params
      * @var array
      */
-    public $defaultUrlParams = ['limit' => 0];
+    public $defaultUrlParams = [];
 
     /**
      * Identifikační řetězec.
@@ -2735,13 +2735,16 @@ class FlexiBeeRO extends \Ease\Sand
     /**
      * Add Info about used user, server and libraries
      *
-     * @param string $additions Additional note text
+     * @param string $prefix banner prefix text
+     * @param string $suffix banner suffix text
      */
-    public function logBanner($additions = null)
+    public function logBanner($prefix = null, $suffix = null)
     {
-        $this->addStatusMessage('FlexiBee '.str_replace('://',
-                '://'.$this->user.'@', $this->getApiUrl()).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
-            'debug');
+        parent::logBanner($prefix,
+            ' FlexiBee '.str_replace('://', '://'.$this->user.'@',
+                $this->getApiUrl()).' FlexiBeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.
+            $suffix
+        );
     }
 
     /**

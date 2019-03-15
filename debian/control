@@ -1,4 +1,4 @@
-Source: flexipeehp
+Source: php-flexibee
 Build-Depends: debhelper (>= 7.0.50~)
 Standards-Version: 3.9.8
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
@@ -6,7 +6,7 @@ Uploaders: Vitex <vitex@hippy.cz>
 Priority: optional
 Homepage: https://github.com/Spoje-NET/FlexiPeeHP
 
-Package: flexipeehp
+Package: php-flexibee
 Depends: ${misc:Depends}, php-curl|php5-curl|php5.6-curl|php7.0-curl|php7.1-curl|php7.2-curl|php7.3-curl,ease-framework (>= 1.5.11)
 Suggests: composer,flexipeehp-doc
 Architecture: all

@@ -1,7 +1,7 @@
-# FlexiPeeHP
-![FlexiPeeHP Logo](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/project_logo.png "Project Logo")
+# FlexiBeeHP
+![FlexiBeeHP Logo](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/project_logo.png "Project Logo")
 
-PHP Based Library for easy interaction with Czech accounting system FlexiBee.
+PHP7.1+ Based Library for easy interaction with Czech accounting system FlexiBee.
 
 CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee](https://www.flexibee.eu/)
 
