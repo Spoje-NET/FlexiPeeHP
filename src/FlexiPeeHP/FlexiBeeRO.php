@@ -1277,7 +1277,7 @@ class FlexiBeeRO extends \Ease\Sand
         if (!empty($conditions)) {
             if (is_array($conditions)) {
                 $this->extractUrlParams($conditions, $urlParams);
-                if (array_key_exists('evidence', $conditions)) {
+                if (array_key_exists('evidence', $conditions) && is_null($this->getColumnInfo('evidence'))) {
                     $evidenceToRestore = $this->getEvidence();
                     $this->setEvidence($conditions['evidence']);
                     unset($conditions['evidence']);
