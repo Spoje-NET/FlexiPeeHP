@@ -393,6 +393,7 @@ FlexiBee knihovny pro další jazky:
  * [Flexipy](https://github.com/JakubJecminek/flexipy)  (Python) [Dokumentace](http://pythonhosted.org/flexipy/index.html)
  * [Flexibee.rb](https://github.com/danpecher/flexibee.rb) (Ruby)
  * [UniMapper Flexibee extension](https://github.com/unimapper/flexibee) (PHP)
+ * [Flexibee client](https://github.com/ricco24/flexibee-client) (PHP)
  * [Flexibee](https://github.com/adleritech/flexibee) (Java)
  
 [Statistiky práce na projektu WakaTime](https://wakatime.com/@5abba9ca-813e-43ac-9b5f-b1cfdf3dc1c7/projects/ypdqvdcmsg)
