@@ -52,6 +52,14 @@ class FlexiBeeRW extends FlexiBeeRO
     public $atomic = null;
 
     /**
+     * Record Copy helper
+     * 
+     * @var int 
+     */
+    private $sourceId = null;
+
+
+    /**
      * SetUp Object to be ready for work
      *
      * @param array $options Object Options (authSessionId,user,password,
@@ -335,7 +343,8 @@ class FlexiBeeRW extends FlexiBeeRO
      *
      * @return boolean Operation success
      */
-    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu', $removeAll = false)
+    public function addArrayToBranch($data, $relationPath = 'polozkyDokladu',
+                                     $removeAll = false)
     {
         $currentBranchData = $this->getDataValue($relationPath);
         $branchData        = $currentBranchData;
@@ -344,7 +353,7 @@ class FlexiBeeRW extends FlexiBeeRO
                 $this->getColumnsInfo())) {
             $this->setDataValue('bezPolozek', false);
         }
-        if($removeAll === true){
+        if ($removeAll === true) {
             $this->setDataValue($relationPath.'@removeAll', true);
         }
         return $this->setDataValue($relationPath, $branchData);
@@ -356,9 +365,10 @@ class FlexiBeeRW extends FlexiBeeRO
      * @param FlexiBeeRO $object    objekt evidence
      * @param boolean    $removeAll flush older items 
      */
-    public function addObjectToBranch($object,$removeAll = false)
+    public function addObjectToBranch($object, $removeAll = false)
     {
-        $this->addArrayToBranch([$object->getEvidence() => $object->getData()],'polozkyDokladu',$removeAll);
+        $this->addArrayToBranch([$object->getEvidence() => $object->getData()],
+            'polozkyDokladu', $removeAll);
     }
 
     /**
@@ -428,6 +438,10 @@ class FlexiBeeRW extends FlexiBeeRO
         if (!is_null($this->atomic)) {
             $dataForJSON['@atomic'] = $this->atomic;
         }
+        if (isset($this->sourceId)) {
+            $dataForJSON['@sourceId'] = $this->sourceId;
+            $this->sourceId = null;
+        }
         return $dataForJSON;
     }
 
@@ -447,6 +461,22 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         $loadResult = $this->lastResponseCode;
         return ($insertResult + $loadResult) == 401;
+    }
+
+    /**
+     * Make Copy of given record with optional modifiactions
+     * 
+     * !!!Experimental Feature!!!
+     * 
+     * @param int  $source
+     * @param array $overrides
+     * 
+     * @return FlexiBeeRW|null copied record object or null in case of failure
+     */
+    public function copy($source, $overrides = [])
+    {
+        $this->sourceId = $source;
+        return $this->sync($overrides) ? $this : null;
     }
 
     /**
@@ -491,7 +521,7 @@ class FlexiBeeRW extends FlexiBeeRO
             }
         } else {
             throw new \Exception(sprintf(_('Unsupported action %s for evidence %s'),
-                $action, $this->getEvidence()));
+                    $action, $this->getEvidence()));
         }
 
         return $result;
