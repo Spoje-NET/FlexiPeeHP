@@ -504,8 +504,8 @@ class FlexiBeeRO extends \Ease\Sand
         $port     = isset($urlParts['port']) ? ':'.$urlParts['port'] : '';
         $path     = isset($urlParts['path']) ? $urlParts['path'] : '';
 
-        $options['company'] = basename($urlParts['path']);
-        $options['url']     = $scheme.$host.$port.$path;
+        $options['company'] = basename($path);
+        $options['url']     = $scheme.$host.$port;
         return $options;
     }
 
