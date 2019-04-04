@@ -1820,7 +1820,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
      *
-     * @param array  $data   key=>values; value can bee class DatePeriod
+     * @param array  $data   key=>values; value can bee class DatePeriod, DateTime or Array
      * @param string $joiner default and/or
      * @param string $defop  default operator
      *
@@ -1838,6 +1838,8 @@ class FlexiBeeRO extends \Ease\Sand
                     $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
                 } elseif (is_null($data[$column])) {
                     $parts[$column] = $column." is null";
+                } elseif (is_array($data[$column])) {
+                    $parts[$column] = $column." in (".implode(',', array_map(function($a) { return "'$a'";}, $data[$column])).")";
                 } elseif (is_object($data[$column])) {
                     switch (get_class($data[$column])) {
                         case 'DatePeriod':
