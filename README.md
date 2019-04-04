@@ -103,6 +103,14 @@ nebo je možné přihlašovací údaje zadávat při vytváření instance tří
 
 Tento způsob nastavení má vyšší prioritu než výše uvedené definovaní konstant.
 
+```php
+
+    $order = new \FlexiPeeHP\ObjednavkaPrijata('code:OBP0034/2019',['companyUrl'=> $_GET['companyUrl'], 'authSessionId'=>$_GET['authSessionId'] ])
+
+```
+Takto se ke flexibee a konrétní objednávce může připojit aplikace vyvolaná uživatelským tlačítkem předávajícím hodnoty **companyUrl** a **authSessionId**
+
+
 Jak to celé funguje ?
 ---------------------
 
