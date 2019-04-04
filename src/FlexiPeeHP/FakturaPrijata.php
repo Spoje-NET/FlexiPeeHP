@@ -17,6 +17,7 @@ class FakturaPrijata extends FlexiBeeRW
 {
     use Stitky;
     use Firma;
+    use Sum;
     /**
      * Evidence použitá třídou.
      *

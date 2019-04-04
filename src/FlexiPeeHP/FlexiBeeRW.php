@@ -63,7 +63,7 @@ class FlexiBeeRW extends FlexiBeeRO
      * SetUp Object to be ready for work
      *
      * @param array $options Object Options (authSessionId,user,password,
-     *                                       url,company,evidence,
+     *                                       url,company,evidence,companyUrl
      *                                       prefix,defaultUrlParams,debug,
      *                                       detail,offline,atomic,filter,ignore404
      */

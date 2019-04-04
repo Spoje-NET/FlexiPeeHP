@@ -17,6 +17,7 @@ class SkladovyPohyb extends FlexiBeeRW
 {
     use Stitky;
     use Firma;
+    use Sum;
     /**
      * Evidence užitá objektem.
      *

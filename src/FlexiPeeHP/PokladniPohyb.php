@@ -17,6 +17,7 @@ class PokladniPohyb extends FlexiBeeRW
 {
     use Stitky;
     use Firma;
+    use Sum;
     /**
      * Evidence FlexiBee.
      *
