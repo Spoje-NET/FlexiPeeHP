@@ -430,10 +430,15 @@ class FlexiBeeRO extends \Ease\Sand
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
      *                                        detail,offline,filter,ignore404
-     *                                        timeout
+     *                                        timeout,companyUrl
      */
     public function setUp($options = [])
     {
+        if (array_key_exists('companyUrl', $options)) {
+            $options = array_merge(self::companyUrlToOptions($options['companyUrl']),
+                $options);
+        }
+
         $this->setupProperty($options, 'company', 'FLEXIBEE_COMPANY');
         $this->setupProperty($options, 'url', 'FLEXIBEE_URL');
         $this->setupProperty($options, 'user', 'FLEXIBEE_LOGIN');
@@ -482,6 +487,26 @@ class FlexiBeeRO extends \Ease\Sand
                 $this->$name = constant($constant);
             }
         }
+    }
+
+    /**
+     * Convert companyUrl provided by CustomButton to options array
+     * 
+     * @param string $companyUrl
+     * 
+     * @return array Options
+     */
+    public static function companyUrlToOptions($companyUrl)
+    {
+        $urlParts = parse_url($companyUrl);
+        $scheme   = isset($urlParts['scheme']) ? $urlParts['scheme'].'://' : '';
+        $host     = isset($urlParts['host']) ? $urlParts['host'] : '';
+        $port     = isset($urlParts['port']) ? ':'.$urlParts['port'] : '';
+        $path     = isset($urlParts['path']) ? $urlParts['path'] : '';
+
+        $options['company'] = basename($urlParts['path']);
+        $options['url']     = $scheme.$host.$port.$path;
+        return $options;
     }
 
     /**
@@ -571,7 +596,7 @@ class FlexiBeeRO extends \Ease\Sand
     {
         switch ($columnName) {
             case 'kod':
-                $value  = self::uncode($value); //Alwyas uncode "kod" column
+                $value = self::uncode($value); //Alwyas uncode "kod" column
                 break;
             default:
                 if (is_object($value)) {
