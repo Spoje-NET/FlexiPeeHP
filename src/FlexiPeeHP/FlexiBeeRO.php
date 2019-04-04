@@ -68,6 +68,13 @@ class FlexiBeeRO extends \Ease\Sand
     public $evidence = null;
 
     /**
+     * Detaily evidence užité objektem
+     * 
+     * @var array 
+     */
+    public $evidenceInfo = [];
+
+    /**
      * Výchozí formát pro komunikaci.
      * Default communication format.
      *
@@ -423,10 +430,15 @@ class FlexiBeeRO extends \Ease\Sand
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
      *                                        detail,offline,filter,ignore404
-     *                                        timeout
+     *                                        timeout,companyUrl
      */
     public function setUp($options = [])
     {
+        if (array_key_exists('companyUrl', $options)) {
+            $options = array_merge(self::companyUrlToOptions($options['companyUrl']),
+                $options);
+        }
+
         $this->setupProperty($options, 'company', 'FLEXIBEE_COMPANY');
         $this->setupProperty($options, 'url', 'FLEXIBEE_URL');
         $this->setupProperty($options, 'user', 'FLEXIBEE_LOGIN');
@@ -475,6 +487,26 @@ class FlexiBeeRO extends \Ease\Sand
                 $this->$name = constant($constant);
             }
         }
+    }
+
+    /**
+     * Convert companyUrl provided by CustomButton to options array
+     * 
+     * @param string $companyUrl
+     * 
+     * @return array Options
+     */
+    public static function companyUrlToOptions($companyUrl)
+    {
+        $urlParts = parse_url($companyUrl);
+        $scheme   = isset($urlParts['scheme']) ? $urlParts['scheme'].'://' : '';
+        $host     = isset($urlParts['host']) ? $urlParts['host'] : '';
+        $port     = isset($urlParts['port']) ? ':'.$urlParts['port'] : '';
+        $path     = isset($urlParts['path']) ? $urlParts['path'] : '';
+
+        $options['company'] = basename($urlParts['path']);
+        $options['url']     = $scheme.$host.$port.$path;
+        return $options;
     }
 
     /**
@@ -567,24 +599,25 @@ class FlexiBeeRO extends \Ease\Sand
                 $value = self::uncode($value); //Alwyas uncode "kod" column
                 break;
             default:
-                break;
-        }
-        if (is_object($value)) {
-            switch (get_class($value)) {
-                case 'DateTime':
-                    $columnInfo = $this->getColumnInfo($columnName);
-                    switch ($columnInfo['type']) {
-                        case 'date':
-                            $value = self::dateToFlexiDate($value);
-                            break;
-                        case 'datetime':
-                            $value = self::dateToFlexiDateTime($value);
+                if (is_object($value)) {
+                    switch (get_class($value)) {
+                        case 'DateTime':
+                            $columnInfo = $this->getColumnInfo($columnName);
+                            switch ($columnInfo['type']) {
+                                case 'date':
+                                    $value = self::dateToFlexiDate($value);
+                                    break;
+                                case 'datetime':
+                                    $value = self::dateToFlexiDateTime($value);
+                                    break;
+                            }
                             break;
                     }
-                    break;
-            }
+                }
+                $result = parent::setDataValue($columnName, $value);
+                break;
         }
-        return parent::setDataValue($columnName, $value);
+        return $result;
     }
 
     /**
@@ -689,6 +722,7 @@ class FlexiBeeRO extends \Ease\Sand
                 break;
         }
         $this->updateApiURL();
+        $this->evidenceInfo = $this->getEvidenceInfo();
         return $result;
     }
 
@@ -1268,7 +1302,7 @@ class FlexiBeeRO extends \Ease\Sand
         if (!empty($conditions)) {
             if (is_array($conditions)) {
                 $this->extractUrlParams($conditions, $urlParams);
-                if (array_key_exists('evidence', $conditions)) {
+                if (array_key_exists('evidence', $conditions) && is_null($this->getColumnInfo('evidence'))) {
                     $evidenceToRestore = $this->getEvidence();
                     $this->setEvidence($conditions['evidence']);
                     unset($conditions['evidence']);
@@ -2337,12 +2371,20 @@ class FlexiBeeRO extends \Ease\Sand
     public function setMyKey($myKeyValue)
     {
         if (substr($myKeyValue, 0, 4) == 'ext:') {
-            $extIds = $this->getDataValue('external-ids');
-            if (!empty($extIds) && count($extIds)) {
-                $extIds = array_combine($extIds, $extIds);
+            if ($this->evidenceInfo['extIdSupported'] == 'false') {
+                $this->addStatusMessage(sprintf(_('Evidence %s does not support extIDs'),
+                        $this->getEvidence()), 'warning');
+                $res = false;
+            } else {
+                $extIds = $this->getDataValue('external-ids');
+                if (!empty($extIds) && count($extIds)) {
+                    $extIds = array_combine($extIds, $extIds);
+                }
+
+                $extIds[$myKeyValue] = $myKeyValue;
+                $res                 = $this->setDataValue('external-ids',
+                    $extIds);
             }
-            $extIds[$myKeyValue] = $myKeyValue;
-            $res                 = $this->setDataValue('external-ids', $extIds);
         } else {
             $res = parent::setMyKey($myKeyValue);
         }
