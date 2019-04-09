@@ -430,10 +430,15 @@ class FlexiBeeRO extends \Ease\Sand
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
      *                                        detail,offline,filter,ignore404
-     *                                        timeout,companyUrl
+     *                                        timeout,companyUrl,ver
      */
     public function setUp($options = [])
     {
+        if (array_key_exists('ver', $options)) {
+            $this->protoVersion = $options['ver'];
+            $this->prefix       = 'v'.round($this->protoVersion).'/c/';
+        }
+
         if (array_key_exists('companyUrl', $options)) {
             $options = array_merge(self::companyUrlToOptions($options['companyUrl']),
                 $options);
