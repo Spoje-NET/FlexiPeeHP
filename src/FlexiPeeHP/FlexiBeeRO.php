@@ -1871,12 +1871,27 @@ class FlexiBeeRO extends \Ease\Sand
                             break;
                         case 'is empty':
                         case 'is not empty':
+                        case 'is true':
+                        case 'is false':    
                             $parts[$column] = $column.' '.$value;
                             break;
                         default:
                             switch (explode(' ', trim($value))[0]) {
+                                case '<>':
+                                case '!=':
+                                case 'ne':
+                                case 'neq':
+                                case '<':
+                                case 'lt':    
+                                case '<=':
+                                case 'lte':
+                                case '>':
+                                case 'gt':
+                                case '>=':
+                                case 'gte':
                                 case 'like':
                                 case 'begins':
+                                case 'between':
                                 case 'ends':
                                     $parts[$column] = $column         .= ' '.$value;
                                     break;
