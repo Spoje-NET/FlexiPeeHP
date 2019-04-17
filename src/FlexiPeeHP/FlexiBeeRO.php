@@ -1338,14 +1338,17 @@ class FlexiBeeRO extends \Ease\Sand
             $finalUrl .= '/$sum';
         }
 
-        if (count($urlParams)) {
+        if (!empty($urlParams)) {
             if (strstr($finalUrl, '?')) {
                 $finalUrl .= '&';
             } else {
                 $finalUrl .= '?';
             }
-            $finalUrl .= http_build_query($urlParams, null, '&',
-                PHP_QUERY_RFC3986);
+
+            $finalUrl .= http_build_query(array_map(function($a) {
+                return is_bool($a) ? ($a ? 'true' : 'false' ) : $a;
+            }, $urlParams),
+                null, '&', PHP_QUERY_RFC3986);
         }
 
         $transactions     = $this->performRequest($finalUrl, 'GET');
@@ -1876,7 +1879,8 @@ class FlexiBeeRO extends \Ease\Sand
                             $parts[$column] = $column.' '.$value;
                             break;
                         default:
-                            switch (explode(' ', trim($value))[0]) {
+                            $condParts = explode(' ', trim($value));
+                            switch ($condParts[0]) {
                                 case '<>':
                                 case '!=':
                                 case 'ne':
@@ -1893,7 +1897,11 @@ class FlexiBeeRO extends \Ease\Sand
                                 case 'begins':
                                 case 'between':
                                 case 'ends':
+                                    if(count($condParts) == 1){
                                     $parts[$column] = $column         .= ' '.$value;
+                                    } else {
+                                        $parts[$column] = $column         .= ' '.$condParts[0]." '".$condParts[1]."'";
+                                    }
                                     break;
                                 default:
                                     if ($column == 'stitky') {
