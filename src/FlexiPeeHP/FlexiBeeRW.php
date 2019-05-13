@@ -58,7 +58,6 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     private $sourceId = null;
 
-
     /**
      * SetUp Object to be ready for work
      *
@@ -106,14 +105,21 @@ class FlexiBeeRW extends FlexiBeeRO
     {
         switch ($responseCode) {
             case 201: //Success Write
-                if (isset($responseDecoded[$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
-                    $this->setMyKey($this->lastInsertedID);
-                } else {
-                    $this->lastInsertedID = null;
-                }
-                if (count($this->chained)) {
-                    $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
+                if (is_array($responseDecoded)) {
+                    $this->responseStats = array_key_exists('stats',
+                            $responseDecoded) ? (isset($responseDecoded['stats'][0])
+                            ? $responseDecoded['stats'][0] : $responseDecoded['stats'])
+                            : null;
+
+                    if (isset($responseDecoded[$this->resultField][0]['id'])) {
+                        $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
+                        $this->setMyKey($this->lastInsertedID);
+                    } else {
+                        $this->lastInsertedID = null;
+                    }
+                    if (count($this->chained)) {
+                        $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
+                    }
                 }
         }
         return parent::parseResponse($responseDecoded, $responseCode);
@@ -440,7 +446,7 @@ class FlexiBeeRW extends FlexiBeeRO
         }
         if (isset($this->sourceId)) {
             $dataForJSON['@sourceId'] = $this->sourceId;
-            $this->sourceId = null;
+            $this->sourceId           = null;
         }
         return $dataForJSON;
     }

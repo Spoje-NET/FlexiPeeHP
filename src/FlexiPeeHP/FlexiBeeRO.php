@@ -1010,25 +1010,27 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
-        if (is_array($responseDecoded)) {
-            $mainResult          = $this->unifyResponseFormat($responseDecoded);
-            $this->responseStats = array_key_exists('stats', $responseDecoded) ? (isset($responseDecoded['stats'][0])
-                    ? $responseDecoded['stats'][0] : $responseDecoded['stats']) : null;
-        } else {
-            $mainResult = $responseDecoded;
-        }
         switch ($responseCode) {
             case 201: //Success Write
             case 200: //Success Read
+
                 if (is_array($responseDecoded)) {
-                    $this->lastResult = $mainResult;
                     if (isset($responseDecoded['@rowCount'])) {
                         $this->rowCount = (int) $responseDecoded['@rowCount'];
                     }
                     if (isset($responseDecoded['@globalVersion'])) {
                         $this->globalVersion = (int) $responseDecoded['@globalVersion'];
                     }
+
+                    $mainResult = $this->unifyResponseFormat($responseDecoded);
+                } else {
+                    $mainResult = $responseDecoded;
                 }
+
+                $this->lastResult    = $mainResult;
+                $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
+                        : $this->rowCount];
+
                 break;
 
             case 500: // Internal Server Error
@@ -1347,8 +1349,7 @@ class FlexiBeeRO extends \Ease\Sand
 
             $finalUrl .= http_build_query(array_map(function($a) {
                 return is_bool($a) ? ($a ? 'true' : 'false' ) : $a;
-            }, $urlParams),
-                null, '&', PHP_QUERY_RFC3986);
+                }, $urlParams), null, '&', PHP_QUERY_RFC3986);
         }
 
         $transactions     = $this->performRequest($finalUrl, 'GET');
@@ -2821,6 +2822,16 @@ class FlexiBeeRO extends \Ease\Sand
         $this->addStatusMessage('FlexiBee '.str_replace('://',
                 '://'.$this->user.'@', $this->getApiUrl()).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
             'debug');
+    }
+
+    /**
+     * Get Last operation type
+     * 
+     * @return string create|read|update|delete or update,insert for some inserted and updated in one transaction
+     */
+    public function getLastOperationType()
+    {
+        return implode(',', array_keys(array_filter($this->responseStats)));
     }
 
     /**
