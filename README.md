@@ -25,7 +25,7 @@ která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu. 
 **Dále chci poděkovat technické podpoře společnosti [ABRA Flexi s.r.o.](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
 při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
-Parsování výsledků pro účely GDPR logování bylo dopracováno za laskavé podpory [&gt;PureHTML&lt;](https://purehtml.cz/) 
+Parsování výsledků pro účely GDPR logování bylo dopracováno za laskavé podpory [&lt;PureHTML&gt;](https://purehtml.cz/) 
 
 Instalace
 ---------

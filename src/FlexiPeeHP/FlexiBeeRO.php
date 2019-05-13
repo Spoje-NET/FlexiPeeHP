@@ -2019,7 +2019,7 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return int|null
      */
-    function getNextRecordID($conditions = [])
+    public function getNextRecordID($conditions = [])
     {
         $conditions['order'] = 'id@D';
         $conditions['limit'] = 1;
@@ -2036,7 +2036,7 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return int|null
      */
-    function getPrevRecordID($conditions = [])
+    public function getPrevRecordID($conditions = [])
     {
         $conditions['order'] = 'id@A';
         $conditions['limit'] = 1;
