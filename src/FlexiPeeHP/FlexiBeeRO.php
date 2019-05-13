@@ -365,7 +365,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Last Request response stats
      * @var array 
      */
-    private $responseStats = null;
+    protected $responseStats = null;
 
     /**
      * Chained Objects

@@ -108,7 +108,7 @@ class FlexiBeeRW extends FlexiBeeRO
                 if (is_array($responseDecoded)) {
                     $this->responseStats = array_key_exists('stats',
                             $responseDecoded) ? (isset($responseDecoded['stats'][0])
-                            ? $responseDecoded['stats'][0] : $responseDecoded['stats'])
+                            ? array_map('intval', $responseDecoded['stats'][0]) : array_map('intval',  $responseDecoded['stats']))
                             : null;
 
                     if (isset($responseDecoded[$this->resultField][0]['id'])) {
