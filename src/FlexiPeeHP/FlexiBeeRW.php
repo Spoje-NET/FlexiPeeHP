@@ -103,6 +103,7 @@ class FlexiBeeRW extends FlexiBeeRO
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
+        $result = parent::parseResponse($responseDecoded, $responseCode);
         switch ($responseCode) {
             case 201: //Success Write
                 if (is_array($responseDecoded)) {
@@ -122,7 +123,7 @@ class FlexiBeeRW extends FlexiBeeRO
                     }
                 }
         }
-        return parent::parseResponse($responseDecoded, $responseCode);
+        return $result;
     }
 
     /**

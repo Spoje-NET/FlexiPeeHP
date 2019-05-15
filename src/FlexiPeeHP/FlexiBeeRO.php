@@ -1010,8 +1010,10 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
+        $mainResult = null;
         switch ($responseCode) {
             case 201: //Success Write
+                break;
             case 200: //Success Read
 
                 if (is_array($responseDecoded)) {
