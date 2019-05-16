@@ -17,7 +17,7 @@ build: static
 
 clean:
 	rm -rf debian/php-flexibee
-	rm -rf debian/flexipeehp
+	rm -rf debian/flexipeehp .phpunit.result.cache debian/flexipeehp.debhelper.log
 	rm -rf debian/flexipeehp-doc
 	rm -rf debian/*.log
 	rm -rf debian/*.substvars
