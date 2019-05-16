@@ -1014,6 +1014,7 @@ class FlexiBeeRO extends \Ease\Sand
         }
         switch ($responseCode) {
             case 201: //Success Write
+                break;
             case 200: //Success Read
                 if (is_array($responseDecoded)) {
                     $this->lastResult = $mainResult;
