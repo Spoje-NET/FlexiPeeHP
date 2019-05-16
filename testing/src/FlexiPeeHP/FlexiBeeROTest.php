@@ -1414,16 +1414,9 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     /**
      * @covers FlexiPeeHP\FlexiBeeRO::__wakeup
      */
-    public function test__wakeup()
+    public function testWakeup()
     {
         $this->object->__wakeup();
     }
 
-    /**
-     * @covers FlexiPeeHP\FlexiBeeRO::__destruct
-     */
-    public function test_destruct()
-    {
-        $this->object->__destruct();
-    }
 }

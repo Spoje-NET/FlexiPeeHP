@@ -365,7 +365,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Last Request response stats
      * @var array 
      */
-    private $responseStats = null;
+    protected $responseStats = null;
 
     /**
      * Chained Objects
@@ -430,10 +430,15 @@ class FlexiBeeRO extends \Ease\Sand
      *                                        company,url,evidence,
      *                                        prefix,defaultUrlParams,debug,
      *                                        detail,offline,filter,ignore404
-     *                                        timeout,companyUrl
+     *                                        timeout,companyUrl,ver
      */
     public function setUp($options = [])
     {
+        if (array_key_exists('ver', $options)) {
+            $this->protoVersion = $options['ver'];
+            $this->prefix       = 'v'.round($this->protoVersion).'/c/';
+        }
+
         if (array_key_exists('companyUrl', $options)) {
             $options = array_merge(self::companyUrlToOptions($options['companyUrl']),
                 $options);
@@ -504,8 +509,8 @@ class FlexiBeeRO extends \Ease\Sand
         $port     = isset($urlParts['port']) ? ':'.$urlParts['port'] : '';
         $path     = isset($urlParts['path']) ? $urlParts['path'] : '';
 
-        $options['company'] = basename($urlParts['path']);
-        $options['url']     = $scheme.$host.$port.$path;
+        $options['company'] = basename($path);
+        $options['url']     = $scheme.$host.$port;
         return $options;
     }
 
@@ -1005,26 +1010,29 @@ class FlexiBeeRO extends \Ease\Sand
      */
     public function parseResponse($responseDecoded, $responseCode)
     {
-        if (is_array($responseDecoded)) {
-            $mainResult          = $this->unifyResponseFormat($responseDecoded);
-            $this->responseStats = array_key_exists('stats', $responseDecoded) ? (isset($responseDecoded['stats'][0])
-                    ? $responseDecoded['stats'][0] : $responseDecoded['stats']) : null;
-        } else {
-            $mainResult = $responseDecoded;
-        }
+        $mainResult = null;
         switch ($responseCode) {
             case 201: //Success Write
                 break;
             case 200: //Success Read
+
                 if (is_array($responseDecoded)) {
-                    $this->lastResult = $mainResult;
                     if (isset($responseDecoded['@rowCount'])) {
                         $this->rowCount = (int) $responseDecoded['@rowCount'];
                     }
                     if (isset($responseDecoded['@globalVersion'])) {
                         $this->globalVersion = (int) $responseDecoded['@globalVersion'];
                     }
+
+                    $mainResult = $this->unifyResponseFormat($responseDecoded);
+                } else {
+                    $mainResult = $responseDecoded;
                 }
+
+                $this->lastResult    = $mainResult;
+                $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
+                        : $this->rowCount];
+
                 break;
 
             case 500: // Internal Server Error
@@ -1316,7 +1324,7 @@ class FlexiBeeRO extends \Ease\Sand
             }
         }
 
-        if (strlen($suffix)) {
+        if (strlen($suffix) && ($suffix != '$sum')) {
             if (preg_match('/^http/', $suffix) || ($suffix[0] == '/') || is_numeric($suffix)) {
                 $finalUrl = $suffix;
             } else {
@@ -1330,14 +1338,20 @@ class FlexiBeeRO extends \Ease\Sand
 
         $finalUrl .= $conditions;
 
-        if (count($urlParams)) {
+        if ($suffix == '$sum') {
+            $finalUrl .= '/$sum';
+        }
+
+        if (!empty($urlParams)) {
             if (strstr($finalUrl, '?')) {
                 $finalUrl .= '&';
             } else {
                 $finalUrl .= '?';
             }
-            $finalUrl .= http_build_query($urlParams, null, '&',
-                PHP_QUERY_RFC3986);
+
+            $finalUrl .= http_build_query(array_map(function($a) {
+                return is_bool($a) ? ($a ? 'true' : 'false' ) : $a;
+                }, $urlParams), null, '&', PHP_QUERY_RFC3986);
         }
 
         $transactions     = $this->performRequest($finalUrl, 'GET');
@@ -1821,7 +1835,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @see https://www.flexibee.eu/api/dokumentace/ref/filters
      *
-     * @param array  $data   key=>values; value can bee class DatePeriod
+     * @param array  $data   key=>values; value can bee class DatePeriod, DateTime or Array
      * @param string $joiner default and/or
      * @param string $defop  default operator
      *
@@ -1839,6 +1853,11 @@ class FlexiBeeRO extends \Ease\Sand
                     $parts[$column] = $data[$column] ? $column.' eq true' : $column.' eq false';
                 } elseif (is_null($data[$column])) {
                     $parts[$column] = $column." is null";
+                } elseif (is_array($data[$column])) {
+                    $parts[$column] = $column." in (".implode(',',
+                            array_map(function($a) {
+                                return "'$a'";
+                            }, $data[$column])).")";
                 } elseif (is_object($data[$column])) {
                     switch (get_class($data[$column])) {
                         case 'DatePeriod':
@@ -1858,14 +1877,34 @@ class FlexiBeeRO extends \Ease\Sand
                             break;
                         case 'is empty':
                         case 'is not empty':
+                        case 'is true':
+                        case 'is false':    
                             $parts[$column] = $column.' '.$value;
                             break;
                         default:
-                            switch (explode(' ', trim($value))[0]) {
+                            $condParts = explode(' ', trim($value));
+                            switch ($condParts[0]) {
+                                case '<>':
+                                case '!=':
+                                case 'ne':
+                                case 'neq':
+                                case '<':
+                                case 'lt':    
+                                case '<=':
+                                case 'lte':
+                                case '>':
+                                case 'gt':
+                                case '>=':
+                                case 'gte':
                                 case 'like':
                                 case 'begins':
+                                case 'between':
                                 case 'ends':
+                                    if(count($condParts) == 1){
                                     $parts[$column] = $column         .= ' '.$value;
+                                    } else {
+                                        $parts[$column] = $column         .= ' '.$condParts[0]." '".$condParts[1]."'";
+                                    }
                                     break;
                                 default:
                                     if ($column == 'stitky') {
@@ -1982,7 +2021,7 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return int|null
      */
-    function getNextRecordID($conditions = [])
+    public function getNextRecordID($conditions = [])
     {
         $conditions['order'] = 'id@D';
         $conditions['limit'] = 1;
@@ -1999,7 +2038,7 @@ class FlexiBeeRO extends \Ease\Sand
      * 
      * @return int|null
      */
-    function getPrevRecordID($conditions = [])
+    public function getPrevRecordID($conditions = [])
     {
         $conditions['order'] = 'id@A';
         $conditions['limit'] = 1;
@@ -2785,6 +2824,16 @@ class FlexiBeeRO extends \Ease\Sand
         $this->addStatusMessage('FlexiBee '.str_replace('://',
                 '://'.$this->user.'@', $this->getApiUrl()).' FlexiPeeHP v'.self::$libVersion.' (FlexiBee '.EvidenceList::$version.') EasePHP Framework v'.\Ease\Atom::$frameworkVersion.' '.$additions,
             'debug');
+    }
+
+    /**
+     * Get Last operation type
+     * 
+     * @return string create|read|update|delete or update,insert for some inserted and updated in one transaction
+     */
+    public function getLastOperationType()
+    {
+        return implode(',', array_keys(array_filter($this->responseStats)));
     }
 
     /**

@@ -62,8 +62,8 @@ class FlexiBeeRW extends FlexiBeeRO
      * SetUp Object to be ready for work
      *
      * @param array $options Object Options (authSessionId,user,password,
-     *                                       url,company,evidence,
-     *                                       prefix,defaultUrlParams,debug,
+     *                                       url,company,evidence,companyUrl
+     *                                       prefix,defaultUrlParams,debug,ver
      *                                       detail,offline,atomic,filter,ignore404
      */
     public function setUp($options = array())
@@ -106,14 +106,21 @@ class FlexiBeeRW extends FlexiBeeRO
         $parsedData = parent::parseResponse($responseDecoded, $responseCode);
         switch ($responseCode) {
             case 201: //Success Write
-                if (isset($responseDecoded[$this->resultField][0]['id'])) {
-                    $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
-                    $this->setMyKey($this->lastInsertedID);
-                } else {
-                    $this->lastInsertedID = null;
-                }
-                if (count($this->chained)) {
-                    $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
+                if (is_array($responseDecoded)) {
+                    $this->responseStats = array_key_exists('stats',
+                            $responseDecoded) ? (isset($responseDecoded['stats'][0])
+                            ? array_map('intval', $responseDecoded['stats'][0]) : array_map('intval',  $responseDecoded['stats']))
+                            : null;
+
+                    if (isset($responseDecoded[$this->resultField][0]['id'])) {
+                        $this->lastInsertedID = $responseDecoded[$this->resultField][0]['id'];
+                        $this->setMyKey($this->lastInsertedID);
+                    } else {
+                        $this->lastInsertedID = null;
+                    }
+                    if (count($this->chained)) {
+                        $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
+                    }
                 }
         }
         return $parsedData;

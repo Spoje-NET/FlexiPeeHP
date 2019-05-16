@@ -212,6 +212,7 @@ class Company extends FlexiBeeRW
         $this->setPostFields(file_get_contents($filename));
         $this->performRequest('restore'.(empty($options) ? '' : '?'.http_build_query($options) ),
             'PUT');
+        $this->defaultHttpHeaders = $headersBackup; 
         return $this->lastResponseCode == 200;
     }
 

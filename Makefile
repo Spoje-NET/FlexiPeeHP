@@ -16,6 +16,7 @@ static:
 build: static
 
 clean:
+	rm -rf debian/php-flexibee
 	rm -rf debian/flexipeehp
 	rm -rf debian/flexipeehp-doc
 	rm -rf debian/*.log

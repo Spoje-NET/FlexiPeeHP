@@ -25,6 +25,8 @@ která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu. 
 **Dále chci poděkovat technické podpoře společnosti [ABRA Flexi s.r.o.](https://www.flexibee.eu/podpora/) za jejich svatou trpělivost
 při reakcích na mé ne vždy bystré otázky a bugreporty.**
 
+Parsování výsledků pro účely GDPR logování bylo dopracováno za laskavé podpory [&lt;PureHTML&gt;](https://purehtml.cz/) 
+
 Instalace
 ---------
 
@@ -102,6 +104,14 @@ nebo je možné přihlašovací údaje zadávat při vytváření instance tří
 ```
 
 Tento způsob nastavení má vyšší prioritu než výše uvedené definovaní konstant.
+
+```php
+
+    $order = new \FlexiPeeHP\ObjednavkaPrijata('code:OBP0034/2019',['companyUrl'=> $_GET['companyUrl'], 'authSessionId'=>$_GET['authSessionId'] ])
+
+```
+Takto se ke flexibee a konrétní objednávce může připojit aplikace vyvolaná uživatelským tlačítkem předávajícím hodnoty **companyUrl** a **authSessionId**
+
 
 Jak to celé funguje ?
 ---------------------
