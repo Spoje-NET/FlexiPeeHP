@@ -1029,10 +1029,13 @@ class FlexiBeeRO extends \Ease\Sand
                     $mainResult = $responseDecoded;
                 }
 
-                $this->lastResult    = $mainResult;
-                $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
-                        : $this->rowCount];
-
+                $this->lastResult = $mainResult;
+                if (array_key_exists('properties', $mainResult)) {
+                    $this->responseStats = ['read' => 1];
+                } else {
+                    $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
+                            : $this->rowCount];
+                }
                 break;
 
             case 500: // Internal Server Error
@@ -1350,7 +1353,7 @@ class FlexiBeeRO extends \Ease\Sand
             }
 
             $finalUrl .= http_build_query(array_map(function($a) {
-                return is_bool($a) ? ($a ? 'true' : 'false' ) : $a;
+                    return is_bool($a) ? ($a ? 'true' : 'false' ) : $a;
                 }, $urlParams), null, '&', PHP_QUERY_RFC3986);
         }
 
@@ -1878,18 +1881,18 @@ class FlexiBeeRO extends \Ease\Sand
                         case 'is empty':
                         case 'is not empty':
                         case 'is true':
-                        case 'is false':    
+                        case 'is false':
                             $parts[$column] = $column.' '.$value;
                             break;
                         default:
-                            $condParts = explode(' ', trim($value));
+                            $condParts      = explode(' ', trim($value));
                             switch ($condParts[0]) {
                                 case '<>':
                                 case '!=':
                                 case 'ne':
                                 case 'neq':
                                 case '<':
-                                case 'lt':    
+                                case 'lt':
                                 case '<=':
                                 case 'lte':
                                 case '>':
@@ -1900,8 +1903,8 @@ class FlexiBeeRO extends \Ease\Sand
                                 case 'begins':
                                 case 'between':
                                 case 'ends':
-                                    if(count($condParts) == 1){
-                                    $parts[$column] = $column         .= ' '.$value;
+                                    if (count($condParts) == 1) {
+                                        $parts[$column] = $column         .= ' '.$value;
                                     } else {
                                         $parts[$column] = $column         .= ' '.$condParts[0]." '".$condParts[1]."'";
                                     }
