@@ -1362,8 +1362,8 @@ class FlexiBeeRO extends \Ease\Sand
         if (is_array($transactions) && array_key_exists($responseEvidence,
                 $transactions)) {
             $result = $transactions[$responseEvidence];
-            if ((count($result) == 1) && (count(current($result)) == 0 )) {
-                $result = null; // Response is empty Array
+            if ((count($result) == 1) && empty(current($result))) {
+                $result = []; // Response is empty Array
             }
         } else {
             $result = $transactions;
