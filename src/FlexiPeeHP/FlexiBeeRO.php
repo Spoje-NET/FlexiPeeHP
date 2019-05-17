@@ -1030,7 +1030,11 @@ class FlexiBeeRO extends \Ease\Sand
                 }
 
                 $this->lastResult = $mainResult;
-                if (array_key_exists('properties', $mainResult)) {
+
+                if (array_key_exists('success', $mainResult) && ($mainResult['success']
+                    == 'false')) {
+                    $this->responseStats = ['read' => 0];
+                } elseif (array_key_exists('properties', $mainResult)) {
                     $this->responseStats = ['read' => 1];
                 } else {
                     $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
