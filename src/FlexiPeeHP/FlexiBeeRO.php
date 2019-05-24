@@ -602,7 +602,7 @@ class FlexiBeeRO extends \Ease\Sand
         switch ($columnName) {
             case 'kod':
                 $value = self::uncode($value); //Alwyas uncode "kod" column
-                break;
+
             default:
                 if (is_object($value)) {
                     switch (get_class($value)) {
