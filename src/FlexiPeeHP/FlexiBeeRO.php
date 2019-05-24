@@ -982,8 +982,10 @@ class FlexiBeeRO extends \Ease\Sand
                 $responseDecoded = $responseDecoded[$this->nameSpace];
             }
         } else {
-            $this->addStatusMessage('JSON Decoder: '.$decodeError, 'error');
-            $this->addStatusMessage($rawJson, 'debug');
+            if($this->debug){
+                $this->addStatusMessage('JSON Decoder: '.$decodeError, 'error');
+                $this->addStatusMessage($rawJson, 'debug');
+            }
         }
         return $responseDecoded;
     }
