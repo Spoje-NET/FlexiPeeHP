@@ -2211,7 +2211,7 @@ class FlexiBeeRO extends \Ease\Sand
         $properties = [];
         $evidence   = is_null($evidence) ? $this->getEvidence() : $evidence;
         $flexinfo   = $this->performRequest('/c/'.$this->company.'/'.$evidence.'/properties.json');
-        if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
+        if (!empty($flexinfo) && array_key_exists('properties', $flexinfo)) {
             foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
                 $key                      = $evidenceProperty['propertyName'];
                 $properties[$key]         = $evidenceProperty;
