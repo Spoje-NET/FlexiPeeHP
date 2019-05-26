@@ -982,7 +982,7 @@ class FlexiBeeRO extends \Ease\Sand
                 $responseDecoded = $responseDecoded[$this->nameSpace];
             }
         } else {
-            if($this->debug){
+            if ($this->debug) {
                 $this->addStatusMessage('JSON Decoder: '.$decodeError, 'error');
                 $this->addStatusMessage($rawJson, 'debug');
             }
@@ -1033,14 +1033,17 @@ class FlexiBeeRO extends \Ease\Sand
 
                 $this->lastResult = $mainResult;
 
-                if (array_key_exists('success', $mainResult) && ($mainResult['success']
-                    == 'false')) {
-                    $this->responseStats = ['read' => 0];
-                } elseif (array_key_exists('properties', $mainResult)) {
-                    $this->responseStats = ['read' => 1];
-                } else {
-                    $this->responseStats = ['read' => empty($this->rowCount) ? count($mainResult[$this->getResponseEvidence()])
-                            : $this->rowCount];
+                if (!is_null($mainResult)) {
+                    if (array_key_exists('success', $mainResult) && ($mainResult['success']
+                        == 'false')) {
+                        $this->responseStats = ['read' => 0];
+                    } elseif (array_key_exists('properties', $mainResult)) {
+                        $this->responseStats = ['read' => 1];
+                    } else {
+                        $this->responseStats = ['read' => empty($this->rowCount)
+                                ? count($mainResult[$this->getResponseEvidence()])
+                                : $this->rowCount];
+                    }
                 }
                 break;
 
