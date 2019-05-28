@@ -1042,7 +1042,7 @@ class FlexiBeeRO extends \Ease\Sand
                     } else {
                         $this->responseStats = ['read' => empty($this->rowCount)
                                 ? count($mainResult[$this->getResponseEvidence()])
-                                : $this->rowCount];
+                        : $this->rowCount];
                     }
                 }
                 break;
