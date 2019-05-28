@@ -122,6 +122,7 @@ class FlexiBeeRW extends FlexiBeeRO
                         $this->assignResultIDs($this->extractResultIDs($responseDecoded[$this->resultField]));
                     }
                 }
+                $parsedData = $responseDecoded['results'];
         }
         return $parsedData;
     }
