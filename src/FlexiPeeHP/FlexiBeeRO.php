@@ -487,6 +487,8 @@ class FlexiBeeRO extends \Ease\Sand
     {
         if (array_key_exists($name, $options)) {
             $this->$name = $options[$name];
+        } elseif (array_key_exists($constant, $options)) {
+            $this->$name = $options[$constant];
         } else {
             if (property_exists($this, $name) && !empty($constant) && defined($constant)) {
                 $this->$name = constant($constant);
@@ -1032,8 +1034,9 @@ class FlexiBeeRO extends \Ease\Sand
                 }
 
                 $this->lastResult = $mainResult;
-
-                if (!is_null($mainResult)) {
+                if (array_key_exists('stats', $responseDecoded)) {
+                    $this->responseStats = $responseDecoded['stats'];
+                } elseif (!empty($mainResult)) {
                     if (array_key_exists('success', $mainResult) && ($mainResult['success']
                         == 'false')) {
                         $this->responseStats = ['read' => 0];
@@ -1042,7 +1045,7 @@ class FlexiBeeRO extends \Ease\Sand
                     } else {
                         $this->responseStats = ['read' => empty($this->rowCount)
                                 ? count($mainResult[$this->getResponseEvidence()])
-                        : $this->rowCount];
+                                : $this->rowCount];
                     }
                 }
                 break;
