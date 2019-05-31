@@ -1043,9 +1043,15 @@ class FlexiBeeRO extends \Ease\Sand
                     } elseif (array_key_exists('properties', $mainResult)) {
                         $this->responseStats = ['read' => 1];
                     } else {
-                        $this->responseStats = ['read' => empty($this->rowCount)
-                                ? count($mainResult[$this->getResponseEvidence()])
-                                : $this->rowCount];
+                        $responseEvidence = $this->getResponseEvidence();
+                        if (!empty($this->rowCount)) {
+                            $this->responseStats = ['read' => $this->rowCount];
+                        } elseif (array_key_exists($responseEvidence,
+                                $mainResult)) {
+                            $this->responseStats = ['read' => count($mainResult[$responseEvidence])];
+                        } else {
+                            $this->responseStats = ['read' => count($mainResult)];
+                        }
                     }
                 }
                 break;
