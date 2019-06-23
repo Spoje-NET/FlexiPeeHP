@@ -14,5 +14,9 @@ namespace FlexiPeeHP;
  */
 class Zavazek extends \FlexiPeeHP\FlexiBeeRW
 {
+    use Stitky;
+    use Firma;
+    use Sum;
+
     public $evidence = 'zavazek';
 }
