@@ -94,13 +94,13 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
 
         $mock->__construct('',
             [
-            'company' => constant('FLEXIBEE_COMPANY'),
-            'url' => constant('FLEXIBEE_URL'),
-            'user' => constant('FLEXIBEE_LOGIN'),
-            'password' => constant('FLEXIBEE_PASSWORD'),
-            'debug' => true,
-            'prefix' => 'c',
-            'evidence' => $evidence]);
+                'company' => constant('FLEXIBEE_COMPANY'),
+                'url' => constant('FLEXIBEE_URL'),
+                'user' => constant('FLEXIBEE_LOGIN'),
+                'password' => constant('FLEXIBEE_PASSWORD'),
+                'debug' => true,
+                'prefix' => 'c',
+                'evidence' => $evidence]);
     }
 
     /**
@@ -128,7 +128,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             $firstID = $this->object->getColumnsFromFlexibee(['id', 'kod'],
                 ['limit' => 1]);
 
-            if (count($firstID) && isset($firstID[0]['id'])) {
+            if (!empty($firstID) && isset($firstID[0]['id'])) {
 
                 $this->object->processInit((int) current($firstID));
                 $this->assertNotEmpty($this->object->__toString());
@@ -242,8 +242,8 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->assertNull($this->object->object2array(new \stdClass()));
         $this->assertEquals(
             [
-            'item' => 1,
-            'arrItem' => ['a', 'b' => 'c']
+                'item' => 1,
+                'arrItem' => ['a', 'b' => 'c']
             ]
             , $this->object->object2array(new \Test\ObjectForTesting()));
     }
@@ -322,7 +322,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             [
                 [
                     'id' => '2574',
-                    'kontakty' =>
+                    $this->object->getResponseEvidence() =>
                     [
                         ['id' => '299']
                     ]
@@ -809,10 +809,9 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testGetResponseFormat()
     {
         $this->object->performRequest(null, 'GET', 'json');
-        $this->assertEquals('application/json',
-            $this->object->getResponseFormat());
+        $this->assertEquals('json', $this->object->getResponseFormat());
         $this->object->performRequest(null, 'GET', 'xml');
-        $this->assertEquals('application/xml',
+        $this->assertEquals('xml',
             $this->object->getResponseFormat());
         unset($this->object->curlInfo['content_type']);
         $this->assertNull($this->object->getResponseFormat());
@@ -1213,13 +1212,14 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
      */
     public function testTakeData()
     {
+        $responseEvidence = $this->object->getResponseEvidence();
         $this->object->takeData(['id' => 1]);
-        $this->assertEquals(constant('FLEXIBEE_URL').'/'.constant('FLEXIBEE_COMPANY').'/1',
+        $this->assertEquals(constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY').'/'.$responseEvidence.'/1',
             $this->object->getApiURL());
 
         $this->object->dataReset();
         $this->object->takeData(['kod' => 'test']);
-        $this->assertEquals(constant('FLEXIBEE_URL').'/'.constant('FLEXIBEE_COMPANY').'/code:TEST',
+        $this->assertEquals(constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY').'/'.$responseEvidence.'/code:TEST',
             $this->object->getApiURL());
     }
 
@@ -1333,6 +1333,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     {
         $this->object->sendByMail($this->object->reportRecipient, 'test',
             'test body');
+        $this->assertTrue(true);
     }
 
     /**
@@ -1341,6 +1342,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testSendUnsent()
     {
         $this->object->sendUnsent();
+        $this->assertTrue(true);
     }
 
     /**
@@ -1355,6 +1357,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->object->getInFormat('pdf', 'test');
         $this->object->getInFormat('pdf', 'test', 'cs', true);
         $this->object->getInFormat('pdf', 'error', 'ua', false);
+        $this->assertTrue(true);
     }
 
     /**
@@ -1363,6 +1366,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     public function testDownloadInFormat()
     {
         $this->object->downloadInFormat('pdf', sys_get_temp_dir().'/');
+        $this->assertTrue(true);
     }
 
     /**
@@ -1378,6 +1382,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
             case 'status':
             case 'changes':
             case 'evidence-list':
+                $this->assertTrue(true);
                 break;
             default:
                 $this->assertNotEmpty($result,
@@ -1418,5 +1423,4 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
     {
         $this->object->__wakeup();
     }
-
 }
