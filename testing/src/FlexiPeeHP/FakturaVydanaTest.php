@@ -29,6 +29,11 @@ class FakturaVydanaTest extends FlexiBeeRWTest
         $testCode  = 'INV_'.\Ease\Sand::randomString();
         $invoice   = new \FlexiPeeHP\FakturaVydana(null,
             ['evidence' => 'faktura-'.$evidence]);
+        
+        if(($evidence == 'prijata') && !array_key_exists('cisDosle', $initialData) ){
+            $initialData['cisDosle'] = time();
+        }
+        
         $invoice->takeData(array_merge([
             'kod' => $testCode,
             'varSym' => \Ease\Sand::randomNumber(1111, 9999),
