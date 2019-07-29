@@ -38,7 +38,7 @@ class Banka extends FlexiBeeRW
     }
 
     /**
-     * Start invoice authomatic matching process ( it take longer time )
+     * Start invoice automatic matching process ( it takes longer time )
      * Spustí proces automatického párování plateb. ( trvá delší dobu )
      *
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Interní dokumentace
