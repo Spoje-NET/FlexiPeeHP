@@ -44,12 +44,14 @@ class Banka extends FlexiBeeRW
      * @link https://demo.flexibee.eu/devdoc/parovani-plateb Interní dokumentace
      * 
      * @param boolean $advanced Use Advanced matching method ?
+     * @param string $filter Filter bank records before pairing ?
      * 
      * @return boolean
      */
-    public function automatickeParovani($advanced = false)
+    public function automatickeParovani($advanced = false, $filter = null)
     {
-        $this->performRequest('automaticke-parovani'.($advanced ? '-pokrocile' : '' ), 'PUT');
+        $filterUrl = $filter === null ? "" : rtrim($filter, '/') . '/';
+        $this->performRequest($filterUrl . 'automaticke-parovani'.($advanced ? '-pokrocile' : '' ), 'PUT');
         return $this->lastResponseCode == 200;
     }
 }
