@@ -5,6 +5,8 @@ PHP Based Library for easy interaction with Czech accounting system FlexiBee.
 
 CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee](https://www.flexibee.eu/)
 
+ :exclamation: Tato knihovna bude označena za zastaralou. Věnujte prosím pozornost její odlehčené nástupkyni https://github.com/Spoje-NET/php-flexibee :exclamation: 
+
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/FlexiPeeHP-blue.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP)
 [![Latest Version](https://img.shields.io/github/release/Spoje-NET/FlexiPeeHP.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP/releases)
 [![Software License](https://img.shields.io/badge/license-GNU-brightgreen.svg?style=flat-square)](https://github.com/Spoje-NET/FlexiPeeHP/blob/master/LICENSE)
