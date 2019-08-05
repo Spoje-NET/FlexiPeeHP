@@ -10,7 +10,7 @@
     ],
     "require": {
         "ext-curl": "*",
-        "vitexsoftware/ease-framework": ">=1.29"
+        "vitexsoftware/ease-framework": "dev-master"
     },
     "autoload": {
         "psr-4": {

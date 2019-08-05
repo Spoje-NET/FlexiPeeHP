@@ -23,5 +23,5 @@ script:
   - "! (composer outdated --direct | grep ^)"
  
 after_script:
-  - ./vendor/bin/coveralls
+  - echo done
 

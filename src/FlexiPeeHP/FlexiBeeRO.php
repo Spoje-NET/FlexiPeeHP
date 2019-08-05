@@ -26,7 +26,7 @@ class FlexiBeeRO extends \Ease\Sand
      *
      * @var string
      */
-    public static $libVersion = '1.20.3';
+    public static $libVersion = '1.30';
 
     /**
      * Základní namespace pro komunikaci s FlexiBee.
@@ -1029,31 +1029,32 @@ class FlexiBeeRO extends \Ease\Sand
                     }
 
                     $mainResult = $this->unifyResponseFormat($responseDecoded);
+
+                    if (array_key_exists('stats', $responseDecoded)) {
+                        $this->responseStats = $responseDecoded['stats'];
+                    } elseif (!empty($mainResult)) {
+                        if (array_key_exists('success', $mainResult) && ($mainResult['success']
+                            == 'false')) {
+                            $this->responseStats = ['read' => 0];
+                        } elseif (array_key_exists('properties', $mainResult)) {
+                            $this->responseStats = ['read' => 1];
+                        } else {
+                            $responseEvidence = $this->getResponseEvidence();
+                            if (!empty($this->rowCount)) {
+                                $this->responseStats = ['read' => $this->rowCount];
+                            } elseif (array_key_exists($responseEvidence,
+                                    $mainResult)) {
+                                $this->responseStats = ['read' => count($mainResult[$responseEvidence])];
+                            } else {
+                                $this->responseStats = ['read' => count($mainResult)];
+                            }
+                        }
+                    }
                 } else {
                     $mainResult = $responseDecoded;
                 }
 
                 $this->lastResult = $mainResult;
-                if (array_key_exists('stats', $responseDecoded)) {
-                    $this->responseStats = $responseDecoded['stats'];
-                } elseif (!empty($mainResult)) {
-                    if (array_key_exists('success', $mainResult) && ($mainResult['success']
-                        == 'false')) {
-                        $this->responseStats = ['read' => 0];
-                    } elseif (array_key_exists('properties', $mainResult)) {
-                        $this->responseStats = ['read' => 1];
-                    } else {
-                        $responseEvidence = $this->getResponseEvidence();
-                        if (!empty($this->rowCount)) {
-                            $this->responseStats = ['read' => $this->rowCount];
-                        } elseif (array_key_exists($responseEvidence,
-                                $mainResult)) {
-                            $this->responseStats = ['read' => count($mainResult[$responseEvidence])];
-                        } else {
-                            $this->responseStats = ['read' => count($mainResult)];
-                        }
-                    }
-                }
                 break;
 
             case 500: // Internal Server Error
