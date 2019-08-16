@@ -26,26 +26,29 @@ class FakturaVydanaTest extends FlexiBeeRWTest
     {
         $yesterday = new \DateTime();
         $yesterday->modify('-'.$dayBack.' day');
-        $testCode  = 'INV_'.\Ease\Sand::randomString();
+        $testCode  = 'TEST_'.time();
         $invoice   = new \FlexiPeeHP\FakturaVydana(null,
             ['evidence' => 'faktura-'.$evidence]);
-        
-        if(($evidence == 'prijata') && !array_key_exists('cisDosle', $initialData) ){
+
+        if (($evidence == 'prijata') && !array_key_exists('cisDosle',
+                $initialData)) {
             $initialData['cisDosle'] = time();
         }
-        
+
         $invoice->takeData(array_merge([
             'kod' => $testCode,
             'varSym' => \Ease\Sand::randomNumber(1111, 9999),
             'specSym' => \Ease\Sand::randomNumber(111, 999),
             'bezPolozek' => true,
-            'popis' => 'php-flexibee-matcher Test invoice',
+            'popis' => 'FlexiPeeHP Test invoice',
             'datVyst' => \FlexiPeeHP\FlexiBeeRO::dateToFlexiDate($yesterday),
             'typDokl' => \FlexiPeeHP\FlexiBeeRO::code('FAKTURA')
                 ], $initialData));
         if ($invoice->sync()) {
-            $invoice->addStatusMessage($invoice->getApiURL().' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('typDokl')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getRecordIdent()).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('sumCelkem')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('mena')),
-                'success');
+            if ($invoice->debug !== false) {
+                $invoice->addStatusMessage($invoice->getApiURL().' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('typDokl')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getRecordIdent()).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('sumCelkem')).' '.\FlexiPeeHP\FlexiBeeRO::uncode($invoice->getDataValue('mena')),
+                    'success');
+            }
         } else {
             $invoice->addStatusMessage(json_encode($invoice->getData()), 'debug');
         }
