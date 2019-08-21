@@ -233,4 +233,21 @@ class FakturaVydana extends FlexiBeeRW
 
         return $ddif;
     }
+    
+    /**
+     * Add Data to invoice subItem
+     *
+     * @see Relations
+     *
+     * @param array   $data pole dat
+     * @param string  $relationPath path evidence (relation) pro vkládaná data
+     * @param boolean $removeAll
+     *
+     * @return boolean Operation success
+     */
+    public function addArrayToBranch($data, $relationPath = 'polozkyFaktury',
+                                     $removeAll = false)    {
+        return parent::addArrayToBranch($data, $relationPath, $removeAll);
+    }
+    
 }
