@@ -59,6 +59,8 @@ class Company extends FlexiBeeRW
     {
         if (is_string($init)) {
             $init = ['dbNazev' => $init];
+        } else if (defined('FLEXIBEE_COMPANY')) {
+            $init = ['dbNazev' => constant('FLEXIBEE_COMPANY')];
         }
         parent::__construct($init, $options);
     }
@@ -212,7 +214,7 @@ class Company extends FlexiBeeRW
         $this->setPostFields(file_get_contents($filename));
         $this->performRequest('restore'.(empty($options) ? '' : '?'.http_build_query($options) ),
             'PUT');
-        $this->defaultHttpHeaders = $headersBackup; 
+        $this->defaultHttpHeaders                 = $headersBackup;
         return $this->lastResponseCode == 200;
     }
 

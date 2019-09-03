@@ -13,9 +13,9 @@ include_once './config.php';
 include_once '../vendor/autoload.php';
 
 $companer  = new \FlexiPeeHP\Company();
-$companies     = $companer->getFlexiData();
+$companies     = $companer->getData();
 
-if (array_key_exists('company', $companies) === true) {
+if (array_key_exists('dbNazev', $companies) === true) {
     $companer->addStatusMessage('Connection OK', 'success');
 } else {
     $companer->addStatusMessage('Connection failed', 'warning');
