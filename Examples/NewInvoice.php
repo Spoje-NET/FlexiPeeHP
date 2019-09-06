@@ -38,7 +38,7 @@ $invoice->takeData([
 $invoice->addArrayToBranch(['nazev' => 'Example Item 1', 'cenaMj' => 100]);
 
 /**
- * You nee an existing pricelist item here:
+ * You need an existing pricelist item here:
  * (new \FlexiPeeHP\Cenik())->insertToFlexiBee(['kod'=>'EXAMPLE' ,'nazev'=>'New Example Product','cenaMj'=>100]);
  */
 
