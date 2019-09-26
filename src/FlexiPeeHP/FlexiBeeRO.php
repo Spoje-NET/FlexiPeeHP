@@ -335,7 +335,7 @@ class FlexiBeeRO extends \Ease\Sand
      * Array of errors caused by last request
      * @var array
      */
-    private $errors = [];
+    public $errors = [];
 
     /**
      * List of Error500 reports sent
@@ -1068,7 +1068,7 @@ class FlexiBeeRO extends \Ease\Sand
             case 400: //Bad Request parameters
             default: //Something goes wrong
                 $this->addStatusMessage($this->lastResponseCode.': '.$this->curlInfo['url'],
-                    'warning');
+                    $responseCode == 500 ? 'error' : 'warning');
                 if (is_array($responseDecoded)) {
                     $this->parseError($responseDecoded);
                 }
@@ -1770,8 +1770,8 @@ class FlexiBeeRO extends \Ease\Sand
     {
         $logResult = false;
         if (isset($resultData['success']) && ($resultData['success'] == 'false')) {
-            $this->addStatusMessage('Error '.$this->lastResponseCode.': '.urldecode($url) . (array_key_exists('message',
-                    $resultData) ? ' ' . $resultData['message'] : '') , 'warning');
+            $this->addStatusMessage('Error '.$this->lastResponseCode.': '.urldecode($url).(array_key_exists('message',
+                    $resultData) ? ' '.$resultData['message'] : ''), 'warning');
             unset($url);
         }
         if (is_null($resultData)) {
@@ -1822,10 +1822,11 @@ class FlexiBeeRO extends \Ease\Sand
         $fname    = $this->evidence.'-'.$this->curlInfo['when'].'.'.$this->format;
         $reqname  = $tmpdir.'/request-'.$fname;
         $respname = $tmpdir.'/response-'.$fname;
-        if (file_put_contents($reqname, $this->postFields)) {
+        $header   = '# '. (new \DateTime())->format('Y-m-d\TH:i:s.u') .' '. $this->curlInfo['url']. ' ('.urldecode($this->curlInfo['url']).')'; 
+        if (file_put_contents($reqname, $header . "\n".$this->postFields)) {
             $this->addStatusMessage($reqname, 'debug');
         }
-        if (file_put_contents($respname, $this->lastCurlResponse)) {
+        if (file_put_contents($respname, $header . "\n".$this->lastCurlResponse)) {
             $this->addStatusMessage($respname, 'debug');
         }
     }
