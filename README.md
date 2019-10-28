@@ -16,6 +16,14 @@ CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee]
 [![Total Downloads](https://img.shields.io/packagist/dt/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
 [![Latest stable](https://img.shields.io/packagist/v/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
 
+[![Latest Stable Version](https://poser.pugx.org/spoje.net/flexipeehp/v/stable)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![Total Downloads](https://poser.pugx.org/spoje.net/flexipeehp/downloads)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![Latest Unstable Version](https://poser.pugx.org/spoje.net/flexipeehp/v/unstable)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![License](https://poser.pugx.org/spoje.net/flexipeehp/license)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![Monthly Downloads](https://poser.pugx.org/spoje.net/flexipeehp/d/monthly)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![Daily Downloads](https://poser.pugx.org/spoje.net/flexipeehp/d/daily)](https://packagist.org/packages/spoje.net/flexipeehp)
+
+
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4/big.png)](https://insight.sensiolabs.com/projects/5ba2e106-1590-4d0b-bbb2-953484ca36d4)
 
 # Poděkování 
