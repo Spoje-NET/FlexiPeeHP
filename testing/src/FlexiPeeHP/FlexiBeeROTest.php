@@ -811,8 +811,7 @@ class FlexiBeeROTest extends \Test\Ease\SandTest
         $this->object->performRequest(null, 'GET', 'json');
         $this->assertEquals('json', $this->object->getResponseFormat());
         $this->object->performRequest(null, 'GET', 'xml');
-        $this->assertEquals('xml',
-            $this->object->getResponseFormat());
+        $this->assertEquals('xml', $this->object->getResponseFormat());
         unset($this->object->curlInfo['content_type']);
         $this->assertNull($this->object->getResponseFormat());
     }
