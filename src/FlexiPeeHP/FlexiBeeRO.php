@@ -2284,8 +2284,7 @@ class FlexiBeeRO extends \Ease\Sand
         $columnsInfo = $this->getColumnsInfo(empty($evidence) ? $this->getEvidence()
                 : $evidence);
         return (empty($column) || empty($columnsInfo) || !is_array($columnsInfo))
-                ? null : array_key_exists($column, $columnsInfo) ? $columnsInfo[$column]
-                : null;
+                ? null : (array_key_exists($column, $columnsInfo) ? $columnsInfo[$column] : null);
     }
 
     /**
