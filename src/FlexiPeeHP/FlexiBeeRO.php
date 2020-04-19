@@ -541,6 +541,30 @@ class FlexiBeeRO extends \Ease\Sand
     }
 
     /**
+     * Export current/given configutation into Environment  
+     * @param array $opts
+     */
+    public function configToEnv($opts = null) {
+        $options = is_null($opts) ? $this->getConnectionOptions() : $opts;
+        if(array_key_exists('url', $options)){
+            putenv('FLEXIBEE_URL='.$options['URL']);
+        }
+        if(array_key_exists('user', $options)){
+            putenv('FLEXIBEE_LOGIN='.$options['user']);
+        }
+        if(array_key_exists('password', $options)){
+            putenv('FLEXIBEE_PASSWORD='.$options['password']);
+        }
+        if(array_key_exists('company', $options)){
+            putenv('FLEXIBEE_COMPANY='.$options['company']);
+        }
+        if(array_key_exists('authSessionId', $options)){
+            putenv('FLEXIBEE_AUTHSESSID='.$options['authSessionId']);
+        }
+    }
+    
+    
+    /**
      * Inicializace CURL
      *
      * @return boolean Online Status
