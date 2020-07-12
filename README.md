@@ -15,6 +15,7 @@ CZ: PHP Knihovna pro snadnou práci s českým ekonomickým systémem [FlexiBee]
 [![Docker pulls](https://img.shields.io/docker/pulls/vitexsoftware/flexipeehp.svg)](https://hub.docker.com/r/vitexsoftware/flexipeehp/)
 [![Total Downloads](https://img.shields.io/packagist/dt/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
 [![Latest stable](https://img.shields.io/packagist/v/spoje.net/flexipeehp.svg?style=flat-square)](https://packagist.org/packages/spoje.net/flexipeehp)
+[![time tracker](https://wakatime.com/badge/github/Spoje-NET/FlexiPeeHP.svg)](https://wakatime.com/badge/github/Spoje-NET/FlexiPeeHP)
 
 [![Latest Stable Version](https://poser.pugx.org/spoje.net/flexipeehp/v/stable)](https://packagist.org/packages/spoje.net/flexipeehp)
 [![Total Downloads](https://poser.pugx.org/spoje.net/flexipeehp/downloads)](https://packagist.org/packages/spoje.net/flexipeehp)
